@@ -53,10 +53,21 @@ class Ship(models.Model):
         return self.name
 
 
+class Upgrade(models.Model):
+    name = models.CharField(max_length=30)
+    type = models.CharField(max_length=3, choices=UPGRADE_CHOICES)
+    type2 = models.CharField(max_length=3, choices=UPGRADE_CHOICES, null=True, blank=True, default=None)
+    cost = models.PositiveSmallIntegerField()
+    ability = models.CharField(max_length=75)
+    charges = models.PositiveSmallIntegerField()
+
+
 class Pilot(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     campaign = models.ForeignKey(Campaign, on_delete=models.CASCADE)
     callsign = models.CharField(max_length=30)
+    total_xp = models.PositiveSmallIntegerField()
+    upgrades = models.ManyToManyField(Upgrade)
 
     def __str__(self):
         return '{} ({})'.format(self.callsign, self.user)
@@ -122,14 +133,6 @@ class Achievement(models.Model):
     threat = models.SmallIntegerField(null=True, blank=True)
 
 
-class Upgrade(models.Model):
-    name = models.CharField(max_length=30)
-    type = models.CharField(max_length=3, choices=UPGRADE_CHOICES)
-    type2 = models.CharField(max_length=3, choices=UPGRADE_CHOICES, null=True, blank=True, default=None)
-    cost = models.PositiveSmallIntegerField()
-    ability = models.CharField(max_length=75)
-    charges = models.PositiveSmallIntegerField()
-
 
 class Slot(models.Model):
     ship = models.ForeignKey(Ship, on_delete=models.CASCADE)
@@ -139,13 +142,17 @@ class Slot(models.Model):
     parent = models.ForeignKey('self', on_delete=models.CASCADE, null=True, blank=True)
 
     def __str__(self):
-        return '{} [{}]'.format(self.get_type_display(), self.threat)
+        return '{} - {} [{}]'.format(self.threat, self.get_type_display(), self.cost)
 
 
 class PilotShip(models.Model):
     pilot = models.ForeignKey(Pilot, on_delete=models.CASCADE)
     ship = models.ForeignKey(Ship, on_delete=models.CASCADE)
     unlocked = models.ManyToManyField(Slot)
+
+    def __str__(self):
+        return self.pilot.callsign + "\'s " + self.ship.name
+
 
 
 
