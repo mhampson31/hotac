@@ -1,0 +1,17 @@
+{% if session_summary %}
+
+{% regroup session_summary by pilot__callsign as pilot_list %}
+
+<div>
+    {% for pilot in pilot_list %}
+    {{ pilot.grouper }}
+    <ul>
+        {% for event in pilot.list %}
+        <li>{{ event.event__short_desc }} x{{ event.total }} ({{ event.xp }} xp)</li>
+        {% endfor %}
+        Total Points: {{
+    </ul>
+    {% endfor %}
+</div>
+
+{% endif %}
