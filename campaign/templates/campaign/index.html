@@ -1,6 +1,10 @@
+{% extends 'base.html' %}
+
+{% block content %}
 Pilots:
 <ul>
 {% for p in pilots %}
     <li>{{p.campaign}}: <a href="pilot/{{p.id}}">{{p.callsign}}</a></li>
 {% endfor %}
 </ul>
+{% endblock %}

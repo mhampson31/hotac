@@ -4,7 +4,7 @@ from django.db.models.functions import Coalesce
 
 from django_tables2 import RequestConfig
 
-from .models import Session, Pilot
+from .models import Session, Pilot, Event, Campaign
 from .tables import AchievementTable
 
 
@@ -41,7 +41,18 @@ def old_session_summary(request, session_id):
 
 def pilot_sheet(request, pilot_id):
     pilot = Pilot.objects.get(id=pilot_id)
+    ach = []
+    for ev in Event.objects.all():
+        a = pilot.achievement_set.filter(event=ev.id)
+        if a:
+            ach.append({'event':ev.long_desc, 'count':len(a)})
     context = {'pilot':pilot,
-               'spent':pilot.upgrades.aggregate(total=Sum('cost'))['total'] +
-                       pilot.pilotship_set.aggregate(total=Sum('unlocked__cost'))['total']}
+               'spent':(pilot.upgrades.aggregate(total=Sum('cost'))['total'] or 0) +
+                       pilot.pilotship_set.aggregate(total=Sum('unlocked__cost'))['total'],
+               'achievements':ach,
+               'missions':len(pilot.session_set.all())}
     return render(request, 'campaign/pilot.html', context)
+
+
+def campaign(request, campaign_id):
+    return

@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 """
 
 import os
+from . import local_settings as ls
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -19,14 +20,15 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'k@dkrb)o8)!46#a7fg*%8*70w#8=t$d&&5#+wu&fs#@c94!w%v'
+SECRET_KEY = ls.SECRET_KEY
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = ls.DEBUG
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ls.ALLOWED_HOSTS
 
+INTERNAL_IPS = ls.INTERNAL_IPS
+
+DATABASES = ls.DATABASES
 
 # Application definition
 
@@ -75,15 +77,6 @@ TEMPLATES = [
 WSGI_APPLICATION = 'hotac.wsgi.application'
 
 
-# Database
-# https://docs.djangoproject.com/en/2.1/ref/settings/#databases
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
-}
 
 
 # Password validation

@@ -48,6 +48,7 @@ class Campaign(models.Model):
 
 class Ship(models.Model):
     name = models.CharField(max_length=20)
+    start_xp = models.PositiveSmallIntegerField()
 
     def __str__(self):
         return self.name
@@ -154,6 +155,16 @@ class PilotShip(models.Model):
 
     def __str__(self):
         return self.pilot.callsign + "\'s " + self.ship.name
+
+    @property
+    def initiative(self):
+        return len(self.unlocked.filter(type='THR')) + 1
+
+    @property
+    def threat(self):
+        return self.unlocked.aggregate(t=models.Max('threat'))['t']
+
+
 
 
 

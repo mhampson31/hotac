@@ -1,6 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content %}
 Callsign: {{pilot.callsign}}<br />
 Campaign: {{pilot.campaign}}<br />
+Missions Flow: {{missions}}<br />
 Total XP Earned: {{pilot.total_xp}}<br />
+Total XP Spent: {{spent}}<br />
 
 Upgrades:
 <ul>
@@ -10,10 +15,21 @@ Upgrades:
 </ul>
 
 {% for ship in pilot.pilotship_set.all %}
-Ship: {{ship.ship.name}}
+<h4>{{ship.ship.name}}</h4>
+Initiative {{ship.initiative}}<br />
+Threat {{ship.threat}}<br />
 Unlocked: <ul>
     {% for slot in ship.unlocked.all %}
     <li>{{slot}}</li>
     {% endfor %}
 </ul>
 {% endfor %}
+
+Achievements
+<ul>
+{% for event in achievements %}
+    <li>{{event.event}}: {{event.count}}</li>
+{% endfor %}
+</ul>
+
+{% endblock %}
