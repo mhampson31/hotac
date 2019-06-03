@@ -58,8 +58,10 @@ class Upgrade(models.Model):
     type = models.CharField(max_length=3, choices=UPGRADE_CHOICES)
     type2 = models.CharField(max_length=3, choices=UPGRADE_CHOICES, null=True, blank=True, default=None)
     cost = models.PositiveSmallIntegerField()
-    ability = models.CharField(max_length=75)
-    charges = models.PositiveSmallIntegerField()
+    charges = models.PositiveSmallIntegerField(null=True, blank=True)
+
+    def __str__(self):
+        return self.name
 
 
 class Pilot(models.Model):
@@ -142,7 +144,7 @@ class Slot(models.Model):
     parent = models.ForeignKey('self', on_delete=models.CASCADE, null=True, blank=True)
 
     def __str__(self):
-        return '{} - {} [{}]'.format(self.threat, self.get_type_display(), self.cost)
+        return '{} {} - {} [{}]'.format(self.ship.name, self.threat, self.get_type_display(), self.cost)
 
 
 class PilotShip(models.Model):

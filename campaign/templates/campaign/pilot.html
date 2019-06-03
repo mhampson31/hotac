@@ -1,0 +1,19 @@
+Callsign: {{pilot.callsign}}<br />
+Campaign: {{pilot.campaign}}<br />
+Total XP Earned: {{pilot.total_xp}}<br />
+
+Upgrades:
+<ul>
+{% for upgrade in pilot.upgrades.all %}
+    <li>{{upgrade}}</li>
+{%endfor %}
+</ul>
+
+{% for ship in pilot.pilotship_set.all %}
+Ship: {{ship.ship.name}}
+Unlocked: <ul>
+    {% for slot in ship.unlocked.all %}
+    <li>{{slot}}</li>
+    {% endfor %}
+</ul>
+{% endfor %}

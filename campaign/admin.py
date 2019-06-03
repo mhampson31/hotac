@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 
-from .models import User, Campaign, Pilot, Event, Mission, Session, Achievement, Ship, Slot, PilotShip
+from .models import User, Campaign, Pilot, Event, Mission, Session, Achievement, Ship, Slot, PilotShip, Upgrade
 
 
 class PilotInline(admin.StackedInline):
@@ -45,15 +45,22 @@ class UnlockedInline(admin.TabularInline):
         qs = super().get_queryset(request)
         return qs.filter(author=request.user)
 
+
 class PilotShipAdmin(admin.ModelAdmin):
     model = PilotShip
     list_display = ('pilot', 'ship')
     filter_horizontal = ('unlocked',)
 
 
+class UpgradeAdmin(admin.ModelAdmin):
+    model = Upgrade
+    list_display = ('name', 'type', 'type2', 'cost', 'charges')
+
+
 #admin.site.unregister(User)
 admin.site.register(User, UserAdmin)
 admin.site.register(Pilot, PilotAdmin)
+admin.site.register(Upgrade, UpgradeAdmin)
 admin.site.register(Campaign)
 admin.site.register(Mission)
 admin.site.register(Event)
