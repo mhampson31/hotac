@@ -1,11 +1,14 @@
 {% extends 'base.html' %}
 
 {% block content %}
-Callsign: {{pilot.callsign}}<br />
-Campaign: {{pilot.campaign}}<br />
-Missions Flow: {{missions}}<br />
-Total XP Earned: {{pilot.total_xp}}<br />
-Total XP Spent: {{spent}}<br />
+
+<div class="container mb-2">
+    <div class="row">Callsign: {{pilot.callsign}}</div>
+    <div class="row">Campaign: {{pilot.campaign}}</div>
+    <div class="row">Missions Flown: {{missions}}</div>
+    <div class="row">Total XP Earned: {{pilot.total_xp}}</div>
+    <div class="row">Total XP Spent: {{spent}}</div>
+</div>
 
 <h4>Upgrades</h4>
 <div class="container">
