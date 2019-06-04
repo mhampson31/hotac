@@ -46,6 +46,7 @@ def pilot_sheet(request, pilot_id):
         a = pilot.achievement_set.filter(event=ev.id)
         if a:
             ach.append({'event':ev.long_desc, 'count':len(a)})
+
     context = {'pilot':pilot,
                'spent':(pilot.upgrades.aggregate(total=Sum('cost'))['total'] or 0) +
                        pilot.pilotship_set.aggregate(total=Sum('unlocked__cost'))['total'],

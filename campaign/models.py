@@ -64,6 +64,9 @@ class Upgrade(models.Model):
     def __str__(self):
         return self.name
 
+    class Meta:
+        ordering = ['type', '-type2', 'name']
+
 
 class Pilot(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -146,6 +149,9 @@ class Slot(models.Model):
 
     def __str__(self):
         return '{} {} - {} [{}]'.format(self.ship.name, self.threat, self.get_type_display(), self.cost)
+
+    class Meta:
+        ordering = ['threat', 'id']
 
 
 class PilotShip(models.Model):

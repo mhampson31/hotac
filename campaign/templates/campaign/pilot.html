@@ -7,22 +7,58 @@ Missions Flow: {{missions}}<br />
 Total XP Earned: {{pilot.total_xp}}<br />
 Total XP Spent: {{spent}}<br />
 
-Upgrades:
-<ul>
-{% for upgrade in pilot.upgrades.all %}
-    <li>{{upgrade}}</li>
-{%endfor %}
-</ul>
+<h4>Upgrades</h4>
+<div class="container">
+    <div class="row justify-content-start">
+        {% for upgrade in pilot.upgrades.all %}
+        {% ifchanged upgrade.type %}
+        {% if not forloop.first %}
+        </ul>
+        {% endif %}
+        <ul class="col-3 list-group">
+            <li class="list-group-item"><strong>{{upgrade.get_type_display}}</strong></li>
+        {% endifchanged %}
+            <li class="list-group-item">{{upgrade}}</li>
+        {% endfor %}
+        </ul>
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col">
+        <h4>Ships</h4>
+    </div>
+</div>
 
 {% for ship in pilot.pilotship_set.all %}
-<h4>{{ship.ship.name}}</h4>
-Initiative {{ship.initiative}}<br />
-Threat {{ship.threat}}<br />
-Unlocked: <ul>
-    {% for slot in ship.unlocked.all %}
-    <li>{{slot}}</li>
-    {% endfor %}
-</ul>
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <h5>{{ship.ship.name}}</h5>
+        </div>
+        <div class="col">
+            Initiative {{ship.initiative}}
+        </div>
+        <div class="col">
+            Threat {{ship.threat}}
+        </div>
+    </div>
+
+    <div class="row">
+        {% for slot in ship.unlocked.all %}
+        {% ifchanged slot.threat %}
+        {% if not forloop.first %}
+        </div>
+        {% endif %}
+        <div class="col">
+            <h6>Threat {{slot.threat}}</h6>
+       {% endifchanged %}
+            <div>{{slot.get_type_display}} ({{slot.cost}})</div>
+        {% endfor %}
+        </div>
+    </div>
+</div>
 {% endfor %}
 
 Achievements
