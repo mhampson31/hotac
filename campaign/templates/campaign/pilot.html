@@ -9,16 +9,17 @@ Total XP Spent: {{spent}}<br />
 
 <h4>Upgrades</h4>
 <div class="container">
-    <div class="row justify-content-start">
         {% for upgrade in pilot.upgrades.all %}
         {% ifchanged upgrade.type %}
         {% if not forloop.first %}
         </ul>
+    </div>
         {% endif %}
-        <ul class="col-3 list-group">
-            <li class="list-group-item"><strong>{{upgrade.get_type_display}}</strong></li>
+    <div class="row">
+        <ul class="list-inline">
+            <li class="list-inline-item"><strong>{{upgrade.get_type_display}}</strong></li>
         {% endifchanged %}
-            <li class="list-group-item">{{upgrade}}</li>
+            <li class="list-inline-item">{{upgrade}}</li>
         {% endfor %}
         </ul>
     </div>
