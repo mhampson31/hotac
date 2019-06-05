@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container">
+    <h2>{{campaign.description}}</h2>
+    <h3>Pilots</h3>
+    <ul>
+        {% for pilot in campaign.pilot_set.all %}
+        <li><a href="{% url 'pilot' pilot.id %}">{{pilot.callsign}}</a></li>
+        {% endfor %}
+    </ul>
+
+    <h3>Sessions</h3>
+    <ul>
+        {% for session in campaign.session_set.all %}
+        <li><a href="{% url 'session' session.id %}">{{session.mission}}</a></li>
+        {% endfor %}
+    </ul>
+</div>
+
+{% endblock %}

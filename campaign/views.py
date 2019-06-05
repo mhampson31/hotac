@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.db.models import Count, Sum
 from django.db.models.functions import Coalesce
+from django.views.generic import DetailView
 
 from django_tables2 import RequestConfig
 
@@ -55,5 +56,7 @@ def pilot_sheet(request, pilot_id):
     return render(request, 'campaign/pilot.html', context)
 
 
-def campaign(request, campaign_id):
-    return
+class CampaignView(DetailView):
+    model = Campaign
+    context_object_name = 'campaign'
+    template_name = 'campaign/campaign.html'

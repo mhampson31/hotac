@@ -22,7 +22,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.index, name='index'),
     path('session/<int:session_id>', views.session_summary, name='session'),
-    path('oldsession/<int:session_id>', views.old_session_summary, name='old_session'),
-    path('pilot/<int:pilot_id>', views.pilot_sheet, name='pilot')
+    path('pilot/<int:pilot_id>', views.pilot_sheet, name='pilot'),
+    path('campaign/<int:pk>', views.CampaignView.as_view(), name='campaign')
 
 ]

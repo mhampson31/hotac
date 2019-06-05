@@ -1,7 +1,7 @@
 {% if session_summary %}
 
 {% regroup session_summary by pilot__callsign as pilot_list %}
-
+test
 <div>
     {% for pilot in pilot_list %}
     {{ pilot.grouper }}

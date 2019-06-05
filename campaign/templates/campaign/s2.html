@@ -1,19 +1,15 @@
+{% extends 'base.html' %}
 {% load render_table from django_tables2 %}
-<!doctype html>
-<html>
-    <head>
-        <title>Pilot Scoreboard</title>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
-    </head>
-    <body>
-        <header>
-            {{ session.mission }}
+
+{% block content %}
+        <header class="container">
+            <h4>{{ session.mission }}</h4>
         </header>
         {% for pilot in pilots %}
-        <div>
+        <div class="container">
         <h5>{{ pilot.callsign }}</h5>
         {% render_table pilot %}
         </div>
         {% endfor %}
-    </body>
-</html>
+
+{% endblock %}
