@@ -1,7 +1,6 @@
 from django.db import models
-from django.db.models.functions import Coalesce
+from django.urls import reverse
 from django.contrib.auth.models import AbstractUser
-from django.conf import settings
 
 
 UPGRADE_TYPES = {
@@ -44,6 +43,9 @@ class Campaign(models.Model):
 
     def __str__(self):
         return self.description
+
+    def get_absolute_url(self):
+        return reverse('campaign', kwargs={'pk': self.pk})
 
 
 class Ship(models.Model):

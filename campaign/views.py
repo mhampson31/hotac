@@ -2,6 +2,8 @@ from django.shortcuts import render
 from django.db.models import Count, Sum
 from django.db.models.functions import Coalesce
 from django.views.generic import DetailView
+from django.urls import reverse_lazy
+from django.views.generic.edit import CreateView, DeleteView, UpdateView
 
 from django_tables2 import RequestConfig
 
@@ -60,3 +62,8 @@ class CampaignView(DetailView):
     model = Campaign
     context_object_name = 'campaign'
     template_name = 'campaign/campaign.html'
+
+
+class CampaignUpdate(UpdateView):
+    model = Campaign
+    fields = ['description', 'victory']
