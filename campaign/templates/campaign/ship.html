@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% load xwf_extras %}
+
+{% block content %}
+        <div class="row mb-2">
+                <div class="col-3">
+                    <h5>{{ship.name}}</h5>
+                </div>
+        </div>
+
+        <div class="row mb-2">
+                <div class="col-3">
+                    <h5>Base XP: {{ship.start_xp}}</h5>
+                </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <h6>Slots</h6>
+            </div>
+        </div>
+
+        <div class="row no-gutters mb-3">
+            {% regroup ship.slot_set.all by threat as threat_slots %}
+
+            {% for threat, slots in threat_slots %}
+            <div class="col-2">
+                <ul class="list-group">
+                    <li class="list-group-item"><strong class="font-weight-light threat|threatbar">{{threat|threatbar|safe}}</strong></li>
+                    {% for slot in slots %}
+                    <li class="list-group-item">{{slot.get_type_display}} [{{slot.cost}}]</li>
+                    {% endfor %}
+                </ul>
+            </div>
+            {% endfor %}
+
+        </div>
+
+{% endblock %}

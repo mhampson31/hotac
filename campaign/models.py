@@ -153,7 +153,7 @@ class Slot(models.Model):
         return '{} {} - {} [{}]'.format(self.ship.name, self.threat, self.get_type_display(), self.cost)
 
     class Meta:
-        ordering = ['threat', 'id']
+        ordering = ['parent__id', 'threat', 'cost']
 
 
 class PilotShip(models.Model):

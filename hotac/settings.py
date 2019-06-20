@@ -33,6 +33,7 @@ DATABASES = ls.DATABASES
 
 INSTALLED_APPS = [
     'campaign',
+    'crispy_forms',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -56,6 +57,8 @@ MIDDLEWARE = [
 AUTH_USER_MODEL = 'campaign.User'
 
 ROOT_URLCONF = 'hotac.urls'
+
+CRISPY_TEMPLATE_PACK = 'bootstrap3'
 
 TEMPLATES = [
     {

@@ -1,0 +1,672 @@
+@charset "UTF-8";
+/*
+ * Icons
+ */
+@font-face {
+  font-family: XWing;
+  src: url("xwing-miniatures.ttf"); }
+
+i.xwf {
+  font-family: XWing;
+  font-style: normal;
+  font-size: 1.5em; }
+
+i.xwf-agility:before {
+  content: "^"; }
+
+i.xwf-astromech:before {
+  content: "A"; }
+
+i.xwf-attack:before {
+  content: "%"; }
+
+i.xwf-bankleft:before {
+  content: "7"; }
+
+i.xwf-bankright:before {
+  content: "9"; }
+
+i.xwf-barrelroll:before {
+  content: "r"; }
+
+i.xwf-base-all:before {
+  content: "À"; }
+
+i.xwf-base-small:before {
+  content: "Á"; }
+
+i.xwf-base-medium:before {
+  content: "Â"; }
+
+i.xwf-base-large:before {
+  content: "Ã"; }
+
+i.xwf-boost:before {
+  content: "b"; }
+
+i.xwf-bullseyearc:before {
+  content: "}"; }
+
+i.xwf-calculate:before {
+  content: "a"; }
+
+i.xwf-cannon:before {
+  content: "C"; }
+
+i.xwf-cargo:before {
+  content: "G"; }
+
+i.xwf-charge:before {
+  content: "g"; }
+
+i.xwf-cloak:before {
+  content: "k"; }
+
+i.xwf-condition-outline:before {
+  content: "Æ"; }
+
+i.xwf-condition:before {
+  content: "°"; }
+
+i.xwf-config:before {
+  content: "n"; }
+
+i.xwf-coordinate:before {
+  content: "o"; }
+
+i.xwf-crew:before {
+  content: "W"; }
+
+i.xwf-crit:before {
+  content: "c"; }
+
+i.xwf-dalan-bankleft:before {
+  content: "["; }
+
+i.xwf-dalan-bankright:before {
+  content: "]"; }
+
+i.xwf-device:before {
+  content: "B"; }
+
+i.xwf-doubleturretarc:before {
+  content: "q"; }
+
+i.xwf-empire:before {
+  content: "@"; }
+
+i.xwf-energy:before {
+  content: "("; }
+
+i.xwf-epic:before {
+  content: ")"; }
+
+i.xwf-evade:before {
+  content: "e"; }
+
+i.xwf-firstorder:before {
+  content: "+"; }
+
+i.xwf-focus:before {
+  content: "f"; }
+
+i.xwf-forcecharge:before {
+  content: "h"; }
+
+i.xwf-forcepower:before {
+  content: "F"; }
+
+i.xwf-frontarc:before {
+  content: "{"; }
+
+i.xwf-fullfrontarc:before {
+  content: "~"; }
+
+i.xwf-fullreararc:before {
+  content: "¡"; }
+
+i.xwf-gunner:before {
+  content: "Y"; }
+
+i.xwf-hardpoint:before {
+  content: "H"; }
+
+i.xwf-helmet-imperial:before {
+  content: "y"; }
+
+i.xwf-helmet-rebel:before {
+  content: "x"; }
+
+i.xwf-helmet-scum:before {
+  content: "z"; }
+
+i.xwf-hit:before {
+  content: "d"; }
+
+i.xwf-hull:before {
+  content: "&"; }
+
+i.xwf-ig88d-sloopleft:before {
+  content: '"'; }
+
+i.xwf-ig88d-sloopright:before {
+  content: "'"; }
+
+i.xwf-illicit:before {
+  content: "I"; }
+
+i.xwf-jam:before {
+  content: "j"; }
+
+i.xwf-kturn:before {
+  content: "2"; }
+
+i.xwf-leftarc:before {
+  content: "£"; }
+
+i.xwf-linked:before {
+  content: ">"; }
+
+i.xwf-lock:before {
+  content: "l"; }
+
+i.xwf-missile:before {
+  content: "M"; }
+
+i.xwf-modification:before {
+  content: "m"; }
+
+i.xwf-obstacle-core2asteroid0-outline:before {
+  content: "ĉ"; }
+
+i.xwf-obstacle-core2asteroid0:before {
+  content: "ĥ"; }
+
+i.xwf-obstacle-core2asteroid1-outline:before {
+  content: "Č"; }
+
+i.xwf-obstacle-core2asteroid1:before {
+  content: "Ĩ"; }
+
+i.xwf-obstacle-core2asteroid2-outline:before {
+  content: "Ċ"; }
+
+i.xwf-obstacle-core2asteroid2:before {
+  content: "Ħ"; }
+
+i.xwf-obstacle-core2asteroid3-outline:before {
+  content: "ċ"; }
+
+i.xwf-obstacle-core2asteroid3:before {
+  content: "ħ"; }
+
+i.xwf-obstacle-core2asteroid4-outline:before {
+  content: "č"; }
+
+i.xwf-obstacle-core2asteroid4:before {
+  content: "ĩ"; }
+
+i.xwf-obstacle-core2asteroid5-outline:before {
+  content: "Ď"; }
+
+i.xwf-obstacle-core2asteroid5:before {
+  content: "Ī"; }
+
+i.xwf-obstacle-coreasteroid0-outline:before {
+  content: "Ă"; }
+
+i.xwf-obstacle-coreasteroid0:before {
+  content: "Ğ"; }
+
+i.xwf-obstacle-coreasteroid1-outline:before {
+  content: "ă"; }
+
+i.xwf-obstacle-coreasteroid1:before {
+  content: "ğ"; }
+
+i.xwf-obstacle-coreasteroid2-outline:before {
+  content: "ā"; }
+
+i.xwf-obstacle-coreasteroid2:before {
+  content: "ĝ"; }
+
+i.xwf-obstacle-coreasteroid3-outline:before {
+  content: "ą"; }
+
+i.xwf-obstacle-coreasteroid3:before {
+  content: "ġ"; }
+
+i.xwf-obstacle-coreasteroid4-outline:before {
+  content: "Ą"; }
+
+i.xwf-obstacle-coreasteroid4:before {
+  content: "Ġ"; }
+
+i.xwf-obstacle-coreasteroid5-outline:before {
+  content: "Ā"; }
+
+i.xwf-obstacle-coreasteroid5:before {
+  content: "Ĝ"; }
+
+i.xwf-obstacle-vt49decimatordebris0-outline:before {
+  content: "Đ"; }
+
+i.xwf-obstacle-vt49decimatordebris0:before {
+  content: "Ĭ"; }
+
+i.xwf-obstacle-vt49decimatordebris1-outline:before {
+  content: "đ"; }
+
+i.xwf-obstacle-vt49decimatordebris1:before {
+  content: "ĭ"; }
+
+i.xwf-obstacle-vt49decimatordebris2-outline:before {
+  content: "ć"; }
+
+i.xwf-obstacle-vt49decimatordebris2:before {
+  content: "ģ"; }
+
+i.xwf-obstacle-yt2400debris0-outline:before {
+  content: "ď"; }
+
+i.xwf-obstacle-yt2400debris0:before {
+  content: "ī"; }
+
+i.xwf-obstacle-yt2400debris1-outline:before {
+  content: "Ĉ"; }
+
+i.xwf-obstacle-yt2400debris1:before {
+  content: "Ĥ"; }
+
+i.xwf-obstacle-yt2400debris2-outline:before {
+  content: "Ć"; }
+
+i.xwf-obstacle-yt2400debris2:before {
+  content: "Ģ"; }
+
+i.xwf-rangebonusindicator:before {
+  content: "?"; }
+
+i.xwf-reararc:before {
+  content: "|"; }
+
+i.xwf-rebel-outline:before {
+  content: "-"; }
+
+i.xwf-rebel:before {
+  content: "!"; }
+
+i.xwf-recover:before {
+  content: "v"; }
+
+i.xwf-recurring:before {
+  content: "`"; }
+
+i.xwf-reinforce:before {
+  content: "i"; }
+
+i.xwf-reload:before {
+  content: "="; }
+
+i.xwf-republic:before {
+  content: "/"; }
+
+i.xwf-reversebankleft:before {
+  content: "J"; }
+
+i.xwf-reversebankright:before {
+  content: "L"; }
+
+i.xwf-reversestraight:before {
+  content: "K"; }
+
+i.xwf-rightarc:before {
+  content: "¢"; }
+
+i.xwf-rotatearc:before {
+  content: "R"; }
+
+i.xwf-scum:before {
+  content: "#"; }
+
+i.xwf-separatists:before {
+  content: "."; }
+
+i.xwf-sensor:before {
+  content: "S"; }
+
+i.xwf-shield:before {
+  content: "*"; }
+
+i.xwf-singleturretarc:before {
+  content: "p"; }
+
+i.xwf-slam:before {
+  content: "s"; }
+
+i.xwf-sloopleft:before {
+  content: "1"; }
+
+i.xwf-sloopright:before {
+  content: "3"; }
+
+i.xwf-squad-point-cost:before {
+  content: "0"; }
+
+i.xwf-stop:before {
+  content: "5"; }
+
+i.xwf-straight:before {
+  content: "8"; }
+
+i.xwf-talent:before {
+  content: "E"; }
+
+i.xwf-team:before {
+  content: "T"; }
+
+i.xwf-tech:before {
+  content: "X"; }
+
+i.xwf-title:before {
+  content: "t"; }
+
+i.xwf-token-calculate-outline:before {
+  content: "Ë"; }
+
+i.xwf-token-calculate:before {
+  content: "Ê"; }
+
+i.xwf-token-charge-outline:before {
+  content: "Ó"; }
+
+i.xwf-token-charge:before {
+  content: "Ò"; }
+
+i.xwf-token-crit-outline:before {
+  content: "è"; }
+
+i.xwf-token-crit:before {
+  content: "Ç"; }
+
+i.xwf-token-cloak-outline:before {
+  content: "ô"; }
+
+i.xwf-token-cloak:before {
+  content: "å"; }
+
+i.xwf-token-evade-outline:before {
+  content: "é"; }
+
+i.xwf-token-evade:before {
+  content: "Å"; }
+
+i.xwf-token-focus-outline:before {
+  content: "ç"; }
+
+i.xwf-token-focus:before {
+  content: "Ä"; }
+
+i.xwf-token-force-outline:before {
+  content: "Õ"; }
+
+i.xwf-token-force:before {
+  content: "Ô"; }
+
+i.xwf-token-disarm-outline:before {
+  content: "í"; }
+
+i.xwf-token-disarm:before {
+  content: "Ö"; }
+
+i.xwf-token-ion-outline:before {
+  content: "ó"; }
+
+i.xwf-token-ion:before {
+  content: "ä"; }
+
+i.xwf-token-jam-outline:before {
+  content: "ð"; }
+
+i.xwf-token-jam:before {
+  content: "á"; }
+
+i.xwf-token-lock-outline:before {
+  content: "ò"; }
+
+i.xwf-token-lock:before {
+  content: "ã"; }
+
+i.xwf-token-reinforce-outline:before {
+  content: "ì"; }
+
+i.xwf-token-reinforce:before {
+  content: "Ü"; }
+
+i.xwf-token-reinforceaft-outline:before {
+  content: "î"; }
+
+i.xwf-token-reinforceaft:before {
+  content: "Ý"; }
+
+i.xwf-token-shield-outline:before {
+  content: "ë"; }
+
+i.xwf-token-shield:before {
+  content: "Ñ"; }
+
+i.xwf-token-stress-outline:before {
+  content: "ê"; }
+
+i.xwf-token-stress:before {
+  content: "É"; }
+
+i.xwf-token-tractor-outline:before {
+  content: "ï"; }
+
+i.xwf-token-tractor:before {
+  content: "à"; }
+
+i.xwf-torpedo:before {
+  content: "P"; }
+
+i.xwf-trollleft:before {
+  content: ":"; }
+
+i.xwf-trollright:before {
+  content: ";"; }
+
+i.xwf-turnleft:before {
+  content: "4"; }
+
+i.xwf-turnright:before {
+  content: "6"; }
+
+i.xwf-turret:before {
+  content: "U"; }
+
+i.xwf-unique-outline:before {
+  content: "•"; }
+
+i.xwf-unique:before {
+  content: "u"; }
+
+/*
+ * Ships
+ */
+@font-face {
+  font-family: XWingShip;
+  src: url("xw-ships.ttf"); }
+
+i.xw-ship {
+  font-family: XWingShip;
+  font-style: normal;
+  font-size: 1.5em; }
+
+i.xw-ship-aggressorassaultfighter:before {
+  content: "i"; }
+
+i.xw-ship-alphaclassstarwing:before {
+  content: "&"; }
+
+i.xw-ship-arc170starfighter:before {
+  content: "c"; }
+
+i.xw-ship-asf01bwing:before {
+  content: "b"; }
+
+i.xw-ship-attackshuttle:before {
+  content: "g"; }
+
+i.xw-ship-auzituckgunship:before {
+  content: "@"; }
+
+i.xw-ship-btla4ywing:before {
+  content: "y"; }
+
+i.xw-ship-btls8kwing:before {
+  content: "k"; }
+
+i.xw-ship-cr90corvette:before {
+  content: "2"; }
+
+i.xw-ship-croccruiser:before {
+  content: "5"; }
+
+i.xw-ship-customizedyt1300lightfreighter:before {
+  content: "W"; }
+
+i.xw-ship-escapecraft:before {
+  content: "X"; }
+
+i.xw-ship-ewing:before {
+  content: "e"; }
+
+i.xw-ship-fangfighter:before {
+  content: "M"; }
+
+i.xw-ship-firesprayclasspatrolcraft:before {
+  content: "f"; }
+
+i.xw-ship-g1astarfighter:before {
+  content: "n"; }
+
+i.xw-ship-gozanticlasscruiser:before {
+  content: "4"; }
+
+i.xw-ship-gr75mediumtransport:before {
+  content: "1"; }
+
+i.xw-ship-hwk290lightfreighter:before {
+  content: "h"; }
+
+i.xw-ship-jumpmaster5000:before {
+  content: "p"; }
+
+i.xw-ship-kihraxzfighter:before {
+  content: "r"; }
+
+i.xw-ship-lambdaclasst4ashuttle:before {
+  content: "l"; }
+
+i.xw-ship-lancerclasspursuitcraft:before {
+  content: "L"; }
+
+i.xw-ship-m12lkimogilafighter:before {
+  content: "K"; }
+
+i.xw-ship-m3ainterceptor:before {
+  content: "s"; }
+
+i.xw-ship-mg100starfortresssf17:before {
+  content: "Z"; }
+
+i.xw-ship-modifiedyt1300lightfreighter:before {
+  content: "m"; }
+
+i.xw-ship-quadrijettransferspacetug:before {
+  content: "q"; }
+
+i.xw-ship-raiderclasscorvette:before {
+  content: "3"; }
+
+i.xw-ship-rz1awing:before {
+  content: "a"; }
+
+i.xw-ship-scurrgh6bomber:before {
+  content: "H"; }
+
+i.xw-ship-sheathipedeclassshuttle:before {
+  content: "%"; }
+
+i.xw-ship-starviperclassattackplatform:before {
+  content: "v"; }
+
+i.xw-ship-t65xwing:before {
+  content: "x"; }
+
+i.xw-ship-t70xwing:before {
+  content: "w"; }
+
+i.xw-ship-tieadvancedv1:before {
+  content: "R"; }
+
+i.xw-ship-tieadvancedx1:before {
+  content: "A"; }
+
+i.xw-ship-tieagaggressor:before {
+  content: "`"; }
+
+i.xw-ship-tiecapunisher:before {
+  content: "N"; }
+
+i.xw-ship-tieddefender:before {
+  content: "D"; }
+
+i.xw-ship-tiefofighter:before {
+  content: "O"; }
+
+i.xw-ship-tieinterceptor:before {
+  content: "I"; }
+
+i.xw-ship-tielnfighter:before {
+  content: "F"; }
+
+i.xw-ship-tiephphantom:before {
+  content: "P"; }
+
+i.xw-ship-tiereaper:before {
+  content: "V"; }
+
+i.xw-ship-tiesabomber:before {
+  content: "B"; }
+
+i.xw-ship-tiesffighter:before {
+  content: "S"; }
+
+i.xw-ship-tiesilencer:before {
+  content: "$"; }
+
+i.xw-ship-tieskstriker:before {
+  content: "T"; }
+
+i.xw-ship-upsilonclassshuttle:before {
+  content: "U"; }
+
+i.xw-ship-ut60duwing:before {
+  content: "u"; }
+
+i.xw-ship-vcx100lightfreighter:before {
+  content: "G"; }
+
+i.xw-ship-vt49decimator:before {
+  content: "d"; }
+
+i.xw-ship-yt2400lightfreighter:before {
+  content: "o"; }
+
+i.xw-ship-yv666lightfreighter:before {
+  content: "t"; }
+
+i.xw-ship-z95af4headhunter:before {
+  content: "z"; }

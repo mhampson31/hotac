@@ -1,74 +1,92 @@
 {% extends 'base.html' %}
 
+{% load xwf_extras %}
+
 {% block content %}
 
-<div class="container mb-2">
-    <div class="row">Callsign: {{pilot.callsign}}</div>
-    <div class="row">Campaign: {{pilot.campaign}}</div>
-    <div class="row">Missions Flown: {{missions}}</div>
-    <div class="row">Total XP Earned: {{pilot.total_xp}}</div>
-    <div class="row">Total XP Spent: {{spent}}</div>
+<div class="row">
+    <div class="col">
+        <p>Player: {{pilot.user}}</p>
+        <p>Callsign: {{pilot.callsign}}</p>
+        <p>Campaign: {{pilot.campaign}}</p>
+        <p>Missions Flown: {{missions}}</p>
+    </div>
+    <div class="col">
+        <div class="col">XP Earned: {{pilot.total_xp}}</div>
+        <div class="col">XP Remaining: {{remaining}}</div>
+    </div>
 </div>
 
-<h4>Upgrades</h4>
-<div class="container mb-2">
-        {% for upgrade in pilot.upgrades.all %}
-        {% ifchanged upgrade.type %}
-        {% if not forloop.first %}
-        </ul>
-    </div>
-        {% endif %}
-    <div class="row">
-        <ul class="list-inline">
-            <li class="list-inline-item"><strong>{{upgrade.get_type_display}}</strong></li>
-        {% endifchanged %}
-            <li class="list-inline-item">{{upgrade}}</li>
+<div class="row mb-3">
+    <div class="col">
+        <h4>Upgrades</h4>
+            {% regroup pilot.upgrades.all by get_type_display as upgrade_list %}
+            {% for upgrade_type, upgrades in upgrade_list %}
+        <div class="row">
+            <div class="col-2">
+                <strong>{{upgrade_type}}</strong>
+            </div>
+            <ul class="list-inline col mb-0">
+            {% for upgrade in upgrades %}
+                    <li class="list-inline-item">{{upgrade}}</li>
+            {% endfor %}
+            </ul>
+        </div>
         {% endfor %}
-        </ul>
     </div>
 </div>
 
 
 <div class="row">
     <div class="col">
-        <h4>Ships</h4>
-    </div>
-</div>
-
-{% for ship in pilot.pilotship_set.all %}
-<div class="container mb-2">
-    <div class="row">
-        <div class="col">
-            <h5>{{ship.ship.name}}</h5> INI {{ship.initiative}}, Threat {{ship.threat}}
+        {% for ship in pilot.pilotship_set.all %}
+        <div class="row mb-2">
+                <div class="col-3">
+                    <h5>{{ship.ship.name}}
+                        <span class="font-weight-light {{ship.threat|threatbar}}">
+                            {{ship.threat|threatbar|safe}}
+                        </span>
+                    </h5>
+                    <span>Initiative {{ship.initiative}}</span>
+                </div>
         </div>
-    </div>
 
-    <div class="row">
-        {% for slot in ship.unlocked.all %}
-        {% ifchanged slot.threat %}
-        {% if not forloop.first %}
+        <div class="row">
+            <div class="col">
+                <h6>Unlocked Slots</h6>
+            </div>
         </div>
-        {% endif %}
-        <div class="col">
-            <h6>Threat {{slot.threat}}</h6>
-       {% endifchanged %}
-            <div>{{slot.get_type_display}} ({{slot.cost}})</div>
+
+        <div class="row no-gutters mb-3">
+            {% regroup ship.unlocked.all by threat as threat_slots %}
+
+            {% for threat, slots in threat_slots %}
+            <div class="col-2">
+                <ul class="list-group">
+                    <li class="list-group-item"><strong class="font-weight-light threat|threatbar">{{threat|threatbar|safe}}</strong></li>
+                    {% for slot in slots %}
+                    <li class="list-group-item">{{slot.get_type_display}} [{{slot.cost}}]</li>
+                    {% endfor %}
+                </ul>
+            </div>
+            {% endfor %}
+
+        </div>
         {% endfor %}
-        </div>
     </div>
 </div>
-{% endfor %}
 
-<h4>Achievements</h4>
-<div class="container mb-2">
-    <div class="row">
-        <ul class="list-item-group col">
+<div class="row">
+    <div class="col">
+        <h5>Achievements</h5>
+        <ul class="list-group col">
         {% for event in achievements %}
-            <li class="list-item">{{event.event}}: <span class="badge badge-primary badge-pill">{{event.count}}</span></li>
+            <li class="list-group-item">{{event.event}} <span class="badge badge-primary badge-pill">x{{event.count}}</span></li>
         {% endfor %}
         </ul>
-    </div>
-</div>
 
+    </div>
+
+</div>
 
 {% endblock %}

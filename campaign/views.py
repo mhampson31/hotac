@@ -7,7 +7,7 @@ from django.views.generic.edit import CreateView, DeleteView, UpdateView
 
 from django_tables2 import RequestConfig
 
-from .models import Session, Pilot, Event, Campaign
+from .models import Session, Pilot, Event, Campaign, Ship
 from .tables import AchievementTable
 
 
@@ -50,12 +50,19 @@ def pilot_sheet(request, pilot_id):
         if a:
             ach.append({'event':ev.long_desc, 'count':len(a)})
 
+    xp_spent = (pilot.upgrades.aggregate(total=Sum('cost'))['total'] or 0) + (pilot.pilotship_set.aggregate(total=Sum('unlocked__cost'))['total'] or 0)
+
     context = {'pilot':pilot,
-               'spent':(pilot.upgrades.aggregate(total=Sum('cost'))['total'] or 0) +
-                       pilot.pilotship_set.aggregate(total=Sum('unlocked__cost'))['total'],
+               'remaining':pilot.total_xp - xp_spent,
                'achievements':ach,
                'missions':len(pilot.session_set.all())}
     return render(request, 'campaign/pilot.html', context)
+
+
+def ship_sheet(request, ship_id):
+    context = {'ship':Ship.objects.get(id=ship_id)}
+
+    return render(request, 'campaign/ship.html', context)
 
 
 class CampaignView(DetailView):
