@@ -1,0 +1,73 @@
+:root {
+    --green: mediumseagreen;
+    --red: red;
+    --blue: blue;
+    --yellow: gold;
+    --orange: darkorange;
+    --purple: mediumpurple;
+    --grey: dimgrey;
+}
+
+section > .row {
+    margin: 0.5rem;
+}
+
+.hard,
+.attack:before,
+.attack > i:before {
+    color: var(--red);
+}
+
+.agility > i.before,
+.agility:before {
+    color: var(--green);
+}
+
+.shields > i.before,
+.shields:before {
+    color: var(--blue);
+}
+
+.hull > i.before,
+.hull:before {
+    color: var(--yellow);
+}
+
+.force > i.before,
+.force:before {
+    color: var(--purple);
+}
+
+.charge > i.before,
+.charge:before {
+    color: var(--orange);
+}
+
+.linked.before {
+    color: var(--grey);
+}
+
+.icon {
+    padding: 0.5rem;
+    margin-left: 0;
+}
+
+.ability > .xwing-miniatures-font {
+    font-size: inherit;
+}
+
+.threat-1 {color:var(--green);}
+.threat-2 {color:var(--yellow);}
+.threat-3 {color:var(--orange);}
+.threat-4 {color: var(--red);}
+.threat-5 {color:magenta;}
+.threat-6 {color:var(--purple);}
+
+.upgrade {
+    padding-top: 0.25rem;
+    border-top: 1px solid var(--grey);
+}
+
+.side2 {
+    border-top: 1px dashed var(--grey);
+}

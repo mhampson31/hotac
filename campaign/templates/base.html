@@ -1,23 +1,34 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
-          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <title>HotAC Manager</title>
-  </head>
-  <body>
-    <div class="container">
-          <h1 class="mt-2">HotAC</h1>
-          <hr class="mt-0 mb-4">
-          {% block content %}
-          {% endblock %}
-    </div>
-    {% block js %}
-      <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    {% endblock %}
-    {% block extrajs %}
-    {% endblock %}
-  </body>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>HotAC Manager</title>
+        {% block stylesheet %}
+            <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+                  integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
+                  crossorigin="anonymous">
+            <link rel="stylesheet" type="text/css"  href="{% static 'xwf/xwing-miniatures.css' %}">
+            <link rel="stylesheet" type="text/css" href="{% static 'qb/style.css' %}">
+        {% endblock %}
+    </head>
+
+    <body>
+        <div class="container">
+              <h1 class="mt-2">HotAC</h1>
+              <hr class="mt-0 mb-4">
+              {% block content %}
+              {% endblock %}
+        </div>
+
+        {% block js %}
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
+                integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
+                crossorigin="anonymous"></script>
+        {% endblock %}
+
+        {% block extrajs %}
+        {% endblock %}
+    </body>
 </html>
