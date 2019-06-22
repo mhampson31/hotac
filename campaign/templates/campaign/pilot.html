@@ -45,10 +45,10 @@
         {% for ship in pilot.pilotship_set.all %}
         <div class="row mb-2">
                 <div class="col-3">
-                    <h5>{{ship.ship.name}}
-                        <span class="font-weight-light {{ship.threat|threatbar}}">
+                    <span class="font-weight-light {{ship.threat|threatbar}}">
                             {{ship.threat|threatbar|safe}}
                         </span>
+                    <h5>{{ship.ship.name}} <i class="xw-ship xw-ship-{{ship.ship.css_name}}"></i>
                     </h5>
                     <span>Initiative {{ship.initiative}}</span>
                 </div>

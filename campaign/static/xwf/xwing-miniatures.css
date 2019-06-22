@@ -496,7 +496,7 @@ i.xwf-unique:before {
  */
 @font-face {
   font-family: XWingShip;
-  src: url("xw-ships.ttf"); }
+  src: url("xwing-miniatures-ships.ttf"); }
 
 i.xw-ship {
   font-family: XWingShip;

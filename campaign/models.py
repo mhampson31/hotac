@@ -2,6 +2,8 @@ from django.db import models
 from django.urls import reverse
 from django.contrib.auth.models import AbstractUser
 
+import re
+
 
 UPGRADE_TYPES = {
     'Astromech':'AST',
@@ -51,10 +53,14 @@ class Campaign(models.Model):
 class Ship(models.Model):
     name = models.CharField(max_length=20)
     start_xp = models.PositiveSmallIntegerField()
-    css_name = models.CharField(max_length=20)
+    #css_name = models.CharField(max_length=20)
 
     def __str__(self):
         return self.name
+
+    @property
+    def css_name(self):
+        return re.sub(r'[^\w\d]', '', self.name.lower())
 
 
 class Upgrade(models.Model):
