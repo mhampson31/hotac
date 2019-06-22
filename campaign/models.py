@@ -156,6 +156,7 @@ class TreeSlot(MPTTModel):
     threat = models.PositiveSmallIntegerField()
     cost = models.PositiveSmallIntegerField()
     type = models.CharField(max_length=3, choices=UPGRADE_CHOICES)
+    type2 = models.CharField(max_length=3, choices=UPGRADE_CHOICES, null=True, blank=True, default=None)
     parent = TreeForeignKey('self', on_delete=models.CASCADE, null=True, blank=True)
 
     def __str__(self):
