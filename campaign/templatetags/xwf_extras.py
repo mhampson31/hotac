@@ -39,6 +39,10 @@ def regex_icon(m):
 @register.filter(is_safe=True)
 def get_icon(iname, css=''):
     iname = icon_text.get(iname, iname.lower())
+    if iname == 'pilot':
+        iname = 'helmet-rebel'
+    elif iname == 'initiative':
+        iname = 'rebel'
     """Returns the <i> block that inserts an icon from the xwing font css. Doesn't work for ship icons."""
     return mark_safe('<i class="xwf xwf-{} {}"></i>'.format(iname, css))
 

@@ -12,8 +12,8 @@
         <p>Missions Flown: {{missions}}</p>
     </div>
     <div class="col">
-        <div class="col">XP Earned: {{pilot.total_xp}}</div>
-        <div class="col">XP Available: {{remaining}}</div>
+        <div class="col">XP Earned: <i class="xwf xwf-squad-point-cost"></i>{{pilot.total_xp}}</div>
+        <div class="col">XP Available: <i class="xwf xwf-squad-point-cost"></i>{{remaining}}</div>
     </div>
 </div>
 
@@ -68,7 +68,7 @@
                 <ul class="list-group">
                     <li class="list-group-item"><strong class="font-weight-light threat|threatbar">{{threat|threatbar|safe}}</strong></li>
                     {% for slot in slots %}
-                    <li class="list-group-item">{{slot.get_type_display}} [{{slot.cost}}]</li>
+                    <li class="list-group-item">{{slot.get_type_display|get_icon}} <i class="xwf xwf-squad-point-cost"></i>{{slot.cost}}</li>
                     {% endfor %}
                 </ul>
             </div>
