@@ -127,3 +127,7 @@ run-django.sh
 *.cnf
 data.json
 manage.py
+
+campaign/migrations/
+
+data
