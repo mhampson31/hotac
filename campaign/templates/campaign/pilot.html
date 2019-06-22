@@ -8,12 +8,12 @@
     <div class="col">
         <p>Player: {{pilot.user}}</p>
         <p>Callsign: {{pilot.callsign}}</p>
-        <p>Campaign: {{pilot.campaign}}</p>
+        <p>Campaign: <a href="{% url 'campaign' pilot.campaign.id %}">{{pilot.campaign}}</a></p>
         <p>Missions Flown: {{missions}}</p>
     </div>
     <div class="col">
         <div class="col">XP Earned: {{pilot.total_xp}}</div>
-        <div class="col">XP Remaining: {{remaining}}</div>
+        <div class="col">XP Available: {{remaining}}</div>
     </div>
 </div>
 
@@ -23,12 +23,15 @@
             {% regroup pilot.upgrades.all by get_type_display as upgrade_list %}
             {% for upgrade_type, upgrades in upgrade_list %}
         <div class="row">
-            <div class="col-2">
-                <strong>{{upgrade_type}}</strong>
-            </div>
-            <ul class="list-inline col mb-0">
+            <ul class="list-inline col mb-1">
             {% for upgrade in upgrades %}
-                    <li class="list-inline-item">{{upgrade}}</li>
+                <li class="list-inline-item">
+                    {{upgrade.get_type_display|get_icon}}
+                    {% if upgrade.type2 %}
+                    {{upgrade.get_type2_display|get_icon}}
+                    {% endif %}
+                    {{upgrade}}
+                </li>
             {% endfor %}
             </ul>
         </div>
