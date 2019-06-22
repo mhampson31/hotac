@@ -2,21 +2,32 @@
 
 {% block content %}
 
-<div class="container">
-    <h2>{{campaign.description}}</h2>
-    <h3>Pilots</h3>
-    <ul>
-        {% for pilot in campaign.pilot_set.all %}
-        <li><a href="{% url 'pilot' pilot.id %}">{{pilot.callsign}}</a></li>
-        {% endfor %}
-    </ul>
+<div class="row mb-3">
+    <div class="col">
+        <h2>{{campaign.description}}</h2>
+    </div>
+</div>
 
-    <h3>Sessions</h3>
-    <ul>
-        {% for session in campaign.session_set.all %}
-        <li><a href="{% url 'session' session.id %}">{{session.mission}}</a></li>
-        {% endfor %}
-    </ul>
+<div class="row mb-3">
+    <div class="col">
+        <h3>Pilots</h3>
+        <div class="list-group">
+            {% for pilot in campaign.pilot_set.all %}
+            <a href="{% url 'pilot' pilot.id %}" class="list-group-item list-group-item-action">{{pilot.callsign}}</a>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col">
+        <h3>Sessions</h3>
+        <ul>
+            {% for session in campaign.session_set.all %}
+            <li><a href="{% url 'session' session.id %}">{{session.mission}}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
 </div>
 
 {% endblock %}
