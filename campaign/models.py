@@ -163,6 +163,26 @@ class Slot(models.Model):
         ordering = ['parent__id', 'threat', 'cost']
 
 
+class SlotStructure(models.Model):
+    threat = models.PositiveSmallIntegerField()
+    cost = models.PositiveSmallIntegerField()
+    ELITE = 'E'
+    JEDI = 'J'
+    ROOKIE = 'R'
+    BRANCH_CHOICES = (
+        (ELITE, 'Elite'),
+        (JEDI, 'Jedi'),
+        (ROOKIE, 'Rookie')
+    )
+    branch = models.CharField(max_length=1, choices=BRANCH_CHOICES, default='R')
+    parent = models.ForeignKey('self', on_delete=models.CASCADE, null=True, blank=True)
+
+
+    class Meta:
+        ordering = ['parent__id', 'threat', 'cost']
+
+
+
 class PilotShip(models.Model):
     pilot = models.ForeignKey(Pilot, on_delete=models.CASCADE)
     ship = models.ForeignKey(Ship, on_delete=models.CASCADE)
