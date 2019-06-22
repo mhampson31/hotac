@@ -34,6 +34,7 @@ DATABASES = ls.DATABASES
 INSTALLED_APPS = [
     'campaign',
     'crispy_forms',
+    'mptt',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
