@@ -1,7 +1,13 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 
-from .models import User, Campaign, Pilot, Event, Mission, Session, Achievement, Ship, Slot, PilotShip, Upgrade
+from mptt.admin import DraggableMPTTAdmin, TreeRelatedFieldListFilter
+
+
+from .models import User, Campaign, Pilot, Event, Mission, \
+    Session, Achievement, Ship, Slot, PilotShip, \
+    Upgrade, TreeSlot
+
 
 
 class PilotInline(admin.StackedInline):
@@ -57,6 +63,14 @@ class UpgradeAdmin(admin.ModelAdmin):
     list_display = ('name', 'type', 'type2', 'cost', 'charges')
 
 
+class TreeSlotAdmin(DraggableMPTTAdmin):
+    model = TreeSlot
+    #list_display = ('ship', 'threat', 'cost', 'type')
+    list_filter = (
+        ('treeslot', TreeRelatedFieldListFilter),
+    )
+
+
 #admin.site.unregister(User)
 admin.site.register(User, UserAdmin)
 admin.site.register(Pilot, PilotAdmin)
@@ -67,3 +81,4 @@ admin.site.register(Event)
 admin.site.register(Ship, ShipAdmin)
 admin.site.register(Session, SessionAdmin)
 admin.site.register(PilotShip, PilotShipAdmin)
+admin.site.register(TreeSlot, TreeSlotAdmin)

@@ -1,6 +1,8 @@
 {% extends 'base.html' %}
 
 {% load xwf_extras %}
+{% load mptt_tags %}
+
 
 {% block content %}
         <div class="row mb-2">
@@ -21,20 +23,24 @@
             </div>
         </div>
 
-        <div class="row no-gutters mb-3">
-            {% regroup ship.slot_set.all by threat as threat_slots %}
 
-            {% for threat, slots in threat_slots %}
-            <div class="col-2">
-                <ul class="list-group">
-                    <li class="list-group-item"><strong class="font-weight-light threat|threatbar">{{threat|threatbar|safe}}</strong></li>
-                    {% for slot in slots %}
-                    <li class="list-group-item">{{slot.get_type_display}} [{{slot.cost}}]</li>
-                    {% endfor %}
-                </ul>
-            </div>
-            {% endfor %}
-
+        <div class="row">
+            <ul class="root col list-group">
+            {% recursetree ship.treeslot_set.all %}
+                <li class="list-group-item">
+                    {% ifchanged node.threat %}
+                    {{node.threat|threatbar|safe}}
+                    {% endifchanged %}
+                    {{node.get_type_display}} <i class="xwf xwf-squad-point-cost"></i>{{node.cost}}
+                    {% if not node.is_leaf_node %}
+                        <ul class="list-group children">
+                            {{ children }}
+                        </ul>
+                    {% endif %}
+                </li>
+            {% endrecursetree %}
+            </ul>
         </div>
+</div>
 
 {% endblock %}

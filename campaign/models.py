@@ -3,6 +3,7 @@ from django.urls import reverse
 from django.contrib.auth.models import AbstractUser
 
 import re
+from mptt.models import MPTTModel, TreeForeignKey
 
 
 UPGRADE_TYPES = {
@@ -155,11 +156,20 @@ class Slot(models.Model):
     type = models.CharField(max_length=3, choices=UPGRADE_CHOICES)
     parent = models.ForeignKey('self', on_delete=models.CASCADE, null=True, blank=True)
 
+
+class TreeSlot(MPTTModel):
+    ship = models.ForeignKey(Ship, on_delete=models.CASCADE)
+    threat = models.PositiveSmallIntegerField()
+    cost = models.PositiveSmallIntegerField()
+    type = models.CharField(max_length=3, choices=UPGRADE_CHOICES)
+    type2 = models.CharField(max_length=3, choices=UPGRADE_CHOICES, null=True, blank=True, default=None)
+    parent = TreeForeignKey('self', on_delete=models.CASCADE, null=True, blank=True)
+
     def __str__(self):
         return '{} {} - {} [{}]'.format(self.ship.name, self.threat, self.get_type_display(), self.cost)
 
     class Meta:
-        ordering = ['parent__id', 'threat', 'cost']
+        ordering = ['threat', 'id', 'cost']
 
 
 class PilotShip(models.Model):
