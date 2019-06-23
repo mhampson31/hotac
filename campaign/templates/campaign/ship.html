@@ -31,7 +31,11 @@
                     {% ifchanged node.threat %}
                     {{node.threat|threatbar|safe}}
                     {% endifchanged %}
-                    {{node.get_type_display}} <i class="xwf xwf-squad-point-cost"></i>{{node.cost}}
+                    {{node.get_type_display|get_icon}}
+                    {% if node.type2 %}
+                    /{{node.get_type2_display|get_icon}}
+                    {% endif %}
+                    <i class="xwf xwf-squad-point-cost"></i>{{node.cost}}
                     {% if not node.is_leaf_node %}
                         <ul class="list-group children">
                             {{ children }}
