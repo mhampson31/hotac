@@ -26,19 +26,19 @@
 
         <div class="row">
             <ul class="root col list-group">
-                Threat 1
             {% recursetree ship.treeslot_set.all %}
                 <li class="list-group-item">
-                    {{node.get_type_display}} [{{node.cost}}]
+                    {% ifchanged node.threat %}
+                    {{node.threat|threatbar|safe}}
+                    {% endifchanged %}
+                    {{node.get_type_display}} <i class="xwf xwf-squad-point-cost"></i>{{node.cost}}
                     {% if not node.is_leaf_node %}
+                        <ul class="list-group children">
+                            {{ children }}
+                        </ul>
+                    {% endif %}
                 </li>
-            </ul>
-                <ul class="children list-group">
-                    Threat {{node.threat}}
-                    {{children}}
-                </ul>
-                   {% endif %}
-        {% endrecursetree %}
+            {% endrecursetree %}
             </ul>
         </div>
 </div>
