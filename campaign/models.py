@@ -136,7 +136,7 @@ class Session(models.Model):
     @property
     def xp_earned(self):
         a = self.achievement_set
-        xp = a.aggregate(total=models.Sum('threat') + models.Sum('event__xp'))
+        xp = a.aggregate(total=(models.Sum('threat') or 0) + (models.Sum('event__xp') or 0))
         return xp['total']/self.pilots.count()
 
 
@@ -146,7 +146,6 @@ class Achievement(models.Model):
     event = models.ForeignKey(Event, on_delete=models.CASCADE, default=1)
     turn = models.PositiveSmallIntegerField()
     threat = models.SmallIntegerField(null=True, blank=True)
-
 
 
 class Slot(models.Model):

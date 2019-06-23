@@ -33,9 +33,9 @@ def session_summary(request, session_id):
 
 
 def old_session_summary(request, session_id):
-    context = {'session_summary':Session.objects.get(id=session_id)
-                                        .achievement_set
-                                        .values('pilot__callsign', 'event__short_desc')
+    session = Session.objects.get(id=session_id)
+    context = {'session':session,
+               'summary':session.achievement_set.values('pilot__callsign', 'event__short_desc')
                                         .order_by('pilot__id', 'event__id')
                                         .annotate(total=Count('id'), xp=Coalesce(Sum('threat'), 0) + Sum('event__xp'))
     }

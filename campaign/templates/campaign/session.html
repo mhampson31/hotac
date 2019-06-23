@@ -1,7 +1,27 @@
-{% if session_summary %}
+{% extends 'base.html' %}
 
-{% regroup session_summary by pilot__callsign as pilot_list %}
-test
+{% load xwf_extras %}
+
+{% block content %}
+
+{% if session %}
+
+<div class="row">
+    <div class="col">
+        <h3>{{session.mission}}</h3>
+        <h5>{{session.date}}</h5>
+        <h5>{{session.get_outcome_display}}!</h5>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col">
+        XP Earned: <i class="xwf xwf-squad-point-cost"></i>{{session.xp_earned}}
+    </div>
+</div>
+
+{% regroup summary by pilot__callsign as pilot_list %}
+
 <div>
     {% for pilot in pilot_list %}
     {{ pilot.grouper }}
@@ -9,9 +29,11 @@ test
         {% for event in pilot.list %}
         <li>{{ event.event__short_desc }} x{{ event.total }} ({{ event.xp }} xp)</li>
         {% endfor %}
-        Total Points: {{
+        Total Points:
     </ul>
     {% endfor %}
 </div>
 
 {% endif %}
+
+{% endblock %}
