@@ -7,7 +7,7 @@ from django.views.generic.edit import CreateView, DeleteView, UpdateView
 
 from django_tables2 import RequestConfig
 
-from .models import Session, Pilot, Event, Campaign, Ship, Slot
+from .models import Session, Pilot, Event, Campaign, Ship, Slot, Dial, AI
 from .tables import AchievementTable
 
 
@@ -15,6 +15,11 @@ def index(request):
     current_user = request.user
     context = {'pilots':Pilot.objects.filter(user=current_user.id)}
     return render(request, 'campaign/index.html', context)
+
+
+def ai_select(request, ship_id):
+    context = {'ai':AI.objects.get(dial__ship__id=ship_id)}
+    return render(request, 'campaign/ai.html', context)
 
 
 def session_summary(request, session_id):
@@ -78,3 +83,4 @@ class CampaignView(DetailView):
 class CampaignUpdate(UpdateView):
     model = Campaign
     fields = ['description', 'victory']
+

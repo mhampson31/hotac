@@ -4,9 +4,10 @@ from django.contrib.auth.models import AbstractUser
 
 import re
 from math import floor
+from random import choice
 
 from mptt.models import MPTTModel, TreeForeignKey
-
+from smart_selects.db_fields import ChainedForeignKey
 
 UPGRADE_TYPES = {
     'Astromech':'AST',
@@ -33,8 +34,20 @@ UPGRADE_TYPES = {
     'Charge':'CHR',
     'Wildcard':'WLD'
 }
-
 UPGRADE_CHOICES = [(v, k) for k, v in UPGRADE_TYPES.items()]
+
+
+MOVE_TYPES = {
+    'Straight':'S',
+    'Bank':'B',
+    'Turn':'T',
+    'K-Turn':'KT',
+    'Tallon Roll':'TR',
+    'Sloop':'SL',
+    'Reverse Bank':'RB',
+    'Stationary':'SS'
+}
+MOVE_CHOICES = [(v, k) for k, v in MOVE_TYPES.items()]
 
 
 class User(AbstractUser):
@@ -53,10 +66,55 @@ class Campaign(models.Model):
         return reverse('campaign', kwargs={'pk': self.pk})
 
 
+class Dial(models.Model):
+    name = models.CharField(max_length=20)
+
+    def __str__(self):
+        return self.name
+
+
+class DialManeuver(models.Model):
+    dial = models.ForeignKey(Dial, on_delete=models.CASCADE)
+    speed = models.PositiveSmallIntegerField()
+    move = models.CharField(max_length=3, choices=MOVE_CHOICES)
+
+    BEARING_CHOICES = (
+        ('L', 'Left'),
+        ('R', 'Right')
+    )
+    bearing = models.CharField(max_length=1, choices=BEARING_CHOICES, null=True, blank=True )
+
+    COLOR_CHOICES = (
+        ('B', 'Blue'),
+        ('W', 'White'),
+        ('R', 'Red')
+    )
+    color = models.CharField(max_length=1, choices=COLOR_CHOICES, default='W')
+
+    def find_mirror(self):
+        if not self.bearing:
+            return self
+        else:
+            new_bearing = {'L':'R', 'R':'L'}[self.bearing]
+            return self.dial.dialmaneuver_set.get(speed=self.speed, move=self.move, bearing=new_bearing)
+
+    def __str__(self):
+        return '{} {}{}{}'.format(self.speed,
+                                   self.get_move_display(),
+                                   ' ' + self.get_bearing_display() if self.bearing else '',
+                                   '' if self.color == 'W' else ' ' + self.get_color_display())
+
+    class Meta:
+        constraints = [
+            models.UniqueConstraint(fields=('dial', 'speed', 'move', 'bearing'), name='dial_maneuver'),
+        ]
+
 class Ship(models.Model):
     name = models.CharField(max_length=20)
-    start_xp = models.PositiveSmallIntegerField()
+    start_xp = models.PositiveSmallIntegerField(default=0)
+    playable = models.BooleanField(default=True)
     #css_name = models.CharField(max_length=20)
+    dial = models.ForeignKey(Dial, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.name
@@ -200,3 +258,73 @@ class PilotShip(models.Model):
     @property
     def threat(self):
         return self.unlocked.aggregate(t=models.Max('threat'))['t']
+
+
+class AI(models.Model):
+    dial = models.ForeignKey(Dial, on_delete=models.CASCADE)
+    flee = models.PositiveSmallIntegerField(default=0)
+
+    def __str__(self):
+        return '{} AI'.format(self.dial.name)
+
+    def mirror(self):
+        """
+        A helper function that makes left-sided copies of all the right-side maneuver tables
+        :return: Nothing, saves new objects directly
+        """
+
+        for mv in self.aimaneuver_set.filter(direction__in=('FR', 'RF', 'RA', 'AR')):
+            new_dir = mv.direction.replace('R', 'L')
+            if not self.aimaneuver_set.filter(direction=new_dir, range=mv.range).exists():
+                mv.pk = None
+                mv.direction = new_dir
+                mv.roll_1 = mv.roll_1.find_mirror()
+                mv.roll_2 = mv.roll_2.find_mirror()
+                mv.roll_3 = mv.roll_3.find_mirror()
+                mv.roll_4 = mv.roll_4.find_mirror()
+                mv.roll_5 = mv.roll_5.find_mirror()
+                mv.roll_6 = mv.roll_6.find_mirror()
+                mv.save()
+
+
+class AIManeuver(models.Model):
+    RANGE_CHOICES = (
+        ('1', 'R1/R2 Closing'),
+        ('2', 'R3/R2 Fleeing'),
+        ('3', 'R4+'),
+        ('4', 'Stressed')
+    )
+    AI_ARC_TYPES = {
+        'Bullseye': 'BE',
+        'Forward (Right)': 'FR',
+        'Right (Forward)': 'RF',
+        'Right (Aft)': 'RA',
+        'Aft (Right)': 'AR',
+        'Forward (Left)': 'FL',
+        'Left (Forward)': 'LF',
+        'Left (Aft)': 'LA',
+        'Aft (Left)': 'AL'
+
+    }
+    AI_ARC_CHOICES = [(v, k) for k, v in AI_ARC_TYPES.items()]
+
+    ai = models.ForeignKey(AI, on_delete=models.CASCADE)
+    direction = models.CharField(max_length=2, choices=AI_ARC_CHOICES)
+    range = models.CharField(max_length=1, choices=RANGE_CHOICES)
+
+    roll_1 = ChainedForeignKey(DialManeuver, chained_field='ai', chained_model_field='dial', related_name='roll_1')
+    roll_2 = ChainedForeignKey(DialManeuver, chained_field='ai', chained_model_field='dial', related_name='roll_2')
+    roll_3 = ChainedForeignKey(DialManeuver, chained_field='ai', chained_model_field='dial', related_name='roll_3')
+    roll_4 = ChainedForeignKey(DialManeuver, chained_field='ai', chained_model_field='dial', related_name='roll_4')
+    roll_5 = ChainedForeignKey(DialManeuver, chained_field='ai', chained_model_field='dial', related_name='roll_5')
+    roll_6 = ChainedForeignKey(DialManeuver, chained_field='ai', chained_model_field='dial', related_name='roll_6')
+
+    def get_maneuvers(self): return True
+
+    def roll(self):
+        return choice([self.roll_1, self.roll_2, self.roll_3, self.roll_4, self.roll_5, self.roll_6])
+
+    class Meta:
+        constraints = [
+            models.UniqueConstraint(fields=('ai', 'direction', 'range'), name='ai_maneuver'),
+        ]
