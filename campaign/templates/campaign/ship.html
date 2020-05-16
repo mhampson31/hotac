@@ -47,4 +47,14 @@
         </div>
 </div>
 
+<div class="row">
+    {% full_tree_for_model campaign.treeslot as slots %}
+    <div class="col">
+    {% for slot in slots %}
+        {{slot}}
+    {% endfor %}
+    </div>
+
+</div>
+
 {% endblock %}

@@ -3,6 +3,8 @@ from django.urls import reverse
 from django.contrib.auth.models import AbstractUser
 
 import re
+from math import floor
+
 from mptt.models import MPTTModel, TreeForeignKey
 
 
@@ -93,6 +95,7 @@ class Event(models.Model):
     short_desc = models.CharField(max_length=25)
     long_desc = models.CharField(max_length=60)
     xp = models.SmallIntegerField()
+    team = models.BooleanField(default=True)
 
     def __str__(self):
         return self.short_desc
@@ -135,10 +138,17 @@ class Session(models.Model):
         return '{} {}'.format(self.mission.name, self.date)
 
     @property
+    def xp_total(self):
+        a = self.achievement_set.filter(event__team=True)
+        return a.aggregate(total=(models.Sum('threat') or 0) + (models.Sum('event__xp') or 0))['total'] or 0
+
+    @property
     def xp_earned(self):
-        a = self.achievement_set
-        xp = a.aggregate(total=(models.Sum('threat') or 0) + (models.Sum('event__xp') or 0))
-        return xp['total']/self.pilots.count()
+        return floor(self.xp_total/self.pilots.count())
+
+    @property
+    def xp_remainder(self):
+        return self.xp_total - (self.pilots.count() * self.xp_earned)
 
 
 class Achievement(models.Model):
@@ -177,6 +187,9 @@ class PilotShip(models.Model):
     ship = models.ForeignKey(Ship, on_delete=models.CASCADE)
     unlocked = models.ManyToManyField(Slot)
 
+    def locked(self):
+        return Slot.objects.filter(ship=self.ship.id).difference(self.unlocked)
+
     def __str__(self):
         return self.pilot.callsign + "\'s " + self.ship.name
 
@@ -187,23 +200,3 @@ class PilotShip(models.Model):
     @property
     def threat(self):
         return self.unlocked.aggregate(t=models.Max('threat'))['t']
-
-
-
-
-
-
-
-TODO = """ 
-players
-    xp
-    threat
-    upgrades
-missions
-    enemies
-    goals
-ships
-    name
-    cost
-    size
-"""

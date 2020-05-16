@@ -4,34 +4,59 @@
 
 {% block content %}
 
-{% if session %}
+{% if ses %}
 
 <div class="row">
     <div class="col">
-        <h3>{{session.mission}}</h3>
-        <h5>{{session.date}}</h5>
-        <h5>{{session.get_outcome_display}}!</h5>
+        <h3>{{ses.mission}}</h3>
+        <h5>{{ses.date}}</h5>
+        <h5>{{ses.get_outcome_display}}!</h5>
     </div>
 </div>
 
 <div class="row">
-    <div class="col">
-        XP Earned: <i class="xwf xwf-squad-point-cost"></i>{{session.xp_earned}}
-    </div>
+    <ul class="list-group col">
+        <li class="list-group-item">XP</li>
+        <li class="list-group-item">Total: <i class="xwf xwf-squad-point-cost"></i>{{ses.xp_total}}</li>
+        <li class="list-group-item">Earned: <i class="xwf xwf-squad-point-cost"></i>{{ses.xp_earned}}</li>
+        <li class="list-group-item">Remainder: <i class="xwf xwf-squad-point-cost"></i>{{ses.xp_remainder}}</li>
+    </ul>
 </div>
 
 {% regroup summary by pilot__callsign as pilot_list %}
 
-<div>
-    {% for pilot in pilot_list %}
-    {{ pilot.grouper }}
-    <ul>
-        {% for event in pilot.list %}
-        <li>{{ event.event__short_desc }} x{{ event.total }} ({{ event.xp }} xp)</li>
-        {% endfor %}
-        Total Points:
-    </ul>
-    {% endfor %}
+<div class="row">
+
+    <div class="col">
+        <ul class="nav nav-tabs" role="tablist">
+            {% for pilot in pilot_list %}
+            <li class="nav-item">
+                <a class=nav-link" href="#tab-score-{{pilot.grouper}}"
+                   data-toggle="tab"
+                   role="tab"
+                   id="score-{{pilot.grouper}}"
+                   aria-controls="tab-score-{{pilot.grouper}}"
+                   aria-selected="false">{{pilot.grouper}}</a><br />
+            </li>
+            {% endfor %}
+        </ul>
+
+        <ul class="tab-content">
+            {% for pilot in pilot_list %}
+            <div class="tab-pane fade"
+                 role="tabpanel"
+                 id="tab-score-{{pilot.grouper}}"
+                 aria-labelledby="score-{{pilot.grouper}}">
+                Earned <i class="xwf xwf-squad-point-cost"></i>{{ses.xp_earned}}
+                <ul>
+                    {% for event in pilot.list %}
+                    <li>{{ event.event__short_desc }} x{{ event.total }} <i class="xwf xwf-squad-point-cost"></i>{{event.xp}}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+            {% endfor %}
+        </ul>
+    </div>
 </div>
 
 {% endif %}

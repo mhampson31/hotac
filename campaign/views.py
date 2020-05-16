@@ -7,7 +7,7 @@ from django.views.generic.edit import CreateView, DeleteView, UpdateView
 
 from django_tables2 import RequestConfig
 
-from .models import Session, Pilot, Event, Campaign, Ship
+from .models import Session, Pilot, Event, Campaign, Ship, Slot
 from .tables import AchievementTable
 
 
@@ -34,7 +34,9 @@ def session_summary(request, session_id):
 
 def old_session_summary(request, session_id):
     session = Session.objects.get(id=session_id)
-    context = {'session':session,
+    bonus = session.achievement_set.filter(event__team=False).order_by('pilot__callsign').annotate(total=Sum('event__xp'))
+    context = {'ses':session,
+               'bonus':bonus,
                'summary':session.achievement_set.values('pilot__callsign', 'event__short_desc')
                                         .order_by('pilot__id', 'event__id')
                                         .annotate(total=Count('id'), xp=Coalesce(Sum('threat'), 0) + Sum('event__xp'))
@@ -45,6 +47,8 @@ def old_session_summary(request, session_id):
 def pilot_sheet(request, pilot_id):
     pilot = Pilot.objects.get(id=pilot_id)
     ach = []
+
+
     for ev in Event.objects.all():
         a = pilot.achievement_set.filter(event=ev.id)
         if a:

@@ -65,7 +65,7 @@ class UpgradeAdmin(admin.ModelAdmin):
 
 class TreeSlotAdmin(DraggableMPTTAdmin):
     model = TreeSlot
-    #list_display = ('ship', 'threat', 'cost', 'type')
+    list_display = ('tree_actions', 'indented_title', 'ship', 'threat', 'cost', 'type')
     list_filter = (
         ('treeslot', TreeRelatedFieldListFilter),
     )

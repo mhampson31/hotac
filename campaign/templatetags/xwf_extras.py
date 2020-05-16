@@ -56,3 +56,7 @@ def iconize(text):
 def threatbar(threat):
     colors = ('green', 'yellow', 'orange', 'red', 'magenta', 'purple')
     return '<span class="threat-{}">{}{}</span>'.format(threat, '▰' * threat, '▱' * (6-threat))
+
+@register.filter
+def get_item(dictionary, key):
+    return dictionary.get(key)
