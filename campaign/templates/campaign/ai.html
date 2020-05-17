@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% load xwf_extras %}
+{% load static %}
+
+{% block content %}
+{{ai.dial}} AI
+
+<div class="">
+    {% regroup ai.aimaneuver_set.all by get_direction_display as maneuvers %}
+
+    <ul class="nav nav-pills" role="tablist">
+    {% for dir in maneuvers %}
+        <li class="nav-item" role="presentation">
+            <a class="nav-link" id="mv-{{forloop.counter}}-tab" data-toggle="tab" href="#mv-{{forloop.counter}}" role="tab" aria-controls="home" aria-selected="true">{{dir.grouper}}</a>
+        </li>
+    {% endfor %}
+    </ul>
+    <div class="tab-content">
+        {% for dir in maneuvers %}
+        <div class="tab-pane fade {% if forloop.first %}show{% endif %}" id="mv-{{forloop.counter}}" role="tabpanel" aria-labelledby="mv-{{forloop.counter}}-tab">
+        {% for r in dir.list %}
+            <button type="button" class="btn btn-secondary">{{r.get_range_display}}</button>
+            <ul class="list-group list-group-horizontal ">
+                <li class="list-group-item">{{r.roll_1.speed}}<span class="{{r.roll_1.icon_color}}">{{r.roll_1.css_name|get_icon}}</span></li>
+                <li class="list-group-item">{{r.roll_2.speed}}<span class="{{r.roll_2.icon_color}}">{{r.roll_2.css_name|get_icon}}</span></li>
+                <li class="list-group-item">{{r.roll_3.speed}}<span class="{{r.roll_3.icon_color}}">{{r.roll_3.css_name|get_icon}}</span></li>
+                <li class="list-group-item">{{r.roll_4.speed}}<span class="{{r.roll_4.icon_color}}">{{r.roll_4.css_name|get_icon}}</span></li>
+                <li class="list-group-item">{{r.roll_5.speed}}<span class="{{r.roll_5.icon_color}}">{{r.roll_5.css_name|get_icon}}</span></li>
+                <li class="list-group-item">{{r.roll_6.speed}}<span class="{{r.roll_6.icon_color}}">{{r.roll_6.css_name|get_icon}}</span></li>
+            </ul>
+            {% endfor %}
+        </div>
+        {% endfor %}
+    </div>
+    <!--
+        <a href="#" class="nav-link">{{dir.grouper}}</a>
+    </nav>-->
+</div>
+
+{% endblock content %}
+
+{% block extrajs %}
+    <script src="{% static 'js/ai.js' %}"></script>
+{% endblock extrajs %}

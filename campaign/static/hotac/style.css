@@ -23,6 +23,7 @@ section > .row {
     color: var(--green);
 }
 
+.easy,
 .shields > i.before,
 .shields:before {
     color: var(--blue);

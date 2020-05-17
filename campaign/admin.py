@@ -6,7 +6,7 @@ from mptt.admin import DraggableMPTTAdmin, TreeRelatedFieldListFilter
 
 from .models import User, Campaign, Pilot, Event, Mission, \
     Session, Achievement, Ship, Slot, PilotShip, \
-    Upgrade, TreeSlot
+    Upgrade, TreeSlot, Dial, DialManeuver, AI, AIManeuver
 
 
 
@@ -71,10 +71,39 @@ class TreeSlotAdmin(DraggableMPTTAdmin):
     )
 
 
+class DialManeuverInline(admin.TabularInline):
+    model = DialManeuver
+    extra = 0
+
+class DialAdmin(admin.ModelAdmin):
+    inlines = (DialManeuverInline,)
+
+
+class AIManeuverInline(admin.TabularInline):
+    model = AIManeuver
+    extra = 0
+
+    fieldsets = (
+        (None, {'fields': ('direction', 'range')}),
+        ('Rolls', {'fields': ('roll_1', 'roll_2', 'roll_3', 'roll_4', 'roll_5', 'roll_6')})
+    )
+
+    def get_form(self, request, obj=None, **kwargs):
+        form = super(AIManeuverInline, self).get_form(request, obj, **kwargs)
+
+        form.base_fields['roll_1'].queryset = DialManeuver.objects.filter(dial_id=obj.ai.dial.id)
+
+        return form
+
+class AIAdmin(admin.ModelAdmin):
+    inlines = (AIManeuverInline,)
+
+
 #admin.site.unregister(User)
 admin.site.register(User, UserAdmin)
 admin.site.register(Pilot, PilotAdmin)
 admin.site.register(Upgrade, UpgradeAdmin)
+admin.site.register(Dial, DialAdmin)
 admin.site.register(Campaign)
 admin.site.register(Mission)
 admin.site.register(Event)
@@ -82,3 +111,4 @@ admin.site.register(Ship, ShipAdmin)
 admin.site.register(Session, SessionAdmin)
 admin.site.register(PilotShip, PilotShipAdmin)
 admin.site.register(TreeSlot, TreeSlotAdmin)
+admin.site.register(AI, AIAdmin)

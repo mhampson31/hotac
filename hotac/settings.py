@@ -41,7 +41,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'django_tables2'
+    'django_tables2',
+    'smart_selects'
 ]
 
 MIDDLEWARE = [
@@ -120,3 +121,6 @@ USE_TZ = True
 
 STATIC_ROOT = '/home/public/static'
 STATIC_URL = '/static/'
+
+# for smart selects
+USE_DJANGO_JQUERY = True
