@@ -37,18 +37,6 @@ UPGRADE_TYPES = {
 UPGRADE_CHOICES = [(v, k) for k, v in UPGRADE_TYPES.items()]
 
 
-MOVE_TYPES = {
-    'Straight':'S',
-    'Bank':'B',
-    'Turn':'T',
-    'K-Turn':'KT',
-    'Tallon Roll':'TR',
-    'Sloop':'SL',
-    'Reverse Bank':'RB',
-    'Stationary':'SS'
-}
-MOVE_CHOICES = [(v, k) for k, v in MOVE_TYPES.items()]
-
 
 class User(AbstractUser):
     pass
@@ -76,6 +64,18 @@ class Dial(models.Model):
 class DialManeuver(models.Model):
     dial = models.ForeignKey(Dial, on_delete=models.CASCADE)
     speed = models.PositiveSmallIntegerField()
+
+    MOVE_TYPES = {
+        'Straight': 'S',
+        'Bank': 'B',
+        'Turn': 'T',
+        'K-Turn': 'KT',
+        'Tallon Roll': 'TR',
+        'Sloop': 'SL',
+        'Reverse Bank': 'RB',
+        'Stationary': 'SS'
+    }
+    MOVE_CHOICES = [(v, k) for k, v in MOVE_TYPES.items()]
     move = models.CharField(max_length=3, choices=MOVE_CHOICES)
 
     BEARING_CHOICES = (
@@ -97,6 +97,17 @@ class DialManeuver(models.Model):
         else:
             new_bearing = {'L':'R', 'R':'L'}[self.bearing]
             return self.dial.dialmaneuver_set.get(speed=self.speed, move=self.move, bearing=new_bearing)
+
+    @property
+    def css_name(self):
+        if self.bearing:
+            return '{} {}'.format(self.get_move_display(), self.get_bearing_display())
+        else:
+            return self.get_move_display()
+
+    @property
+    def icon_color(self):
+        return {'B':'easy', 'R':'hard', 'W':''}[self.color]
 
     def __str__(self):
         return '{} {}{}{}'.format(self.speed,

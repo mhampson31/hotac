@@ -33,7 +33,8 @@ icon_text = {
     'Reverse Bank Right': 'reversebankright',
     'Sloop Left': 'sloopleft',
     'Sloop Right': 'sloopleft',
-    'Straight':'straight'
+    'Straight':'straight',
+    'K-Turn':'kturn'
 }
 
 

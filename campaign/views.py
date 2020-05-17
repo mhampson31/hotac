@@ -18,7 +18,10 @@ def index(request):
 
 
 def ai_select(request, ship_id):
-    context = {'ai':AI.objects.get(dial__ship__id=ship_id)}
+    ai = AI.objects.get(dial__ship__id=ship_id)
+    mvs = ai.aimaneuver_set.all()
+
+    context = {'ai':ai, 'fl':mvs.filter(direction='FL')}
     return render(request, 'campaign/ai.html', context)
 
 
