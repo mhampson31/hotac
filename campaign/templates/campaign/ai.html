@@ -4,30 +4,63 @@
 {% load static %}
 
 {% block content %}
-{{ai.dial}} AI
 
-<div class="">
-    {% regroup ai.aimaneuver_set.all by get_direction_display as maneuvers %}
+<div class="col-6">
+    <h5 class="text-center"><i class="xw-ship xw-ship-{{ai.dial.css_name}}"></i> {{ai.dial}} AI</h5>
 
-    <ul class="nav nav-pills" role="tablist">
-    {% for dir in maneuvers %}
-        <li class="nav-item" role="presentation">
-            <a class="nav-link" id="mv-{{forloop.counter}}-tab" data-toggle="tab" href="#mv-{{forloop.counter}}" role="tab" aria-controls="home" aria-selected="true">{{dir.grouper}}</a>
+    <ul class="nav nav-pills mb-4" role="tablist">
+        <li class="nav-item col" role="presentation">
+            <a class="nav-link" id="mv-fl-tab" data-toggle="tab" href="#mv-fl" role="tab" aria-controls="home" aria-selected="true">Front (Left)</a>
         </li>
-    {% endfor %}
+        <li class="nav-item col" role="presentation">
+            <a class="nav-link" id="mv-be-tab" data-toggle="tab" href="#mv-be" role="tab" aria-controls="home" aria-selected="true">Bullseye</a>
+        </li>
+        <li class="nav-item col" role="presentation">
+            <a class="nav-link" id="mv-fr-tab" data-toggle="tab" href="#mv-fr" role="tab" aria-controls="home" aria-selected="true">Front (Right)</a>
+        </li>
+         <li class="w-100"></li>
+
+        <li class="nav-item col" role="presentation">
+            <a class="nav-link" id="mv-lf-tab" data-toggle="tab" href="#mv-lf" role="tab" aria-controls="home" aria-selected="true">Left (Front)</a>
+        </li>
+        <li class="nav-item col" role="presentation"></li>
+        <li class="nav-item col" role="presentation">
+            <a class="nav-link" id="mv-rf-tab" data-toggle="tab" href="#mv-rf" role="tab" aria-controls="home" aria-selected="true">Right (Front)</a>
+        </li>
+         <li class="w-100"></li>
+
+        <li class="nav-item col" role="presentation">
+            <a class="nav-link" id="mv-la-tab" data-toggle="tab" href="#mv-la" role="tab" aria-controls="home" aria-selected="true">Left (Rear)</a>
+        </li>
+        <li class="nav-item col" role="presentation"></li>
+        <li class="nav-item col" role="presentation">
+            <a class="nav-link" id="mv-ra-tab" data-toggle="tab" href="#mv-rf" role="tab" aria-controls="home" aria-selected="true">Right (Rear)</a>
+        </li>
+         <li class="w-100"></li>
+
+        <li class="nav-item col" role="presentation">
+            <a class="nav-link" id="mv-al-tab" data-toggle="tab" href="#mv-al" role="tab" aria-controls="home" aria-selected="true">Rear (Left)</a>
+        </li>
+        <li class="nav-item col" role="presentation"></li>
+        <li class="nav-item col" role="presentation">
+            <a class="nav-link" id="mv-ar-tab" data-toggle="tab" href="#mv-ar" role="tab" aria-controls="home" aria-selected="true">Rear (Right)</a>
+        </li>
     </ul>
+
     <div class="tab-content">
+    {% regroup ai.aimaneuver_set.all by direction as maneuvers %}
+
         {% for dir in maneuvers %}
-        <div class="tab-pane fade {% if forloop.first %}show{% endif %}" id="mv-{{forloop.counter}}" role="tabpanel" aria-labelledby="mv-{{forloop.counter}}-tab">
+        <div class="tab-pane fade {% if forloop.first %}show{% endif %}" id="mv-{{dir.grouper|lower}}" role="tabpanel" aria-labelledby="mv-{{dir.grouper|lower}}-tab">
         {% for r in dir.list %}
-            <button type="button" class="btn btn-secondary">{{r.get_range_display}}</button>
-            <ul class="list-group list-group-horizontal ">
-                <li class="list-group-item">{{r.roll_1.speed}}<span class="{{r.roll_1.icon_color}}">{{r.roll_1.css_name|get_icon}}</span></li>
-                <li class="list-group-item">{{r.roll_2.speed}}<span class="{{r.roll_2.icon_color}}">{{r.roll_2.css_name|get_icon}}</span></li>
-                <li class="list-group-item">{{r.roll_3.speed}}<span class="{{r.roll_3.icon_color}}">{{r.roll_3.css_name|get_icon}}</span></li>
-                <li class="list-group-item">{{r.roll_4.speed}}<span class="{{r.roll_4.icon_color}}">{{r.roll_4.css_name|get_icon}}</span></li>
-                <li class="list-group-item">{{r.roll_5.speed}}<span class="{{r.roll_5.icon_color}}">{{r.roll_5.css_name|get_icon}}</span></li>
-                <li class="list-group-item">{{r.roll_6.speed}}<span class="{{r.roll_6.icon_color}}">{{r.roll_6.css_name|get_icon}}</span></li>
+            <button type="button" class="btn btn-block btn-secondary">{{r.get_range_display}}</button>
+            <ul class="list-group mb-4 list-group-horizontal">
+                <li class="list-group-item flex-fill text-center">{{r.roll_1.speed}}<span class="{{r.roll_1.icon_color}}">{{r.roll_1.css_name|get_icon}}</span></li>
+                <li class="list-group-item flex-fill text-center">{{r.roll_2.speed}}<span class="{{r.roll_2.icon_color}}">{{r.roll_2.css_name|get_icon}}</span></li>
+                <li class="list-group-item flex-fill text-center">{{r.roll_3.speed}}<span class="{{r.roll_3.icon_color}}">{{r.roll_3.css_name|get_icon}}</span></li>
+                <li class="list-group-item flex-fill text-center">{{r.roll_4.speed}}<span class="{{r.roll_4.icon_color}}">{{r.roll_4.css_name|get_icon}}</span></li>
+                <li class="list-group-item flex-fill text-center">{{r.roll_5.speed}}<span class="{{r.roll_5.icon_color}}">{{r.roll_5.css_name|get_icon}}</span></li>
+                <li class="list-group-item flex-fill text-center">{{r.roll_6.speed}}<span class="{{r.roll_6.icon_color}}">{{r.roll_6.css_name|get_icon}}</span></li>
             </ul>
             {% endfor %}
         </div>

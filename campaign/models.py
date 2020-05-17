@@ -60,6 +60,10 @@ class Dial(models.Model):
     def __str__(self):
         return self.name
 
+    @property
+    def css_name(self):
+        return re.sub(r'[^\w\d]', '', self.name.lower())
+
 
 class DialManeuver(models.Model):
     dial = models.ForeignKey(Dial, on_delete=models.CASCADE)
@@ -120,6 +124,7 @@ class DialManeuver(models.Model):
             models.UniqueConstraint(fields=('dial', 'speed', 'move', 'bearing'), name='dial_maneuver'),
         ]
 
+
 class Ship(models.Model):
     name = models.CharField(max_length=20)
     start_xp = models.PositiveSmallIntegerField(default=0)
@@ -132,8 +137,7 @@ class Ship(models.Model):
 
     @property
     def css_name(self):
-        return re.sub(r'[^\w\d]', '', self.name.lower())
-
+        return self.dial.css_name
 
 class Upgrade(models.Model):
     name = models.CharField(max_length=30)
@@ -305,19 +309,18 @@ class AIManeuver(models.Model):
         ('3', 'R4+'),
         ('4', 'Stressed')
     )
-    AI_ARC_TYPES = {
-        'Bullseye': 'BE',
-        'Forward (Right)': 'FR',
-        'Right (Forward)': 'RF',
-        'Right (Aft)': 'RA',
-        'Aft (Right)': 'AR',
-        'Forward (Left)': 'FL',
-        'Left (Forward)': 'LF',
-        'Left (Aft)': 'LA',
-        'Aft (Left)': 'AL'
 
-    }
-    AI_ARC_CHOICES = [(v, k) for k, v in AI_ARC_TYPES.items()]
+    AI_ARC_CHOICES = (
+        ('BE', 'Bullseye'),
+        ('FR', 'Front (Right)'),
+        ('RF', 'Right (Front)'),
+        ('RA', 'Right (Rear)'),
+        ('AR', 'Rear (Right)'),
+        ('FL', 'Front (Left)'),
+        ('LF', 'Left (Front)'),
+        ('LA', 'Left (Rear)'),
+        ('AL', 'Rear (Left)')
+    )
 
     ai = models.ForeignKey(AI, on_delete=models.CASCADE)
     direction = models.CharField(max_length=2, choices=AI_ARC_CHOICES)
@@ -334,6 +337,10 @@ class AIManeuver(models.Model):
 
     def roll(self):
         return choice([self.roll_1, self.roll_2, self.roll_3, self.roll_4, self.roll_5, self.roll_6])
+
+    @property
+    def dir_order(self):
+        return ['FL', 'BE', 'FR', 'LF', 'RF', 'LA', 'RA', 'AL', 'AR'].index(self.direction)
 
     class Meta:
         constraints = [
