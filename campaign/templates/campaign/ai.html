@@ -5,8 +5,8 @@
 
 {% block content %}
 
-<div class="col-6">
-    <h5 class="text-center"><i class="xw-ship xw-ship-{{ai.dial.css_name}}"></i> {{ai.dial}} AI</h5>
+<div class="container text-center">
+    <h5 class=""><i class="xw-ship xw-ship-{{ai.dial.css_name}}"></i> {{ai.dial}} AI</h5>
 
     <ul class="nav nav-pills mb-4" role="tablist">
         <li class="nav-item col" role="presentation">
@@ -55,12 +55,9 @@
         {% for r in dir.list %}
             <button type="button" class="btn btn-block btn-secondary">{{r.get_range_display}}</button>
             <ul class="list-group mb-4 list-group-horizontal">
-                <li class="list-group-item flex-fill text-center">{{r.roll_1.speed}}<span class="{{r.roll_1.icon_color}}">{{r.roll_1.css_name|get_icon}}</span></li>
-                <li class="list-group-item flex-fill text-center">{{r.roll_2.speed}}<span class="{{r.roll_2.icon_color}}">{{r.roll_2.css_name|get_icon}}</span></li>
-                <li class="list-group-item flex-fill text-center">{{r.roll_3.speed}}<span class="{{r.roll_3.icon_color}}">{{r.roll_3.css_name|get_icon}}</span></li>
-                <li class="list-group-item flex-fill text-center">{{r.roll_4.speed}}<span class="{{r.roll_4.icon_color}}">{{r.roll_4.css_name|get_icon}}</span></li>
-                <li class="list-group-item flex-fill text-center">{{r.roll_5.speed}}<span class="{{r.roll_5.icon_color}}">{{r.roll_5.css_name|get_icon}}</span></li>
-                <li class="list-group-item flex-fill text-center">{{r.roll_6.speed}}<span class="{{r.roll_6.icon_color}}">{{r.roll_6.css_name|get_icon}}</span></li>
+                {% for roll in r.rolls %}
+                <li class="list-group-item flex-fill">{{roll.speed}}<span class="{{roll.icon_color}}">{{roll.css_name|get_icon}}</span></li>
+                {% endfor %}
             </ul>
             {% endfor %}
         </div>
