@@ -22,7 +22,7 @@ class DialManeuver(models.Model):
     dial = models.ForeignKey(Dial, on_delete=models.CASCADE)
     speed = models.PositiveSmallIntegerField()
 
-    MOVE_TYPES = {
+    BEARING_TYPES = {
         'Straight': 'S',
         'Bank': 'B',
         'Turn': 'T',
@@ -32,14 +32,14 @@ class DialManeuver(models.Model):
         'Reverse Bank': 'RB',
         'Stationary': 'SS'
     }
-    MOVE_CHOICES = [(v, k) for k, v in MOVE_TYPES.items()]
-    move = models.CharField(max_length=3, choices=MOVE_CHOICES)
+    BEARING_CHOICES = [(v, k) for k, v in BEARING_TYPES.items()]
+    bearing = models.CharField(max_length=3, choices=BEARING_CHOICES)
 
-    BEARING_CHOICES = (
+    DIRECTION_CHOICES = (
         ('L', 'Left'),
         ('R', 'Right')
     )
-    direction = models.CharField(max_length=1, choices=BEARING_CHOICES, null=True, blank=True )
+    direction = models.CharField(max_length=1, choices=DIRECTION_CHOICES, null=True, blank=True )
 
     COLOR_CHOICES = (
         ('B', 'Blue'),
@@ -53,14 +53,14 @@ class DialManeuver(models.Model):
             return self
         else:
             new_direction = {'L':'R', 'R':'L'}[self.direction]
-            return self.dial.dialmaneuver_set.get(speed=self.speed, move=self.move, direction=new_direction)
+            return self.dial.dialmaneuver_set.get(speed=self.speed, move=self.bearing, direction=new_direction)
 
     @property
     def css_name(self):
         if self.direction:
-            return '{} {}'.format(self.get_move_display(), self.get_direction_display())
+            return '{} {}'.format(self.get_bearing_display(), self.get_direction_display())
         else:
-            return self.get_move_display()
+            return self.get_bearing_display()
 
     @property
     def icon_color(self):
@@ -68,7 +68,7 @@ class DialManeuver(models.Model):
 
     def __str__(self):
         return '{} {}{}{}'.format(self.speed,
-                                   self.get_move_display(),
+                                   self.get_bearing_display(),
                                    ' ' + self.get_direction_display() if self.direction else '',
                                    '' if self.color == 'W' else ' ' + self.get_color_display())
 
@@ -78,6 +78,7 @@ class Ship(models.Model):
     start_xp = models.PositiveSmallIntegerField(default=0)
     playable = models.BooleanField(default=True)
     dial = models.ForeignKey(Dial, on_delete=models.CASCADE)
+    #faction = models.CharField(max_length=1, choices=())
 
     def __str__(self):
         return self.name
