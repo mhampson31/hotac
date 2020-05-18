@@ -8,7 +8,7 @@ from .campaigns import UPGRADE_CHOICES
 
 
 class Dial(models.Model):
-    name = models.CharField(max_length=20)
+    name = models.CharField(max_length=40)
 
     def __str__(self):
         return self.name
@@ -39,7 +39,7 @@ class DialManeuver(models.Model):
         ('L', 'Left'),
         ('R', 'Right')
     )
-    bearing = models.CharField(max_length=1, choices=BEARING_CHOICES, null=True, blank=True )
+    direction = models.CharField(max_length=1, choices=BEARING_CHOICES, null=True, blank=True )
 
     COLOR_CHOICES = (
         ('B', 'Blue'),
@@ -49,16 +49,16 @@ class DialManeuver(models.Model):
     color = models.CharField(max_length=1, choices=COLOR_CHOICES, default='W')
 
     def find_mirror(self):
-        if not self.bearing:
+        if not self.direction:
             return self
         else:
-            new_bearing = {'L':'R', 'R':'L'}[self.bearing]
-            return self.dial.dialmaneuver_set.get(speed=self.speed, move=self.move, bearing=new_bearing)
+            new_direction = {'L':'R', 'R':'L'}[self.direction]
+            return self.dial.dialmaneuver_set.get(speed=self.speed, move=self.move, direction=new_direction)
 
     @property
     def css_name(self):
-        if self.bearing:
-            return '{} {}'.format(self.get_move_display(), self.get_bearing_display())
+        if self.direction:
+            return '{} {}'.format(self.get_move_display(), self.get_direction_display())
         else:
             return self.get_move_display()
 
@@ -69,13 +69,8 @@ class DialManeuver(models.Model):
     def __str__(self):
         return '{} {}{}{}'.format(self.speed,
                                    self.get_move_display(),
-                                   ' ' + self.get_bearing_display() if self.bearing else '',
+                                   ' ' + self.get_direction_display() if self.direction else '',
                                    '' if self.color == 'W' else ' ' + self.get_color_display())
-
-    class Meta:
-        constraints = [
-            models.UniqueConstraint(fields=('dial', 'speed', 'move', 'bearing'), name='dial_maneuver'),
-        ]
 
 
 class Ship(models.Model):

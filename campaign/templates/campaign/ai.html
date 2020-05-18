@@ -48,7 +48,7 @@
     </ul>
 
     <div class="tab-content">
-    {% regroup ai.aimaneuver_set.all by direction as maneuvers %}
+    {% regroup ai.aimaneuver_set.all by arc as maneuvers %}
 
         {% for dir in maneuvers %}
         <div class="tab-pane fade {% if forloop.first %}show{% endif %}" id="mv-{{dir.grouper|lower}}" role="tabpanel" aria-labelledby="mv-{{dir.grouper|lower}}-tab">
@@ -63,9 +63,6 @@
         </div>
         {% endfor %}
     </div>
-    <!--
-        <a href="#" class="nav-link">{{dir.grouper}}</a>
-    </nav>-->
 </div>
 
 {% endblock content %}

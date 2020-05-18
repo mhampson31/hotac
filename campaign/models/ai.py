@@ -2,8 +2,6 @@ from django.db import models
 
 from .ships import Dial, DialManeuver
 
-from random import choice
-
 from smart_selects.db_fields import ChainedForeignKey
 
 
@@ -20,11 +18,11 @@ class AI(models.Model):
         :return: Nothing, saves new objects directly
         """
 
-        for mv in self.aimaneuver_set.filter(direction__in=('FR', 'RF', 'RA', 'AR')):
-            new_dir = mv.direction.replace('R', 'L')
-            if not self.aimaneuver_set.filter(direction=new_dir, range=mv.range).exists():
+        for mv in self.aimaneuver_set.filter(arc__in=('FR', 'RF', 'RA', 'AR')):
+            new_arc = mv.arc.replace('R', 'L')
+            if not self.aimaneuver_set.filter(arc=new_arc, range=mv.range).exists():
                 mv.pk = None
-                mv.direction = new_dir
+                mv.arc = new_arc
                 mv.roll_1 = mv.roll_1.find_mirror()
                 mv.roll_2 = mv.roll_2.find_mirror()
                 mv.roll_3 = mv.roll_3.find_mirror()
@@ -55,7 +53,7 @@ class AIManeuver(models.Model):
     )
 
     ai = models.ForeignKey(AI, on_delete=models.CASCADE)
-    direction = models.CharField(max_length=2, choices=AI_ARC_CHOICES)
+    arc = models.CharField(max_length=2, choices=AI_ARC_CHOICES)
     range = models.CharField(max_length=1, choices=RANGE_CHOICES)
 
     roll_1 = ChainedForeignKey(DialManeuver, chained_field='ai', chained_model_field='dial', related_name='roll_1')
@@ -71,14 +69,6 @@ class AIManeuver(models.Model):
     def rolls(self):
         return [self.roll_1, self.roll_2, self.roll_3, self.roll_4, self.roll_5, self.roll_6]
 
-    def roll(self):
-        return choice([self.roll_1, self.roll_2, self.roll_3, self.roll_4, self.roll_5, self.roll_6])
-
     @property
-    def dir_order(self):
-        return ['FL', 'BE', 'FR', 'LF', 'RF', 'LA', 'RA', 'AL', 'AR'].index(self.direction)
-
-    class Meta:
-        constraints = [
-            models.UniqueConstraint(fields=('ai', 'direction', 'range'), name='ai_maneuver'),
-        ]
+    def arc_order(self):
+        return ['FL', 'BE', 'FR', 'LF', 'RF', 'LA', 'RA', 'AL', 'AR'].index(self.arc)

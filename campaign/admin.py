@@ -9,7 +9,6 @@ from .models import User, Campaign, Pilot, Event, Mission, \
     Upgrade, TreeSlot, Dial, DialManeuver, AI, AIManeuver
 
 
-
 class PilotInline(admin.StackedInline):
     model = Pilot
 
@@ -84,16 +83,17 @@ class AIManeuverInline(admin.TabularInline):
     extra = 0
 
     fieldsets = (
-        (None, {'fields': ('direction', 'range')}),
+        (None, {'fields': ('arc', 'range')}),
         ('Rolls', {'fields': ('roll_1', 'roll_2', 'roll_3', 'roll_4', 'roll_5', 'roll_6')})
     )
 
-    def get_form(self, request, obj=None, **kwargs):
-        form = super(AIManeuverInline, self).get_form(request, obj, **kwargs)
+#    def get_form(self, request, obj=None, **kwargs):
+ #       form = super(AIManeuverInline, self).get_form(request, obj, **kwargs)
 
-        form.base_fields['roll_1'].queryset = DialManeuver.objects.filter(dial_id=obj.ai.dial.id)
+  #      form.base_fields['roll_1'].queryset = DialManeuver.objects.filter(dial_id=obj.ai.dial.id)
 
-        return form
+   #     return form
+
 
 class AIAdmin(admin.ModelAdmin):
     inlines = (AIManeuverInline,)
