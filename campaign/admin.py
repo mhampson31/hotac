@@ -35,6 +35,8 @@ class PilotAdmin(admin.ModelAdmin):
     filter_horizontal = ('upgrades',)
 
 class ShipAdmin(admin.ModelAdmin):
+    list_display = ['name', 'faction', 'playable']
+    list_filter = ['faction', 'playable']
     inlines = (SlotInline, )
 
 

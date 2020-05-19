@@ -121,7 +121,17 @@ class Ship(models.Model):
     start_xp = models.PositiveSmallIntegerField(default=0)
     playable = models.BooleanField(default=True)
     dial = models.ForeignKey(Dial, on_delete=models.CASCADE)
-    #faction = models.CharField(max_length=1, choices=())
+
+    FACTION_CHOICES = (
+        ('RA', 'Rebel Alliance'),
+        ('GE', 'Galactic Empire'),
+        ('SV', 'Scum and Villainy'),
+        ('RS', 'Resistance'),
+        ('FO', 'First Order'),
+        ('GR', 'Republic'),
+        ('SE', 'Seperatist')
+    )
+    faction = models.CharField(max_length=2, choices=FACTION_CHOICES, default='RA')
 
     def __str__(self):
         return self.name
