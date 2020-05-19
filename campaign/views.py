@@ -69,7 +69,9 @@ def pilot_sheet(request, pilot_id):
 
 
 def ship_sheet(request, ship_id):
-    context = {'ship':Ship.objects.get(id=ship_id)}
+    ship = Ship.objects.get(id=ship_id)
+
+    context = {'ship':ship}
 
     return render(request, 'campaign/ship.html', context)
 
