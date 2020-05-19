@@ -1,4 +1,5 @@
 from django.db import models
+from django.db.models import Case, When, Value
 
 import re
 
@@ -17,9 +18,36 @@ class Dial(models.Model):
     def css_name(self):
         return re.sub(r'[^\w\d]', '', self.name.lower())
 
+    @property
+    def max_speed(self):
+        return self.maneuvers.aggregate(speed=models.Max('speed'))['speed']
+
+    @property
+    def dsort(self):
+        return self.maneuvers\
+            .annotate(dsort=Case(
+                When(bearing='S', then=Value(2)),
+                When(bearing='B', then=Value(3)),
+                When(bearing='T', then=Value(4)),
+                When(bearing='SL', then=Value(6)),
+                When(bearing='KT', then=Value(8)),
+                output_field=models.SmallIntegerField()) *
+                Case(When(direction='L', then=Value(-1)),
+                     default=Value(1),
+                     output_field=models.SmallIntegerField())
+             )\
+    .order_by('-speed', 'dsort')
+
+    @property
+    def dial_width(self):
+        speeds = {}
+        for s in self.dsort.values_list('speed', flat=True):
+            speeds[s] = speeds.get(s, 0) + 1
+        return max(speeds.values())
+
 
 class DialManeuver(models.Model):
-    dial = models.ForeignKey(Dial, on_delete=models.CASCADE)
+    dial = models.ForeignKey(Dial, on_delete=models.CASCADE, related_name='maneuvers')
     speed = models.PositiveSmallIntegerField()
 
     BEARING_TYPES = {
@@ -30,7 +58,8 @@ class DialManeuver(models.Model):
         'Tallon Roll': 'TR',
         'Sloop': 'SL',
         'Reverse Bank': 'RB',
-        'Stationary': 'SS'
+        'Stationary': 'SS',
+        '--':'XX' # for use as a spacer
     }
     BEARING_CHOICES = [(v, k) for k, v in BEARING_TYPES.items()]
     bearing = models.CharField(max_length=3, choices=BEARING_CHOICES)
@@ -71,6 +100,19 @@ class DialManeuver(models.Model):
                                    self.get_bearing_display(),
                                    ' ' + self.get_direction_display() if self.direction else '',
                                    '' if self.color == 'W' else ' ' + self.get_color_display())
+
+    class Meta:
+        ordering = ['-speed', Case(
+                When(bearing='S', then=Value(1)),
+                When(bearing='XX', then=Value(2)),
+                When(bearing='B', then=Value(3)),
+                When(bearing='T', then=Value(4)),
+                When(bearing='SL', then=Value(6)),
+                When(bearing='KT', then=Value(8)),
+                output_field=models.SmallIntegerField()) *
+                Case(When(direction='L', then=Value(-1)),
+                     default=Value(1),
+                     output_field=models.SmallIntegerField())]
 
 
 class Ship(models.Model):

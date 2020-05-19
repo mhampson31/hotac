@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 
 {% load xwf_extras %}
+{% load math %}
 {% load mptt_tags %}
 
 
@@ -45,8 +46,26 @@
             {% endrecursetree %}
             </ul>
         </div>
+
+
+<div class="container">
+    {% regroup ship.dial.maneuvers.all by speed as speed_rows %}
+
+    {% for spd, mvs in speed_rows %}
+    <div class="row">
+        <div class="col-sm-1">{{spd}}</div>
+        {% for cell in mvs|dial_pad:ship.dial.dial_width %}
+        <div class="col-sm-1"></div>
+        {% endfor %}
+        {% for mv in mvs %}
+        <div class="col-sm-1 {{mv.icon_color}}">{{mv.css_name|get_icon}}</div>
+        {% endfor %}
+        <div class="w-100"></div>
+    </div>
+    {% endfor %}
 </div>
 
+<!--
 <div class="row">
     {% full_tree_for_model campaign.treeslot as slots %}
     <div class="col">
@@ -56,5 +75,6 @@
     </div>
 
 </div>
+-->
 
 {% endblock %}
