@@ -17,8 +17,8 @@ def index(request):
     return render(request, 'campaign/index.html', context)
 
 
-def ai_select(request, ship_id):
-    context = {'ai':AI.objects.get(dial__ship__id=ship_id)}
+def ai_select(request, ship_slug):
+    context = {'ai':AI.objects.get(dial__ship__slug=ship_slug)}
     return render(request, 'campaign/ai.html', context)
 
 
@@ -68,8 +68,8 @@ def pilot_sheet(request, pilot_id):
     return render(request, 'campaign/pilot.html', context)
 
 
-def ship_sheet(request, ship_id):
-    ship = Ship.objects.get(id=ship_id)
+def ship_sheet(request, ship_slug):
+    ship = Ship.objects.get(slug=ship_slug)
 
     context = {'ship':ship}
 

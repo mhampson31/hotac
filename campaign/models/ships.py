@@ -116,7 +116,8 @@ class DialManeuver(models.Model):
 
 
 class Ship(models.Model):
-    name = models.CharField(max_length=20)
+    name = models.CharField(max_length=40)
+    slug = models.SlugField(max_length=20, null=True)
     start_xp = models.PositiveSmallIntegerField(default=0)
     playable = models.BooleanField(default=True)
     dial = models.ForeignKey(Dial, on_delete=models.CASCADE)
