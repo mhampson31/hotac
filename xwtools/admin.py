@@ -11,8 +11,8 @@ class SlotInline(admin.TabularInline):
 
 
 class ShipAdmin(admin.ModelAdmin):
-    list_display = ['name', 'faction', 'playable']
-    list_filter = ['faction', 'playable']
+    list_display = ['name', 'faction']
+    list_filter = ['faction',]
     inlines = (SlotInline, )
 
 

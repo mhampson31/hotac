@@ -5,7 +5,24 @@ import re
 
 from mptt.models import MPTTModel, TreeForeignKey
 
-from .campaigns import UPGRADE_CHOICES
+from xwtools.models import UPGRADE_CHOICES
+
+# these models have been migrated to the xwtools app
+# keeping them here until I'm sure it's safe to remove
+
+
+class Upgrade(models.Model):
+    name = models.CharField(max_length=30)
+    type = models.CharField(max_length=3, choices=UPGRADE_CHOICES)
+    type2 = models.CharField(max_length=3, choices=UPGRADE_CHOICES, null=True, blank=True, default=None)
+    cost = models.PositiveSmallIntegerField()
+    charges = models.PositiveSmallIntegerField(null=True, blank=True)
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        ordering = ['type', '-type2', 'name']
 
 
 class Dial(models.Model):

@@ -1,7 +1,7 @@
 from django.db import models
 
-from .ships import Ship, Slot
-from .campaigns import User, Campaign, Upgrade
+from xwtools.models import Slot, Upgrade, Ship
+from .campaigns import User, Campaign, CampaignShip
 
 
 class Pilot(models.Model):
@@ -17,7 +17,7 @@ class Pilot(models.Model):
 
 class PilotShip(models.Model):
     pilot = models.ForeignKey(Pilot, on_delete=models.CASCADE)
-    ship = models.ForeignKey(Ship, on_delete=models.CASCADE)
+    ship = models.ForeignKey(CampaignShip, on_delete=models.CASCADE, null=True)
     unlocked = models.ManyToManyField(Slot)
 
     def locked(self):

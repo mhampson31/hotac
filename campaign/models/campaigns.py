@@ -2,7 +2,7 @@ from django.db import models
 from django.urls import reverse
 from django.contrib.auth.models import AbstractUser
 
-from xwtools.models import UPGRADE_CHOICES
+from xwtools.models import Ship
 
 
 class User(AbstractUser):
@@ -13,6 +13,7 @@ class Campaign(models.Model):
     description = models.CharField(max_length=30)
     victory = models.PositiveSmallIntegerField()
     admin = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
+    ships = models.ManyToManyField(Ship, through='CampaignShip')
 
     def __str__(self):
         return self.description
@@ -21,18 +22,18 @@ class Campaign(models.Model):
         return reverse('campaign', kwargs={'pk': self.pk})
 
 
-class Upgrade(models.Model):
-    name = models.CharField(max_length=30)
-    type = models.CharField(max_length=3, choices=UPGRADE_CHOICES)
-    type2 = models.CharField(max_length=3, choices=UPGRADE_CHOICES, null=True, blank=True, default=None)
-    cost = models.PositiveSmallIntegerField()
-    charges = models.PositiveSmallIntegerField(null=True, blank=True)
+class CampaignShip(models.Model):
+    campaign = models.ForeignKey(Campaign, on_delete=models.CASCADE)
+    ship = models.ForeignKey(Ship, on_delete=models.CASCADE)
+    start_xp = models.PositiveSmallIntegerField(default=0)
+    playable = models.BooleanField(default=True)
+
+    @property
+    def name(self):
+        return self.ship.name
 
     def __str__(self):
         return self.name
-
-    class Meta:
-        ordering = ['type', '-type2', 'name']
 
 
 class Event(models.Model):

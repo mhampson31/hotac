@@ -146,6 +146,7 @@ class DialManeuver(models.Model):
                 When(bearing='XX', then=Value(2)),
                 When(bearing='B', then=Value(3)),
                 When(bearing='T', then=Value(4)),
+                When(bearing='TR', then=Value(5)),
                 When(bearing='SL', then=Value(6)),
                 When(bearing='KT', then=Value(8)),
                 output_field=models.SmallIntegerField()) *
@@ -157,8 +158,6 @@ class DialManeuver(models.Model):
 class Ship(models.Model):
     name = models.CharField(max_length=40)
     slug = models.SlugField(max_length=20, null=True)
-    start_xp = models.PositiveSmallIntegerField(default=0)
-    playable = models.BooleanField(default=True)
     dial = models.ForeignKey(Dial, on_delete=models.CASCADE)
 
     FACTION_CHOICES = (
