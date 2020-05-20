@@ -7,7 +7,7 @@ from django.views.generic.edit import CreateView, DeleteView, UpdateView
 
 from django_tables2 import RequestConfig
 
-from .models import Session, Pilot, Event, Campaign, Ship, Slot, Dial, AI
+from .models import Session, Pilot, Event, Campaign, AI
 from .tables import AchievementTable
 
 
@@ -68,12 +68,6 @@ def pilot_sheet(request, pilot_id):
     return render(request, 'campaign/pilot.html', context)
 
 
-def ship_sheet(request, ship_slug):
-    ship = Ship.objects.get(slug=ship_slug)
-
-    context = {'ship':ship}
-
-    return render(request, 'campaign/ship.html', context)
 
 
 class CampaignView(DetailView):
@@ -85,4 +79,3 @@ class CampaignView(DetailView):
 class CampaignUpdate(UpdateView):
     model = Campaign
     fields = ['description', 'victory']
-

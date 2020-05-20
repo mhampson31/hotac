@@ -33,6 +33,7 @@ DATABASES = ls.DATABASES
 
 INSTALLED_APPS = [
     'campaign',
+    'xwtools',
     'crispy_forms',
     'mptt',
     'django.contrib.admin',

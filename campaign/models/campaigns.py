@@ -2,33 +2,7 @@ from django.db import models
 from django.urls import reverse
 from django.contrib.auth.models import AbstractUser
 
-
-UPGRADE_TYPES = {
-    'Astromech':'AST',
-    'Cannon': 'CNN',
-    'Configuration': 'CNF',
-    'Crew': 'CRW',
-    'Device': 'DVC',
-    'Force Power': 'FRC',
-    'Gunner': 'GNR',
-    'Illicit': 'ILC',
-    'Missile': 'MSL',
-    'Modification': 'MOD',
-    'Sensor':'SNS',
-    'Tactical Relay': 'TAC',
-    'Talent': 'TLN',
-    'Tech': 'TCH',
-    'Title': 'TTL',
-    'Torpedo':'TRP',
-    'Turret':'TRT',
-    'Ship':'SHP',
-    'Pilot':'PLT',
-    'Initiative':'THR',
-    'Force Charge':'FCH',
-    'Charge':'CHR',
-    'Wildcard':'WLD'
-}
-UPGRADE_CHOICES = [(v, k) for k, v in UPGRADE_TYPES.items()]
+from xwtools.models import UPGRADE_CHOICES
 
 
 class User(AbstractUser):
@@ -87,9 +61,3 @@ class Mission(models.Model):
 
     def __str__(self):
         return '{} ({} {})'.format(self.name, self.story, self.sequence)
-
-
-
-
-
-

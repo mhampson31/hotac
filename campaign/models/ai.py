@@ -1,6 +1,6 @@
 from django.db import models
 
-from .ships import Dial, DialManeuver
+from xwtools.models import Dial, DialManeuver
 
 from smart_selects.db_fields import ChainedForeignKey
 

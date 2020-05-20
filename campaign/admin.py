@@ -3,7 +3,6 @@ from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 
 from mptt.admin import DraggableMPTTAdmin, TreeRelatedFieldListFilter
 
-
 from .models import User, Campaign, Pilot, Event, Mission, \
     Session, Achievement, Ship, Slot, PilotShip, \
     Upgrade, TreeSlot, Dial, DialManeuver, AI, AIManeuver
@@ -104,13 +103,13 @@ class AIAdmin(admin.ModelAdmin):
 #admin.site.unregister(User)
 admin.site.register(User, UserAdmin)
 admin.site.register(Pilot, PilotAdmin)
-admin.site.register(Upgrade, UpgradeAdmin)
-admin.site.register(Dial, DialAdmin)
+#admin.site.register(Upgrade, UpgradeAdmin)
+#admin.site.register(Dial, DialAdmin)
 admin.site.register(Campaign)
 admin.site.register(Mission)
 admin.site.register(Event)
-admin.site.register(Ship, ShipAdmin)
+#admin.site.register(Ship, ShipAdmin)
 admin.site.register(Session, SessionAdmin)
 admin.site.register(PilotShip, PilotShipAdmin)
-admin.site.register(TreeSlot, TreeSlotAdmin)
+#admin.site.register(TreeSlot, TreeSlotAdmin)
 admin.site.register(AI, AIAdmin)

@@ -1,3 +1,12 @@
 from django.shortcuts import render
 
-# Create your views here.
+
+from .models import Ship, Slot, Dial
+
+
+def ship_sheet(request, ship_slug):
+    ship = Ship.objects.get(slug=ship_slug)
+
+    context = {'ship':ship}
+
+    return render(request, 'campaign/ship.html', context)
