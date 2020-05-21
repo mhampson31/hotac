@@ -1,6 +1,6 @@
 from django.db import models
 
-from xwtools.models import Slot, Upgrade, Ship
+from xwtools.models import Ship, Upgrade
 from .campaigns import User, Campaign, CampaignShip
 
 
@@ -10,6 +10,7 @@ class Pilot(models.Model):
     callsign = models.CharField(max_length=30)
     total_xp = models.PositiveSmallIntegerField()
     upgrades = models.ManyToManyField(Upgrade)
+    initiative = models.PositiveSmallIntegerField(default=2)
 
     def __str__(self):
         return '{} ({})'.format(self.callsign, self.user)
@@ -18,18 +19,12 @@ class Pilot(models.Model):
 class PilotShip(models.Model):
     pilot = models.ForeignKey(Pilot, on_delete=models.CASCADE)
     ship = models.ForeignKey(CampaignShip, on_delete=models.CASCADE, null=True)
-    unlocked = models.ManyToManyField(Slot)
-
-    def locked(self):
-        return Slot.objects.filter(ship=self.ship.id).difference(self.unlocked)
+    initiative = models.PositiveSmallIntegerField(default=2)
 
     def __str__(self):
         return self.pilot.callsign + "\'s " + self.ship.name
 
     @property
-    def initiative(self):
-        return len(self.unlocked.filter(type='THR')) + 1
-
-    @property
-    def threat(self):
-        return self.unlocked.aggregate(t=models.Max('threat'))['t']
+    def slots(self):
+        i = [self.initiative if self.pilot.campaign.ship_initiative else self.pilot.initiative]
+        return self.ship.slots.filter(initiative__lte=i)

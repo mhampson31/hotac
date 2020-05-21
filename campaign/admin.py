@@ -58,8 +58,7 @@ class UnlockedInline(admin.TabularInline):
 class PilotShipAdmin(admin.ModelAdmin):
     model = PilotShip
     list_display = ('pilot', 'ship')
-    filter_horizontal = ('unlocked',)
-
+    
 
 class AIManeuverInline(admin.TabularInline):
     model = AIManeuver

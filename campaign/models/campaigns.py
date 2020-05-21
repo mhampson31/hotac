@@ -12,6 +12,7 @@ class User(AbstractUser):
 class Campaign(models.Model):
     description = models.CharField(max_length=30)
     victory = models.PositiveSmallIntegerField()
+    ship_initiative = models.BooleanField(default=False)
     admin = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
     ships = models.ManyToManyField(Ship, through='CampaignShip')
 

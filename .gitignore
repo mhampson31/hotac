@@ -131,3 +131,5 @@ manage.py
 data
 
 dm\.json
+
+*.sqlite3

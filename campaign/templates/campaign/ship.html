@@ -2,7 +2,6 @@
 
 {% load xwf_extras %}
 {% load math %}
-{% load mptt_tags %}
 
 
 {% block content %}
@@ -21,29 +20,15 @@
         <div class="row">
             <div class="col">
                 <h6>Slots</h6>
+                {% for slot in ship.slots.all %}
+                <p>{{slot.get_type_display|get_icon}}<p>
+                {% endfor %}
             </div>
         </div>
 
 
         <div class="row">
             <ul class="root col list-group">
-            {% recursetree ship.treeslot_set.all %}
-                <li class="list-group-item">
-                    {% ifchanged node.threat %}
-                    {{node.threat|threatbar|safe}}
-                    {% endifchanged %}
-                    {{node.get_type_display|get_icon}}
-                    {% if node.type2 %}
-                    /{{node.get_type2_display|get_icon}}
-                    {% endif %}
-                    <i class="xwf xwf-squad-point-cost"></i>{{node.cost}}
-                    {% if not node.is_leaf_node %}
-                        <ul class="list-group children">
-                            {{ children }}
-                        </ul>
-                    {% endif %}
-                </li>
-            {% endrecursetree %}
             </ul>
         </div>
 
@@ -65,16 +50,5 @@
     {% endfor %}
 </div>
 
-<!--
-<div class="row">
-    {% full_tree_for_model campaign.treeslot as slots %}
-    <div class="col">
-    {% for slot in slots %}
-        {{slot}}
-    {% endfor %}
-    </div>
-
-</div>
--->
 
 {% endblock %}

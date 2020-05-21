@@ -20,6 +20,17 @@
 </div>
 
 <div class="row">
+  <div class="col">
+    <h3>Available Ships</h3>
+    <div class="list-group">
+    {% for ship in campaign.ships.all %}
+      <a href="{% url 'ship' ship_slug=ship.slug %}" class="list-group-item list-group-item-action">{{ship.name}}</a>
+    {% endfor %}
+    </div>
+  </div>
+</div>
+
+<div class="row">
     <div class="col">
         <h3>Sessions</h3>
         <div class="list-group">
