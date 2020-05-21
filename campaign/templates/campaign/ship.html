@@ -19,36 +19,29 @@
 
         <div class="row">
             <div class="col">
-                <h6>Slots</h6>
+                <h6>Upgrade Slots</h6>
+                <ul class="list-group list-group-horizontal">
                 {% for slot in ship.slots.all %}
-                <p>{{slot.get_type_display|get_icon}}<p>
+                  <li class="list-group-item">{{slot.get_type_display|get_icon}}<li>
                 {% endfor %}
+                </ul>
             </div>
         </div>
 
-
-        <div class="row">
-            <ul class="root col list-group">
-            </ul>
-        </div>
-
-
-<div class="container">
+    <!-- dial -->
     {% regroup ship.dial.maneuvers.all by speed as speed_rows %}
-
+    <div class="row col-6">
     {% for spd, mvs in speed_rows %}
-    <div class="row">
-        <div class="col-sm-1">{{spd}}</div>
+        <div class="col-1"><em>{{spd}}</em></div>
         {% for cell in mvs|dial_pad:ship.dial.dial_width %}
-        <div class="col-sm-1"></div>
+        <div class="col-1"></div>
         {% endfor %}
         {% for mv in mvs %}
-        <div class="col-sm-1 {{mv.icon_color}}">{{mv.css_name|get_icon}}</div>
+        <div class="col-1 {{mv.icon_color}}">{{mv.css_name|get_icon}}</div>
         {% endfor %}
         <div class="w-100"></div>
-    </div>
     {% endfor %}
-</div>
+    </div>
 
 
 {% endblock %}
