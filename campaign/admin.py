@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 
-from .models import User, Campaign, CampaignShip, Pilot, Event, Mission, \
+from .models import User, Campaign, Squadron, Pilot, Event, Mission, \
     Session, Achievement, PilotShip, AI, AIManeuver
 
 from xwtools.models import Slot
@@ -23,14 +23,14 @@ class SessionAdmin(admin.ModelAdmin):
     inlines = (AchievementInline, )
 
 
-class CampaignShipInline(admin.TabularInline):
-    model = CampaignShip
+class SquadronInline(admin.TabularInline):
+    model = Squadron
     extra = 1
 
 
 class CampaignAdmin(admin.ModelAdmin):
     model = Campaign
-    inlines = (CampaignShipInline,)
+    inlines = (SquadronInline,)
 
 
 class PilotAdmin(admin.ModelAdmin):
@@ -44,18 +44,9 @@ class PilotShipInline(admin.StackedInline):
     extra = 0
 
 
-class UnlockedInline(admin.TabularInline):
-    model = Slot
-    extra = 1
-
-    def get_queryset(self, request):
-        qs = super().get_queryset(request)
-        return qs.filter(author=request.user)
-
-
 class PilotShipAdmin(admin.ModelAdmin):
     model = PilotShip
-    list_display = ('pilot', 'ship')
+    list_display = ('pilot', 'chassis')
 
 
 class AIManeuverInline(admin.TabularInline):

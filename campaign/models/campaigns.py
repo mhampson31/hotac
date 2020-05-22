@@ -14,7 +14,7 @@ class Campaign(models.Model):
     victory = models.PositiveSmallIntegerField()
     ship_initiative = models.BooleanField(default=False)
     admin = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
-    ships = models.ManyToManyField(Chassis, through='CampaignShip')
+    ships = models.ManyToManyField(Chassis, through='Squadron')
 
     def __str__(self):
         return self.description
@@ -23,7 +23,7 @@ class Campaign(models.Model):
         return reverse('campaign', kwargs={'pk': self.pk})
 
 
-class CampaignShip(models.Model):
+class Squadron(models.Model):
     campaign = models.ForeignKey(Campaign, on_delete=models.CASCADE)
     chassis = models.ForeignKey(Chassis, on_delete=models.CASCADE)
     start_xp = models.PositiveSmallIntegerField(default=0)

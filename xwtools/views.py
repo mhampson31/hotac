@@ -4,7 +4,7 @@ from django.shortcuts import render
 from .models import Chassis, Slot, Dial
 
 
-def ship_sheet(request, ship_slug):
-    context = {'ship':Chassis.objects.get(slug=ship_slug)}
+def ship_sheet(request, chassis_slug):
+    context = {'ship':Chassis.objects.get(slug=chassis_slug)}
 
-    return render(request, 'campaign/ship.html', context)
+    return render(request, 'campaign/chassis.html', context)

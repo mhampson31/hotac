@@ -45,7 +45,7 @@
         {% for ps in pilot.pilotship_set.all %}
         <div class="row mb-2">
                 <div class="col-3">
-                  <h5><a href="{% url 'ship' ship_slug=ps.ship.ship.slug %}">{{ps.ship.name}} <i class="xw-ship xw-ship-{{ps.ship.css_name}}"></i></a></h5>
+                  <h5><a href="{% url 'chassis' chassis_slug=ps.chassis.slug %}">{{ps.chassis.name}} <i class="xw-ship xw-ship-{{ps.css_name}}"></i></a></h5>
                   <span>Initiative {{ps.initiative}}</span>
                 </div>
         </div>

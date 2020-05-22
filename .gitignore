@@ -133,3 +133,5 @@ data
 dm\.json
 
 *.sqlite3
+
+xwtools/migrations/0010_auto_20200522_0108.py
