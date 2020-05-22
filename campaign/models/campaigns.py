@@ -2,7 +2,7 @@ from django.db import models
 from django.urls import reverse
 from django.contrib.auth.models import AbstractUser
 
-from xwtools.models import Ship
+from xwtools.models import Chassis
 
 
 class User(AbstractUser):
@@ -14,7 +14,7 @@ class Campaign(models.Model):
     victory = models.PositiveSmallIntegerField()
     ship_initiative = models.BooleanField(default=False)
     admin = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
-    ships = models.ManyToManyField(Ship, through='CampaignShip')
+    ships = models.ManyToManyField(Chassis, through='CampaignShip')
 
     def __str__(self):
         return self.description
@@ -25,13 +25,13 @@ class Campaign(models.Model):
 
 class CampaignShip(models.Model):
     campaign = models.ForeignKey(Campaign, on_delete=models.CASCADE)
-    ship = models.ForeignKey(Ship, on_delete=models.CASCADE)
+    chassis = models.ForeignKey(Chassis, on_delete=models.CASCADE)
     start_xp = models.PositiveSmallIntegerField(default=0)
     playable = models.BooleanField(default=True)
 
     @property
     def name(self):
-        return self.ship.name
+        return self.chassis.name
 
     def __str__(self):
         return self.name

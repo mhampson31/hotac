@@ -1,6 +1,6 @@
 from django.db import models
 
-from xwtools.models import Ship, Upgrade
+from xwtools.models import Chassis, Upgrade
 from .campaigns import User, Campaign, CampaignShip
 
 

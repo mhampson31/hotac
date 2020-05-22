@@ -1,8 +1,6 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 
-from mptt.admin import DraggableMPTTAdmin, TreeRelatedFieldListFilter
-
 from .models import User, Campaign, CampaignShip, Pilot, Event, Mission, \
     Session, Achievement, PilotShip, AI, AIManeuver
 
@@ -58,7 +56,7 @@ class UnlockedInline(admin.TabularInline):
 class PilotShipAdmin(admin.ModelAdmin):
     model = PilotShip
     list_display = ('pilot', 'ship')
-    
+
 
 class AIManeuverInline(admin.TabularInline):
     model = AIManeuver

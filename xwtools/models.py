@@ -159,7 +159,7 @@ class DialManeuver(models.Model):
                      output_field=models.SmallIntegerField())]
 
 
-class Ship(models.Model):
+class Chassis(models.Model):
     name = models.CharField(max_length=40)
     slug = models.SlugField(max_length=20, null=True)
     dial = models.ForeignKey(Dial, on_delete=models.CASCADE)
@@ -184,7 +184,7 @@ class Ship(models.Model):
 
 
 class Slot(models.Model):
-    ship = models.ForeignKey(Ship, related_name='slots', on_delete=models.CASCADE)
+    chassis = models.ForeignKey(Chassis, related_name='slots', on_delete=models.CASCADE)
     type = models.CharField(max_length=3, choices=SLOT_CHOICES)
     initiative = models.PositiveSmallIntegerField(default=1)
 

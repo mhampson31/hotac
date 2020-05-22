@@ -59,8 +59,7 @@ def pilot_sheet(request, pilot_id):
         if a:
             ach.append({'event':ev.long_desc, 'count':len(a)})
 
-    xp_spent = (pilot.upgrades.aggregate(total=Sum('cost'))['total'] or 0) + (pilot.pilotship_set.aggregate(total=Sum('unlocked__cost'))['total'] or 0)
-
+    xp_spent = (pilot.upgrades.aggregate(total=Sum('cost'))['total'] or 0)
     context = {'pilot':pilot,
                'remaining':pilot.total_xp - xp_spent,
                'achievements':ach,
