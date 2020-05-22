@@ -42,39 +42,14 @@
 
 <div class="row">
     <div class="col">
-        {% for ship in pilot.pilotship_set.all %}
+        {% for ps in pilot.pilotship_set.all %}
         <div class="row mb-2">
                 <div class="col-3">
-                    <span class="font-weight-light {{ship.threat|threatbar}}">
-                            {{ship.threat|threatbar|safe}}
-                        </span>
-                    <h5>{{ship.ship.name}} <i class="xw-ship xw-ship-{{ship.ship.css_name}}"></i>
-                    </h5>
-                    <span>Initiative {{ship.initiative}}</span>
+                  <h5><a href="{% url 'chassis' chassis_slug=ps.chassis.slug %}">{{ps.chassis.name}} <i class="xw-ship xw-ship-{{ps.css_name}}"></i></a></h5>
+                  <span>Initiative {{ps.initiative}}</span>
                 </div>
         </div>
 
-        <div class="row">
-            <div class="col">
-                <h6>Unlocked Slots</h6>
-            </div>
-        </div>
-
-        <div class="row no-gutters mb-3">
-            {% regroup ship.unlocked.all by threat as threat_slots %}
-
-            {% for threat, slots in threat_slots %}
-            <div class="col-2">
-                <ul class="list-group">
-                    <li class="list-group-item"><strong class="font-weight-light threat|threatbar">{{threat|threatbar|safe}}</strong></li>
-                    {% for slot in slots %}
-                    <li class="list-group-item">{{slot.get_type_display|get_icon}} <i class="xwf xwf-squad-point-cost"></i>{{slot.cost}}</li>
-                    {% endfor %}
-                </ul>
-            </div>
-            {% endfor %}
-
-        </div>
         {% endfor %}
     </div>
 </div>

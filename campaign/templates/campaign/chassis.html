@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% load xwf_extras %}
+{% load math %}
+
+
+{% block content %}
+        <div class="row mb-2">
+                <div class="col-3">
+                    <h5><i class="xw-ship xw-ship-{{ship.css_name}}"></i> {{ship.name}}</h5>
+                </div>
+        </div>
+
+        <div class="row mb-2">
+                <div class="col-3">
+                    <h5>Base XP: {{ship.start_xp}}</h5>
+                </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <h6>Upgrade Slots</h6>
+                <ul class="list-group list-group-horizontal">
+                {% for slot in ship.slots.all %}
+                  <li class="list-group-item">{{slot.get_type_display|get_icon}}<li>
+                {% endfor %}
+                </ul>
+            </div>
+        </div>
+
+    <!-- dial -->
+    {% regroup ship.dial.maneuvers.all by speed as speed_rows %}
+    <div class="row col-6">
+    {% for spd, mvs in speed_rows %}
+        <div class="col-1"><em>{{spd}}</em></div>
+        {% for cell in mvs|dial_pad:ship.dial.dial_width %}
+        <div class="col-1"></div>
+        {% endfor %}
+        {% for mv in mvs %}
+        <div class="col-1 {{mv.icon_color}}">{{mv.css_name|get_icon}}</div>
+        {% endfor %}
+        <div class="w-100"></div>
+    {% endfor %}
+    </div>
+
+
+{% endblock %}

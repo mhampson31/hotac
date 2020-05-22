@@ -1,6 +1,6 @@
 from django.db import models
 
-from .ships import Dial, DialManeuver
+from xwtools.models import Dial, DialManeuver
 
 from smart_selects.db_fields import ChainedForeignKey
 
@@ -56,6 +56,8 @@ class AIManeuver(models.Model):
     arc = models.CharField(max_length=2, choices=AI_ARC_CHOICES)
     range = models.CharField(max_length=1, choices=RANGE_CHOICES)
 
+    # these are denormalized mainly to make data entry easier, so we don't need
+    # to have an AI, AIManeuver, and a theoretical AIManeuverRoll model all on one admin page
     roll_1 = ChainedForeignKey(DialManeuver, chained_field='ai', chained_model_field='dial', related_name='roll_1')
     roll_2 = ChainedForeignKey(DialManeuver, chained_field='ai', chained_model_field='dial', related_name='roll_2')
     roll_3 = ChainedForeignKey(DialManeuver, chained_field='ai', chained_model_field='dial', related_name='roll_3')
