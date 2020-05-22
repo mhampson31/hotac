@@ -39,7 +39,7 @@ class Squadron(models.Model):
 
 class Event(models.Model):
     short_desc = models.CharField(max_length=25)
-    long_desc = models.CharField(max_length=60)
+    long_desc = models.CharField(max_length=120)
     xp = models.SmallIntegerField()
     team = models.BooleanField(default=True)
 
