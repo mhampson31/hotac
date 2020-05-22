@@ -1,0 +1,5650 @@
+[
+{
+    "model": "campaign.ai",
+    "pk": 1,
+    "fields": {
+        "dial": 1,
+        "flee": 0
+    }
+},
+{
+    "model": "campaign.ai",
+    "pk": 2,
+    "fields": {
+        "dial": 2,
+        "flee": 0
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 1,
+    "fields": {
+        "ai": 1,
+        "arc": "BE",
+        "range": "1",
+        "roll_1": 15,
+        "roll_2": 15,
+        "roll_3": 4,
+        "roll_4": 6,
+        "roll_5": 5,
+        "roll_6": 5
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 2,
+    "fields": {
+        "ai": 1,
+        "arc": "BE",
+        "range": "2",
+        "roll_1": 5,
+        "roll_2": 5,
+        "roll_3": 5,
+        "roll_4": 5,
+        "roll_5": 10,
+        "roll_6": 10
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 3,
+    "fields": {
+        "ai": 2,
+        "arc": "BE",
+        "range": "1",
+        "roll_1": 32,
+        "roll_2": 24,
+        "roll_3": 24,
+        "roll_4": 30,
+        "roll_5": 30,
+        "roll_6": 21
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 4,
+    "fields": {
+        "ai": 1,
+        "arc": "BE",
+        "range": "3",
+        "roll_1": 14,
+        "roll_2": 16,
+        "roll_3": 16,
+        "roll_4": 16,
+        "roll_5": 16,
+        "roll_6": 16
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 5,
+    "fields": {
+        "ai": 1,
+        "arc": "BE",
+        "range": "4",
+        "roll_1": 4,
+        "roll_2": 4,
+        "roll_3": 6,
+        "roll_4": 6,
+        "roll_5": 5,
+        "roll_6": 5
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 6,
+    "fields": {
+        "ai": 1,
+        "arc": "FR",
+        "range": "1",
+        "roll_1": 15,
+        "roll_2": 15,
+        "roll_3": 2,
+        "roll_4": 2,
+        "roll_5": 6,
+        "roll_6": 6
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 7,
+    "fields": {
+        "ai": 1,
+        "arc": "FR",
+        "range": "2",
+        "roll_1": 6,
+        "roll_2": 6,
+        "roll_3": 6,
+        "roll_4": 11,
+        "roll_5": 11,
+        "roll_6": 10
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 8,
+    "fields": {
+        "ai": 1,
+        "arc": "FR",
+        "range": "3",
+        "roll_1": 11,
+        "roll_2": 11,
+        "roll_3": 11,
+        "roll_4": 11,
+        "roll_5": 14,
+        "roll_6": 14
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 9,
+    "fields": {
+        "ai": 1,
+        "arc": "FR",
+        "range": "4",
+        "roll_1": 6,
+        "roll_2": 6,
+        "roll_3": 6,
+        "roll_4": 5,
+        "roll_5": 5,
+        "roll_6": 10
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 10,
+    "fields": {
+        "ai": 1,
+        "arc": "RF",
+        "range": "1",
+        "roll_1": 15,
+        "roll_2": 2,
+        "roll_3": 2,
+        "roll_4": 7,
+        "roll_5": 7,
+        "roll_6": 7
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 11,
+    "fields": {
+        "ai": 1,
+        "arc": "RF",
+        "range": "2",
+        "roll_1": 2,
+        "roll_2": 7,
+        "roll_3": 6,
+        "roll_4": 6,
+        "roll_5": 12,
+        "roll_6": 12
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 12,
+    "fields": {
+        "ai": 1,
+        "arc": "RF",
+        "range": "3",
+        "roll_1": 7,
+        "roll_2": 7,
+        "roll_3": 7,
+        "roll_4": 12,
+        "roll_5": 12,
+        "roll_6": 12
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 13,
+    "fields": {
+        "ai": 1,
+        "arc": "RF",
+        "range": "4",
+        "roll_1": 2,
+        "roll_2": 6,
+        "roll_3": 6,
+        "roll_4": 6,
+        "roll_5": 6,
+        "roll_6": 6
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 15,
+    "fields": {
+        "ai": 1,
+        "arc": "RA",
+        "range": "1",
+        "roll_1": 13,
+        "roll_2": 2,
+        "roll_3": 2,
+        "roll_4": 7,
+        "roll_5": 7,
+        "roll_6": 7
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 16,
+    "fields": {
+        "ai": 1,
+        "arc": "RA",
+        "range": "2",
+        "roll_1": 13,
+        "roll_2": 13,
+        "roll_3": 2,
+        "roll_4": 2,
+        "roll_5": 7,
+        "roll_6": 7
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 17,
+    "fields": {
+        "ai": 1,
+        "arc": "RA",
+        "range": "3",
+        "roll_1": 13,
+        "roll_2": 13,
+        "roll_3": 13,
+        "roll_4": 2,
+        "roll_5": 2,
+        "roll_6": 2
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 18,
+    "fields": {
+        "ai": 1,
+        "arc": "RA",
+        "range": "4",
+        "roll_1": 2,
+        "roll_2": 7,
+        "roll_3": 6,
+        "roll_4": 6,
+        "roll_5": 6,
+        "roll_6": 6
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 19,
+    "fields": {
+        "ai": 1,
+        "arc": "AR",
+        "range": "1",
+        "roll_1": 15,
+        "roll_2": 15,
+        "roll_3": 13,
+        "roll_4": 13,
+        "roll_5": 7,
+        "roll_6": 7
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 20,
+    "fields": {
+        "ai": 1,
+        "arc": "AR",
+        "range": "2",
+        "roll_1": 13,
+        "roll_2": 13,
+        "roll_3": 2,
+        "roll_4": 12,
+        "roll_5": 12,
+        "roll_6": 12
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 21,
+    "fields": {
+        "ai": 1,
+        "arc": "AR",
+        "range": "3",
+        "roll_1": 13,
+        "roll_2": 13,
+        "roll_3": 13,
+        "roll_4": 13,
+        "roll_5": 2,
+        "roll_6": 2
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 22,
+    "fields": {
+        "ai": 1,
+        "arc": "AR",
+        "range": "4",
+        "roll_1": 6,
+        "roll_2": 6,
+        "roll_3": 6,
+        "roll_4": 6,
+        "roll_5": 6,
+        "roll_6": 12
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 39,
+    "fields": {
+        "ai": 1,
+        "arc": "AL",
+        "range": "1",
+        "roll_1": 15,
+        "roll_2": 15,
+        "roll_3": 13,
+        "roll_4": 13,
+        "roll_5": 3,
+        "roll_6": 3
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 40,
+    "fields": {
+        "ai": 1,
+        "arc": "AL",
+        "range": "2",
+        "roll_1": 13,
+        "roll_2": 13,
+        "roll_3": 1,
+        "roll_4": 8,
+        "roll_5": 8,
+        "roll_6": 8
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 41,
+    "fields": {
+        "ai": 1,
+        "arc": "AL",
+        "range": "3",
+        "roll_1": 13,
+        "roll_2": 13,
+        "roll_3": 13,
+        "roll_4": 13,
+        "roll_5": 1,
+        "roll_6": 1
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 42,
+    "fields": {
+        "ai": 1,
+        "arc": "AL",
+        "range": "4",
+        "roll_1": 4,
+        "roll_2": 4,
+        "roll_3": 4,
+        "roll_4": 4,
+        "roll_5": 4,
+        "roll_6": 8
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 43,
+    "fields": {
+        "ai": 1,
+        "arc": "FL",
+        "range": "1",
+        "roll_1": 15,
+        "roll_2": 15,
+        "roll_3": 1,
+        "roll_4": 1,
+        "roll_5": 4,
+        "roll_6": 4
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 44,
+    "fields": {
+        "ai": 1,
+        "arc": "FL",
+        "range": "2",
+        "roll_1": 4,
+        "roll_2": 4,
+        "roll_3": 4,
+        "roll_4": 9,
+        "roll_5": 9,
+        "roll_6": 10
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 45,
+    "fields": {
+        "ai": 1,
+        "arc": "FL",
+        "range": "3",
+        "roll_1": 9,
+        "roll_2": 9,
+        "roll_3": 9,
+        "roll_4": 9,
+        "roll_5": 14,
+        "roll_6": 14
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 46,
+    "fields": {
+        "ai": 1,
+        "arc": "FL",
+        "range": "4",
+        "roll_1": 4,
+        "roll_2": 4,
+        "roll_3": 4,
+        "roll_4": 5,
+        "roll_5": 5,
+        "roll_6": 10
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 47,
+    "fields": {
+        "ai": 1,
+        "arc": "LA",
+        "range": "1",
+        "roll_1": 13,
+        "roll_2": 1,
+        "roll_3": 1,
+        "roll_4": 3,
+        "roll_5": 3,
+        "roll_6": 3
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 48,
+    "fields": {
+        "ai": 1,
+        "arc": "LA",
+        "range": "2",
+        "roll_1": 13,
+        "roll_2": 13,
+        "roll_3": 1,
+        "roll_4": 1,
+        "roll_5": 3,
+        "roll_6": 3
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 49,
+    "fields": {
+        "ai": 1,
+        "arc": "LA",
+        "range": "3",
+        "roll_1": 13,
+        "roll_2": 13,
+        "roll_3": 13,
+        "roll_4": 1,
+        "roll_5": 1,
+        "roll_6": 1
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 50,
+    "fields": {
+        "ai": 1,
+        "arc": "LA",
+        "range": "4",
+        "roll_1": 1,
+        "roll_2": 3,
+        "roll_3": 4,
+        "roll_4": 4,
+        "roll_5": 4,
+        "roll_6": 4
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 51,
+    "fields": {
+        "ai": 1,
+        "arc": "LF",
+        "range": "1",
+        "roll_1": 15,
+        "roll_2": 1,
+        "roll_3": 1,
+        "roll_4": 3,
+        "roll_5": 3,
+        "roll_6": 3
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 52,
+    "fields": {
+        "ai": 1,
+        "arc": "LF",
+        "range": "2",
+        "roll_1": 1,
+        "roll_2": 3,
+        "roll_3": 4,
+        "roll_4": 4,
+        "roll_5": 8,
+        "roll_6": 8
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 53,
+    "fields": {
+        "ai": 1,
+        "arc": "LF",
+        "range": "3",
+        "roll_1": 3,
+        "roll_2": 3,
+        "roll_3": 3,
+        "roll_4": 8,
+        "roll_5": 8,
+        "roll_6": 8
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 54,
+    "fields": {
+        "ai": 1,
+        "arc": "LF",
+        "range": "4",
+        "roll_1": 1,
+        "roll_2": 4,
+        "roll_3": 4,
+        "roll_4": 4,
+        "roll_5": 4,
+        "roll_6": 4
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 55,
+    "fields": {
+        "ai": 2,
+        "arc": "BE",
+        "range": "2",
+        "roll_1": 21,
+        "roll_2": 21,
+        "roll_3": 21,
+        "roll_4": 27,
+        "roll_5": 27,
+        "roll_6": 27
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 56,
+    "fields": {
+        "ai": 2,
+        "arc": "BE",
+        "range": "3",
+        "roll_1": 31,
+        "roll_2": 33,
+        "roll_3": 33,
+        "roll_4": 33,
+        "roll_5": 33,
+        "roll_6": 33
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 57,
+    "fields": {
+        "ai": 2,
+        "arc": "BE",
+        "range": "4",
+        "roll_1": 19,
+        "roll_2": 23,
+        "roll_3": 21,
+        "roll_4": 21,
+        "roll_5": 21,
+        "roll_6": 21
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 58,
+    "fields": {
+        "ai": 2,
+        "arc": "FR",
+        "range": "1",
+        "roll_1": 30,
+        "roll_2": 30,
+        "roll_3": 18,
+        "roll_4": 18,
+        "roll_5": 22,
+        "roll_6": 22
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 59,
+    "fields": {
+        "ai": 2,
+        "arc": "FR",
+        "range": "2",
+        "roll_1": 22,
+        "roll_2": 22,
+        "roll_3": 22,
+        "roll_4": 28,
+        "roll_5": 28,
+        "roll_6": 27
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 60,
+    "fields": {
+        "ai": 2,
+        "arc": "FR",
+        "range": "3",
+        "roll_1": 28,
+        "roll_2": 28,
+        "roll_3": 28,
+        "roll_4": 28,
+        "roll_5": 31,
+        "roll_6": 31
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 61,
+    "fields": {
+        "ai": 2,
+        "arc": "FR",
+        "range": "4",
+        "roll_1": 20,
+        "roll_2": 22,
+        "roll_3": 22,
+        "roll_4": 21,
+        "roll_5": 21,
+        "roll_6": 31
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 62,
+    "fields": {
+        "ai": 2,
+        "arc": "RF",
+        "range": "1",
+        "roll_1": 32,
+        "roll_2": 30,
+        "roll_3": 30,
+        "roll_4": 30,
+        "roll_5": 18,
+        "roll_6": 18
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 63,
+    "fields": {
+        "ai": 2,
+        "arc": "RF",
+        "range": "2",
+        "roll_1": 23,
+        "roll_2": 23,
+        "roll_3": 22,
+        "roll_4": 22,
+        "roll_5": 29,
+        "roll_6": 29
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 64,
+    "fields": {
+        "ai": 2,
+        "arc": "RF",
+        "range": "3",
+        "roll_1": 23,
+        "roll_2": 22,
+        "roll_3": 23,
+        "roll_4": 29,
+        "roll_5": 29,
+        "roll_6": 29
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 65,
+    "fields": {
+        "ai": 2,
+        "arc": "RF",
+        "range": "4",
+        "roll_1": 23,
+        "roll_2": 23,
+        "roll_3": 20,
+        "roll_4": 22,
+        "roll_5": 22,
+        "roll_6": 31
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 66,
+    "fields": {
+        "ai": 2,
+        "arc": "RA",
+        "range": "1",
+        "roll_1": 30,
+        "roll_2": 30,
+        "roll_3": 30,
+        "roll_4": 18,
+        "roll_5": 23,
+        "roll_6": 23
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 67,
+    "fields": {
+        "ai": 2,
+        "arc": "RA",
+        "range": "2",
+        "roll_1": 32,
+        "roll_2": 30,
+        "roll_3": 30,
+        "roll_4": 30,
+        "roll_5": 23,
+        "roll_6": 23
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 68,
+    "fields": {
+        "ai": 2,
+        "arc": "RA",
+        "range": "3",
+        "roll_1": 30,
+        "roll_2": 30,
+        "roll_3": 30,
+        "roll_4": 18,
+        "roll_5": 18,
+        "roll_6": 18
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 69,
+    "fields": {
+        "ai": 2,
+        "arc": "RA",
+        "range": "4",
+        "roll_1": 19,
+        "roll_2": 23,
+        "roll_3": 22,
+        "roll_4": 23,
+        "roll_5": 20,
+        "roll_6": 31
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 70,
+    "fields": {
+        "ai": 2,
+        "arc": "AR",
+        "range": "1",
+        "roll_1": 32,
+        "roll_2": 32,
+        "roll_3": 30,
+        "roll_4": 30,
+        "roll_5": 23,
+        "roll_6": 23
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 71,
+    "fields": {
+        "ai": 2,
+        "arc": "AR",
+        "range": "2",
+        "roll_1": 24,
+        "roll_2": 24,
+        "roll_3": 30,
+        "roll_4": 30,
+        "roll_5": 30,
+        "roll_6": 30
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 72,
+    "fields": {
+        "ai": 2,
+        "arc": "AR",
+        "range": "3",
+        "roll_1": 30,
+        "roll_2": 30,
+        "roll_3": 30,
+        "roll_4": 18,
+        "roll_5": 18,
+        "roll_6": 18
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 73,
+    "fields": {
+        "ai": 2,
+        "arc": "AR",
+        "range": "4",
+        "roll_1": 19,
+        "roll_2": 19,
+        "roll_3": 20,
+        "roll_4": 23,
+        "roll_5": 23,
+        "roll_6": 31
+    }
+},
+{
+    "model": "campaign.campaign",
+    "pk": 1,
+    "fields": {
+        "description": "HotAC: The Next Generation",
+        "victory": 5,
+        "ship_initiative": false,
+        "admin": 1
+    }
+},
+{
+    "model": "campaign.squadron",
+    "pk": 1,
+    "fields": {
+        "campaign": 1,
+        "chassis": 1,
+        "start_xp": 0,
+        "playable": true
+    }
+},
+{
+    "model": "campaign.squadron",
+    "pk": 2,
+    "fields": {
+        "campaign": 1,
+        "chassis": 2,
+        "start_xp": 0,
+        "playable": true
+    }
+},
+{
+    "model": "campaign.squadron",
+    "pk": 3,
+    "fields": {
+        "campaign": 1,
+        "chassis": 3,
+        "start_xp": 0,
+        "playable": true
+    }
+},
+{
+    "model": "campaign.squadron",
+    "pk": 4,
+    "fields": {
+        "campaign": 1,
+        "chassis": 4,
+        "start_xp": 0,
+        "playable": true
+    }
+},
+{
+    "model": "campaign.squadron",
+    "pk": 5,
+    "fields": {
+        "campaign": 1,
+        "chassis": 5,
+        "start_xp": 0,
+        "playable": true
+    }
+},
+{
+    "model": "campaign.event",
+    "pk": 1,
+    "fields": {
+        "short_desc": "Hit",
+        "long_desc": "Deal at least 1 damage to one or more enemies",
+        "xp": 1,
+        "team": true
+    }
+},
+{
+    "model": "campaign.event",
+    "pk": 2,
+    "fields": {
+        "short_desc": "Kill: TIE Fighter",
+        "long_desc": "Destroyed an enemy TIE Fighter",
+        "xp": 2,
+        "team": true
+    }
+},
+{
+    "model": "campaign.event",
+    "pk": 3,
+    "fields": {
+        "short_desc": "Kill: Emplacement",
+        "long_desc": "Destroyed an enemy emplacement",
+        "xp": 2,
+        "team": true
+    }
+},
+{
+    "model": "campaign.event",
+    "pk": 4,
+    "fields": {
+        "short_desc": "Kill: TIE Bomber",
+        "long_desc": "Destroyed an enemy TIE Bomber",
+        "xp": 2,
+        "team": true
+    }
+},
+{
+    "model": "campaign.event",
+    "pk": 5,
+    "fields": {
+        "short_desc": "Kill: TIE Interceptor",
+        "long_desc": "Destroyed an enemy TIE Interceptor",
+        "xp": 2,
+        "team": true
+    }
+},
+{
+    "model": "campaign.event",
+    "pk": 6,
+    "fields": {
+        "short_desc": "Kill: TIE Advanced",
+        "long_desc": "Destroyed an enemy TIE Advanced",
+        "xp": 2,
+        "team": true
+    }
+},
+{
+    "model": "campaign.event",
+    "pk": 7,
+    "fields": {
+        "short_desc": "Kill: Lambda Shuttle",
+        "long_desc": "Destroyed an enemy Lambda shuttle",
+        "xp": 2,
+        "team": true
+    }
+},
+{
+    "model": "campaign.event",
+    "pk": 8,
+    "fields": {
+        "short_desc": "Kill: Elite Pilot",
+        "long_desc": "Any player destroyed an Elite enemy",
+        "xp": 1,
+        "team": true
+    }
+},
+{
+    "model": "campaign.event",
+    "pk": 12,
+    "fields": {
+        "short_desc": "Guardian",
+        "long_desc": "Provide an action or bonus to an ally that prevents at least one damage",
+        "xp": 1,
+        "team": true
+    }
+},
+{
+    "model": "campaign.event",
+    "pk": 13,
+    "fields": {
+        "short_desc": "Kill Assist",
+        "long_desc": "Grant a token or action to an ally who uses it to destroy an enemy",
+        "xp": 1,
+        "team": true
+    }
+},
+{
+    "model": "campaign.event",
+    "pk": 19,
+    "fields": {
+        "short_desc": "Bonus Objective (+1)",
+        "long_desc": "Met a bonus objective worth 1xp",
+        "xp": 1,
+        "team": true
+    }
+},
+{
+    "model": "campaign.event",
+    "pk": 20,
+    "fields": {
+        "short_desc": "Bonus Objective (+2)",
+        "long_desc": "Met a bonus objective worth 2xp",
+        "xp": 2,
+        "team": true
+    }
+},
+{
+    "model": "campaign.event",
+    "pk": 21,
+    "fields": {
+        "short_desc": "Bonus Objective (+3)",
+        "long_desc": "Met a bonus objective worth 3xp",
+        "xp": 3,
+        "team": true
+    }
+},
+{
+    "model": "campaign.event",
+    "pk": 22,
+    "fields": {
+        "short_desc": "Kill: TIE Defender",
+        "long_desc": "Destroyed an enemy TIE Defender",
+        "xp": 2,
+        "team": true
+    }
+},
+{
+    "model": "campaign.mission",
+    "pk": 1,
+    "fields": {
+        "name": "Local Trouble",
+        "story": "Welcome to the Aturi Cluster",
+        "sequence": 1,
+        "territory": "F"
+    }
+},
+{
+    "model": "campaign.mission",
+    "pk": 2,
+    "fields": {
+        "name": "Tread Softly",
+        "story": "Minefields",
+        "sequence": 1,
+        "territory": "F"
+    }
+},
+{
+    "model": "campaign.mission",
+    "pk": 3,
+    "fields": {
+        "name": "Secure Holonet Receiver",
+        "story": "Defection",
+        "sequence": 1,
+        "territory": "N"
+    }
+},
+{
+    "model": "campaign.pilot",
+    "pk": 1,
+    "fields": {
+        "user": 1,
+        "campaign": 1,
+        "callsign": "Mike",
+        "total_xp": 51,
+        "initiative": 2,
+        "upgrades": [
+            11,
+            10,
+            19,
+            20
+        ]
+    }
+},
+{
+    "model": "campaign.pilot",
+    "pk": 2,
+    "fields": {
+        "user": 2,
+        "campaign": 1,
+        "callsign": "Kate",
+        "total_xp": 40,
+        "initiative": 2,
+        "upgrades": [
+            16,
+            18,
+            17
+        ]
+    }
+},
+{
+    "model": "campaign.pilot",
+    "pk": 3,
+    "fields": {
+        "user": 3,
+        "campaign": 1,
+        "callsign": "Carolyn",
+        "total_xp": 49,
+        "initiative": 2,
+        "upgrades": [
+            14,
+            22,
+            13,
+            15,
+            21,
+            6,
+            8
+        ]
+    }
+},
+{
+    "model": "campaign.pilot",
+    "pk": 4,
+    "fields": {
+        "user": 4,
+        "campaign": 1,
+        "callsign": "Steve",
+        "total_xp": 49,
+        "initiative": 2,
+        "upgrades": [
+            9,
+            12,
+            13,
+            25,
+            24,
+            5,
+            7
+        ]
+    }
+},
+{
+    "model": "campaign.pilot",
+    "pk": 5,
+    "fields": {
+        "user": 5,
+        "campaign": 1,
+        "callsign": "Rum Bunny",
+        "total_xp": 0,
+        "initiative": 2,
+        "upgrades": [
+            6
+        ]
+    }
+},
+{
+    "model": "campaign.pilotship",
+    "pk": 1,
+    "fields": {
+        "pilot": 1,
+        "chassis": 3,
+        "initiative": 2
+    }
+},
+{
+    "model": "campaign.pilotship",
+    "pk": 2,
+    "fields": {
+        "pilot": 2,
+        "chassis": 1,
+        "initiative": 2
+    }
+},
+{
+    "model": "campaign.pilotship",
+    "pk": 3,
+    "fields": {
+        "pilot": 3,
+        "chassis": 2,
+        "initiative": 2
+    }
+},
+{
+    "model": "campaign.pilotship",
+    "pk": 4,
+    "fields": {
+        "pilot": 4,
+        "chassis": 2,
+        "initiative": 2
+    }
+},
+{
+    "model": "campaign.pilotship",
+    "pk": 5,
+    "fields": {
+        "pilot": 5,
+        "chassis": 1,
+        "initiative": 2
+    }
+},
+{
+    "model": "campaign.session",
+    "pk": 1,
+    "fields": {
+        "campaign": 1,
+        "mission": 1,
+        "date": "2019-02-11",
+        "outcome": "U",
+        "pilots": [
+            1,
+            2,
+            3,
+            5
+        ]
+    }
+},
+{
+    "model": "campaign.session",
+    "pk": 2,
+    "fields": {
+        "campaign": 1,
+        "mission": 2,
+        "date": "2019-05-11",
+        "outcome": "U",
+        "pilots": [
+            1,
+            2,
+            3,
+            4
+        ]
+    }
+},
+{
+    "model": "campaign.session",
+    "pk": 3,
+    "fields": {
+        "campaign": 1,
+        "mission": 3,
+        "date": "2019-06-23",
+        "outcome": "V",
+        "pilots": [
+            1,
+            2,
+            3,
+            4
+        ]
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 1,
+    "fields": {
+        "pilot": 5,
+        "session": 1,
+        "event": 1,
+        "turn": 2,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 2,
+    "fields": {
+        "pilot": 5,
+        "session": 1,
+        "event": 1,
+        "turn": 4,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 3,
+    "fields": {
+        "pilot": 5,
+        "session": 1,
+        "event": 4,
+        "turn": 5,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 4,
+    "fields": {
+        "pilot": 2,
+        "session": 1,
+        "event": 1,
+        "turn": 2,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 5,
+    "fields": {
+        "pilot": 2,
+        "session": 1,
+        "event": 1,
+        "turn": 3,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 6,
+    "fields": {
+        "pilot": 2,
+        "session": 1,
+        "event": 1,
+        "turn": 4,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 7,
+    "fields": {
+        "pilot": 2,
+        "session": 1,
+        "event": 1,
+        "turn": 5,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 8,
+    "fields": {
+        "pilot": 2,
+        "session": 1,
+        "event": 1,
+        "turn": 6,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 9,
+    "fields": {
+        "pilot": 3,
+        "session": 1,
+        "event": 1,
+        "turn": 1,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 10,
+    "fields": {
+        "pilot": 3,
+        "session": 1,
+        "event": 1,
+        "turn": 2,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 11,
+    "fields": {
+        "pilot": 3,
+        "session": 1,
+        "event": 1,
+        "turn": 3,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 12,
+    "fields": {
+        "pilot": 3,
+        "session": 1,
+        "event": 1,
+        "turn": 4,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 13,
+    "fields": {
+        "pilot": 3,
+        "session": 1,
+        "event": 1,
+        "turn": 5,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 14,
+    "fields": {
+        "pilot": 3,
+        "session": 1,
+        "event": 1,
+        "turn": 6,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 15,
+    "fields": {
+        "pilot": 1,
+        "session": 1,
+        "event": 1,
+        "turn": 2,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 16,
+    "fields": {
+        "pilot": 1,
+        "session": 1,
+        "event": 1,
+        "turn": 3,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 17,
+    "fields": {
+        "pilot": 1,
+        "session": 1,
+        "event": 1,
+        "turn": 4,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 18,
+    "fields": {
+        "pilot": 1,
+        "session": 1,
+        "event": 1,
+        "turn": 5,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 19,
+    "fields": {
+        "pilot": 2,
+        "session": 1,
+        "event": 2,
+        "turn": 3,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 20,
+    "fields": {
+        "pilot": 2,
+        "session": 1,
+        "event": 2,
+        "turn": 5,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 21,
+    "fields": {
+        "pilot": 1,
+        "session": 1,
+        "event": 2,
+        "turn": 2,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 22,
+    "fields": {
+        "pilot": 1,
+        "session": 1,
+        "event": 2,
+        "turn": 3,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 23,
+    "fields": {
+        "pilot": 3,
+        "session": 1,
+        "event": 2,
+        "turn": 4,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 24,
+    "fields": {
+        "pilot": 3,
+        "session": 1,
+        "event": 2,
+        "turn": 5,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 25,
+    "fields": {
+        "pilot": 3,
+        "session": 1,
+        "event": 2,
+        "turn": 6,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 32,
+    "fields": {
+        "pilot": 1,
+        "session": 2,
+        "event": 1,
+        "turn": 1,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 33,
+    "fields": {
+        "pilot": 2,
+        "session": 2,
+        "event": 1,
+        "turn": 1,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 34,
+    "fields": {
+        "pilot": 3,
+        "session": 2,
+        "event": 1,
+        "turn": 1,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 35,
+    "fields": {
+        "pilot": 2,
+        "session": 2,
+        "event": 1,
+        "turn": 2,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 36,
+    "fields": {
+        "pilot": 1,
+        "session": 2,
+        "event": 1,
+        "turn": 2,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 37,
+    "fields": {
+        "pilot": 4,
+        "session": 2,
+        "event": 1,
+        "turn": 2,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 39,
+    "fields": {
+        "pilot": 2,
+        "session": 2,
+        "event": 1,
+        "turn": 3,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 40,
+    "fields": {
+        "pilot": 3,
+        "session": 2,
+        "event": 1,
+        "turn": 3,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 41,
+    "fields": {
+        "pilot": 4,
+        "session": 2,
+        "event": 1,
+        "turn": 3,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 42,
+    "fields": {
+        "pilot": 4,
+        "session": 2,
+        "event": 4,
+        "turn": 3,
+        "threat": 2
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 43,
+    "fields": {
+        "pilot": 3,
+        "session": 2,
+        "event": 1,
+        "turn": 4,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 44,
+    "fields": {
+        "pilot": 4,
+        "session": 2,
+        "event": 1,
+        "turn": 4,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 45,
+    "fields": {
+        "pilot": 4,
+        "session": 2,
+        "event": 2,
+        "turn": 4,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 46,
+    "fields": {
+        "pilot": 3,
+        "session": 2,
+        "event": 1,
+        "turn": 5,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 47,
+    "fields": {
+        "pilot": 1,
+        "session": 2,
+        "event": 1,
+        "turn": 6,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 48,
+    "fields": {
+        "pilot": 2,
+        "session": 2,
+        "event": 1,
+        "turn": 6,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 49,
+    "fields": {
+        "pilot": 2,
+        "session": 2,
+        "event": 4,
+        "turn": 6,
+        "threat": 2
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 50,
+    "fields": {
+        "pilot": 3,
+        "session": 2,
+        "event": 1,
+        "turn": 6,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 51,
+    "fields": {
+        "pilot": 3,
+        "session": 2,
+        "event": 3,
+        "turn": 6,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 52,
+    "fields": {
+        "pilot": 4,
+        "session": 2,
+        "event": 1,
+        "turn": 6,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 53,
+    "fields": {
+        "pilot": 4,
+        "session": 2,
+        "event": 3,
+        "turn": 6,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 54,
+    "fields": {
+        "pilot": 1,
+        "session": 2,
+        "event": 1,
+        "turn": 7,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 55,
+    "fields": {
+        "pilot": 1,
+        "session": 2,
+        "event": 2,
+        "turn": 7,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 56,
+    "fields": {
+        "pilot": 2,
+        "session": 2,
+        "event": 1,
+        "turn": 7,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 57,
+    "fields": {
+        "pilot": 2,
+        "session": 2,
+        "event": 3,
+        "turn": 7,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 58,
+    "fields": {
+        "pilot": 4,
+        "session": 2,
+        "event": 1,
+        "turn": 7,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 59,
+    "fields": {
+        "pilot": 4,
+        "session": 2,
+        "event": 2,
+        "turn": 7,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 60,
+    "fields": {
+        "pilot": 2,
+        "session": 2,
+        "event": 1,
+        "turn": 8,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 61,
+    "fields": {
+        "pilot": 3,
+        "session": 2,
+        "event": 1,
+        "turn": 8,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 62,
+    "fields": {
+        "pilot": 3,
+        "session": 2,
+        "event": 4,
+        "turn": 8,
+        "threat": 3
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 63,
+    "fields": {
+        "pilot": 4,
+        "session": 2,
+        "event": 1,
+        "turn": 8,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 64,
+    "fields": {
+        "pilot": 2,
+        "session": 2,
+        "event": 1,
+        "turn": 9,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 65,
+    "fields": {
+        "pilot": 2,
+        "session": 2,
+        "event": 3,
+        "turn": 9,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 66,
+    "fields": {
+        "pilot": 3,
+        "session": 2,
+        "event": 1,
+        "turn": 9,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 67,
+    "fields": {
+        "pilot": 3,
+        "session": 2,
+        "event": 3,
+        "turn": 9,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 68,
+    "fields": {
+        "pilot": 4,
+        "session": 2,
+        "event": 1,
+        "turn": 9,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 69,
+    "fields": {
+        "pilot": 4,
+        "session": 2,
+        "event": 2,
+        "turn": 9,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 70,
+    "fields": {
+        "pilot": 1,
+        "session": 2,
+        "event": 1,
+        "turn": 10,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 71,
+    "fields": {
+        "pilot": 1,
+        "session": 2,
+        "event": 3,
+        "turn": 10,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 72,
+    "fields": {
+        "pilot": 2,
+        "session": 2,
+        "event": 1,
+        "turn": 10,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 73,
+    "fields": {
+        "pilot": 2,
+        "session": 2,
+        "event": 3,
+        "turn": 10,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 74,
+    "fields": {
+        "pilot": 3,
+        "session": 2,
+        "event": 1,
+        "turn": 11,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 75,
+    "fields": {
+        "pilot": 3,
+        "session": 2,
+        "event": 2,
+        "turn": 11,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 76,
+    "fields": {
+        "pilot": 4,
+        "session": 2,
+        "event": 1,
+        "turn": 11,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 77,
+    "fields": {
+        "pilot": 4,
+        "session": 2,
+        "event": 3,
+        "turn": 11,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 78,
+    "fields": {
+        "pilot": 1,
+        "session": 2,
+        "event": 1,
+        "turn": 12,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 79,
+    "fields": {
+        "pilot": 1,
+        "session": 2,
+        "event": 3,
+        "turn": 12,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 80,
+    "fields": {
+        "pilot": 2,
+        "session": 2,
+        "event": 1,
+        "turn": 12,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 81,
+    "fields": {
+        "pilot": 2,
+        "session": 2,
+        "event": 3,
+        "turn": 12,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 82,
+    "fields": {
+        "pilot": 4,
+        "session": 2,
+        "event": 1,
+        "turn": 12,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 83,
+    "fields": {
+        "pilot": 4,
+        "session": 2,
+        "event": 3,
+        "turn": 12,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 84,
+    "fields": {
+        "pilot": 1,
+        "session": 3,
+        "event": 1,
+        "turn": 2,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 85,
+    "fields": {
+        "pilot": 1,
+        "session": 3,
+        "event": 1,
+        "turn": 4,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 86,
+    "fields": {
+        "pilot": 1,
+        "session": 3,
+        "event": 1,
+        "turn": 6,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 87,
+    "fields": {
+        "pilot": 1,
+        "session": 3,
+        "event": 1,
+        "turn": 8,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 88,
+    "fields": {
+        "pilot": 1,
+        "session": 3,
+        "event": 1,
+        "turn": 10,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 89,
+    "fields": {
+        "pilot": 1,
+        "session": 3,
+        "event": 2,
+        "turn": 4,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 90,
+    "fields": {
+        "pilot": 1,
+        "session": 3,
+        "event": 2,
+        "turn": 8,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 91,
+    "fields": {
+        "pilot": 1,
+        "session": 3,
+        "event": 2,
+        "turn": 12,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 92,
+    "fields": {
+        "pilot": 1,
+        "session": 3,
+        "event": 6,
+        "turn": 6,
+        "threat": 3
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 93,
+    "fields": {
+        "pilot": 1,
+        "session": 3,
+        "event": 22,
+        "turn": 5,
+        "threat": 3
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 94,
+    "fields": {
+        "pilot": 1,
+        "session": 3,
+        "event": 7,
+        "turn": 7,
+        "threat": 2
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 95,
+    "fields": {
+        "pilot": 1,
+        "session": 3,
+        "event": 13,
+        "turn": 2,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 96,
+    "fields": {
+        "pilot": 1,
+        "session": 3,
+        "event": 13,
+        "turn": 6,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 97,
+    "fields": {
+        "pilot": 2,
+        "session": 3,
+        "event": 1,
+        "turn": 2,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 98,
+    "fields": {
+        "pilot": 2,
+        "session": 3,
+        "event": 1,
+        "turn": 4,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 99,
+    "fields": {
+        "pilot": 2,
+        "session": 3,
+        "event": 1,
+        "turn": 7,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 100,
+    "fields": {
+        "pilot": 2,
+        "session": 3,
+        "event": 1,
+        "turn": 9,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 101,
+    "fields": {
+        "pilot": 2,
+        "session": 3,
+        "event": 1,
+        "turn": 11,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 102,
+    "fields": {
+        "pilot": 2,
+        "session": 3,
+        "event": 1,
+        "turn": 12,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 103,
+    "fields": {
+        "pilot": 2,
+        "session": 3,
+        "event": 2,
+        "turn": 7,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 104,
+    "fields": {
+        "pilot": 2,
+        "session": 3,
+        "event": 2,
+        "turn": 12,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 105,
+    "fields": {
+        "pilot": 3,
+        "session": 3,
+        "event": 1,
+        "turn": 1,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 106,
+    "fields": {
+        "pilot": 3,
+        "session": 3,
+        "event": 1,
+        "turn": 3,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 107,
+    "fields": {
+        "pilot": 3,
+        "session": 3,
+        "event": 1,
+        "turn": 5,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 108,
+    "fields": {
+        "pilot": 3,
+        "session": 3,
+        "event": 1,
+        "turn": 7,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 109,
+    "fields": {
+        "pilot": 3,
+        "session": 3,
+        "event": 1,
+        "turn": 9,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 110,
+    "fields": {
+        "pilot": 3,
+        "session": 3,
+        "event": 2,
+        "turn": 3,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 111,
+    "fields": {
+        "pilot": 3,
+        "session": 3,
+        "event": 2,
+        "turn": 7,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 112,
+    "fields": {
+        "pilot": 3,
+        "session": 3,
+        "event": 2,
+        "turn": 9,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 113,
+    "fields": {
+        "pilot": 3,
+        "session": 3,
+        "event": 5,
+        "turn": 7,
+        "threat": 3
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 114,
+    "fields": {
+        "pilot": 3,
+        "session": 3,
+        "event": 13,
+        "turn": 3,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 118,
+    "fields": {
+        "pilot": 4,
+        "session": 3,
+        "event": 1,
+        "turn": 1,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 119,
+    "fields": {
+        "pilot": 4,
+        "session": 3,
+        "event": 1,
+        "turn": 2,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 120,
+    "fields": {
+        "pilot": 4,
+        "session": 3,
+        "event": 1,
+        "turn": 4,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 121,
+    "fields": {
+        "pilot": 4,
+        "session": 3,
+        "event": 1,
+        "turn": 5,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 122,
+    "fields": {
+        "pilot": 4,
+        "session": 3,
+        "event": 1,
+        "turn": 7,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 123,
+    "fields": {
+        "pilot": 4,
+        "session": 3,
+        "event": 1,
+        "turn": 8,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 124,
+    "fields": {
+        "pilot": 4,
+        "session": 3,
+        "event": 1,
+        "turn": 10,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 125,
+    "fields": {
+        "pilot": 4,
+        "session": 3,
+        "event": 1,
+        "turn": 11,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 126,
+    "fields": {
+        "pilot": 4,
+        "session": 3,
+        "event": 2,
+        "turn": 7,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 127,
+    "fields": {
+        "pilot": 4,
+        "session": 3,
+        "event": 5,
+        "turn": 8,
+        "threat": 2
+    }
+},
+{
+    "model": "xwtools.upgrade",
+    "pk": 1,
+    "fields": {
+        "name": "Expert Handling",
+        "type": "TLN",
+        "type2": null,
+        "cost": 2,
+        "charges": null
+    }
+},
+{
+    "model": "xwtools.upgrade",
+    "pk": 2,
+    "fields": {
+        "name": "Crack Shot",
+        "type": "TLN",
+        "type2": null,
+        "cost": 1,
+        "charges": 1
+    }
+},
+{
+    "model": "xwtools.upgrade",
+    "pk": 3,
+    "fields": {
+        "name": "Daredevil",
+        "type": "TLN",
+        "type2": null,
+        "cost": 3,
+        "charges": null
+    }
+},
+{
+    "model": "xwtools.upgrade",
+    "pk": 4,
+    "fields": {
+        "name": "Adv. Proton Torpedoes",
+        "type": "TRP",
+        "type2": null,
+        "cost": 6,
+        "charges": 1
+    }
+},
+{
+    "model": "xwtools.upgrade",
+    "pk": 5,
+    "fields": {
+        "name": "Ion Torpedoes",
+        "type": "TRP",
+        "type2": null,
+        "cost": 6,
+        "charges": 2
+    }
+},
+{
+    "model": "xwtools.upgrade",
+    "pk": 6,
+    "fields": {
+        "name": "Proton Torpedoes",
+        "type": "TRP",
+        "type2": null,
+        "cost": 12,
+        "charges": 2
+    }
+},
+{
+    "model": "xwtools.upgrade",
+    "pk": 7,
+    "fields": {
+        "name": "Dorsal Turret",
+        "type": "TRT",
+        "type2": null,
+        "cost": 2,
+        "charges": null
+    }
+},
+{
+    "model": "xwtools.upgrade",
+    "pk": 8,
+    "fields": {
+        "name": "Ion Cannon Turret",
+        "type": "TRT",
+        "type2": null,
+        "cost": 4,
+        "charges": null
+    }
+},
+{
+    "model": "xwtools.upgrade",
+    "pk": 9,
+    "fields": {
+        "name": "R2 Astromech",
+        "type": "AST",
+        "type2": null,
+        "cost": 4,
+        "charges": 2
+    }
+},
+{
+    "model": "xwtools.upgrade",
+    "pk": 10,
+    "fields": {
+        "name": "Arvel Crynyd",
+        "type": "PLT",
+        "type2": null,
+        "cost": 6,
+        "charges": null
+    }
+},
+{
+    "model": "xwtools.upgrade",
+    "pk": 11,
+    "fields": {
+        "name": "Concussion Missiles",
+        "type": "MSL",
+        "type2": null,
+        "cost": 6,
+        "charges": 2
+    }
+},
+{
+    "model": "xwtools.upgrade",
+    "pk": 12,
+    "fields": {
+        "name": "Proximity Mines",
+        "type": "DVC",
+        "type2": null,
+        "cost": 6,
+        "charges": 2
+    }
+},
+{
+    "model": "xwtools.upgrade",
+    "pk": 13,
+    "fields": {
+        "name": "Veteran Turret Gunner",
+        "type": "GNR",
+        "type2": null,
+        "cost": 6,
+        "charges": null
+    }
+},
+{
+    "model": "xwtools.upgrade",
+    "pk": 14,
+    "fields": {
+        "name": "R2-D2",
+        "type": "AST",
+        "type2": null,
+        "cost": 6,
+        "charges": 3
+    }
+},
+{
+    "model": "xwtools.upgrade",
+    "pk": 15,
+    "fields": {
+        "name": "Munitions Failsafe",
+        "type": "MOD",
+        "type2": null,
+        "cost": 1,
+        "charges": null
+    }
+},
+{
+    "model": "xwtools.upgrade",
+    "pk": 16,
+    "fields": {
+        "name": "R3 Astromech",
+        "type": "AST",
+        "type2": null,
+        "cost": 3,
+        "charges": null
+    }
+},
+{
+    "model": "xwtools.upgrade",
+    "pk": 17,
+    "fields": {
+        "name": "Elusive",
+        "type": "TLN",
+        "type2": null,
+        "cost": 3,
+        "charges": 1
+    }
+},
+{
+    "model": "xwtools.upgrade",
+    "pk": 18,
+    "fields": {
+        "name": "Servomotor S-Foils",
+        "type": "CNF",
+        "type2": null,
+        "cost": 0,
+        "charges": null
+    }
+},
+{
+    "model": "xwtools.upgrade",
+    "pk": 19,
+    "fields": {
+        "name": "Jake Farrell",
+        "type": "PLT",
+        "type2": null,
+        "cost": 8,
+        "charges": null
+    }
+},
+{
+    "model": "xwtools.upgrade",
+    "pk": 20,
+    "fields": {
+        "name": "Predator",
+        "type": "TLN",
+        "type2": null,
+        "cost": 2,
+        "charges": null
+    }
+},
+{
+    "model": "xwtools.upgrade",
+    "pk": 21,
+    "fields": {
+        "name": "Stealth Device",
+        "type": "MOD",
+        "type2": null,
+        "cost": 4,
+        "charges": null
+    }
+},
+{
+    "model": "xwtools.upgrade",
+    "pk": 22,
+    "fields": {
+        "name": "Proton Bombs",
+        "type": "DVC",
+        "type2": null,
+        "cost": 5,
+        "charges": null
+    }
+},
+{
+    "model": "xwtools.upgrade",
+    "pk": 23,
+    "fields": {
+        "name": "Plasma Torpedoes",
+        "type": "TRP",
+        "type2": null,
+        "cost": 8,
+        "charges": 2
+    }
+},
+{
+    "model": "xwtools.upgrade",
+    "pk": 24,
+    "fields": {
+        "name": "Outmaneuver",
+        "type": "TLN",
+        "type2": null,
+        "cost": 6,
+        "charges": null
+    }
+},
+{
+    "model": "xwtools.upgrade",
+    "pk": 25,
+    "fields": {
+        "name": "Shield Upgrade",
+        "type": "MOD",
+        "type2": null,
+        "cost": 4,
+        "charges": null
+    }
+},
+{
+    "model": "xwtools.dial",
+    "pk": 1,
+    "fields": {
+        "name": "TIE/LN Fighter"
+    }
+},
+{
+    "model": "xwtools.dial",
+    "pk": 2,
+    "fields": {
+        "name": "TIE/IN Interceptor"
+    }
+},
+{
+    "model": "xwtools.dial",
+    "pk": 3,
+    "fields": {
+        "name": "T-65 X-Wing"
+    }
+},
+{
+    "model": "xwtools.dial",
+    "pk": 4,
+    "fields": {
+        "name": "VT-49 Decimator"
+    }
+},
+{
+    "model": "xwtools.dial",
+    "pk": 5,
+    "fields": {
+        "name": "TIE/SA Bomber"
+    }
+},
+{
+    "model": "xwtools.dial",
+    "pk": 6,
+    "fields": {
+        "name": "Lambda-Class T-4A Shuttle"
+    }
+},
+{
+    "model": "xwtools.dial",
+    "pk": 7,
+    "fields": {
+        "name": "TIE Advanced x1"
+    }
+},
+{
+    "model": "xwtools.dial",
+    "pk": 8,
+    "fields": {
+        "name": "TIE/D Defender"
+    }
+},
+{
+    "model": "xwtools.dial",
+    "pk": 9,
+    "fields": {
+        "name": "TIE/SA Bomber"
+    }
+},
+{
+    "model": "xwtools.dial",
+    "pk": 10,
+    "fields": {
+        "name": "TIE/PH Phantom"
+    }
+},
+{
+    "model": "xwtools.dial",
+    "pk": 11,
+    "fields": {
+        "name": "A/SF-01 B-Wing"
+    }
+},
+{
+    "model": "xwtools.dial",
+    "pk": 12,
+    "fields": {
+        "name": "HWK-290"
+    }
+},
+{
+    "model": "xwtools.dial",
+    "pk": 13,
+    "fields": {
+        "name": "RZ-1 A-Wing"
+    }
+},
+{
+    "model": "xwtools.dial",
+    "pk": 14,
+    "fields": {
+        "name": "BTL-A4 Y-Wing"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 1,
+    "fields": {
+        "dial": 1,
+        "speed": 1,
+        "bearing": "T",
+        "direction": "L",
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 2,
+    "fields": {
+        "dial": 1,
+        "speed": 1,
+        "bearing": "T",
+        "direction": "R",
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 3,
+    "fields": {
+        "dial": 1,
+        "speed": 2,
+        "bearing": "T",
+        "direction": "L",
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 4,
+    "fields": {
+        "dial": 1,
+        "speed": 2,
+        "bearing": "B",
+        "direction": "L",
+        "difficulty": "B"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 5,
+    "fields": {
+        "dial": 1,
+        "speed": 2,
+        "bearing": "S",
+        "direction": null,
+        "difficulty": "B"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 6,
+    "fields": {
+        "dial": 1,
+        "speed": 2,
+        "bearing": "B",
+        "direction": "R",
+        "difficulty": "B"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 7,
+    "fields": {
+        "dial": 1,
+        "speed": 2,
+        "bearing": "T",
+        "direction": "R",
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 8,
+    "fields": {
+        "dial": 1,
+        "speed": 3,
+        "bearing": "T",
+        "direction": "L",
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 9,
+    "fields": {
+        "dial": 1,
+        "speed": 3,
+        "bearing": "B",
+        "direction": "L",
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 10,
+    "fields": {
+        "dial": 1,
+        "speed": 3,
+        "bearing": "S",
+        "direction": null,
+        "difficulty": "B"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 11,
+    "fields": {
+        "dial": 1,
+        "speed": 3,
+        "bearing": "B",
+        "direction": "R",
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 12,
+    "fields": {
+        "dial": 1,
+        "speed": 3,
+        "bearing": "T",
+        "direction": "R",
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 13,
+    "fields": {
+        "dial": 1,
+        "speed": 3,
+        "bearing": "KT",
+        "direction": null,
+        "difficulty": "R"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 14,
+    "fields": {
+        "dial": 1,
+        "speed": 4,
+        "bearing": "S",
+        "direction": null,
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 15,
+    "fields": {
+        "dial": 1,
+        "speed": 4,
+        "bearing": "KT",
+        "direction": null,
+        "difficulty": "R"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 16,
+    "fields": {
+        "dial": 1,
+        "speed": 5,
+        "bearing": "S",
+        "direction": null,
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 17,
+    "fields": {
+        "dial": 2,
+        "speed": 1,
+        "bearing": "T",
+        "direction": "L",
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 18,
+    "fields": {
+        "dial": 2,
+        "speed": 1,
+        "bearing": "T",
+        "direction": "R",
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 19,
+    "fields": {
+        "dial": 2,
+        "speed": 2,
+        "bearing": "T",
+        "direction": "L",
+        "difficulty": "B"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 20,
+    "fields": {
+        "dial": 2,
+        "speed": 2,
+        "bearing": "B",
+        "direction": "L",
+        "difficulty": "B"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 21,
+    "fields": {
+        "dial": 2,
+        "speed": 2,
+        "bearing": "S",
+        "direction": null,
+        "difficulty": "B"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 22,
+    "fields": {
+        "dial": 2,
+        "speed": 2,
+        "bearing": "B",
+        "direction": "R",
+        "difficulty": "B"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 23,
+    "fields": {
+        "dial": 2,
+        "speed": 2,
+        "bearing": "T",
+        "direction": "R",
+        "difficulty": "B"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 24,
+    "fields": {
+        "dial": 2,
+        "speed": 3,
+        "bearing": "SL",
+        "direction": "L",
+        "difficulty": "R"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 25,
+    "fields": {
+        "dial": 2,
+        "speed": 3,
+        "bearing": "T",
+        "direction": "L",
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 26,
+    "fields": {
+        "dial": 2,
+        "speed": 3,
+        "bearing": "B",
+        "direction": "L",
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 27,
+    "fields": {
+        "dial": 2,
+        "speed": 3,
+        "bearing": "S",
+        "direction": null,
+        "difficulty": "B"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 28,
+    "fields": {
+        "dial": 2,
+        "speed": 3,
+        "bearing": "B",
+        "direction": "R",
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 29,
+    "fields": {
+        "dial": 2,
+        "speed": 3,
+        "bearing": "T",
+        "direction": "R",
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 30,
+    "fields": {
+        "dial": 2,
+        "speed": 3,
+        "bearing": "SL",
+        "direction": "R",
+        "difficulty": "R"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 31,
+    "fields": {
+        "dial": 2,
+        "speed": 4,
+        "bearing": "S",
+        "direction": null,
+        "difficulty": "B"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 32,
+    "fields": {
+        "dial": 2,
+        "speed": 4,
+        "bearing": "KT",
+        "direction": null,
+        "difficulty": "R"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 33,
+    "fields": {
+        "dial": 2,
+        "speed": 5,
+        "bearing": "S",
+        "direction": null,
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 34,
+    "fields": {
+        "dial": 4,
+        "speed": 1,
+        "bearing": "T",
+        "direction": "L",
+        "difficulty": "R"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 35,
+    "fields": {
+        "dial": 4,
+        "speed": 1,
+        "bearing": "B",
+        "direction": "L",
+        "difficulty": "B"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 36,
+    "fields": {
+        "dial": 4,
+        "speed": 1,
+        "bearing": "S",
+        "direction": null,
+        "difficulty": "B"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 37,
+    "fields": {
+        "dial": 4,
+        "speed": 1,
+        "bearing": "B",
+        "direction": "R",
+        "difficulty": "B"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 38,
+    "fields": {
+        "dial": 4,
+        "speed": 1,
+        "bearing": "T",
+        "direction": "R",
+        "difficulty": "R"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 39,
+    "fields": {
+        "dial": 4,
+        "speed": 2,
+        "bearing": "T",
+        "direction": "L",
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 40,
+    "fields": {
+        "dial": 4,
+        "speed": 2,
+        "bearing": "B",
+        "direction": "L",
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 41,
+    "fields": {
+        "dial": 4,
+        "speed": 2,
+        "bearing": "S",
+        "direction": null,
+        "difficulty": "B"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 42,
+    "fields": {
+        "dial": 4,
+        "speed": 2,
+        "bearing": "B",
+        "direction": "R",
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 43,
+    "fields": {
+        "dial": 4,
+        "speed": 2,
+        "bearing": "T",
+        "direction": "R",
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 44,
+    "fields": {
+        "dial": 4,
+        "speed": 3,
+        "bearing": "T",
+        "direction": "L",
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 45,
+    "fields": {
+        "dial": 4,
+        "speed": 3,
+        "bearing": "B",
+        "direction": "L",
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 46,
+    "fields": {
+        "dial": 4,
+        "speed": 3,
+        "bearing": "S",
+        "direction": null,
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 47,
+    "fields": {
+        "dial": 4,
+        "speed": 3,
+        "bearing": "B",
+        "direction": "R",
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 48,
+    "fields": {
+        "dial": 4,
+        "speed": 3,
+        "bearing": "T",
+        "direction": "R",
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 49,
+    "fields": {
+        "dial": 4,
+        "speed": 4,
+        "bearing": "S",
+        "direction": null,
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 50,
+    "fields": {
+        "dial": 5,
+        "speed": 1,
+        "bearing": "B",
+        "direction": "L",
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 51,
+    "fields": {
+        "dial": 5,
+        "speed": 1,
+        "bearing": "S",
+        "direction": null,
+        "difficulty": "B"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 52,
+    "fields": {
+        "dial": 5,
+        "speed": 1,
+        "bearing": "B",
+        "direction": "R",
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 53,
+    "fields": {
+        "dial": 5,
+        "speed": 2,
+        "bearing": "T",
+        "direction": "L",
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 54,
+    "fields": {
+        "dial": 5,
+        "speed": 2,
+        "bearing": "B",
+        "direction": "L",
+        "difficulty": "B"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 55,
+    "fields": {
+        "dial": 5,
+        "speed": 2,
+        "bearing": "S",
+        "direction": null,
+        "difficulty": "B"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 56,
+    "fields": {
+        "dial": 5,
+        "speed": 2,
+        "bearing": "B",
+        "direction": "R",
+        "difficulty": "B"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 57,
+    "fields": {
+        "dial": 5,
+        "speed": 2,
+        "bearing": "T",
+        "direction": "R",
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 58,
+    "fields": {
+        "dial": 5,
+        "speed": 3,
+        "bearing": "T",
+        "direction": "L",
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 59,
+    "fields": {
+        "dial": 5,
+        "speed": 3,
+        "bearing": "B",
+        "direction": "L",
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 60,
+    "fields": {
+        "dial": 5,
+        "speed": 3,
+        "bearing": "S",
+        "direction": null,
+        "difficulty": "B"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 61,
+    "fields": {
+        "dial": 5,
+        "speed": 3,
+        "bearing": "B",
+        "direction": "R",
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 62,
+    "fields": {
+        "dial": 5,
+        "speed": 3,
+        "bearing": "T",
+        "direction": "R",
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 63,
+    "fields": {
+        "dial": 5,
+        "speed": 3,
+        "bearing": "KT",
+        "direction": null,
+        "difficulty": "R"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 64,
+    "fields": {
+        "dial": 5,
+        "speed": 4,
+        "bearing": "S",
+        "direction": null,
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 65,
+    "fields": {
+        "dial": 5,
+        "speed": 5,
+        "bearing": "KT",
+        "direction": null,
+        "difficulty": "R"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 66,
+    "fields": {
+        "dial": 6,
+        "speed": 0,
+        "bearing": "SS",
+        "direction": null,
+        "difficulty": "R"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 67,
+    "fields": {
+        "dial": 6,
+        "speed": 1,
+        "bearing": "B",
+        "direction": "L",
+        "difficulty": "B"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 68,
+    "fields": {
+        "dial": 6,
+        "speed": 1,
+        "bearing": "S",
+        "direction": null,
+        "difficulty": "B"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 69,
+    "fields": {
+        "dial": 6,
+        "speed": 1,
+        "bearing": "B",
+        "direction": "R",
+        "difficulty": "B"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 70,
+    "fields": {
+        "dial": 6,
+        "speed": 2,
+        "bearing": "T",
+        "direction": "L",
+        "difficulty": "R"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 71,
+    "fields": {
+        "dial": 6,
+        "speed": 2,
+        "bearing": "B",
+        "direction": "L",
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 72,
+    "fields": {
+        "dial": 6,
+        "speed": 2,
+        "bearing": "S",
+        "direction": null,
+        "difficulty": "B"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 73,
+    "fields": {
+        "dial": 6,
+        "speed": 2,
+        "bearing": "B",
+        "direction": "R",
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 74,
+    "fields": {
+        "dial": 6,
+        "speed": 2,
+        "bearing": "T",
+        "direction": "R",
+        "difficulty": "R"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 75,
+    "fields": {
+        "dial": 6,
+        "speed": 3,
+        "bearing": "B",
+        "direction": "L",
+        "difficulty": "R"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 76,
+    "fields": {
+        "dial": 6,
+        "speed": 3,
+        "bearing": "S",
+        "direction": null,
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 77,
+    "fields": {
+        "dial": 6,
+        "speed": 3,
+        "bearing": "B",
+        "direction": "R",
+        "difficulty": "R"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 78,
+    "fields": {
+        "dial": 1,
+        "speed": 1,
+        "bearing": "XX",
+        "direction": null,
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 79,
+    "fields": {
+        "dial": 7,
+        "speed": 1,
+        "bearing": "B",
+        "direction": "L",
+        "difficulty": "B"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 80,
+    "fields": {
+        "dial": 7,
+        "speed": 1,
+        "bearing": "S",
+        "direction": null,
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 81,
+    "fields": {
+        "dial": 7,
+        "speed": 1,
+        "bearing": "B",
+        "direction": "R",
+        "difficulty": "B"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 82,
+    "fields": {
+        "dial": 7,
+        "speed": 2,
+        "bearing": "T",
+        "direction": "L",
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 83,
+    "fields": {
+        "dial": 7,
+        "speed": 2,
+        "bearing": "B",
+        "direction": "L",
+        "difficulty": "B"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 84,
+    "fields": {
+        "dial": 7,
+        "speed": 2,
+        "bearing": "S",
+        "direction": null,
+        "difficulty": "B"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 85,
+    "fields": {
+        "dial": 7,
+        "speed": 2,
+        "bearing": "B",
+        "direction": "R",
+        "difficulty": "B"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 86,
+    "fields": {
+        "dial": 7,
+        "speed": 2,
+        "bearing": "T",
+        "direction": "R",
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 87,
+    "fields": {
+        "dial": 7,
+        "speed": 3,
+        "bearing": "TR",
+        "direction": "L",
+        "difficulty": "R"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 88,
+    "fields": {
+        "dial": 7,
+        "speed": 3,
+        "bearing": "T",
+        "direction": "L",
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 89,
+    "fields": {
+        "dial": 7,
+        "speed": 3,
+        "bearing": "B",
+        "direction": "L",
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 90,
+    "fields": {
+        "dial": 7,
+        "speed": 3,
+        "bearing": "S",
+        "direction": null,
+        "difficulty": "B"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 91,
+    "fields": {
+        "dial": 7,
+        "speed": 3,
+        "bearing": "B",
+        "direction": "R",
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 92,
+    "fields": {
+        "dial": 7,
+        "speed": 3,
+        "bearing": "T",
+        "direction": "R",
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 93,
+    "fields": {
+        "dial": 7,
+        "speed": 3,
+        "bearing": "TR",
+        "direction": "R",
+        "difficulty": "R"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 94,
+    "fields": {
+        "dial": 7,
+        "speed": 4,
+        "bearing": "S",
+        "direction": null,
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 95,
+    "fields": {
+        "dial": 7,
+        "speed": 4,
+        "bearing": "KT",
+        "direction": null,
+        "difficulty": "R"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 96,
+    "fields": {
+        "dial": 7,
+        "speed": 5,
+        "bearing": "S",
+        "direction": null,
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 97,
+    "fields": {
+        "dial": 8,
+        "speed": 1,
+        "bearing": "B",
+        "direction": "L",
+        "difficulty": "B"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 98,
+    "fields": {
+        "dial": 8,
+        "speed": 1,
+        "bearing": "XX",
+        "direction": null,
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 99,
+    "fields": {
+        "dial": 8,
+        "speed": 1,
+        "bearing": "B",
+        "direction": "R",
+        "difficulty": "B"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 100,
+    "fields": {
+        "dial": 8,
+        "speed": 1,
+        "bearing": "T",
+        "direction": "L",
+        "difficulty": "R"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 101,
+    "fields": {
+        "dial": 8,
+        "speed": 1,
+        "bearing": "T",
+        "direction": "R",
+        "difficulty": "R"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 102,
+    "fields": {
+        "dial": 8,
+        "speed": 2,
+        "bearing": "T",
+        "direction": "L",
+        "difficulty": "R"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 103,
+    "fields": {
+        "dial": 8,
+        "speed": 2,
+        "bearing": "B",
+        "direction": "L",
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 104,
+    "fields": {
+        "dial": 8,
+        "speed": 2,
+        "bearing": "S",
+        "direction": null,
+        "difficulty": "B"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 105,
+    "fields": {
+        "dial": 8,
+        "speed": 2,
+        "bearing": "B",
+        "direction": "R",
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 106,
+    "fields": {
+        "dial": 8,
+        "speed": 2,
+        "bearing": "T",
+        "direction": "R",
+        "difficulty": "R"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 107,
+    "fields": {
+        "dial": 8,
+        "speed": 2,
+        "bearing": "KT",
+        "direction": null,
+        "difficulty": "R"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 108,
+    "fields": {
+        "dial": 8,
+        "speed": 3,
+        "bearing": "T",
+        "direction": "L",
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 109,
+    "fields": {
+        "dial": 8,
+        "speed": 3,
+        "bearing": "B",
+        "direction": "L",
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 110,
+    "fields": {
+        "dial": 8,
+        "speed": 3,
+        "bearing": "S",
+        "direction": null,
+        "difficulty": "B"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 111,
+    "fields": {
+        "dial": 8,
+        "speed": 3,
+        "bearing": "B",
+        "direction": "R",
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 112,
+    "fields": {
+        "dial": 8,
+        "speed": 3,
+        "bearing": "T",
+        "direction": "R",
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 113,
+    "fields": {
+        "dial": 8,
+        "speed": 4,
+        "bearing": "S",
+        "direction": null,
+        "difficulty": "B"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 114,
+    "fields": {
+        "dial": 8,
+        "speed": 4,
+        "bearing": "KT",
+        "direction": null,
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 115,
+    "fields": {
+        "dial": 8,
+        "speed": 5,
+        "bearing": "S",
+        "direction": null,
+        "difficulty": "B"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 116,
+    "fields": {
+        "dial": 9,
+        "speed": 1,
+        "bearing": "B",
+        "direction": "L",
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 117,
+    "fields": {
+        "dial": 9,
+        "speed": 1,
+        "bearing": "S",
+        "direction": null,
+        "difficulty": "B"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 118,
+    "fields": {
+        "dial": 9,
+        "speed": 1,
+        "bearing": "B",
+        "direction": "R",
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 119,
+    "fields": {
+        "dial": 9,
+        "speed": 2,
+        "bearing": "T",
+        "direction": "L",
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 120,
+    "fields": {
+        "dial": 9,
+        "speed": 2,
+        "bearing": "B",
+        "direction": "L",
+        "difficulty": "B"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 121,
+    "fields": {
+        "dial": 9,
+        "speed": 2,
+        "bearing": "S",
+        "direction": null,
+        "difficulty": "B"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 122,
+    "fields": {
+        "dial": 9,
+        "speed": 2,
+        "bearing": "B",
+        "direction": "R",
+        "difficulty": "B"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 123,
+    "fields": {
+        "dial": 9,
+        "speed": 2,
+        "bearing": "T",
+        "direction": "R",
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 124,
+    "fields": {
+        "dial": 9,
+        "speed": 3,
+        "bearing": "T",
+        "direction": "L",
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 125,
+    "fields": {
+        "dial": 9,
+        "speed": 3,
+        "bearing": "B",
+        "direction": "L",
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 126,
+    "fields": {
+        "dial": 9,
+        "speed": 3,
+        "bearing": "S",
+        "direction": null,
+        "difficulty": "B"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 127,
+    "fields": {
+        "dial": 9,
+        "speed": 3,
+        "bearing": "B",
+        "direction": "R",
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 128,
+    "fields": {
+        "dial": 9,
+        "speed": 3,
+        "bearing": "T",
+        "direction": "R",
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 129,
+    "fields": {
+        "dial": 9,
+        "speed": 3,
+        "bearing": "KT",
+        "direction": null,
+        "difficulty": "R"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 130,
+    "fields": {
+        "dial": 9,
+        "speed": 4,
+        "bearing": "S",
+        "direction": null,
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 131,
+    "fields": {
+        "dial": 9,
+        "speed": 5,
+        "bearing": "KT",
+        "direction": null,
+        "difficulty": "R"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 132,
+    "fields": {
+        "dial": 10,
+        "speed": 1,
+        "bearing": "B",
+        "direction": "L",
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 133,
+    "fields": {
+        "dial": 10,
+        "speed": 1,
+        "bearing": "XX",
+        "direction": null,
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 134,
+    "fields": {
+        "dial": 10,
+        "speed": 1,
+        "bearing": "B",
+        "direction": "R",
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 135,
+    "fields": {
+        "dial": 10,
+        "speed": 1,
+        "bearing": "T",
+        "direction": "L",
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 136,
+    "fields": {
+        "dial": 10,
+        "speed": 1,
+        "bearing": "T",
+        "direction": "R",
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 137,
+    "fields": {
+        "dial": 10,
+        "speed": 2,
+        "bearing": "T",
+        "direction": "L",
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 138,
+    "fields": {
+        "dial": 10,
+        "speed": 2,
+        "bearing": "B",
+        "direction": "L",
+        "difficulty": "B"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 139,
+    "fields": {
+        "dial": 10,
+        "speed": 2,
+        "bearing": "S",
+        "direction": null,
+        "difficulty": "B"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 140,
+    "fields": {
+        "dial": 10,
+        "speed": 2,
+        "bearing": "B",
+        "direction": "R",
+        "difficulty": "B"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 141,
+    "fields": {
+        "dial": 10,
+        "speed": 2,
+        "bearing": "T",
+        "direction": "R",
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 142,
+    "fields": {
+        "dial": 10,
+        "speed": 3,
+        "bearing": "T",
+        "direction": "L",
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 143,
+    "fields": {
+        "dial": 10,
+        "speed": 3,
+        "bearing": "B",
+        "direction": "L",
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 144,
+    "fields": {
+        "dial": 10,
+        "speed": 3,
+        "bearing": "S",
+        "direction": null,
+        "difficulty": "B"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 145,
+    "fields": {
+        "dial": 10,
+        "speed": 3,
+        "bearing": "B",
+        "direction": "R",
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 146,
+    "fields": {
+        "dial": 10,
+        "speed": 3,
+        "bearing": "T",
+        "direction": "R",
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 147,
+    "fields": {
+        "dial": 10,
+        "speed": 3,
+        "bearing": "KT",
+        "direction": null,
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 148,
+    "fields": {
+        "dial": 10,
+        "speed": 4,
+        "bearing": "S",
+        "direction": null,
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 149,
+    "fields": {
+        "dial": 10,
+        "speed": 4,
+        "bearing": "KT",
+        "direction": null,
+        "difficulty": "R"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 150,
+    "fields": {
+        "dial": 11,
+        "speed": 1,
+        "bearing": "T",
+        "direction": "L",
+        "difficulty": "R"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 151,
+    "fields": {
+        "dial": 11,
+        "speed": 1,
+        "bearing": "B",
+        "direction": "L",
+        "difficulty": "B"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 152,
+    "fields": {
+        "dial": 11,
+        "speed": 1,
+        "bearing": "S",
+        "direction": null,
+        "difficulty": "B"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 153,
+    "fields": {
+        "dial": 11,
+        "speed": 1,
+        "bearing": "B",
+        "direction": "R",
+        "difficulty": "B"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 154,
+    "fields": {
+        "dial": 11,
+        "speed": 1,
+        "bearing": "T",
+        "direction": "R",
+        "difficulty": "R"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 155,
+    "fields": {
+        "dial": 11,
+        "speed": 1,
+        "bearing": "TR",
+        "direction": "L",
+        "difficulty": "R"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 156,
+    "fields": {
+        "dial": 11,
+        "speed": 1,
+        "bearing": "TR",
+        "direction": "R",
+        "difficulty": "R"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 157,
+    "fields": {
+        "dial": 11,
+        "speed": 2,
+        "bearing": "T",
+        "direction": "L",
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 158,
+    "fields": {
+        "dial": 11,
+        "speed": 2,
+        "bearing": "B",
+        "direction": "L",
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 159,
+    "fields": {
+        "dial": 11,
+        "speed": 2,
+        "bearing": "S",
+        "direction": null,
+        "difficulty": "B"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 160,
+    "fields": {
+        "dial": 11,
+        "speed": 2,
+        "bearing": "B",
+        "direction": "R",
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 161,
+    "fields": {
+        "dial": 11,
+        "speed": 2,
+        "bearing": "T",
+        "direction": "R",
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 162,
+    "fields": {
+        "dial": 11,
+        "speed": 2,
+        "bearing": "KT",
+        "direction": null,
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 163,
+    "fields": {
+        "dial": 11,
+        "speed": 3,
+        "bearing": "B",
+        "direction": "L",
+        "difficulty": "R"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 164,
+    "fields": {
+        "dial": 11,
+        "speed": 3,
+        "bearing": "S",
+        "direction": null,
+        "difficulty": "B"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 165,
+    "fields": {
+        "dial": 11,
+        "speed": 3,
+        "bearing": "B",
+        "direction": "R",
+        "difficulty": "R"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 166,
+    "fields": {
+        "dial": 11,
+        "speed": 4,
+        "bearing": "S",
+        "direction": null,
+        "difficulty": "R"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 167,
+    "fields": {
+        "dial": 12,
+        "speed": 0,
+        "bearing": "SS",
+        "direction": null,
+        "difficulty": "R"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 168,
+    "fields": {
+        "dial": 12,
+        "speed": 1,
+        "bearing": "B",
+        "direction": "L",
+        "difficulty": "B"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 169,
+    "fields": {
+        "dial": 12,
+        "speed": 1,
+        "bearing": "S",
+        "direction": null,
+        "difficulty": "B"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 170,
+    "fields": {
+        "dial": 12,
+        "speed": 1,
+        "bearing": "B",
+        "direction": "R",
+        "difficulty": "B"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 171,
+    "fields": {
+        "dial": 12,
+        "speed": 2,
+        "bearing": "T",
+        "direction": "L",
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 172,
+    "fields": {
+        "dial": 12,
+        "speed": 2,
+        "bearing": "B",
+        "direction": "L",
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 173,
+    "fields": {
+        "dial": 12,
+        "speed": 2,
+        "bearing": "S",
+        "direction": null,
+        "difficulty": "B"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 174,
+    "fields": {
+        "dial": 12,
+        "speed": 2,
+        "bearing": "B",
+        "direction": "R",
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 175,
+    "fields": {
+        "dial": 12,
+        "speed": 2,
+        "bearing": "T",
+        "direction": "R",
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 176,
+    "fields": {
+        "dial": 12,
+        "speed": 3,
+        "bearing": "T",
+        "direction": "L",
+        "difficulty": "R"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 177,
+    "fields": {
+        "dial": 12,
+        "speed": 3,
+        "bearing": "B",
+        "direction": "L",
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 178,
+    "fields": {
+        "dial": 12,
+        "speed": 3,
+        "bearing": "S",
+        "direction": null,
+        "difficulty": "B"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 179,
+    "fields": {
+        "dial": 12,
+        "speed": 3,
+        "bearing": "B",
+        "direction": "R",
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 180,
+    "fields": {
+        "dial": 12,
+        "speed": 3,
+        "bearing": "T",
+        "direction": "R",
+        "difficulty": "R"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 181,
+    "fields": {
+        "dial": 12,
+        "speed": 4,
+        "bearing": "S",
+        "direction": null,
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 182,
+    "fields": {
+        "dial": 3,
+        "speed": 1,
+        "bearing": "B",
+        "direction": "L",
+        "difficulty": "B"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 183,
+    "fields": {
+        "dial": 3,
+        "speed": 1,
+        "bearing": "S",
+        "direction": null,
+        "difficulty": "B"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 184,
+    "fields": {
+        "dial": 3,
+        "speed": 1,
+        "bearing": "B",
+        "direction": "R",
+        "difficulty": "B"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 185,
+    "fields": {
+        "dial": 3,
+        "speed": 2,
+        "bearing": "T",
+        "direction": "L",
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 186,
+    "fields": {
+        "dial": 3,
+        "speed": 2,
+        "bearing": "B",
+        "direction": "L",
+        "difficulty": "B"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 187,
+    "fields": {
+        "dial": 3,
+        "speed": 2,
+        "bearing": "S",
+        "direction": null,
+        "difficulty": "B"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 188,
+    "fields": {
+        "dial": 3,
+        "speed": 2,
+        "bearing": "B",
+        "direction": "R",
+        "difficulty": "B"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 189,
+    "fields": {
+        "dial": 3,
+        "speed": 2,
+        "bearing": "T",
+        "direction": "R",
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 190,
+    "fields": {
+        "dial": 3,
+        "speed": 3,
+        "bearing": "TR",
+        "direction": "L",
+        "difficulty": "R"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 191,
+    "fields": {
+        "dial": 3,
+        "speed": 3,
+        "bearing": "T",
+        "direction": "L",
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 192,
+    "fields": {
+        "dial": 3,
+        "speed": 3,
+        "bearing": "B",
+        "direction": "L",
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 193,
+    "fields": {
+        "dial": 3,
+        "speed": 3,
+        "bearing": "S",
+        "direction": null,
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 194,
+    "fields": {
+        "dial": 3,
+        "speed": 3,
+        "bearing": "B",
+        "direction": "R",
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 195,
+    "fields": {
+        "dial": 3,
+        "speed": 3,
+        "bearing": "T",
+        "direction": "R",
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 196,
+    "fields": {
+        "dial": 3,
+        "speed": 3,
+        "bearing": "TR",
+        "direction": "R",
+        "difficulty": "R"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 197,
+    "fields": {
+        "dial": 3,
+        "speed": 4,
+        "bearing": "S",
+        "direction": null,
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 198,
+    "fields": {
+        "dial": 3,
+        "speed": 4,
+        "bearing": "KT",
+        "direction": null,
+        "difficulty": "R"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 199,
+    "fields": {
+        "dial": 13,
+        "speed": 1,
+        "bearing": "T",
+        "direction": "L",
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 200,
+    "fields": {
+        "dial": 13,
+        "speed": 1,
+        "bearing": "XX",
+        "direction": null,
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 201,
+    "fields": {
+        "dial": 13,
+        "speed": 1,
+        "bearing": "T",
+        "direction": "R",
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 202,
+    "fields": {
+        "dial": 13,
+        "speed": 2,
+        "bearing": "T",
+        "direction": "L",
+        "difficulty": "B"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 203,
+    "fields": {
+        "dial": 13,
+        "speed": 2,
+        "bearing": "B",
+        "direction": "L",
+        "difficulty": "B"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 204,
+    "fields": {
+        "dial": 13,
+        "speed": 2,
+        "bearing": "S",
+        "direction": null,
+        "difficulty": "B"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 205,
+    "fields": {
+        "dial": 13,
+        "speed": 2,
+        "bearing": "B",
+        "direction": "R",
+        "difficulty": "B"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 206,
+    "fields": {
+        "dial": 13,
+        "speed": 2,
+        "bearing": "T",
+        "direction": "R",
+        "difficulty": "B"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 207,
+    "fields": {
+        "dial": 13,
+        "speed": 3,
+        "bearing": "SL",
+        "direction": "L",
+        "difficulty": "R"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 208,
+    "fields": {
+        "dial": 13,
+        "speed": 3,
+        "bearing": "T",
+        "direction": "L",
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 209,
+    "fields": {
+        "dial": 13,
+        "speed": 3,
+        "bearing": "B",
+        "direction": "L",
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 210,
+    "fields": {
+        "dial": 13,
+        "speed": 3,
+        "bearing": "S",
+        "direction": null,
+        "difficulty": "B"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 211,
+    "fields": {
+        "dial": 13,
+        "speed": 3,
+        "bearing": "B",
+        "direction": "R",
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 212,
+    "fields": {
+        "dial": 13,
+        "speed": 3,
+        "bearing": "T",
+        "direction": "R",
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 213,
+    "fields": {
+        "dial": 13,
+        "speed": 3,
+        "bearing": "SL",
+        "direction": "R",
+        "difficulty": "R"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 214,
+    "fields": {
+        "dial": 13,
+        "speed": 4,
+        "bearing": "S",
+        "direction": null,
+        "difficulty": "B"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 215,
+    "fields": {
+        "dial": 13,
+        "speed": 5,
+        "bearing": "S",
+        "direction": null,
+        "difficulty": "B"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 216,
+    "fields": {
+        "dial": 14,
+        "speed": 1,
+        "bearing": "B",
+        "direction": "L",
+        "difficulty": "B"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 217,
+    "fields": {
+        "dial": 14,
+        "speed": 1,
+        "bearing": "S",
+        "direction": null,
+        "difficulty": "B"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 218,
+    "fields": {
+        "dial": 14,
+        "speed": 1,
+        "bearing": "B",
+        "direction": "R",
+        "difficulty": "B"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 219,
+    "fields": {
+        "dial": 14,
+        "speed": 2,
+        "bearing": "T",
+        "direction": "L",
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 220,
+    "fields": {
+        "dial": 14,
+        "speed": 2,
+        "bearing": "B",
+        "direction": "L",
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 221,
+    "fields": {
+        "dial": 14,
+        "speed": 2,
+        "bearing": "S",
+        "direction": null,
+        "difficulty": "B"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 222,
+    "fields": {
+        "dial": 14,
+        "speed": 2,
+        "bearing": "B",
+        "direction": "R",
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 223,
+    "fields": {
+        "dial": 14,
+        "speed": 2,
+        "bearing": "T",
+        "direction": "R",
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 224,
+    "fields": {
+        "dial": 14,
+        "speed": 3,
+        "bearing": "T",
+        "direction": "L",
+        "difficulty": "R"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 225,
+    "fields": {
+        "dial": 14,
+        "speed": 3,
+        "bearing": "B",
+        "direction": "L",
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 226,
+    "fields": {
+        "dial": 14,
+        "speed": 3,
+        "bearing": "S",
+        "direction": null,
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 227,
+    "fields": {
+        "dial": 14,
+        "speed": 3,
+        "bearing": "B",
+        "direction": "R",
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 228,
+    "fields": {
+        "dial": 14,
+        "speed": 3,
+        "bearing": "T",
+        "direction": "R",
+        "difficulty": "R"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 229,
+    "fields": {
+        "dial": 14,
+        "speed": 4,
+        "bearing": "S",
+        "direction": null,
+        "difficulty": "R"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 230,
+    "fields": {
+        "dial": 14,
+        "speed": 4,
+        "bearing": "KT",
+        "direction": null,
+        "difficulty": "R"
+    }
+},
+{
+    "model": "xwtools.chassis",
+    "pk": 1,
+    "fields": {
+        "name": "T-65 X-Wing",
+        "slug": "t65-xwing",
+        "dial": 3,
+        "faction": "RA"
+    }
+},
+{
+    "model": "xwtools.chassis",
+    "pk": 2,
+    "fields": {
+        "name": "BTL-A4 Y-wing",
+        "slug": "btla4-ywing",
+        "dial": 14,
+        "faction": "RA"
+    }
+},
+{
+    "model": "xwtools.chassis",
+    "pk": 3,
+    "fields": {
+        "name": "RZ-1 A-Wing",
+        "slug": "rz1-awing",
+        "dial": 13,
+        "faction": "RA"
+    }
+},
+{
+    "model": "xwtools.chassis",
+    "pk": 4,
+    "fields": {
+        "name": "A/SF-01 B-Wing",
+        "slug": "asf01-bwing",
+        "dial": 11,
+        "faction": "RA"
+    }
+},
+{
+    "model": "xwtools.chassis",
+    "pk": 5,
+    "fields": {
+        "name": "HWK-290 Freighter",
+        "slug": "hwk-290",
+        "dial": 12,
+        "faction": "RA"
+    }
+},
+{
+    "model": "xwtools.chassis",
+    "pk": 6,
+    "fields": {
+        "name": "TIE/LN Fighter",
+        "slug": "tie-fighter",
+        "dial": 1,
+        "faction": "GE"
+    }
+},
+{
+    "model": "xwtools.chassis",
+    "pk": 7,
+    "fields": {
+        "name": "TIE/IN Interceptor",
+        "slug": "tie-interceptor",
+        "dial": 2,
+        "faction": "GE"
+    }
+},
+{
+    "model": "xwtools.chassis",
+    "pk": 8,
+    "fields": {
+        "name": "VT-49 Decimator",
+        "slug": "vt-49-decimator",
+        "dial": 4,
+        "faction": "GE"
+    }
+},
+{
+    "model": "xwtools.chassis",
+    "pk": 9,
+    "fields": {
+        "name": "Lambda-Class T-4A Shuttle",
+        "slug": "lambda-t4a-shuttle",
+        "dial": 6,
+        "faction": "GE"
+    }
+},
+{
+    "model": "xwtools.chassis",
+    "pk": 10,
+    "fields": {
+        "name": "TIE Advanced x1",
+        "slug": "tie-advanced",
+        "dial": 7,
+        "faction": "GE"
+    }
+},
+{
+    "model": "xwtools.chassis",
+    "pk": 11,
+    "fields": {
+        "name": "TIE/D Defender",
+        "slug": "tie-defender",
+        "dial": 8,
+        "faction": "GE"
+    }
+},
+{
+    "model": "xwtools.chassis",
+    "pk": 12,
+    "fields": {
+        "name": "TIE/SA Bomber",
+        "slug": "tie-bomber",
+        "dial": 9,
+        "faction": "GE"
+    }
+},
+{
+    "model": "xwtools.slot",
+    "pk": 57,
+    "fields": {
+        "chassis": 3,
+        "type": "6",
+        "initiative": 1
+    }
+},
+{
+    "model": "xwtools.slot",
+    "pk": 58,
+    "fields": {
+        "chassis": 3,
+        "type": "9",
+        "initiative": 1
+    }
+},
+{
+    "model": "xwtools.slot",
+    "pk": 59,
+    "fields": {
+        "chassis": 3,
+        "type": "10",
+        "initiative": 1
+    }
+},
+{
+    "model": "xwtools.slot",
+    "pk": 60,
+    "fields": {
+        "chassis": 3,
+        "type": "6",
+        "initiative": 3
+    }
+},
+{
+    "model": "xwtools.slot",
+    "pk": 61,
+    "fields": {
+        "chassis": 3,
+        "type": "10",
+        "initiative": 4
+    }
+},
+{
+    "model": "xwtools.slot",
+    "pk": 62,
+    "fields": {
+        "chassis": 3,
+        "type": "6",
+        "initiative": 5
+    }
+},
+{
+    "model": "xwtools.slot",
+    "pk": 63,
+    "fields": {
+        "chassis": 3,
+        "type": "6",
+        "initiative": 6
+    }
+},
+{
+    "model": "xwtools.slot",
+    "pk": 64,
+    "fields": {
+        "chassis": 3,
+        "type": "10",
+        "initiative": 6
+    }
+}
+]

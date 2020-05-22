@@ -4,6 +4,7 @@ from django.db.models import Case, When, Value
 import re
 
 SLOT_TYPES = {
+    'Talent':'0',
     'Astromech':'1',
     'Cannon':'2',
     'Config':'3',
@@ -163,6 +164,18 @@ class Chassis(models.Model):
     name = models.CharField(max_length=40)
     slug = models.SlugField(max_length=20, null=True)
     dial = models.ForeignKey(Dial, on_delete=models.CASCADE)
+
+    ARC_CHOICES = (
+        ('F', 'Front'),
+        ('R', 'Rear')
+    )
+    attack = models.PositiveSmallIntegerField(default=0)
+    attack_arc = models.CharField(max_length=2, choices=ARC_CHOICES, default='F')
+    attack2 = models.PositiveSmallIntegerField(default=0)
+    attack2_arc = models.CharField(max_length=2, choices=ARC_CHOICES, null=True, blank=True)
+    agility = models.PositiveSmallIntegerField(default=0)
+    hull = models.PositiveSmallIntegerField(default=0)
+    shields = models.PositiveSmallIntegerField(default=0)
 
     FACTION_CHOICES = (
         ('RA', 'Rebel Alliance'),

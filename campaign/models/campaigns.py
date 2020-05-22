@@ -29,6 +29,12 @@ class Squadron(models.Model):
     start_xp = models.PositiveSmallIntegerField(default=0)
     playable = models.BooleanField(default=True)
 
+    PROGRESSION_TYPES = (
+        ('d', 'Default'),
+        ('h', 'HWK-290')
+    )
+    progression = models.CharField(max_length=1, choices=PROGRESSION_TYPES, default='d')
+
     @property
     def name(self):
         return self.chassis.name

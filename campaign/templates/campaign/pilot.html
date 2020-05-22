@@ -17,6 +17,32 @@
     </div>
 </div>
 
+
+<div class="row mb-1">
+    <div class="col list-group list-group-horizontal" id='ship_list' role='tablist'>
+        {% for ps in pilot.pilotship_set.all %}
+        <a class='list-group-item list-group-item-action {% if forloop.last %} active {% endif %}' data-toggle='list' href='#{{ps.chassis.slug}}' role='tab'>{{ps.chassis.name}}</a>
+        {% endfor %}
+    </div>
+</div>
+
+<div class="row mb-3">
+    <div class='tab-content'>
+        {% for ps in pilot.pilotship_set.all %}
+        <div class='tab-pane {% if forloop.last %} active {% endif %}' id='{{ps.chassis.slug}}' role='tabpanel'>
+            <h6><a href="{% url 'chassis' chassis_slug=ps.chassis.slug %}">{{ps.chassis.name}} <i class="xw-ship xw-ship-{{ps.css_name}}"></i></a></h6>
+            <span>Initiative {{ps.initiative}}</span>
+            <ul class="list-group list-group-horizontal">
+            {% for slot in ps.slots %}
+              <li class="list-group-item">{{slot|get_icon}}<li>
+            {% endfor %}
+            </ul>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+
 <div class="row mb-3">
     <div class="col">
         <h4>Upgrades</h4>
@@ -40,19 +66,6 @@
 </div>
 
 
-<div class="row">
-    <div class="col">
-        {% for ps in pilot.pilotship_set.all %}
-        <div class="row mb-2">
-                <div class="col-3">
-                  <h5><a href="{% url 'chassis' chassis_slug=ps.chassis.slug %}">{{ps.chassis.name}} <i class="xw-ship xw-ship-{{ps.css_name}}"></i></a></h5>
-                  <span>Initiative {{ps.initiative}}</span>
-                </div>
-        </div>
-
-        {% endfor %}
-    </div>
-</div>
 
 <div class="row">
     <div class="col">
