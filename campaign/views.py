@@ -51,22 +51,17 @@ def old_session_summary(request, session_id):
 
 def pilot_sheet(request, pilot_id):
     pilot = Pilot.objects.get(id=pilot_id)
-    ach = []
-
-
-    for ev in Event.objects.all():
-        a = pilot.achievement_set.filter(event=ev.id)
-        if a:
-            ach.append({'event':ev.long_desc, 'count':len(a)})
 
     xp_spent = (pilot.upgrades.aggregate(total=Sum('cost'))['total'] or 0)
+
     context = {'pilot':pilot,
                'remaining':pilot.total_xp - xp_spent,
-               'achievements':ach,
-               'missions':len(pilot.session_set.all())}
+               'achievements':pilot.achievement_set\
+                                   .values('event__long_desc')\
+                                   .order_by('event__short_desc')\
+                                   .annotate(count=Count('event')),
+               'missions':pilot.session_set.count()}
     return render(request, 'campaign/pilot.html', context)
-
-
 
 
 class CampaignView(DetailView):

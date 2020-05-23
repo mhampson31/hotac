@@ -44,3 +44,7 @@ class Achievement(models.Model):
     event = models.ForeignKey(Event, on_delete=models.CASCADE, default=1)
     turn = models.PositiveSmallIntegerField()
     threat = models.SmallIntegerField(null=True, blank=True)
+
+    @property
+    def xp(self):
+        return (self.event.xp or 0) + (self.threat or 0)

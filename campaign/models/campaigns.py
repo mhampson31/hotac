@@ -2,7 +2,10 @@ from django.db import models
 from django.urls import reverse
 from django.contrib.auth.models import AbstractUser
 
+from math import floor
+
 from xwtools.models import Chassis
+
 
 
 class User(AbstractUser):
@@ -13,6 +16,7 @@ class Campaign(models.Model):
     description = models.CharField(max_length=30)
     victory = models.PositiveSmallIntegerField()
     ship_initiative = models.BooleanField(default=False)
+    pool_xp = models.BooleanField(default=False)
     admin = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
     ships = models.ManyToManyField(Chassis, through='Squadron')
 
@@ -22,11 +26,20 @@ class Campaign(models.Model):
     def get_absolute_url(self):
         return reverse('campaign', kwargs={'pk': self.pk})
 
+    @property
+    def xp_share(self):
+        pilots = 0
+        xp = 0
+        for s in self.session_set.all():
+            pilots = pilots + s.pilots.count()
+            xp = xp + s.xp_total
+        return floor(xp/pilots)
+
 
 class Squadron(models.Model):
     campaign = models.ForeignKey(Campaign, on_delete=models.CASCADE)
     chassis = models.ForeignKey(Chassis, on_delete=models.CASCADE)
-    start_xp = models.PositiveSmallIntegerField(default=0)
+    start_xp = models.PositiveSmallIntegerField(default=10)
     playable = models.BooleanField(default=True)
 
     PROGRESSION_TYPES = (

@@ -72,7 +72,7 @@
         <h5>Achievements</h5>
         <ul class="list-group col">
         {% for event in achievements %}
-            <li class="list-group-item">{{event.event}} <span class="badge badge-primary badge-pill">x{{event.count}}</span></li>
+            <li class="list-group-item">{{event.event__long_desc}} <span class="badge badge-primary badge-pill">x{{event.count}}</span></li>
         {% endfor %}
         </ul>
 

@@ -1,4 +1,5 @@
 from django.db import models
+from django.db.models import Sum
 
 from xwtools.models import Chassis, Upgrade
 from .campaigns import User, Campaign, Squadron
@@ -8,20 +9,26 @@ class Pilot(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     campaign = models.ForeignKey(Campaign, on_delete=models.CASCADE)
     callsign = models.CharField(max_length=30)
-    total_xp = models.PositiveSmallIntegerField()
     upgrades = models.ManyToManyField(Upgrade)
     initiative = models.PositiveSmallIntegerField(default=2)
 
-    SLOT_CHOICES = (
-        ('FRC', 'Force'),
-        ('TLN', 'Talent')
+    PATH_CHOICES = (
+        ('F', 'Force User'),
+        ('A', 'Ace')
     )
-    init_3 = models.CharField(max_length=3, choices=SLOT_CHOICES, default='TLN')
-    init_5 = models.CharField(max_length=3, choices=SLOT_CHOICES, default='TLN')
-    init_6 = models.CharField(max_length=3, choices=SLOT_CHOICES, default='TLN')
+    path = models.CharField(max_length=1, choices=PATH_CHOICES, default='A')
 
     def __str__(self):
         return '{} ({})'.format(self.callsign, self.user)
+
+    @property
+    def total_xp(self):
+        xp = self.campaign.squadron_set.get(chassis=self.pilotship_set.first().chassis).start_xp + \
+            (self.achievement_set.filter(event__team=False).aggregate(xp=Sum('event__xp'))['xp'] or 0)
+        if self.campaign.pool_xp:
+            return xp + self.campaign.xp_share * self.session_set.count()
+        else:
+            return xp + sum([a.xp for a in self.achievement_set.filter(event__team=True)])
 
 
 class PilotShip(models.Model):
@@ -38,16 +45,17 @@ class PilotShip(models.Model):
     def slots(self):
         i = self.initiative if self.pilot.campaign.ship_initiative else self.pilot.initiative
         slot_list = [s.get_type_display() for s in self.chassis.slots.all()]
+        path_slot = {'A':'Pilot', 'F':'Force Power'}[self.pilot.path]
 
         if i >= 3:
-            slot_list.append(self.pilot.get_init_3_display())
+            slot_list.append(path_slot)
         if i >= 4:
             slot_list.append('Modification')
         if i >= 5:
             prog = self.pilot.campaign.squadron_set.get(id=self.chassis.id).progression
-            slot_list.append({'d':self.pilot.get_init_5_display(),
+            slot_list.append({'d':path_slot,
                               'h':'Sensor'}[prog])
         if i == 6:
-            slot_list.extend((self.pilot.get_init_6_display(), 'Modification'))
+            slot_list.extend((path_slot, 'Modification'))
         slot_list.sort()
         return slot_list
