@@ -11,7 +11,6 @@ urlpatterns = [
     path('session/<int:session_id>', campaign_views.session_summary, name='session'),
     path('pilot/<int:pilot_id>', campaign_views.pilot_sheet, name='pilot'),
     path('campaign/<int:pk>', campaign_views.CampaignView.as_view(), name='campaign'),
-    path('ses/<int:session_id>', campaign_views.old_session_summary, name='old_ses'),
     path('chassis/<slug:chassis_slug>/', xwt_views.ship_sheet, name='chassis'),
     path('chassis/<slug:chassis_slug>/ai/', campaign_views.ai_select, name='ai'),
     path('chaining/', include('smart_selects.urls')),

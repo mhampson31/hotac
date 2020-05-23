@@ -10,7 +10,8 @@ class AI(models.Model):
     flee = models.PositiveSmallIntegerField(default=0)
 
     def __str__(self):
-        return '{} AI'.format(self.dial.name)
+        return '{} AI'.format(self.dial.chassis.name)
+
 
     def mirror(self):
         """
@@ -37,7 +38,8 @@ class AIManeuver(models.Model):
         ('1', 'R1/R2 Closing'),
         ('2', 'R3/R2 Fleeing'),
         ('3', 'R4+'),
-        ('4', 'Stressed')
+        ('4', 'Stressed'),
+        ('5', 'Fleeing')
     )
 
     AI_ARC_CHOICES = (

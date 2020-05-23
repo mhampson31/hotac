@@ -17,8 +17,11 @@ def index(request):
     return render(request, 'campaign/index.html', context)
 
 
-def ai_select(request, ship_slug):
-    context = {'ai':AI.objects.get(dial__ship__slug=ship_slug)}
+def ai_select(request, chassis_slug):
+    ai = AI.objects.get(dial__chassis__slug=chassis_slug)
+    mvs = ai.aimaneuver_set.filter(range__lte='4')
+    fleeing = ai.aimaneuver_set.filter(range='5').first()
+    context = {'ai':ai, 'mvs':mvs}
     return render(request, 'campaign/ai.html', context)
 
 
@@ -36,17 +39,6 @@ def session_summary(request, session_id):
         pilot_list.append(t)
     return render(request, 'campaign/s2.html', {'pilots': pilot_list, 'session':s})
 
-
-def old_session_summary(request, session_id):
-    session = Session.objects.get(id=session_id)
-    bonus = session.achievement_set.filter(event__team=False).order_by('pilot__callsign').annotate(total=Sum('event__xp'))
-    context = {'ses':session,
-               'bonus':bonus,
-               'summary':session.achievement_set.values('pilot__callsign', 'event__short_desc')
-                                        .order_by('pilot__id', 'event__id')
-                                        .annotate(total=Count('id'), xp=Coalesce(Sum('threat'), 0) + Sum('event__xp'))
-    }
-    return render(request, 'campaign/session.html', context)
 
 
 def pilot_sheet(request, pilot_id):

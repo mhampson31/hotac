@@ -6,7 +6,18 @@
 {% block content %}
 
 <div class="container text-center">
-    <h5 class=""><i class="xw-ship xw-ship-{{ai.dial.css_name}}"></i> {{ai.dial}} AI</h5>
+    <h5 class=""><i class="xw-ship xw-ship-{{ai.dial.chassis.css_name}}"></i>{{ai.dial.chassis}} AI</h5>
+
+    {% if ai.dial.chassis.cloaking %}
+    <div>
+        <button type="button" class="btn btn-block btn-secondary">Decloaking</button>
+        <ul class="list-group mb-4 list-group-horizontal">
+            <li class="list-group-item flex-fill"><span class="">2 &#9664; {{'barrelroll'|get_icon}}</span></li>
+            <li class="list-group-item flex-fill"><span class="">2 {{'straight'|get_icon}}</span></li>
+            <li class="list-group-item flex-fill"><span class="">2 {{'barrelroll'|get_icon}} &#9654;</span></li>
+            </ul>
+    </div>
+    {% endif %}
 
     <ul class="nav nav-pills mb-4" role="tablist">
         <li class="nav-item col" role="presentation">
@@ -48,7 +59,7 @@
     </ul>
 
     <div class="tab-content">
-    {% regroup ai.aimaneuver_set.all by arc as maneuvers %}
+    {% regroup mvs by arc as maneuvers %}
 
         {% for dir in maneuvers %}
         <div class="tab-pane fade {% if forloop.first %}show{% endif %}" id="mv-{{dir.grouper|lower}}" role="tabpanel" aria-labelledby="mv-{{dir.grouper|lower}}-tab">
@@ -59,10 +70,30 @@
                 <li class="list-group-item flex-fill">{{roll.speed}}<span class="{{roll.icon_color}}">{{roll.css_name|get_icon}}</span></li>
                 {% endfor %}
             </ul>
-            {% endfor %}
+        {% endfor %}
         </div>
         {% endfor %}
+
+        <div>
+            <button type="button" class="btn btn-block btn-secondary">Fleeing</button>
+            <div>Flee Threshold: {{ai.flee}}</div>
+            <div>Hyperdrive: {{ai.dial.chassis.hyperdrive|yesno}}</div>
+            <ul class="list-group mb-4 list-group-horizontal">
+                {% for roll in fleeing.rolls %}
+                <li class="list-group-item flex-fill">{{roll.speed}}<span class="{{roll.icon_color}}">{{roll.css_name|get_icon}}</span></li>
+                {% endfor %}
+            </ul>
+        </div>
     </div>
+
+    {% if fleeing %}
+    <div class="row">
+        <div>
+        </div>
+    </div>
+    {% endif %}
+
+
 </div>
 
 {% endblock content %}
