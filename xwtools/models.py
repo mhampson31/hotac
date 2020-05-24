@@ -170,7 +170,7 @@ class DialManeuver(models.Model):
             return self
         else:
             new_direction = {'L':'R', 'R':'L'}[self.direction]
-            return self.dial.maneuvers.get(speed=self.speed, move=self.bearing, direction=new_direction)
+            return self.dial.maneuvers.get(speed=self.speed, bearing=self.bearing, direction=new_direction)
 
     @property
     def css_name(self):
