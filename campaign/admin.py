@@ -2,9 +2,11 @@ from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 
 from .models import User, Campaign, Squadron, Pilot, Event, Mission, \
-    Session, Achievement, PilotShip, AI, AIManeuver
+    Session, Achievement, PilotShip, \
+    AI, AIManeuver, \
+    EnemyPilot, EnemyAbility, EnemyUpgrade
 
-from xwtools.models import Slot
+#from xwtools.models import Slot
 
 
 class PilotInline(admin.StackedInline):
@@ -63,6 +65,16 @@ class AIAdmin(admin.ModelAdmin):
     inlines = (AIManeuverInline,)
 
 
+class EnemyAbilityInline(admin.TabularInline):
+    model = EnemyAbility
+    extra = 0
+
+
+class EnemyPilotAdmin(admin.ModelAdmin):
+    inlines = (EnemyAbilityInline,)
+    list_display = ('chassis', 'faction', 'basic', 'elite', 'in3', 'in4', 'in5')
+
+
 #admin.site.unregister(User)
 admin.site.register(User, UserAdmin)
 admin.site.register(Pilot, PilotAdmin)
@@ -72,3 +84,5 @@ admin.site.register(Event)
 admin.site.register(Session, SessionAdmin)
 admin.site.register(PilotShip, PilotShipAdmin)
 admin.site.register(AI, AIAdmin)
+admin.site.register(EnemyUpgrade)
+admin.site.register(EnemyPilot, EnemyPilotAdmin)

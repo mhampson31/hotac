@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% load xwf_extras %}
+
+{% block content %}
+
+<div class='container'>
+    <h5>{{enemy.chassis}}</h5>
+
+    <ul class='list-group'>
+        {% for ability in enemy.abilities.all %}
+        <li class='list-group-item'>{{ability.get_level_display}} - {{ability.upgrade.name}}: {{ability.upgrade.ability}} </li>
+        {% endfor %}
+    </ul>
+
+</div>
+
+{% endblock %}

@@ -35,7 +35,7 @@ UPGRADE_TYPES = {
     'ILC': ('Illicit', SLOT_TYPES['Illicit']),
     'MSL': ('Missile', SLOT_TYPES['Missile']),
     'MOD': ('Modification', SLOT_TYPES['Modification']),
-    'SNS':('Sensor', SLOT_TYPES['Sensor']),
+    'SNS': ('Sensor', SLOT_TYPES['Sensor']),
     'TAC': ('Tactical Relay', SLOT_TYPES['Relay']),
     'TLN': ('Talent', SLOT_TYPES['Pilot']),
     'TCH': ('Tech', SLOT_TYPES['Tech']),
@@ -60,6 +60,9 @@ DIFFICULTY_CHOICES = (
 
 class Faction(models.Model):
     name = models.CharField(max_length=20)
+
+    def __str__(self):
+        return self.name
 
 
 class Chassis(models.Model):

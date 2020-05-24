@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Chassis, Slot, Upgrade, Dial, DialManeuver
+from .models import Chassis, Slot, Upgrade, Dial, DialManeuver, Faction
 
 
 class SlotInline(admin.TabularInline):
@@ -32,3 +32,4 @@ class DialAdmin(admin.ModelAdmin):
 admin.site.register(Upgrade, UpgradeAdmin)
 admin.site.register(Dial, DialAdmin)
 admin.site.register(Chassis, ChassisAdmin)
+admin.site.register(Faction)

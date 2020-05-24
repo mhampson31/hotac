@@ -4,8 +4,7 @@ from django.contrib.auth.models import AbstractUser
 
 from math import floor
 
-from xwtools.models import Chassis
-
+from xwtools.models import Chassis, Faction, UPGRADE_CHOICES
 
 
 class User(AbstractUser):
@@ -82,3 +81,56 @@ class Mission(models.Model):
 
     def __str__(self):
         return '{} ({} {})'.format(self.name, self.story, self.sequence)
+
+
+class EnemyUpgrade(models.Model):
+    name = models.CharField(max_length=30)
+    ability = models.CharField(max_length=240)
+    type = models.CharField(max_length=3, choices=UPGRADE_CHOICES)
+    charges = models.PositiveSmallIntegerField(default=0)
+
+    def __str__(self):
+        return self.name
+
+
+class EnemyPilot(models.Model):
+    chassis = models.ForeignKey(Chassis, on_delete=models.CASCADE)
+    faction = models.ForeignKey(Faction, on_delete=models.CASCADE)
+    upgrades = models.ManyToManyField(EnemyUpgrade, through='EnemyAbility')
+
+    def ability_list(self, lvl):
+        return '/'.join(self.abilities.filter(level=lvl).values_list('upgrade__name', flat=True))
+
+    @property
+    def basic(self):
+        return self.ability_list(1)
+
+    @property
+    def elite(self):
+        return self.ability_list(2)
+
+    @property
+    def in3(self):
+        return self.ability_list(3)
+
+    @property
+    def in4(self):
+        return self.ability_list(4)
+
+    @property
+    def in5(self):
+        return self.ability_list(5)
+
+
+class EnemyAbility(models.Model):
+    pilot = models.ForeignKey(EnemyPilot, on_delete=models.CASCADE, related_name='abilities')
+    upgrade = models.ForeignKey(EnemyUpgrade, on_delete=models.CASCADE)
+
+    LEVEL_CHOICES = (
+        (1, 'Basic'),
+        (2, 'Elite'),
+        (3, 'IN 3+'),
+        (4, 'IN 4+'),
+        (5, 'IN 5+')
+    )
+    level = models.SmallIntegerField(choices=LEVEL_CHOICES, default=1)

@@ -13,5 +13,6 @@ urlpatterns = [
     path('campaign/<int:pk>', campaign_views.CampaignView.as_view(), name='campaign'),
     path('chassis/<slug:chassis_slug>/', xwt_views.ship_sheet, name='chassis'),
     path('chassis/<slug:chassis_slug>/ai/', campaign_views.ai_select, name='ai'),
+    path('enemy/<int:pk>', campaign_views.EnemyView.as_view(), name='enemy'),
     path('chaining/', include('smart_selects.urls')),
 ]
