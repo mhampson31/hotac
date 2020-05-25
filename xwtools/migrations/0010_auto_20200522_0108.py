@@ -7,7 +7,7 @@ class Migration(migrations.Migration):
     atomic = False
 
     dependencies = [
-        ('campaign', '0012_auto_20200522_0108'),
+        #('campaign', '0012_auto_20200522_0108'),
         ('xwtools', '0009_auto_20200521_2010'),
     ]
 

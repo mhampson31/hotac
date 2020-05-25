@@ -10,7 +10,7 @@
     {% for fg, ships in enemies.items %}
     <h6>{{fg}}</h6>
     <ul class='list-group'>
-        <li class='list-group-item row'><span class='col-4'>Ship</span><span class='col'>Initiative</span><span class='col'>Abilities</span></li>
+        <li class='list-group-item row d-inline-flex'><span class='col-4'>Ship</span><span class='col'>Initiative</span><span class='col'>Abilities</span></li>
         {% for ship in ships %}
         <li class='list-group-item row'><span class='col-4'>{{ship.ship.name}}</span><span class='col'>{{ship.initiative}}</span><span class='col'>{{ship.abilities}}</span></li>
         {% endfor %}
