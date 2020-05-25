@@ -9,6 +9,7 @@ from django_tables2 import RequestConfig
 
 from .models import Session, Pilot, Event, Campaign, AI, EnemyPilot
 from .tables import AchievementTable
+from .forms import EnemyPilotForm
 
 
 def index(request):
@@ -40,6 +41,12 @@ def session_summary(request, session_id):
     return render(request, 'campaign/s2.html', {'pilots': pilot_list, 'session':s})
 
 
+def session_plan(request, session_id):
+    s = Session.objects.get(id=session_id)
+    enemies = s.generate_enemies()
+
+    return render(request, 'campaign/session_plan.html', {'session':s, 'enemies':enemies})
+
 
 def pilot_sheet(request, pilot_id):
     pilot = Pilot.objects.get(id=pilot_id)
@@ -70,4 +77,23 @@ class CampaignUpdate(UpdateView):
 class EnemyView(DetailView):
     model = EnemyPilot
     context_object_name = 'enemy'
-    template_name = 'campaign/enemy.html'
+    template_name = 'campaign/enemy_pilot.html'
+
+
+def enemy_list(request):
+    enemy_list = EnemyPilot.objects.all()
+    context = {'enemy_list':enemy_list}
+
+    return render(request, 'campaign/enemy_list.html', context)
+
+
+def random_enemy_form(request):
+    # if this is a POST request we need to process the form data
+    if request.method == 'POST':
+        form = EnemyPilotForm.Form(request.POST)
+        if form.is_valid():
+            return HttpResponseRedirect('/thanks/')
+    else:
+        form = EnemyPilotForm()
+
+    return render(request, 'random_enemy_form.html', {'form': form})

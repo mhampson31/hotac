@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% load xwf_extras %}
+
+{% block content %}
+
+{% for enemy in enemy_list %}
+    {% block enemy %}
+    {% include './includes/enemy.html' %}
+
+    {% endblock enemy %}
+{% endfor %}
+
+{% endblock content %}

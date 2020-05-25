@@ -60,6 +60,8 @@ DIFFICULTY_CHOICES = (
 
 class Faction(models.Model):
     name = models.CharField(max_length=20)
+    ships = models.ManyToManyField('Chassis')
+    default_ship = models.OneToOneField('Chassis', on_delete=models.CASCADE, related_name='default_for')
 
     def __str__(self):
         return self.name
@@ -85,17 +87,6 @@ class Chassis(models.Model):
     cloaking = models.BooleanField(default=False)
 
     css = models.CharField(max_length=80, null=True, blank=True)
-
-    FACTION_CHOICES = (
-        ('RA', 'Rebel Alliance'),
-        ('GE', 'Galactic Empire'),
-        ('SV', 'Scum and Villainy'),
-        ('RS', 'Resistance'),
-        ('FO', 'First Order'),
-        ('GR', 'Republic'),
-        ('SE', 'Seperatist')
-    )
-    faction = models.CharField(max_length=2, choices=FACTION_CHOICES, default='RA')
 
     def __str__(self):
         return self.name

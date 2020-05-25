@@ -1,9 +1,11 @@
 from django.db import models
+from django.db.models import Avg
 
 from math import floor
 
 from .campaigns import Campaign, Mission, Event
 from .pilots import Pilot
+from xwtools.models import Chassis
 
 
 class Session(models.Model):
@@ -23,6 +25,16 @@ class Session(models.Model):
 
     def __str__(self):
         return '{} {}'.format(self.mission.name, self.date)
+
+    def generate_enemies(self):
+        enemies = {}
+        for fg in self.mission.flight_groups.all():
+            enemies[fg] = fg.generate(pilots=self.pilots.count(), group_init=self.group_init)
+        return enemies
+
+    @property
+    def group_init(self):
+        return self.pilots.aggregate(i=Avg('initiative'))['i']
 
     @property
     def xp_total(self):

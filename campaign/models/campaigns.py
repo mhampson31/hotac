@@ -2,6 +2,8 @@ from django.db import models
 from django.urls import reverse
 from django.contrib.auth.models import AbstractUser
 
+from smart_selects.db_fields import ChainedForeignKey
+
 from math import floor
 
 from xwtools.models import Chassis, Faction, UPGRADE_CHOICES
@@ -40,6 +42,7 @@ class Squadron(models.Model):
     chassis = models.ForeignKey(Chassis, on_delete=models.CASCADE)
     start_xp = models.PositiveSmallIntegerField(default=10)
     playable = models.BooleanField(default=True)
+    enemy = models.BooleanField(default=False)
 
     PROGRESSION_TYPES = (
         ('d', 'Default'),
@@ -77,10 +80,12 @@ class Mission(models.Model):
     name = models.CharField(max_length=30)
     story = models.CharField(max_length=30)
     sequence = models.PositiveSmallIntegerField()
+    enemy_faction = models.ForeignKey(Faction, on_delete=models.CASCADE, default=1)
     territory = models.CharField(max_length=1, choices=TERRITORY_CHOICES)
 
     def __str__(self):
         return '{} ({} {})'.format(self.name, self.story, self.sequence)
+
 
 
 class EnemyUpgrade(models.Model):
@@ -98,7 +103,10 @@ class EnemyPilot(models.Model):
     faction = models.ForeignKey(Faction, on_delete=models.CASCADE)
     upgrades = models.ManyToManyField(EnemyUpgrade, through='EnemyAbility')
 
-    def ability_list(self, lvl):
+    def __str__(self):
+        return '{} - {}'.format(self.chassis.name, self.in5)
+
+    def ability_list(self, lvl=1):
         return '/'.join(self.abilities.filter(level=lvl).values_list('upgrade__name', flat=True))
 
     @property
@@ -126,11 +134,81 @@ class EnemyAbility(models.Model):
     pilot = models.ForeignKey(EnemyPilot, on_delete=models.CASCADE, related_name='abilities')
     upgrade = models.ForeignKey(EnemyUpgrade, on_delete=models.CASCADE)
 
-    LEVEL_CHOICES = (
-        (1, 'Basic'),
-        (2, 'Elite'),
-        (3, 'IN 3+'),
-        (4, 'IN 4+'),
-        (5, 'IN 5+')
+    class Level(models.IntegerChoices):
+        BASIC = 1
+        ELITE = 2
+        IN_3 = 3
+        IN_4 = 4
+        IN_5 = 5
+
+    level = models.SmallIntegerField(choices=Level.choices, default=1)
+
+
+class FlightGroup(models.Model):
+    name = models.CharField(max_length=20)
+    mission = models.ForeignKey(Mission, on_delete=models.CASCADE, related_name='flight_groups')
+    arrival = models.SmallIntegerField(default=1)
+    vector = models.CharField(max_length=3)
+
+    ORDERS_CHOICES = (
+        ('A', 'Attack'),
+        ('S', 'Strike'),
+        ('E', 'Escort'),
+        ('X', 'Special')
     )
-    level = models.SmallIntegerField(choices=LEVEL_CHOICES, default=1)
+    orders = models.CharField(max_length=1, choices=ORDERS_CHOICES, default="S")
+
+    def __str__(self):
+        return self.name
+
+    def generate(self, pilots, group_init):
+        sq = self.squad_members.filter(players__lte=pilots).filter(init__lte=group_init)
+        # how many default enemies do we need to replace?
+        r = sq.filter(action='R').count()
+        squad = []
+        for s in sq:
+            if r and s.is_default:
+                r = r-1
+                pass
+            squad.append(s.generate(group_init))
+        return squad
+
+
+class SquadMember(models.Model):
+    action = models.CharField(max_length=1, choices=( ('A', 'Add'), ('R', 'Replace') ), default='A')
+    mission = models.ForeignKey(Mission, on_delete=models.CASCADE)
+    chassis = models.ForeignKey(Chassis, on_delete=models.CASCADE, null=True, blank=True)
+    flight_group = ChainedForeignKey(FlightGroup,
+                                            chained_field='mission',
+                                            chained_model_field='mission',
+                                            on_delete=models.CASCADE,
+                                            related_name='squad_members')
+    players = models.SmallIntegerField(default=1)
+    init = models.SmallIntegerField(default=1)
+    elite = models.BooleanField(default=False)
+
+    def __str__(self):
+        return self.chassis.name
+
+    @property
+    def is_default(self):
+        return self.chassis == self.mission.default_ship
+
+    def generate(self, group_init):
+        from random import choice
+        if not self.chassis:
+            ship = choice(self.mission.faction.ships.exclude(self.mission.faction.default_ship))
+        else:
+            ship = self.chassis
+
+        if self.elite:
+            abilities = EnemyPilot.objects.get(chassis=ship, faction=self.mission.enemy_faction).ability_list(lvl=group_init)
+            initiative = min(group_init+1, 6)
+        else:
+            abilities = ()
+            initiative = 1
+
+        return {'ship':ship,
+                'initiative':initiative,
+                'elite':self.elite,
+                'abilities': abilities}
