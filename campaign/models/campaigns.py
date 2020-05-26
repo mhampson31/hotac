@@ -107,7 +107,7 @@ class EnemyPilot(models.Model):
         return '{} - {}'.format(self.chassis.name, self.in5)
 
     def ability_list(self, lvl=1):
-        return '/'.join(self.abilities.filter(level=lvl).values_list('upgrade__name', flat=True))
+        return '/'.join(self.abilities.filter(level__lte=lvl).values_list('upgrade__name', flat=True))
 
     @property
     def basic(self):
@@ -197,13 +197,16 @@ class SquadMember(models.Model):
 
     def generate(self, group_init):
         from random import choice
+        enemies = EnemyPilot.objects.filter(faction=self.mission.enemy_faction)
         if not self.chassis:
-            ship = choice(self.mission.enemy_faction.ships.exclude(self.mission.enemy_faction.default_ship))
+            ship = choice(enemies)
+
+            #self.mission.enemy_faction.ships.exclude(id=self.mission.enemy_faction.default_ship.id))
         else:
-            ship = self.chassis
+            ship = self
 
         if self.elite:
-            e = EnemyPilot.objects.get(chassis=ship, faction=self.mission.enemy_faction)
+            e = choice(enemies.filter(chassis=ship.chassis, faction=self.mission.enemy_faction))
             id = e.id
             abilities = e.ability_list(lvl=group_init)
             initiative = min(group_init+1, 6)
@@ -212,7 +215,7 @@ class SquadMember(models.Model):
             abilities = None
             initiative = 1
 
-        return {'ship':ship,
+        return {'ship':ship.chassis,
                 'initiative':initiative,
                 'elite':self.elite,
                 'abilities': abilities,
