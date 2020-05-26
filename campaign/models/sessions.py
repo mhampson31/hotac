@@ -34,7 +34,7 @@ class Session(models.Model):
 
     @property
     def group_init(self):
-        return self.pilots.aggregate(i=Avg('initiative'))['i']
+        return floor(self.pilots.aggregate(i=Avg('initiative'))['i'])
 
     @property
     def xp_total(self):

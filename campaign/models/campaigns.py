@@ -170,7 +170,8 @@ class FlightGroup(models.Model):
             if r and s.is_default:
                 r = r-1
                 pass
-            squad.append(s.generate(group_init))
+            else:
+                squad.append(s.generate(group_init))
         return squad
 
 
@@ -188,27 +189,31 @@ class SquadMember(models.Model):
     elite = models.BooleanField(default=False)
 
     def __str__(self):
-        return self.chassis.name
+        return self.chassis.name if self.chassis else 'Random'
 
     @property
     def is_default(self):
-        return self.chassis == self.mission.default_ship
+        return self.chassis == self.mission.enemy_faction.default_ship
 
     def generate(self, group_init):
         from random import choice
         if not self.chassis:
-            ship = choice(self.mission.faction.ships.exclude(self.mission.faction.default_ship))
+            ship = choice(self.mission.enemy_faction.ships.exclude(self.mission.enemy_faction.default_ship))
         else:
             ship = self.chassis
 
         if self.elite:
-            abilities = EnemyPilot.objects.get(chassis=ship, faction=self.mission.enemy_faction).ability_list(lvl=group_init)
+            e = EnemyPilot.objects.get(chassis=ship, faction=self.mission.enemy_faction)
+            id = e.id
+            abilities = e.ability_list(lvl=group_init)
             initiative = min(group_init+1, 6)
         else:
-            abilities = ()
+            id = None
+            abilities = None
             initiative = 1
 
         return {'ship':ship,
                 'initiative':initiative,
                 'elite':self.elite,
-                'abilities': abilities}
+                'abilities': abilities,
+                'id':id}
