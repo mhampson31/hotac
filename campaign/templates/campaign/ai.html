@@ -5,9 +5,16 @@
 
 {% block content %}
 
+{% with ai.dial.chassis as ship %}
 <div class="container text-center">
-    <h5 class=""><i class="xw-ship xw-ship-{{ai.dial.chassis.css_name}}"></i>{{ai.dial.chassis}} AI</h5>
-
+    <h5 class=""><i class="xw-ship xw-ship-{{ship.css_name}}"></i>{{ai.dial.chassis}} AI</h5>
+    <div class='row'>
+        {% if ship.attack %}<div class='col attack'>{{ship.attack}}{{ship.get_attack_arc_display|add:' Arc'|get_icon}}</div>{% endif %}
+        {% if ship.attack2 %}<div class='col attack'>{{ship.attack2}}{{ship.get_attack2_arc_display|add:' Arc'|get_icon}}</div>{% endif %}
+        <div class='col agility'>{{ship.agility}}{{'agility'|get_icon}}</div>
+        <div class='col hull'>{{ship.hull}}{{'hull'|get_icon}}</div>
+        {% if ship.shields %}<div class='col shields'>{{ship.shields}}{{'shields'|get_icon}}</div>{% endif %}
+        </div>
     {% if ai.dial.chassis.cloaking %}
     <div>
         <button type="button" class="btn btn-block btn-secondary">Decloaking</button>
@@ -95,7 +102,7 @@
 
 
 </div>
-
+{% endwith %}
 {% endblock content %}
 
 {% block extrajs %}

@@ -74,7 +74,8 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('type', models.CharField(choices=[('0', 'Talent'), ('1', 'Astromech'), ('2', 'Cannon'), ('3', 'Config'), ('4', 'Crew'), ('5', 'Device'), ('6', 'Pilot'), ('7', 'Gunner'), ('8', 'Illicit'), ('9', 'Missile'), ('10', 'Modification'), ('11', 'Sensor'), ('12', 'Relay'), ('13', 'Tech'), ('14', 'Title'), ('15', 'Torpedo'), ('16', 'Turret')], max_length=3)),
-                ('chassis', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='slots', to='xwtools.Ship')),
+                ('chassis', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='slots', to='xwtools.Chassis')),
+                #('chassis', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='slots', to='xwtools.Ship')),
                 ('initiative', models.PositiveSmallIntegerField(default=1)),
             ],
         ),

@@ -353,7 +353,8 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='campaign',
             name='ships',
-            field=models.ManyToManyField(through='campaign.CampaignShip', to='xwtools.Ship'),
+            #field=models.ManyToManyField(through='campaign.CampaignShip', to='xwtools.Ship'),
+            field=models.ManyToManyField(through='campaign.CampaignShip', to='xwtools.Chassis'),
         ),
         migrations.AddField(
             model_name='campaignship',
@@ -364,7 +365,8 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='campaignship',
             name='chassis',
-            field=models.ForeignKey(default=1, on_delete=django.db.models.deletion.CASCADE, to='xwtools.Ship'),
+            field=models.ForeignKey(default=1, on_delete=django.db.models.deletion.CASCADE, to='xwtools.Chassis'),
+            #field=models.ForeignKey(default=1, on_delete=django.db.models.deletion.CASCADE, to='xwtools.Ship'),
         ),
         migrations.RemoveField(
             model_name='pilotship',

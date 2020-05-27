@@ -9,8 +9,6 @@ class SlotInline(admin.TabularInline):
 
 
 class ChassisAdmin(admin.ModelAdmin):
-    list_display = ['name', 'faction']
-    list_filter = ['faction',]
     verbose_name = 'Chassis'
     inlines = (SlotInline, )
 

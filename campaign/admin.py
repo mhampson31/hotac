@@ -21,7 +21,6 @@ class AchievementInline(admin.TabularInline):
     extra = 1
 
 
-
 class SquadMemberInline(admin.TabularInline):
     model = SquadMember
     extra = 0

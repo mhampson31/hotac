@@ -1,5 +1,6 @@
 from django.db import models
 from django.db.models import Avg
+from django.utils.translation import gettext_lazy as _
 
 from math import floor
 
@@ -49,6 +50,24 @@ class Session(models.Model):
     def xp_remainder(self):
         return self.xp_total - (self.pilots.count() * self.xp_earned)
 
+"""
+class SessionPilot(models.Model):
+    session = models.ForeignKey(Session, on_delete=models.CASCADE)
+    pilot = models.ForeignKey(Pilot, on_delete=models.CASCADE)
+    ship = models.ForeignKey(PilotShip, on_delete=models.CASCADE)
+    initiative = models.SmallIntegerField(null=True)
+
+    class StatusChoice(models.TextChoices):
+        NOT_FLOWN = 'P', _('Not Flown')
+        VICTORY = 'V', _('Victory')
+        EJECTED = 'F', _('Ejected - Half XP')
+        NO_XP = 'N', _('Ejected - No XP')
+        LOST_UPGRADE = 'H', _('Ejected - Lost Upgrade')
+        LOST_PILOT = 'C', _('Ejected - Lost Talent')
+        KIA = 'K', _('Killed In Action')
+
+    status = models.CharField(max_length=1, choices=StatusChoice.choices, default=StatusChoice.NOT_FLOWN)
+"""
 
 class Achievement(models.Model):
     pilot = models.ForeignKey(Pilot, on_delete=models.CASCADE)
