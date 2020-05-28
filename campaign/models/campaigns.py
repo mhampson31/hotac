@@ -6,7 +6,7 @@ from smart_selects.db_fields import ChainedForeignKey
 
 from math import floor
 
-from xwtools.models import Chassis, Faction, UPGRADE_CHOICES
+from xwtools.models import Chassis, Faction, SlotChoice, Upgrade
 
 
 class User(AbstractUser):
@@ -88,20 +88,10 @@ class Mission(models.Model):
 
 
 
-class EnemyUpgrade(models.Model):
-    name = models.CharField(max_length=30)
-    ability = models.CharField(max_length=240)
-    type = models.CharField(max_length=3, choices=UPGRADE_CHOICES)
-    charges = models.PositiveSmallIntegerField(default=0)
-
-    def __str__(self):
-        return self.name
-
-
 class EnemyPilot(models.Model):
     chassis = models.ForeignKey(Chassis, on_delete=models.CASCADE)
     faction = models.ForeignKey(Faction, on_delete=models.CASCADE)
-    upgrades = models.ManyToManyField(EnemyUpgrade, through='EnemyAbility')
+    upgrades = models.ManyToManyField(Upgrade, through='EnemyAbility')
 
     def __str__(self):
         return '{} - {}'.format(self.chassis.name, self.in5)
@@ -132,7 +122,7 @@ class EnemyPilot(models.Model):
 
 class EnemyAbility(models.Model):
     pilot = models.ForeignKey(EnemyPilot, on_delete=models.CASCADE, related_name='abilities')
-    upgrade = models.ForeignKey(EnemyUpgrade, on_delete=models.CASCADE)
+    upgrade = models.ForeignKey(Upgrade, on_delete=models.CASCADE, limit_choices_to={'ai_description__isnull':False})
 
     class Level(models.IntegerChoices):
         BASIC = 1

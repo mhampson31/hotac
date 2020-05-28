@@ -1,55 +1,46 @@
 from django.db import models
 from django.db.models import Case, When, Value
+from django.utils.translation import gettext_lazy as _
 
 import re
 
-SLOT_TYPES = {
-    'Talent':'0',
-    'Astromech':'1',
-    'Cannon':'2',
-    'Config':'3',
-    'Crew':'4',
-    'Device':'5',
-    'Pilot':'6', # takes talents, force, and pilot upgrades
-    'Gunner':'7',
-    'Illicit':'8',
-    'Missile':'9',
-    'Modification':'10',
-    'Sensor':'11',
-    'Relay':'12',
-    'Tech':'13',
-    'Title':'14',
-    'Torpedo':'15',
-    'Turret':'16'
-}
-SLOT_CHOICES = [(v, k) for k, v in SLOT_TYPES.items()]
+class SlotChoice(models.TextChoices):
+    TALENT = 'TLN', _('Talent')
+    ASTROMECH = 'AST', _('Astromech')
+    CANNON = 'CNN', _('Cannon')
+    CONFIG = 'CNF', _('Config')
+    CREW = 'CRW', _('Crew')
+    DEVICE = 'DVC', _('Device')
+    FORCE = 'FRC', _('Force Power')
+    PILOT = 'PLT', _('Pilot') # TAKES TALENTS, FORCE, AND PILOT UPGRADES
+    GUNNER = 'GNR', _('Gunner')
+    ILLICIT = 'ILC', _('Illicit`')
+    MISSILE = 'MSL', _('Missile')
+    MODIFICATION = 'MOD', _('Modification')
+    SENSOR = 'SNS', _('Sensor')
+    RELAY = 'TAC', _('Tactical Relay')
+    TECH = 'TCH', _('Tech')
+    TORPEDO = 'TRP', _('Torpedo')
+    TITLE = 'TTL', _('Title')
+    TURRET = 'TRT', _('Turret')
+    SHIP = 'SHP', _('Ship')
 
-UPGRADE_TYPES = {
-    'AST':('Astromech', SLOT_TYPES['Astromech']),
-    'CNN':('Cannon', SLOT_TYPES['Cannon']),
-    'CNF': ('Configuration', SLOT_TYPES['Config']),
-    'CRW': ('Crew', SLOT_TYPES['Crew']),
-    'DVC': ('Device', SLOT_TYPES['Device']),
-    'FRC': ('Force Power', SLOT_TYPES['Pilot']),
-    'GNR': ('Gunner', SLOT_TYPES['Gunner']),
-    'ILC': ('Illicit', SLOT_TYPES['Illicit']),
-    'MSL': ('Missile', SLOT_TYPES['Missile']),
-    'MOD': ('Modification', SLOT_TYPES['Modification']),
-    'SNS': ('Sensor', SLOT_TYPES['Sensor']),
-    'TAC': ('Tactical Relay', SLOT_TYPES['Relay']),
-    'TLN': ('Talent', SLOT_TYPES['Pilot']),
-    'TCH': ('Tech', SLOT_TYPES['Tech']),
-    'TTL': ('Title', SLOT_TYPES['Title']),
-    'TRP': ('Torpedo', SLOT_TYPES['Torpedo']),
-    'TRT': ('Turret', SLOT_TYPES['Turret']),
-    'SHP': ('Ship', 0),
-    'PLT': ('Pilot', SLOT_TYPES['Pilot']),
-    'THR': ('Initiative', 0),
-    'FCH': ('Force Charge', 0),
-    'CHR': ('Charge', 0),
-    'WLD': ('Wildcard', 0)
-}
-UPGRADE_CHOICES = [(k, v[0]) for k, v in UPGRADE_TYPES.items()]
+
+class Ability(models.Model):
+    name = models.CharField(max_length=30)
+    description = models.CharField(max_length=255, null=True, blank=True)
+    ai_description = models.CharField(max_length=255, null=True, blank=True)
+    type = models.CharField(max_length=3, choices=SlotChoice.choices)
+    type2 = models.CharField(max_length=3, choices=SlotChoice.choices, null=True, blank=True, default=None)
+    charges = models.PositiveSmallIntegerField(null=True, blank=True)
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        abstract = True
+        ordering = ['type', '-type2', 'name']
+
 
 DIFFICULTY_CHOICES = (
         ('B', 'Blue'),
@@ -67,6 +58,10 @@ class Faction(models.Model):
         return self.name
 
 
+class Upgrade(Ability):
+    cost = models.SmallIntegerField(default=0)
+
+
 class Chassis(models.Model):
     name = models.CharField(max_length=40)
     slug = models.SlugField(max_length=20, null=True)
@@ -82,11 +77,16 @@ class Chassis(models.Model):
     agility = models.PositiveSmallIntegerField(default=0)
     hull = models.PositiveSmallIntegerField(default=0)
     shields = models.PositiveSmallIntegerField(default=0)
-
     hyperdrive = models.BooleanField(default=True)
     cloaking = models.BooleanField(default=False)
 
     css = models.CharField(max_length=80, null=True, blank=True)
+
+    ability = models.OneToOneField(Upgrade,
+                                   limit_choices_to={'type':SlotChoice.SHIP.value},
+                                   null=True,
+                                   blank=True,
+                                   on_delete=models.SET_NULL)
 
     def __str__(self):
         return self.name
@@ -95,19 +95,6 @@ class Chassis(models.Model):
     def css_name(self):
         return self.css if self.css else self.slug.replace('-', '')
 
-
-class Upgrade(models.Model):
-    name = models.CharField(max_length=30)
-    type = models.CharField(max_length=3, choices=UPGRADE_CHOICES)
-    type2 = models.CharField(max_length=3, choices=UPGRADE_CHOICES, null=True, blank=True, default=None)
-    cost = models.PositiveSmallIntegerField()
-    charges = models.PositiveSmallIntegerField(null=True, blank=True)
-
-    def __str__(self):
-        return self.name
-
-    class Meta:
-        ordering = ['type', '-type2', 'name']
 
 
 class Dial(models.Model):
@@ -200,7 +187,7 @@ class DialManeuver(models.Model):
 
 class Slot(models.Model):
     chassis = models.ForeignKey(Chassis, related_name='slots', on_delete=models.CASCADE)
-    type = models.CharField(max_length=3, choices=SLOT_CHOICES)
+    type = models.CharField(max_length=3, choices=SlotChoice.choices)
     initiative = models.PositiveSmallIntegerField(default=1)
 
     @property

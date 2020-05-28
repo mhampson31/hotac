@@ -4,7 +4,7 @@ from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 from .models import User, Campaign, Squadron, Pilot, Event, Mission, \
     Session, Achievement, PilotShip, SquadMember, FlightGroup, \
     AI, AIManeuver, \
-    EnemyPilot, EnemyAbility, EnemyUpgrade
+    EnemyPilot, EnemyAbility
 
 #from xwtools.models import Slot
 
@@ -99,5 +99,4 @@ admin.site.register(Event)
 admin.site.register(Session, SessionAdmin)
 admin.site.register(PilotShip, PilotShipAdmin)
 admin.site.register(AI, AIAdmin)
-admin.site.register(EnemyUpgrade)
 admin.site.register(EnemyPilot, EnemyPilotAdmin)

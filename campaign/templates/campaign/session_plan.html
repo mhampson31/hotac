@@ -9,9 +9,19 @@
 {% for fg, ships in enemies.items %}
 <h6>{{fg}}</h6>
 <ul class='mb-2 list-group'>
-    <li class='list-group-item row d-inline-flex list-group-item-info'><span class='col-2'>Callsign</span><span class='col-2'>Ship</span><span class='col-1'>Initiative</span><span class='col'>Abilities</span></li>
+    <li class='list-group-item row d-inline-flex list-group-item-info'>
+        <span class='col-2'>Callsign</span>
+        <span class='col-2'>Ship</span>
+        <span class='col-1'>Initiative</span>
+        <span class='col'>Abilities</span>
+    </li>
     {% for ship in ships %}
-    <li class='list-group-item row d-inline-flex'><span class='col-2'>{{fg}} {{forloop.counter}}</span><span class='col-2'>{{ship.ship.name}}</span><span class='col-1'>{{ship.initiative}}</span><span class='col'>{{ship.abilities}}</span></li>
+    <li class='list-group-item row d-inline-flex'>
+        <span class='col-2'>{{fg}} {{forloop.counter}}</span>
+        <span class='col-2'>{{ship.ship.name}}</span>
+        <span class='col-1'>{{ship.initiative}}</span>
+        <span class='col'>{{ship.abilities}}</span>
+    </li>
     {% endfor %}
 {% endfor %}
 
