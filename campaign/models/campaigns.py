@@ -97,7 +97,7 @@ class EnemyPilot(models.Model):
         return '{} - {}'.format(self.chassis.name, self.in5)
 
     def ability_list(self, lvl=1):
-        return '/'.join(self.abilities.filter(level__lte=lvl).values_list('upgrade__name', flat=True))
+        return '/'.join(self.abilities.filter(level=lvl).values_list('upgrade__name', flat=True))
 
     @property
     def basic(self):
@@ -198,7 +198,8 @@ class SquadMember(models.Model):
         if self.elite:
             e = choice(enemies.filter(chassis=ship.chassis, faction=self.mission.enemy_faction))
             id = e.id
-            abilities = e.ability_list(lvl=group_init)
+            #abilities = e.ability_list(lvl=group_init)
+            abilities = e.abilities.filter(level__lte=group_init)
             initiative = min(group_init+1, 6)
         else:
             id = None
