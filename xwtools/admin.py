@@ -27,7 +27,11 @@ class DialAdmin(admin.ModelAdmin):
     inlines = (DialManeuverInline,)
 
 
+class FactionAdmin(admin.ModelAdmin):
+    filter_horizontal = ('ships',)
+
+
 admin.site.register(Upgrade, UpgradeAdmin)
 admin.site.register(Dial, DialAdmin)
 admin.site.register(Chassis, ChassisAdmin)
-admin.site.register(Faction)
+admin.site.register(Faction, FactionAdmin)
