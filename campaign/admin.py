@@ -61,16 +61,18 @@ class CampaignAdmin(admin.ModelAdmin):
     inlines = (SquadronInline,)
 
 
+
+class PilotShipInline(admin.TabularInline):
+    model = PilotShip
+    extra = 0
+
+
 class PilotAdmin(admin.ModelAdmin):
     model = Pilot
     list_display = ('callsign', 'game', 'user')
     list_filter = ('game', 'user')
     filter_horizontal = ('upgrades',)
-
-
-class PilotShipInline(admin.StackedInline):
-    model = PilotShip
-    extra = 0
+    inlines = (PilotShipInline,)
 
 
 class PilotShipAdmin(admin.ModelAdmin):
@@ -111,6 +113,5 @@ admin.site.register(Mission, MissionAdmin)
 admin.site.register(Event)
 admin.site.register(Game, GameAdmin)
 admin.site.register(Session, SessionAdmin)
-admin.site.register(PilotShip, PilotShipAdmin)
 admin.site.register(AI, AIAdmin)
 admin.site.register(EnemyPilot, EnemyPilotAdmin)
