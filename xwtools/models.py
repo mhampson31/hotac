@@ -67,7 +67,7 @@ class Dial(models.Model):
     name = models.CharField(max_length=40, null=True, blank=True)
 
     def __str__(self):
-        return self.chassis.name if self.chassis else '---'
+        return self.name or '--'
 
     @property
     def css_name(self):
@@ -154,7 +154,7 @@ class Chassis(models.Model):
     name = models.CharField(max_length=40)
     slug = models.SlugField(max_length=20, null=True)
 
-    dial = models.ForeignKey(Dial, on_delete=models.SET_NULL, null=True, related_name='chassis')
+    dial = models.OneToOneField(Dial, on_delete=models.SET_NULL, null=True, related_name='chassis')
 
     ARC_CHOICES = (
         ('F', 'Front'),
