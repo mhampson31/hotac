@@ -62,43 +62,8 @@ class Upgrade(Ability):
     cost = models.SmallIntegerField(default=0)
 
 
-class Chassis(models.Model):
-    name = models.CharField(max_length=40)
-    slug = models.SlugField(max_length=20, null=True)
-
-    ARC_CHOICES = (
-        ('F', 'Front'),
-        ('R', 'Rear')
-    )
-    attack = models.PositiveSmallIntegerField(default=0)
-    attack_arc = models.CharField(max_length=2, choices=ARC_CHOICES, default='F')
-    attack2 = models.PositiveSmallIntegerField(default=0)
-    attack2_arc = models.CharField(max_length=2, choices=ARC_CHOICES, null=True, blank=True)
-    agility = models.PositiveSmallIntegerField(default=0)
-    hull = models.PositiveSmallIntegerField(default=0)
-    shields = models.PositiveSmallIntegerField(default=0)
-    hyperdrive = models.BooleanField(default=True)
-    cloaking = models.BooleanField(default=False)
-
-    css = models.CharField(max_length=80, null=True, blank=True)
-
-    ability = models.OneToOneField(Upgrade,
-                                   limit_choices_to={'type':SlotChoice.SHIP.value},
-                                   null=True,
-                                   blank=True,
-                                   on_delete=models.SET_NULL)
-
-    def __str__(self):
-        return self.name
-
-    @property
-    def css_name(self):
-        return self.css if self.css else self.slug.replace('-', '')
-
-
-
 class Dial(models.Model):
-    chassis = models.OneToOneField(Chassis, on_delete=models.CASCADE, null=True)
+    #chassis = models.OneToOneField(Chassis, on_delete=models.CASCADE, null=True)
     name = models.CharField(max_length=40, null=True, blank=True)
 
     def __str__(self):
@@ -183,6 +148,43 @@ class DialManeuver(models.Model):
                 Case(When(direction='L', then=Value(-1)),
                      default=Value(1),
                      output_field=models.SmallIntegerField())]
+
+
+class Chassis(models.Model):
+    name = models.CharField(max_length=40)
+    slug = models.SlugField(max_length=20, null=True)
+
+    dial = models.ForeignKey(Dial, on_delete=models.SET_NULL, null=True, related_name='chassis')
+
+    ARC_CHOICES = (
+        ('F', 'Front'),
+        ('R', 'Rear')
+    )
+    attack = models.PositiveSmallIntegerField(default=0)
+    attack_arc = models.CharField(max_length=2, choices=ARC_CHOICES, default='F')
+    attack2 = models.PositiveSmallIntegerField(default=0)
+    attack2_arc = models.CharField(max_length=2, choices=ARC_CHOICES, null=True, blank=True)
+    agility = models.PositiveSmallIntegerField(default=0)
+    hull = models.PositiveSmallIntegerField(default=0)
+    shields = models.PositiveSmallIntegerField(default=0)
+    hyperdrive = models.BooleanField(default=True)
+    cloaking = models.BooleanField(default=False)
+
+    css = models.CharField(max_length=80, null=True, blank=True)
+
+    ability = models.OneToOneField(Upgrade,
+                                   limit_choices_to={'type':SlotChoice.SHIP.value},
+                                   null=True,
+                                   blank=True,
+                                   on_delete=models.SET_NULL)
+
+    def __str__(self):
+        return self.name
+
+    @property
+    def css_name(self):
+        return self.css if self.css else self.slug.replace('-', '')
+
 
 
 class Slot(models.Model):
