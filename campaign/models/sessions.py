@@ -129,7 +129,6 @@ class Session(models.Model):
                         new_enemy = choice(enemy_list.filter(chassis=sq.chassis))
                     self.sessionenemy_set.create(flight_group=fg,
                                                  enemy=new_enemy,
-                                                 elite=sq.elite,
                                                  level=self.group_init if sq.elite else EnemyAbility.Level.BASIC)
 
     @property
