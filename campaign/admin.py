@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 
 from .models import User, Campaign, Squadron, Pilot, Event, Mission, \
-    Session, Achievement, PilotShip, SquadMember, FlightGroup, \
+    Session, SessionEnemy, Achievement, PilotShip, FGSetup, FlightGroup, \
     AI, AIManeuver, \
     EnemyPilot, EnemyAbility
 
@@ -21,8 +21,8 @@ class AchievementInline(admin.TabularInline):
     extra = 1
 
 
-class SquadMemberInline(admin.TabularInline):
-    model = SquadMember
+class FGSetupInline(admin.TabularInline):
+    model = FGSetup
     extra = 0
 
 class FlightGroupInline(admin.TabularInline):
@@ -32,11 +32,15 @@ class FlightGroupInline(admin.TabularInline):
 
 class MissionAdmin(admin.ModelAdmin):
     model = Mission
-    inlines = (FlightGroupInline, SquadMemberInline)
+    inlines = (FlightGroupInline, FGSetupInline)
 
+
+class SessionEnemyInline(admin.TabularInline):
+    model = SessionEnemy
+    extra = 0
 
 class SessionAdmin(admin.ModelAdmin):
-    inlines = (AchievementInline,)
+    inlines = (SessionEnemyInline, AchievementInline)
 
 
 class SquadronInline(admin.TabularInline):

@@ -12,4 +12,15 @@
         </div>
         {% endfor %}
 
+
+        <div class='row'>
+            <ul class='list-group'>
+                {% regroup session.sessionenemy_set.all by flight_group as flight_groups %}
+                {% for flight_group, ships in flight_groups %}
+                    {% block fg %}
+                    {% include './includes/flight_group.html' %}
+                    {% endblock fg %}
+                {% endfor %}
+            </ul>
+        </div>
 {% endblock %}

@@ -97,27 +97,27 @@ class EnemyPilot(models.Model):
         return '{} - {}'.format(self.chassis.name, self.in5)
 
     def ability_list(self, lvl=1):
-        return '/'.join(self.abilities.filter(level=lvl).values_list('upgrade__name', flat=True))
+        return '/'.join(self.abilities.filter(level__lte=lvl).values_list('upgrade__name', flat=True))
 
     @property
     def basic(self):
-        return self.ability_list(1)
+        return '/'.join(self.abilities.filter(level=1).values_list('upgrade__name', flat=True))
 
     @property
     def elite(self):
-        return self.ability_list(2)
+        return '/'.join(self.abilities.filter(level=2).values_list('upgrade__name', flat=True))
 
     @property
     def in3(self):
-        return self.ability_list(3)
+        return '/'.join(self.abilities.filter(level=3).values_list('upgrade__name', flat=True))
 
     @property
     def in4(self):
-        return self.ability_list(4)
+        return '/'.join(self.abilities.filter(level=4).values_list('upgrade__name', flat=True))
 
     @property
     def in5(self):
-        return self.ability_list(5)
+        return '/'.join(self.abilities.filter(level=5).values_list('upgrade__name', flat=True))
 
 
 class EnemyAbility(models.Model):
@@ -132,6 +132,7 @@ class EnemyAbility(models.Model):
         IN_5 = 5
 
     level = models.SmallIntegerField(choices=Level.choices, default=1)
+
 
 
 class FlightGroup(models.Model):
@@ -165,7 +166,7 @@ class FlightGroup(models.Model):
         return squad
 
 
-class SquadMember(models.Model):
+class FGSetup(models.Model):
     action = models.CharField(max_length=1, choices=( ('A', 'Add'), ('R', 'Replace') ), default='A')
     mission = models.ForeignKey(Mission, on_delete=models.CASCADE)
     chassis = models.ForeignKey(Chassis, on_delete=models.CASCADE, null=True, blank=True)
@@ -187,13 +188,14 @@ class SquadMember(models.Model):
 
     def generate(self, group_init):
         from random import choice
+        from .sessions import SessionEnemy
         enemies = EnemyPilot.objects.filter(faction=self.mission.enemy_faction)
         if not self.chassis:
             ship = choice(enemies)
 
             #self.mission.enemy_faction.ships.exclude(id=self.mission.enemy_faction.default_ship.id))
         else:
-            ship = self
+            ship = self.chassis
 
         if self.elite:
             e = choice(enemies.filter(chassis=ship.chassis, faction=self.mission.enemy_faction))
@@ -206,7 +208,7 @@ class SquadMember(models.Model):
             abilities = None
             initiative = 1
 
-        return {'ship':ship.chassis,
+        return  {'ship':ship.chassis,
                 'initiative':initiative,
                 'elite':self.elite,
                 'abilities': abilities,

@@ -4,11 +4,11 @@
 
 {% block content %}
 
-{% if ses %}
+{% if session %}
 
 <div class="row">
     <div class="col">
-        <h3>{{ses.mission}}</h3>
+        <h3>{{session.mission}}</h3>
         <h5>{{ses.date}}</h5>
         <h5>{{ses.get_outcome_display}}!</h5>
     </div>
@@ -58,6 +58,8 @@
         </ul>
     </div>
 </div>
+
+
 
 {% endif %}
 
