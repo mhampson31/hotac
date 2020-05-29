@@ -89,7 +89,7 @@ class PilotShip(models.Model):
 
 
 class Session(models.Model):
-    campaign = models.ForeignKey(Campaign, on_delete=models.CASCADE)
+    game = models.ForeignKey(Game, on_delete=models.CASCADE)
     mission = models.ForeignKey(Mission, on_delete=models.CASCADE)
     pilots = models.ManyToManyField(Pilot)
     enemies = models.ManyToManyField(EnemyPilot, through='SessionEnemy')

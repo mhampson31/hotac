@@ -185,6 +185,9 @@ class Chassis(models.Model):
     def css_name(self):
         return self.css if self.css else self.slug.replace('-', '')
 
+    class Meta:
+        verbose_name_plural = 'Chassis'
+
 
 
 class Slot(models.Model):

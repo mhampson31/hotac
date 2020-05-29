@@ -37,6 +37,9 @@ class AI(models.Model):
                 mv.roll_6 = mv.roll_6.find_mirror()
                 mv.save()
 
+    class Meta:
+        verbose_name_plural = 'AI'
+
 
 class AIManeuver(models.Model):
     RANGE_CHOICES = (

@@ -25,6 +25,7 @@ class FGSetupInline(admin.TabularInline):
     model = FGSetup
     extra = 0
 
+
 class FlightGroupInline(admin.TabularInline):
     model = FlightGroup
     extra = 0
@@ -37,10 +38,13 @@ class MissionAdmin(admin.ModelAdmin):
 
 class GameAdmin(admin.ModelAdmin):
     model = Game
+    list_display = ['description', 'campaign', 'gm']
+
 
 class SessionEnemyInline(admin.TabularInline):
     model = SessionEnemy
     extra = 0
+
 
 class SessionAdmin(admin.ModelAdmin):
     inlines = (SessionEnemyInline, AchievementInline)
@@ -103,7 +107,7 @@ admin.site.register(Pilot, PilotAdmin)
 admin.site.register(Campaign, CampaignAdmin)
 admin.site.register(Mission, MissionAdmin)
 admin.site.register(Event)
-admin.site.register(Game)
+admin.site.register(Game, GameAdmin)
 admin.site.register(Session, SessionAdmin)
 admin.site.register(PilotShip, PilotShipAdmin)
 admin.site.register(AI, AIAdmin)
