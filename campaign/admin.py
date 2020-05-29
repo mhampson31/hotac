@@ -48,6 +48,7 @@ class SessionEnemyInline(admin.TabularInline):
 
 class SessionAdmin(admin.ModelAdmin):
     inlines = (SessionEnemyInline, AchievementInline)
+    list_display = ['mission', 'game', 'date', 'outcome']
 
 
 class SquadronInline(admin.TabularInline):
@@ -62,7 +63,8 @@ class CampaignAdmin(admin.ModelAdmin):
 
 class PilotAdmin(admin.ModelAdmin):
     model = Pilot
-    list_display = ('callsign', 'game', 'user', 'total_xp')
+    list_display = ('callsign', 'game', 'user')
+    list_filter = ('game', 'user')
     filter_horizontal = ('upgrades',)
 
 
