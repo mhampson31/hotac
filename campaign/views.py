@@ -7,7 +7,7 @@ from django.views.generic.edit import CreateView, DeleteView, UpdateView
 
 from django_tables2 import RequestConfig
 
-from .models import Session, Pilot, Event, Campaign, AI, EnemyPilot
+from .models import Session, Pilot, Event, Campaign, Game, AI, EnemyPilot
 from .tables import AchievementTable
 from .forms import EnemyPilotForm
 
@@ -72,6 +72,12 @@ class CampaignView(DetailView):
     model = Campaign
     context_object_name = 'campaign'
     template_name = 'campaign/campaign.html'
+
+
+class GameView(DetailView):
+    model = Game
+    context_object_name = 'game'
+    template_name = 'campaign/game.html'
 
 
 class CampaignUpdate(UpdateView):

@@ -54,7 +54,8 @@ class Pilot(models.Model):
 
     @property
     def total_xp(self):
-        xp = self.game.campaign.squadron_set.get(chassis=self.pilotship_set.first().chassis).start_xp
+        xp = 10
+        #self.game.campaign.ships.get(id=self.pilotship_set.first().chassis.id).start_xp
         xp = xp + (self.achievement_set.filter(event__team=False).aggregate(xp=Sum('event__xp'))['xp'] or 0)
         if self.game.pool_xp:
             return xp + self.game.xp_share * self.session_set.count()
@@ -109,8 +110,10 @@ class Session(models.Model):
     )
     outcome = models.CharField(max_length=1, choices=OUTCOME_CHOICES, default='U')
 
+
     def __str__(self):
         return '{} {}'.format(self.mission.name, self.date)
+
 
     def generate_enemies(self):
         from random import choice
@@ -169,6 +172,9 @@ class SessionEnemy(models.Model):
             return '{} - Elite {}'.format(self.enemy.chassis.name, self.level)
         else:
             return self.enemy.chassis.name
+
+    class Meta:
+        ordering = ['flight_group', '-level']
 
     @property
     def elite(self):

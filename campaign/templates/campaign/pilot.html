@@ -8,7 +8,7 @@
     <div class="col">
         <p>Player: {{pilot.user}}</p>
         <p>Callsign: {{pilot.callsign}}</p>
-        <p>Campaign: <a href="{% url 'campaign' pilot.campaign.id %}">{{pilot.campaign}}</a></p>
+        <p>Game: <a href="{% url 'game' pilot.game.id %}">{{pilot.game}}</a></p>
         <p>Missions Flown: {{missions}}</p>
     </div>
     <div class="col">

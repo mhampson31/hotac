@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="row mb-3">
+    <div class="col">
+        <h2>{{game.description}}</h2>
+    </div>
+</div>
+
+<div class="row mb-3">
+    <div class="col">
+        <h3>Pilots</h3>
+        <div class="list-group">
+            {% for pilot in game.pilot_set.all %}
+            <a href="{% url 'pilot' pilot.id %}" class="list-group-item list-group-item-action">{{pilot.callsign}}</a>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+<div class="row">
+  <div class="col">
+    <h3>Available Ships</h3>
+    <div class="list-group">
+    {% for ship in game.ships.all %}
+      <a href="{% url 'chassis' chassis_slug=ship.slug %}" class="list-group-item list-group-item-action">{{ship.name}}</a>
+    {% endfor %}
+    </div>
+  </div>
+</div>
+
+<div class="row">
+    <div class="col">
+        <h3>Sessions</h3>
+        <div class="list-group">
+            {% for session in game.session_set.all %}
+            <a href="{% url 'session' session.id %}" class="list-group-item list-group-item-action">{{session.mission}}</a>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+{% endblock %}
