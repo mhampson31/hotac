@@ -160,6 +160,14 @@ class Chassis(models.Model):
         ('F', 'Front'),
         ('R', 'Rear')
     )
+
+    class SizeChoices(models.TextChoices):
+        SMALL = 'S', _('Small')
+        MEDIUM = 'M', _('Medium')
+        LARGE = 'L', _('Large')
+        HUGE = 'H', _('Huge')
+
+    size = models.CharField(max_length=1, choices=SizeChoices.choices, default=SizeChoices.SMALL)
     attack = models.PositiveSmallIntegerField(default=0)
     attack_arc = models.CharField(max_length=2, choices=ARC_CHOICES, default='F')
     attack2 = models.PositiveSmallIntegerField(default=0)

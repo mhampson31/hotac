@@ -29,16 +29,21 @@ def ai_select(request, chassis_slug):
 def session_summary(request, session_id):
     s = Session.objects.get(id=session_id)
 
+    ach = s.achievement_set.values('pilot__callsign', 'event__short_desc') \
+                                    .order_by('pilot__id', 'event__id') \
+                                    .annotate(total=Count('id'), xp=Coalesce(Sum('threat'), 0) + Sum('event__xp'))
+
     pilot_list = []
     for p in s.pilots.values('id', 'callsign'):
-        t = AchievementTable(s.achievement_set.filter(pilot_id=p['id']).values('pilot__callsign', 'event__short_desc')
-                                            .order_by('pilot__id', 'event__id')
-                                            .annotate(total=Count('id'), xp=Coalesce(Sum('threat'), 0) + Sum('event__xp')))
+        achievements = s.achievement_set.filter(pilot_id=p['id']).values('pilot__callsign', 'event__short_desc') \
+                                            .order_by('pilot__id', 'event__id') \
+                                            .annotate(total=Count('id'), xp=Coalesce(Sum('threat'), 0) + Sum('event__xp'))
+        t = AchievementTable(achievements)
 
         RequestConfig(request).configure(t)
         t.callsign = p['callsign']
         pilot_list.append(t)
-    return render(request, 'campaign/s2.html', {'pilots': pilot_list, 'session':s})
+    return render(request, 'campaign/s2.html', {'pilots': pilot_list, 'achievements':ach, 'session':s})
 
 
 def session_plan(request, session_id):

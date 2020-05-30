@@ -19,7 +19,7 @@ class Campaign(models.Model):
     ship_initiative = models.BooleanField(default=False)
     pool_xp = models.BooleanField(default=False)
     admin = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
-    ships = models.ManyToManyField(Chassis, through='Squadron')
+    ships = models.ManyToManyField(Chassis, through='PlayerShip')
 
     def __str__(self):
         return self.description
@@ -37,12 +37,10 @@ class Campaign(models.Model):
         return floor(xp/pilots)
 
 
-class Squadron(models.Model):
+class PlayerShip(models.Model):
     campaign = models.ForeignKey(Campaign, on_delete=models.CASCADE)
     chassis = models.ForeignKey(Chassis, on_delete=models.CASCADE)
     start_xp = models.PositiveSmallIntegerField(default=10)
-    playable = models.BooleanField(default=True)
-    enemy = models.BooleanField(default=False)
 
     PROGRESSION_TYPES = (
         ('d', 'Default'),
@@ -59,9 +57,10 @@ class Squadron(models.Model):
 
 
 class Event(models.Model):
+    campaign = models.ForeignKey(Campaign, on_delete=models.CASCADE)
     short_desc = models.CharField(max_length=25)
     long_desc = models.CharField(max_length=120)
-    xp = models.SmallIntegerField()
+    xp = models.SmallIntegerField(default=1)
     team = models.BooleanField(default=True)
 
     def __str__(self):

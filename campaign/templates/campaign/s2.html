@@ -2,6 +2,7 @@
 {% load render_table from django_tables2 %}
 
 {% block content %}
+    <!--
         <header class="container">
             <h4>{{ session.mission }}</h4>
         </header>
@@ -11,9 +12,37 @@
         {% render_table pilot %}
         </div>
         {% endfor %}
+ -->
 
+    <h4 class='mb-2'>{{session.mission}}</h4>
 
-        <div class='row'>
+    <nav id='menu-panel' class='nav nav-tabs mb-4' role='tablist'>
+        <a id='mission-tab' class='nav-link active' data-toggle="tab" role="tab" aria-controls="home" aria-selected="true" href='#mission'>Mission</a>
+        <a id='pilot-tab' class='nav-link' data-toggle="tab" role="tab" aria-controls="home" aria-selected="true" href='#pilots'>Pilots</a>
+        <a id=enemy-tab' class='nav-link' data-toggle="tab" role="tab" aria-controls="home" aria-selected="true" href='#enemies'>Enemies</a>
+    </nav>
+
+    <div class='tab-content'>
+        <div id='mission' class='tab-pane active' role="tabpanel" aria-labelledby="mission-tab">
+            <p>{{session.mission}}</p>
+            <p>{{session.mission.get_territory_display}} Territory</p>
+            <p>{{session.date}}</p>
+            <p>Outcome: {{session.get_outcome_display}}</p>
+        </div>
+
+        <div id='pilots' class='tab-pane' role="tabpanel" aria-labelledby="pilot-tab">
+            {% for p in session.pilots.all %}
+            <p>{{p.callsign}}</p>
+            {% endfor %}
+
+            <ul class='list-group'>
+                {% for a in achievements %}
+                <li class='list-group-item'><strong>{{a.pilot__callsign}}</strong> {{a.event__short_desc}} x{{a.total}} ({{a.xp}} XP)</li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <div id='enemies' class='tab-pane' role="tabpanel" aria-labelledby="enemy-tab">
             <ul class='list-group'>
                 {% regroup session.sessionenemy_set.all by flight_group as flight_groups %}
                 {% for flight_group, ships in flight_groups %}
@@ -23,4 +52,5 @@
                 {% endfor %}
             </ul>
         </div>
+    </div>
 {% endblock %}

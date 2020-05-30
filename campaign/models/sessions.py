@@ -1,5 +1,5 @@
 from django.db import models
-from django.db.models import Avg
+from django.db.models import Avg, Sum
 from django.utils.translation import gettext_lazy as _
 
 from math import floor
@@ -48,9 +48,14 @@ class Pilot(models.Model):
         return '{} ({})'.format(self.callsign, self.user)
 
     @property
+    def new_xp(self):
+        xp = self.game.campaign.squadron_set.get(chassis=self.pilotship_set.first().chassis).start_xp
+        xp = xp + self.session_set.aggregate(Sum(''))
+
+    @property
     def total_xp(self):
-        xp = self.game.campaign.squadron_set.get(chassis=self.pilotship_set.first().chassis).start_xp + \
-            (self.achievement_set.filter(event__team=False).aggregate(xp=Sum('event__xp'))['xp'] or 0)
+        xp = self.game.campaign.squadron_set.get(chassis=self.pilotship_set.first().chassis).start_xp
+        xp = xp + (self.achievement_set.filter(event__team=False).aggregate(xp=Sum('event__xp'))['xp'] or 0)
         if self.game.pool_xp:
             return xp + self.game.xp_share * self.session_set.count()
         else:
@@ -78,7 +83,7 @@ class PilotShip(models.Model):
         if i >= 4:
             slot_list.append('Modification')
         if i >= 5:
-            prog = self.pilot.game.campaign.squadron_set.get(id=self.chassis.id).progression
+            prog = self.pilot.game.campaign.playership_set.get(id=self.chassis.id).progression
             slot_list.append({'d':path_slot,
                               'h':'Sensor'}[prog])
         if i == 6:
@@ -148,6 +153,10 @@ class Session(models.Model):
     def xp_remainder(self):
         return self.xp_total - (self.pilots.count() * self.xp_earned)
 
+    @property
+    def team_xp(self):
+        return self.achievement_set.aggregate(Sum('team_xp'))
+
 
 class SessionEnemy(models.Model):
     session = models.ForeignKey(Session, on_delete=models.CASCADE)
@@ -196,8 +205,26 @@ class Achievement(models.Model):
     session = models.ForeignKey(Session, on_delete=models.CASCADE)
     event = models.ForeignKey(Event, on_delete=models.CASCADE, default=1)
     turn = models.PositiveSmallIntegerField()
+    target = models.OneToOneField(SessionEnemy, on_delete=models.SET_NULL, null=True, blank=True)
+
     threat = models.SmallIntegerField(null=True, blank=True)
+
+    def __str__(self):
+        return '{} ({}xp)'.format(self.event, self.xp)
 
     @property
     def xp(self):
-        return (self.event.xp or 0) + (self.threat or 0)
+        xp = 1
+        if self.target:
+            if self.target.enemy.chassis.size == Chassis.SizeChoices.LARGE:
+                xp = xp + 1
+            if self.target.enemy.chassis == self.session.mission.enemy_faction.default_ship:
+                xp = xp + 1
+        return xp
+
+    @property
+    def team_xp(self):
+        if self.target and self.target.elite:
+            return 1
+
+        #return (self.event.xp or 0) + (self.threat or 0)
