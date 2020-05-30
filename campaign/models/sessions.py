@@ -50,7 +50,7 @@ class Pilot(models.Model):
     @property
     def new_xp(self):
         xp = self.game.campaign.squadron_set.get(chassis=self.pilotship_set.first().chassis).start_xp
-        xp = xp + self.session_set.aggregate(Sum(''))
+        #xp = xp + self.session_set.aggregate(Sum(''))
 
     @property
     def total_xp(self):
