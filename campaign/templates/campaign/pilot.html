@@ -71,8 +71,11 @@
     <div class="col">
         <h5>Achievements</h5>
         <ul class="list-group col">
-        {% for event in achievements %}
-            <li class="list-group-item">{{event.event__long_desc}} <span class="badge badge-primary badge-pill">x{{event.count}}</span></li>
+        {% for ach in achievements %}
+            <li class="list-group-item">{{ach.event__long_desc}}
+                                        {% if ach.target__enemy__chassis__name %}
+                                        {{ach.target__enemy__chassis__name}}
+                                        {% endif %} <span class="badge badge-primary badge-pill">x{{ach.count}}</span></li>
         {% endfor %}
         </ul>
 

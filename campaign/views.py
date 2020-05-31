@@ -60,10 +60,7 @@ def pilot_sheet(request, pilot_id):
 
     context = {'pilot':pilot,
                'remaining':pilot.total_xp - xp_spent,
-               'achievements':pilot.achievement_set\
-                                   .values('event__long_desc')\
-                                   .order_by('event__short_desc')\
-                                   .annotate(count=Count('event')),
+               'achievements':pilot.achievement_set.values('event__long_desc', 'target__enemy__chassis__name').annotate(count=Count('event')),
                'missions':pilot.session_set.count()}
     return render(request, 'campaign/pilot.html', context)
 

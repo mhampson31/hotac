@@ -40,7 +40,7 @@ class Campaign(models.Model):
 class PlayerShip(models.Model):
     campaign = models.ForeignKey(Campaign, on_delete=models.CASCADE)
     chassis = models.ForeignKey(Chassis, on_delete=models.CASCADE)
-    start_xp = models.PositiveSmallIntegerField(default=10)
+    xp_value = models.SmallIntegerField(default=-5)
 
     PROGRESSION_TYPES = (
         ('d', 'Default'),

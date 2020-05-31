@@ -48,23 +48,30 @@ class Pilot(models.Model):
         return '{} ({})'.format(self.callsign, self.user)
 
     @property
-    def new_xp(self):
-        xp = self.game.campaign.squadron_set.get(chassis=self.pilotship_set.first().chassis).start_xp
-        #xp = xp + self.session_set.aggregate(Sum(''))
+    def total_xp(self):
+        #ship_xp
+        #achievement_xp =
+        #self.game.campaign.ships.get(id=self.pilotship_set.first().chassis.id).start_xp
+        base = self.game.campaign.playership_set.get(id=self.starter_ship.id).xp_value
+
+        if self.game.pool_xp:
+            earned = self.game.xp_share * self.session_set.count()
+        else:
+            earned = sum([s.pilot_xp(self) for s in self.session_set.all()])
+
+        return base + earned
 
     @property
-    def total_xp(self):
-        xp = 10
-        #self.game.campaign.ships.get(id=self.pilotship_set.first().chassis.id).start_xp
-        xp = xp + (self.achievement_set.filter(event__team=False).aggregate(xp=Sum('event__xp'))['xp'] or 0)
-        if self.game.pool_xp:
-            return xp + self.game.xp_share * self.session_set.count()
-        else:
-            return xp + sum([a.xp for a in self.achievement_set.filter(event__team=True)])
+    def active_ship(self):
+        return self.ships.last()
+
+    @property
+    def starter_ship(self):
+        return self.ships.first()
 
 
 class PilotShip(models.Model):
-    pilot = models.ForeignKey(Pilot, on_delete=models.CASCADE)
+    pilot = models.ForeignKey(Pilot, on_delete=models.CASCADE, related_name='ships')
     chassis = models.ForeignKey(Chassis, on_delete=models.CASCADE, null=True)
     initiative = models.PositiveSmallIntegerField(default=2)
     hull_upgrades = models.PositiveSmallIntegerField(default=0)
@@ -145,8 +152,9 @@ class Session(models.Model):
 
     @property
     def xp_total(self):
-        a = self.achievement_set.filter(event__team=True)
-        return a.aggregate(total=(models.Sum('threat') or 0) + (models.Sum('event__xp') or 0))['total'] or 0
+        return sum([a.xp for a in self.achievement_set.all()]) + (self.team_xp * self.pilots.count())
+        #a = self.achievement_set.all()
+        #return a.aggregate(total=(models.Sum('threat') or 0) + (models.Sum('event__xp') or 0))['total'] or 0
 
     @property
     def xp_earned(self):
@@ -158,7 +166,11 @@ class Session(models.Model):
 
     @property
     def team_xp(self):
-        return self.achievement_set.aggregate(Sum('team_xp'))
+        return self.achievement_set.filter(target__level__gt=1).count()
+
+    def pilot_xp(self, p):
+        return sum([a.xp for a in self.achievement_set.filter(pilot=p)]) + self.team_xp
+
 
 
 class SessionEnemy(models.Model):
@@ -216,7 +228,10 @@ class Achievement(models.Model):
     threat = models.SmallIntegerField(null=True, blank=True)
 
     def __str__(self):
-        return '{} ({}xp)'.format(self.event, self.xp)
+        if self.target:
+            return '{} {}'.format(self.event.long_desc, self.target.enemy.chassis.name)
+        else:
+            return '{}'.format(self.event.long_desc)
 
     @property
     def xp(self):
@@ -224,7 +239,7 @@ class Achievement(models.Model):
         if self.target:
             if self.target.enemy.chassis.size == Chassis.SizeChoices.LARGE:
                 xp = xp + 1
-            if self.target.enemy.chassis == self.session.mission.enemy_faction.default_ship:
+            if self.target.enemy.chassis != self.session.mission.enemy_faction.default_ship:
                 xp = xp + 1
         return xp
 
