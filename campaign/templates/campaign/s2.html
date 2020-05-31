@@ -1,23 +1,13 @@
 {% extends 'base.html' %}
-{% load render_table from django_tables2 %}
+{% load crispy_forms_tags %}
 
 {% block content %}
-    <!--
-        <header class="container">
-            <h4>{{ session.mission }}</h4>
-        </header>
-        {% for pilot in pilots %}
-        <div class="container">
-        <h5>{{ pilot.callsign }}</h5>
-        {% render_table pilot %}
-        </div>
-        {% endfor %}
- -->
 
     <h4 class='mb-2'>{{session.mission}}</h4>
 
     <nav id='menu-panel' class='nav nav-tabs mb-4' role='tablist'>
-        <a id='mission-tab' class='nav-link active' data-toggle="tab" role="tab" aria-controls="home" aria-selected="true" href='#mission'>Mission</a>
+        <a id='mission-tab' class='nav-link' data-toggle="tab" role="tab" aria-controls="home" aria-selected="true" href='#mission'>Mission</a>
+        <a id='achievement-tab' class='nav-link' data-toggle='tab'>Achievements</a>
         <a id='pilot-tab' class='nav-link' data-toggle="tab" role="tab" aria-controls="home" aria-selected="true" href='#pilots'>Pilots</a>
         <a id=enemy-tab' class='nav-link' data-toggle="tab" role="tab" aria-controls="home" aria-selected="true" href='#enemies'>Enemies</a>
     </nav>
@@ -28,6 +18,7 @@
             <p>{{session.mission.get_territory_display}} Territory</p>
             <p>{{session.date}}</p>
             <p>Outcome: {{session.get_outcome_display}}</p>
+            {% crispy formset %}
         </div>
 
         <div id='pilots' class='tab-pane' role="tabpanel" aria-labelledby="pilot-tab">

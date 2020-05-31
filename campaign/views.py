@@ -5,11 +5,14 @@ from django.views.generic import DetailView
 from django.urls import reverse_lazy
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
 
+
+from django.forms import modelformset_factory
+
 from django_tables2 import RequestConfig
 
-from .models import Session, Pilot, Event, Campaign, Game, AI, EnemyPilot
+from .models import Session, Achievement, Pilot, Event, Campaign, Game, AI, EnemyPilot
 from .tables import AchievementTable
-from .forms import EnemyPilotForm
+from .forms import EnemyPilotForm, SessionForm, make_achievement_form
 
 
 def index(request):
@@ -29,6 +32,22 @@ def ai_select(request, chassis_slug):
 def session_summary(request, session_id):
     s = Session.objects.get(id=session_id)
 
+    AchForm = make_achievement_form(s)
+    AchFormSet = modelformset_factory(Achievement, AchForm)
+
+    if request.method == 'POST':
+        formset = AchFormSet(request.POST, request.FILES, queryset=Achievement.objects.select_related('pilot', 'event', 'target').filter(session=s))
+        if formset.is_valid():
+            instances = formset.save(commit=False)
+            for ach in instances:
+                ach.session = s
+                ach.save()
+            formset.save_m2m()
+            # redirect after successful update
+            return HttpResponseRedirect("")
+    else:
+        formset = AchFormSet()
+
     ach = s.achievement_set.values('pilot__callsign', 'event__short_desc') \
                                     .order_by('pilot__id', 'event__id') \
                                     .annotate(total=Count('id'), xp=Coalesce(Sum('threat'), 0) + Sum('event__xp'))
@@ -43,7 +62,13 @@ def session_summary(request, session_id):
         RequestConfig(request).configure(t)
         t.callsign = p['callsign']
         pilot_list.append(t)
-    return render(request, 'campaign/s2.html', {'pilots': pilot_list, 'achievements':ach, 'session':s})
+
+    context = {'pilots': pilot_list,
+               'achievements':ach,
+               'session':s,
+               'formset':formset}
+
+    return render(request, 'campaign/s2.html', context)
 
 
 def session_plan(request, session_id):

@@ -57,7 +57,7 @@ class PlayerShip(models.Model):
 
 
 class Event(models.Model):
-    campaign = models.ForeignKey(Campaign, on_delete=models.CASCADE)
+    campaign = models.ForeignKey(Campaign, on_delete=models.CASCADE, related_name='events')
     short_desc = models.CharField(max_length=25)
     long_desc = models.CharField(max_length=120)
     xp = models.SmallIntegerField(default=1)
