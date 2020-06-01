@@ -93,7 +93,10 @@ class EnemyPilot(models.Model):
     upgrades = models.ManyToManyField(Upgrade, through='EnemyAbility')
 
     def __str__(self):
-        return '{} - {}'.format(self.chassis.name, self.in5)
+        if self.chassis is self.faction.default_ship:
+            return self.chassis_name
+        else:
+            return '{} - {}'.format(self.chassis.name, self.in5)
 
     def ability_list(self, lvl=1):
         return '/'.join(self.abilities.filter(level__lte=lvl).values_list('upgrade__name', flat=True))

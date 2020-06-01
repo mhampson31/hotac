@@ -7,7 +7,7 @@
 
     <nav id='menu-panel' class='nav nav-tabs mb-4' role='tablist'>
         <a id='mission-tab' class='nav-link' data-toggle="tab" role="tab" aria-controls="home" aria-selected="true" href='#mission'>Mission</a>
-        <a id='achievement-tab' class='nav-link' data-toggle='tab'>Achievements</a>
+        <a id='achievement-tab' class='nav-link' data-toggle='tab' role="tab" aria-controls="home" aria-selected="true" href='#achievements'>Achievements</a>
         <a id='pilot-tab' class='nav-link' data-toggle="tab" role="tab" aria-controls="home" aria-selected="true" href='#pilots'>Pilots</a>
         <a id=enemy-tab' class='nav-link' data-toggle="tab" role="tab" aria-controls="home" aria-selected="true" href='#enemies'>Enemies</a>
     </nav>
@@ -18,8 +18,21 @@
             <p>{{session.mission.get_territory_display}} Territory</p>
             <p>{{session.date}}</p>
             <p>Outcome: {{session.get_outcome_display}}</p>
-            {% crispy formset %}
         </div>
+
+        <div id='achievements' class='tab-pane active' role="tabpanel" aria-labelledby="mission-tab">
+            <ul class='list-group'>
+                <li class='list-group-item'><span class='col'>Turn</span><span class='col'>Pilot</span><span class='col'>Event</span><span class='col'>Target</span></li>
+                {% for ach in session.achievements.all %}
+                <li class='list-group-item'><span class='col'>{{ach.turn}}</span>
+                                            <span class='col'>{{ach.pilot}}</span>
+                                            <span class='col'>{{ach.event}}</span>
+                                            <span class='col'>{{ach.target}}</span>
+                </li>
+                {% endfor %}
+                {% crispy formset helper %}
+        </div>
+
 
         <div id='pilots' class='tab-pane' role="tabpanel" aria-labelledby="pilot-tab">
             {% for p in session.pilots.all %}
@@ -31,6 +44,7 @@
                 <li class='list-group-item'><strong>{{a.pilot__callsign}}</strong> {{a.event__short_desc}} x{{a.total}} ({{a.xp}} XP)</li>
                 {% endfor %}
             </ul>
+
         </div>
 
         <div id='enemies' class='tab-pane' role="tabpanel" aria-labelledby="enemy-tab">

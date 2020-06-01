@@ -117,10 +117,12 @@ class Session(models.Model):
     )
     outcome = models.CharField(max_length=1, choices=OUTCOME_CHOICES, default='U')
 
+    def get_absolute_url(self):
+        from django.urls import reverse
+        return reverse('session', args=[str(self.id)])
 
     def __str__(self):
         return '{} {}'.format(self.mission.name, self.date)
-
 
     def generate_enemies(self):
         from random import choice
@@ -220,7 +222,7 @@ class SessionPilot(models.Model):
 
 class Achievement(models.Model):
     pilot = models.ForeignKey(Pilot, on_delete=models.CASCADE)
-    session = models.ForeignKey(Session, on_delete=models.CASCADE)
+    session = models.ForeignKey(Session, on_delete=models.CASCADE, related_name='achievements')
     event = models.ForeignKey(Event, on_delete=models.CASCADE, default=1)
     turn = models.PositiveSmallIntegerField()
     target = models.OneToOneField(SessionEnemy, on_delete=models.SET_NULL, null=True, blank=True)

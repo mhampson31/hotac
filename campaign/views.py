@@ -3,16 +3,18 @@ from django.db.models import Count, Sum
 from django.db.models.functions import Coalesce
 from django.views.generic import DetailView
 from django.urls import reverse_lazy
+from django.http import HttpResponseRedirect
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
 
 
-from django.forms import modelformset_factory
+from django.forms import modelformset_factory, inlineformset_factory
 
+from crispy_forms.layout import Submit
 from django_tables2 import RequestConfig
 
 from .models import Session, Achievement, Pilot, Event, Campaign, Game, AI, EnemyPilot
 from .tables import AchievementTable
-from .forms import EnemyPilotForm, SessionForm, make_achievement_form
+from .forms import EnemyPilotForm, SessionForm, make_achievement_form, AchHelper
 
 
 def index(request):
@@ -30,31 +32,32 @@ def ai_select(request, chassis_slug):
 
 
 def session_summary(request, session_id):
-    s = Session.objects.get(id=session_id)
+    s = Session.objects.prefetch_related('pilots', 'enemies').get(id=session_id)
 
     AchForm = make_achievement_form(s)
-    AchFormSet = modelformset_factory(Achievement, AchForm)
+    AchFormSet = inlineformset_factory(Session, Achievement, form=AchForm, extra=1)
+    helper = AchHelper()
+    helper.add_input(Submit("submit", "Save"))
 
     if request.method == 'POST':
-        formset = AchFormSet(request.POST, request.FILES, queryset=Achievement.objects.select_related('pilot', 'event', 'target').filter(session=s))
+        formset = AchFormSet(request.POST)
         if formset.is_valid():
             instances = formset.save(commit=False)
             for ach in instances:
                 ach.session = s
                 ach.save()
-            formset.save_m2m()
-            # redirect after successful update
-            return HttpResponseRedirect("")
+            #formset.save()
+            return HttpResponseRedirect(s.get_absolute_url())
     else:
-        formset = AchFormSet()
+        formset = AchFormSet(queryset=Achievement.objects.filter(session=s))
 
-    ach = s.achievement_set.values('pilot__callsign', 'event__short_desc') \
+    ach = s.achievements.values('pilot__callsign', 'event__short_desc') \
                                     .order_by('pilot__id', 'event__id') \
                                     .annotate(total=Count('id'), xp=Coalesce(Sum('threat'), 0) + Sum('event__xp'))
 
     pilot_list = []
     for p in s.pilots.values('id', 'callsign'):
-        achievements = s.achievement_set.filter(pilot_id=p['id']).values('pilot__callsign', 'event__short_desc') \
+        achievements = s.achievements.filter(pilot_id=p['id']).values('pilot__callsign', 'event__short_desc') \
                                             .order_by('pilot__id', 'event__id') \
                                             .annotate(total=Count('id'), xp=Coalesce(Sum('threat'), 0) + Sum('event__xp'))
         t = AchievementTable(achievements)
@@ -66,7 +69,8 @@ def session_summary(request, session_id):
     context = {'pilots': pilot_list,
                'achievements':ach,
                'session':s,
-               'formset':formset}
+               'formset':formset,
+               'helper':helper}
 
     return render(request, 'campaign/s2.html', context)
 
