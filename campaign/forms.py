@@ -1,6 +1,8 @@
 from django import forms
+from django.forms.widgets import CheckboxSelectMultiple
 
 from .models import EnemyPilot, EnemyAbility, Session, Pilot, Achievement
+from xwtools.models import Upgrade
 
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Layout, Submit
@@ -66,3 +68,22 @@ class SessionForm(forms.ModelForm):
     class Meta:
         model = Session
         fields = ['date', 'outcome']
+
+
+class PilotUpdateForm(forms.ModelForm):
+
+    class Meta:
+        model = Pilot
+        fields = ('callsign', 'upgrades')
+        widgets = {
+            'upgrades': CheckboxSelectMultiple()
+        }
+
+
+
+
+#    def __init__(self, *args, **kwargs):
+#        super(BuyUpgradeForm, self).__init__(*args, **kwargs)
+
+#        self.fields["fields"].widget = CheckboxSelectMultiple()
+#        self.fields["fields"].queryset = Upgrade.objects.all()

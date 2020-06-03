@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 
+{% load crispy_forms_tags %}
 {% load xwf_extras %}
 
 {% block content %}
@@ -10,38 +11,30 @@
         <p>Callsign: {{pilot.callsign}}</p>
         <p>Game: <a href="{% url 'game' pilot.game.id %}">{{pilot.game}}</a></p>
         <p>Missions Flown: {{missions}}</p>
+        <p>Initiative {{pilot.initiative}}</p>
     </div>
     <div class="col">
         <div class="col">XP Earned: <i class="xwf xwf-squad-point-cost"></i>{{pilot.total_xp}}</div>
         <div class="col">XP Available: <i class="xwf xwf-squad-point-cost"></i>{{remaining}}</div>
     </div>
+
+    <form method='post' class='col'>
+        {{update|crispy }}
+    </form>
 </div>
 
 
 <div class="row mb-1">
-    <div class="col list-group list-group-horizontal" id='ship_list' role='tablist'>
-        {% for ps in pilot.pilotship_set.all %}
-        <a class='list-group-item list-group-item-action {% if forloop.last %} active {% endif %}' data-toggle='list' href='#{{ps.chassis.slug}}' role='tab'>{{ps.chassis.name}}</a>
-        {% endfor %}
-    </div>
+    <h6 class='col'><a href="{% url 'chassis' chassis_slug=pilot.active_ship.slug %}">{{pilot.active_ship.name}} <i class="xw-ship xw-ship-{{pilot.active_ship.css_name}}"></i></a></h6>
 </div>
 
-<div class="row mb-3">
-    <div class='tab-content'>
-        {% for ps in pilot.pilotship_set.all %}
-        <div class='tab-pane {% if forloop.last %} active {% endif %}' id='{{ps.chassis.slug}}' role='tabpanel'>
-            <h6><a href="{% url 'chassis' chassis_slug=ps.chassis.slug %}">{{ps.chassis.name}} <i class="xw-ship xw-ship-{{ps.css_name}}"></i></a></h6>
-            <span>Initiative {{ps.initiative}}</span>
-            <ul class="list-group list-group-horizontal">
-            {% for slot in ps.slots %}
-              <li class="list-group-item">{{slot|get_icon}}<li>
-            {% endfor %}
-            </ul>
-        </div>
-        {% endfor %}
-    </div>
+<div class="row mb-1">
+    <ul class="col list-group list-group-horizontal">
+    {% for slot in pilot.slots %}
+      <li class="list-group-item">{{slot|get_icon}}<li>
+    {% endfor %}
+    </ul>
 </div>
-
 
 <div class="row mb-3">
     <div class="col">

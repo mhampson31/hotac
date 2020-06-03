@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+<div class='row'>{{pilot.callsign}}</div>
+
+<div class='row'>
+    <form method='post' class='bootstrap4'>
+        {{form|crispy}}
+    </form>
+</div>
+
+{% endblock content %}

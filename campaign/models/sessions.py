@@ -10,12 +10,13 @@ from xwtools.models import Chassis, Upgrade
 
 class Game(models.Model):
     campaign = models.ForeignKey(Campaign, on_delete=models.SET_NULL, null=True)
+    gm = models.ForeignKey(User, on_delete=models.CASCADE, null=True, related_name='game_gm')
+    players = models.ManyToManyField(User)
     description = models.CharField(max_length=30)
+
     victory = models.PositiveSmallIntegerField()
     ship_initiative = models.BooleanField(default=False)
     pool_xp = models.BooleanField(default=False)
-    gm = models.ForeignKey(User, on_delete=models.CASCADE, null=True, related_name='game_gm')
-    players = models.ManyToManyField(User)
 
 
     def __str__(self):
@@ -23,6 +24,11 @@ class Game(models.Model):
 
     @property
     def xp_share(self):
+        """
+        Used when XP pooling is chosen for the game.
+        Calculates total xp across all sessions and total number of pilot shares.
+        Each mission flown earns a pilot one share in the group's total xp.
+        """
         pilots = 0
         xp = 0
         for s in self.session_set.all():
@@ -34,6 +40,7 @@ class Game(models.Model):
 class Pilot(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     game = models.ForeignKey(Game, on_delete=models.SET_NULL, null=True)
+    ships = models.ManyToManyField(Chassis, through='PilotShip')
     callsign = models.CharField(max_length=30)
     upgrades = models.ManyToManyField(Upgrade)
     initiative = models.PositiveSmallIntegerField(default=2)
@@ -47,12 +54,16 @@ class Pilot(models.Model):
     def __str__(self):
         return '{} ({})'.format(self.callsign, self.user)
 
+
+    def get_absolute_url(self):
+        return reverse('pilot-update', kwargs={'pk': self.pk})
+
     @property
     def total_xp(self):
         #ship_xp
         #achievement_xp =
         #self.game.campaign.ships.get(id=self.pilotship_set.first().chassis.id).start_xp
-        base = self.game.campaign.playership_set.get(id=self.starter_ship.id).xp_value
+        base = self.pilotship_set.first().campaign_info.xp_value
 
         if self.game.pool_xp:
             earned = self.game.xp_share * self.session_set.count()
@@ -62,6 +73,11 @@ class Pilot(models.Model):
         return base + earned
 
     @property
+    def xp_spent(self):
+        ship_cost = (self.ships.count() - 1) * self.game.campaign.ship_cost
+        return ship_cost
+
+    @property
     def active_ship(self):
         return self.ships.last()
 
@@ -69,35 +85,41 @@ class Pilot(models.Model):
     def starter_ship(self):
         return self.ships.first()
 
+    @property
+    def slots(self):
+        slot_list = [s.get_type_display() for s in self.active_ship.slots.all()]
+        path_slot = {'A':'Pilot', 'F':'Force Power'}[self.path]
+
+        if self.initiative >= 3:
+            slot_list.append(path_slot)
+        if self.initiative >= 4:
+            slot_list.append('Modification')
+        if self.initiative >= 5:
+            prog = self.game.campaign.playership_set.get(id=self.active_ship.id).progression
+            slot_list.append({'d':path_slot,
+                              'h':'Sensor'}[prog])
+        if self.initiative == 6:
+            slot_list.extend((path_slot, 'Modification'))
+        slot_list.sort()
+        return slot_list
+
 
 class PilotShip(models.Model):
-    pilot = models.ForeignKey(Pilot, on_delete=models.CASCADE, related_name='ships')
+    pilot = models.ForeignKey(Pilot, on_delete=models.CASCADE)
     chassis = models.ForeignKey(Chassis, on_delete=models.CASCADE, null=True)
     initiative = models.PositiveSmallIntegerField(default=2)
-    hull_upgrades = models.PositiveSmallIntegerField(default=0)
-    shield_upgrades = models.PositiveSmallIntegerField(default=0)
 
     def __str__(self):
         return self.pilot.callsign + "\'s " + self.chassis.name
 
     @property
-    def slots(self):
-        i = self.initiative if self.pilot.game.ship_initiative else self.pilot.initiative
-        slot_list = [s.get_type_display() for s in self.chassis.slots.all()]
-        path_slot = {'A':'Pilot', 'F':'Force Power'}[self.pilot.path]
+    def campaign_info(self):
+        return self.pilot.game.campaign.playership_set.get(chassis=self.chassis)
 
-        if i >= 3:
-            slot_list.append(path_slot)
-        if i >= 4:
-            slot_list.append('Modification')
-        if i >= 5:
-            prog = self.pilot.game.campaign.playership_set.get(id=self.chassis.id).progression
-            slot_list.append({'d':path_slot,
-                              'h':'Sensor'}[prog])
-        if i == 6:
-            slot_list.extend((path_slot, 'Modification'))
-        slot_list.sort()
-        return slot_list
+    @property
+    def slots(self):
+        print('Deprecated: PilotShip.slots()')
+        return self.pilot.slots
 
 
 
@@ -154,7 +176,7 @@ class Session(models.Model):
 
     @property
     def xp_total(self):
-        return sum([a.xp for a in self.achievement_set.all()]) + (self.team_xp * self.pilots.count())
+        return sum([a.xp for a in self.achievements.all()]) + (self.team_xp * self.pilots.count())
         #a = self.achievement_set.all()
         #return a.aggregate(total=(models.Sum('threat') or 0) + (models.Sum('event__xp') or 0))['total'] or 0
 
@@ -168,11 +190,10 @@ class Session(models.Model):
 
     @property
     def team_xp(self):
-        return self.achievement_set.filter(target__level__gt=1).count()
+        return self.achievements.filter(target__level__gt=1).count()
 
     def pilot_xp(self, p):
-        return sum([a.xp for a in self.achievement_set.filter(pilot=p)]) + self.team_xp
-
+        return sum([a.xp for a in self.achievements.filter(pilot=p)]) + self.team_xp
 
 
 class SessionEnemy(models.Model):
@@ -182,10 +203,10 @@ class SessionEnemy(models.Model):
     level = models.SmallIntegerField(choices=EnemyAbility.Level.choices, default=1)
 
     def __str__(self):
+        base = '[{}] {}'.format(self.flight_group.name, self.enemy.chassis.name)
         if self.elite:
-            return '{} - Elite {}'.format(self.enemy.chassis.name, self.level)
-        else:
-            return self.enemy.chassis.name
+            base =  '{} - Elite {}'.format(base, self.level)
+        return base
 
     class Meta:
         ordering = ['flight_group', '-level']

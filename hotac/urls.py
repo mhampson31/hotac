@@ -12,6 +12,7 @@ urlpatterns = [
     path('session/<int:session_id>', campaign_views.session_summary, name='session'),
     path('session/<int:session_id>/plan', campaign_views.session_plan, name='session-plan'),
     path('pilot/<int:pilot_id>', campaign_views.pilot_sheet, name='pilot'),
+    #path('pilot/<int:pk>/update', campaign_views.PilotUpdate.as_view(), name='pilot-update'),
     path('campaign/<int:pk>', campaign_views.CampaignView.as_view(), name='campaign'),
     path('game/<int:pk>', campaign_views.GameView.as_view(), name='game'),
     path('chassis/<slug:chassis_slug>/', xwt_views.ship_sheet, name='chassis'),

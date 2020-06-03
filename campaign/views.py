@@ -7,14 +7,14 @@ from django.http import HttpResponseRedirect
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
 
 
-from django.forms import modelformset_factory, inlineformset_factory
+from django.forms import modelformset_factory, inlineformset_factory, CheckboxSelectMultiple
 
 from crispy_forms.layout import Submit
 from django_tables2 import RequestConfig
 
 from .models import Session, Achievement, Pilot, Event, Campaign, Game, AI, EnemyPilot
 from .tables import AchievementTable
-from .forms import EnemyPilotForm, SessionForm, make_achievement_form, AchHelper
+from .forms import EnemyPilotForm, SessionForm, make_achievement_form, AchHelper, PilotUpdateForm
 
 
 def index(request):
@@ -84,11 +84,11 @@ def session_plan(request, session_id):
 
 def pilot_sheet(request, pilot_id):
     pilot = Pilot.objects.get(id=pilot_id)
-
     xp_spent = (pilot.upgrades.aggregate(total=Sum('cost'))['total'] or 0)
 
     context = {'pilot':pilot,
                'remaining':pilot.total_xp - xp_spent,
+               'update': PilotUpdateForm(),
                'achievements':pilot.achievement_set.values('event__long_desc', 'target__enemy__chassis__name').annotate(count=Count('event')),
                'missions':pilot.session_set.count()}
     return render(request, 'campaign/pilot.html', context)
@@ -115,6 +115,13 @@ class EnemyView(DetailView):
     model = EnemyPilot
     context_object_name = 'enemy'
     template_name = 'campaign/enemy_pilot.html'
+
+
+class PilotUpdate(DetailView):
+    model = Pilot
+    context_object_name = 'pilot'
+    template_name = 'campaign/pilot_update.html'
+    fields = ('callsign', 'upgrades')
 
 
 def enemy_list(request):

@@ -15,11 +15,9 @@ class User(AbstractUser):
 
 class Campaign(models.Model):
     description = models.CharField(max_length=30)
-    victory = models.PositiveSmallIntegerField()
-    ship_initiative = models.BooleanField(default=False)
-    pool_xp = models.BooleanField(default=False)
     admin = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
     ships = models.ManyToManyField(Chassis, through='PlayerShip')
+    ship_cost = models.SmallIntegerField(default=5)
 
     def __str__(self):
         return self.description
@@ -40,7 +38,7 @@ class Campaign(models.Model):
 class PlayerShip(models.Model):
     campaign = models.ForeignKey(Campaign, on_delete=models.CASCADE)
     chassis = models.ForeignKey(Chassis, on_delete=models.CASCADE)
-    xp_value = models.SmallIntegerField(default=-5)
+    xp_value = models.SmallIntegerField(default=    0)
 
     PROGRESSION_TYPES = (
         ('d', 'Default'),

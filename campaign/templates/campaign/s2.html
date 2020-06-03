@@ -20,7 +20,7 @@
             <p>Outcome: {{session.get_outcome_display}}</p>
         </div>
 
-        <div id='achievements' class='tab-pane active' role="tabpanel" aria-labelledby="mission-tab">
+        <div id='achievements' class='tab-pane active' role="tabpanel" aria-labelledby="achievement-tab">
             <ul class='list-group'>
                 <li class='list-group-item'><span class='col'>Turn</span><span class='col'>Pilot</span><span class='col'>Event</span><span class='col'>Target</span></li>
                 {% for ach in session.achievements.all %}
