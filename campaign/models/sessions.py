@@ -1,11 +1,12 @@
 from django.db import models
 from django.db.models import Avg, Sum
 from django.utils.translation import gettext_lazy as _
+from django.urls import reverse
 
 from math import floor
 
 from .campaigns import User, Campaign, Mission, Event, EnemyPilot, EnemyAbility, FlightGroup
-from xwtools.models import Chassis, Upgrade
+from xwtools.models import Chassis, Upgrade, SlotChoice
 
 
 class Game(models.Model):
@@ -56,7 +57,7 @@ class Pilot(models.Model):
 
 
     def get_absolute_url(self):
-        return reverse('pilot-update', kwargs={'pk': self.pk})
+        return reverse('pilot', kwargs={'pk': self.pk})
 
     @property
     def total_xp(self):
@@ -66,9 +67,9 @@ class Pilot(models.Model):
         base = self.pilotship_set.first().campaign_info.xp_value
 
         if self.game.pool_xp:
-            earned = self.game.xp_share * self.session_set.count()
+            earned = self.game.xp_share * self.sessions.count()
         else:
-            earned = sum([s.pilot_xp(self) for s in self.session_set.all()])
+            earned = sum([s.pilot_xp(self) for s in self.sessions.all()])
 
         return base + earned
 
@@ -87,19 +88,30 @@ class Pilot(models.Model):
 
     @property
     def slots(self):
-        slot_list = [s.get_type_display() for s in self.active_ship.slots.all()]
-        path_slot = {'A':'Pilot', 'F':'Force Power'}[self.path]
+        """
+        Compile the list of slots available to a player, according to their
+        active ship's defaults, their initiative, their chosen progression path,
+        and their ship's progression path
+        """
+        slot_list = []
+        # get ship slot choices
+        for ss in self.active_ship.slots.all():
+            slot_list.append(next(s2 for s2 in SlotChoice if s2.value == ss.type))
+
+        # maybe change Pilot.path to use SlotChoice...
+        path_slot = {'A':SlotChoice.PILOT, 'F':SlotChoice.FORCE}[self.path]
 
         if self.initiative >= 3:
             slot_list.append(path_slot)
         if self.initiative >= 4:
-            slot_list.append('Modification')
+            slot_list.append(SlotChoice.MODIFICATION)
         if self.initiative >= 5:
             prog = self.game.campaign.playership_set.get(id=self.active_ship.id).progression
             slot_list.append({'d':path_slot,
-                              'h':'Sensor'}[prog])
+                              'h':SlotChoice.SENSOR}[prog])
         if self.initiative == 6:
-            slot_list.extend((path_slot, 'Modification'))
+            slot_list.append(path_slot)
+            slot_list.append(SlotChoice.MODIFICATION)
         slot_list.sort()
         return slot_list
 
@@ -126,7 +138,7 @@ class PilotShip(models.Model):
 class Session(models.Model):
     game = models.ForeignKey(Game, on_delete=models.CASCADE)
     mission = models.ForeignKey(Mission, on_delete=models.CASCADE)
-    pilots = models.ManyToManyField(Pilot)
+    pilots = models.ManyToManyField(Pilot, related_name='sessions')
     enemies = models.ManyToManyField(EnemyPilot, through='SessionEnemy')
     date = models.DateField()
     VICTORY = 'V'

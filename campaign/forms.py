@@ -2,7 +2,7 @@ from django import forms
 from django.forms.widgets import CheckboxSelectMultiple
 
 from .models import EnemyPilot, EnemyAbility, Session, Pilot, Achievement
-from xwtools.models import Upgrade
+from xwtools.models import Upgrade, SlotChoice
 
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Layout, Submit
@@ -25,6 +25,33 @@ class AchHelper(FormHelper):
             'target'
         )
         self.render_required_fields = True
+
+
+class SessionForm(forms.ModelForm):
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.helper = FormHelper()
+        self.helper.form_id = 'id-exampleForm'
+        self.helper.form_class = 'blueForms'
+        self.helper.form_method = 'post'
+        self.helper.form_action = 'submit_survey'
+        helper.form_class = 'form-inline'
+        helper.field_template = 'bootstrap4/layout/inline_field.html'
+
+        self.helper.add_input(Submit('submit', 'Submit'))
+
+    class Meta:
+        model = Session
+        fields = ['date', 'outcome']
+
+
+class PilotUpgradeForm(forms.ModelForm):
+    upgrades = forms.ModelMultipleChoiceField(queryset=Upgrade.objects.all(), widget=CheckboxSelectMultiple(), required=False)
+
+    class Meta:
+        model = Pilot
+        fields = ('upgrades',)
 
 
 def make_achievement_form(ses):
@@ -51,34 +78,20 @@ def make_achievement_form(ses):
     return AchForm
 
 
-class SessionForm(forms.ModelForm):
+def make_pilot_upgrade_form(pilot):
 
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        self.helper = FormHelper()
-        self.helper.form_id = 'id-exampleForm'
-        self.helper.form_class = 'blueForms'
-        self.helper.form_method = 'post'
-        self.helper.form_action = 'submit_survey'
-        helper.form_class = 'form-inline'
-        helper.field_template = 'bootstrap4/layout/inline_field.html'
+    class PilotUpdateForm(forms.ModelForm):
+        already_has = pilot.upgrades.values_list('id', flat=True)
+        upgrades = forms.ModelMultipleChoiceField(queryset=Upgrade.objects.exclude(id__in=already_has),
+                                                  widget=CheckboxSelectMultiple(),
+                                                  required=False)
+        callsign = forms.CharField(required=False)
 
-        self.helper.add_input(Submit('submit', 'Submit'))
+        class Meta:
+            model = Pilot
+            fields = ('callsign', 'upgrades')
 
-    class Meta:
-        model = Session
-        fields = ['date', 'outcome']
-
-
-class PilotUpdateForm(forms.ModelForm):
-
-    class Meta:
-        model = Pilot
-        fields = ('callsign', 'upgrades')
-        widgets = {
-            'upgrades': CheckboxSelectMultiple()
-        }
-
+    return PilotUpdateForm
 
 
 
