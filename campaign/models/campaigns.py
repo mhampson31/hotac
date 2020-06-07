@@ -17,13 +17,38 @@ class Campaign(models.Model):
     description = models.CharField(max_length=30)
     admin = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
     ships = models.ManyToManyField(Chassis, through='PlayerShip')
+
+    # player defaults
+    start_init = models.SmallIntegerField(default=2)
+
+    # configure a campaign's XP costs
     ship_cost = models.SmallIntegerField(default=5)
+
+    class UpgradeLogic(models.IntegerChoices):
+        HOTAC = 1, 'HotAC'
+
+    upgrade_logic = models.IntegerField(choices=UpgradeLogic.choices)
+    initiative_cost = models.SmallIntegerField(default=3)
+    initiative_sq = models.BooleanField(default=False)
 
     def __str__(self):
         return self.description
 
     def get_absolute_url(self):
         return reverse('campaign', kwargs={'pk': self.pk})
+
+    def upgrade_cost(self, upgrade):
+        if self.upgrade_logic == self.UpgradeLogic.HOTAC:
+            if upgrade.type in (SlotChoice.TALENT, SlotChoice.FORCE):
+                m = 2
+            if upgrade.type == SlotChoice.PILOT:
+                if upgrade.force:
+                    m = upgrade.charges + 3
+                else:
+                    m = 2
+            else:
+                m = 1
+            return upgrade.cost * m
 
     @property
     def xp_share(self):

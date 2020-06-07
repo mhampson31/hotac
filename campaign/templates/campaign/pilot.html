@@ -24,8 +24,8 @@
     <div class='tab-pane' role='tabpanel' id='ship'>
         <div class="row mb-1">
             <h6 class='col'>
-                <a href="{% url 'chassis' chassis_slug=pilot.active_ship.slug %}">{{pilot.active_ship.name}} <i class="xw-ship xw-ship-{{pilot.active_ship.css_name}}"></i></a><
-            /h6>
+                <a href="{% url 'chassis' chassis_slug=pilot.active_ship.slug %}">{{pilot.active_ship.name}} <i class="xw-ship xw-ship-{{pilot.active_ship.css_name}}"></i></a>
+            </h6>
         </div>
 
         <div class="row mb-1">
@@ -61,15 +61,17 @@
 
     <div class='tab-pane' role='tabpanel' id='upgrade'>
         <p>XP Earned: <i class="xwf xwf-squad-point-cost"></i>{{pilot.total_xp}}</p>
+        <p>XP Spent: <i class="xwf xwf-squad-point-cost"></i>{{pilot.spent_ships}} Ships,
+                     <i class="xwf xwf-squad-point-cost"></i>{{pilot.spent_initiative}} Initiative,
+                     <i class="xwf xwf-squad-point-cost"></i>{{pilot.spent_upgrades}} Upgrades
+                 </p>
         <p>XP Available: <i class="xwf xwf-squad-point-cost"></i>{{remaining}}</p>
         <form method='post' class='col'>{% csrf_token %}
-            {% for upgrade in update.upgrades %}
-            <div class='card'>
-                <h5>{{upgrade.name}}</h5>
-                <p>{{upgrade.desc}}</p>
-
-            </div>
-            {% endfor %}
+            <ul class='list-group'>
+                {% for upgrade in update.upgrades %}
+                <li class='list-group-item'>{{upgrade}}</li>
+                {% endfor %}
+            </ul>
              <button type="submit" class="save btn btn-default">Save</button>
         </form>
     </div>

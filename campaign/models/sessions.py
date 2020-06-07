@@ -74,9 +74,32 @@ class Pilot(models.Model):
         return base + earned
 
     @property
-    def xp_spent(self):
-        ship_cost = (self.ships.count() - 1) * self.game.campaign.ship_cost
-        return ship_cost
+    def spent_xp(self):
+        return self.spent_ships + self.spent_upgrades + self.spent_initiative
+
+    @property
+    def spent_ships(self):
+        return (self.ships.count() - 1) * self.game.campaign.ship_cost
+
+    @property
+    def spent_upgrades(self):
+        return sum([self.game.campaign.upgrade_cost(u)
+                    for u in self.upgrades.filter(cost__gt=0)
+                    ])
+
+    @property
+    def spent_initiative(self):
+        # the amount spent on initiative depends on whether the cost is squared
+        # or multiplied. For each init value between the start and current init
+        # (i+1 because of range()'s return values), raise it to the power of 1
+        # plus the numeric value of the initiative_sq setting (so **1 for False,
+        # **2 for True). Sum all these values, and multiply them by the init
+        # multipler.
+        return sum([
+                    (i+1) ** (1 + self.game.campaign.initiative_sq)
+                    for i in range(self.game.campaign.start_init, self.initiative)]) \
+               * self.game.campaign.initiative_cost
+
 
     @property
     def active_ship(self):

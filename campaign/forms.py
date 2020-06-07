@@ -94,6 +94,13 @@ def make_pilot_upgrade_form(pilot):
     return PilotUpdateForm
 
 
+class UpgradePurchaseForm(forms.ModelForm):
+
+    class Meta:
+        model = Upgrade
+        fields = ('id',)
+
+
 
 #    def __init__(self, *args, **kwargs):
 #        super(BuyUpgradeForm, self).__init__(*args, **kwargs)

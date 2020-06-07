@@ -84,7 +84,6 @@ def session_plan(request, session_id):
 
 def pilot_sheet(request, pk):
     pilot = Pilot.objects.get(id=pk)
-    xp_spent = (pilot.upgrades.aggregate(total=Sum('cost'))['total'] or 0)
 
     if request.method == 'POST':
         update_form = PilotUpgradeForm(request.POST, instance=pilot)
@@ -95,7 +94,7 @@ def pilot_sheet(request, pk):
         update_form = PilotUpgradeForm(instance=pilot)
 
     context = {'pilot':pilot,
-               'remaining':pilot.total_xp - xp_spent,
+               'remaining':pilot.total_xp - pilot.spent_xp,
                'update': update_form,
                'achievements':pilot.achievement_set.values('event__long_desc', \
                                                            'target__enemy__chassis__name') \
