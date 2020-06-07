@@ -43,7 +43,7 @@ class Pilot(models.Model):
     game = models.ForeignKey(Game, on_delete=models.SET_NULL, null=True)
     ships = models.ManyToManyField(Chassis, through='PilotShip')
     callsign = models.CharField(max_length=30)
-    upgrades = models.ManyToManyField(Upgrade)
+    upgrades = models.ManyToManyField(Upgrade, through='PilotUpgrade')
     initiative = models.PositiveSmallIntegerField(default=2)
 
     PATH_CHOICES = (
@@ -156,6 +156,12 @@ class PilotShip(models.Model):
         print('Deprecated: PilotShip.slots()')
         return self.pilot.slots
 
+
+class PilotUpgrade(models.Model):
+    pilot = models.ForeignKey(Pilot, on_delete=models.CASCADE)
+    upgrade = models.ForeignKey(Upgrade, on_delete=models.CASCADE)
+    copies = models.PositiveSmallIntegerField(default=1)
+    lost = models.BooleanField(default=False)
 
 
 class Session(models.Model):

@@ -68,8 +68,9 @@
         <p>XP Available: <i class="xwf xwf-squad-point-cost"></i>{{remaining}}</p>
         <form method='post' class='col'>{% csrf_token %}
             <ul class='list-group'>
-                {% for upgrade in update.upgrades %}
-                <li class='list-group-item'>{{upgrade}}</li>
+                {{update.management_form}}
+                {% for f in update.forms %}
+                <li class='list-group-item'>{{f}}</li>
                 {% endfor %}
             </ul>
              <button type="submit" class="save btn btn-default">Save</button>

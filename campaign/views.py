@@ -12,7 +12,7 @@ from django.forms import modelformset_factory, inlineformset_factory, CheckboxSe
 from crispy_forms.layout import Submit
 from django_tables2 import RequestConfig
 
-from .models import Session, Achievement, Pilot, Event, Campaign, Game, AI, EnemyPilot
+from .models import Session, Achievement, Pilot, PilotUpgrade, Event, Campaign, Game, AI, EnemyPilot
 from .tables import AchievementTable
 from .forms import EnemyPilotForm, SessionForm, make_achievement_form, AchHelper, PilotUpgradeForm
 
@@ -85,13 +85,15 @@ def session_plan(request, session_id):
 def pilot_sheet(request, pk):
     pilot = Pilot.objects.get(id=pk)
 
+    UpgradeFormSet = inlineformset_factory(Pilot, PilotUpgrade, exclude=('lost',), extra=1)
+
     if request.method == 'POST':
-        update_form = PilotUpgradeForm(request.POST, instance=pilot)
+        update_form = UpgradeFormSet(request.POST, instance=pilot)
         if update_form.is_valid():
             update_form.save()
             return HttpResponseRedirect(pilot.get_absolute_url())
     else:
-        update_form = PilotUpgradeForm(instance=pilot)
+        update_form = UpgradeFormSet(instance=pilot)
 
     context = {'pilot':pilot,
                'remaining':pilot.total_xp - pilot.spent_xp,
