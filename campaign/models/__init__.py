@@ -1,6 +1,6 @@
 from .ai import AI, AIManeuver
-from .campaigns import User, Campaign, PlayerShip, Event
+from .campaigns import User, Campaign, PlayerShip, Event, Game
 from .campaigns import Mission, FlightGroup, FGSetup
-from .campaigns import EnemyPilot, EnemyAbility
-from .sessions import Game, Session, SessionEnemy, Achievement
-from .sessions import  Pilot, PilotUpgrade, PilotShip
+from .enemies import EnemyPilot, EnemyAbility
+from .sessions import Session, SessionEnemy, Achievement
+from .pilots import  Pilot, PilotUpgrade, PilotShip
