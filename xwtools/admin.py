@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Chassis, Slot, Upgrade, Dial, DialManeuver, Faction
+from .models import Chassis, Slot, Upgrade, Dial, DialManeuver, Faction, Pilot
 
 
 class SlotInline(admin.TabularInline):
@@ -30,7 +30,7 @@ class DialAdmin(admin.ModelAdmin):
 class FactionAdmin(admin.ModelAdmin):
     filter_horizontal = ('ships',)
 
-
+admin.site.register(Pilot)
 admin.site.register(Upgrade, UpgradeAdmin)
 admin.site.register(Dial, DialAdmin)
 admin.site.register(Chassis, ChassisAdmin)

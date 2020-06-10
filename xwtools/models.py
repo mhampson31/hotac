@@ -198,7 +198,6 @@ class Chassis(models.Model):
         verbose_name_plural = 'Chassis'
 
 
-
 class Slot(models.Model):
     chassis = models.ForeignKey(Chassis, related_name='slots', on_delete=models.CASCADE)
     type = models.CharField(max_length=3, choices=SlotChoice.choices)
@@ -207,3 +206,8 @@ class Slot(models.Model):
     @property
     def css_name(self):
         return self.get_type_display()
+
+class Pilot(Ability):
+    initiative = models.PositiveSmallIntegerField(default=1)
+    chassis = models.ForeignKey(Chassis, on_delete=models.CASCADE)
+    faction = models.ForeignKey(Faction, on_delete=models.CASCADE)
