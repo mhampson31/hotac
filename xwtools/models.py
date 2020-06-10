@@ -209,5 +209,5 @@ class Slot(models.Model):
 
 class Pilot(Ability):
     initiative = models.PositiveSmallIntegerField(default=1)
-    chassis = models.ForeignKey(Chassis, on_delete=models.CASCADE)
+    chassis = models.ForeignKey(Chassis, on_delete=models.CASCADE, related_name = 'pilot_card')
     faction = models.ForeignKey(Faction, on_delete=models.CASCADE)
