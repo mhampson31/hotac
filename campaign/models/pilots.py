@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 from django.db.models import Sum
 
 from django.contrib.contenttypes.fields import GenericForeignKey
@@ -55,8 +56,8 @@ class Pilot(models.Model):
 
     @property
     def spent_upgrades(self):
-        return sum([self.game.campaign.upgrade_cost(u)
-                    for u in self.upgrades.filter(cost__gt=0)
+        return sum([self.game.campaign.upgrade_cost(u.upgrade)
+                    for u in self.upgrades.filter(upgrade__cost__gt=0)
                     ])
 
     @property
@@ -123,10 +124,6 @@ class PilotShip(models.Model):
     def campaign_info(self):
         return self.pilot.game.campaign.playership_set.get(chassis=self.chassis)
 
-    @property
-    def slots(self):
-        print('Deprecated: PilotShip.slots()')
-        return self.pilot.slots
 
 
 class PilotUpgrade(models.Model):
@@ -135,3 +132,6 @@ class PilotUpgrade(models.Model):
 
     copies = models.PositiveSmallIntegerField(default=1)
     lost = models.BooleanField(default=False)
+
+    def __str__(self):
+        return str(self.upgrade)

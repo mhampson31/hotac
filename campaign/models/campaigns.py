@@ -9,6 +9,11 @@ from math import floor
 from xwtools.models import Chassis, Faction, SlotChoice, Upgrade
 
 
+class BaseChoice(models.TextChoices):
+    PILOT = 'P', 'Pilot'
+    UPGRADE = 'U', 'Upgrade'
+
+
 class User(AbstractUser):
     pass
 
@@ -38,14 +43,17 @@ class Campaign(models.Model):
         return reverse('campaign', kwargs={'pk': self.pk})
 
     def upgrade_cost(self, upgrade):
+        """
+        takes a GameUpgrade object and calculates the cost, based on the upgrade logic rules
+        """
         if self.upgrade_logic == self.UpgradeLogic.HOTAC:
-            if upgrade.type in (SlotChoice.TALENT, SlotChoice.FORCE):
-                m = 2
-            if upgrade.type == SlotChoice.PILOT:
+            if upgrade.base == BaseChoice.PILOT:
                 if upgrade.force:
                     m = upgrade.charges + 3
                 else:
                     m = 2
+            if upgrade.type in (SlotChoice.TALENT, SlotChoice.FORCE):
+                m = 2
             else:
                 m = 1
             return upgrade.cost * m
@@ -122,11 +130,6 @@ class Game(models.Model):
 
 class GameUpgrade(models.Model):
     id = models.CharField(max_length=6, primary_key=True, db_index=False)
-
-    class BaseChoice(models.TextChoices):
-        PILOT = 'P', 'Pilot'
-        UPGRADE = 'U', 'Upgrade'
-
     base_id = models.IntegerField()
     base = models.CharField(max_length=1, choices=BaseChoice.choices)
     name = models.CharField(max_length=30)

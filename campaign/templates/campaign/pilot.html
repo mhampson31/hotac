@@ -40,14 +40,14 @@
             <div class="col">
                 <h4>Upgrades</h4>
                     {% regroup pilot.upgrades.all by get_type_display as upgrade_list %}
-                    {% for upgrade_type, upgrades in upgrade_list %}
+                    {% for upgrade_type, game_upgrades in upgrade_list %}
                 <div class="row">
                     <ul class="list-inline col mb-1">
-                    {% for upgrade in upgrades %}
+                    {% for upgrade in game_upgrades %}
                         <li class="list-inline-item">
-                            {{upgrade.get_type_display|get_icon}}
+                            {{get_type_display|get_icon}}
                             {% if upgrade.type2 %}
-                            {{upgrade.get_type2_display|get_icon}}
+                            {{get_type2_display|get_icon}}
                             {% endif %}
                             {{upgrade}}
                         </li>
