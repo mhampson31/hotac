@@ -1,0 +1,3519 @@
+[
+{
+    "model": "xwtools.faction",
+    "pk": 1,
+    "fields": {
+        "name": "Galactic Empire",
+        "default_ship": 6,
+        "ships": [
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13
+        ]
+    }
+},
+{
+    "model": "xwtools.faction",
+    "pk": 2,
+    "fields": {
+        "name": "Rebel Alliance",
+        "default_ship": 1,
+        "ships": [
+            1,
+            2,
+            3,
+            4,
+            5
+        ]
+    }
+},
+{
+    "model": "xwtools.faction",
+    "pk": 3,
+    "fields": {
+        "name": "Scum and Villainy",
+        "default_ship": 2,
+        "ships": []
+    }
+},
+{
+    "model": "xwtools.faction",
+    "pk": 4,
+    "fields": {
+        "name": "Galactic Republic",
+        "default_ship": 3,
+        "ships": []
+    }
+},
+{
+    "model": "xwtools.faction",
+    "pk": 5,
+    "fields": {
+        "name": "Separatist",
+        "default_ship": 4,
+        "ships": []
+    }
+},
+{
+    "model": "xwtools.faction",
+    "pk": 6,
+    "fields": {
+        "name": "Resistance",
+        "default_ship": 5,
+        "ships": []
+    }
+},
+{
+    "model": "xwtools.faction",
+    "pk": 7,
+    "fields": {
+        "name": "First Order",
+        "default_ship": 7,
+        "ships": []
+    }
+},
+{
+    "model": "xwtools.upgrade",
+    "pk": 1,
+    "fields": {
+        "name": "Expert Handling",
+        "description": null,
+        "ai_description": "When you perform a Barrel Roll action, remove 1 enemy Target Lock from your ship.",
+        "type": "TLN",
+        "type2": null,
+        "charges": null,
+        "force": false,
+        "cost": 2
+    }
+},
+{
+    "model": "xwtools.upgrade",
+    "pk": 2,
+    "fields": {
+        "name": "Crack Shot",
+        "description": null,
+        "ai_description": null,
+        "type": "TLN",
+        "type2": null,
+        "charges": 1,
+        "force": false,
+        "cost": 1
+    }
+},
+{
+    "model": "xwtools.upgrade",
+    "pk": 3,
+    "fields": {
+        "name": "Daredevil",
+        "description": null,
+        "ai_description": null,
+        "type": "TLN",
+        "type2": null,
+        "charges": null,
+        "force": false,
+        "cost": 3
+    }
+},
+{
+    "model": "xwtools.upgrade",
+    "pk": 4,
+    "fields": {
+        "name": "Adv. Proton Torpedoes",
+        "description": null,
+        "ai_description": null,
+        "type": "TRP",
+        "type2": null,
+        "charges": 1,
+        "force": false,
+        "cost": 6
+    }
+},
+{
+    "model": "xwtools.upgrade",
+    "pk": 5,
+    "fields": {
+        "name": "Ion Torpedoes",
+        "description": null,
+        "ai_description": null,
+        "type": "TRP",
+        "type2": null,
+        "charges": 2,
+        "force": false,
+        "cost": 6
+    }
+},
+{
+    "model": "xwtools.upgrade",
+    "pk": 6,
+    "fields": {
+        "name": "Proton Torpedoes",
+        "description": null,
+        "ai_description": null,
+        "type": "TRP",
+        "type2": null,
+        "charges": 2,
+        "force": false,
+        "cost": 12
+    }
+},
+{
+    "model": "xwtools.upgrade",
+    "pk": 7,
+    "fields": {
+        "name": "Dorsal Turret",
+        "description": null,
+        "ai_description": null,
+        "type": "TRT",
+        "type2": null,
+        "charges": null,
+        "force": false,
+        "cost": 3
+    }
+},
+{
+    "model": "xwtools.upgrade",
+    "pk": 8,
+    "fields": {
+        "name": "Ion Cannon Turret",
+        "description": null,
+        "ai_description": null,
+        "type": "TRT",
+        "type2": null,
+        "charges": null,
+        "force": false,
+        "cost": 4
+    }
+},
+{
+    "model": "xwtools.upgrade",
+    "pk": 9,
+    "fields": {
+        "name": "R2 Astromech",
+        "description": null,
+        "ai_description": null,
+        "type": "AST",
+        "type2": null,
+        "charges": 2,
+        "force": false,
+        "cost": 4
+    }
+},
+{
+    "model": "xwtools.upgrade",
+    "pk": 10,
+    "fields": {
+        "name": "Arvel Crynyd",
+        "description": null,
+        "ai_description": null,
+        "type": "PLT",
+        "type2": null,
+        "charges": null,
+        "force": false,
+        "cost": 6
+    }
+},
+{
+    "model": "xwtools.upgrade",
+    "pk": 11,
+    "fields": {
+        "name": "Concussion Missiles",
+        "description": null,
+        "ai_description": null,
+        "type": "MSL",
+        "type2": null,
+        "charges": 2,
+        "force": false,
+        "cost": 6
+    }
+},
+{
+    "model": "xwtools.upgrade",
+    "pk": 12,
+    "fields": {
+        "name": "Proximity Mines",
+        "description": null,
+        "ai_description": null,
+        "type": "DVC",
+        "type2": null,
+        "charges": 2,
+        "force": false,
+        "cost": 6
+    }
+},
+{
+    "model": "xwtools.upgrade",
+    "pk": 13,
+    "fields": {
+        "name": "Veteran Turret Gunner",
+        "description": null,
+        "ai_description": null,
+        "type": "GNR",
+        "type2": null,
+        "charges": null,
+        "force": false,
+        "cost": 6
+    }
+},
+{
+    "model": "xwtools.upgrade",
+    "pk": 14,
+    "fields": {
+        "name": "R2-D2",
+        "description": null,
+        "ai_description": null,
+        "type": "AST",
+        "type2": null,
+        "charges": 3,
+        "force": false,
+        "cost": 6
+    }
+},
+{
+    "model": "xwtools.upgrade",
+    "pk": 15,
+    "fields": {
+        "name": "Munitions Failsafe",
+        "description": null,
+        "ai_description": null,
+        "type": "MOD",
+        "type2": null,
+        "charges": null,
+        "force": false,
+        "cost": 1
+    }
+},
+{
+    "model": "xwtools.upgrade",
+    "pk": 16,
+    "fields": {
+        "name": "R3 Astromech",
+        "description": null,
+        "ai_description": null,
+        "type": "AST",
+        "type2": null,
+        "charges": null,
+        "force": false,
+        "cost": 3
+    }
+},
+{
+    "model": "xwtools.upgrade",
+    "pk": 17,
+    "fields": {
+        "name": "Elusive",
+        "description": null,
+        "ai_description": "When defending, the attacker must reroll one Crit or Hit result. You cannot use this ability if you are stressed.",
+        "type": "TLN",
+        "type2": null,
+        "charges": 1,
+        "force": false,
+        "cost": 3
+    }
+},
+{
+    "model": "xwtools.upgrade",
+    "pk": 18,
+    "fields": {
+        "name": "Servomotor S-Foils",
+        "description": null,
+        "ai_description": null,
+        "type": "CNF",
+        "type2": null,
+        "charges": null,
+        "force": false,
+        "cost": 0
+    }
+},
+{
+    "model": "xwtools.upgrade",
+    "pk": 19,
+    "fields": {
+        "name": "Jake Farrell",
+        "description": null,
+        "ai_description": null,
+        "type": "PLT",
+        "type2": null,
+        "charges": null,
+        "force": false,
+        "cost": 8
+    }
+},
+{
+    "model": "xwtools.upgrade",
+    "pk": 21,
+    "fields": {
+        "name": "Stealth Device",
+        "description": null,
+        "ai_description": "Increase your agility value by 1. If you are hit by an attack, this ability ceases.",
+        "type": "MOD",
+        "type2": null,
+        "charges": 1,
+        "force": false,
+        "cost": 4
+    }
+},
+{
+    "model": "xwtools.upgrade",
+    "pk": 22,
+    "fields": {
+        "name": "Proton Bombs",
+        "description": null,
+        "ai_description": null,
+        "type": "DVC",
+        "type2": null,
+        "charges": null,
+        "force": false,
+        "cost": 5
+    }
+},
+{
+    "model": "xwtools.upgrade",
+    "pk": 23,
+    "fields": {
+        "name": "Plasma Torpedoes",
+        "description": null,
+        "ai_description": null,
+        "type": "TRP",
+        "type2": null,
+        "charges": 2,
+        "force": false,
+        "cost": 8
+    }
+},
+{
+    "model": "xwtools.upgrade",
+    "pk": 24,
+    "fields": {
+        "name": "Outmaneuver",
+        "description": null,
+        "ai_description": null,
+        "type": "TLN",
+        "type2": null,
+        "charges": null,
+        "force": false,
+        "cost": 6
+    }
+},
+{
+    "model": "xwtools.upgrade",
+    "pk": 25,
+    "fields": {
+        "name": "Shield Upgrade",
+        "description": "Increase your Shield value by 1",
+        "ai_description": "Increase your Shield value by 1",
+        "type": "MOD",
+        "type2": null,
+        "charges": null,
+        "force": false,
+        "cost": 4
+    }
+},
+{
+    "model": "xwtools.upgrade",
+    "pk": 26,
+    "fields": {
+        "name": "Stygium Array",
+        "description": "After you decloak, you may perform an Evade action. At the start of the End Phase, you may spend 1 evade token to gain 1 cloak token.",
+        "ai_description": null,
+        "type": "SHP",
+        "type2": null,
+        "charges": null,
+        "force": false,
+        "cost": 0
+    }
+},
+{
+    "model": "xwtools.upgrade",
+    "pk": 27,
+    "fields": {
+        "name": "Autothrusters",
+        "description": "After you perform an action, you may perform a red Barrel Roll or red Boost action.",
+        "ai_description": "When defending, if you are beyond range 2 or outside the attacker's primary arc, change 1 of your blank results to an Evade result.",
+        "type": "SHP",
+        "type2": null,
+        "charges": null,
+        "force": false,
+        "cost": 0
+    }
+},
+{
+    "model": "xwtools.upgrade",
+    "pk": 28,
+    "fields": {
+        "name": "Whisper",
+        "description": null,
+        "ai_description": "After you perform an attack that hits, gain 1 Focus token.",
+        "type": "PLT",
+        "type2": null,
+        "charges": null,
+        "force": false,
+        "cost": 0
+    }
+},
+{
+    "model": "xwtools.upgrade",
+    "pk": 29,
+    "fields": {
+        "name": "Dark Curse",
+        "description": null,
+        "ai_description": "While you defend, the attacker cannot spend Focus tokens or reroll attack dice.",
+        "type": "PLT",
+        "type2": null,
+        "charges": null,
+        "force": false,
+        "cost": 0
+    }
+},
+{
+    "model": "xwtools.upgrade",
+    "pk": 30,
+    "fields": {
+        "name": "Hull Upgrade",
+        "description": "Increase your Hull value by 1.",
+        "ai_description": "Increase your Hull value by 1.",
+        "type": "MOD",
+        "type2": null,
+        "charges": null,
+        "force": false,
+        "cost": 0
+    }
+},
+{
+    "model": "xwtools.upgrade",
+    "pk": 32,
+    "fields": {
+        "name": "Expose",
+        "description": null,
+        "ai_description": "Action: Until the end of the round, increase your primary weapon value by 1 and decrease your Agility value by 1. (Replaces Focus action.)",
+        "type": "TLN",
+        "type2": null,
+        "charges": null,
+        "force": false,
+        "cost": 0
+    }
+},
+{
+    "model": "xwtools.upgrade",
+    "pk": 33,
+    "fields": {
+        "name": "Targeting Computer",
+        "description": null,
+        "ai_description": "After selecting a target, you may perform a free Target Lock action on it. Spend this Lock after attacking.",
+        "type": "MOD",
+        "type2": null,
+        "charges": null,
+        "force": false,
+        "cost": 0
+    }
+},
+{
+    "model": "xwtools.upgrade",
+    "pk": 34,
+    "fields": {
+        "name": "Opportunist",
+        "description": null,
+        "ai_description": "While attacking, if you are not stressed and the defender is not focusing or evading, roll 1 additional attack die. Prioritize targets that trigger this ability.",
+        "type": "TLN",
+        "type2": null,
+        "charges": null,
+        "force": false,
+        "cost": 0
+    }
+},
+{
+    "model": "xwtools.upgrade",
+    "pk": 35,
+    "fields": {
+        "name": "Turr Phennir",
+        "description": null,
+        "ai_description": "After you perform an attack, perform a free Boost or Barrel Roll action if doing so reduces the number of total possible attack dice threatening you.",
+        "type": "PLT",
+        "type2": null,
+        "charges": null,
+        "force": false,
+        "cost": 0
+    }
+},
+{
+    "model": "xwtools.upgrade",
+    "pk": 36,
+    "fields": {
+        "name": "Push the Limit",
+        "description": null,
+        "ai_description": "Perform an additional action during Action Selection.",
+        "type": "TLN",
+        "type2": null,
+        "charges": null,
+        "force": false,
+        "cost": 0
+    }
+},
+{
+    "model": "xwtools.upgrade",
+    "pk": 37,
+    "fields": {
+        "name": "Captain Kagi",
+        "description": null,
+        "ai_description": "When an enemy ship acquires a Target Lock, it must lock onto your ship if able.",
+        "type": "PLT",
+        "type2": null,
+        "charges": null,
+        "force": false,
+        "cost": 0
+    }
+},
+{
+    "model": "xwtools.upgrade",
+    "pk": 38,
+    "fields": {
+        "name": "Soontir Fel",
+        "description": null,
+        "ai_description": "After selecting a target, gain 1 Focus token.",
+        "type": "PLT",
+        "type2": null,
+        "charges": null,
+        "force": false,
+        "cost": 0
+    }
+},
+{
+    "model": "xwtools.upgrade",
+    "pk": 39,
+    "fields": {
+        "name": "Predator",
+        "description": "While you perform a primary attack, if the defender is in your Bullseye Arc, you may reroll 1 attack die.",
+        "ai_description": "While you perform a primary attack, if the defender is in your Bullseye Arc, you may reroll 1 attack die.",
+        "type": "TLN",
+        "type2": null,
+        "charges": null,
+        "force": false,
+        "cost": 2
+    }
+},
+{
+    "model": "xwtools.upgrade",
+    "pk": 40,
+    "fields": {
+        "name": "Rexler Brath",
+        "description": null,
+        "ai_description": "When attacking, all Damage cards you deal to the defender are dealt face-up.",
+        "type": "PLT",
+        "type2": null,
+        "charges": null,
+        "force": false,
+        "cost": 0
+    }
+},
+{
+    "model": "xwtools.upgrade",
+    "pk": 41,
+    "fields": {
+        "name": "Lone Wolf",
+        "description": null,
+        "ai_description": "When attacking or defending, if there re no other friendly ships at range 0-2, you may reroll 1 of your blank results.",
+        "type": "TLN",
+        "type2": null,
+        "charges": null,
+        "force": false,
+        "cost": 0
+    }
+},
+{
+    "model": "xwtools.upgrade",
+    "pk": 42,
+    "fields": {
+        "name": "Mauler Mithel",
+        "description": null,
+        "ai_description": "When attacking at range 1, roll 1 additional attack die.",
+        "type": "PLT",
+        "type2": null,
+        "charges": null,
+        "force": false,
+        "cost": 0
+    }
+},
+{
+    "model": "xwtools.upgrade",
+    "pk": 43,
+    "fields": {
+        "name": "Homing Missiles",
+        "description": null,
+        "ai_description": "Attack [Lock]: Spend 1 Charge. After you declare the defender, the defender may choose to suffer 1 Hit. If it does, skip the attack and Defense Dice steps and the attack is treated as hitting.",
+        "type": "MSL",
+        "type2": null,
+        "charges": 1,
+        "force": false,
+        "cost": 0
+    }
+},
+{
+    "model": "xwtools.upgrade",
+    "pk": 44,
+    "fields": {
+        "name": "Extra Munitions",
+        "description": null,
+        "ai_description": "Add one Charge to any equipped ordnance.",
+        "type": "TRP",
+        "type2": null,
+        "charges": null,
+        "force": false,
+        "cost": 0
+    }
+},
+{
+    "model": "xwtools.upgrade",
+    "pk": 45,
+    "fields": {
+        "name": "Calculation",
+        "description": null,
+        "ai_description": "Gain a Calculate token. You may spend the token to change 1 of your Focus results to a Hit or Evade result.",
+        "type": "TLN",
+        "type2": null,
+        "charges": null,
+        "force": false,
+        "cost": 0
+    }
+},
+{
+    "model": "xwtools.upgrade",
+    "pk": 46,
+    "fields": {
+        "name": "Lieutenant Colzet",
+        "description": null,
+        "ai_description": "After attacking, if you have a Target Lock on the defender, spend it to flip 1 random face-down Damage card assigned to the defender face-up.",
+        "type": "PLT",
+        "type2": null,
+        "charges": null,
+        "force": false,
+        "cost": 0
+    }
+},
+{
+    "model": "xwtools.upgrade",
+    "pk": 47,
+    "fields": {
+        "name": "Skilled Bombardier",
+        "description": "If you would drop or launch a device, you may use a template of the same bearing with a speed 1 higher or lower.",
+        "ai_description": null,
+        "type": "GNR",
+        "type2": null,
+        "charges": null,
+        "force": false,
+        "cost": 2
+    }
+},
+{
+    "model": "xwtools.upgrade",
+    "pk": 48,
+    "fields": {
+        "name": "R4 Astromech",
+        "description": "Decrease the difficulty of your speed 1-2 basic maneuvers.",
+        "ai_description": null,
+        "type": "AST",
+        "type2": null,
+        "charges": null,
+        "force": false,
+        "cost": 2
+    }
+},
+{
+    "model": "xwtools.upgrade",
+    "pk": 49,
+    "fields": {
+        "name": "Seismic Charges",
+        "description": "Bomb: During the system phase, you may spend 1 Charge to drop a Seismic Charge",
+        "ai_description": null,
+        "type": "DVC",
+        "type2": null,
+        "charges": 2,
+        "force": false,
+        "cost": 3
+    }
+},
+{
+    "model": "xwtools.upgrade",
+    "pk": 50,
+    "fields": {
+        "name": "Agile Gunner",
+        "description": "During the End phase, you may rotate your Turret indicator",
+        "ai_description": null,
+        "type": "GNR",
+        "type2": null,
+        "charges": null,
+        "force": false,
+        "cost": 8
+    }
+},
+{
+    "model": "xwtools.dial",
+    "pk": 1,
+    "fields": {
+        "name": "TIE/LN Fighter"
+    }
+},
+{
+    "model": "xwtools.dial",
+    "pk": 2,
+    "fields": {
+        "name": "TIE/IN Interceptor"
+    }
+},
+{
+    "model": "xwtools.dial",
+    "pk": 3,
+    "fields": {
+        "name": "T-65 X-Wing"
+    }
+},
+{
+    "model": "xwtools.dial",
+    "pk": 4,
+    "fields": {
+        "name": "VT-49 Decimator"
+    }
+},
+{
+    "model": "xwtools.dial",
+    "pk": 6,
+    "fields": {
+        "name": "Lambda-Class T-4A Shuttle"
+    }
+},
+{
+    "model": "xwtools.dial",
+    "pk": 7,
+    "fields": {
+        "name": "TIE Advanced x1"
+    }
+},
+{
+    "model": "xwtools.dial",
+    "pk": 8,
+    "fields": {
+        "name": "TIE/D Defender"
+    }
+},
+{
+    "model": "xwtools.dial",
+    "pk": 9,
+    "fields": {
+        "name": "TIE/SA Bomber"
+    }
+},
+{
+    "model": "xwtools.dial",
+    "pk": 10,
+    "fields": {
+        "name": "TIE/PH Phantom"
+    }
+},
+{
+    "model": "xwtools.dial",
+    "pk": 11,
+    "fields": {
+        "name": "A/SF-01 B-Wing"
+    }
+},
+{
+    "model": "xwtools.dial",
+    "pk": 12,
+    "fields": {
+        "name": "HWK-290"
+    }
+},
+{
+    "model": "xwtools.dial",
+    "pk": 13,
+    "fields": {
+        "name": "RZ-1 A-Wing"
+    }
+},
+{
+    "model": "xwtools.dial",
+    "pk": 14,
+    "fields": {
+        "name": "BTL-A4 Y-Wing"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 1,
+    "fields": {
+        "dial": 1,
+        "speed": 1,
+        "bearing": "T",
+        "direction": "L",
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 2,
+    "fields": {
+        "dial": 1,
+        "speed": 1,
+        "bearing": "T",
+        "direction": "R",
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 3,
+    "fields": {
+        "dial": 1,
+        "speed": 2,
+        "bearing": "T",
+        "direction": "L",
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 4,
+    "fields": {
+        "dial": 1,
+        "speed": 2,
+        "bearing": "B",
+        "direction": "L",
+        "difficulty": "B"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 5,
+    "fields": {
+        "dial": 1,
+        "speed": 2,
+        "bearing": "S",
+        "direction": null,
+        "difficulty": "B"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 6,
+    "fields": {
+        "dial": 1,
+        "speed": 2,
+        "bearing": "B",
+        "direction": "R",
+        "difficulty": "B"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 7,
+    "fields": {
+        "dial": 1,
+        "speed": 2,
+        "bearing": "T",
+        "direction": "R",
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 8,
+    "fields": {
+        "dial": 1,
+        "speed": 3,
+        "bearing": "T",
+        "direction": "L",
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 9,
+    "fields": {
+        "dial": 1,
+        "speed": 3,
+        "bearing": "B",
+        "direction": "L",
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 10,
+    "fields": {
+        "dial": 1,
+        "speed": 3,
+        "bearing": "S",
+        "direction": null,
+        "difficulty": "B"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 11,
+    "fields": {
+        "dial": 1,
+        "speed": 3,
+        "bearing": "B",
+        "direction": "R",
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 12,
+    "fields": {
+        "dial": 1,
+        "speed": 3,
+        "bearing": "T",
+        "direction": "R",
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 13,
+    "fields": {
+        "dial": 1,
+        "speed": 3,
+        "bearing": "KT",
+        "direction": null,
+        "difficulty": "R"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 14,
+    "fields": {
+        "dial": 1,
+        "speed": 4,
+        "bearing": "S",
+        "direction": null,
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 15,
+    "fields": {
+        "dial": 1,
+        "speed": 4,
+        "bearing": "KT",
+        "direction": null,
+        "difficulty": "R"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 16,
+    "fields": {
+        "dial": 1,
+        "speed": 5,
+        "bearing": "S",
+        "direction": null,
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 17,
+    "fields": {
+        "dial": 2,
+        "speed": 1,
+        "bearing": "T",
+        "direction": "L",
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 18,
+    "fields": {
+        "dial": 2,
+        "speed": 1,
+        "bearing": "T",
+        "direction": "R",
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 19,
+    "fields": {
+        "dial": 2,
+        "speed": 2,
+        "bearing": "T",
+        "direction": "L",
+        "difficulty": "B"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 20,
+    "fields": {
+        "dial": 2,
+        "speed": 2,
+        "bearing": "B",
+        "direction": "L",
+        "difficulty": "B"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 21,
+    "fields": {
+        "dial": 2,
+        "speed": 2,
+        "bearing": "S",
+        "direction": null,
+        "difficulty": "B"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 22,
+    "fields": {
+        "dial": 2,
+        "speed": 2,
+        "bearing": "B",
+        "direction": "R",
+        "difficulty": "B"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 23,
+    "fields": {
+        "dial": 2,
+        "speed": 2,
+        "bearing": "T",
+        "direction": "R",
+        "difficulty": "B"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 24,
+    "fields": {
+        "dial": 2,
+        "speed": 3,
+        "bearing": "SL",
+        "direction": "L",
+        "difficulty": "R"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 25,
+    "fields": {
+        "dial": 2,
+        "speed": 3,
+        "bearing": "T",
+        "direction": "L",
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 26,
+    "fields": {
+        "dial": 2,
+        "speed": 3,
+        "bearing": "B",
+        "direction": "L",
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 27,
+    "fields": {
+        "dial": 2,
+        "speed": 3,
+        "bearing": "S",
+        "direction": null,
+        "difficulty": "B"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 28,
+    "fields": {
+        "dial": 2,
+        "speed": 3,
+        "bearing": "B",
+        "direction": "R",
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 29,
+    "fields": {
+        "dial": 2,
+        "speed": 3,
+        "bearing": "T",
+        "direction": "R",
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 30,
+    "fields": {
+        "dial": 2,
+        "speed": 3,
+        "bearing": "SL",
+        "direction": "R",
+        "difficulty": "R"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 31,
+    "fields": {
+        "dial": 2,
+        "speed": 4,
+        "bearing": "S",
+        "direction": null,
+        "difficulty": "B"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 32,
+    "fields": {
+        "dial": 2,
+        "speed": 4,
+        "bearing": "KT",
+        "direction": null,
+        "difficulty": "R"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 33,
+    "fields": {
+        "dial": 2,
+        "speed": 5,
+        "bearing": "S",
+        "direction": null,
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 34,
+    "fields": {
+        "dial": 4,
+        "speed": 1,
+        "bearing": "T",
+        "direction": "L",
+        "difficulty": "R"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 35,
+    "fields": {
+        "dial": 4,
+        "speed": 1,
+        "bearing": "B",
+        "direction": "L",
+        "difficulty": "B"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 36,
+    "fields": {
+        "dial": 4,
+        "speed": 1,
+        "bearing": "S",
+        "direction": null,
+        "difficulty": "B"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 37,
+    "fields": {
+        "dial": 4,
+        "speed": 1,
+        "bearing": "B",
+        "direction": "R",
+        "difficulty": "B"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 38,
+    "fields": {
+        "dial": 4,
+        "speed": 1,
+        "bearing": "T",
+        "direction": "R",
+        "difficulty": "R"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 39,
+    "fields": {
+        "dial": 4,
+        "speed": 2,
+        "bearing": "T",
+        "direction": "L",
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 40,
+    "fields": {
+        "dial": 4,
+        "speed": 2,
+        "bearing": "B",
+        "direction": "L",
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 41,
+    "fields": {
+        "dial": 4,
+        "speed": 2,
+        "bearing": "S",
+        "direction": null,
+        "difficulty": "B"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 42,
+    "fields": {
+        "dial": 4,
+        "speed": 2,
+        "bearing": "B",
+        "direction": "R",
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 43,
+    "fields": {
+        "dial": 4,
+        "speed": 2,
+        "bearing": "T",
+        "direction": "R",
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 44,
+    "fields": {
+        "dial": 4,
+        "speed": 3,
+        "bearing": "T",
+        "direction": "L",
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 45,
+    "fields": {
+        "dial": 4,
+        "speed": 3,
+        "bearing": "B",
+        "direction": "L",
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 46,
+    "fields": {
+        "dial": 4,
+        "speed": 3,
+        "bearing": "S",
+        "direction": null,
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 47,
+    "fields": {
+        "dial": 4,
+        "speed": 3,
+        "bearing": "B",
+        "direction": "R",
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 48,
+    "fields": {
+        "dial": 4,
+        "speed": 3,
+        "bearing": "T",
+        "direction": "R",
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 49,
+    "fields": {
+        "dial": 4,
+        "speed": 4,
+        "bearing": "S",
+        "direction": null,
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 66,
+    "fields": {
+        "dial": 6,
+        "speed": 0,
+        "bearing": "SS",
+        "direction": null,
+        "difficulty": "R"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 67,
+    "fields": {
+        "dial": 6,
+        "speed": 1,
+        "bearing": "B",
+        "direction": "L",
+        "difficulty": "B"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 68,
+    "fields": {
+        "dial": 6,
+        "speed": 1,
+        "bearing": "S",
+        "direction": null,
+        "difficulty": "B"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 69,
+    "fields": {
+        "dial": 6,
+        "speed": 1,
+        "bearing": "B",
+        "direction": "R",
+        "difficulty": "B"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 70,
+    "fields": {
+        "dial": 6,
+        "speed": 2,
+        "bearing": "T",
+        "direction": "L",
+        "difficulty": "R"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 71,
+    "fields": {
+        "dial": 6,
+        "speed": 2,
+        "bearing": "B",
+        "direction": "L",
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 72,
+    "fields": {
+        "dial": 6,
+        "speed": 2,
+        "bearing": "S",
+        "direction": null,
+        "difficulty": "B"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 73,
+    "fields": {
+        "dial": 6,
+        "speed": 2,
+        "bearing": "B",
+        "direction": "R",
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 74,
+    "fields": {
+        "dial": 6,
+        "speed": 2,
+        "bearing": "T",
+        "direction": "R",
+        "difficulty": "R"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 75,
+    "fields": {
+        "dial": 6,
+        "speed": 3,
+        "bearing": "B",
+        "direction": "L",
+        "difficulty": "R"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 76,
+    "fields": {
+        "dial": 6,
+        "speed": 3,
+        "bearing": "S",
+        "direction": null,
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 77,
+    "fields": {
+        "dial": 6,
+        "speed": 3,
+        "bearing": "B",
+        "direction": "R",
+        "difficulty": "R"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 78,
+    "fields": {
+        "dial": 1,
+        "speed": 1,
+        "bearing": "XX",
+        "direction": null,
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 79,
+    "fields": {
+        "dial": 7,
+        "speed": 1,
+        "bearing": "B",
+        "direction": "L",
+        "difficulty": "B"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 80,
+    "fields": {
+        "dial": 7,
+        "speed": 1,
+        "bearing": "S",
+        "direction": null,
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 81,
+    "fields": {
+        "dial": 7,
+        "speed": 1,
+        "bearing": "B",
+        "direction": "R",
+        "difficulty": "B"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 82,
+    "fields": {
+        "dial": 7,
+        "speed": 2,
+        "bearing": "T",
+        "direction": "L",
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 83,
+    "fields": {
+        "dial": 7,
+        "speed": 2,
+        "bearing": "B",
+        "direction": "L",
+        "difficulty": "B"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 84,
+    "fields": {
+        "dial": 7,
+        "speed": 2,
+        "bearing": "S",
+        "direction": null,
+        "difficulty": "B"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 85,
+    "fields": {
+        "dial": 7,
+        "speed": 2,
+        "bearing": "B",
+        "direction": "R",
+        "difficulty": "B"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 86,
+    "fields": {
+        "dial": 7,
+        "speed": 2,
+        "bearing": "T",
+        "direction": "R",
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 87,
+    "fields": {
+        "dial": 7,
+        "speed": 3,
+        "bearing": "TR",
+        "direction": "L",
+        "difficulty": "R"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 88,
+    "fields": {
+        "dial": 7,
+        "speed": 3,
+        "bearing": "T",
+        "direction": "L",
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 89,
+    "fields": {
+        "dial": 7,
+        "speed": 3,
+        "bearing": "B",
+        "direction": "L",
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 90,
+    "fields": {
+        "dial": 7,
+        "speed": 3,
+        "bearing": "S",
+        "direction": null,
+        "difficulty": "B"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 91,
+    "fields": {
+        "dial": 7,
+        "speed": 3,
+        "bearing": "B",
+        "direction": "R",
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 92,
+    "fields": {
+        "dial": 7,
+        "speed": 3,
+        "bearing": "T",
+        "direction": "R",
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 93,
+    "fields": {
+        "dial": 7,
+        "speed": 3,
+        "bearing": "TR",
+        "direction": "R",
+        "difficulty": "R"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 94,
+    "fields": {
+        "dial": 7,
+        "speed": 4,
+        "bearing": "S",
+        "direction": null,
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 95,
+    "fields": {
+        "dial": 7,
+        "speed": 4,
+        "bearing": "KT",
+        "direction": null,
+        "difficulty": "R"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 96,
+    "fields": {
+        "dial": 7,
+        "speed": 5,
+        "bearing": "S",
+        "direction": null,
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 97,
+    "fields": {
+        "dial": 8,
+        "speed": 1,
+        "bearing": "B",
+        "direction": "L",
+        "difficulty": "B"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 98,
+    "fields": {
+        "dial": 8,
+        "speed": 1,
+        "bearing": "XX",
+        "direction": null,
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 99,
+    "fields": {
+        "dial": 8,
+        "speed": 1,
+        "bearing": "B",
+        "direction": "R",
+        "difficulty": "B"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 100,
+    "fields": {
+        "dial": 8,
+        "speed": 1,
+        "bearing": "T",
+        "direction": "L",
+        "difficulty": "R"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 101,
+    "fields": {
+        "dial": 8,
+        "speed": 1,
+        "bearing": "T",
+        "direction": "R",
+        "difficulty": "R"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 102,
+    "fields": {
+        "dial": 8,
+        "speed": 2,
+        "bearing": "T",
+        "direction": "L",
+        "difficulty": "R"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 103,
+    "fields": {
+        "dial": 8,
+        "speed": 2,
+        "bearing": "B",
+        "direction": "L",
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 104,
+    "fields": {
+        "dial": 8,
+        "speed": 2,
+        "bearing": "S",
+        "direction": null,
+        "difficulty": "B"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 105,
+    "fields": {
+        "dial": 8,
+        "speed": 2,
+        "bearing": "B",
+        "direction": "R",
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 106,
+    "fields": {
+        "dial": 8,
+        "speed": 2,
+        "bearing": "T",
+        "direction": "R",
+        "difficulty": "R"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 107,
+    "fields": {
+        "dial": 8,
+        "speed": 2,
+        "bearing": "KT",
+        "direction": null,
+        "difficulty": "R"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 108,
+    "fields": {
+        "dial": 8,
+        "speed": 3,
+        "bearing": "T",
+        "direction": "L",
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 109,
+    "fields": {
+        "dial": 8,
+        "speed": 3,
+        "bearing": "B",
+        "direction": "L",
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 110,
+    "fields": {
+        "dial": 8,
+        "speed": 3,
+        "bearing": "S",
+        "direction": null,
+        "difficulty": "B"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 111,
+    "fields": {
+        "dial": 8,
+        "speed": 3,
+        "bearing": "B",
+        "direction": "R",
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 112,
+    "fields": {
+        "dial": 8,
+        "speed": 3,
+        "bearing": "T",
+        "direction": "R",
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 113,
+    "fields": {
+        "dial": 8,
+        "speed": 4,
+        "bearing": "S",
+        "direction": null,
+        "difficulty": "B"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 114,
+    "fields": {
+        "dial": 8,
+        "speed": 4,
+        "bearing": "KT",
+        "direction": null,
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 115,
+    "fields": {
+        "dial": 8,
+        "speed": 5,
+        "bearing": "S",
+        "direction": null,
+        "difficulty": "B"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 116,
+    "fields": {
+        "dial": 9,
+        "speed": 1,
+        "bearing": "B",
+        "direction": "L",
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 117,
+    "fields": {
+        "dial": 9,
+        "speed": 1,
+        "bearing": "S",
+        "direction": null,
+        "difficulty": "B"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 118,
+    "fields": {
+        "dial": 9,
+        "speed": 1,
+        "bearing": "B",
+        "direction": "R",
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 119,
+    "fields": {
+        "dial": 9,
+        "speed": 2,
+        "bearing": "T",
+        "direction": "L",
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 120,
+    "fields": {
+        "dial": 9,
+        "speed": 2,
+        "bearing": "B",
+        "direction": "L",
+        "difficulty": "B"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 121,
+    "fields": {
+        "dial": 9,
+        "speed": 2,
+        "bearing": "S",
+        "direction": null,
+        "difficulty": "B"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 122,
+    "fields": {
+        "dial": 9,
+        "speed": 2,
+        "bearing": "B",
+        "direction": "R",
+        "difficulty": "B"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 123,
+    "fields": {
+        "dial": 9,
+        "speed": 2,
+        "bearing": "T",
+        "direction": "R",
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 124,
+    "fields": {
+        "dial": 9,
+        "speed": 3,
+        "bearing": "T",
+        "direction": "L",
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 125,
+    "fields": {
+        "dial": 9,
+        "speed": 3,
+        "bearing": "B",
+        "direction": "L",
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 126,
+    "fields": {
+        "dial": 9,
+        "speed": 3,
+        "bearing": "S",
+        "direction": null,
+        "difficulty": "B"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 127,
+    "fields": {
+        "dial": 9,
+        "speed": 3,
+        "bearing": "B",
+        "direction": "R",
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 128,
+    "fields": {
+        "dial": 9,
+        "speed": 3,
+        "bearing": "T",
+        "direction": "R",
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 129,
+    "fields": {
+        "dial": 9,
+        "speed": 3,
+        "bearing": "KT",
+        "direction": null,
+        "difficulty": "R"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 130,
+    "fields": {
+        "dial": 9,
+        "speed": 4,
+        "bearing": "S",
+        "direction": null,
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 131,
+    "fields": {
+        "dial": 9,
+        "speed": 5,
+        "bearing": "KT",
+        "direction": null,
+        "difficulty": "R"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 132,
+    "fields": {
+        "dial": 10,
+        "speed": 1,
+        "bearing": "B",
+        "direction": "L",
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 133,
+    "fields": {
+        "dial": 10,
+        "speed": 1,
+        "bearing": "XX",
+        "direction": null,
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 134,
+    "fields": {
+        "dial": 10,
+        "speed": 1,
+        "bearing": "B",
+        "direction": "R",
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 135,
+    "fields": {
+        "dial": 10,
+        "speed": 1,
+        "bearing": "T",
+        "direction": "L",
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 136,
+    "fields": {
+        "dial": 10,
+        "speed": 1,
+        "bearing": "T",
+        "direction": "R",
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 137,
+    "fields": {
+        "dial": 10,
+        "speed": 2,
+        "bearing": "T",
+        "direction": "L",
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 138,
+    "fields": {
+        "dial": 10,
+        "speed": 2,
+        "bearing": "B",
+        "direction": "L",
+        "difficulty": "B"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 139,
+    "fields": {
+        "dial": 10,
+        "speed": 2,
+        "bearing": "S",
+        "direction": null,
+        "difficulty": "B"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 140,
+    "fields": {
+        "dial": 10,
+        "speed": 2,
+        "bearing": "B",
+        "direction": "R",
+        "difficulty": "B"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 141,
+    "fields": {
+        "dial": 10,
+        "speed": 2,
+        "bearing": "T",
+        "direction": "R",
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 142,
+    "fields": {
+        "dial": 10,
+        "speed": 3,
+        "bearing": "T",
+        "direction": "L",
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 143,
+    "fields": {
+        "dial": 10,
+        "speed": 3,
+        "bearing": "B",
+        "direction": "L",
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 144,
+    "fields": {
+        "dial": 10,
+        "speed": 3,
+        "bearing": "S",
+        "direction": null,
+        "difficulty": "B"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 145,
+    "fields": {
+        "dial": 10,
+        "speed": 3,
+        "bearing": "B",
+        "direction": "R",
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 146,
+    "fields": {
+        "dial": 10,
+        "speed": 3,
+        "bearing": "T",
+        "direction": "R",
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 147,
+    "fields": {
+        "dial": 10,
+        "speed": 3,
+        "bearing": "KT",
+        "direction": null,
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 148,
+    "fields": {
+        "dial": 10,
+        "speed": 4,
+        "bearing": "S",
+        "direction": null,
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 149,
+    "fields": {
+        "dial": 10,
+        "speed": 4,
+        "bearing": "KT",
+        "direction": null,
+        "difficulty": "R"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 150,
+    "fields": {
+        "dial": 11,
+        "speed": 1,
+        "bearing": "T",
+        "direction": "L",
+        "difficulty": "R"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 151,
+    "fields": {
+        "dial": 11,
+        "speed": 1,
+        "bearing": "B",
+        "direction": "L",
+        "difficulty": "B"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 152,
+    "fields": {
+        "dial": 11,
+        "speed": 1,
+        "bearing": "S",
+        "direction": null,
+        "difficulty": "B"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 153,
+    "fields": {
+        "dial": 11,
+        "speed": 1,
+        "bearing": "B",
+        "direction": "R",
+        "difficulty": "B"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 154,
+    "fields": {
+        "dial": 11,
+        "speed": 1,
+        "bearing": "T",
+        "direction": "R",
+        "difficulty": "R"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 155,
+    "fields": {
+        "dial": 11,
+        "speed": 1,
+        "bearing": "TR",
+        "direction": "L",
+        "difficulty": "R"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 156,
+    "fields": {
+        "dial": 11,
+        "speed": 1,
+        "bearing": "TR",
+        "direction": "R",
+        "difficulty": "R"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 157,
+    "fields": {
+        "dial": 11,
+        "speed": 2,
+        "bearing": "T",
+        "direction": "L",
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 158,
+    "fields": {
+        "dial": 11,
+        "speed": 2,
+        "bearing": "B",
+        "direction": "L",
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 159,
+    "fields": {
+        "dial": 11,
+        "speed": 2,
+        "bearing": "S",
+        "direction": null,
+        "difficulty": "B"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 160,
+    "fields": {
+        "dial": 11,
+        "speed": 2,
+        "bearing": "B",
+        "direction": "R",
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 161,
+    "fields": {
+        "dial": 11,
+        "speed": 2,
+        "bearing": "T",
+        "direction": "R",
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 162,
+    "fields": {
+        "dial": 11,
+        "speed": 2,
+        "bearing": "KT",
+        "direction": null,
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 163,
+    "fields": {
+        "dial": 11,
+        "speed": 3,
+        "bearing": "B",
+        "direction": "L",
+        "difficulty": "R"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 164,
+    "fields": {
+        "dial": 11,
+        "speed": 3,
+        "bearing": "S",
+        "direction": null,
+        "difficulty": "B"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 165,
+    "fields": {
+        "dial": 11,
+        "speed": 3,
+        "bearing": "B",
+        "direction": "R",
+        "difficulty": "R"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 166,
+    "fields": {
+        "dial": 11,
+        "speed": 4,
+        "bearing": "S",
+        "direction": null,
+        "difficulty": "R"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 167,
+    "fields": {
+        "dial": 12,
+        "speed": 0,
+        "bearing": "SS",
+        "direction": null,
+        "difficulty": "R"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 168,
+    "fields": {
+        "dial": 12,
+        "speed": 1,
+        "bearing": "B",
+        "direction": "L",
+        "difficulty": "B"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 169,
+    "fields": {
+        "dial": 12,
+        "speed": 1,
+        "bearing": "S",
+        "direction": null,
+        "difficulty": "B"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 170,
+    "fields": {
+        "dial": 12,
+        "speed": 1,
+        "bearing": "B",
+        "direction": "R",
+        "difficulty": "B"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 171,
+    "fields": {
+        "dial": 12,
+        "speed": 2,
+        "bearing": "T",
+        "direction": "L",
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 172,
+    "fields": {
+        "dial": 12,
+        "speed": 2,
+        "bearing": "B",
+        "direction": "L",
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 173,
+    "fields": {
+        "dial": 12,
+        "speed": 2,
+        "bearing": "S",
+        "direction": null,
+        "difficulty": "B"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 174,
+    "fields": {
+        "dial": 12,
+        "speed": 2,
+        "bearing": "B",
+        "direction": "R",
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 175,
+    "fields": {
+        "dial": 12,
+        "speed": 2,
+        "bearing": "T",
+        "direction": "R",
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 176,
+    "fields": {
+        "dial": 12,
+        "speed": 3,
+        "bearing": "T",
+        "direction": "L",
+        "difficulty": "R"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 177,
+    "fields": {
+        "dial": 12,
+        "speed": 3,
+        "bearing": "B",
+        "direction": "L",
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 178,
+    "fields": {
+        "dial": 12,
+        "speed": 3,
+        "bearing": "S",
+        "direction": null,
+        "difficulty": "B"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 179,
+    "fields": {
+        "dial": 12,
+        "speed": 3,
+        "bearing": "B",
+        "direction": "R",
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 180,
+    "fields": {
+        "dial": 12,
+        "speed": 3,
+        "bearing": "T",
+        "direction": "R",
+        "difficulty": "R"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 181,
+    "fields": {
+        "dial": 12,
+        "speed": 4,
+        "bearing": "S",
+        "direction": null,
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 182,
+    "fields": {
+        "dial": 3,
+        "speed": 1,
+        "bearing": "B",
+        "direction": "L",
+        "difficulty": "B"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 183,
+    "fields": {
+        "dial": 3,
+        "speed": 1,
+        "bearing": "S",
+        "direction": null,
+        "difficulty": "B"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 184,
+    "fields": {
+        "dial": 3,
+        "speed": 1,
+        "bearing": "B",
+        "direction": "R",
+        "difficulty": "B"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 185,
+    "fields": {
+        "dial": 3,
+        "speed": 2,
+        "bearing": "T",
+        "direction": "L",
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 186,
+    "fields": {
+        "dial": 3,
+        "speed": 2,
+        "bearing": "B",
+        "direction": "L",
+        "difficulty": "B"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 187,
+    "fields": {
+        "dial": 3,
+        "speed": 2,
+        "bearing": "S",
+        "direction": null,
+        "difficulty": "B"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 188,
+    "fields": {
+        "dial": 3,
+        "speed": 2,
+        "bearing": "B",
+        "direction": "R",
+        "difficulty": "B"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 189,
+    "fields": {
+        "dial": 3,
+        "speed": 2,
+        "bearing": "T",
+        "direction": "R",
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 190,
+    "fields": {
+        "dial": 3,
+        "speed": 3,
+        "bearing": "TR",
+        "direction": "L",
+        "difficulty": "R"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 191,
+    "fields": {
+        "dial": 3,
+        "speed": 3,
+        "bearing": "T",
+        "direction": "L",
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 192,
+    "fields": {
+        "dial": 3,
+        "speed": 3,
+        "bearing": "B",
+        "direction": "L",
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 193,
+    "fields": {
+        "dial": 3,
+        "speed": 3,
+        "bearing": "S",
+        "direction": null,
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 194,
+    "fields": {
+        "dial": 3,
+        "speed": 3,
+        "bearing": "B",
+        "direction": "R",
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 195,
+    "fields": {
+        "dial": 3,
+        "speed": 3,
+        "bearing": "T",
+        "direction": "R",
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 196,
+    "fields": {
+        "dial": 3,
+        "speed": 3,
+        "bearing": "TR",
+        "direction": "R",
+        "difficulty": "R"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 197,
+    "fields": {
+        "dial": 3,
+        "speed": 4,
+        "bearing": "S",
+        "direction": null,
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 198,
+    "fields": {
+        "dial": 3,
+        "speed": 4,
+        "bearing": "KT",
+        "direction": null,
+        "difficulty": "R"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 199,
+    "fields": {
+        "dial": 13,
+        "speed": 1,
+        "bearing": "T",
+        "direction": "L",
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 200,
+    "fields": {
+        "dial": 13,
+        "speed": 1,
+        "bearing": "XX",
+        "direction": null,
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 201,
+    "fields": {
+        "dial": 13,
+        "speed": 1,
+        "bearing": "T",
+        "direction": "R",
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 202,
+    "fields": {
+        "dial": 13,
+        "speed": 2,
+        "bearing": "T",
+        "direction": "L",
+        "difficulty": "B"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 203,
+    "fields": {
+        "dial": 13,
+        "speed": 2,
+        "bearing": "B",
+        "direction": "L",
+        "difficulty": "B"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 204,
+    "fields": {
+        "dial": 13,
+        "speed": 2,
+        "bearing": "S",
+        "direction": null,
+        "difficulty": "B"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 205,
+    "fields": {
+        "dial": 13,
+        "speed": 2,
+        "bearing": "B",
+        "direction": "R",
+        "difficulty": "B"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 206,
+    "fields": {
+        "dial": 13,
+        "speed": 2,
+        "bearing": "T",
+        "direction": "R",
+        "difficulty": "B"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 207,
+    "fields": {
+        "dial": 13,
+        "speed": 3,
+        "bearing": "SL",
+        "direction": "L",
+        "difficulty": "R"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 208,
+    "fields": {
+        "dial": 13,
+        "speed": 3,
+        "bearing": "T",
+        "direction": "L",
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 209,
+    "fields": {
+        "dial": 13,
+        "speed": 3,
+        "bearing": "B",
+        "direction": "L",
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 210,
+    "fields": {
+        "dial": 13,
+        "speed": 3,
+        "bearing": "S",
+        "direction": null,
+        "difficulty": "B"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 211,
+    "fields": {
+        "dial": 13,
+        "speed": 3,
+        "bearing": "B",
+        "direction": "R",
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 212,
+    "fields": {
+        "dial": 13,
+        "speed": 3,
+        "bearing": "T",
+        "direction": "R",
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 213,
+    "fields": {
+        "dial": 13,
+        "speed": 3,
+        "bearing": "SL",
+        "direction": "R",
+        "difficulty": "R"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 214,
+    "fields": {
+        "dial": 13,
+        "speed": 4,
+        "bearing": "S",
+        "direction": null,
+        "difficulty": "B"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 215,
+    "fields": {
+        "dial": 13,
+        "speed": 5,
+        "bearing": "S",
+        "direction": null,
+        "difficulty": "B"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 216,
+    "fields": {
+        "dial": 14,
+        "speed": 1,
+        "bearing": "B",
+        "direction": "L",
+        "difficulty": "B"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 217,
+    "fields": {
+        "dial": 14,
+        "speed": 1,
+        "bearing": "S",
+        "direction": null,
+        "difficulty": "B"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 218,
+    "fields": {
+        "dial": 14,
+        "speed": 1,
+        "bearing": "B",
+        "direction": "R",
+        "difficulty": "B"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 219,
+    "fields": {
+        "dial": 14,
+        "speed": 2,
+        "bearing": "T",
+        "direction": "L",
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 220,
+    "fields": {
+        "dial": 14,
+        "speed": 2,
+        "bearing": "B",
+        "direction": "L",
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 221,
+    "fields": {
+        "dial": 14,
+        "speed": 2,
+        "bearing": "S",
+        "direction": null,
+        "difficulty": "B"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 222,
+    "fields": {
+        "dial": 14,
+        "speed": 2,
+        "bearing": "B",
+        "direction": "R",
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 223,
+    "fields": {
+        "dial": 14,
+        "speed": 2,
+        "bearing": "T",
+        "direction": "R",
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 224,
+    "fields": {
+        "dial": 14,
+        "speed": 3,
+        "bearing": "T",
+        "direction": "L",
+        "difficulty": "R"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 225,
+    "fields": {
+        "dial": 14,
+        "speed": 3,
+        "bearing": "B",
+        "direction": "L",
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 226,
+    "fields": {
+        "dial": 14,
+        "speed": 3,
+        "bearing": "S",
+        "direction": null,
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 227,
+    "fields": {
+        "dial": 14,
+        "speed": 3,
+        "bearing": "B",
+        "direction": "R",
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 228,
+    "fields": {
+        "dial": 14,
+        "speed": 3,
+        "bearing": "T",
+        "direction": "R",
+        "difficulty": "R"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 229,
+    "fields": {
+        "dial": 14,
+        "speed": 4,
+        "bearing": "S",
+        "direction": null,
+        "difficulty": "R"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 230,
+    "fields": {
+        "dial": 14,
+        "speed": 4,
+        "bearing": "KT",
+        "direction": null,
+        "difficulty": "R"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 232,
+    "fields": {
+        "dial": 2,
+        "speed": 1,
+        "bearing": "XX",
+        "direction": null,
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.dialmaneuver",
+    "pk": 233,
+    "fields": {
+        "dial": 2,
+        "speed": 4,
+        "bearing": "XX",
+        "direction": null,
+        "difficulty": "W"
+    }
+},
+{
+    "model": "xwtools.chassis",
+    "pk": 1,
+    "fields": {
+        "name": "T-65 X-Wing",
+        "slug": "t65-xwing",
+        "dial": 3,
+        "size": "S",
+        "attack": 3,
+        "attack_arc": "F",
+        "attack2": 0,
+        "attack2_arc": null,
+        "agility": 2,
+        "hull": 4,
+        "shields": 2,
+        "hyperdrive": true,
+        "cloaking": false,
+        "css": null,
+        "ability": null
+    }
+},
+{
+    "model": "xwtools.chassis",
+    "pk": 2,
+    "fields": {
+        "name": "BTL-A4 Y-wing",
+        "slug": "btla4-ywing",
+        "dial": 14,
+        "size": "S",
+        "attack": 0,
+        "attack_arc": "F",
+        "attack2": 0,
+        "attack2_arc": null,
+        "agility": 0,
+        "hull": 0,
+        "shields": 0,
+        "hyperdrive": true,
+        "cloaking": false,
+        "css": null,
+        "ability": null
+    }
+},
+{
+    "model": "xwtools.chassis",
+    "pk": 3,
+    "fields": {
+        "name": "RZ-1 A-Wing",
+        "slug": "rz1-awing",
+        "dial": 13,
+        "size": "S",
+        "attack": 2,
+        "attack_arc": "F",
+        "attack2": 0,
+        "attack2_arc": null,
+        "agility": 3,
+        "hull": 2,
+        "shields": 2,
+        "hyperdrive": true,
+        "cloaking": false,
+        "css": null,
+        "ability": null
+    }
+},
+{
+    "model": "xwtools.chassis",
+    "pk": 4,
+    "fields": {
+        "name": "A/SF-01 B-Wing",
+        "slug": "asf01-bwing",
+        "dial": 11,
+        "size": "S",
+        "attack": 0,
+        "attack_arc": "F",
+        "attack2": 0,
+        "attack2_arc": null,
+        "agility": 0,
+        "hull": 0,
+        "shields": 0,
+        "hyperdrive": true,
+        "cloaking": false,
+        "css": null,
+        "ability": null
+    }
+},
+{
+    "model": "xwtools.chassis",
+    "pk": 5,
+    "fields": {
+        "name": "HWK-290 Freighter",
+        "slug": "hwk-290",
+        "dial": 12,
+        "size": "S",
+        "attack": 0,
+        "attack_arc": "F",
+        "attack2": 0,
+        "attack2_arc": null,
+        "agility": 0,
+        "hull": 0,
+        "shields": 0,
+        "hyperdrive": true,
+        "cloaking": false,
+        "css": null,
+        "ability": null
+    }
+},
+{
+    "model": "xwtools.chassis",
+    "pk": 6,
+    "fields": {
+        "name": "TIE/LN Fighter",
+        "slug": "tie-fighter",
+        "dial": 1,
+        "size": "S",
+        "attack": 0,
+        "attack_arc": "F",
+        "attack2": 0,
+        "attack2_arc": null,
+        "agility": 0,
+        "hull": 0,
+        "shields": 0,
+        "hyperdrive": true,
+        "cloaking": false,
+        "css": null,
+        "ability": null
+    }
+},
+{
+    "model": "xwtools.chassis",
+    "pk": 7,
+    "fields": {
+        "name": "TIE/IN Interceptor",
+        "slug": "tie-interceptor",
+        "dial": 2,
+        "size": "S",
+        "attack": 0,
+        "attack_arc": "F",
+        "attack2": 0,
+        "attack2_arc": null,
+        "agility": 0,
+        "hull": 0,
+        "shields": 0,
+        "hyperdrive": true,
+        "cloaking": false,
+        "css": null,
+        "ability": null
+    }
+},
+{
+    "model": "xwtools.chassis",
+    "pk": 8,
+    "fields": {
+        "name": "VT-49 Decimator",
+        "slug": "vt-49-decimator",
+        "dial": 4,
+        "size": "S",
+        "attack": 0,
+        "attack_arc": "F",
+        "attack2": 0,
+        "attack2_arc": null,
+        "agility": 0,
+        "hull": 0,
+        "shields": 0,
+        "hyperdrive": true,
+        "cloaking": false,
+        "css": null,
+        "ability": null
+    }
+},
+{
+    "model": "xwtools.chassis",
+    "pk": 9,
+    "fields": {
+        "name": "Lambda-Class T-4A Shuttle",
+        "slug": "lambda-t4a-shuttle",
+        "dial": 6,
+        "size": "S",
+        "attack": 0,
+        "attack_arc": "F",
+        "attack2": 0,
+        "attack2_arc": null,
+        "agility": 0,
+        "hull": 0,
+        "shields": 0,
+        "hyperdrive": true,
+        "cloaking": false,
+        "css": null,
+        "ability": null
+    }
+},
+{
+    "model": "xwtools.chassis",
+    "pk": 10,
+    "fields": {
+        "name": "TIE Advanced x1",
+        "slug": "tie-advanced",
+        "dial": 7,
+        "size": "S",
+        "attack": 0,
+        "attack_arc": "F",
+        "attack2": 0,
+        "attack2_arc": null,
+        "agility": 0,
+        "hull": 0,
+        "shields": 0,
+        "hyperdrive": true,
+        "cloaking": false,
+        "css": null,
+        "ability": null
+    }
+},
+{
+    "model": "xwtools.chassis",
+    "pk": 11,
+    "fields": {
+        "name": "TIE/D Defender",
+        "slug": "tie-defender",
+        "dial": 8,
+        "size": "S",
+        "attack": 0,
+        "attack_arc": "F",
+        "attack2": 0,
+        "attack2_arc": null,
+        "agility": 0,
+        "hull": 0,
+        "shields": 0,
+        "hyperdrive": true,
+        "cloaking": false,
+        "css": null,
+        "ability": null
+    }
+},
+{
+    "model": "xwtools.chassis",
+    "pk": 12,
+    "fields": {
+        "name": "TIE/SA Bomber",
+        "slug": "tie-bomber",
+        "dial": 9,
+        "size": "S",
+        "attack": 0,
+        "attack_arc": "F",
+        "attack2": 0,
+        "attack2_arc": null,
+        "agility": 0,
+        "hull": 0,
+        "shields": 0,
+        "hyperdrive": true,
+        "cloaking": false,
+        "css": null,
+        "ability": null
+    }
+},
+{
+    "model": "xwtools.chassis",
+    "pk": 13,
+    "fields": {
+        "name": "TIE/PH Phantom",
+        "slug": "tie-phantom",
+        "dial": 10,
+        "size": "S",
+        "attack": 3,
+        "attack_arc": "F",
+        "attack2": 0,
+        "attack2_arc": null,
+        "agility": 2,
+        "hull": 3,
+        "shields": 2,
+        "hyperdrive": true,
+        "cloaking": true,
+        "css": "tiephphantom",
+        "ability": 26
+    }
+},
+{
+    "model": "xwtools.slot",
+    "pk": 57,
+    "fields": {
+        "chassis": 3,
+        "type": "TLN",
+        "initiative": 1
+    }
+},
+{
+    "model": "xwtools.slot",
+    "pk": 58,
+    "fields": {
+        "chassis": 3,
+        "type": "MSL",
+        "initiative": 1
+    }
+},
+{
+    "model": "xwtools.slot",
+    "pk": 59,
+    "fields": {
+        "chassis": 3,
+        "type": "MOD",
+        "initiative": 1
+    }
+}
+]

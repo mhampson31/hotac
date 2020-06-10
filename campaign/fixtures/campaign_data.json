@@ -1,0 +1,5314 @@
+[
+{
+    "model": "campaign.user",
+    "pk": 1,
+    "fields": {
+        "password": "pbkdf2_sha256$180000$QU0BzHnz9YLW$fAGL7HSBZCFXrjtyfv6YteV6ZeV4kjHY9cPhHeAcCbE=",
+        "last_login": "2020-06-04T12:38:30.406Z",
+        "is_superuser": true,
+        "username": "Mike",
+        "first_name": "",
+        "last_name": "",
+        "email": "",
+        "is_staff": true,
+        "is_active": true,
+        "date_joined": "2019-05-12T16:18:53Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "campaign.user",
+    "pk": 2,
+    "fields": {
+        "password": "pbkdf2_sha256$150000$jNID7i03RPce$PFx2o2ahQZa9sehBLeWsaxg2L7J8Kvja1fGqwWrT5nI=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "Kate",
+        "first_name": "",
+        "last_name": "",
+        "email": "",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2019-05-12T16:49:53Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "campaign.user",
+    "pk": 3,
+    "fields": {
+        "password": "pbkdf2_sha256$150000$geHqBeuaVT1e$PK9CvjwrDNr2FmlfJZTof7hXiACIPDOe/UtobxnAr+I=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "Carolyn",
+        "first_name": "",
+        "last_name": "",
+        "email": "",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2019-05-12T16:50:43.164Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "campaign.user",
+    "pk": 4,
+    "fields": {
+        "password": "pbkdf2_sha256$150000$cLM3oYUrPkMe$sg1vN5fuWqZANCH4RMGUuzrXFwIZl1tXUxDFFVAo2cU=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "Steve",
+        "first_name": "",
+        "last_name": "",
+        "email": "",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2019-05-12T16:51:33.044Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "campaign.user",
+    "pk": 5,
+    "fields": {
+        "password": "pbkdf2_sha256$150000$HMp3SAHtoNtr$QCmFaA5ibvDT5yIf+73EeQSSf4YDtH6q60qbjbhwreg=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "Lis",
+        "first_name": "",
+        "last_name": "",
+        "email": "",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2019-05-12T17:09:36.324Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "campaign.campaign",
+    "pk": 1,
+    "fields": {
+        "description": "Heroes of the Aturi Cluster",
+        "admin": [
+            "Mike"
+        ],
+        "start_init": 2,
+        "ship_cost": 5,
+        "upgrade_logic": 1,
+        "initiative_cost": 3,
+        "initiative_sq": false
+    }
+},
+{
+    "model": "campaign.playership",
+    "pk": 1,
+    "fields": {
+        "campaign": 1,
+        "chassis": 1,
+        "xp_value": 10,
+        "progression": "d"
+    }
+},
+{
+    "model": "campaign.playership",
+    "pk": 2,
+    "fields": {
+        "campaign": 1,
+        "chassis": 2,
+        "xp_value": 16,
+        "progression": "d"
+    }
+},
+{
+    "model": "campaign.playership",
+    "pk": 3,
+    "fields": {
+        "campaign": 1,
+        "chassis": 3,
+        "xp_value": 0,
+        "progression": "d"
+    }
+},
+{
+    "model": "campaign.playership",
+    "pk": 4,
+    "fields": {
+        "campaign": 1,
+        "chassis": 4,
+        "xp_value": 0,
+        "progression": "d"
+    }
+},
+{
+    "model": "campaign.playership",
+    "pk": 5,
+    "fields": {
+        "campaign": 1,
+        "chassis": 5,
+        "xp_value": 0,
+        "progression": "h"
+    }
+},
+{
+    "model": "campaign.event",
+    "pk": 1,
+    "fields": {
+        "campaign": 1,
+        "short_desc": "Hit",
+        "long_desc": "Deal at least 1 damage to one or more enemies",
+        "xp": 1,
+        "team": true
+    }
+},
+{
+    "model": "campaign.event",
+    "pk": 2,
+    "fields": {
+        "campaign": 1,
+        "short_desc": "Kill",
+        "long_desc": "Destroyed an enemy fighter",
+        "xp": 1,
+        "team": false
+    }
+},
+{
+    "model": "campaign.event",
+    "pk": 3,
+    "fields": {
+        "campaign": 1,
+        "short_desc": "Kill: Emplacement",
+        "long_desc": "Destroyed an enemy emplacement",
+        "xp": 2,
+        "team": true
+    }
+},
+{
+    "model": "campaign.event",
+    "pk": 4,
+    "fields": {
+        "campaign": 1,
+        "short_desc": "Kill: TIE Bomber",
+        "long_desc": "Destroyed an enemy TIE Bomber",
+        "xp": 2,
+        "team": true
+    }
+},
+{
+    "model": "campaign.event",
+    "pk": 5,
+    "fields": {
+        "campaign": 1,
+        "short_desc": "Kill: TIE Interceptor",
+        "long_desc": "Destroyed an enemy TIE Interceptor",
+        "xp": 2,
+        "team": true
+    }
+},
+{
+    "model": "campaign.event",
+    "pk": 6,
+    "fields": {
+        "campaign": 1,
+        "short_desc": "Kill: TIE Advanced",
+        "long_desc": "Destroyed an enemy TIE Advanced",
+        "xp": 2,
+        "team": true
+    }
+},
+{
+    "model": "campaign.event",
+    "pk": 7,
+    "fields": {
+        "campaign": 1,
+        "short_desc": "Kill: Lambda Shuttle",
+        "long_desc": "Destroyed an enemy Lambda shuttle",
+        "xp": 2,
+        "team": true
+    }
+},
+{
+    "model": "campaign.event",
+    "pk": 8,
+    "fields": {
+        "campaign": 1,
+        "short_desc": "Kill: Elite Pilot",
+        "long_desc": "Any player destroyed an Elite enemy",
+        "xp": 1,
+        "team": true
+    }
+},
+{
+    "model": "campaign.event",
+    "pk": 12,
+    "fields": {
+        "campaign": 1,
+        "short_desc": "Assist: Guardian",
+        "long_desc": "Provide a bonus or action to an ally that prevents at least one damage",
+        "xp": 1,
+        "team": true
+    }
+},
+{
+    "model": "campaign.event",
+    "pk": 13,
+    "fields": {
+        "campaign": 1,
+        "short_desc": "Assist: Kill",
+        "long_desc": "Provide a bonus or action to an ally who uses it to destroy an enemy",
+        "xp": 1,
+        "team": true
+    }
+},
+{
+    "model": "campaign.event",
+    "pk": 19,
+    "fields": {
+        "campaign": 1,
+        "short_desc": "Bonus Objective (+1)",
+        "long_desc": "Met a bonus objective worth 1xp",
+        "xp": 1,
+        "team": true
+    }
+},
+{
+    "model": "campaign.event",
+    "pk": 20,
+    "fields": {
+        "campaign": 1,
+        "short_desc": "Bonus Objective (+2)",
+        "long_desc": "Met a bonus objective worth 2xp",
+        "xp": 2,
+        "team": true
+    }
+},
+{
+    "model": "campaign.event",
+    "pk": 21,
+    "fields": {
+        "campaign": 1,
+        "short_desc": "Bonus Objective (+3)",
+        "long_desc": "Met a bonus objective worth 3xp",
+        "xp": 3,
+        "team": true
+    }
+},
+{
+    "model": "campaign.event",
+    "pk": 22,
+    "fields": {
+        "campaign": 1,
+        "short_desc": "Kill: TIE Defender",
+        "long_desc": "Destroyed an enemy TIE Defender",
+        "xp": 2,
+        "team": true
+    }
+},
+{
+    "model": "campaign.event",
+    "pk": 23,
+    "fields": {
+        "campaign": 1,
+        "short_desc": "Jump",
+        "long_desc": "Jumped to Hyperspace",
+        "xp": 0,
+        "team": false
+    }
+},
+{
+    "model": "campaign.event",
+    "pk": 24,
+    "fields": {
+        "campaign": 1,
+        "short_desc": "Eject",
+        "long_desc": "Ejected safely",
+        "xp": 0,
+        "team": true
+    }
+},
+{
+    "model": "campaign.mission",
+    "pk": 1,
+    "fields": {
+        "name": "Local Trouble",
+        "story": "Welcome to the Aturi Cluster",
+        "sequence": 1,
+        "enemy_faction": 1,
+        "territory": "F"
+    }
+},
+{
+    "model": "campaign.mission",
+    "pk": 2,
+    "fields": {
+        "name": "Tread Softly",
+        "story": "Minefields",
+        "sequence": 1,
+        "enemy_faction": 1,
+        "territory": "F"
+    }
+},
+{
+    "model": "campaign.mission",
+    "pk": 3,
+    "fields": {
+        "name": "Secure Holonet Receiver",
+        "story": "Defection",
+        "sequence": 1,
+        "enemy_faction": 1,
+        "territory": "N"
+    }
+},
+{
+    "model": "campaign.enemypilot",
+    "pk": 1,
+    "fields": {
+        "chassis": 7,
+        "faction": 1
+    }
+},
+{
+    "model": "campaign.enemypilot",
+    "pk": 2,
+    "fields": {
+        "chassis": 7,
+        "faction": 1
+    }
+},
+{
+    "model": "campaign.enemypilot",
+    "pk": 3,
+    "fields": {
+        "chassis": 7,
+        "faction": 1
+    }
+},
+{
+    "model": "campaign.enemypilot",
+    "pk": 4,
+    "fields": {
+        "chassis": 7,
+        "faction": 1
+    }
+},
+{
+    "model": "campaign.enemypilot",
+    "pk": 5,
+    "fields": {
+        "chassis": 8,
+        "faction": 1
+    }
+},
+{
+    "model": "campaign.enemypilot",
+    "pk": 6,
+    "fields": {
+        "chassis": 9,
+        "faction": 1
+    }
+},
+{
+    "model": "campaign.enemypilot",
+    "pk": 7,
+    "fields": {
+        "chassis": 10,
+        "faction": 1
+    }
+},
+{
+    "model": "campaign.enemypilot",
+    "pk": 8,
+    "fields": {
+        "chassis": 11,
+        "faction": 1
+    }
+},
+{
+    "model": "campaign.enemypilot",
+    "pk": 9,
+    "fields": {
+        "chassis": 12,
+        "faction": 1
+    }
+},
+{
+    "model": "campaign.enemypilot",
+    "pk": 10,
+    "fields": {
+        "chassis": 13,
+        "faction": 1
+    }
+},
+{
+    "model": "campaign.enemypilot",
+    "pk": 11,
+    "fields": {
+        "chassis": 6,
+        "faction": 1
+    }
+},
+{
+    "model": "campaign.enemyability",
+    "pk": 1,
+    "fields": {
+        "pilot": 1,
+        "upgrade": 27,
+        "level": 1
+    }
+},
+{
+    "model": "campaign.enemyability",
+    "pk": 2,
+    "fields": {
+        "pilot": 1,
+        "upgrade": 21,
+        "level": 2
+    }
+},
+{
+    "model": "campaign.enemyability",
+    "pk": 3,
+    "fields": {
+        "pilot": 1,
+        "upgrade": 1,
+        "level": 2
+    }
+},
+{
+    "model": "campaign.enemyability",
+    "pk": 4,
+    "fields": {
+        "pilot": 1,
+        "upgrade": 28,
+        "level": 3
+    }
+},
+{
+    "model": "campaign.enemyability",
+    "pk": 5,
+    "fields": {
+        "pilot": 1,
+        "upgrade": 17,
+        "level": 4
+    }
+},
+{
+    "model": "campaign.enemyability",
+    "pk": 6,
+    "fields": {
+        "pilot": 1,
+        "upgrade": 29,
+        "level": 5
+    }
+},
+{
+    "model": "campaign.enemyability",
+    "pk": 7,
+    "fields": {
+        "pilot": 2,
+        "upgrade": 30,
+        "level": 1
+    }
+},
+{
+    "model": "campaign.enemyability",
+    "pk": 8,
+    "fields": {
+        "pilot": 2,
+        "upgrade": 25,
+        "level": 2
+    }
+},
+{
+    "model": "campaign.enemyability",
+    "pk": 9,
+    "fields": {
+        "pilot": 2,
+        "upgrade": 32,
+        "level": 2
+    }
+},
+{
+    "model": "campaign.enemyability",
+    "pk": 10,
+    "fields": {
+        "pilot": 2,
+        "upgrade": 33,
+        "level": 3
+    }
+},
+{
+    "model": "campaign.enemyability",
+    "pk": 11,
+    "fields": {
+        "pilot": 2,
+        "upgrade": 34,
+        "level": 4
+    }
+},
+{
+    "model": "campaign.enemyability",
+    "pk": 12,
+    "fields": {
+        "pilot": 2,
+        "upgrade": 35,
+        "level": 5
+    }
+},
+{
+    "model": "campaign.enemyability",
+    "pk": 13,
+    "fields": {
+        "pilot": 3,
+        "upgrade": 27,
+        "level": 1
+    }
+},
+{
+    "model": "campaign.enemyability",
+    "pk": 14,
+    "fields": {
+        "pilot": 3,
+        "upgrade": 25,
+        "level": 2
+    }
+},
+{
+    "model": "campaign.enemyability",
+    "pk": 15,
+    "fields": {
+        "pilot": 3,
+        "upgrade": 36,
+        "level": 2
+    }
+},
+{
+    "model": "campaign.enemyability",
+    "pk": 16,
+    "fields": {
+        "pilot": 3,
+        "upgrade": 37,
+        "level": 3
+    }
+},
+{
+    "model": "campaign.enemyability",
+    "pk": 17,
+    "fields": {
+        "pilot": 3,
+        "upgrade": 1,
+        "level": 4
+    }
+},
+{
+    "model": "campaign.enemyability",
+    "pk": 18,
+    "fields": {
+        "pilot": 3,
+        "upgrade": 38,
+        "level": 5
+    }
+},
+{
+    "model": "campaign.enemyability",
+    "pk": 19,
+    "fields": {
+        "pilot": 4,
+        "upgrade": 21,
+        "level": 1
+    }
+},
+{
+    "model": "campaign.enemyability",
+    "pk": 20,
+    "fields": {
+        "pilot": 4,
+        "upgrade": 27,
+        "level": 2
+    }
+},
+{
+    "model": "campaign.enemyability",
+    "pk": 21,
+    "fields": {
+        "pilot": 4,
+        "upgrade": 39,
+        "level": 2
+    }
+},
+{
+    "model": "campaign.enemyability",
+    "pk": 22,
+    "fields": {
+        "pilot": 4,
+        "upgrade": 40,
+        "level": 3
+    }
+},
+{
+    "model": "campaign.enemyability",
+    "pk": 23,
+    "fields": {
+        "pilot": 4,
+        "upgrade": 41,
+        "level": 4
+    }
+},
+{
+    "model": "campaign.enemyability",
+    "pk": 24,
+    "fields": {
+        "pilot": 4,
+        "upgrade": 42,
+        "level": 5
+    }
+},
+{
+    "model": "campaign.enemyability",
+    "pk": 25,
+    "fields": {
+        "pilot": 9,
+        "upgrade": 43,
+        "level": 1
+    }
+},
+{
+    "model": "campaign.enemyability",
+    "pk": 26,
+    "fields": {
+        "pilot": 9,
+        "upgrade": 44,
+        "level": 2
+    }
+},
+{
+    "model": "campaign.enemyability",
+    "pk": 27,
+    "fields": {
+        "pilot": 9,
+        "upgrade": 45,
+        "level": 2
+    }
+},
+{
+    "model": "campaign.enemyability",
+    "pk": 28,
+    "fields": {
+        "pilot": 9,
+        "upgrade": 46,
+        "level": 3
+    }
+},
+{
+    "model": "campaign.enemyability",
+    "pk": 29,
+    "fields": {
+        "pilot": 9,
+        "upgrade": 17,
+        "level": 4
+    }
+},
+{
+    "model": "campaign.enemyability",
+    "pk": 30,
+    "fields": {
+        "pilot": 9,
+        "upgrade": 40,
+        "level": 5
+    }
+},
+{
+    "model": "campaign.flightgroup",
+    "pk": 1,
+    "fields": {
+        "name": "Alpha",
+        "mission": 1,
+        "arrival": 1,
+        "vector": "3",
+        "orders": "S"
+    }
+},
+{
+    "model": "campaign.flightgroup",
+    "pk": 2,
+    "fields": {
+        "name": "Beta",
+        "mission": 1,
+        "arrival": 1,
+        "vector": "4",
+        "orders": "S"
+    }
+},
+{
+    "model": "campaign.flightgroup",
+    "pk": 3,
+    "fields": {
+        "name": "Gamma",
+        "mission": 1,
+        "arrival": 4,
+        "vector": "d6",
+        "orders": "S"
+    }
+},
+{
+    "model": "campaign.flightgroup",
+    "pk": 4,
+    "fields": {
+        "name": "Delta",
+        "mission": 1,
+        "arrival": 7,
+        "vector": "d6",
+        "orders": "S"
+    }
+},
+{
+    "model": "campaign.fgsetup",
+    "pk": 1,
+    "fields": {
+        "action": "A",
+        "mission": 1,
+        "chassis": 6,
+        "flight_group": 1,
+        "players": 1,
+        "init": 1,
+        "elite": false
+    }
+},
+{
+    "model": "campaign.fgsetup",
+    "pk": 2,
+    "fields": {
+        "action": "A",
+        "mission": 1,
+        "chassis": 6,
+        "flight_group": 1,
+        "players": 2,
+        "init": 1,
+        "elite": false
+    }
+},
+{
+    "model": "campaign.fgsetup",
+    "pk": 3,
+    "fields": {
+        "action": "A",
+        "mission": 1,
+        "chassis": 6,
+        "flight_group": 1,
+        "players": 4,
+        "init": 1,
+        "elite": false
+    }
+},
+{
+    "model": "campaign.fgsetup",
+    "pk": 4,
+    "fields": {
+        "action": "A",
+        "mission": 1,
+        "chassis": 6,
+        "flight_group": 1,
+        "players": 6,
+        "init": 1,
+        "elite": false
+    }
+},
+{
+    "model": "campaign.fgsetup",
+    "pk": 5,
+    "fields": {
+        "action": "A",
+        "mission": 1,
+        "chassis": 6,
+        "flight_group": 2,
+        "players": 1,
+        "init": 1,
+        "elite": false
+    }
+},
+{
+    "model": "campaign.fgsetup",
+    "pk": 6,
+    "fields": {
+        "action": "A",
+        "mission": 1,
+        "chassis": 6,
+        "flight_group": 2,
+        "players": 3,
+        "init": 1,
+        "elite": false
+    }
+},
+{
+    "model": "campaign.fgsetup",
+    "pk": 7,
+    "fields": {
+        "action": "A",
+        "mission": 1,
+        "chassis": 6,
+        "flight_group": 2,
+        "players": 5,
+        "init": 1,
+        "elite": false
+    }
+},
+{
+    "model": "campaign.fgsetup",
+    "pk": 8,
+    "fields": {
+        "action": "A",
+        "mission": 1,
+        "chassis": 7,
+        "flight_group": 3,
+        "players": 1,
+        "init": 1,
+        "elite": false
+    }
+},
+{
+    "model": "campaign.fgsetup",
+    "pk": 9,
+    "fields": {
+        "action": "A",
+        "mission": 1,
+        "chassis": 7,
+        "flight_group": 3,
+        "players": 4,
+        "init": 1,
+        "elite": false
+    }
+},
+{
+    "model": "campaign.fgsetup",
+    "pk": 10,
+    "fields": {
+        "action": "A",
+        "mission": 1,
+        "chassis": 6,
+        "flight_group": 4,
+        "players": 2,
+        "init": 1,
+        "elite": false
+    }
+},
+{
+    "model": "campaign.fgsetup",
+    "pk": 11,
+    "fields": {
+        "action": "A",
+        "mission": 1,
+        "chassis": 6,
+        "flight_group": 4,
+        "players": 3,
+        "init": 1,
+        "elite": false
+    }
+},
+{
+    "model": "campaign.fgsetup",
+    "pk": 12,
+    "fields": {
+        "action": "A",
+        "mission": 1,
+        "chassis": 6,
+        "flight_group": 4,
+        "players": 5,
+        "init": 1,
+        "elite": false
+    }
+},
+{
+    "model": "campaign.fgsetup",
+    "pk": 13,
+    "fields": {
+        "action": "A",
+        "mission": 1,
+        "chassis": 6,
+        "flight_group": 4,
+        "players": 6,
+        "init": 1,
+        "elite": false
+    }
+},
+{
+    "model": "campaign.ai",
+    "pk": 1,
+    "fields": {
+        "campaign": 1,
+        "dial": 1,
+        "flee": 0,
+        "version": "f7"
+    }
+},
+{
+    "model": "campaign.ai",
+    "pk": 2,
+    "fields": {
+        "campaign": 1,
+        "dial": 2,
+        "flee": 0,
+        "version": "f7"
+    }
+},
+{
+    "model": "campaign.ai",
+    "pk": 3,
+    "fields": {
+        "campaign": 1,
+        "dial": 3,
+        "flee": 0,
+        "version": "f7"
+    }
+},
+{
+    "model": "campaign.ai",
+    "pk": 4,
+    "fields": {
+        "campaign": 1,
+        "dial": 4,
+        "flee": 0,
+        "version": "f7"
+    }
+},
+{
+    "model": "campaign.ai",
+    "pk": 6,
+    "fields": {
+        "campaign": 1,
+        "dial": 6,
+        "flee": 0,
+        "version": "f7"
+    }
+},
+{
+    "model": "campaign.ai",
+    "pk": 7,
+    "fields": {
+        "campaign": 1,
+        "dial": 7,
+        "flee": 0,
+        "version": "f7"
+    }
+},
+{
+    "model": "campaign.ai",
+    "pk": 8,
+    "fields": {
+        "campaign": 1,
+        "dial": 8,
+        "flee": 0,
+        "version": "f7"
+    }
+},
+{
+    "model": "campaign.ai",
+    "pk": 9,
+    "fields": {
+        "campaign": 1,
+        "dial": 9,
+        "flee": 0,
+        "version": "f7"
+    }
+},
+{
+    "model": "campaign.ai",
+    "pk": 10,
+    "fields": {
+        "campaign": 1,
+        "dial": 10,
+        "flee": 0,
+        "version": "f7"
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 1,
+    "fields": {
+        "ai": 1,
+        "arc": "BE",
+        "range": "1",
+        "roll_1": 15,
+        "roll_2": 15,
+        "roll_3": 4,
+        "roll_4": 6,
+        "roll_5": 5,
+        "roll_6": 5
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 2,
+    "fields": {
+        "ai": 1,
+        "arc": "BE",
+        "range": "2",
+        "roll_1": 5,
+        "roll_2": 5,
+        "roll_3": 5,
+        "roll_4": 5,
+        "roll_5": 10,
+        "roll_6": 10
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 3,
+    "fields": {
+        "ai": 2,
+        "arc": "BE",
+        "range": "1",
+        "roll_1": 32,
+        "roll_2": 24,
+        "roll_3": 24,
+        "roll_4": 30,
+        "roll_5": 30,
+        "roll_6": 21
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 4,
+    "fields": {
+        "ai": 1,
+        "arc": "BE",
+        "range": "3",
+        "roll_1": 14,
+        "roll_2": 16,
+        "roll_3": 16,
+        "roll_4": 16,
+        "roll_5": 16,
+        "roll_6": 16
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 5,
+    "fields": {
+        "ai": 1,
+        "arc": "BE",
+        "range": "4",
+        "roll_1": 4,
+        "roll_2": 4,
+        "roll_3": 6,
+        "roll_4": 6,
+        "roll_5": 5,
+        "roll_6": 5
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 6,
+    "fields": {
+        "ai": 1,
+        "arc": "FR",
+        "range": "1",
+        "roll_1": 15,
+        "roll_2": 15,
+        "roll_3": 2,
+        "roll_4": 2,
+        "roll_5": 6,
+        "roll_6": 6
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 7,
+    "fields": {
+        "ai": 1,
+        "arc": "FR",
+        "range": "2",
+        "roll_1": 6,
+        "roll_2": 6,
+        "roll_3": 6,
+        "roll_4": 11,
+        "roll_5": 11,
+        "roll_6": 10
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 8,
+    "fields": {
+        "ai": 1,
+        "arc": "FR",
+        "range": "3",
+        "roll_1": 11,
+        "roll_2": 11,
+        "roll_3": 11,
+        "roll_4": 11,
+        "roll_5": 14,
+        "roll_6": 14
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 9,
+    "fields": {
+        "ai": 1,
+        "arc": "FR",
+        "range": "4",
+        "roll_1": 6,
+        "roll_2": 6,
+        "roll_3": 6,
+        "roll_4": 5,
+        "roll_5": 5,
+        "roll_6": 10
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 10,
+    "fields": {
+        "ai": 1,
+        "arc": "RF",
+        "range": "1",
+        "roll_1": 15,
+        "roll_2": 2,
+        "roll_3": 2,
+        "roll_4": 7,
+        "roll_5": 7,
+        "roll_6": 7
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 11,
+    "fields": {
+        "ai": 1,
+        "arc": "RF",
+        "range": "2",
+        "roll_1": 2,
+        "roll_2": 7,
+        "roll_3": 6,
+        "roll_4": 6,
+        "roll_5": 12,
+        "roll_6": 12
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 12,
+    "fields": {
+        "ai": 1,
+        "arc": "RF",
+        "range": "3",
+        "roll_1": 7,
+        "roll_2": 7,
+        "roll_3": 7,
+        "roll_4": 12,
+        "roll_5": 12,
+        "roll_6": 12
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 13,
+    "fields": {
+        "ai": 1,
+        "arc": "RF",
+        "range": "4",
+        "roll_1": 2,
+        "roll_2": 6,
+        "roll_3": 6,
+        "roll_4": 6,
+        "roll_5": 6,
+        "roll_6": 6
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 15,
+    "fields": {
+        "ai": 1,
+        "arc": "RA",
+        "range": "1",
+        "roll_1": 13,
+        "roll_2": 2,
+        "roll_3": 2,
+        "roll_4": 7,
+        "roll_5": 7,
+        "roll_6": 7
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 16,
+    "fields": {
+        "ai": 1,
+        "arc": "RA",
+        "range": "2",
+        "roll_1": 13,
+        "roll_2": 13,
+        "roll_3": 2,
+        "roll_4": 2,
+        "roll_5": 7,
+        "roll_6": 7
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 17,
+    "fields": {
+        "ai": 1,
+        "arc": "RA",
+        "range": "3",
+        "roll_1": 13,
+        "roll_2": 13,
+        "roll_3": 13,
+        "roll_4": 2,
+        "roll_5": 2,
+        "roll_6": 2
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 18,
+    "fields": {
+        "ai": 1,
+        "arc": "RA",
+        "range": "4",
+        "roll_1": 2,
+        "roll_2": 7,
+        "roll_3": 6,
+        "roll_4": 6,
+        "roll_5": 6,
+        "roll_6": 6
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 19,
+    "fields": {
+        "ai": 1,
+        "arc": "AR",
+        "range": "1",
+        "roll_1": 15,
+        "roll_2": 15,
+        "roll_3": 13,
+        "roll_4": 13,
+        "roll_5": 7,
+        "roll_6": 7
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 20,
+    "fields": {
+        "ai": 1,
+        "arc": "AR",
+        "range": "2",
+        "roll_1": 13,
+        "roll_2": 13,
+        "roll_3": 2,
+        "roll_4": 12,
+        "roll_5": 12,
+        "roll_6": 12
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 21,
+    "fields": {
+        "ai": 1,
+        "arc": "AR",
+        "range": "3",
+        "roll_1": 13,
+        "roll_2": 13,
+        "roll_3": 13,
+        "roll_4": 13,
+        "roll_5": 2,
+        "roll_6": 2
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 22,
+    "fields": {
+        "ai": 1,
+        "arc": "AR",
+        "range": "4",
+        "roll_1": 6,
+        "roll_2": 6,
+        "roll_3": 6,
+        "roll_4": 6,
+        "roll_5": 6,
+        "roll_6": 12
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 39,
+    "fields": {
+        "ai": 1,
+        "arc": "AL",
+        "range": "1",
+        "roll_1": 15,
+        "roll_2": 15,
+        "roll_3": 13,
+        "roll_4": 13,
+        "roll_5": 3,
+        "roll_6": 3
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 40,
+    "fields": {
+        "ai": 1,
+        "arc": "AL",
+        "range": "2",
+        "roll_1": 13,
+        "roll_2": 13,
+        "roll_3": 1,
+        "roll_4": 8,
+        "roll_5": 8,
+        "roll_6": 8
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 41,
+    "fields": {
+        "ai": 1,
+        "arc": "AL",
+        "range": "3",
+        "roll_1": 13,
+        "roll_2": 13,
+        "roll_3": 13,
+        "roll_4": 13,
+        "roll_5": 1,
+        "roll_6": 1
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 42,
+    "fields": {
+        "ai": 1,
+        "arc": "AL",
+        "range": "4",
+        "roll_1": 4,
+        "roll_2": 4,
+        "roll_3": 4,
+        "roll_4": 4,
+        "roll_5": 4,
+        "roll_6": 8
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 43,
+    "fields": {
+        "ai": 1,
+        "arc": "FL",
+        "range": "1",
+        "roll_1": 15,
+        "roll_2": 15,
+        "roll_3": 1,
+        "roll_4": 1,
+        "roll_5": 4,
+        "roll_6": 4
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 44,
+    "fields": {
+        "ai": 1,
+        "arc": "FL",
+        "range": "2",
+        "roll_1": 4,
+        "roll_2": 4,
+        "roll_3": 4,
+        "roll_4": 9,
+        "roll_5": 9,
+        "roll_6": 10
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 45,
+    "fields": {
+        "ai": 1,
+        "arc": "FL",
+        "range": "3",
+        "roll_1": 9,
+        "roll_2": 9,
+        "roll_3": 9,
+        "roll_4": 9,
+        "roll_5": 14,
+        "roll_6": 14
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 46,
+    "fields": {
+        "ai": 1,
+        "arc": "FL",
+        "range": "4",
+        "roll_1": 4,
+        "roll_2": 4,
+        "roll_3": 4,
+        "roll_4": 5,
+        "roll_5": 5,
+        "roll_6": 10
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 47,
+    "fields": {
+        "ai": 1,
+        "arc": "LA",
+        "range": "1",
+        "roll_1": 13,
+        "roll_2": 1,
+        "roll_3": 1,
+        "roll_4": 3,
+        "roll_5": 3,
+        "roll_6": 3
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 48,
+    "fields": {
+        "ai": 1,
+        "arc": "LA",
+        "range": "2",
+        "roll_1": 13,
+        "roll_2": 13,
+        "roll_3": 1,
+        "roll_4": 1,
+        "roll_5": 3,
+        "roll_6": 3
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 49,
+    "fields": {
+        "ai": 1,
+        "arc": "LA",
+        "range": "3",
+        "roll_1": 13,
+        "roll_2": 13,
+        "roll_3": 13,
+        "roll_4": 1,
+        "roll_5": 1,
+        "roll_6": 1
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 50,
+    "fields": {
+        "ai": 1,
+        "arc": "LA",
+        "range": "4",
+        "roll_1": 1,
+        "roll_2": 3,
+        "roll_3": 4,
+        "roll_4": 4,
+        "roll_5": 4,
+        "roll_6": 4
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 51,
+    "fields": {
+        "ai": 1,
+        "arc": "LF",
+        "range": "1",
+        "roll_1": 15,
+        "roll_2": 1,
+        "roll_3": 1,
+        "roll_4": 3,
+        "roll_5": 3,
+        "roll_6": 3
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 52,
+    "fields": {
+        "ai": 1,
+        "arc": "LF",
+        "range": "2",
+        "roll_1": 1,
+        "roll_2": 3,
+        "roll_3": 4,
+        "roll_4": 4,
+        "roll_5": 8,
+        "roll_6": 8
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 53,
+    "fields": {
+        "ai": 1,
+        "arc": "LF",
+        "range": "3",
+        "roll_1": 3,
+        "roll_2": 3,
+        "roll_3": 3,
+        "roll_4": 8,
+        "roll_5": 8,
+        "roll_6": 8
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 54,
+    "fields": {
+        "ai": 1,
+        "arc": "LF",
+        "range": "4",
+        "roll_1": 1,
+        "roll_2": 4,
+        "roll_3": 4,
+        "roll_4": 4,
+        "roll_5": 4,
+        "roll_6": 4
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 55,
+    "fields": {
+        "ai": 2,
+        "arc": "BE",
+        "range": "2",
+        "roll_1": 21,
+        "roll_2": 21,
+        "roll_3": 21,
+        "roll_4": 27,
+        "roll_5": 27,
+        "roll_6": 27
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 56,
+    "fields": {
+        "ai": 2,
+        "arc": "BE",
+        "range": "3",
+        "roll_1": 31,
+        "roll_2": 33,
+        "roll_3": 33,
+        "roll_4": 33,
+        "roll_5": 33,
+        "roll_6": 33
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 57,
+    "fields": {
+        "ai": 2,
+        "arc": "BE",
+        "range": "4",
+        "roll_1": 19,
+        "roll_2": 23,
+        "roll_3": 21,
+        "roll_4": 21,
+        "roll_5": 21,
+        "roll_6": 21
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 58,
+    "fields": {
+        "ai": 2,
+        "arc": "FR",
+        "range": "1",
+        "roll_1": 30,
+        "roll_2": 30,
+        "roll_3": 18,
+        "roll_4": 18,
+        "roll_5": 22,
+        "roll_6": 22
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 59,
+    "fields": {
+        "ai": 2,
+        "arc": "FR",
+        "range": "2",
+        "roll_1": 22,
+        "roll_2": 22,
+        "roll_3": 22,
+        "roll_4": 28,
+        "roll_5": 28,
+        "roll_6": 27
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 60,
+    "fields": {
+        "ai": 2,
+        "arc": "FR",
+        "range": "3",
+        "roll_1": 28,
+        "roll_2": 28,
+        "roll_3": 28,
+        "roll_4": 28,
+        "roll_5": 31,
+        "roll_6": 31
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 61,
+    "fields": {
+        "ai": 2,
+        "arc": "FR",
+        "range": "4",
+        "roll_1": 20,
+        "roll_2": 22,
+        "roll_3": 22,
+        "roll_4": 21,
+        "roll_5": 21,
+        "roll_6": 31
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 62,
+    "fields": {
+        "ai": 2,
+        "arc": "RF",
+        "range": "1",
+        "roll_1": 32,
+        "roll_2": 30,
+        "roll_3": 30,
+        "roll_4": 30,
+        "roll_5": 18,
+        "roll_6": 18
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 63,
+    "fields": {
+        "ai": 2,
+        "arc": "RF",
+        "range": "2",
+        "roll_1": 23,
+        "roll_2": 23,
+        "roll_3": 22,
+        "roll_4": 22,
+        "roll_5": 29,
+        "roll_6": 29
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 64,
+    "fields": {
+        "ai": 2,
+        "arc": "RF",
+        "range": "3",
+        "roll_1": 23,
+        "roll_2": 22,
+        "roll_3": 23,
+        "roll_4": 29,
+        "roll_5": 29,
+        "roll_6": 29
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 65,
+    "fields": {
+        "ai": 2,
+        "arc": "RF",
+        "range": "4",
+        "roll_1": 23,
+        "roll_2": 23,
+        "roll_3": 20,
+        "roll_4": 22,
+        "roll_5": 22,
+        "roll_6": 31
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 66,
+    "fields": {
+        "ai": 2,
+        "arc": "RA",
+        "range": "1",
+        "roll_1": 30,
+        "roll_2": 30,
+        "roll_3": 30,
+        "roll_4": 18,
+        "roll_5": 23,
+        "roll_6": 23
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 67,
+    "fields": {
+        "ai": 2,
+        "arc": "RA",
+        "range": "2",
+        "roll_1": 32,
+        "roll_2": 30,
+        "roll_3": 30,
+        "roll_4": 30,
+        "roll_5": 23,
+        "roll_6": 23
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 68,
+    "fields": {
+        "ai": 2,
+        "arc": "RA",
+        "range": "3",
+        "roll_1": 30,
+        "roll_2": 30,
+        "roll_3": 30,
+        "roll_4": 18,
+        "roll_5": 18,
+        "roll_6": 18
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 69,
+    "fields": {
+        "ai": 2,
+        "arc": "RA",
+        "range": "4",
+        "roll_1": 19,
+        "roll_2": 23,
+        "roll_3": 22,
+        "roll_4": 23,
+        "roll_5": 20,
+        "roll_6": 31
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 70,
+    "fields": {
+        "ai": 2,
+        "arc": "AR",
+        "range": "1",
+        "roll_1": 32,
+        "roll_2": 32,
+        "roll_3": 30,
+        "roll_4": 30,
+        "roll_5": 23,
+        "roll_6": 23
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 71,
+    "fields": {
+        "ai": 2,
+        "arc": "AR",
+        "range": "2",
+        "roll_1": 24,
+        "roll_2": 24,
+        "roll_3": 30,
+        "roll_4": 30,
+        "roll_5": 30,
+        "roll_6": 30
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 72,
+    "fields": {
+        "ai": 2,
+        "arc": "AR",
+        "range": "3",
+        "roll_1": 30,
+        "roll_2": 30,
+        "roll_3": 30,
+        "roll_4": 18,
+        "roll_5": 18,
+        "roll_6": 18
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 73,
+    "fields": {
+        "ai": 2,
+        "arc": "AR",
+        "range": "4",
+        "roll_1": 19,
+        "roll_2": 19,
+        "roll_3": 20,
+        "roll_4": 23,
+        "roll_5": 23,
+        "roll_6": 31
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 74,
+    "fields": {
+        "ai": 10,
+        "arc": "BE",
+        "range": "1",
+        "roll_1": 149,
+        "roll_2": 149,
+        "roll_3": 149,
+        "roll_4": 132,
+        "roll_5": 134,
+        "roll_6": 139
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 75,
+    "fields": {
+        "ai": 10,
+        "arc": "BE",
+        "range": "2",
+        "roll_1": 139,
+        "roll_2": 139,
+        "roll_3": 139,
+        "roll_4": 139,
+        "roll_5": 144,
+        "roll_6": 144
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 76,
+    "fields": {
+        "ai": 10,
+        "arc": "BE",
+        "range": "3",
+        "roll_1": 144,
+        "roll_2": 148,
+        "roll_3": 148,
+        "roll_4": 148,
+        "roll_5": 148,
+        "roll_6": 148
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 77,
+    "fields": {
+        "ai": 10,
+        "arc": "BE",
+        "range": "4",
+        "roll_1": 138,
+        "roll_2": 138,
+        "roll_3": 140,
+        "roll_4": 140,
+        "roll_5": 139,
+        "roll_6": 139
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 78,
+    "fields": {
+        "ai": 10,
+        "arc": "FR",
+        "range": "1",
+        "roll_1": 149,
+        "roll_2": 149,
+        "roll_3": 134,
+        "roll_4": 134,
+        "roll_5": 140,
+        "roll_6": 140
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 79,
+    "fields": {
+        "ai": 10,
+        "arc": "FR",
+        "range": "2",
+        "roll_1": 140,
+        "roll_2": 140,
+        "roll_3": 140,
+        "roll_4": 145,
+        "roll_5": 145,
+        "roll_6": 144
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 80,
+    "fields": {
+        "ai": 10,
+        "arc": "FR",
+        "range": "3",
+        "roll_1": 146,
+        "roll_2": 145,
+        "roll_3": 145,
+        "roll_4": 145,
+        "roll_5": 148,
+        "roll_6": 148
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 81,
+    "fields": {
+        "ai": 10,
+        "arc": "FR",
+        "range": "4",
+        "roll_1": 140,
+        "roll_2": 140,
+        "roll_3": 139,
+        "roll_4": 139,
+        "roll_5": 144,
+        "roll_6": 144
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 82,
+    "fields": {
+        "ai": 10,
+        "arc": "RF",
+        "range": "1",
+        "roll_1": 149,
+        "roll_2": 149,
+        "roll_3": 136,
+        "roll_4": 136,
+        "roll_5": 141,
+        "roll_6": 141
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 83,
+    "fields": {
+        "ai": 10,
+        "arc": "RF",
+        "range": "2",
+        "roll_1": 134,
+        "roll_2": 141,
+        "roll_3": 140,
+        "roll_4": 140,
+        "roll_5": 146,
+        "roll_6": 146
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 84,
+    "fields": {
+        "ai": 10,
+        "arc": "RF",
+        "range": "3",
+        "roll_1": 141,
+        "roll_2": 141,
+        "roll_3": 141,
+        "roll_4": 146,
+        "roll_5": 146,
+        "roll_6": 146
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 85,
+    "fields": {
+        "ai": 10,
+        "arc": "RF",
+        "range": "4",
+        "roll_1": 136,
+        "roll_2": 140,
+        "roll_3": 140,
+        "roll_4": 140,
+        "roll_5": 140,
+        "roll_6": 140
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 86,
+    "fields": {
+        "ai": 10,
+        "arc": "AR",
+        "range": "1",
+        "roll_1": 148,
+        "roll_2": 136,
+        "roll_3": 136,
+        "roll_4": 136,
+        "roll_5": 141,
+        "roll_6": 141
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 87,
+    "fields": {
+        "ai": 10,
+        "arc": "RA",
+        "range": "2",
+        "roll_1": 149,
+        "roll_2": 147,
+        "roll_3": 147,
+        "roll_4": 141,
+        "roll_5": 141,
+        "roll_6": 141
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 88,
+    "fields": {
+        "ai": 10,
+        "arc": "RA",
+        "range": "3",
+        "roll_1": 147,
+        "roll_2": 147,
+        "roll_3": 147,
+        "roll_4": 136,
+        "roll_5": 136,
+        "roll_6": 136
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 89,
+    "fields": {
+        "ai": 10,
+        "arc": "RA",
+        "range": "4",
+        "roll_1": 136,
+        "roll_2": 141,
+        "roll_3": 140,
+        "roll_4": 140,
+        "roll_5": 140,
+        "roll_6": 140
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 90,
+    "fields": {
+        "ai": 10,
+        "arc": "AR",
+        "range": "1",
+        "roll_1": 149,
+        "roll_2": 149,
+        "roll_3": 147,
+        "roll_4": 144,
+        "roll_5": 141,
+        "roll_6": 141
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 91,
+    "fields": {
+        "ai": 10,
+        "arc": "AR",
+        "range": "2",
+        "roll_1": 149,
+        "roll_2": 149,
+        "roll_3": 147,
+        "roll_4": 147,
+        "roll_5": 147,
+        "roll_6": 147
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 92,
+    "fields": {
+        "ai": 10,
+        "arc": "AR",
+        "range": "3",
+        "roll_1": 147,
+        "roll_2": 147,
+        "roll_3": 147,
+        "roll_4": 136,
+        "roll_5": 136,
+        "roll_6": 136
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 93,
+    "fields": {
+        "ai": 10,
+        "arc": "AR",
+        "range": "4",
+        "roll_1": 140,
+        "roll_2": 140,
+        "roll_3": 140,
+        "roll_4": 140,
+        "roll_5": 139,
+        "roll_6": 146
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 94,
+    "fields": {
+        "ai": 9,
+        "arc": "BE",
+        "range": "1",
+        "roll_1": 131,
+        "roll_2": 131,
+        "roll_3": 117,
+        "roll_4": 117,
+        "roll_5": 121,
+        "roll_6": 121
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 95,
+    "fields": {
+        "ai": 9,
+        "arc": "BE",
+        "range": "2",
+        "roll_1": 117,
+        "roll_2": 121,
+        "roll_3": 121,
+        "roll_4": 121,
+        "roll_5": 126,
+        "roll_6": 126
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 96,
+    "fields": {
+        "ai": 9,
+        "arc": "BE",
+        "range": "3",
+        "roll_1": 126,
+        "roll_2": 130,
+        "roll_3": 130,
+        "roll_4": 130,
+        "roll_5": 130,
+        "roll_6": 130
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 97,
+    "fields": {
+        "ai": 9,
+        "arc": "BE",
+        "range": "4",
+        "roll_1": 117,
+        "roll_2": 117,
+        "roll_3": 117,
+        "roll_4": 121,
+        "roll_5": 121,
+        "roll_6": 121
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 98,
+    "fields": {
+        "ai": 9,
+        "arc": "FR",
+        "range": "1",
+        "roll_1": 131,
+        "roll_2": 131,
+        "roll_3": 118,
+        "roll_4": 118,
+        "roll_5": 118,
+        "roll_6": 122
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 99,
+    "fields": {
+        "ai": 9,
+        "arc": "FR",
+        "range": "2",
+        "roll_1": 122,
+        "roll_2": 122,
+        "roll_3": 122,
+        "roll_4": 127,
+        "roll_5": 127,
+        "roll_6": 126
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 100,
+    "fields": {
+        "ai": 9,
+        "arc": "FR",
+        "range": "3",
+        "roll_1": 127,
+        "roll_2": 127,
+        "roll_3": 127,
+        "roll_4": 127,
+        "roll_5": 130,
+        "roll_6": 130
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 101,
+    "fields": {
+        "ai": 9,
+        "arc": "FR",
+        "range": "4",
+        "roll_1": 118,
+        "roll_2": 118,
+        "roll_3": 122,
+        "roll_4": 121,
+        "roll_5": 121,
+        "roll_6": 121
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 102,
+    "fields": {
+        "ai": 9,
+        "arc": "RF",
+        "range": "1",
+        "roll_1": 131,
+        "roll_2": 129,
+        "roll_3": 129,
+        "roll_4": 123,
+        "roll_5": 123,
+        "roll_6": 123
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 103,
+    "fields": {
+        "ai": 9,
+        "arc": "RF",
+        "range": "2",
+        "roll_1": 118,
+        "roll_2": 123,
+        "roll_3": 122,
+        "roll_4": 122,
+        "roll_5": 128,
+        "roll_6": 128
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 104,
+    "fields": {
+        "ai": 9,
+        "arc": "RF",
+        "range": "3",
+        "roll_1": 123,
+        "roll_2": 123,
+        "roll_3": 123,
+        "roll_4": 128,
+        "roll_5": 128,
+        "roll_6": 128
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 105,
+    "fields": {
+        "ai": 9,
+        "arc": "RF",
+        "range": "4",
+        "roll_1": 118,
+        "roll_2": 118,
+        "roll_3": 123,
+        "roll_4": 122,
+        "roll_5": 122,
+        "roll_6": 122
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 106,
+    "fields": {
+        "ai": 9,
+        "arc": "RA",
+        "range": "1",
+        "roll_1": 129,
+        "roll_2": 129,
+        "roll_3": 129,
+        "roll_4": 118,
+        "roll_5": 123,
+        "roll_6": 123
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 107,
+    "fields": {
+        "ai": 9,
+        "arc": "RA",
+        "range": "2",
+        "roll_1": 131,
+        "roll_2": 129,
+        "roll_3": 129,
+        "roll_4": 129,
+        "roll_5": 123,
+        "roll_6": 123
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 108,
+    "fields": {
+        "ai": 9,
+        "arc": "RA",
+        "range": "3",
+        "roll_1": 129,
+        "roll_2": 129,
+        "roll_3": 129,
+        "roll_4": 123,
+        "roll_5": 123,
+        "roll_6": 123
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 109,
+    "fields": {
+        "ai": 9,
+        "arc": "RA",
+        "range": "4",
+        "roll_1": 118,
+        "roll_2": 123,
+        "roll_3": 123,
+        "roll_4": 122,
+        "roll_5": 122,
+        "roll_6": 122
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 110,
+    "fields": {
+        "ai": 9,
+        "arc": "AR",
+        "range": "1",
+        "roll_1": 131,
+        "roll_2": 131,
+        "roll_3": 129,
+        "roll_4": 129,
+        "roll_5": 128,
+        "roll_6": 128
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 111,
+    "fields": {
+        "ai": 9,
+        "arc": "AR",
+        "range": "2",
+        "roll_1": 129,
+        "roll_2": 129,
+        "roll_3": 129,
+        "roll_4": 128,
+        "roll_5": 128,
+        "roll_6": 128
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 112,
+    "fields": {
+        "ai": 9,
+        "arc": "AR",
+        "range": "3",
+        "roll_1": 129,
+        "roll_2": 129,
+        "roll_3": 129,
+        "roll_4": 123,
+        "roll_5": 123,
+        "roll_6": 123
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 113,
+    "fields": {
+        "ai": 9,
+        "arc": "AR",
+        "range": "4",
+        "roll_1": 118,
+        "roll_2": 118,
+        "roll_3": 118,
+        "roll_4": 122,
+        "roll_5": 122,
+        "roll_6": 128
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 114,
+    "fields": {
+        "ai": 2,
+        "arc": "FL",
+        "range": "1",
+        "roll_1": 24,
+        "roll_2": 24,
+        "roll_3": 17,
+        "roll_4": 17,
+        "roll_5": 20,
+        "roll_6": 20
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 115,
+    "fields": {
+        "ai": 2,
+        "arc": "FL",
+        "range": "2",
+        "roll_1": 20,
+        "roll_2": 20,
+        "roll_3": 20,
+        "roll_4": 26,
+        "roll_5": 26,
+        "roll_6": 27
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 116,
+    "fields": {
+        "ai": 2,
+        "arc": "FL",
+        "range": "3",
+        "roll_1": 26,
+        "roll_2": 26,
+        "roll_3": 26,
+        "roll_4": 26,
+        "roll_5": 31,
+        "roll_6": 31
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 117,
+    "fields": {
+        "ai": 2,
+        "arc": "FL",
+        "range": "4",
+        "roll_1": 22,
+        "roll_2": 20,
+        "roll_3": 20,
+        "roll_4": 21,
+        "roll_5": 21,
+        "roll_6": 31
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 118,
+    "fields": {
+        "ai": 2,
+        "arc": "LF",
+        "range": "1",
+        "roll_1": 32,
+        "roll_2": 24,
+        "roll_3": 24,
+        "roll_4": 24,
+        "roll_5": 17,
+        "roll_6": 17
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 119,
+    "fields": {
+        "ai": 2,
+        "arc": "LF",
+        "range": "2",
+        "roll_1": 19,
+        "roll_2": 19,
+        "roll_3": 20,
+        "roll_4": 20,
+        "roll_5": 25,
+        "roll_6": 25
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 120,
+    "fields": {
+        "ai": 2,
+        "arc": "LF",
+        "range": "3",
+        "roll_1": 19,
+        "roll_2": 20,
+        "roll_3": 19,
+        "roll_4": 25,
+        "roll_5": 25,
+        "roll_6": 25
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 121,
+    "fields": {
+        "ai": 2,
+        "arc": "LF",
+        "range": "4",
+        "roll_1": 19,
+        "roll_2": 19,
+        "roll_3": 22,
+        "roll_4": 20,
+        "roll_5": 20,
+        "roll_6": 31
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 126,
+    "fields": {
+        "ai": 2,
+        "arc": "AL",
+        "range": "1",
+        "roll_1": 32,
+        "roll_2": 32,
+        "roll_3": 24,
+        "roll_4": 24,
+        "roll_5": 19,
+        "roll_6": 19
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 127,
+    "fields": {
+        "ai": 2,
+        "arc": "AL",
+        "range": "2",
+        "roll_1": 30,
+        "roll_2": 30,
+        "roll_3": 24,
+        "roll_4": 24,
+        "roll_5": 24,
+        "roll_6": 24
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 128,
+    "fields": {
+        "ai": 2,
+        "arc": "AL",
+        "range": "3",
+        "roll_1": 24,
+        "roll_2": 24,
+        "roll_3": 24,
+        "roll_4": 17,
+        "roll_5": 17,
+        "roll_6": 17
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 129,
+    "fields": {
+        "ai": 2,
+        "arc": "AL",
+        "range": "4",
+        "roll_1": 23,
+        "roll_2": 23,
+        "roll_3": 22,
+        "roll_4": 19,
+        "roll_5": 19,
+        "roll_6": 31
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 130,
+    "fields": {
+        "ai": 2,
+        "arc": "LA",
+        "range": "1",
+        "roll_1": 24,
+        "roll_2": 24,
+        "roll_3": 24,
+        "roll_4": 17,
+        "roll_5": 19,
+        "roll_6": 19
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 131,
+    "fields": {
+        "ai": 2,
+        "arc": "LA",
+        "range": "2",
+        "roll_1": 32,
+        "roll_2": 24,
+        "roll_3": 24,
+        "roll_4": 24,
+        "roll_5": 19,
+        "roll_6": 19
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 132,
+    "fields": {
+        "ai": 2,
+        "arc": "LA",
+        "range": "3",
+        "roll_1": 24,
+        "roll_2": 24,
+        "roll_3": 24,
+        "roll_4": 17,
+        "roll_5": 17,
+        "roll_6": 17
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 133,
+    "fields": {
+        "ai": 2,
+        "arc": "LA",
+        "range": "4",
+        "roll_1": 23,
+        "roll_2": 19,
+        "roll_3": 20,
+        "roll_4": 19,
+        "roll_5": 22,
+        "roll_6": 31
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 134,
+    "fields": {
+        "ai": 7,
+        "arc": "BE",
+        "range": "1",
+        "roll_1": 95,
+        "roll_2": 95,
+        "roll_3": 80,
+        "roll_4": 80,
+        "roll_5": 84,
+        "roll_6": 84
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 135,
+    "fields": {
+        "ai": 7,
+        "arc": "BE",
+        "range": "2",
+        "roll_1": 80,
+        "roll_2": 80,
+        "roll_3": 84,
+        "roll_4": 84,
+        "roll_5": 84,
+        "roll_6": 90
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 136,
+    "fields": {
+        "ai": 7,
+        "arc": "BE",
+        "range": "3",
+        "roll_1": 94,
+        "roll_2": 96,
+        "roll_3": 96,
+        "roll_4": 96,
+        "roll_5": 96,
+        "roll_6": 96
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 137,
+    "fields": {
+        "ai": 7,
+        "arc": "BE",
+        "range": "4",
+        "roll_1": 79,
+        "roll_2": 81,
+        "roll_3": 84,
+        "roll_4": 84,
+        "roll_5": 84,
+        "roll_6": 84
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 138,
+    "fields": {
+        "ai": 7,
+        "arc": "FR",
+        "range": "1",
+        "roll_1": 95,
+        "roll_2": 95,
+        "roll_3": 81,
+        "roll_4": 81,
+        "roll_5": 81,
+        "roll_6": 85
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 139,
+    "fields": {
+        "ai": 7,
+        "arc": "FR",
+        "range": "2",
+        "roll_1": 81,
+        "roll_2": 81,
+        "roll_3": 85,
+        "roll_4": 85,
+        "roll_5": 85,
+        "roll_6": 91
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 140,
+    "fields": {
+        "ai": 7,
+        "arc": "FR",
+        "range": "3",
+        "roll_1": 91,
+        "roll_2": 91,
+        "roll_3": 91,
+        "roll_4": 91,
+        "roll_5": 94,
+        "roll_6": 94
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 141,
+    "fields": {
+        "ai": 7,
+        "arc": "FR",
+        "range": "4",
+        "roll_1": 81,
+        "roll_2": 81,
+        "roll_3": 85,
+        "roll_4": 84,
+        "roll_5": 84,
+        "roll_6": 84
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 142,
+    "fields": {
+        "ai": 7,
+        "arc": "RF",
+        "range": "1",
+        "roll_1": 95,
+        "roll_2": 93,
+        "roll_3": 93,
+        "roll_4": 86,
+        "roll_5": 86,
+        "roll_6": 86
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 143,
+    "fields": {
+        "ai": 7,
+        "arc": "RF",
+        "range": "2",
+        "roll_1": 81,
+        "roll_2": 86,
+        "roll_3": 85,
+        "roll_4": 85,
+        "roll_5": 92,
+        "roll_6": 92
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 144,
+    "fields": {
+        "ai": 7,
+        "arc": "RF",
+        "range": "3",
+        "roll_1": 86,
+        "roll_2": 86,
+        "roll_3": 86,
+        "roll_4": 92,
+        "roll_5": 92,
+        "roll_6": 92
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 145,
+    "fields": {
+        "ai": 7,
+        "arc": "RF",
+        "range": "4",
+        "roll_1": 81,
+        "roll_2": 81,
+        "roll_3": 86,
+        "roll_4": 85,
+        "roll_5": 85,
+        "roll_6": 85
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 146,
+    "fields": {
+        "ai": 7,
+        "arc": "RA",
+        "range": "1",
+        "roll_1": 93,
+        "roll_2": 93,
+        "roll_3": 93,
+        "roll_4": 81,
+        "roll_5": 86,
+        "roll_6": 86
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 147,
+    "fields": {
+        "ai": 7,
+        "arc": "RA",
+        "range": "2",
+        "roll_1": 95,
+        "roll_2": 93,
+        "roll_3": 93,
+        "roll_4": 93,
+        "roll_5": 86,
+        "roll_6": 86
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 148,
+    "fields": {
+        "ai": 7,
+        "arc": "RA",
+        "range": "3",
+        "roll_1": 93,
+        "roll_2": 93,
+        "roll_3": 93,
+        "roll_4": 92,
+        "roll_5": 92,
+        "roll_6": 92
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 149,
+    "fields": {
+        "ai": 7,
+        "arc": "RA",
+        "range": "4",
+        "roll_1": 81,
+        "roll_2": 86,
+        "roll_3": 86,
+        "roll_4": 85,
+        "roll_5": 85,
+        "roll_6": 85
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 150,
+    "fields": {
+        "ai": 7,
+        "arc": "AR",
+        "range": "1",
+        "roll_1": 95,
+        "roll_2": 95,
+        "roll_3": 93,
+        "roll_4": 93,
+        "roll_5": 86,
+        "roll_6": 86
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 151,
+    "fields": {
+        "ai": 7,
+        "arc": "AR",
+        "range": "2",
+        "roll_1": 87,
+        "roll_2": 87,
+        "roll_3": 93,
+        "roll_4": 93,
+        "roll_5": 93,
+        "roll_6": 93
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 152,
+    "fields": {
+        "ai": 7,
+        "arc": "AR",
+        "range": "3",
+        "roll_1": 93,
+        "roll_2": 93,
+        "roll_3": 93,
+        "roll_4": 86,
+        "roll_5": 86,
+        "roll_6": 86
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 153,
+    "fields": {
+        "ai": 7,
+        "arc": "AR",
+        "range": "4",
+        "roll_1": 81,
+        "roll_2": 81,
+        "roll_3": 81,
+        "roll_4": 85,
+        "roll_5": 85,
+        "roll_6": 92
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 154,
+    "fields": {
+        "ai": 7,
+        "arc": "BE",
+        "range": "5",
+        "roll_1": 85,
+        "roll_2": 85,
+        "roll_3": 85,
+        "roll_4": 85,
+        "roll_5": 84,
+        "roll_6": 84
+    }
+},
+{
+    "model": "campaign.game",
+    "pk": 1,
+    "fields": {
+        "campaign": 1,
+        "gm": [
+            "Mike"
+        ],
+        "description": "HotAC: The Next Generation",
+        "victory": 12,
+        "ship_initiative": false,
+        "pool_xp": true,
+        "players": [
+            [
+                "Mike"
+            ],
+            [
+                "Kate"
+            ],
+            [
+                "Carolyn"
+            ],
+            [
+                "Steve"
+            ],
+            [
+                "Lis"
+            ]
+        ]
+    }
+},
+{
+    "model": "campaign.game",
+    "pk": 2,
+    "fields": {
+        "campaign": 1,
+        "gm": [
+            "Mike"
+        ],
+        "description": "Mike Solo",
+        "victory": 12,
+        "ship_initiative": false,
+        "pool_xp": true,
+        "players": [
+            [
+                "Mike"
+            ]
+        ]
+    }
+},
+{
+    "model": "campaign.pilot",
+    "pk": 1,
+    "fields": {
+        "user": [
+            "Mike"
+        ],
+        "game": 1,
+        "callsign": "Mike",
+        "initiative": 2,
+        "path": "A"
+    }
+},
+{
+    "model": "campaign.pilot",
+    "pk": 2,
+    "fields": {
+        "user": [
+            "Kate"
+        ],
+        "game": 1,
+        "callsign": "Kate",
+        "initiative": 2,
+        "path": "A"
+    }
+},
+{
+    "model": "campaign.pilot",
+    "pk": 3,
+    "fields": {
+        "user": [
+            "Carolyn"
+        ],
+        "game": 1,
+        "callsign": "Carolyn",
+        "initiative": 2,
+        "path": "A"
+    }
+},
+{
+    "model": "campaign.pilot",
+    "pk": 4,
+    "fields": {
+        "user": [
+            "Steve"
+        ],
+        "game": 1,
+        "callsign": "Steve",
+        "initiative": 2,
+        "path": "A"
+    }
+},
+{
+    "model": "campaign.pilot",
+    "pk": 5,
+    "fields": {
+        "user": [
+            "Lis"
+        ],
+        "game": 1,
+        "callsign": "Rum Bunny",
+        "initiative": 2,
+        "path": "A"
+    }
+},
+{
+    "model": "campaign.pilot",
+    "pk": 6,
+    "fields": {
+        "user": [
+            "Mike"
+        ],
+        "game": 2,
+        "callsign": "Red 1",
+        "initiative": 2,
+        "path": "A"
+    }
+},
+{
+    "model": "campaign.pilot",
+    "pk": 7,
+    "fields": {
+        "user": [
+            "Lis"
+        ],
+        "game": 2,
+        "callsign": "Banana 2",
+        "initiative": 2,
+        "path": "A"
+    }
+},
+{
+    "model": "campaign.pilot",
+    "pk": 8,
+    "fields": {
+        "user": [
+            "Mike"
+        ],
+        "game": 2,
+        "callsign": "Green 1",
+        "initiative": 3,
+        "path": "A"
+    }
+},
+{
+    "model": "campaign.pilot",
+    "pk": 9,
+    "fields": {
+        "user": [
+            "Lis"
+        ],
+        "game": 2,
+        "callsign": "Banana 1",
+        "initiative": 2,
+        "path": "A"
+    }
+},
+{
+    "model": "campaign.pilotship",
+    "pk": 1,
+    "fields": {
+        "pilot": 1,
+        "chassis": 3,
+        "initiative": 2
+    }
+},
+{
+    "model": "campaign.pilotship",
+    "pk": 2,
+    "fields": {
+        "pilot": 2,
+        "chassis": 1,
+        "initiative": 2
+    }
+},
+{
+    "model": "campaign.pilotship",
+    "pk": 3,
+    "fields": {
+        "pilot": 3,
+        "chassis": 2,
+        "initiative": 2
+    }
+},
+{
+    "model": "campaign.pilotship",
+    "pk": 4,
+    "fields": {
+        "pilot": 4,
+        "chassis": 2,
+        "initiative": 2
+    }
+},
+{
+    "model": "campaign.pilotship",
+    "pk": 5,
+    "fields": {
+        "pilot": 5,
+        "chassis": 1,
+        "initiative": 2
+    }
+},
+{
+    "model": "campaign.pilotship",
+    "pk": 6,
+    "fields": {
+        "pilot": 6,
+        "chassis": 1,
+        "initiative": 2
+    }
+},
+{
+    "model": "campaign.pilotship",
+    "pk": 7,
+    "fields": {
+        "pilot": 7,
+        "chassis": 2,
+        "initiative": 2
+    }
+},
+{
+    "model": "campaign.pilotship",
+    "pk": 8,
+    "fields": {
+        "pilot": 8,
+        "chassis": 1,
+        "initiative": 2
+    }
+},
+{
+    "model": "campaign.pilotship",
+    "pk": 9,
+    "fields": {
+        "pilot": 9,
+        "chassis": 1,
+        "initiative": 2
+    }
+},
+{
+    "model": "campaign.pilotupgrade",
+    "pk": 1,
+    "fields": {
+        "pilot": 1,
+        "upgrade": 11,
+        "copies": 1,
+        "lost": false
+    }
+},
+{
+    "model": "campaign.pilotupgrade",
+    "pk": 2,
+    "fields": {
+        "pilot": 1,
+        "upgrade": 10,
+        "copies": 1,
+        "lost": false
+    }
+},
+{
+    "model": "campaign.pilotupgrade",
+    "pk": 3,
+    "fields": {
+        "pilot": 1,
+        "upgrade": 19,
+        "copies": 1,
+        "lost": false
+    }
+},
+{
+    "model": "campaign.pilotupgrade",
+    "pk": 4,
+    "fields": {
+        "pilot": 8,
+        "upgrade": 25,
+        "copies": 1,
+        "lost": false
+    }
+},
+{
+    "model": "campaign.pilotupgrade",
+    "pk": 5,
+    "fields": {
+        "pilot": 6,
+        "upgrade": 18,
+        "copies": 1,
+        "lost": false
+    }
+},
+{
+    "model": "campaign.pilotupgrade",
+    "pk": 6,
+    "fields": {
+        "pilot": 6,
+        "upgrade": 9,
+        "copies": 1,
+        "lost": false
+    }
+},
+{
+    "model": "campaign.session",
+    "pk": 1,
+    "fields": {
+        "game": 1,
+        "mission": 1,
+        "date": "2019-02-11",
+        "outcome": "V",
+        "pilots": [
+            1,
+            2,
+            3,
+            5
+        ]
+    }
+},
+{
+    "model": "campaign.session",
+    "pk": 2,
+    "fields": {
+        "game": 1,
+        "mission": 2,
+        "date": "2019-05-11",
+        "outcome": "V",
+        "pilots": [
+            1,
+            2,
+            3,
+            4
+        ]
+    }
+},
+{
+    "model": "campaign.session",
+    "pk": 3,
+    "fields": {
+        "game": 1,
+        "mission": 3,
+        "date": "2019-06-23",
+        "outcome": "V",
+        "pilots": [
+            1,
+            2,
+            3,
+            4
+        ]
+    }
+},
+{
+    "model": "campaign.session",
+    "pk": 4,
+    "fields": {
+        "game": 2,
+        "mission": 1,
+        "date": "2020-05-31",
+        "outcome": "V",
+        "pilots": [
+            6,
+            7,
+            8,
+            9
+        ]
+    }
+},
+{
+    "model": "campaign.sessionenemy",
+    "pk": 1,
+    "fields": {
+        "session": 1,
+        "enemy": 11,
+        "flight_group": 1,
+        "level": 1
+    }
+},
+{
+    "model": "campaign.sessionenemy",
+    "pk": 2,
+    "fields": {
+        "session": 1,
+        "enemy": 11,
+        "flight_group": 1,
+        "level": 1
+    }
+},
+{
+    "model": "campaign.sessionenemy",
+    "pk": 3,
+    "fields": {
+        "session": 1,
+        "enemy": 11,
+        "flight_group": 1,
+        "level": 1
+    }
+},
+{
+    "model": "campaign.sessionenemy",
+    "pk": 4,
+    "fields": {
+        "session": 1,
+        "enemy": 11,
+        "flight_group": 2,
+        "level": 1
+    }
+},
+{
+    "model": "campaign.sessionenemy",
+    "pk": 5,
+    "fields": {
+        "session": 1,
+        "enemy": 11,
+        "flight_group": 2,
+        "level": 1
+    }
+},
+{
+    "model": "campaign.sessionenemy",
+    "pk": 6,
+    "fields": {
+        "session": 1,
+        "enemy": 4,
+        "flight_group": 3,
+        "level": 1
+    }
+},
+{
+    "model": "campaign.sessionenemy",
+    "pk": 7,
+    "fields": {
+        "session": 1,
+        "enemy": 3,
+        "flight_group": 3,
+        "level": 1
+    }
+},
+{
+    "model": "campaign.sessionenemy",
+    "pk": 8,
+    "fields": {
+        "session": 1,
+        "enemy": 11,
+        "flight_group": 4,
+        "level": 1
+    }
+},
+{
+    "model": "campaign.sessionenemy",
+    "pk": 9,
+    "fields": {
+        "session": 1,
+        "enemy": 11,
+        "flight_group": 4,
+        "level": 1
+    }
+},
+{
+    "model": "campaign.sessionenemy",
+    "pk": 10,
+    "fields": {
+        "session": 4,
+        "enemy": 11,
+        "flight_group": 1,
+        "level": 1
+    }
+},
+{
+    "model": "campaign.sessionenemy",
+    "pk": 11,
+    "fields": {
+        "session": 4,
+        "enemy": 11,
+        "flight_group": 1,
+        "level": 1
+    }
+},
+{
+    "model": "campaign.sessionenemy",
+    "pk": 12,
+    "fields": {
+        "session": 4,
+        "enemy": 11,
+        "flight_group": 2,
+        "level": 1
+    }
+},
+{
+    "model": "campaign.sessionenemy",
+    "pk": 13,
+    "fields": {
+        "session": 4,
+        "enemy": 11,
+        "flight_group": 2,
+        "level": 1
+    }
+},
+{
+    "model": "campaign.sessionenemy",
+    "pk": 14,
+    "fields": {
+        "session": 4,
+        "enemy": 2,
+        "flight_group": 3,
+        "level": 1
+    }
+},
+{
+    "model": "campaign.sessionenemy",
+    "pk": 15,
+    "fields": {
+        "session": 4,
+        "enemy": 11,
+        "flight_group": 4,
+        "level": 1
+    }
+},
+{
+    "model": "campaign.sessionenemy",
+    "pk": 16,
+    "fields": {
+        "session": 4,
+        "enemy": 11,
+        "flight_group": 4,
+        "level": 1
+    }
+},
+{
+    "model": "campaign.sessionenemy",
+    "pk": 17,
+    "fields": {
+        "session": 4,
+        "enemy": 11,
+        "flight_group": 1,
+        "level": 1
+    }
+},
+{
+    "model": "campaign.sessionenemy",
+    "pk": 18,
+    "fields": {
+        "session": 4,
+        "enemy": 3,
+        "flight_group": 3,
+        "level": 1
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 1,
+    "fields": {
+        "pilot": 5,
+        "session": 1,
+        "event": 1,
+        "turn": 2,
+        "target": null,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 2,
+    "fields": {
+        "pilot": 5,
+        "session": 1,
+        "event": 1,
+        "turn": 4,
+        "target": null,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 3,
+    "fields": {
+        "pilot": 5,
+        "session": 1,
+        "event": 2,
+        "turn": 5,
+        "target": 6,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 4,
+    "fields": {
+        "pilot": 2,
+        "session": 1,
+        "event": 1,
+        "turn": 2,
+        "target": null,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 5,
+    "fields": {
+        "pilot": 2,
+        "session": 1,
+        "event": 1,
+        "turn": 3,
+        "target": null,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 6,
+    "fields": {
+        "pilot": 2,
+        "session": 1,
+        "event": 1,
+        "turn": 4,
+        "target": null,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 7,
+    "fields": {
+        "pilot": 2,
+        "session": 1,
+        "event": 1,
+        "turn": 5,
+        "target": null,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 8,
+    "fields": {
+        "pilot": 2,
+        "session": 1,
+        "event": 1,
+        "turn": 6,
+        "target": null,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 9,
+    "fields": {
+        "pilot": 3,
+        "session": 1,
+        "event": 1,
+        "turn": 1,
+        "target": null,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 10,
+    "fields": {
+        "pilot": 3,
+        "session": 1,
+        "event": 1,
+        "turn": 2,
+        "target": null,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 11,
+    "fields": {
+        "pilot": 3,
+        "session": 1,
+        "event": 1,
+        "turn": 3,
+        "target": null,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 12,
+    "fields": {
+        "pilot": 3,
+        "session": 1,
+        "event": 1,
+        "turn": 4,
+        "target": null,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 13,
+    "fields": {
+        "pilot": 3,
+        "session": 1,
+        "event": 1,
+        "turn": 5,
+        "target": null,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 14,
+    "fields": {
+        "pilot": 3,
+        "session": 1,
+        "event": 1,
+        "turn": 6,
+        "target": null,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 15,
+    "fields": {
+        "pilot": 1,
+        "session": 1,
+        "event": 1,
+        "turn": 2,
+        "target": null,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 16,
+    "fields": {
+        "pilot": 1,
+        "session": 1,
+        "event": 1,
+        "turn": 3,
+        "target": null,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 17,
+    "fields": {
+        "pilot": 1,
+        "session": 1,
+        "event": 1,
+        "turn": 4,
+        "target": null,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 18,
+    "fields": {
+        "pilot": 1,
+        "session": 1,
+        "event": 1,
+        "turn": 5,
+        "target": null,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 19,
+    "fields": {
+        "pilot": 2,
+        "session": 1,
+        "event": 2,
+        "turn": 3,
+        "target": 1,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 20,
+    "fields": {
+        "pilot": 2,
+        "session": 1,
+        "event": 2,
+        "turn": 5,
+        "target": 2,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 21,
+    "fields": {
+        "pilot": 1,
+        "session": 1,
+        "event": 2,
+        "turn": 2,
+        "target": 3,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 22,
+    "fields": {
+        "pilot": 1,
+        "session": 1,
+        "event": 2,
+        "turn": 3,
+        "target": 4,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 23,
+    "fields": {
+        "pilot": 3,
+        "session": 1,
+        "event": 2,
+        "turn": 4,
+        "target": 5,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 24,
+    "fields": {
+        "pilot": 3,
+        "session": 1,
+        "event": 2,
+        "turn": 5,
+        "target": 8,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 25,
+    "fields": {
+        "pilot": 3,
+        "session": 1,
+        "event": 2,
+        "turn": 6,
+        "target": 9,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 32,
+    "fields": {
+        "pilot": 1,
+        "session": 2,
+        "event": 1,
+        "turn": 1,
+        "target": null,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 33,
+    "fields": {
+        "pilot": 2,
+        "session": 2,
+        "event": 1,
+        "turn": 1,
+        "target": null,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 34,
+    "fields": {
+        "pilot": 3,
+        "session": 2,
+        "event": 1,
+        "turn": 1,
+        "target": null,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 35,
+    "fields": {
+        "pilot": 2,
+        "session": 2,
+        "event": 1,
+        "turn": 2,
+        "target": null,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 36,
+    "fields": {
+        "pilot": 1,
+        "session": 2,
+        "event": 1,
+        "turn": 2,
+        "target": null,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 37,
+    "fields": {
+        "pilot": 4,
+        "session": 2,
+        "event": 1,
+        "turn": 2,
+        "target": null,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 39,
+    "fields": {
+        "pilot": 2,
+        "session": 2,
+        "event": 1,
+        "turn": 3,
+        "target": null,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 40,
+    "fields": {
+        "pilot": 3,
+        "session": 2,
+        "event": 1,
+        "turn": 3,
+        "target": null,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 41,
+    "fields": {
+        "pilot": 4,
+        "session": 2,
+        "event": 1,
+        "turn": 3,
+        "target": null,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 42,
+    "fields": {
+        "pilot": 4,
+        "session": 2,
+        "event": 4,
+        "turn": 3,
+        "target": null,
+        "threat": 2
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 43,
+    "fields": {
+        "pilot": 3,
+        "session": 2,
+        "event": 1,
+        "turn": 4,
+        "target": null,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 44,
+    "fields": {
+        "pilot": 4,
+        "session": 2,
+        "event": 1,
+        "turn": 4,
+        "target": null,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 45,
+    "fields": {
+        "pilot": 4,
+        "session": 2,
+        "event": 2,
+        "turn": 4,
+        "target": null,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 46,
+    "fields": {
+        "pilot": 3,
+        "session": 2,
+        "event": 1,
+        "turn": 5,
+        "target": null,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 47,
+    "fields": {
+        "pilot": 1,
+        "session": 2,
+        "event": 1,
+        "turn": 6,
+        "target": null,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 48,
+    "fields": {
+        "pilot": 2,
+        "session": 2,
+        "event": 1,
+        "turn": 6,
+        "target": null,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 49,
+    "fields": {
+        "pilot": 2,
+        "session": 2,
+        "event": 4,
+        "turn": 6,
+        "target": null,
+        "threat": 2
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 50,
+    "fields": {
+        "pilot": 3,
+        "session": 2,
+        "event": 1,
+        "turn": 6,
+        "target": null,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 51,
+    "fields": {
+        "pilot": 3,
+        "session": 2,
+        "event": 3,
+        "turn": 6,
+        "target": null,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 52,
+    "fields": {
+        "pilot": 4,
+        "session": 2,
+        "event": 1,
+        "turn": 6,
+        "target": null,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 53,
+    "fields": {
+        "pilot": 4,
+        "session": 2,
+        "event": 3,
+        "turn": 6,
+        "target": null,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 54,
+    "fields": {
+        "pilot": 1,
+        "session": 2,
+        "event": 1,
+        "turn": 7,
+        "target": null,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 55,
+    "fields": {
+        "pilot": 1,
+        "session": 2,
+        "event": 2,
+        "turn": 7,
+        "target": null,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 56,
+    "fields": {
+        "pilot": 2,
+        "session": 2,
+        "event": 1,
+        "turn": 7,
+        "target": null,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 57,
+    "fields": {
+        "pilot": 2,
+        "session": 2,
+        "event": 3,
+        "turn": 7,
+        "target": null,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 58,
+    "fields": {
+        "pilot": 4,
+        "session": 2,
+        "event": 1,
+        "turn": 7,
+        "target": null,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 59,
+    "fields": {
+        "pilot": 4,
+        "session": 2,
+        "event": 2,
+        "turn": 7,
+        "target": null,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 60,
+    "fields": {
+        "pilot": 2,
+        "session": 2,
+        "event": 1,
+        "turn": 8,
+        "target": null,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 61,
+    "fields": {
+        "pilot": 3,
+        "session": 2,
+        "event": 1,
+        "turn": 8,
+        "target": null,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 62,
+    "fields": {
+        "pilot": 3,
+        "session": 2,
+        "event": 4,
+        "turn": 8,
+        "target": null,
+        "threat": 3
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 63,
+    "fields": {
+        "pilot": 4,
+        "session": 2,
+        "event": 1,
+        "turn": 8,
+        "target": null,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 64,
+    "fields": {
+        "pilot": 2,
+        "session": 2,
+        "event": 1,
+        "turn": 9,
+        "target": null,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 65,
+    "fields": {
+        "pilot": 2,
+        "session": 2,
+        "event": 3,
+        "turn": 9,
+        "target": null,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 66,
+    "fields": {
+        "pilot": 3,
+        "session": 2,
+        "event": 1,
+        "turn": 9,
+        "target": null,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 67,
+    "fields": {
+        "pilot": 3,
+        "session": 2,
+        "event": 3,
+        "turn": 9,
+        "target": null,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 68,
+    "fields": {
+        "pilot": 4,
+        "session": 2,
+        "event": 1,
+        "turn": 9,
+        "target": null,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 69,
+    "fields": {
+        "pilot": 4,
+        "session": 2,
+        "event": 2,
+        "turn": 9,
+        "target": null,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 70,
+    "fields": {
+        "pilot": 1,
+        "session": 2,
+        "event": 1,
+        "turn": 10,
+        "target": null,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 71,
+    "fields": {
+        "pilot": 1,
+        "session": 2,
+        "event": 3,
+        "turn": 10,
+        "target": null,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 72,
+    "fields": {
+        "pilot": 2,
+        "session": 2,
+        "event": 1,
+        "turn": 10,
+        "target": null,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 73,
+    "fields": {
+        "pilot": 2,
+        "session": 2,
+        "event": 3,
+        "turn": 10,
+        "target": null,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 74,
+    "fields": {
+        "pilot": 3,
+        "session": 2,
+        "event": 1,
+        "turn": 11,
+        "target": null,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 75,
+    "fields": {
+        "pilot": 3,
+        "session": 2,
+        "event": 2,
+        "turn": 11,
+        "target": null,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 76,
+    "fields": {
+        "pilot": 4,
+        "session": 2,
+        "event": 1,
+        "turn": 11,
+        "target": null,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 77,
+    "fields": {
+        "pilot": 4,
+        "session": 2,
+        "event": 3,
+        "turn": 11,
+        "target": null,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 78,
+    "fields": {
+        "pilot": 1,
+        "session": 2,
+        "event": 1,
+        "turn": 12,
+        "target": null,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 79,
+    "fields": {
+        "pilot": 1,
+        "session": 2,
+        "event": 3,
+        "turn": 12,
+        "target": null,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 80,
+    "fields": {
+        "pilot": 2,
+        "session": 2,
+        "event": 1,
+        "turn": 12,
+        "target": null,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 81,
+    "fields": {
+        "pilot": 2,
+        "session": 2,
+        "event": 3,
+        "turn": 12,
+        "target": null,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 82,
+    "fields": {
+        "pilot": 4,
+        "session": 2,
+        "event": 1,
+        "turn": 12,
+        "target": null,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 83,
+    "fields": {
+        "pilot": 4,
+        "session": 2,
+        "event": 3,
+        "turn": 12,
+        "target": null,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 84,
+    "fields": {
+        "pilot": 1,
+        "session": 3,
+        "event": 1,
+        "turn": 2,
+        "target": null,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 85,
+    "fields": {
+        "pilot": 1,
+        "session": 3,
+        "event": 1,
+        "turn": 4,
+        "target": null,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 86,
+    "fields": {
+        "pilot": 1,
+        "session": 3,
+        "event": 1,
+        "turn": 6,
+        "target": null,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 87,
+    "fields": {
+        "pilot": 1,
+        "session": 3,
+        "event": 1,
+        "turn": 8,
+        "target": null,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 88,
+    "fields": {
+        "pilot": 1,
+        "session": 3,
+        "event": 1,
+        "turn": 10,
+        "target": null,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 89,
+    "fields": {
+        "pilot": 1,
+        "session": 3,
+        "event": 2,
+        "turn": 4,
+        "target": null,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 90,
+    "fields": {
+        "pilot": 1,
+        "session": 3,
+        "event": 2,
+        "turn": 8,
+        "target": null,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 91,
+    "fields": {
+        "pilot": 1,
+        "session": 3,
+        "event": 2,
+        "turn": 12,
+        "target": null,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 92,
+    "fields": {
+        "pilot": 1,
+        "session": 3,
+        "event": 6,
+        "turn": 6,
+        "target": null,
+        "threat": 3
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 93,
+    "fields": {
+        "pilot": 1,
+        "session": 3,
+        "event": 22,
+        "turn": 5,
+        "target": null,
+        "threat": 3
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 94,
+    "fields": {
+        "pilot": 1,
+        "session": 3,
+        "event": 7,
+        "turn": 7,
+        "target": null,
+        "threat": 2
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 95,
+    "fields": {
+        "pilot": 1,
+        "session": 3,
+        "event": 13,
+        "turn": 2,
+        "target": null,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 96,
+    "fields": {
+        "pilot": 1,
+        "session": 3,
+        "event": 13,
+        "turn": 6,
+        "target": null,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 97,
+    "fields": {
+        "pilot": 2,
+        "session": 3,
+        "event": 1,
+        "turn": 2,
+        "target": null,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 98,
+    "fields": {
+        "pilot": 2,
+        "session": 3,
+        "event": 1,
+        "turn": 4,
+        "target": null,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 99,
+    "fields": {
+        "pilot": 2,
+        "session": 3,
+        "event": 1,
+        "turn": 7,
+        "target": null,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 100,
+    "fields": {
+        "pilot": 2,
+        "session": 3,
+        "event": 1,
+        "turn": 9,
+        "target": null,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 101,
+    "fields": {
+        "pilot": 2,
+        "session": 3,
+        "event": 1,
+        "turn": 11,
+        "target": null,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 102,
+    "fields": {
+        "pilot": 2,
+        "session": 3,
+        "event": 1,
+        "turn": 12,
+        "target": null,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 103,
+    "fields": {
+        "pilot": 2,
+        "session": 3,
+        "event": 2,
+        "turn": 7,
+        "target": null,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 104,
+    "fields": {
+        "pilot": 2,
+        "session": 3,
+        "event": 2,
+        "turn": 12,
+        "target": null,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 105,
+    "fields": {
+        "pilot": 3,
+        "session": 3,
+        "event": 1,
+        "turn": 1,
+        "target": null,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 106,
+    "fields": {
+        "pilot": 3,
+        "session": 3,
+        "event": 1,
+        "turn": 3,
+        "target": null,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 107,
+    "fields": {
+        "pilot": 3,
+        "session": 3,
+        "event": 1,
+        "turn": 5,
+        "target": null,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 108,
+    "fields": {
+        "pilot": 3,
+        "session": 3,
+        "event": 1,
+        "turn": 7,
+        "target": null,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 109,
+    "fields": {
+        "pilot": 3,
+        "session": 3,
+        "event": 1,
+        "turn": 9,
+        "target": null,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 110,
+    "fields": {
+        "pilot": 3,
+        "session": 3,
+        "event": 2,
+        "turn": 3,
+        "target": null,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 111,
+    "fields": {
+        "pilot": 3,
+        "session": 3,
+        "event": 2,
+        "turn": 7,
+        "target": null,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 112,
+    "fields": {
+        "pilot": 3,
+        "session": 3,
+        "event": 2,
+        "turn": 9,
+        "target": null,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 113,
+    "fields": {
+        "pilot": 3,
+        "session": 3,
+        "event": 5,
+        "turn": 7,
+        "target": null,
+        "threat": 3
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 114,
+    "fields": {
+        "pilot": 3,
+        "session": 3,
+        "event": 13,
+        "turn": 3,
+        "target": null,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 118,
+    "fields": {
+        "pilot": 4,
+        "session": 3,
+        "event": 1,
+        "turn": 1,
+        "target": null,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 119,
+    "fields": {
+        "pilot": 4,
+        "session": 3,
+        "event": 1,
+        "turn": 2,
+        "target": null,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 120,
+    "fields": {
+        "pilot": 4,
+        "session": 3,
+        "event": 1,
+        "turn": 4,
+        "target": null,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 121,
+    "fields": {
+        "pilot": 4,
+        "session": 3,
+        "event": 1,
+        "turn": 5,
+        "target": null,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 122,
+    "fields": {
+        "pilot": 4,
+        "session": 3,
+        "event": 1,
+        "turn": 7,
+        "target": null,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 123,
+    "fields": {
+        "pilot": 4,
+        "session": 3,
+        "event": 1,
+        "turn": 8,
+        "target": null,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 124,
+    "fields": {
+        "pilot": 4,
+        "session": 3,
+        "event": 1,
+        "turn": 10,
+        "target": null,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 125,
+    "fields": {
+        "pilot": 4,
+        "session": 3,
+        "event": 1,
+        "turn": 11,
+        "target": null,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 126,
+    "fields": {
+        "pilot": 4,
+        "session": 3,
+        "event": 2,
+        "turn": 7,
+        "target": null,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 127,
+    "fields": {
+        "pilot": 4,
+        "session": 3,
+        "event": 5,
+        "turn": 8,
+        "target": null,
+        "threat": 2
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 129,
+    "fields": {
+        "pilot": 2,
+        "session": 1,
+        "event": 2,
+        "turn": 6,
+        "target": 7,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 130,
+    "fields": {
+        "pilot": 8,
+        "session": 4,
+        "event": 1,
+        "turn": 3,
+        "target": null,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 131,
+    "fields": {
+        "pilot": 8,
+        "session": 4,
+        "event": 1,
+        "turn": 4,
+        "target": null,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 132,
+    "fields": {
+        "pilot": 8,
+        "session": 4,
+        "event": 1,
+        "turn": 5,
+        "target": null,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 133,
+    "fields": {
+        "pilot": 8,
+        "session": 4,
+        "event": 2,
+        "turn": 5,
+        "target": 18,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 134,
+    "fields": {
+        "pilot": 6,
+        "session": 4,
+        "event": 1,
+        "turn": 4,
+        "target": null,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 135,
+    "fields": {
+        "pilot": 6,
+        "session": 4,
+        "event": 2,
+        "turn": 4,
+        "target": 11,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 136,
+    "fields": {
+        "pilot": 6,
+        "session": 4,
+        "event": 1,
+        "turn": 6,
+        "target": null,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 137,
+    "fields": {
+        "pilot": 6,
+        "session": 4,
+        "event": 2,
+        "turn": 6,
+        "target": 16,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 138,
+    "fields": {
+        "pilot": 6,
+        "session": 4,
+        "event": 1,
+        "turn": 7,
+        "target": null,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 139,
+    "fields": {
+        "pilot": 6,
+        "session": 4,
+        "event": 2,
+        "turn": 7,
+        "target": 13,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 140,
+    "fields": {
+        "pilot": 6,
+        "session": 4,
+        "event": 1,
+        "turn": 8,
+        "target": null,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 141,
+    "fields": {
+        "pilot": 6,
+        "session": 4,
+        "event": 2,
+        "turn": 9,
+        "target": 15,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 142,
+    "fields": {
+        "pilot": 6,
+        "session": 4,
+        "event": 1,
+        "turn": 10,
+        "target": null,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 143,
+    "fields": {
+        "pilot": 6,
+        "session": 4,
+        "event": 2,
+        "turn": 10,
+        "target": 12,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 144,
+    "fields": {
+        "pilot": 9,
+        "session": 4,
+        "event": 1,
+        "turn": 3,
+        "target": null,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 145,
+    "fields": {
+        "pilot": 9,
+        "session": 4,
+        "event": 1,
+        "turn": 4,
+        "target": null,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 146,
+    "fields": {
+        "pilot": 9,
+        "session": 4,
+        "event": 2,
+        "turn": 4,
+        "target": 17,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 147,
+    "fields": {
+        "pilot": 9,
+        "session": 4,
+        "event": 1,
+        "turn": 7,
+        "target": null,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 148,
+    "fields": {
+        "pilot": 9,
+        "session": 4,
+        "event": 1,
+        "turn": 8,
+        "target": null,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 149,
+    "fields": {
+        "pilot": 7,
+        "session": 4,
+        "event": 1,
+        "turn": 4,
+        "target": null,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 150,
+    "fields": {
+        "pilot": 7,
+        "session": 4,
+        "event": 1,
+        "turn": 5,
+        "target": null,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 151,
+    "fields": {
+        "pilot": 7,
+        "session": 4,
+        "event": 1,
+        "turn": 6,
+        "target": null,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 152,
+    "fields": {
+        "pilot": 7,
+        "session": 4,
+        "event": 1,
+        "turn": 6,
+        "target": null,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 153,
+    "fields": {
+        "pilot": 7,
+        "session": 4,
+        "event": 1,
+        "turn": 8,
+        "target": null,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 154,
+    "fields": {
+        "pilot": 7,
+        "session": 4,
+        "event": 1,
+        "turn": 9,
+        "target": null,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 155,
+    "fields": {
+        "pilot": 7,
+        "session": 4,
+        "event": 2,
+        "turn": 9,
+        "target": 14,
+        "threat": null
+    }
+},
+{
+    "model": "campaign.achievement",
+    "pk": 159,
+    "fields": {
+        "pilot": 8,
+        "session": 4,
+        "event": 23,
+        "turn": 7,
+        "target": null,
+        "threat": null
+    }
+}
+]
