@@ -5,16 +5,17 @@ from django.contrib.contenttypes.fields import GenericForeignKey
 from django.contrib.contenttypes.models import ContentType
 
 from xwtools.models import Chassis, Upgrade, SlotChoice
-from .campaigns import User, Campaign, Game
-
+from .campaigns import User, Campaign, Game, GameUpgrade
 
 
 class Pilot(models.Model):
+    """
+    This model represents a player's character pilot, not a pilot card.
+    """
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     game = models.ForeignKey(Game, on_delete=models.SET_NULL, null=True)
-    ships = models.ManyToManyField(Chassis, through='PilotShip')
+    ships = models.ManyToManyField(Chassis, through='PilotShip', related_name='pilot_character')
     callsign = models.CharField(max_length=30)
-    upgrades = models.ManyToManyField(Upgrade, through='PilotUpgrade')
     initiative = models.PositiveSmallIntegerField(default=2)
 
     PATH_CHOICES = (
@@ -112,7 +113,7 @@ class Pilot(models.Model):
 
 class PilotShip(models.Model):
     pilot = models.ForeignKey(Pilot, on_delete=models.CASCADE)
-    chassis = models.ForeignKey(Chassis, on_delete=models.CASCADE, null=True)
+    chassis = models.ForeignKey(Chassis, on_delete=models.CASCADE, null=True, related_name='pilot_ship')
     initiative = models.PositiveSmallIntegerField(default=2)
 
     def __str__(self):
@@ -129,7 +130,8 @@ class PilotShip(models.Model):
 
 
 class PilotUpgrade(models.Model):
-    pilot = models.ForeignKey(Pilot, on_delete=models.CASCADE)
-    upgrade = models.ForeignKey(Upgrade, on_delete=models.CASCADE)
+    pilot = models.ForeignKey(Pilot, on_delete=models.CASCADE, related_name='upgrades')
+    upgrade = models.ForeignKey(GameUpgrade, on_delete=models.CASCADE)
+
     copies = models.PositiveSmallIntegerField(default=1)
     lost = models.BooleanField(default=False)

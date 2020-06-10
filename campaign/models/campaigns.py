@@ -120,6 +120,32 @@ class Game(models.Model):
         return floor(xp/pilots)
 
 
+class GameUpgrade(models.Model):
+    id = models.CharField(max_length=6, primary_key=True, db_index=False)
+
+    class BaseChoice(models.TextChoices):
+        PILOT = 'P', 'Pilot'
+        UPGRADE = 'U', 'Upgrade'
+
+    base_id = models.IntegerField()
+    base = models.CharField(max_length=1, choices=BaseChoice.choices)
+    name = models.CharField(max_length=30)
+    cost = models.IntegerField()
+    description = models.CharField(max_length=255)
+    ai_description = models.CharField(max_length=255)
+    type = models.CharField(max_length=3, choices=SlotChoice.choices)
+    type2 = models.CharField(max_length=3, choices=SlotChoice.choices, null=True, blank=True, default=None)
+    charges = models.PositiveSmallIntegerField(null=True, blank=True)
+    force = models.BooleanField(default=False)
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        db_table = 'campaign_gameupgrades_v'
+        managed = False
+
+
 class Mission(models.Model):
     FRIENDLY = 'F'
     NEUTRAL = 'N'
