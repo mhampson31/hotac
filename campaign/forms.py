@@ -5,7 +5,7 @@ from .models import EnemyPilot, EnemyAbility, Session, Pilot, Achievement
 from xwtools.models import Upgrade, SlotChoice
 
 from crispy_forms.helper import FormHelper
-from crispy_forms.layout import Layout, Submit
+from crispy_forms.layout import Layout, Submit, Div, Field
 
 class EnemyPilotForm(forms.Form):
     pass
@@ -31,12 +31,15 @@ class PUHelper(FormHelper):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.form_method = 'post'
-        self.form_class = 'form-inline'
+        self.form_class = 'form-horizontal'
+        self.form_show_labels = False
         self.layout = Layout(
-            'upgrade',
-            'copies',
-            'equipped',
-            'lost'
+            Div(
+                Field('upgrade', wrapper_class='col-4'),
+                Field('copies', wrapper_class='col-1'),
+                Field('equipped', wrapper_class='col-1'),
+                css_class='form-group row'
+            )
         )
         self.render_required_fields = True
 

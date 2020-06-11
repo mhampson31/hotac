@@ -67,10 +67,13 @@
                  </p>
         <p>XP Available: <i class="xwf xwf-squad-point-cost"></i>{{remaining}}</p>
         <form method='post' class='col'>{% csrf_token %}
-            <ul class='list-group'>
+            <div class='row mb-2'>
+                <div class='col-4'>Upgrade</div>
+                <div class='col-1'>Copies</div>
+                <div class='col-1'>Equipped</div>
+            </div>
                 {{update.management_form}}
                 {% crispy update helper %}
-            </ul>
         </form>
     </div>
 
