@@ -7,21 +7,18 @@
 
 <h3>{{pilot.callsign}}</h3>
 <div class='list-group list-group-horizontal mb-4' id='pilot-nav' role='tablist'>
-    <a class='list-group-item list-group-item' data-toggle='list' role='tab' href='#pilot'>Pilot</a>
-    <a class='list-group-item list-group-item' data-toggle='list' role='tab' href='#ship'>Ship</a>
+    <a class='list-group-item list-group-item active' data-toggle='list' role='tab' href='#pilot'>Pilot</a>
     <a class='list-group-item list-group-item' data-toggle='list' role='tab' href='#upgrade'>Upgrade</a>
     <a class='list-group-item list-group-item' data-toggle='list' role='tab' href='#achievements'>Achievements</a>
 </div>
 
 <div class='tab-content'>
-    <div class='tab-pane' role='tabpanel' id='pilot'>
+    <div class='tab-pane active' role='tabpanel' id='pilot'>
         <p>Player: {{pilot.user}}</p>
         <p>Game: <a href="{% url 'game' pilot.game.id %}">{{pilot.game}}</a></p>
         <p>Missions Flown: {{pilot.sessions.count}}</p>
         <p>Initiative {{pilot.initiative}}</p>
-    </div>
 
-    <div class='tab-pane' role='tabpanel' id='ship'>
         <div class="row mb-1">
             <h6 class='col'>
                 <a href="{% url 'chassis' chassis_slug=pilot.active_ship.slug %}">{{pilot.active_ship.name}} <i class="xw-ship xw-ship-{{pilot.active_ship.css_name}}"></i></a>
@@ -39,17 +36,20 @@
         <div class="row mb-3">
             <div class="col">
                 <h4>Upgrades</h4>
-                    {% regroup pilot.upgrades.all by get_type_display as upgrade_list %}
+                    {% regroup pilot.upgrades.all by upgrade.get_type_display as upgrade_list %}
                     {% for upgrade_type, game_upgrades in upgrade_list %}
                 <div class="row">
                     <ul class="list-inline col mb-1">
-                    {% for upgrade in game_upgrades %}
+                        <li class='list-inline-item'>
+                            {{upgrade_type|get_icon}}
+                        </li>
+                        {% for gu in game_upgrades %}
                         <li class="list-inline-item">
                             {{get_type_display|get_icon}}
                             {% if upgrade.type2 %}
                             {{get_type2_display|get_icon}}
                             {% endif %}
-                            {{upgrade}}
+                            {{gu.type}} {{gu}}
                         </li>
                     {% endfor %}
                     </ul>
@@ -69,11 +69,8 @@
         <form method='post' class='col'>{% csrf_token %}
             <ul class='list-group'>
                 {{update.management_form}}
-                {% for f in update.forms %}
-                <li class='list-group-item'>{{f}}</li>
-                {% endfor %}
+                {% crispy update helper %}
             </ul>
-             <button type="submit" class="save btn btn-default">Save</button>
         </form>
     </div>
 

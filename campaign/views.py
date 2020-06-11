@@ -14,7 +14,7 @@ from django_tables2 import RequestConfig
 
 from .models import Session, Achievement, Pilot, PilotUpgrade, Event, Campaign, Game, AI, EnemyPilot
 from .tables import AchievementTable
-from .forms import EnemyPilotForm, SessionForm, make_achievement_form, AchHelper, PilotUpgradeForm
+from .forms import EnemyPilotForm, SessionForm, make_achievement_form, AchHelper, PilotUpgradeForm, PUHelper
 
 
 def index(request):
@@ -86,6 +86,8 @@ def pilot_sheet(request, pk):
     pilot = Pilot.objects.get(id=pk)
 
     UpgradeFormSet = inlineformset_factory(Pilot, PilotUpgrade, exclude=('lost',), extra=1)
+    helper = PUHelper()
+    helper.add_input(Submit("submit", "Save"))
 
     if request.method == 'POST':
         update_form = UpgradeFormSet(request.POST, instance=pilot)
@@ -98,6 +100,7 @@ def pilot_sheet(request, pk):
     context = {'pilot':pilot,
                'remaining':pilot.total_xp - pilot.spent_xp,
                'update': update_form,
+               'helper': helper,
                'achievements':pilot.achievement_set.values('event__long_desc', \
                                                            'target__enemy__chassis__name') \
                                                            .annotate(count=Count('event'))}

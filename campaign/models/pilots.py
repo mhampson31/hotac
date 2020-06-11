@@ -56,7 +56,7 @@ class Pilot(models.Model):
 
     @property
     def spent_upgrades(self):
-        return sum([self.game.campaign.upgrade_cost(u.upgrade)
+        return sum([self.game.campaign.upgrade_cost(u.upgrade) * u.copies
                     for u in self.upgrades.filter(upgrade__cost__gt=0)
                     ])
 
@@ -132,6 +132,14 @@ class PilotUpgrade(models.Model):
 
     copies = models.PositiveSmallIntegerField(default=1)
     lost = models.BooleanField(default=False)
+    equipped = models.BooleanField(default=False)
 
     def __str__(self):
-        return str(self.upgrade)
+        s = str(self.upgrade)
+        if self.copies > 1:
+            if self.upgrade.type == SlotChoice.MODIFICATION:
+                s = '{} x{}'.format(s, self.copies)
+            else:
+                # for ordinance things, copies are the extra charges granted
+                s = '{} +{}'.format(s, self.copies-1)
+        return s

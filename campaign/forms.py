@@ -27,6 +27,21 @@ class AchHelper(FormHelper):
         self.render_required_fields = True
 
 
+class PUHelper(FormHelper):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.form_method = 'post'
+        self.form_class = 'form-inline'
+        self.layout = Layout(
+            'upgrade',
+            'copies',
+            'equipped',
+            'lost'
+        )
+        self.render_required_fields = True
+
+
+
 class SessionForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
