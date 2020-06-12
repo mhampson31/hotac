@@ -37,7 +37,7 @@ class PUHelper(FormHelper):
             Div(
                 Field('upgrade', wrapper_class='col-4'),
                 Field('copies', wrapper_class='col-1'),
-                Field('equipped', wrapper_class='col-1'),
+                Field('status', wrapper_class='col-2'),
                 css_class='form-group row'
             )
         )

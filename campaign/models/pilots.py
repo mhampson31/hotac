@@ -127,12 +127,20 @@ class PilotShip(models.Model):
 
 
 class PilotUpgrade(models.Model):
+    class UStatusChoice(models.TextChoices):
+        EQUIPPED = 'E', 'Equipped'
+        UNEQUIPPED = 'U', 'Unequipped'
+        LOST = 'X', 'Lost'
+
     pilot = models.ForeignKey(Pilot, on_delete=models.CASCADE, related_name='upgrades')
     upgrade = models.ForeignKey(GameUpgrade, on_delete=models.CASCADE)
 
     copies = models.PositiveSmallIntegerField(default=1)
-    lost = models.BooleanField(default=False)
-    equipped = models.BooleanField(default=False)
+    status = models.CharField(max_length=1, choices=UStatusChoice.choices, default='E')
+
+    @property
+    def cost(self):
+        return self.pilot.game.campaign.upgrade_cost(self.upgrade) * self.copies
 
     def __str__(self):
         s = str(self.upgrade)
@@ -143,3 +151,6 @@ class PilotUpgrade(models.Model):
                 # for ordinance things, copies are the extra charges granted
                 s = '{} +{}'.format(s, self.copies-1)
         return s
+
+    class Meta:
+        ordering = ['upgrade__type', 'status']

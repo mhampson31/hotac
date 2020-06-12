@@ -52,7 +52,7 @@ class Campaign(models.Model):
                     m = upgrade.charges + 3
                 else:
                     m = 2
-            if upgrade.type in (SlotChoice.TALENT, SlotChoice.FORCE):
+            elif upgrade.type in (SlotChoice.TALENT, SlotChoice.FORCE):
                 m = 2
             else:
                 m = 1
