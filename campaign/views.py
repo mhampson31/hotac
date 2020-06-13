@@ -5,8 +5,6 @@ from django.views.generic import DetailView
 from django.urls import reverse_lazy
 from django.http import HttpResponseRedirect
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
-
-
 from django.forms import modelformset_factory, inlineformset_factory, CheckboxSelectMultiple
 
 from crispy_forms.layout import Submit
@@ -85,12 +83,16 @@ def session_plan(request, session_id):
 def pilot_sheet(request, pk):
     pilot = Pilot.objects.get(id=pk)
 
-    UpgradeFormSet = inlineformset_factory(Pilot, PilotUpgrade, exclude=('lost',), extra=1)
+    UpgradeFormSet = inlineformset_factory(Pilot, PilotUpgrade,
+                                           form=PilotUpgradeForm,
+                                           exclude=('lost',),
+                                           extra=1)
     helper = PUHelper()
     helper.add_input(Submit("submit", "Save"))
 
     if request.method == 'POST':
         update_form = UpgradeFormSet(request.POST, instance=pilot)
+
         if update_form.is_valid():
             update_form.save()
             return HttpResponseRedirect(pilot.get_absolute_url())

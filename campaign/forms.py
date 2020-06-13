@@ -1,11 +1,14 @@
 from django import forms
 from django.forms.widgets import CheckboxSelectMultiple
 
-from .models import EnemyPilot, EnemyAbility, Session, Pilot, Achievement
-from xwtools.models import Upgrade, SlotChoice
-
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Layout, Submit, Div, Field
+
+from .models import EnemyPilot, EnemyAbility, Session, Pilot, PilotUpgrade, Achievement, GameUpgrade
+from .fields import GroupedModelChoiceField
+from xwtools.models import Upgrade, SlotChoice
+
+
 
 class EnemyPilotForm(forms.Form):
     pass
@@ -44,7 +47,6 @@ class PUHelper(FormHelper):
         self.render_required_fields = True
 
 
-
 class SessionForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
@@ -65,11 +67,15 @@ class SessionForm(forms.ModelForm):
 
 
 class PilotUpgradeForm(forms.ModelForm):
-    upgrades = forms.ModelMultipleChoiceField(queryset=Upgrade.objects.all(), widget=CheckboxSelectMultiple(), required=False)
+    from operator import methodcaller
+
+    upgrade = GroupedModelChoiceField(queryset=GameUpgrade.objects.all(), choices_groupby=methodcaller('get_type_display'))
+    copies = forms.IntegerField(min_value=1)
+    status = forms.ChoiceField()
 
     class Meta:
-        model = Pilot
-        fields = ('upgrades',)
+        model = PilotUpgrade
+        fields = ('upgrade', 'copies', 'status')
 
 
 def make_achievement_form(ses):
