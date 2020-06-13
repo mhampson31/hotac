@@ -36,23 +36,49 @@
         <div class="row mb-3">
             <div class="col">
                 <h4>Purchased Upgrades</h4>
-                    {% regroup pilot.upgrades.all by upgrade.get_type_display as upgrade_list %}
-                    {% for upgrade_type, game_upgrades in upgrade_list %}
-                <div class="row mb-2 d-flex flex-wrap">
-                        {% for gu in game_upgrades %}
-                        <div class="border rounded-lg p-2
-                        {% if gu.status == 'X' %} bg-secondary text-light
-                        {% elif gu.status == 'E' %} bg-info text-light
-                        {% endif %}">
-                            {{gu.upgrade.get_type_display|get_icon}}
-                            {% if upgrade.type2 %}
-                            {{gu.upgrade.get_type2_display|get_icon}}
-                            {% endif %}
-                            {{gu}} <i class="xwf xwf-squad-point-cost"></i>{{gu.cost}}
-                        </div>
-                    {% endfor %}
+                <div class="row mb-3 d-flex flex-wrap">
+                {% for gu in pilot.upgrades.all %} <!-- border rounded-lg p-2
+                    -->
+                {% ifchanged gu.upgrade.type %}
                 </div>
+                <div class="row mb-3 d-flex flex-wrap">
+                {% endifchanged %}
+                        <div class='card mr-1'>
+                            <div class='card-body'>
+                                <h5 class='card-title'>
+                                    {{gu.upgrade.get_type_display|get_icon}}
+                                    {% if gu.upgrade.type2 %}
+                                    {{gu.upgrade.get_type2_display|get_icon}}
+                                    {% endif %}
+                                    {{gu.upgrade.name}}
+                                </h5>
+                                {% if gu.copies > 1 %}
+                                <h6>{{gu.copies}} copies</h6>
+                                {% endif %}
+                                <p>{{gu.upgrade.description}}</p>
+                                <ul class='list-group list-group-horizontal'>
+                                    <li class="list-group-item
+                                            {% if gu.status == 'X' %} bg-danger text-light
+                                            {% elif gu.status == 'E' %} bg-info text-light
+                                            {% endif %}">
+                                            {{gu.get_status_display}}
+                                    </li>
+                                    <li class='list-group-item'>
+                                        <i class="xwf xwf-squad-point-cost"></i>{{gu.cost}}
+                                    </li>
+                                    {% if gu.charges %}
+                                    <li class='list-group-item'>
+                                        <i class="xwf
+                                            {% if gu.upgrade.force %} xwf-forcecharge
+                                            {% else %} xwf-charge
+                                            {% endif %}"></i>{{gu.charges}}
+                                    </li>
+                                    {% endif %}
+                                </ul>
+                                </div>
+                        </div>
                 {% endfor %}
+                </div>
             </div>
         </div>
     </div>

@@ -69,7 +69,8 @@ class SessionForm(forms.ModelForm):
 class PilotUpgradeForm(forms.ModelForm):
     from operator import methodcaller
 
-    upgrade = GroupedModelChoiceField(queryset=GameUpgrade.objects.all(), choices_groupby=methodcaller('get_type_display'))
+    upgrade = GroupedModelChoiceField(queryset=GameUpgrade.objects.all(),
+                                      choices_groupby=methodcaller('get_type_display'))
     copies = forms.IntegerField(min_value=1)
     status = forms.ChoiceField()
 

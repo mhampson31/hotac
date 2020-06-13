@@ -142,6 +142,13 @@ class PilotUpgrade(models.Model):
     def cost(self):
         return self.pilot.game.campaign.upgrade_cost(self.upgrade) * self.copies
 
+    @property
+    def charges(self):
+        if self.upgrade.charges:
+            return self.upgrade.charges + self.copies - 1
+        else:
+            return None
+
     def __str__(self):
         s = str(self.upgrade)
         if self.copies > 1:
