@@ -72,3 +72,7 @@ section > .row {
 .side2 {
     border-top: 1px dashed var(--grey);
 }
+
+.upgrade-card {
+    max-width: 25rem;
+}
