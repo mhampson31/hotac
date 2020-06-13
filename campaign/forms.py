@@ -72,7 +72,7 @@ class PilotUpgradeForm(forms.ModelForm):
     upgrade = GroupedModelChoiceField(queryset=GameUpgrade.objects.all(),
                                       choices_groupby=methodcaller('get_type_display'))
     copies = forms.IntegerField(min_value=1)
-    status = forms.ChoiceField()
+    status = forms.ChoiceField(choices=PilotUpgrade.UStatusChoice.choices)
 
     class Meta:
         model = PilotUpgrade
