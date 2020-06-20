@@ -3274,7 +3274,7 @@
         "pilot": 1,
         "upgrade": 11,
         "copies": 1,
-        "lost": false
+        "status": "E"
     }
 },
 {
@@ -3284,7 +3284,7 @@
         "pilot": 1,
         "upgrade": 10,
         "copies": 1,
-        "lost": false
+        "status": "E"
     }
 },
 {
@@ -3294,7 +3294,7 @@
         "pilot": 1,
         "upgrade": 19,
         "copies": 1,
-        "lost": false
+        "status": "E"
     }
 },
 {
@@ -3304,7 +3304,7 @@
         "pilot": 8,
         "upgrade": 25,
         "copies": 1,
-        "lost": false
+        "status": "E"
     }
 },
 {
@@ -3314,7 +3314,7 @@
         "pilot": 6,
         "upgrade": 18,
         "copies": 1,
-        "lost": false
+        "status": "E"
     }
 },
 {
@@ -3324,7 +3324,7 @@
         "pilot": 6,
         "upgrade": 9,
         "copies": 1,
-        "lost": false
+        "status": "E"
     }
 },
 {
