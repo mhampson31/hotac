@@ -6,7 +6,7 @@ from django.contrib.contenttypes.fields import GenericForeignKey
 from django.contrib.contenttypes.models import ContentType
 
 from xwtools.models import Chassis, Upgrade, SlotChoice
-from .campaigns import User, Game, GameUpgrade
+from .campaigns import User, Campaign, CampaignUpgrade
 
 
 class Pilot(models.Model):
@@ -14,7 +14,7 @@ class Pilot(models.Model):
     This model represents a player's character pilot, not a pilot card.
     """
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    game = models.ForeignKey(Game, on_delete=models.SET_NULL, null=True)
+    campaign = models.ForeignKey(Campaign, on_delete=models.SET_NULL, null=True)
     ships = models.ManyToManyField(Chassis, through='PilotShip', related_name='pilot_character')
     callsign = models.CharField(max_length=30)
     initiative = models.PositiveSmallIntegerField(default=2)
@@ -34,13 +34,10 @@ class Pilot(models.Model):
 
     @property
     def total_xp(self):
-        #ship_xp
-        #achievement_xp =
-        #self.game.campaign.ships.get(id=self.pilotship_set.first().chassis.id).start_xp
         base = self.pilotship_set.first().campaign_info.xp_value
 
-        if self.game.pool_xp:
-            earned = self.game.xp_share * self.sessions.count()
+        if self.campaign.pool_xp:
+            earned = self.campaign.xp_share * self.sessions.count()
         else:
             earned = sum([s.pilot_xp(self) for s in self.sessions.all()])
 
@@ -52,11 +49,11 @@ class Pilot(models.Model):
 
     @property
     def spent_ships(self):
-        return (self.ships.count() - 1) * self.game.campaign.ship_cost
+        return (self.ships.count() - 1) * self.campaign.campaign.ship_cost
 
     @property
     def spent_upgrades(self):
-        return sum([self.game.campaign.upgrade_cost(u.upgrade) * u.copies
+        return sum([self.campaign.rulebook.upgrade_cost(u.upgrade) * u.copies
                     for u in self.upgrades.filter(upgrade__cost__gt=0)
                     ])
 
@@ -69,10 +66,9 @@ class Pilot(models.Model):
         # **2 for True). Sum all these values, and multiply them by the init
         # multipler.
         return sum([
-                    (i+1) ** (1 + self.game.ruleset.initiative_sq)
-                    for i in range(self.game.ruleset.start_init, self.initiative)]) \
-               * self.game.campaign.initiative_cost
-
+                    (i+1) ** (1 + self.campaign.rulebook.initiative_sq)
+                    for i in range(self.campaign.rulebook.start_init, self.initiative)]) \
+               * self.campaign.rulebook.initiative_cost
 
     @property
     def active_ship(self):
@@ -102,7 +98,8 @@ class Pilot(models.Model):
         if self.initiative >= 4:
             slot_list.append(SlotChoice.MODIFICATION)
         if self.initiative >= 5:
-            prog = self.game.campaign.playership_set.get(id=self.active_ship.id).progression
+            #prog = self.campaign.rulebook.playableship_set.get(id=self.active_ship.id).progression
+            prog = self.active_ship.game_info.progression
             slot_list.append({'d':path_slot,
                               'h':SlotChoice.SENSOR}[prog])
         if self.initiative == 6:
@@ -121,9 +118,8 @@ class PilotShip(models.Model):
         return self.pilot.callsign + "\'s " + self.chassis.name
 
     @property
-    def campaign_info(self):
-        return self.pilot.game.campaign.playership_set.get(chassis=self.chassis)
-
+    def game_info(self):
+        return self.pilot.campaign.rulebook.playableship_set.get(chassis=self.chassis)
 
 
 class PilotUpgrade(models.Model):
@@ -133,14 +129,14 @@ class PilotUpgrade(models.Model):
         LOST = 'X', 'Lost'
 
     pilot = models.ForeignKey(Pilot, on_delete=models.CASCADE, related_name='upgrades')
-    upgrade = models.ForeignKey(GameUpgrade, on_delete=models.CASCADE)
+    upgrade = models.ForeignKey(CampaignUpgrade, on_delete=models.CASCADE)
 
     copies = models.PositiveSmallIntegerField(default=1)
     status = models.CharField(max_length=1, choices=UStatusChoice.choices, default='E')
 
     @property
     def cost(self):
-        return self.pilot.game.campaign.upgrade_cost(self.upgrade) * self.copies
+        return self.pilot.campaign.rulebook.upgrade_cost(self.upgrade) * self.copies
 
     @property
     def charges(self):

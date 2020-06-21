@@ -44,7 +44,7 @@ class Rulebook(models.Model):
 
     def upgrade_cost(self, upgrade):
         """
-        takes a GameUpgrade object and calculates the cost, based on the upgrade logic rules
+        takes a CampaignUpgrade object and calculates the cost, based on the upgrade logic rules
         """
         if self.upgrade_logic == self.UpgradeLogic.HOTAC:
             if upgrade.base == BaseChoice.PILOT:
@@ -99,9 +99,9 @@ class Event(models.Model):
 
 
 
-class Game(models.Model):
+class Campaign(models.Model):
     rulebook = models.ForeignKey(Rulebook, on_delete=models.SET_NULL, null=True)
-    gm = models.ForeignKey(User, on_delete=models.CASCADE, null=True, related_name='game_gm')
+    gm = models.ForeignKey(User, on_delete=models.CASCADE, null=True, related_name='campaign_gm')
     players = models.ManyToManyField(User)
     description = models.CharField(max_length=30)
 
@@ -128,7 +128,7 @@ class Game(models.Model):
         return floor(xp/pilots)
 
 
-class GameUpgrade(models.Model):
+class CampaignUpgrade(models.Model):
     id = models.CharField(max_length=6, primary_key=True, db_index=False)
     base_id = models.IntegerField()
     base = models.CharField(max_length=1, choices=BaseChoice.choices)

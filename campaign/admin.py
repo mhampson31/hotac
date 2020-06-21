@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 
 from .models import User, Rulebook, PlayableShip, Pilot, Event, Mission, \
-    Game, Session, SessionEnemy, Achievement, PilotShip, PilotUpgrade, FGSetup, FlightGroup, \
+    Campaign, Session, SessionEnemy, Achievement, PilotShip, PilotUpgrade, FGSetup, FlightGroup, \
     AI, AIManeuver, \
     EnemyPilot, EnemyAbility
 
@@ -37,8 +37,8 @@ class MissionAdmin(admin.ModelAdmin):
     inlines = (FlightGroupInline, FGSetupInline)
 
 
-class GameAdmin(admin.ModelAdmin):
-    model = Game
+class CampaignAdmin(admin.ModelAdmin):
+    model = Campaign
     list_display = ['description', 'rulebook', 'gm']
 
 
@@ -49,7 +49,7 @@ class SessionEnemyInline(admin.TabularInline):
 
 class SessionAdmin(admin.ModelAdmin):
     inlines = (SessionEnemyInline, AchievementInline)
-    list_display = ['mission', 'game', 'date', 'outcome']
+    list_display = ['mission', 'campaign', 'date', 'outcome']
 
 
 class PlayableShipInline(admin.TabularInline):
@@ -73,8 +73,8 @@ class PilotUpgradeInline(admin.TabularInline):
 
 class PilotAdmin(admin.ModelAdmin):
     model = Pilot
-    list_display = ('callsign', 'game', 'user')
-    list_filter = ('game', 'user')
+    list_display = ('callsign', 'campaign', 'user')
+    list_filter = ('campaign', 'user')
     inlines = (PilotShipInline, PilotUpgradeInline)
 
 
@@ -114,7 +114,7 @@ admin.site.register(Pilot, PilotAdmin)
 admin.site.register(Rulebook, RulebookAdmin)
 admin.site.register(Mission, MissionAdmin)
 admin.site.register(Event)
-admin.site.register(Game, GameAdmin)
+admin.site.register(Campaign, CampaignAdmin)
 admin.site.register(Session, SessionAdmin)
 admin.site.register(AI, AIAdmin)
 admin.site.register(EnemyPilot, EnemyPilotAdmin)

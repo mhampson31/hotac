@@ -10,14 +10,14 @@ from django.forms import modelformset_factory, inlineformset_factory, CheckboxSe
 from crispy_forms.layout import Submit
 from django_tables2 import RequestConfig
 
-from .models import Session, Achievement, Pilot, PilotUpgrade, Event, Rulebook, Game, AI, EnemyPilot
+from .models import Session, Achievement, Pilot, PilotUpgrade, Event, Rulebook, Campaign, AI, EnemyPilot
 from .tables import AchievementTable
 from .forms import EnemyPilotForm, SessionForm, make_achievement_form, AchHelper, PilotUpgradeForm, PUHelper
 
 
 def index(request):
     current_user = request.user
-    context = {'games':Game.objects.filter(pilot__user=current_user.id).distinct()}
+    context = {'campaigns':Campaign.objects.filter(pilot__user=current_user.id).distinct()}
     #context = {'pilots':Pilot.objects.filter(user=current_user.id)}
     return render(request, 'campaign/index.html', context)
 
@@ -116,10 +116,10 @@ class RulebookView(DetailView):
     template_name = 'campaign/rulebook.html'
 
 
-class GameView(DetailView):
-    model = Game
-    context_object_name = 'game'
-    template_name = 'campaign/game.html'
+class CampaignView(DetailView):
+    model = Campaign
+    context_object_name = 'campaign'
+    template_name = 'campaign/campaign.html'
 
 
 class RulebookUpdate(UpdateView):

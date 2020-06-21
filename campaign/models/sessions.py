@@ -5,14 +5,14 @@ from django.urls import reverse
 
 from math import floor
 
-from .campaigns import User, Mission, Event, Game, FlightGroup
+from .campaigns import User, Mission, Event, Campaign, FlightGroup
 from .enemies import EnemyPilot, EnemyAbility
 from .pilots import Pilot
 from xwtools.models import Chassis, Upgrade
 
 
 class Session(models.Model):
-    game = models.ForeignKey(Game, on_delete=models.CASCADE)
+    campaign = models.ForeignKey(Campaign, on_delete=models.CASCADE)
     mission = models.ForeignKey(Mission, on_delete=models.CASCADE)
     pilots = models.ManyToManyField(Pilot, related_name='sessions')
     enemies = models.ManyToManyField(EnemyPilot, through='SessionEnemy')

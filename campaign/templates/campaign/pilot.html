@@ -15,7 +15,7 @@
 <div class='tab-content'>
     <div class='tab-pane active' role='tabpanel' id='pilot'>
         <p>Player: {{pilot.user}}</p>
-        <p>Game: <a href="{% url 'game:game' pilot.game.id %}">{{pilot.game}}</a></p>
+        <p>Campaign: <a href="{% url 'game:campaign' pilot.campaign.id %}">{{pilot.campaign}}</a></p>
         <p>Missions Flown: {{pilot.sessions.count}}</p>
         <p>Initiative {{pilot.initiative}}</p>
 

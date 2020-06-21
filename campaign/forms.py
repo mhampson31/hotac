@@ -4,7 +4,7 @@ from django.forms.widgets import CheckboxSelectMultiple
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Layout, Submit, Div, Field
 
-from .models import EnemyPilot, EnemyAbility, Session, Pilot, PilotUpgrade, Achievement, GameUpgrade
+from .models import EnemyPilot, EnemyAbility, Session, Pilot, PilotUpgrade, Achievement, CampaignUpgrade
 from .fields import GroupedModelChoiceField
 from xwtools.models import Upgrade, SlotChoice
 
@@ -69,7 +69,7 @@ class SessionForm(forms.ModelForm):
 class PilotUpgradeForm(forms.ModelForm):
     from operator import methodcaller
 
-    upgrade = GroupedModelChoiceField(queryset=GameUpgrade.objects.all(),
+    upgrade = GroupedModelChoiceField(queryset=CampaignUpgrade.objects.all(),
                                       choices_groupby=methodcaller('get_type_display'))
     copies = forms.IntegerField(min_value=1)
     status = forms.ChoiceField(choices=PilotUpgrade.UStatusChoice.choices)
@@ -87,7 +87,7 @@ def make_achievement_form(ses):
     class AchForm(forms.ModelForm):
         pilot = forms.ModelChoiceField(queryset=ses.pilots)
         target = forms.ModelChoiceField(queryset=ses.sessionenemy_set, required=False)
-        event = forms.ModelChoiceField(queryset=ses.game.rulebook.events)
+        event = forms.ModelChoiceField(queryset=ses.campaign.rulebook.events)
 
 
         #def __init__(self, *args, **kwargs):
