@@ -21,7 +21,7 @@ class User(AbstractUser):
 class Rulebook(models.Model):
     description = models.CharField(max_length=30)
     admin = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
-    ships = models.ManyToManyField(Chassis, through='PlayerShip')
+    ships = models.ManyToManyField(Chassis, through='PlayableShip')
 
     # player defaults
     start_init = models.SmallIntegerField(default=2)
@@ -68,7 +68,7 @@ class Rulebook(models.Model):
         return floor(xp/pilots)
 
 
-class PlayerShip(models.Model):
+class PlayableShip(models.Model):
     rulebook = models.ForeignKey(Rulebook, on_delete=models.CASCADE)
     chassis = models.ForeignKey(Chassis, on_delete=models.CASCADE)
     xp_value = models.SmallIntegerField(default=    0)
