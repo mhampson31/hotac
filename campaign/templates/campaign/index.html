@@ -1,10 +1,28 @@
 {% extends 'base.html' %}
 
 {% block content %}
-Pilots:
-<ul>
-{% for p in pilots %}
-    <li>{{p.campaign}}: <a href="pilot/{{p.id}}">{{p.callsign}}</a></li>
+
+{% for game in games %}
+    <div class='card mb-3'>
+        <div class='card-body'>
+            <h5>{{game.description}}{% if game.gm == user %}<i> (Admin)</i>{% endif %}</h5>
+            <h6>{{game.campaign}}</h6>
+            <table class='table table-sm'>
+                <tr>
+                    <th scope='col'>Pilot</th>
+                    <th scope='col'>Ship</th>
+                    <th scope='col'>Player</th>
+                </tr>
+                {% for p in game.pilot_set.all %}
+                <tr>
+                    <td scope='col'><a href='{% url 'game:pilot' p.id %}'>{{p.callsign}}</a></td>
+                    <td scope='col'>{{p.active_ship}}</td>
+                    <td scope='col'>{{p.user}}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
 {% endfor %}
-</ul>
+
 {% endblock %}

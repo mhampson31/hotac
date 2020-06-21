@@ -13,7 +13,7 @@
         <h3>Pilots</h3>
         <div class="list-group">
             {% for pilot in game.pilot_set.all %}
-            <a href="{% url 'pilot' pilot.id %}" class="list-group-item list-group-item-action">{{pilot.callsign}}</a>
+            <a href="{% url 'game:pilot' pilot.id %}" class="list-group-item list-group-item-action">{{pilot.callsign}}</a>
             {% endfor %}
         </div>
     </div>
@@ -35,7 +35,7 @@
         <h3>Sessions</h3>
         <div class="list-group">
             {% for session in game.session_set.all %}
-            <a href="{% url 'session' session.id %}" class="list-group-item list-group-item-action">{{session.mission}}</a>
+            <a href="{% url 'game:session' session.id %}" class="list-group-item list-group-item-action">{{session.mission}}</a>
             {% endfor %}
         </div>
     </div>

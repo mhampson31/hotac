@@ -15,7 +15,7 @@
 <div class='tab-content'>
     <div class='tab-pane active' role='tabpanel' id='pilot'>
         <p>Player: {{pilot.user}}</p>
-        <p>Game: <a href="{% url 'game' pilot.game.id %}">{{pilot.game}}</a></p>
+        <p>Game: <a href="{% url 'game:game' pilot.game.id %}">{{pilot.game}}</a></p>
         <p>Missions Flown: {{pilot.sessions.count}}</p>
         <p>Initiative {{pilot.initiative}}</p>
 
@@ -25,7 +25,7 @@
             </h6>
         </div>
 
-        <div class="row mb-1">
+        <div class="row mb-3">
             <ul class="col list-group list-group-horizontal">
             {% for slot in pilot.slots %}
               <li class="list-group-item">{{slot.label|get_icon}}<li>
