@@ -6,7 +6,7 @@ from django.contrib.contenttypes.fields import GenericForeignKey
 from django.contrib.contenttypes.models import ContentType
 
 from xwtools.models import Chassis, Upgrade, SlotChoice
-from .campaigns import User, Campaign, Game, GameUpgrade
+from .campaigns import User, Game, GameUpgrade
 
 
 class Pilot(models.Model):
@@ -69,8 +69,8 @@ class Pilot(models.Model):
         # **2 for True). Sum all these values, and multiply them by the init
         # multipler.
         return sum([
-                    (i+1) ** (1 + self.game.campaign.initiative_sq)
-                    for i in range(self.game.campaign.start_init, self.initiative)]) \
+                    (i+1) ** (1 + self.game.ruleset.initiative_sq)
+                    for i in range(self.game.ruleset.start_init, self.initiative)]) \
                * self.game.campaign.initiative_cost
 
 

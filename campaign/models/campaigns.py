@@ -18,7 +18,7 @@ class User(AbstractUser):
     pass
 
 
-class Campaign(models.Model):
+class Rulebook(models.Model):
     description = models.CharField(max_length=30)
     admin = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
     ships = models.ManyToManyField(Chassis, through='PlayerShip')
@@ -40,7 +40,7 @@ class Campaign(models.Model):
         return self.description
 
     def get_absolute_url(self):
-        return reverse('campaign', kwargs={'pk': self.pk})
+        return reverse('ruleset', kwargs={'pk': self.pk})
 
     def upgrade_cost(self, upgrade):
         """
@@ -69,7 +69,7 @@ class Campaign(models.Model):
 
 
 class PlayerShip(models.Model):
-    campaign = models.ForeignKey(Campaign, on_delete=models.CASCADE)
+    rulebook = models.ForeignKey(Rulebook, on_delete=models.CASCADE)
     chassis = models.ForeignKey(Chassis, on_delete=models.CASCADE)
     xp_value = models.SmallIntegerField(default=    0)
 
@@ -88,7 +88,7 @@ class PlayerShip(models.Model):
 
 
 class Event(models.Model):
-    campaign = models.ForeignKey(Campaign, on_delete=models.CASCADE, related_name='events')
+    rulebook = models.ForeignKey(Rulebook, on_delete=models.CASCADE, related_name='events')
     short_desc = models.CharField(max_length=25)
     long_desc = models.CharField(max_length=120)
     xp = models.SmallIntegerField(default=1)
@@ -100,7 +100,7 @@ class Event(models.Model):
 
 
 class Game(models.Model):
-    campaign = models.ForeignKey(Campaign, on_delete=models.SET_NULL, null=True)
+    rulebook = models.ForeignKey(Rulebook, on_delete=models.SET_NULL, null=True)
     gm = models.ForeignKey(User, on_delete=models.CASCADE, null=True, related_name='game_gm')
     players = models.ManyToManyField(User)
     description = models.CharField(max_length=30)

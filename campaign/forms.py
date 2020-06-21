@@ -87,7 +87,7 @@ def make_achievement_form(ses):
     class AchForm(forms.ModelForm):
         pilot = forms.ModelChoiceField(queryset=ses.pilots)
         target = forms.ModelChoiceField(queryset=ses.sessionenemy_set, required=False)
-        event = forms.ModelChoiceField(queryset=ses.game.campaign.events)
+        event = forms.ModelChoiceField(queryset=ses.game.rulebook.events)
 
 
         #def __init__(self, *args, **kwargs):

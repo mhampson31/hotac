@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 
-from .models import User, Campaign, PlayerShip, Pilot, Event, Mission, \
+from .models import User, Rulebook, PlayerShip, Pilot, Event, Mission, \
     Game, Session, SessionEnemy, Achievement, PilotShip, PilotUpgrade, FGSetup, FlightGroup, \
     AI, AIManeuver, \
     EnemyPilot, EnemyAbility
@@ -39,7 +39,7 @@ class MissionAdmin(admin.ModelAdmin):
 
 class GameAdmin(admin.ModelAdmin):
     model = Game
-    list_display = ['description', 'campaign', 'gm']
+    list_display = ['description', 'rulebook', 'gm']
 
 
 class SessionEnemyInline(admin.TabularInline):
@@ -57,8 +57,8 @@ class PlayerShipInline(admin.TabularInline):
     extra = 1
 
 
-class CampaignAdmin(admin.ModelAdmin):
-    model = Campaign
+class RulebookAdmin(admin.ModelAdmin):
+    model = Rulebook
     inlines = (PlayerShipInline,)
 
 
@@ -111,7 +111,7 @@ class EnemyPilotAdmin(admin.ModelAdmin):
 #admin.site.unregister(User)
 admin.site.register(User, UserAdmin)
 admin.site.register(Pilot, PilotAdmin)
-admin.site.register(Campaign, CampaignAdmin)
+admin.site.register(Rulebook, RulebookAdmin)
 admin.site.register(Mission, MissionAdmin)
 admin.site.register(Event)
 admin.site.register(Game, GameAdmin)

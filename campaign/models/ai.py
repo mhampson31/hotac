@@ -1,13 +1,13 @@
 from django.db import models
 
-from .campaigns import Campaign
+from .campaigns import Rulebook
 from xwtools.models import Dial, DialManeuver
 
 from smart_selects.db_fields import ChainedForeignKey
 
 
 class AI(models.Model):
-    campaign = models.ForeignKey(Campaign, on_delete=models.CASCADE)
+    rulebook = models.ForeignKey(Rulebook, on_delete=models.CASCADE)
     dial = models.ForeignKey(Dial, on_delete=models.CASCADE)
     flee = models.PositiveSmallIntegerField(default=0)
 

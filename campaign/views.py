@@ -10,7 +10,7 @@ from django.forms import modelformset_factory, inlineformset_factory, CheckboxSe
 from crispy_forms.layout import Submit
 from django_tables2 import RequestConfig
 
-from .models import Session, Achievement, Pilot, PilotUpgrade, Event, Campaign, Game, AI, EnemyPilot
+from .models import Session, Achievement, Pilot, PilotUpgrade, Event, Rulebook, Game, AI, EnemyPilot
 from .tables import AchievementTable
 from .forms import EnemyPilotForm, SessionForm, make_achievement_form, AchHelper, PilotUpgradeForm, PUHelper
 
@@ -110,10 +110,10 @@ def pilot_sheet(request, pk):
     return render(request, 'campaign/pilot.html', context)
 
 
-class CampaignView(DetailView):
-    model = Campaign
-    context_object_name = 'campaign'
-    template_name = 'campaign/campaign.html'
+class RulebookView(DetailView):
+    model = Rulebook
+    context_object_name = 'Rulebook'
+    template_name = 'campaign/rulebook.html'
 
 
 class GameView(DetailView):
@@ -122,8 +122,8 @@ class GameView(DetailView):
     template_name = 'campaign/game.html'
 
 
-class CampaignUpdate(UpdateView):
-    model = Campaign
+class RulebookUpdate(UpdateView):
+    model = Rulebook
     fields = ['description', 'victory']
 
 
