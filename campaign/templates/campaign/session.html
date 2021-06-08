@@ -9,56 +9,64 @@
 <div class="row">
     <div class="col">
         <h3>{{session.mission}}</h3>
-        <h5>{{ses.date}}</h5>
-        <h5>{{ses.get_outcome_display}}!</h5>
+        <h5>{{session.date}}</h5>
+        <h5>{{session.get_outcome_display}}!</h5>
     </div>
 </div>
 
 <div class="row">
     <ul class="list-group col">
         <li class="list-group-item">XP</li>
-        <li class="list-group-item">Total: <i class="xwf xwf-squad-point-cost"></i>{{ses.xp_total}}</li>
-        <li class="list-group-item">Earned: <i class="xwf xwf-squad-point-cost"></i>{{ses.xp_earned}}</li>
-        <li class="list-group-item">Remainder: <i class="xwf xwf-squad-point-cost"></i>{{ses.xp_remainder}}</li>
+        <li class="list-group-item">Total: <i class="xwf xwf-squad-point-cost"></i>{{session.xp_total}}</li>
+        <li class="list-group-item">Earned: <i class="xwf xwf-squad-point-cost"></i>{{session.xp_earned}}</li>
+        <li class="list-group-item">Remainder: <i class="xwf xwf-squad-point-cost"></i>{{session.xp_remainder}}</li>
     </ul>
 </div>
 
-{% regroup summary by pilot__callsign as pilot_list %}
+<nav class="nav nav-pills">
 
-<div class="row">
+</nav>
 
-    <div class="col">
-        <ul class="nav nav-tabs" role="tablist">
-            {% for pilot in pilot_list %}
-            <li class="nav-item">
-                <a class=nav-link" href="#tab-score-{{pilot.grouper}}"
-                   data-toggle="tab"
-                   role="tab"
-                   id="score-{{pilot.grouper}}"
-                   aria-controls="tab-score-{{pilot.grouper}}"
-                   aria-selected="false">{{pilot.grouper}}</a><br />
-            </li>
+<!-- Nav tabs -->
+<ul class="nav nav-tabs" id="myTab" role="tablist">
+  <li class="nav-item" role="presentation">
+    <button class="nav-link active" id="pilots-tab" data-bs-toggle="tab" data-bs-target="#pilots" type="button" role="tab" aria-controls="home" aria-selected="true">Pilots</button>
+  </li>
+  <li class="nav-item" role="presentation">
+    <button class="nav-link" id="enemies-tab" data-bs-toggle="tab" data-bs-target="#enemies" type="button" role="tab" aria-controls="enemies" aria-selected="false">Enemies</button>
+  </li>
+ </ul>
+
+<!-- Tab panes -->
+<div class="tab-content">
+  <div class="tab-pane active" id="pilots" role="tabpanel" aria-labelledby="pilots-tab">
+      {% for sp in session.sessionpilot_set.all %}
+      <div>{{sp.pilot.callsign}}</div>
+      {% endfor %}
+  </div>
+
+  <div class="tab-pane" id="enemies" role="tabpanel" aria-labelledby="enemies-tab">
+      {% for ep in session.sessionenemy_set.all %}
+
+      <div class="card" style="width: 18rem;">
+        <div class="card-body">
+          <h5 class="card-title">{{ep.callsign}}</h5>
+          <h6 class="card-subtitle mb-2 text-muted"><a href="{% url 'ai' ep.enemy.chassis.chassis_slug %}" class="card-link">{{ep.enemy}}</a></h6>
+          <h6 class="card-subtitle">Initiative {{ep.initiative}}</h6>
+          {% if ep.abilities %}
+          <ul>
+            {% for a in ep.abilities %}
+            <li>{{a}}</li>
             {% endfor %}
-        </ul>
+          </ul>
+          {% endif %}
 
-        <ul class="tab-content">
-            {% for pilot in pilot_list %}
-            <div class="tab-pane fade"
-                 role="tabpanel"
-                 id="tab-score-{{pilot.grouper}}"
-                 aria-labelledby="score-{{pilot.grouper}}">
-                Earned <i class="xwf xwf-squad-point-cost"></i>{{ses.xp_earned}}
-                <ul>
-                    {% for event in pilot.list %}
-                    <li>{{ event.event__short_desc }} x{{ event.total }} <i class="xwf xwf-squad-point-cost"></i>{{event.xp}}</li>
-                    {% endfor %}
-                </ul>
-            </div>
-            {% endfor %}
-        </ul>
-    </div>
+        </div>
+      </div>
+
+      {% endfor %}
+  </div>
 </div>
-
 
 
 {% endif %}

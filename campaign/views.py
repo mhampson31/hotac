@@ -10,8 +10,7 @@ from django.forms import modelformset_factory, inlineformset_factory, CheckboxSe
 from crispy_forms.layout import Submit
 from django_tables2 import RequestConfig
 
-from .models import Session, Achievement, Pilot, PilotUpgrade, Event, Rulebook, Campaign, AI, EnemyPilot
-from .tables import AchievementTable
+from .models import Session, Pilot, PilotUpgrade, Event, Rulebook, Campaign, AI, EnemyPilot
 from .forms import EnemyPilotForm, SessionForm, make_achievement_form, AchHelper, PilotUpgradeForm, PUHelper
 
 
@@ -30,8 +29,12 @@ def ai_select(request, chassis_slug):
     context = {'ai':ai, 'mvs':mvs}
     return render(request, 'campaign/ai.html', context)
 
-
 def session_summary(request, session_id):
+    s = Session.objects.get(id=session_id)
+    context = {'session':s}
+    return render(request, 'campaign/session.html', context)
+
+"""def session_summary(request, session_id):
     s = Session.objects.prefetch_related('pilots', 'enemies').get(id=session_id)
 
     AchForm = make_achievement_form(s)
@@ -73,7 +76,7 @@ def session_summary(request, session_id):
                'helper':helper}
 
     return render(request, 'campaign/s2.html', context)
-
+"""
 
 def session_plan(request, session_id):
     s = Session.objects.get(id=session_id)

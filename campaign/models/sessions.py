@@ -7,14 +7,14 @@ from math import floor
 
 from .campaigns import User, Mission, Event, Campaign, FlightGroup
 from .enemies import EnemyPilot, EnemyAbility
-from .pilots import Pilot
+from .pilots import Pilot, PilotShip
 from xwtools.models import Chassis, Upgrade
 
 
 class Session(models.Model):
     campaign = models.ForeignKey(Campaign, on_delete=models.CASCADE)
     mission = models.ForeignKey(Mission, on_delete=models.CASCADE)
-    pilots = models.ManyToManyField(Pilot, related_name='sessions')
+    pilots = models.ManyToManyField(Pilot, related_name='sessions', through='SessionPilot')
     enemies = models.ManyToManyField(EnemyPilot, through='SessionEnemy')
     date = models.DateField()
     VICTORY = 'V'
@@ -57,6 +57,15 @@ class Session(models.Model):
                     self.sessionenemy_set.create(flight_group=fg,
                                                  enemy=new_enemy,
                                                  level=self.group_init if sq.elite else EnemyAbility.Level.BASIC)
+        current_fg = ''
+        p = 1
+        for se in self.sessionenemy_set.all():
+            if current_fg != se.flight_group.name:
+                current_fg == se.flight_group.namespace
+                p = 1
+            se.callsign = '%s %s' % (se.flight_group.name, p if p > 1 else 'Leader')
+            se.save()
+            p = p + 1
 
     @property
     def group_init(self):
@@ -64,9 +73,7 @@ class Session(models.Model):
 
     @property
     def xp_total(self):
-        return sum([a.xp for a in self.achievements.all()]) + (self.team_xp * self.pilots.count())
-        #a = self.achievement_set.all()
-        #return a.aggregate(total=(models.Sum('threat') or 0) + (models.Sum('event__xp') or 0))['total'] or 0
+        return sum([p.xp_earned for p in self.sessionpilot_set.all()])
 
     @property
     def xp_earned(self):
@@ -78,17 +85,49 @@ class Session(models.Model):
 
     @property
     def team_xp(self):
-        return self.achievements.filter(target__level__gt=1).count()
+        return 0
 
-    def pilot_xp(self, p):
-        return sum([a.xp for a in self.achievements.filter(pilot=p)]) + self.team_xp
+
+class SessionPilot(models.Model):
+    session = models.ForeignKey(Session, on_delete=models.CASCADE)
+    pilot = models.ForeignKey(Pilot, on_delete=models.CASCADE)
+    ship = models.ForeignKey(PilotShip, on_delete=models.CASCADE)
+    hits = models.SmallIntegerField(default=0)
+    assists = models.SmallIntegerField(default=0)
+    guardians = models.SmallIntegerField(default=0)
+
+    class StatusChoice(models.TextChoices):
+        NOT_FLOWN = 'P', _('Not Flown')
+        VICTORY = 'V', _('Victory')
+        EJECTED = 'F', _('Ejected - Half XP')
+        NO_XP = 'N', _('Ejected - No XP')
+        LOST_UPGRADE = 'H', _('Ejected - Lost Upgrade')
+        LOST_PILOT = 'C', _('Ejected - Lost Talent')
+        KIA = 'K', _('Killed In Action')
+
+    status = models.CharField(max_length=1, choices=StatusChoice.choices, default=StatusChoice.NOT_FLOWN)
+
+    def __str__(self):
+        return self.pilot.callsign
+
+    @property
+    def xp_earned(self):
+        xp = self.hits + self.assists + self.guardians + sum([k.xp for k in self.kills.all()])
+        if self.status == self.StatusChoice.EJECTED:
+            return floor(xp/2)
+        elif self.status in [self.StatusChoice.NO_XP, self.StatusChoice.KIA, self.StatusChoice.NOT_FLOWN]:
+            return 0
+        else:
+            return xp
 
 
 class SessionEnemy(models.Model):
     session = models.ForeignKey(Session, on_delete=models.CASCADE)
     enemy = models.ForeignKey(EnemyPilot, on_delete=models.CASCADE)
     flight_group = models.ForeignKey(FlightGroup, on_delete=models.CASCADE)
+    callsign = models.CharField(max_length=30, default='')
     level = models.SmallIntegerField(choices=EnemyAbility.Level.choices, default=1)
+    killed_by = models.ForeignKey(SessionPilot, on_delete=models.SET_NULL, blank=True, null=True, related_name='kills')
 
     def __str__(self):
         base = '[{}] {}'.format(self.flight_group.name, self.enemy.chassis.name)
@@ -104,29 +143,20 @@ class SessionEnemy(models.Model):
         return self.level > 1
 
     @property
+    def initiative(self):
+        if self.elite:
+            return self.level + 1
+        else:
+            return 1
+
+    @property
     def abilities(self):
         return self.enemy.abilities.filter(level__lte=self.level)
 
+    @property
+    def xp(self):
+        return 1 + self.elite + self.enemy.non_default_ship + self.enemy.large_ship
 
-
-"""
-class SessionPilot(models.Model):
-    session = models.ForeignKey(Session, on_delete=models.CASCADE)
-    pilot = models.ForeignKey(Pilot, on_delete=models.CASCADE)
-    ship = models.ForeignKey(PilotShip, on_delete=models.CASCADE)
-    initiative = models.SmallIntegerField(null=True)
-
-    class StatusChoice(models.TextChoices):
-        NOT_FLOWN = 'P', _('Not Flown')
-        VICTORY = 'V', _('Victory')
-        EJECTED = 'F', _('Ejected - Half XP')
-        NO_XP = 'N', _('Ejected - No XP')
-        LOST_UPGRADE = 'H', _('Ejected - Lost Upgrade')
-        LOST_PILOT = 'C', _('Ejected - Lost Talent')
-        KIA = 'K', _('Killed In Action')
-
-    status = models.CharField(max_length=1, choices=StatusChoice.choices, default=StatusChoice.NOT_FLOWN)
-"""
 
 
 class Achievement(models.Model):
@@ -137,26 +167,3 @@ class Achievement(models.Model):
     target = models.OneToOneField(SessionEnemy, on_delete=models.SET_NULL, null=True, blank=True)
 
     threat = models.SmallIntegerField(null=True, blank=True)
-
-    def __str__(self):
-        if self.target:
-            return '{} {}'.format(self.event.long_desc, self.target.enemy.chassis.name)
-        else:
-            return '{}'.format(self.event.long_desc)
-
-    @property
-    def xp(self):
-        xp = 1
-        if self.target:
-            if self.target.enemy.chassis.size == Chassis.SizeChoices.LARGE:
-                xp = xp + 1
-            if self.target.enemy.chassis != self.session.mission.enemy_faction.default_ship:
-                xp = xp + 1
-        return xp
-
-    @property
-    def team_xp(self):
-        if self.target and self.target.elite:
-            return 1
-
-        #return (self.event.xp or 0) + (self.threat or 0)

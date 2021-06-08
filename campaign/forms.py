@@ -4,7 +4,7 @@ from django.forms.widgets import CheckboxSelectMultiple
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Layout, Submit, Div, Field
 
-from .models import EnemyPilot, EnemyAbility, Session, Pilot, PilotUpgrade, Achievement, CampaignUpgrade
+from .models import EnemyPilot, EnemyAbility, Session, Pilot, PilotUpgrade, CampaignUpgrade
 from .fields import GroupedModelChoiceField
 from xwtools.models import Upgrade, SlotChoice
 

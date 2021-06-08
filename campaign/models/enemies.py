@@ -8,8 +8,8 @@ class EnemyPilot(models.Model):
     upgrades = models.ManyToManyField(Upgrade, through='EnemyAbility')
 
     def __str__(self):
-        if self.chassis is self.faction.default_ship:
-            return self.chassis_name
+        if self.chassis == self.faction.default_ship:
+            return self.chassis.name
         else:
             return '{} - {}'.format(self.chassis.name, self.in5)
 
@@ -36,6 +36,14 @@ class EnemyPilot(models.Model):
     def in5(self):
         return '/'.join(self.abilities.filter(level=5).values_list('upgrade__name', flat=True))
 
+    @property
+    def non_default_ship(self):
+        return self.chassis != self.faction.default_ship
+
+    @property
+    def large_ship(self):
+        return self.chassis.size in (Chassis.SizeChoices.LARGE, Chassis.SizeChoices.HUGE)
+
 
 class EnemyAbility(models.Model):
     pilot = models.ForeignKey(EnemyPilot, on_delete=models.CASCADE, related_name='abilities')
@@ -49,3 +57,6 @@ class EnemyAbility(models.Model):
         IN_5 = 5
 
     level = models.SmallIntegerField(choices=Level.choices, default=1)
+
+    def __str__(self):
+        return self.upgrade.name
