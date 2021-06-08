@@ -2,6 +2,14 @@
 
 {% block content %}
 
+<h4>Tools</h4>
+<div class='list-group'>
+    {% for ai in ais %}
+    <a href="{% url 'ai' ai.id %}" class="list-group-item list-group-item-action">{{ai}}</a>
+    {% endfor %}
+</div>
+
+<h4>Your Games</h4>
 {% for game in games %}
     <div class='card mb-3'>
         <div class='card-body'>

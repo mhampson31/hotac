@@ -17,7 +17,8 @@ from .forms import EnemyPilotForm, SessionForm, make_achievement_form, AchHelper
 
 def index(request):
     current_user = request.user
-    context = {'campaigns':Campaign.objects.filter(pilot__user=current_user.id).distinct()}
+    context = {'campaigns':Campaign.objects.filter(pilot__user=current_user.id).distinct(),
+               'ais':AI.objects.all()}
     #context = {'pilots':Pilot.objects.filter(user=current_user.id)}
     return render(request, 'campaign/index.html', context)
 

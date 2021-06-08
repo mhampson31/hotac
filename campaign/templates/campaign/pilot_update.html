@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load crispy_forms_tags %}
+{% load xwf_extras %}
 
 {% block content %}
 
@@ -10,5 +11,118 @@
         {{form|crispy}}
     </form>
 </div>
+
+<h3>{{pilot.callsign}}</h3>
+<div class='list-group list-group-horizontal mb-4' id='pilot-nav' role='tablist'>
+    <a class='list-group-item list-group-item active' data-toggle='list' role='tab' href='#pilot'>Pilot</a>
+    <a class='list-group-item list-group-item' data-toggle='list' role='tab' href='#upgrade'>Upgrade</a>
+    <a class='list-group-item list-group-item' data-toggle='list' role='tab' href='#achievements'>Achievements</a>
+</div>
+
+<div class='tab-content'>
+    <div class='tab-pane active' role='tabpanel' id='pilot'>
+        <p>Player: {{pilot.user}}</p>
+        <p>Campaign: <a href="{% url 'game:campaign' pilot.campaign.id %}">{{pilot.campaign}}</a></p>
+        <p>Missions Flown: {{pilot.sessions.count}}</p>
+        <p>Initiative {{pilot.initiative}}</p>
+
+        <div class="row mb-1">
+            <h6 class='col'>
+                <a href="{% url 'chassis' chassis_slug=pilot.active_ship.slug %}">{{pilot.active_ship.name}} <i class="xw-ship xw-ship-{{pilot.active_ship.css_name}}"></i></a>
+            </h6>
+        </div>
+
+        <div class="row mb-3">
+            <ul class="col list-group list-group-horizontal">
+            {% for slot in pilot.slots %}
+              <li class="list-group-item">{{slot.label|get_icon}}<li>
+            {% endfor %}
+            </ul>
+        </div>
+
+        <div class="row mb-3">
+            <div class="col">
+                <h4>Purchased Upgrades</h4>
+                <div class="row mb-3 d-flex flex-wrap">
+                {% for gu in pilot.upgrades.all %} <!-- border rounded-lg p-2
+                    -->
+                {% ifchanged gu.upgrade.type %}
+                </div>
+                <div class="row mb-3 d-flex flex-wrap">
+                {% endifchanged %}
+                        <div class='upgrade-card card mr-2'>
+                            <div class='card-body'>
+                                <h5 class='card-title'>
+                                    {{gu.upgrade.get_type_display|get_icon}}
+                                    {% if gu.upgrade.type2 %}
+                                    {{gu.upgrade.get_type2_display|get_icon}}
+                                    {% endif %}
+                                    {{gu.upgrade.name}}
+                                </h5>
+                                {% if gu.copies > 1 %}
+                                <h6>{{gu.copies}} copies</h6>
+                                {% endif %}
+                                <p>{{gu.upgrade.description}}</p>
+                                <ul class='list-group list-group-horizontal'>
+                                    <li class="list-group-item
+                                            {% if gu.status == 'X' %} bg-danger text-light
+                                            {% elif gu.status == 'E' %} bg-info text-light
+                                            {% endif %}">
+                                            {{gu.get_status_display}}
+                                    </li>
+                                    <li class='list-group-item'>
+                                        <i class="xwf xwf-squad-point-cost"></i>{{gu.cost}}
+                                    </li>
+                                    {% if gu.charges %}
+                                    <li class='list-group-item'>
+                                        <i class="xwf
+                                            {% if gu.upgrade.force %} xwf-forcecharge
+                                            {% else %} xwf-charge
+                                            {% endif %}"></i>{{gu.charges}}
+                                    </li>
+                                    {% endif %}
+                                </ul>
+                                </div>
+                        </div>
+                {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class='tab-pane' role='tabpanel' id='upgrade'>
+        <p>XP Earned: <i class="xwf xwf-squad-point-cost"></i>{{pilot.total_xp}}</p>
+        <p>XP Spent: <i class="xwf xwf-squad-point-cost"></i>{{pilot.spent_ships}} Ships,
+                     <i class="xwf xwf-squad-point-cost"></i>{{pilot.spent_initiative}} Initiative,
+                     <i class="xwf xwf-squad-point-cost"></i>{{pilot.spent_upgrades}} Upgrades
+                 </p>
+        <p>XP Available: <i class="xwf xwf-squad-point-cost"></i>{{remaining}}</p>
+        <form method='post' class='col'>{% csrf_token %}
+            <div class='row mb-2'>
+                <div class='col-4'>Upgrade</div>
+                <div class='col-1'>Copies</div>
+                <div class='col-1'>Equipped</div>
+            </div>
+                {{update.management_form}}
+                {% crispy update helper %}
+        </form>
+    </div>
+
+    <div class='tab-pane' role='tabpanel' id='achievements'>
+        <div class="col">
+            <h5>Achievements</h5>
+            <ul class="list-group col">
+            {% for ach in achievements %}
+                <li class="list-group-item">{{ach.event__long_desc}}
+                                            {% if ach.target__enemy__chassis__name %}
+                                            {{ach.target__enemy__chassis__name}}
+                                            {% endif %} <span class="badge badge-primary badge-pill">x{{ach.count}}</span></li>
+            {% endfor %}
+            </ul>
+        </div>
+    </div>
+
+</div>
+
 
 {% endblock content %}

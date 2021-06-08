@@ -71,7 +71,7 @@ class Rulebook(models.Model):
 class PlayableShip(models.Model):
     rulebook = models.ForeignKey(Rulebook, on_delete=models.CASCADE)
     chassis = models.ForeignKey(Chassis, on_delete=models.CASCADE)
-    xp_value = models.SmallIntegerField(default=    0)
+    xp_value = models.SmallIntegerField(default = 0)
 
     PROGRESSION_TYPES = (
         ('d', 'Default'),
@@ -166,6 +166,7 @@ class Mission(models.Model):
 
     def __str__(self):
         return '{} ({} {})'.format(self.name, self.story, self.sequence)
+
 
 class FlightGroup(models.Model):
     name = models.CharField(max_length=20)

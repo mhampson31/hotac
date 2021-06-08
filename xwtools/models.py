@@ -207,6 +207,7 @@ class Slot(models.Model):
     def css_name(self):
         return self.get_type_display()
 
+
 class Pilot(Ability):
     initiative = models.PositiveSmallIntegerField(default=1)
     chassis = models.ForeignKey(Chassis, on_delete=models.CASCADE, related_name = 'pilot_card')

@@ -34,7 +34,7 @@ class Pilot(models.Model):
 
     @property
     def total_xp(self):
-        base = self.pilotship_set.first().campaign_info.xp_value
+        base = self.pilotship_set.first().game_info.xp_value
 
         if self.campaign.pool_xp:
             earned = self.campaign.xp_share * self.sessions.count()
