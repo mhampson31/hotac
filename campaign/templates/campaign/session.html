@@ -35,6 +35,9 @@
   <li class="nav-item" role="presentation">
     <button class="nav-link" id="enemies-tab" data-bs-toggle="tab" data-bs-target="#enemies" type="button" role="tab" aria-controls="enemies" aria-selected="false">Enemies</button>
   </li>
+  <li class="nav-item" role="presentation">
+    <button class="nav-link" id="init-tab" data-bs-toggle="tab" data-bs-target="#init" type="button" role="tab" aria-controls="init" aria-selected="false">Initiative</button>
+  </li>
  </ul>
 
 <!-- Tab panes -->
@@ -51,12 +54,11 @@
       <div class="card" style="width: 18rem;">
         <div class="card-body">
           <h5 class="card-title">{{ep.callsign}}</h5>
-          <h6 class="card-subtitle mb-2 text-muted"><a href="{% url 'ai' ep.enemy.chassis.chassis_slug %}" class="card-link">{{ep.enemy}}</a></h6>
-          <h6 class="card-subtitle">Initiative {{ep.initiative}}</h6>
+          <h6 class="card-subtitle mb-2 text-muted"><a href="{% url 'ai' ep.enemy.chassis.slug %}" class="card-link">{{ep.enemy}}</a></h6>
           {% if ep.abilities %}
-          <ul>
+          <ul class="list-group">
             {% for a in ep.abilities %}
-            <li>{{a}}</li>
+            <li class="list-group-item">{{a}}</li>
             {% endfor %}
           </ul>
           {% endif %}
@@ -65,6 +67,59 @@
       </div>
 
       {% endfor %}
+  </div>
+
+  <div class="tab-pane " id="init" role="tabpanel" aria-labelledby="init-tab">
+      {% for ship in init_list %}
+      <div class="card mb-3 {% if ship.enemy %}border-danger{% endif %}">
+          <div class="card-header" id="heading-{{forloop.counter}}">
+              <div class="row justify-content-between">
+                  <h4 class="col-4">
+                      <i class="xw-ship xw-ship-{{ship.chassis.css_name}}"></i> {{ship}}
+                  </h4>
+                  <div class="col-1 form-check form-switch">
+                      <input class="form-check-input"
+                             type="checkbox"
+                             data-bs-toggle="collapse"
+                             data-bs-target="#collapse-{{forloop.counter}}"
+                             aria-expanded="true"
+                             aria-controls="collapse-{{forloop.counter}}"
+                             checked
+                             id="toggle-{{forloop.counter}}">
+                      <label class="form-check-label" for="toggle-{{forloop.counter}}">Active</label>
+                 </div>
+             </div>
+          </div>
+          <div id="collapse-{{forloop.counter}}" class="collapse show" aria-labelledby="heading-{{forloop.counter}}">
+             <div class="card-body">
+                <h5 class="card-title">{{ship.pilot}} {% if ship.elite %}{{'talent'|get_icon}}{% endif %}</h5>
+                <ul class="list-group list-group-horizontal mb-3">
+                    <li class="list-group-item attack">{{ship.chassis.attack}}{{ship.chassis.arc1_css|get_icon}}</li>
+                    <li class="list-group-item agility">{{ship.chassis.agility}}{{'agility'|get_icon}}</li>
+                    {% if ship.chassis.shields %}<li class="list-group-item shields">{{ship.chassis.shields}}{{'shield'|get_icon}}</li>{% endif %}
+                    <li class="list-group-item hull">{{ship.chassis.hull}}{{'hull'|get_icon}}</li>
+                </ul>
+
+               {% if ship.abilities %}
+               <ul class="list-group">
+                 {% for a in ship.abilities %}
+                 <li class="list-group-item"><strong>{{a}}</strong>: {% if ship.enemy %}{{a.upgrade.ai_description}}{% else %}{{a.description}}{% endif %}</li>
+                 {% endfor %}
+               </ul>
+               {% endif %}
+             </div>
+             <div class="card-footer">
+                 <div class="btn btn-primary">Initiative {{ship.initiative}}</div>
+                 {% if ship.enemy %}
+                 <div class="btn btn-secondary">{{ship.flight_group.get_orders_display}}</div>
+                 <div class="btn btn-warning">Turn {{ship.flight_group.arrival}}</div>
+                 <div class="btn btn-warning">Vector {{ship.flight_group.vector}}</div>
+                 <a href="{% url 'ai' ship.enemy.chassis.slug %}" class="btn btn-danger">AI</a>
+                 {% endif %}
+             </div>
+           </div>
+      </div>
+    {% endfor %}
   </div>
 </div>
 

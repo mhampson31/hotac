@@ -159,7 +159,12 @@ class Chassis(models.Model):
 
     ARC_CHOICES = (
         ('F', 'Front'),
-        ('R', 'Rear')
+        ('R', 'Rear'),
+        ('T', 'Turret'),
+        ('TT', 'Double Turret'),
+        ('FF', 'Full Front'),
+        ('RR', 'Full Rear'),
+        ('B', 'Bullseye')
     )
 
     class SizeChoices(models.TextChoices):
@@ -193,6 +198,14 @@ class Chassis(models.Model):
     @property
     def css_name(self):
         return self.css if self.css else self.slug.replace('-', '')
+
+    @property
+    def arc1_css(self):
+        return '{0}arc'.format(self.get_attack_arc_display().lower().replace(' ', ''))
+
+    @property
+    def arc2_css(self):
+        return '{0}arc'.format(self.get_attack2_arc_display().lower().replace(' ', ''))
 
     class Meta:
         verbose_name_plural = 'Chassis'

@@ -8,10 +8,9 @@ from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from django.forms import modelformset_factory, inlineformset_factory, CheckboxSelectMultiple
 
 from crispy_forms.layout import Submit
-from django_tables2 import RequestConfig
 
 from .models import Session, Pilot, PilotUpgrade, Event, Rulebook, Campaign, AI, EnemyPilot
-from .forms import EnemyPilotForm, SessionForm, make_achievement_form, AchHelper, PilotUpgradeForm, PUHelper
+from .forms import EnemyPilotForm, SessionForm, PilotUpgradeForm, PUHelper
 
 
 def index(request):
@@ -29,9 +28,13 @@ def ai_select(request, chassis_slug):
     context = {'ai':ai, 'mvs':mvs}
     return render(request, 'campaign/ai.html', context)
 
+
 def session_summary(request, session_id):
     s = Session.objects.get(id=session_id)
-    context = {'session':s}
+    init_list = [e for e in s.sessionenemy_set.all()] + [p for p in s.sessionpilot_set.all()]
+    init_list.sort(key=lambda init: init.initiative)
+
+    context = {'session':s, 'init_list':init_list}
     return render(request, 'campaign/session.html', context)
 
 """def session_summary(request, session_id):
@@ -107,10 +110,7 @@ def pilot_sheet(request, pk):
     context = {'pilot':pilot,
                'remaining':pilot.total_xp - pilot.spent_xp,
                'update': update_form,
-               'helper': helper,
-               'achievements':pilot.achievement_set.values('event__long_desc', \
-                                                           'target__enemy__chassis__name') \
-                                                           .annotate(count=Count('event'))}
+               'helper': helper}
     return render(request, 'campaign/pilot.html', context)
 
 

@@ -16,20 +16,6 @@ class EnemyPilotForm(forms.Form):
 
 
 
-class AchHelper(FormHelper):
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        self.form_method = 'post'
-        self.form_class = 'form-inline'
-        self.layout = Layout(
-            'turn',
-            'pilot',
-            'event',
-            'target'
-        )
-        self.render_required_fields = True
-
-
 class PUHelper(FormHelper):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -77,30 +63,6 @@ class PilotUpgradeForm(forms.ModelForm):
     class Meta:
         model = PilotUpgrade
         fields = ('upgrade', 'copies', 'status')
-
-
-def make_achievement_form(ses):
-    """
-    Generate a session-specific form class for achievements that restricts the
-    pilots and enemies to the ones assigned to the session.
-    """
-    class AchForm(forms.ModelForm):
-        pilot = forms.ModelChoiceField(queryset=ses.pilots)
-        target = forms.ModelChoiceField(queryset=ses.sessionenemy_set, required=False)
-        event = forms.ModelChoiceField(queryset=ses.campaign.rulebook.events)
-
-
-        #def __init__(self, *args, **kwargs):
-        #    super().__init__(*args, **kwargs)
-        #    self.helper = AchHelper()
-            #self.helper.template = 'bootstrap/table_inline_field.html'
-            #self.helper.field_template = 'bootstrap4/layout/inline_field.html'
-
-        class Meta:
-            model = Achievement
-            fields = ('pilot', 'event', 'target', 'turn')
-
-    return AchForm
 
 
 def make_pilot_upgrade_form(pilot):

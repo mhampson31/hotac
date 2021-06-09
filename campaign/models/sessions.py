@@ -69,7 +69,7 @@ class Session(models.Model):
 
     @property
     def group_init(self):
-        return min(6, floor(self.pilots.aggregate(i=Avg('initiative'))['i']))
+        return min(6, floor(self.sessionpilot_set.aggregate(i=Avg('initiative'))['i']))
 
     @property
     def xp_total(self):
@@ -92,6 +92,7 @@ class SessionPilot(models.Model):
     session = models.ForeignKey(Session, on_delete=models.CASCADE)
     pilot = models.ForeignKey(Pilot, on_delete=models.CASCADE)
     ship = models.ForeignKey(PilotShip, on_delete=models.CASCADE)
+    initiative = models.PositiveSmallIntegerField(default=2) #capturing init at game time
     hits = models.SmallIntegerField(default=0)
     assists = models.SmallIntegerField(default=0)
     guardians = models.SmallIntegerField(default=0)
@@ -109,6 +110,10 @@ class SessionPilot(models.Model):
 
     def __str__(self):
         return self.pilot.callsign
+
+    @property
+    def chassis(self):
+        return self.ship.chassis
 
     @property
     def xp_earned(self):
@@ -129,14 +134,25 @@ class SessionEnemy(models.Model):
     level = models.SmallIntegerField(choices=EnemyAbility.Level.choices, default=1)
     killed_by = models.ForeignKey(SessionPilot, on_delete=models.SET_NULL, blank=True, null=True, related_name='kills')
 
-    def __str__(self):
+    def old__str__(self):
         base = '[{}] {}'.format(self.flight_group.name, self.enemy.chassis.name)
         if self.elite:
             base =  '{} - Elite {}'.format(base, self.level)
         return base
 
+    def __str__(self):
+        return self.callsign
+
     class Meta:
         ordering = ['flight_group', '-level']
+
+    @property
+    def pilot(self):
+        return self.enemy
+
+    @property
+    def chassis(self):
+        return self.enemy.chassis
 
     @property
     def elite(self):
@@ -156,7 +172,6 @@ class SessionEnemy(models.Model):
     @property
     def xp(self):
         return 1 + self.elite + self.enemy.non_default_ship + self.enemy.large_ship
-
 
 
 class Achievement(models.Model):

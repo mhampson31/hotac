@@ -13,27 +13,32 @@ section > .row {
 }
 
 .hard,
+.attack,
 .attack:before,
 .attack > i:before {
     color: var(--red);
 }
 
+.agility,
 .agility > i.before,
 .agility:before {
     color: var(--green);
 }
 
 .easy,
+.shields,
 .shields > i.before,
 .shields:before {
     color: var(--blue);
 }
 
+.hull,
 .hull > i.before,
 .hull:before {
     color: var(--yellow);
 }
 
+.force,
 .force > i.before,
 .force:before {
     color: var(--purple);

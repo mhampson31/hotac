@@ -10,6 +10,7 @@ class SlotInline(admin.TabularInline):
 
 class ChassisAdmin(admin.ModelAdmin):
     verbose_name = 'Chassis'
+    list_display = ('name', 'slug', 'dial', 'size')
     inlines = (SlotInline, )
 
 
