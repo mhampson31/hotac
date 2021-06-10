@@ -164,6 +164,11 @@ class Mission(models.Model):
     enemy_faction = models.ForeignKey(Faction, on_delete=models.CASCADE, default=1)
     territory = models.CharField(max_length=1, choices=TERRITORY_CHOICES)
 
+    objective = models.TextField()
+    bonus_1 = models.TextField(blank=True, null=True)
+    bonus_2 = models.TextField(blank=True, null=True)
+    penalty = models.TextField(blank=True, null=True)
+
     def __str__(self):
         return '{} ({} {})'.format(self.name, self.story, self.sequence)
 

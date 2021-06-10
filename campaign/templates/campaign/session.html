@@ -6,21 +6,21 @@
 
 {% if session %}
 
-<div class="row">
+{% with mission=session.mission %}
+<div class="row mb-3">
     <div class="col">
-        <h3>{{session.mission}}</h3>
-        <h5>{{session.date}}</h5>
-        <h5>{{session.get_outcome_display}}!</h5>
+        <h3>{{mission.name}}</h3>
+        <h5>{{mission.story}} {{mission.sequence}}</h5>
+        <h6>{{session.date}}</h6>
+        <h6>{{session.get_outcome_display}}!</h6>
+        <ul class="list-group">
+            <li class="list-group-item"><strong>Objectives</strong></li>
+            <li class="list-group-item"><strong>Primary:</strong> {{mission.objective}}</li>
+            {% if session.mission.bonus_1 %}<li class="list-group-item"><strong>Bonus:</strong> {{mission.bonus_1}}</li>{% endif %}
+            {% if session.mission.bonus_2 %}<li class="list-group-item"><strong>Bonus:</strong> {{mission.bonus_2}}</li>{% endif %}
+            {% if session.mission.penalty %}<li class="list-group-item"><strong>Penalty:</strong> {{mission.penalty}}</li>{% endif %}
+        </ul>
     </div>
-</div>
-
-<div class="row">
-    <ul class="list-group col">
-        <li class="list-group-item">XP</li>
-        <li class="list-group-item">Total: <i class="xwf xwf-squad-point-cost"></i>{{session.xp_total}}</li>
-        <li class="list-group-item">Earned: <i class="xwf xwf-squad-point-cost"></i>{{session.xp_earned}}</li>
-        <li class="list-group-item">Remainder: <i class="xwf xwf-squad-point-cost"></i>{{session.xp_remainder}}</li>
-    </ul>
 </div>
 
 <nav class="nav nav-pills">
@@ -28,7 +28,7 @@
 </nav>
 
 <!-- Nav tabs -->
-<ul class="nav nav-tabs" id="myTab" role="tablist">
+<ul class="nav nav-tabs mb-3" id="myTab" role="tablist">
   <li class="nav-item" role="presentation">
     <button class="nav-link active" id="pilots-tab" data-bs-toggle="tab" data-bs-target="#pilots" type="button" role="tab" aria-controls="home" aria-selected="true">Pilots</button>
   </li>
@@ -43,30 +43,49 @@
 <!-- Tab panes -->
 <div class="tab-content">
   <div class="tab-pane active" id="pilots" role="tabpanel" aria-labelledby="pilots-tab">
-      {% for sp in session.sessionpilot_set.all %}
-      <div>{{sp.pilot.callsign}}</div>
-      {% endfor %}
+
+  {% if session.campaign.pool_xp %}
+  <div class="card mb-3">
+      <h5 class="card-header">XP Pool</h5>
+      <div class="card-body">
+          <span class="badge rounded-pill bg-info text-dark">{{session.xp_total}}</span> earned total.
+          <span class="badge rounded-pill bg-info text-dark">{{session.xp_earned}}</span> per player.
+      </div>
+  </div>
+  {% endif %}
+
+  {% for pilot in session.sessionpilot_set.all %}
+    <div class="card mb-3">
+        <h5 class="card-header"><i class="xw-ship xw-ship-{{pilot.ship.chassis.css_name}}"></i> {{pilot}}</h5>
+        <div class="card-body container">
+            <div class="row mb-1">
+                <div class="col-2"><span class="badge rounded-pill bg-info text-dark">{{pilot.hits}}</span> Hits</div>
+                <div class="col-2"><span class="badge rounded-pill bg-info text-dark">{{pilot.assists}}</span> Assists</div>
+                <div class="col-2"><span class="badge rounded-pill bg-info text-dark">{{pilot.guards}}</span> Guards</div>
+                {% if mission.bonus_1 %}<div class="col-2"><span class="badge rounded-pill bg-info text-dark">{{pilot.bonus}}</span>Bonus</div>{% endif %}
+                {% if mission.penalty %}<div class="col-2"><span class="badge rounded-pill bg-danger">-{{pilot.penalty}}</span>Penalty</div>{% endif %}
+            </div>
+
+            <ul class="row list-group list-group-flush">
+                {% for kill in pilot.kills.all %}
+                <li class="list-group-item"><span class="badge rounded-pill bg-info text-dark">{{kill.xp}}</span> {{kill.enemy}} ({{kill.callsign}})</li>
+                {% empty %}
+                <li class="list-group-item"><em>None</em></li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <div class="card-footer">
+            <span><strong>Mission Score</strong> <span class="badge rounded-pill bg-info text-dark">{{pilot.xp_earned}}</span></span>
+        </div>
+    </div>
+
+    </div>
+  {% endfor %}
+
   </div>
 
   <div class="tab-pane" id="enemies" role="tabpanel" aria-labelledby="enemies-tab">
-      {% for ep in session.sessionenemy_set.all %}
-
-      <div class="card" style="width: 18rem;">
-        <div class="card-body">
-          <h5 class="card-title">{{ep.callsign}}</h5>
-          <h6 class="card-subtitle mb-2 text-muted"><a href="{% url 'ai' ep.enemy.chassis.slug %}" class="card-link">{{ep.enemy}}</a></h6>
-          {% if ep.abilities %}
-          <ul class="list-group">
-            {% for a in ep.abilities %}
-            <li class="list-group-item">{{a}}</li>
-            {% endfor %}
-          </ul>
-          {% endif %}
-
-        </div>
-      </div>
-
-      {% endfor %}
   </div>
 
   <div class="tab-pane " id="init" role="tabpanel" aria-labelledby="init-tab">
@@ -78,6 +97,7 @@
                       <i class="xw-ship xw-ship-{{ship.chassis.css_name}}"></i> {{ship}}
                   </h4>
                   <div class="col-1 form-check form-switch">
+                      <label class="form-check-label" for="toggle-{{forloop.counter}}">Active</label>
                       <input class="form-check-input"
                              type="checkbox"
                              data-bs-toggle="collapse"
@@ -86,7 +106,7 @@
                              aria-controls="collapse-{{forloop.counter}}"
                              checked
                              id="toggle-{{forloop.counter}}">
-                      <label class="form-check-label" for="toggle-{{forloop.counter}}">Active</label>
+
                  </div>
              </div>
           </div>
@@ -123,7 +143,7 @@
   </div>
 </div>
 
-
+    {% endwith %}
 {% endif %}
 
 {% endblock %}

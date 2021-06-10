@@ -26,6 +26,9 @@ class Session(models.Model):
         (UNRESOLVED, 'Unresolved')
     )
     outcome = models.CharField(max_length=1, choices=OUTCOME_CHOICES, default='U')
+    bonus_1_achieved = models.BooleanField(default=False)
+    bonus_2_achieved = models.BooleanField(default=False)
+    penalty_received = models.BooleanField(default=False)
 
     def get_absolute_url(self):
         from django.urls import reverse
@@ -95,7 +98,9 @@ class SessionPilot(models.Model):
     initiative = models.PositiveSmallIntegerField(default=2) #capturing init at game time
     hits = models.SmallIntegerField(default=0)
     assists = models.SmallIntegerField(default=0)
-    guardians = models.SmallIntegerField(default=0)
+    guards = models.SmallIntegerField(default=0)
+    bonus = models.SmallIntegerField(default=0)
+    penalty = models.SmallIntegerField(default=0)
 
     class StatusChoice(models.TextChoices):
         NOT_FLOWN = 'P', _('Not Flown')
@@ -117,7 +122,8 @@ class SessionPilot(models.Model):
 
     @property
     def xp_earned(self):
-        xp = self.hits + self.assists + self.guardians + sum([k.xp for k in self.kills.all()])
+        xp = self.hits + self.assists + self.guards + \
+             self.bonus + sum([k.xp for k in self.kills.all()]) - self.penalty
         if self.status == self.StatusChoice.EJECTED:
             return floor(xp/2)
         elif self.status in [self.StatusChoice.NO_XP, self.StatusChoice.KIA, self.StatusChoice.NOT_FLOWN]:
