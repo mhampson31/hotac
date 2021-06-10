@@ -23,8 +23,7 @@ def index(request):
 
 def ai_select(request, chassis_slug):
     ai = AI.objects.get(dial__chassis__slug=chassis_slug)
-    mvs = ai.aimaneuver_set.filter(range__lte='4')
-    fleeing = ai.aimaneuver_set.filter(range='5').first()
+    mvs = ai.aimaneuver_set.all().select_related('roll_1', 'roll_2', 'roll_3', 'roll_4', 'roll_5', 'roll_6')
     context = {'ai':ai, 'mvs':mvs}
     return render(request, 'campaign/ai.html', context)
 

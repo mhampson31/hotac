@@ -49,7 +49,7 @@ class AIManeuver(models.Model):
         ('2', 'R3/R2 Fleeing'),
         ('3', 'R4+'),
         ('4', 'Stressed'),
-        ('5', 'Fleeing')
+        ('5', 'Hyperspace')
     )
 
     AI_ARC_CHOICES = (

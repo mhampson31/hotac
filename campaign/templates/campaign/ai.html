@@ -9,115 +9,66 @@
 <div class="container text-center">
     <h5 class=""><i class="xw-ship xw-ship-{{ship.css_name}}"></i>{{ai.dial.chassis}} AI</h5>
 
-    <div class="container nav nav-pills mb-4" role="tablist">
-        <div class="row justify-content-between w-100">
-            <div class="nav-item col-2" role="presentation">
-                <button class="btn nav-link"
-                        type="button"
-                        id="mv-fl-tab"
-                        data-bs-toggle="pill"
-                        data-bs-target="#mv-fl"
-                        role="tab"
-                        aria-controls="home"
-                        aria-selected="true">Front (Left)</button>
-            </div>
+    <ul class="nav nav-pills mb-4 justify-content-between" role="tablist">
+            <li class="nav-item col-2" role="presentation">
+                <a class="nav-link" id="mv-fl-tab"
+                   data-bs-toggle="tab" href="#mv-fl"
+                   role="tab" aria-controls="home" aria-selected="true">Front (Left)</a>
+            </li>
+            <li class="nav-item col-2" role="presentation">
+                <a class="nav-link" id="mv-be-tab"
+                   data-bs-toggle="tab" href="#mv-be"
+                   role="tab" aria-controls="home" aria-selected="true">Bullseye</a>
+            </li>
+            <li class="nav-item col-2" role="presentation">
+                <a class="nav-link" id="mv-fr-tab"
+                   data-bs-toggle="tab" href="#mv-fr"
+                   role="tab" aria-controls="home" aria-selected="true">Front (Right)</a>
+            </li>
+             <li class="w-100"></li>
 
-            <div class="nav-item col-2" role="presentation">
-                <button class="btn nav-link"
-                        type="button"
-                        id="mv-be-tab"
-                        data-bs-toggle="pill"
-                        data-bs-target="#mv-be"
-                        role="tab"
-                        aria-controls="home"
-                        aria-selected="true">Bullseye</button>
-            </div>
+            <li class="nav-item col-2" role="presentation">
+                <a class="nav-link" id="mv-lf-tab"
+                   data-bs-toggle="tab" href="#mv-lf"
+                   role="tab" aria-controls="home" aria-selected="true">Left (Front)</a>
+            </li>
+            <li class="nav-item col-2" role="presentation"></li>
+            <li class="nav-item col-2" role="presentation">
+                <a class="nav-link" id="mv-rf-tab"
+                   data-bs-toggle="tab" href="#mv-rf"
+                   role="tab" aria-controls="home" aria-selected="true">Right (Front)</a>
+            </li>
 
-            <div class="nav-item col-2" role="presentation">
-                <button class="btn nav-link"
-                        type="button"
-                        id="mv-fr-tab"
-                        data-bs-toggle="pill"
-                        data-bs-target="#mv-fr"
-                        role="tab"
-                        aria-controls="home"
-                        aria-selected="true">Front (Right)</button>
-            </div>
-        </div>
+             <li class="w-100"></li>
 
-        <div class="row justify-content-between w-100">
-            <div class="nav-item col-2" role="presentation">
-                <button class="btn nav-link"
-                        type="button"
-                        id="mv-lf-tab"
-                        data-bs-toggle="pill"
-                        data-bs-target="#mv-lf"
-                        role="tab"
-                        aria-controls="home"
-                        aria-selected="true">Left (Front)</button>
-            </div>
+            <li class="nav-item col-2" role="presentation">
+                <a class="nav-link" id="mv-la-tab"
+                   data-bs-toggle="tab" href="#mv-la"
+                   role="tab" aria-controls="home" aria-selected="true">Left (Rear)</a>
+            </li>
 
-            <div class="nav-item col-2" role="presentation">
-                <button class="btn nav-link"
-                        type="button"
-                        id="mv-rf-tab"
-                        data-bs-toggle="pill"
-                        data-bs-target="#mv-rf"
-                        role="tab"
-                        aria-controls="home"
-                        aria-selected="true">Right (Front)</button>
-            </div>
-        </div>
+            <li class="nav-item col-2" role="presentation"></li>
 
-        <div class="row justify-content-between w-100">
-            <div class="nav-item col-2" role="presentation">
-                <button class="btn nav-link"
-                        type="button"
-                        id="mv-la-tab"
-                        data-bs-toggle="pill"
-                        data-bs-target="#mv-la"
-                        role="tab"
-                         aria-controls="home"
-                         aria-selected="true">Left (Rear)</button>
-            </div>
+            <li class="nav-item col-2" role="presentation">
+                <a class="nav-link" id="mv-ra-tab"
+                   data-bs-toggle="tab" href="#mv-ra"
+                   role="tab" aria-controls="home" aria-selected="true">Right (Rear)</a>
+            </li>
 
-            <div class="nav-item col-2" role="presentation">
-                <button class="btn nav-link"
-                        type="button"
-                        id="mv-ra-tab"
-                        data-bs-toggle="pill"
-                        data-bs-target="#mv-ra"
-                        role="tab"
-                        aria-controls="home"
-                        aria-selected="true">Right (Rear)</button>
-            </div>
-        </div>
+             <li class="w-100"></li>
 
-        <div class="row justify-content-between w-100">
-            <div class="nav-item col-2" role="presentation">
-                <button class="btn nav-link"
-                        type="button"
-                        id="mv-al-tab"
-                        data-bs-toggle="pill"
-                        data-bs-target="#mv-al"
-                        role="tab"
-                        aria-controls="home"
-                        aria-selected="true">Rear (Left)</button>
-            </div>
+            <li class="nav-item col-2" role="presentation">
+                <a class="nav-link" id="mv-al-tab"
+                data-bs-toggle="tab" href="#mv-al" role="tab" aria-controls="home" aria-selected="true">Rear (Left)</a>
+            </li>
 
-            <div class="nav-item col-2" role="presentation">
-                <button class="btn nav-link"
-                        type="button"
-                        id="mv-ar-tab"
-                        data-bs-toggle="pill"
-                        data-bs-target="#mv-ar"
-                        role="tab"
-                        aria-controls="home"
-                        aria-selected="true">Rear (Right)</button>
-            </div>
-        </div>
+            <li class="nav-item col-2" role="presentation"></li>
 
-    </div>
+            <li class="nav-item col-2" role="presentation">
+                <a class="nav-link" id="mv-ar-tab"
+                data-bs-toggle="tab" href="#mv-ar" role="tab" aria-controls="home" aria-selected="true">Rear (Right)</a>
+            </li>
+        </ul>
 
     <div class="tab-content">
     {% regroup mvs by arc as maneuvers %}
@@ -139,7 +90,7 @@
         <div>
             <div>Flee Threshold: {{ai.flee}}</div>
             <div>Hyperdrive: {{ai.dial.chassis.hyperdrive|yesno}}</div>
-            </ul>
+
         </div>
     </div>
 
