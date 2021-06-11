@@ -24,7 +24,9 @@ def index(request):
 def ai_select(request, chassis_slug):
     ai = AI.objects.get(dial__chassis__slug=chassis_slug)
     mvs = ai.aimaneuver_set.all().select_related('roll_1', 'roll_2', 'roll_3', 'roll_4', 'roll_5', 'roll_6')
-    context = {'ai':ai, 'mvs':mvs}
+    targets = ai.priorities.filter(type='T')
+    actions = ai.priorities.filter(type='A')
+    context = {'ai':ai, 'mvs':mvs, 'targets':targets, 'actions':actions}
     return render(request, 'campaign/ai.html', context)
 
 
@@ -33,8 +35,9 @@ def session_summary(request, session_id):
     init_list = [e for e in s.sessionenemy_set.all()] + \
                 [p for p in s.sessionpilot_set.all()]
     init_list.sort(key=lambda init: init.initiative)
+    enemy_count = s.enemies.values('chassis__name').annotate(ship_count=Count('id'))
 
-    context = {'session':s, 'init_list':init_list}
+    context = {'session':s, 'init_list':init_list, 'enemy_count':enemy_count}
     return render(request, 'campaign/session.html', context)
 
 """def session_summary(request, session_id):

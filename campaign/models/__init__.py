@@ -1,4 +1,4 @@
-from .ai import AI, AIManeuver
+from .ai import AI, AIManeuver, AIPriority
 from .campaigns import User, Rulebook, PlayableShip, Event, Campaign, CampaignUpgrade
 from .campaigns import Mission, FlightGroup, FGSetup
 from .enemies import EnemyPilot, EnemyAbility

@@ -3,7 +3,7 @@ from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 
 from .models import User, Rulebook, PlayableShip, Pilot, Event, Mission, \
     Campaign, Session, SessionEnemy, SessionPilot, PilotShip, PilotUpgrade, FGSetup, FlightGroup, \
-    AI, AIManeuver, \
+    AI, AIManeuver, AIPriority, \
     EnemyPilot, EnemyAbility
 
 #from xwtools.models import Slot
@@ -90,9 +90,12 @@ class AIManeuverInline(admin.TabularInline):
         ('Rolls', {'fields': ('roll_1', 'roll_2', 'roll_3', 'roll_4', 'roll_5', 'roll_6')})
     )
 
+class AIPriorityInline(admin.TabularInline):
+    model = AIPriority
+    extra = 0
 
 class AIAdmin(admin.ModelAdmin):
-    inlines = (AIManeuverInline,)
+    inlines = (AIPriorityInline, AIManeuverInline)
 
 
 class EnemyAbilityInline(admin.TabularInline):

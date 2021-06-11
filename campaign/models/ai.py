@@ -86,3 +86,18 @@ class AIManeuver(models.Model):
     @property
     def arc_order(self):
         return ['FL', 'BE', 'FR', 'LF', 'RF', 'LA', 'RA', 'AL', 'AR'].index(self.arc)
+
+
+class AIPriority(models.Model):
+    TYPE_CHOICES = (
+        ('T', 'Target'),
+        ('A', 'Action')
+    )
+    ai = models.ForeignKey(AI, on_delete=models.CASCADE, related_name='priorities')
+    type = models.CharField(max_length=1, choices=TYPE_CHOICES)
+    step = models.PositiveSmallIntegerField(default=1)
+    desc = models.CharField(max_length=75)
+
+    class Meta:
+        verbose_name_plural = 'AI Priorities'
+        ordering = ['-type', 'step']

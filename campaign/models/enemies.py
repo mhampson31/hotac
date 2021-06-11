@@ -6,12 +6,15 @@ class EnemyPilot(models.Model):
     chassis = models.ForeignKey(Chassis, on_delete=models.CASCADE)
     faction = models.ForeignKey(Faction, on_delete=models.CASCADE)
     upgrades = models.ManyToManyField(Upgrade, through='EnemyAbility')
+    name_override = models.CharField(max_length=20, blank=True, null=True)
+    random = models.BooleanField(default=True)
 
     def __str__(self):
         if self.chassis == self.faction.default_ship:
             return self.chassis.name
         else:
-            return '{} - {}'.format(self.chassis.name, self.in5)
+            name = self.name_override or self.in5
+            return '{} - {}'.format(self.chassis.name, name)
 
     def ability_list(self, lvl=1):
         return '/'.join(self.abilities.filter(level__lte=lvl).values_list('upgrade__name', flat=True))

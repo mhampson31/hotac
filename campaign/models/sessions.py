@@ -39,9 +39,11 @@ class Session(models.Model):
 
     def generate_enemies(self):
         from random import choice
+        if self.outcome != 'U': # don't wipe info once the mission has been played
+            return
         self.enemies.clear()
         fac = self.mission.enemy_faction
-        enemy_list = EnemyPilot.objects.filter(faction=fac)
+        enemy_list = EnemyPilot.objects.filter(faction=fac, random=True)
         chassis_list = self.mission.enemy_faction.ships.exclude(id=fac.default_ship.id)
         for fg in self.mission.flight_groups.all():
             squad = fg.squad_members.filter(players__lte=self.pilots.count(), init__lte=self.group_init)
@@ -64,7 +66,7 @@ class Session(models.Model):
         p = 1
         for se in self.sessionenemy_set.all():
             if current_fg != se.flight_group.name:
-                current_fg == se.flight_group.namespace
+                current_fg = se.flight_group.name
                 p = 1
             se.callsign = '%s %s' % (se.flight_group.name, p if p > 1 else 'Leader')
             se.save()
