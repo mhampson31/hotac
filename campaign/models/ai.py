@@ -61,7 +61,8 @@ class AIManeuver(models.Model):
         ('FL', 'Front (Left)'),
         ('LF', 'Left (Front)'),
         ('LA', 'Left (Rear)'),
-        ('AL', 'Rear (Left)')
+        ('AL', 'Rear (Left)'),
+        ('SS', 'Special')
     )
 
     ai = models.ForeignKey(AI, on_delete=models.CASCADE)
@@ -76,6 +77,9 @@ class AIManeuver(models.Model):
     roll_4 = ChainedForeignKey(DialManeuver, chained_field='ai', chained_model_field='dial', related_name='roll_4')
     roll_5 = ChainedForeignKey(DialManeuver, chained_field='ai', chained_model_field='dial', related_name='roll_5')
     roll_6 = ChainedForeignKey(DialManeuver, chained_field='ai', chained_model_field='dial', related_name='roll_6')
+
+    class Meta:
+        ordering = ['arc', 'range']
 
     def get_maneuvers(self): return True
 

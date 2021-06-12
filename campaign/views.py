@@ -40,56 +40,11 @@ def session_summary(request, session_id):
     context = {'session':s, 'init_list':init_list, 'enemy_count':enemy_count}
     return render(request, 'campaign/session.html', context)
 
-"""def session_summary(request, session_id):
-    s = Session.objects.prefetch_related('pilots', 'enemies').get(id=session_id)
-
-    AchForm = make_achievement_form(s)
-    AchFormSet = inlineformset_factory(Session, Achievement, form=AchForm, extra=1)
-    helper = AchHelper()
-    helper.add_input(Submit("submit", "Save"))
-
-    if request.method == 'POST':
-        formset = AchFormSet(request.POST)
-        if formset.is_valid():
-            instances = formset.save(commit=False)
-            for ach in instances:
-                ach.session = s
-                ach.save()
-            #formset.save()
-            return HttpResponseRedirect(s.get_absolute_url())
-    else:
-        formset = AchFormSet(queryset=Achievement.objects.filter(session=s))
-
-    ach = s.achievements.values('pilot__callsign', 'event__short_desc') \
-                                    .order_by('pilot__id', 'event__id') \
-                                    .annotate(total=Count('id'), xp=Coalesce(Sum('threat'), 0) + Sum('event__xp'))
-
-    pilot_list = []
-    for p in s.pilots.values('id', 'callsign'):
-        achievements = s.achievements.filter(pilot_id=p['id']).values('pilot__callsign', 'event__short_desc') \
-                                            .order_by('pilot__id', 'event__id') \
-                                            .annotate(total=Count('id'), xp=Coalesce(Sum('threat'), 0) + Sum('event__xp'))
-        t = AchievementTable(achievements)
-
-        RequestConfig(request).configure(t)
-        t.callsign = p['callsign']
-        pilot_list.append(t)
-
-    context = {'pilots': pilot_list,
-               'achievements':ach,
-               'session':s,
-               'formset':formset,
-               'helper':helper}
-
-    return render(request, 'campaign/s2.html', context)
-"""
-
 def session_plan(request, session_id):
     s = Session.objects.get(id=session_id)
     enemies = s.generate_enemies()
 
     return render(request, 'campaign/session_plan.html', {'session':s, 'enemies':enemies})
-
 
 def pilot_sheet(request, pk):
     pilot = Pilot.objects.get(id=pk)

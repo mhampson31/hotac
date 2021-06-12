@@ -28,19 +28,17 @@ class Pilot(models.Model):
     def __str__(self):
         return '{} ({})'.format(self.callsign, self.user)
 
-
     def get_absolute_url(self):
         return reverse('pilot', kwargs={'pk': self.pk})
 
     @property
     def total_xp(self):
         base = self.pilotship_set.first().game_info.xp_value
-
         if self.campaign.pool_xp:
-            earned = self.campaign.xp_share * self.sessions.count()
+            earned = sum([s.xp_share for s in self.sessions.all()] + \
+                         [s.bonus for s in self.sessionpilot_set.all()])
         else:
-            earned = sum([s.pilot_xp(self) for s in self.sessions.all()])
-
+            earned = sum([s.xp_earned for s in self.sessionpilot_set.all()])
         return base + earned
 
     @property
@@ -49,7 +47,7 @@ class Pilot(models.Model):
 
     @property
     def spent_ships(self):
-        return (self.ships.count() - 1) * self.campaign.campaign.ship_cost
+        return (self.ships.count() - 1) * self.campaign.rulebook.ship_cost
 
     @property
     def spent_upgrades(self):
@@ -59,16 +57,11 @@ class Pilot(models.Model):
 
     @property
     def spent_initiative(self):
-        # the amount spent on initiative depends on whether the cost is squared
-        # or multiplied. For each init value between the start and current init
-        # (i+1 because of range()'s return values), raise it to the power of 1
-        # plus the numeric value of the initiative_sq setting (so **1 for False,
-        # **2 for True). Sum all these values, and multiply them by the init
-        # multipler.
-        return sum([
-                    (i+1) ** (1 + self.campaign.rulebook.initiative_sq)
-                    for i in range(self.campaign.rulebook.start_init, self.initiative)]) \
-               * self.campaign.rulebook.initiative_cost
+        levels = range(self.campaign.rulebook.start_init, self.initiative)
+        if self.campaign.rulebook.initiative_sq:
+            return sum([(l+1)^2 for l in levels])
+        else:
+            return sum([(l+1)*self.campaign.rulebook.initiative_cost for l in levels])
 
     @property
     def active_ship(self):

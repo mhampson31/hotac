@@ -77,16 +77,16 @@ class Session(models.Model):
         return min(6, floor(self.sessionpilot_set.aggregate(i=Avg('initiative'))['i']))
 
     @property
-    def xp_total(self):
-        return sum([p.xp_earned for p in self.sessionpilot_set.all()])
+    def xp_pool(self):
+        return sum([p.xp_pool for p in self.sessionpilot_set.all()])
 
     @property
-    def xp_earned(self):
-        return floor(self.xp_total/self.pilots.count())
+    def xp_share(self):
+        return floor(self.xp_pool/self.pilots.count())
 
     @property
     def xp_remainder(self):
-        return self.xp_total - (self.pilots.count() * self.xp_earned)
+        return self.xp_pool - (self.pilots.count() * self.xp_share)
 
     @property
     def team_xp(self):
@@ -123,9 +123,16 @@ class SessionPilot(models.Model):
         return self.ship.chassis
 
     @property
+    def xp_pool(self):
+        return self.hits + self.assists + self.guards + \
+             sum([k.xp for k in self.kills.all()]) + \
+             self.session.sessionenemy_set.filter(level__gte=2, killed_by__isnull=False).count() \
+              - self.penalty
+
+    @property
     def xp_earned(self):
-        xp = self.hits + self.assists + self.guards + \
-             self.bonus + sum([k.xp for k in self.kills.all()]) - self.penalty
+        xp = self.session.xp_share if self.session.campaign.pool_xp else self.xp_pool
+        xp = xp + self.bonus
         if self.status == self.StatusChoice.EJECTED:
             return floor(xp/2)
         elif self.status in [self.StatusChoice.NO_XP, self.StatusChoice.KIA, self.StatusChoice.NOT_FLOWN]:
@@ -179,7 +186,7 @@ class SessionEnemy(models.Model):
 
     @property
     def xp(self):
-        return 1 + self.elite + self.enemy.non_default_ship + self.enemy.large_ship
+        return 1 + self.enemy.non_default_ship + self.enemy.large_ship
 
 
 class Achievement(models.Model):

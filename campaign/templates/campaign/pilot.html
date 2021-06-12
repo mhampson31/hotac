@@ -7,9 +7,8 @@
 
 <h3>{{pilot.callsign}}</h3>
 <div class='list-group list-group-horizontal mb-4' id='pilot-nav' role='tablist'>
-    <a class='list-group-item list-group-item active' data-toggle='list' role='tab' href='#pilot'>Pilot</a>
-    <a class='list-group-item list-group-item' data-toggle='list' role='tab' href='#upgrade'>Upgrade</a>
-    <a class='list-group-item list-group-item' data-toggle='list' role='tab' href='#achievements'>Achievements</a>
+    <a class='list-group-item list-group-item active' data-bs-toggle='list' role='tab' href='#pilot'>Pilot</a>
+    <a class='list-group-item list-group-item' data-bs-toggle='list' role='tab' href='#upgrade'>Upgrade</a>
 </div>
 
 <div class='tab-content'>
@@ -99,20 +98,6 @@
                 {{update.management_form}}
                 {% crispy update helper %}
         </form>
-    </div>
-
-    <div class='tab-pane' role='tabpanel' id='achievements'>
-        <div class="col">
-            <h5>Achievements</h5>
-            <ul class="list-group col">
-            {% for ach in achievements %}
-                <li class="list-group-item">{{ach.event__long_desc}}
-                                            {% if ach.target__enemy__chassis__name %}
-                                            {{ach.target__enemy__chassis__name}}
-                                            {% endif %} <span class="badge badge-primary badge-pill">x{{ach.count}}</span></li>
-            {% endfor %}
-            </ul>
-        </div>
     </div>
 
 </div>

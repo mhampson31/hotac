@@ -48,8 +48,8 @@
   <div class="card mb-3">
       <h5 class="card-header">XP Pool</h5>
       <div class="card-body">
-          <span class="badge rounded-pill bg-info text-dark">{{session.xp_total}}</span> earned total.
-          <span class="badge rounded-pill bg-info text-dark">{{session.xp_earned}}</span> per player.
+          <span class="badge rounded-pill bg-info text-dark">{{session.xp_pool}}</span> earned total.
+          <span class="badge rounded-pill bg-info text-dark">{{session.xp_share}}</span> per player.
       </div>
   </div>
   {% endif %}
@@ -76,12 +76,11 @@
         </div>
 
         <div class="card-footer">
-            <span><strong>Mission Score</strong> <span class="badge rounded-pill bg-info text-dark">{{pilot.xp_earned}}</span></span>
+            <span><strong>XP Earned</strong> <span class="badge rounded-pill bg-info text-dark">{{pilot.xp_earned}}</span></span>
         </div>
     </div>
   {% endfor %}
 </div>
-
 
 
   <div class="tab-pane" id="enemies" role="tabpanel" aria-labelledby="enemies-tab">
