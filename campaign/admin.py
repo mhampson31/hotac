@@ -9,6 +9,7 @@ from .models import User, Rulebook, PlayableShip, Pilot, Event, Mission, \
 #from xwtools.models import Slot
 
 
+
 class PilotInline(admin.StackedInline):
     model = Pilot
 
@@ -21,6 +22,12 @@ class FGSetupInline(admin.TabularInline):
     model = FGSetup
     extra = 0
 
+    def formfield_for_foreignkey(self, db_field, request, **kwargs):
+        if db_field.name == 'chassis':
+            kwargs['queryset'] = Mission.objects.get(pk=request.resolver_match.kwargs['object_id']).enemy_faction.ships.all()
+        return super().formfield_for_foreignkey(db_field, request, **kwargs)
+
+
 
 class FlightGroupInline(admin.TabularInline):
     model = FlightGroup
@@ -30,20 +37,40 @@ class FlightGroupInline(admin.TabularInline):
 class MissionAdmin(admin.ModelAdmin):
     model = Mission
     inlines = (FlightGroupInline, FGSetupInline)
+    list_display = ['rulebook', 'name', 'story', 'sequence']
 
 
 class CampaignAdmin(admin.ModelAdmin):
     model = Campaign
     list_display = ['description', 'rulebook', 'gm']
+    filter_horizontal = ['deck',]
 
 
 class SessionEnemyInline(admin.TabularInline):
     model = SessionEnemy
     extra = 0
 
+    def formfield_for_foreignkey(self, db_field, request, **kwargs):
+        if db_field.name == 'flight_group':
+            kwargs['queryset'] = Session.objects.get(pk=request.resolver_match.kwargs['object_id']).mission.flight_groups.all()
+        elif db_field.name == 'killed_by':
+            kwargs['queryset'] = SessionPilot.objects.filter(session__pk=request.resolver_match.kwargs['object_id'])
+        return super().formfield_for_foreignkey(db_field, request, **kwargs)
+
+
 class SessionPilotInline(admin.TabularInline):
     model = SessionPilot
     extra = 0
+
+    def formfield_for_foreignkey(self, db_field, request, **kwargs):
+        if db_field.name == 'pilot':
+            kwargs['queryset'] = Session.objects.get(pk=request.resolver_match.kwargs['object_id']).campaign.pilot_set.all()
+        elif db_field.name == 'ship':
+            c = Session.objects.get(pk=request.resolver_match.kwargs['object_id']).campaign
+            kwargs['queryset'] = PilotShip.objects.filter(pilot__campaign=c)
+        return super().formfield_for_foreignkey(db_field, request, **kwargs)
+
+
 
 class SessionAdmin(admin.ModelAdmin):
     inlines = (SessionEnemyInline, SessionPilotInline)

@@ -98,6 +98,31 @@ class Event(models.Model):
         return self.short_desc
 
 
+class Mission(models.Model):
+    FRIENDLY = 'F'
+    NEUTRAL = 'N'
+    HOSTILE = 'H'
+    TERRITORY_CHOICES = (
+        (FRIENDLY, 'Friendly'),
+        (NEUTRAL, 'Neutral'),
+        (HOSTILE, 'Hostile')
+    )
+    name = models.CharField(max_length=30)
+    story = models.CharField(max_length=30)
+    sequence = models.PositiveSmallIntegerField()
+    enemy_faction = models.ForeignKey(Faction, on_delete=models.CASCADE, default=1)
+    territory = models.CharField(max_length=1, choices=TERRITORY_CHOICES)
+    rulebook = models.ForeignKey(Rulebook, on_delete=models.SET_NULL, null=True)
+    turns = models.PositiveSmallIntegerField(default=12)
+
+    objective = models.TextField()
+    bonus_1 = models.TextField(blank=True, null=True)
+    bonus_2 = models.TextField(blank=True, null=True)
+    penalty = models.TextField(blank=True, null=True)
+
+    def __str__(self):
+        return '{} ({} {})'.format(self.name, self.story, self.sequence)
+
 
 class Campaign(models.Model):
     rulebook = models.ForeignKey(Rulebook, on_delete=models.SET_NULL, null=True)
@@ -109,6 +134,7 @@ class Campaign(models.Model):
     ship_initiative = models.BooleanField(default=False)
     pool_xp = models.BooleanField(default=False)
 
+    deck = models.ManyToManyField(Mission)
 
     def __str__(self):
         return self.description
@@ -126,6 +152,11 @@ class Campaign(models.Model):
             pilots = pilots + s.pilots.count()
             xp = xp + s.xp_total
         return floor(xp/pilots)
+
+    def starting_deck(self):
+        for m in Missions.objects.filter(rulebook=self.rulebook, sequence=1):
+            self.deck.add(m)
+        self.save()
 
 
 class CampaignUpgrade(models.Model):
@@ -147,30 +178,6 @@ class CampaignUpgrade(models.Model):
     class Meta:
         db_table = 'campaign_gameupgrades_v'
         managed = False
-
-
-class Mission(models.Model):
-    FRIENDLY = 'F'
-    NEUTRAL = 'N'
-    HOSTILE = 'H'
-    TERRITORY_CHOICES = (
-        (FRIENDLY, 'Friendly'),
-        (NEUTRAL, 'Neutral'),
-        (HOSTILE, 'Hostile')
-    )
-    name = models.CharField(max_length=30)
-    story = models.CharField(max_length=30)
-    sequence = models.PositiveSmallIntegerField()
-    enemy_faction = models.ForeignKey(Faction, on_delete=models.CASCADE, default=1)
-    territory = models.CharField(max_length=1, choices=TERRITORY_CHOICES)
-
-    objective = models.TextField()
-    bonus_1 = models.TextField(blank=True, null=True)
-    bonus_2 = models.TextField(blank=True, null=True)
-    penalty = models.TextField(blank=True, null=True)
-
-    def __str__(self):
-        return '{} ({} {})'.format(self.name, self.story, self.sequence)
 
 
 class FlightGroup(models.Model):

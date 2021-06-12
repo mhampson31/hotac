@@ -101,6 +101,7 @@ class SessionPilot(models.Model):
     hits = models.SmallIntegerField(default=0)
     assists = models.SmallIntegerField(default=0)
     guards = models.SmallIntegerField(default=0)
+    emplacements = models.SmallIntegerField(default=0)
     bonus = models.SmallIntegerField(default=0)
     penalty = models.SmallIntegerField(default=0)
 
@@ -124,7 +125,7 @@ class SessionPilot(models.Model):
 
     @property
     def xp_pool(self):
-        return self.hits + self.assists + self.guards + \
+        return self.hits + self.assists + self.guards + self.emplacements + \
              sum([k.xp for k in self.kills.all()]) + \
              self.session.sessionenemy_set.filter(level__gte=2, killed_by__isnull=False).count() \
               - self.penalty
