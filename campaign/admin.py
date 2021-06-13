@@ -66,7 +66,7 @@ class SessionPilotInline(admin.TabularInline):
     def formfield_for_foreignkey(self, db_field, request, **kwargs):
         if 'object_id' in request.resolver_match.kwargs:
             if db_field.name == 'pilot':
-                kwargs['queryset'] = Session.objects.get(pk=request.resolver_match.kwargs['object_id']).campaign.pilot_set.all()
+                kwargs['queryset'] = Session.objects.get(pk=request.resolver_match.kwargs['object_id']).campaign.pilots.all()
             elif db_field.name == 'ship':
                 c = Session.objects.get(pk=request.resolver_match.kwargs['object_id']).campaign
                 kwargs['queryset'] = PilotShip.objects.filter(pilot__campaign=c)
@@ -131,7 +131,7 @@ class AIPriorityInline(admin.TabularInline):
 
 class AIAdmin(admin.ModelAdmin):
     inlines = (AIPriorityInline, AIManeuverInline)
-    list_select_related = ('aimaneuver', 'aipriority')
+
 
 
 class EnemyAbilityInline(admin.TabularInline):
