@@ -13,42 +13,44 @@ section > .row {
 }
 
 .hard,
-.attack,
+.attack, .xwf-attack,
 .attack:before,
 .attack > i:before {
     color: var(--red);
 }
 
-.agility,
+.agility, .xwf-agility,
 .agility > i.before,
 .agility:before {
     color: var(--green);
 }
 
 .easy,
-.shields,
+.shields, .xwf-shields,
 .shields > i.before,
 .shields:before {
     color: var(--blue);
 }
 
-.hull,
+.hull, .xwf-hull,
 .hull > i.before,
 .hull:before {
     color: var(--yellow);
 }
 
-.force,
+.force, .xwf-force,
 .force > i.before,
 .force:before {
     color: var(--purple);
 }
 
+.charge, .xwf-charge,
 .charge > i.before,
 .charge:before {
     color: var(--orange);
 }
 
+.xwf-linked,
 .linked.before {
     color: var(--grey);
 }

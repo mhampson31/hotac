@@ -6,489 +6,594 @@
   font-family: XWing;
   src: url("xwing-miniatures.ttf"); }
 
-i.xwf {
+i.xwing-miniatures-font {
   font-family: XWing;
   font-style: normal;
-}
+  font-size: 1.5em; }
 
-i.xwf-agility:before {
+i.xwing-miniatures-font-agility:before {
   content: "^"; }
 
-i.xwf-astromech:before {
+i.xwing-miniatures-font-astromech:before {
   content: "A"; }
 
-i.xwf-attack:before {
+i.xwing-miniatures-font-attack:before {
   content: "%"; }
 
-i.xwf-bankleft:before {
+i.xwing-miniatures-font-bankleft:before {
   content: "7"; }
 
-i.xwf-bankright:before {
+i.xwing-miniatures-font-bankright:before {
   content: "9"; }
 
-i.xwf-barrelroll:before {
+i.xwing-miniatures-font-barrelroll:before {
   content: "r"; }
 
-i.xwf-base-all:before {
+i.xwing-miniatures-font-base-all:before {
   content: "À"; }
 
-i.xwf-base-small:before {
+i.xwing-miniatures-font-base-small:before {
   content: "Á"; }
 
-i.xwf-base-medium:before {
+i.xwing-miniatures-font-base-medium:before {
   content: "Â"; }
 
-i.xwf-base-large:before {
+i.xwing-miniatures-font-base-large:before {
   content: "Ã"; }
 
-i.xwf-boost:before {
+i.xwing-miniatures-font-boost:before {
   content: "b"; }
 
-i.xwf-bullseyearc:before {
+i.xwing-miniatures-font-bullseyearc:before {
   content: "}"; }
 
-i.xwf-calculate:before {
+i.xwing-miniatures-font-calculate:before {
   content: "a"; }
 
-i.xwf-cannon:before {
+i.xwing-miniatures-font-cannon:before {
   content: "C"; }
 
-i.xwf-cargo:before {
+i.xwing-miniatures-font-cargo:before {
   content: "G"; }
 
-i.xwf-charge:before {
+i.xwing-miniatures-font-charge:before {
   content: "g"; }
 
-i.xwf-cloak:before {
+i.xwing-miniatures-font-cloak:before {
   content: "k"; }
 
-i.xwf-condition-outline:before {
+i.xwing-miniatures-font-command:before {
+  content: "V"; }
+
+i.xwing-miniatures-font-condition-outline:before {
   content: "Æ"; }
 
-i.xwf-condition:before {
+i.xwing-miniatures-font-condition:before {
   content: "°"; }
 
-i.xwf-config:before {
+i.xwing-miniatures-font-config:before {
   content: "n"; }
 
-i.xwf-coordinate:before {
+i.xwing-miniatures-font-coordinate:before {
   content: "o"; }
 
-i.xwf-crew:before {
+i.xwing-miniatures-font-crew:before {
   content: "W"; }
 
-i.xwf-crit:before {
+i.xwing-miniatures-font-crit:before {
   content: "c"; }
 
-i.xwf-dalan-bankleft:before {
+i.xwing-miniatures-font-dalan-bankleft:before {
   content: "["; }
 
-i.xwf-dalan-bankright:before {
+i.xwing-miniatures-font-dalan-bankright:before {
   content: "]"; }
 
-i.xwf-device:before {
+i.xwing-miniatures-font-device:before {
   content: "B"; }
 
-i.xwf-doubleturretarc:before {
+i.xwing-miniatures-font-doublerecurring:before {
+  content: "_"; }
+
+i.xwing-miniatures-font-doubleturretarc:before {
   content: "q"; }
 
-i.xwf-empire:before {
+i.xwing-miniatures-font-empire:before {
   content: "@"; }
 
-i.xwf-energy:before {
+i.xwing-miniatures-font-energy:before {
   content: "("; }
 
-i.xwf-epic:before {
+i.xwing-miniatures-font-epic:before {
   content: ")"; }
 
-i.xwf-evade:before {
+i.xwing-miniatures-font-evade:before {
   content: "e"; }
 
-i.xwf-firstorder:before {
+i.xwing-miniatures-font-firstorder:before {
   content: "+"; }
 
-i.xwf-focus:before {
+i.xwing-miniatures-font-first-player-1-outline:before {
+  content: "Ĺ"; }
+
+i.xwing-miniatures-font-first-player-1:before {
+  content: "ĺ"; }
+
+i.xwing-miniatures-font-first-player-2-outline:before {
+  content: "Ļ"; }
+
+i.xwing-miniatures-font-first-player-2:before {
+  content: "ļ"; }
+
+i.xwing-miniatures-font-first-player-3-outline:before {
+  content: "Ľ"; }
+
+i.xwing-miniatures-font-first-player-3:before {
+  content: "ľ"; }
+
+i.xwing-miniatures-font-first-player-4-outline:before {
+  content: "Ŀ"; }
+
+i.xwing-miniatures-font-first-player-4:before {
+  content: "ŀ"; }
+
+i.xwing-miniatures-font-focus:before {
   content: "f"; }
 
-i.xwf-forcecharge:before {
+i.xwing-miniatures-font-forcecharge:before {
   content: "h"; }
 
-i.xwf-forcepower:before {
+i.xwing-miniatures-font-forcepower:before {
   content: "F"; }
 
-i.xwf-frontarc:before {
+i.xwing-miniatures-font-frontarc:before {
   content: "{"; }
 
-i.xwf-fullfrontarc:before {
+i.xwing-miniatures-font-fullfrontarc:before {
   content: "~"; }
 
-i.xwf-fullreararc:before {
+i.xwing-miniatures-font-fullreararc:before {
   content: "¡"; }
 
-i.xwf-gunner:before {
+i.xwing-miniatures-font-fuse:before {
+  content: ","; }
+
+i.xwing-miniatures-font-gunner:before {
   content: "Y"; }
 
-i.xwf-hardpoint:before {
+i.xwing-miniatures-font-hardpoint:before {
   content: "H"; }
 
-i.xwf-helmet-imperial:before {
+i.xwing-miniatures-font-helmet-imperial:before {
   content: "y"; }
 
-i.xwf-helmet-rebel:before {
+i.xwing-miniatures-font-helmet-rebel:before {
   content: "x"; }
 
-i.xwf-helmet-scum:before {
+i.xwing-miniatures-font-helmet-scum:before {
   content: "z"; }
 
-i.xwf-hit:before {
+i.xwing-miniatures-font-hit:before {
   content: "d"; }
 
-i.xwf-hull:before {
+i.xwing-miniatures-font-hull:before {
   content: "&"; }
 
-i.xwf-ig88d-sloopleft:before {
+i.xwing-miniatures-font-ig88d-sloopleft:before {
   content: '"'; }
 
-i.xwf-ig88d-sloopright:before {
+i.xwing-miniatures-font-ig88d-sloopright:before {
   content: "'"; }
 
-i.xwf-illicit:before {
+i.xwing-miniatures-font-illicit:before {
   content: "I"; }
 
-i.xwf-jam:before {
+i.xwing-miniatures-font-jam:before {
   content: "j"; }
 
-i.xwf-kturn:before {
+i.xwing-miniatures-font-kturn:before {
   content: "2"; }
 
-i.xwf-leftarc:before {
+i.xwing-miniatures-font-leftarc:before {
   content: "£"; }
 
-i.xwf-linked:before {
+i.xwing-miniatures-font-linked:before {
   content: ">"; }
 
-i.xwf-lock:before {
+i.xwing-miniatures-font-lock:before {
   content: "l"; }
 
-i.xwf-missile:before {
+i.xwing-miniatures-font-missile:before {
   content: "M"; }
 
-i.xwf-modification:before {
+i.xwing-miniatures-font-modification:before {
   content: "m"; }
 
-i.xwf-obstacle-core2asteroid0-outline:before {
+i.xwing-miniatures-font-negativerecurring:before {
+  content: ""; }
+
+i.xwing-miniatures-font-obstacle-core2asteroid0-outline:before {
   content: "ĉ"; }
 
-i.xwf-obstacle-core2asteroid0:before {
+i.xwing-miniatures-font-obstacle-core2asteroid0:before {
   content: "ĥ"; }
 
-i.xwf-obstacle-core2asteroid1-outline:before {
+i.xwing-miniatures-font-obstacle-core2asteroid1-outline:before {
   content: "Č"; }
 
-i.xwf-obstacle-core2asteroid1:before {
+i.xwing-miniatures-font-obstacle-core2asteroid1:before {
   content: "Ĩ"; }
 
-i.xwf-obstacle-core2asteroid2-outline:before {
+i.xwing-miniatures-font-obstacle-core2asteroid2-outline:before {
   content: "Ċ"; }
 
-i.xwf-obstacle-core2asteroid2:before {
+i.xwing-miniatures-font-obstacle-core2asteroid2:before {
   content: "Ħ"; }
 
-i.xwf-obstacle-core2asteroid3-outline:before {
+i.xwing-miniatures-font-obstacle-core2asteroid3-outline:before {
   content: "ċ"; }
 
-i.xwf-obstacle-core2asteroid3:before {
+i.xwing-miniatures-font-obstacle-core2asteroid3:before {
   content: "ħ"; }
 
-i.xwf-obstacle-core2asteroid4-outline:before {
+i.xwing-miniatures-font-obstacle-core2asteroid4-outline:before {
   content: "č"; }
 
-i.xwf-obstacle-core2asteroid4:before {
+i.xwing-miniatures-font-obstacle-core2asteroid4:before {
   content: "ĩ"; }
 
-i.xwf-obstacle-core2asteroid5-outline:before {
+i.xwing-miniatures-font-obstacle-core2asteroid5-outline:before {
   content: "Ď"; }
 
-i.xwf-obstacle-core2asteroid5:before {
+i.xwing-miniatures-font-obstacle-core2asteroid5:before {
   content: "Ī"; }
 
-i.xwf-obstacle-coreasteroid0-outline:before {
+i.xwing-miniatures-font-obstacle-coreasteroid0-outline:before {
   content: "Ă"; }
 
-i.xwf-obstacle-coreasteroid0:before {
+i.xwing-miniatures-font-obstacle-coreasteroid0:before {
   content: "Ğ"; }
 
-i.xwf-obstacle-coreasteroid1-outline:before {
+i.xwing-miniatures-font-obstacle-coreasteroid1-outline:before {
   content: "ă"; }
 
-i.xwf-obstacle-coreasteroid1:before {
+i.xwing-miniatures-font-obstacle-coreasteroid1:before {
   content: "ğ"; }
 
-i.xwf-obstacle-coreasteroid2-outline:before {
+i.xwing-miniatures-font-obstacle-coreasteroid2-outline:before {
   content: "ā"; }
 
-i.xwf-obstacle-coreasteroid2:before {
+i.xwing-miniatures-font-obstacle-coreasteroid2:before {
   content: "ĝ"; }
 
-i.xwf-obstacle-coreasteroid3-outline:before {
+i.xwing-miniatures-font-obstacle-coreasteroid3-outline:before {
   content: "ą"; }
 
-i.xwf-obstacle-coreasteroid3:before {
+i.xwing-miniatures-font-obstacle-coreasteroid3:before {
   content: "ġ"; }
 
-i.xwf-obstacle-coreasteroid4-outline:before {
+i.xwing-miniatures-font-obstacle-coreasteroid4-outline:before {
   content: "Ą"; }
 
-i.xwf-obstacle-coreasteroid4:before {
+i.xwing-miniatures-font-obstacle-coreasteroid4:before {
   content: "Ġ"; }
 
-i.xwf-obstacle-coreasteroid5-outline:before {
+i.xwing-miniatures-font-obstacle-coreasteroid5-outline:before {
   content: "Ā"; }
 
-i.xwf-obstacle-coreasteroid5:before {
+i.xwing-miniatures-font-obstacle-coreasteroid5:before {
   content: "Ĝ"; }
 
-i.xwf-obstacle-vt49decimatordebris0-outline:before {
+i.xwing-miniatures-font-obstacle-vt49decimatordebris0-outline:before {
   content: "Đ"; }
 
-i.xwf-obstacle-vt49decimatordebris0:before {
+i.xwing-miniatures-font-obstacle-vt49decimatordebris0:before {
   content: "Ĭ"; }
 
-i.xwf-obstacle-vt49decimatordebris1-outline:before {
+i.xwing-miniatures-font-obstacle-vt49decimatordebris1-outline:before {
   content: "đ"; }
 
-i.xwf-obstacle-vt49decimatordebris1:before {
+i.xwing-miniatures-font-obstacle-vt49decimatordebris1:before {
   content: "ĭ"; }
 
-i.xwf-obstacle-vt49decimatordebris2-outline:before {
+i.xwing-miniatures-font-obstacle-vt49decimatordebris2-outline:before {
   content: "ć"; }
 
-i.xwf-obstacle-vt49decimatordebris2:before {
+i.xwing-miniatures-font-obstacle-vt49decimatordebris2:before {
   content: "ģ"; }
 
-i.xwf-obstacle-yt2400debris0-outline:before {
+i.xwing-miniatures-font-obstacle-yt2400debris0-outline:before {
   content: "ď"; }
 
-i.xwf-obstacle-yt2400debris0:before {
+i.xwing-miniatures-font-obstacle-yt2400debris0:before {
   content: "ī"; }
 
-i.xwf-obstacle-yt2400debris1-outline:before {
+i.xwing-miniatures-font-obstacle-yt2400debris1-outline:before {
   content: "Ĉ"; }
 
-i.xwf-obstacle-yt2400debris1:before {
+i.xwing-miniatures-font-obstacle-yt2400debris1:before {
   content: "Ĥ"; }
 
-i.xwf-obstacle-yt2400debris2-outline:before {
+i.xwing-miniatures-font-obstacle-yt2400debris2-outline:before {
   content: "Ć"; }
 
-i.xwf-obstacle-yt2400debris2:before {
+i.xwing-miniatures-font-obstacle-yt2400debris2:before {
   content: "Ģ"; }
 
-i.xwf-rangebonusindicator:before {
+i.xwing-miniatures-font-obstacle-gascloud1:before {
+  content: "Į"; }
+
+i.xwing-miniatures-font-obstacle-gascloud1-outline:before {
+  content: "Ē"; }
+
+i.xwing-miniatures-font-obstacle-gascloud2:before {
+  content: "į"; }
+
+i.xwing-miniatures-font-obstacle-gascloud2-outline:before {
+  content: "ē"; }
+
+i.xwing-miniatures-font-obstacle-gascloud3:before {
+  content: "İ"; }
+
+i.xwing-miniatures-font-obstacle-gascloud3-outline:before {
+  content: "Ĕ"; }
+
+i.xwing-miniatures-font-obstacle-gascloud4:before {
+  content: "ı"; }
+
+i.xwing-miniatures-font-obstacle-gascloud4-outline:before {
+  content: "ĕ"; }
+
+i.xwing-miniatures-font-obstacle-gascloud5:before {
+  content: "Ĳ"; }
+
+i.xwing-miniatures-font-obstacle-gascloud5-outline:before {
+  content: "Ė"; }
+
+i.xwing-miniatures-font-obstacle-gascloud6:before {
+  content: "ĳ"; }
+
+i.xwing-miniatures-font-obstacle-gascloud6-outline:before {
+  content: "ė"; }
+
+i.xwing-miniatures-font-point:before {
+  content: "Ì"; }
+
+i.xwing-miniatures-font-rangebonusindicator:before {
   content: "?"; }
 
-i.xwf-reararc:before {
+i.xwing-miniatures-font-reararc:before {
   content: "|"; }
 
-i.xwf-rebel-outline:before {
+i.xwing-miniatures-font-rebel-outline:before {
   content: "-"; }
 
-i.xwf-rebel:before {
+i.xwing-miniatures-font-rebel:before {
   content: "!"; }
 
-i.xwf-recover:before {
+i.xwing-miniatures-font-recover:before {
   content: "v"; }
 
-i.xwf-recurring:before {
+i.xwing-miniatures-font-recurring:before {
   content: "`"; }
 
-i.xwf-reinforce:before {
+i.xwing-miniatures-font-reinforce:before {
   content: "i"; }
 
-i.xwf-reload:before {
+i.xwing-miniatures-font-reload:before {
   content: "="; }
 
-i.xwf-republic:before {
+i.xwing-miniatures-font-republic:before {
   content: "/"; }
 
-i.xwf-reversebankleft:before {
+i.xwing-miniatures-font-reversebankleft:before {
   content: "J"; }
 
-i.xwf-reversebankright:before {
+i.xwing-miniatures-font-reversebankright:before {
   content: "L"; }
 
-i.xwf-reversestraight:before {
+i.xwing-miniatures-font-reversestraight:before {
   content: "K"; }
 
-i.xwf-rightarc:before {
+i.xwing-miniatures-font-rightarc:before {
   content: "¢"; }
 
-i.xwf-rotatearc:before {
+i.xwing-miniatures-font-rotatearc:before {
   content: "R"; }
 
-i.xwf-scum:before {
+i.xwing-miniatures-font-scum:before {
   content: "#"; }
 
-i.xwf-separatists:before {
+i.xwing-miniatures-font-separatists:before {
   content: "."; }
 
-i.xwf-sensor:before {
+i.xwing-miniatures-font-sensor:before {
   content: "S"; }
 
-i.xwf-shield:before {
+i.xwing-miniatures-font-shield:before {
   content: "*"; }
 
-i.xwf-singleturretarc:before {
+i.xwing-miniatures-font-singleturretarc:before {
   content: "p"; }
 
-i.xwf-slam:before {
+i.xwing-miniatures-font-slam:before {
   content: "s"; }
 
-i.xwf-sloopleft:before {
+i.xwing-miniatures-font-sloopleft:before {
   content: "1"; }
 
-i.xwf-sloopright:before {
+i.xwing-miniatures-font-sloopright:before {
   content: "3"; }
 
-i.xwf-squad-point-cost:before {
+i.xwing-miniatures-font-squad-point-cost:before {
   content: "0"; }
 
-i.xwf-stop:before {
+i.xwing-miniatures-font-stop:before {
   content: "5"; }
 
-i.xwf-straight:before {
+i.xwing-miniatures-font-straight:before {
   content: "8"; }
 
-i.xwf-talent:before {
+i.xwing-miniatures-font-tacticalrelay:before {
+  content: "Z"; }
+
+i.xwing-miniatures-font-talent:before {
   content: "E"; }
 
-i.xwf-team:before {
+i.xwing-miniatures-font-team:before {
   content: "T"; }
 
-i.xwf-tech:before {
+i.xwing-miniatures-font-tech:before {
   content: "X"; }
 
-i.xwf-title:before {
+i.xwing-miniatures-font-title:before {
   content: "t"; }
 
-i.xwf-token-calculate-outline:before {
+i.xwing-miniatures-font-token-calculate-outline:before {
   content: "Ë"; }
 
-i.xwf-token-calculate:before {
+i.xwing-miniatures-font-token-calculate:before {
   content: "Ê"; }
 
-i.xwf-token-charge-outline:before {
+i.xwing-miniatures-font-token-charge-outline:before {
   content: "Ó"; }
 
-i.xwf-token-charge:before {
+i.xwing-miniatures-font-token-charge:before {
   content: "Ò"; }
 
-i.xwf-token-crit-outline:before {
+i.xwing-miniatures-font-token-crit-outline:before {
   content: "è"; }
 
-i.xwf-token-crit:before {
+i.xwing-miniatures-font-token-crit:before {
   content: "Ç"; }
 
-i.xwf-token-cloak-outline:before {
+i.xwing-miniatures-font-token-cloak-outline:before {
   content: "ô"; }
 
-i.xwf-token-cloak:before {
+i.xwing-miniatures-font-token-cloak:before {
   content: "å"; }
 
-i.xwf-token-evade-outline:before {
+i.xwing-miniatures-font-token-deplete-outline:before {
+  content: "÷"; }
+
+i.xwing-miniatures-font-token-deplete:before {
+  content: "ø"; }
+
+i.xwing-miniatures-font-token-evade-outline:before {
   content: "é"; }
 
-i.xwf-token-evade:before {
+i.xwing-miniatures-font-token-evade:before {
   content: "Å"; }
 
-i.xwf-token-focus-outline:before {
+i.xwing-miniatures-font-token-focus-outline:before {
   content: "ç"; }
 
-i.xwf-token-focus:before {
+i.xwing-miniatures-font-token-focus:before {
   content: "Ä"; }
 
-i.xwf-token-force-outline:before {
+i.xwing-miniatures-font-token-force-outline:before {
   content: "Õ"; }
 
-i.xwf-token-force:before {
+i.xwing-miniatures-font-token-force:before {
   content: "Ô"; }
 
-i.xwf-token-disarm-outline:before {
+i.xwing-miniatures-font-token-disarm-outline:before {
   content: "í"; }
 
-i.xwf-token-disarm:before {
+i.xwing-miniatures-font-token-disarm:before {
   content: "Ö"; }
 
-i.xwf-token-ion-outline:before {
+i.xwing-miniatures-font-token-ion-outline:before {
   content: "ó"; }
 
-i.xwf-token-ion:before {
+i.xwing-miniatures-font-token-ion:before {
   content: "ä"; }
 
-i.xwf-token-jam-outline:before {
+i.xwing-miniatures-font-token-jam-outline:before {
   content: "ð"; }
 
-i.xwf-token-jam:before {
+i.xwing-miniatures-font-token-jam:before {
   content: "á"; }
 
-i.xwf-token-lock-outline:before {
+i.xwing-miniatures-font-token-lock-outline:before {
   content: "ò"; }
 
-i.xwf-token-lock:before {
+i.xwing-miniatures-font-token-lock:before {
   content: "ã"; }
 
-i.xwf-token-reinforce-outline:before {
+i.xwing-miniatures-font-token-point-1-outline:before {
+  content: "Î"; }
+
+i.xwing-miniatures-font-token-point-1:before {
+  content: "Ð"; }
+
+i.xwing-miniatures-font-token-point-3-outline:before {
+  content: "Í"; }
+
+i.xwing-miniatures-font-token-point-3:before {
+  content: "Ï"; }
+
+i.xwing-miniatures-font-token-reinforce-outline:before {
   content: "ì"; }
 
-i.xwf-token-reinforce:before {
+i.xwing-miniatures-font-token-reinforce:before {
   content: "Ü"; }
 
-i.xwf-token-reinforceaft-outline:before {
+i.xwing-miniatures-font-token-reinforceaft-outline:before {
   content: "î"; }
 
-i.xwf-token-reinforceaft:before {
+i.xwing-miniatures-font-token-reinforceaft:before {
   content: "Ý"; }
 
-i.xwf-token-shield-outline:before {
+i.xwing-miniatures-font-token-shield-outline:before {
   content: "ë"; }
 
-i.xwf-token-shield:before {
+i.xwing-miniatures-font-token-shield:before {
   content: "Ñ"; }
 
-i.xwf-token-stress-outline:before {
+i.xwing-miniatures-font-token-strain-outline:before {
+  content: "õ"; }
+
+i.xwing-miniatures-font-token-strain:before {
+  content: "ö"; }
+
+i.xwing-miniatures-font-token-stress-outline:before {
   content: "ê"; }
 
-i.xwf-token-stress:before {
+i.xwing-miniatures-font-token-stress:before {
   content: "É"; }
 
-i.xwf-token-tractor-outline:before {
+i.xwing-miniatures-font-token-tractor-outline:before {
   content: "ï"; }
 
-i.xwf-token-tractor:before {
+i.xwing-miniatures-font-token-tractor:before {
   content: "à"; }
 
-i.xwf-torpedo:before {
+i.xwing-miniatures-font-torpedo:before {
   content: "P"; }
 
-i.xwf-trollleft:before {
+i.xwing-miniatures-font-triplerecurring:before {
+  content: ""; }
+
+i.xwing-miniatures-font-trollleft:before {
   content: ":"; }
 
-i.xwf-trollright:before {
+i.xwing-miniatures-font-trollright:before {
   content: ";"; }
 
-i.xwf-turnleft:before {
+i.xwing-miniatures-font-turnleft:before {
   content: "4"; }
 
-i.xwf-turnright:before {
+i.xwing-miniatures-font-turnright:before {
   content: "6"; }
 
-i.xwf-turret:before {
+i.xwing-miniatures-font-turret:before {
   content: "U"; }
 
-i.xwf-unique-outline:before {
+i.xwing-miniatures-font-unique-outline:before {
   content: "•"; }
 
-i.xwf-unique:before {
+i.xwing-miniatures-font-unique:before {
   content: "u"; }
 
 /*
@@ -498,175 +603,247 @@ i.xwf-unique:before {
   font-family: XWingShip;
   src: url("xwing-miniatures-ships.ttf"); }
 
-i.xw-ship {
+i.xwing-miniatures-ship {
   font-family: XWingShip;
   font-style: normal;
   font-size: 1.5em; }
 
-i.xw-ship-aggressorassaultfighter:before {
+i.xwing-miniatures-ship-aggressorassaultfighter:before {
   content: "i"; }
 
-i.xw-ship-alphaclassstarwing:before {
+i.xwing-miniatures-ship-alphaclassstarwing:before {
   content: "&"; }
 
-i.xw-ship-arc170starfighter:before {
+i.xwing-miniatures-ship-arc170starfighter:before {
   content: "c"; }
 
-i.xw-ship-asf01bwing:before {
+i.xwing-miniatures-ship-asf01bwing:before {
   content: "b"; }
 
-i.xw-ship-attackshuttle:before {
+i.xwing-miniatures-ship-attackshuttle:before {
   content: "g"; }
 
-i.xw-ship-auzituckgunship:before {
+i.xwing-miniatures-ship-auzituckgunship:before {
   content: "@"; }
 
-i.xw-ship-btla4ywing:before {
+i.xwing-miniatures-ship-belbullab22starfighter:before {
+  content: "["; }
+
+i.xwing-miniatures-ship-btla4ywing:before {
   content: "y"; }
 
-i.xw-ship-btls8kwing:before {
+i.xwing-miniatures-ship-btlbywing:before {
+  content: ":"; }
+
+i.xwing-miniatures-ship-btls8kwing:before {
   content: "k"; }
 
-i.xw-ship-cr90corvette:before {
+i.xwing-miniatures-ship-cr90corvette:before {
   content: "2"; }
 
-i.xw-ship-croccruiser:before {
+i.xwing-miniatures-ship-croccruiser:before {
   content: "5"; }
 
-i.xw-ship-customizedyt1300lightfreighter:before {
+i.xwing-miniatures-ship-customizedyt1300lightfreighter:before {
   content: "W"; }
 
-i.xw-ship-escapecraft:before {
+i.xwing-miniatures-ship-droidtrifighter:before {
+  content: "+"; }
+
+i.xwing-miniatures-ship-delta7aethersprite:before {
+  content: "\\"; }
+
+i.xwing-miniatures-ship-escapecraft:before {
   content: "X"; }
 
-i.xw-ship-ewing:before {
+i.xwing-miniatures-ship-eta2actis:before {
+  content: "-"; }
+
+i.xwing-miniatures-ship-ewing:before {
   content: "e"; }
 
-i.xw-ship-fangfighter:before {
+i.xwing-miniatures-ship-fangfighter:before {
   content: "M"; }
 
-i.xw-ship-firesprayclasspatrolcraft:before {
+i.xwing-miniatures-ship-fireball:before {
+  content: "0"; }
+
+i.xwing-miniatures-ship-firesprayclasspatrolcraft:before {
   content: "f"; }
 
-i.xw-ship-g1astarfighter:before {
+i.xwing-miniatures-ship-g1astarfighter:before {
   content: "n"; }
 
-i.xw-ship-gozanticlasscruiser:before {
+i.xwing-miniatures-ship-gozanticlasscruiser:before {
   content: "4"; }
 
-i.xw-ship-gr75mediumtransport:before {
+i.xwing-miniatures-ship-gr75mediumtransport:before {
   content: "1"; }
 
-i.xw-ship-hwk290lightfreighter:before {
+i.xwing-miniatures-ship-hmpdroidgunship:before {
+  content: "."; }
+
+i.xwing-miniatures-ship-hwk290lightfreighter:before {
   content: "h"; }
 
-i.xw-ship-jumpmaster5000:before {
+i.xwing-miniatures-ship-hyenaclassdroidbomber:before {
+  content: "="; }
+
+i.xwing-miniatures-ship-jumpmaster5000:before {
   content: "p"; }
 
-i.xw-ship-kihraxzfighter:before {
+i.xwing-miniatures-ship-kihraxzfighter:before {
   content: "r"; }
 
-i.xw-ship-lambdaclasst4ashuttle:before {
+i.xwing-miniatures-ship-laatigunship:before {
+  content: "/"; }
+
+i.xwing-miniatures-ship-lambdaclasst4ashuttle:before {
   content: "l"; }
 
-i.xw-ship-lancerclasspursuitcraft:before {
+i.xwing-miniatures-ship-lancerclasspursuitcraft:before {
   content: "L"; }
 
-i.xw-ship-m12lkimogilafighter:before {
+i.xwing-miniatures-ship-m12lkimogilafighter:before {
   content: "K"; }
 
-i.xw-ship-m3ainterceptor:before {
+i.xwing-miniatures-ship-m3ainterceptor:before {
   content: "s"; }
 
-i.xw-ship-mg100starfortresssf17:before {
+i.xwing-miniatures-ship-mg100starfortress:before {
   content: "Z"; }
 
-i.xw-ship-modifiedyt1300lightfreighter:before {
+i.xwing-miniatures-ship-modifiedtielnfighter:before {
+  content: "C"; }
+
+i.xwing-miniatures-ship-modifiedyt1300lightfreighter:before {
   content: "m"; }
 
-i.xw-ship-quadrijettransferspacetug:before {
+i.xwing-miniatures-ship-nabooroyaln1starfighter:before {
+  content: "<"; }
+
+i.xwing-miniatures-ship-nantexclassstarfighter:before {
+  content: ";"; }
+
+i.xwing-miniatures-ship-nimbusclassvwing:before {
+  content: ","; }
+
+i.xwing-miniatures-ship-quadrijettransferspacetug:before {
   content: "q"; }
 
-i.xw-ship-raiderclasscorvette:before {
+i.xwing-miniatures-ship-raiderclasscorvette:before {
   content: "3"; }
 
-i.xw-ship-rz1awing:before {
+i.xwing-miniatures-ship-resistancetransport:before {
+  content: ">"; }
+
+i.xwing-miniatures-ship-resistancetransportpod:before {
+  content: "?"; }
+
+i.xwing-miniatures-ship-rz1awing:before {
   content: "a"; }
 
-i.xw-ship-scurrgh6bomber:before {
+i.xwing-miniatures-ship-rz2awing:before {
+  content: "E"; }
+
+i.xwing-miniatures-ship-scavengedyt1300:before {
+  content: "Y"; }
+
+i.xwing-miniatures-ship-scurrgh6bomber:before {
   content: "H"; }
 
-i.xw-ship-sheathipedeclassshuttle:before {
+i.xwing-miniatures-ship-sheathipedeclassshuttle:before {
   content: "%"; }
 
-i.xw-ship-starviperclassattackplatform:before {
+i.xwing-miniatures-ship-sithinfiltrator:before {
+  content: "]"; }
+
+i.xwing-miniatures-ship-starviperclassattackplatform:before {
   content: "v"; }
 
-i.xw-ship-t65xwing:before {
+i.xwing-miniatures-ship-syliureclasshyperspacering:before {
+  content: "*"; }
+
+i.xwing-miniatures-ship-t65xwing:before {
   content: "x"; }
 
-i.xw-ship-t70xwing:before {
+i.xwing-miniatures-ship-t70xwing:before {
   content: "w"; }
 
-i.xw-ship-tieadvancedv1:before {
+i.xwing-miniatures-ship-tieadvancedv1:before {
   content: "R"; }
 
-i.xw-ship-tieadvancedx1:before {
+i.xwing-miniatures-ship-tieadvancedx1:before {
   content: "A"; }
 
-i.xw-ship-tieagaggressor:before {
+i.xwing-miniatures-ship-tieagaggressor:before {
   content: "`"; }
 
-i.xw-ship-tiecapunisher:before {
+i.xwing-miniatures-ship-tiebainterceptor:before {
+  content: "j"; }
+
+i.xwing-miniatures-ship-tiecapunisher:before {
   content: "N"; }
 
-i.xw-ship-tieddefender:before {
+i.xwing-miniatures-ship-tieddefender:before {
   content: "D"; }
 
-i.xw-ship-tiefofighter:before {
+i.xwing-miniatures-ship-tiefofighter:before {
   content: "O"; }
 
-i.xw-ship-tieinterceptor:before {
+i.xwing-miniatures-ship-tieinterceptor:before {
   content: "I"; }
 
-i.xw-ship-tielnfighter:before {
+i.xwing-miniatures-ship-tielnfighter:before {
   content: "F"; }
 
-i.xw-ship-tiephphantom:before {
+i.xwing-miniatures-ship-tiephphantom:before {
   content: "P"; }
 
-i.xw-ship-tiereaper:before {
+i.xwing-miniatures-ship-tierbheavy:before {
+  content: "J"; }
+
+i.xwing-miniatures-ship-tiereaper:before {
   content: "V"; }
 
-i.xw-ship-tiesabomber:before {
+i.xwing-miniatures-ship-tiesabomber:before {
   content: "B"; }
 
-i.xw-ship-tiesffighter:before {
+i.xwing-miniatures-ship-tiesffighter:before {
   content: "S"; }
 
-i.xw-ship-tiesilencer:before {
-  content: "$"; }
-
-i.xw-ship-tieskstriker:before {
+i.xwing-miniatures-ship-tieskstriker:before {
   content: "T"; }
 
-i.xw-ship-upsilonclassshuttle:before {
+i.xwing-miniatures-ship-tievnsilencer:before {
+  content: "$"; }
+
+i.xwing-miniatures-ship-upsilonclasscommandshuttle:before {
   content: "U"; }
 
-i.xw-ship-ut60duwing:before {
+i.xwing-miniatures-ship-ut60duwing:before {
   content: "u"; }
 
-i.xw-ship-vcx100lightfreighter:before {
+i.xwing-miniatures-ship-v19torrentstarfighter:before {
+  content: "^"; }
+
+i.xwing-miniatures-ship-vcx100lightfreighter:before {
   content: "G"; }
 
-i.xw-ship-vt49decimator:before {
+i.xwing-miniatures-ship-vt49decimator:before {
   content: "d"; }
 
-i.xw-ship-yt2400lightfreighter:before {
+i.xwing-miniatures-ship-vultureclassdroidfighter:before {
+  content: "_"; }
+
+i.xwing-miniatures-ship-xiclasslightshuttle:before {
+  content: "Q"; }
+
+i.xwing-miniatures-ship-yt2400lightfreighter:before {
   content: "o"; }
 
-i.xw-ship-yv666lightfreighter:before {
+i.xwing-miniatures-ship-yv666lightfreighter:before {
   content: "t"; }
 
-i.xw-ship-z95af4headhunter:before {
+i.xwing-miniatures-ship-z95af4headhunter:before {
   content: "z"; }

@@ -1,11 +1,12 @@
 from django import template
 from django.utils.safestring import mark_safe
+from django.template.defaultfilters import stringfilter
 
 import re
 
 register = template.Library()
 
-rgx = re.compile(r'\[([\w\s]+?)\]')
+rgx = re.compile(r'\[([\w\s\#]+?)\]')
 
 icon_text = {
     'Barrel Roll':'barrelroll',
@@ -42,7 +43,17 @@ def regex_icon(m):
 
 
 @register.filter(is_safe=True)
-def get_icon(iname, css=''):
+@stringfilter
+def get_icon(istring, css=''):
+    """
+    The get_icon filter add css like .hard or .easy in two ways:
+    adding the class as the css parameter if calling get_icon directly, or including
+    it in the format 'icon_name#css' when using the iconize template filter.
+    """
+    istring = istring.split('#', 1)
+    iname = istring[0].strip()
+    if len(istring) > 1:
+        css = '{} {}'.format(css, istring[1])
     iname = icon_text.get(iname, iname.lower())
     if iname == 'pilot':
         iname = 'helmet-rebel'
@@ -53,6 +64,7 @@ def get_icon(iname, css=''):
 
 
 @register.filter(is_safe=True)
+@stringfilter
 def iconize(text):
     return mark_safe(re.sub(rgx, regex_icon, text))
 
