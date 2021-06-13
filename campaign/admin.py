@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 
-from .models import User, Rulebook, PlayableShip, Pilot, Event, Mission, \
+from .models import User, Rulebook, PlayableShip, Pilot, Mission, \
     Campaign, Session, SessionEnemy, SessionPilot, PilotShip, PilotUpgrade, FGSetup, FlightGroup, \
     AI, AIManeuver, AIPriority, \
     EnemyPilot, EnemyAbility
@@ -146,7 +146,6 @@ admin.site.register(User, UserAdmin)
 admin.site.register(Pilot, PilotAdmin)
 admin.site.register(Rulebook, RulebookAdmin)
 admin.site.register(Mission, MissionAdmin)
-admin.site.register(Event)
 admin.site.register(Campaign, CampaignAdmin)
 admin.site.register(Session, SessionAdmin)
 admin.site.register(AI, AIAdmin)

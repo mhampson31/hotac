@@ -9,7 +9,7 @@ from django.forms import modelformset_factory, inlineformset_factory, CheckboxSe
 
 from crispy_forms.layout import Submit
 
-from .models import Session, Pilot, PilotUpgrade, Event, Rulebook, Campaign, AI, EnemyPilot
+from .models import Session, Pilot, PilotUpgrade, Rulebook, Campaign, AI, EnemyPilot
 from .forms import EnemyPilotForm, SessionForm, PilotUpgradeForm, PUHelper
 
 

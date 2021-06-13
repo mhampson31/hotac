@@ -87,17 +87,6 @@ class PlayableShip(models.Model):
         return self.name
 
 
-class Event(models.Model):
-    rulebook = models.ForeignKey(Rulebook, on_delete=models.CASCADE, related_name='events')
-    short_desc = models.CharField(max_length=25)
-    long_desc = models.CharField(max_length=120)
-    xp = models.SmallIntegerField(default=1)
-    team = models.BooleanField(default=True)
-
-    def __str__(self):
-        return self.short_desc
-
-
 class Mission(models.Model):
     FRIENDLY = 'F'
     NEUTRAL = 'N'

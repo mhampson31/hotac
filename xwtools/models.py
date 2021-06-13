@@ -28,8 +28,8 @@ class SlotChoice(models.TextChoices):
 
 class Ability(models.Model):
     name = models.CharField(max_length=30)
-    description = models.CharField(max_length=255, null=True, blank=True)
-    ai_description = models.CharField(max_length=255, null=True, blank=True)
+    description = models.TextField(null=True, blank=True)
+    ai_description = models.TextField(null=True, blank=True)
     type = models.CharField(max_length=3, choices=SlotChoice.choices)
     type2 = models.CharField(max_length=3, choices=SlotChoice.choices, null=True, blank=True, default=None)
     charges = models.PositiveSmallIntegerField(null=True, blank=True)

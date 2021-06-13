@@ -3,12 +3,12 @@ from django.db.models import Avg, Sum
 from django.utils.translation import gettext_lazy as _
 from django.urls import reverse
 
-from math import floor
-
-from .campaigns import User, Mission, Event, Campaign, FlightGroup
 from .enemies import EnemyPilot, EnemyAbility
 from .pilots import Pilot, PilotShip
 from xwtools.models import Chassis, Upgrade
+from math import floor
+
+from .campaigns import User, Mission, Campaign, FlightGroup
 
 
 class Session(models.Model):
@@ -209,13 +209,3 @@ class SessionEnemy(models.Model):
     @property
     def xp(self):
         return 1 + self.enemy.non_default_ship + self.enemy.large_ship
-
-
-class Achievement(models.Model):
-    pilot = models.ForeignKey(Pilot, on_delete=models.CASCADE)
-    session = models.ForeignKey(Session, on_delete=models.CASCADE, related_name='achievements')
-    event = models.ForeignKey(Event, on_delete=models.CASCADE, default=1)
-    turn = models.PositiveSmallIntegerField()
-    target = models.OneToOneField(SessionEnemy, on_delete=models.SET_NULL, null=True, blank=True)
-
-    threat = models.SmallIntegerField(null=True, blank=True)
