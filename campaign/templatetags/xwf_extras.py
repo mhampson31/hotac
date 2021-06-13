@@ -60,7 +60,7 @@ def get_icon(istring, css=''):
     elif iname == 'initiative':
         iname = 'rebel'
     """Returns the <i> block that inserts an icon from the xwing font css. Doesn't work for ship icons."""
-    return mark_safe('<i class="xwf xwf-{} {}"></i>'.format(iname, css))
+    return mark_safe('<i class="xwing-miniatures-font xwing-miniatures-font-{} {}"></i>'.format(iname, css))
 
 
 @register.filter(is_safe=True)

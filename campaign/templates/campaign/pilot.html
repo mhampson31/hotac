@@ -63,13 +63,13 @@
                                             {{gu.get_status_display}}
                                     </li>
                                     <li class='list-group-item'>
-                                        <i class="xwf xwf-squad-point-cost"></i>{{gu.cost}}
+                                        <i class="xwing-miniatures-font xwing-miniatures-font-squad-point-cost"></i>{{gu.cost}}
                                     </li>
                                     {% if gu.charges %}
                                     <li class='list-group-item'>
-                                        <i class="xwf
-                                            {% if gu.upgrade.force %} xwf-forcecharge
-                                            {% else %} xwf-charge
+                                        <i class="xwing-miniatures-font
+                                            {% if gu.upgrade.force %} xwing-miniatures-font-forcecharge
+                                            {% else %} xwing-miniatures-font-charge
                                             {% endif %}"></i>{{gu.charges}}
                                     </li>
                                     {% endif %}
@@ -83,12 +83,12 @@
     </div>
 
     <div class='tab-pane' role='tabpanel' id='upgrade'>
-        <p>XP Earned: <i class="xwf xwf-squad-point-cost"></i>{{pilot.total_xp}}</p>
-        <p>XP Spent: <i class="xwf xwf-squad-point-cost"></i>{{pilot.spent_ships}} Ships,
-                     <i class="xwf xwf-squad-point-cost"></i>{{pilot.spent_initiative}} Initiative,
-                     <i class="xwf xwf-squad-point-cost"></i>{{pilot.spent_upgrades}} Upgrades
+        <p>XP Earned: <i class="xwing-miniatures-font xwing-miniatures-font-squad-point-cost"></i>{{pilot.total_xp}}</p>
+        <p>XP Spent: <i class="xwing-miniatures-font xwing-miniatures-font-squad-point-cost"></i>{{pilot.spent_ships}} Ships,
+                     <i class="xwing-miniatures-font xwing-miniatures-font-squad-point-cost"></i>{{pilot.spent_initiative}} Initiative,
+                     <i class="xwing-miniatures-font xwing-miniatures-font-squad-point-cost"></i>{{pilot.spent_upgrades}} Upgrades
                  </p>
-        <p>XP Available: <i class="xwf xwf-squad-point-cost"></i>{{remaining}}</p>
+        <p>XP Available: <i class="xwing-miniatures-font xwing-miniatures-font-squad-point-cost"></i>{{remaining}}</p>
         <form method='post' class='col'>{% csrf_token %}
             <div class='row mb-2'>
                 <div class='col-4'>Upgrade</div>
