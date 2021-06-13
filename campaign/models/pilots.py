@@ -80,7 +80,7 @@ class Pilot(models.Model):
         """
         slot_list = []
         # get ship slot choices
-        for ss in self.active_ship.slots.all():
+        for ss in self.active_ship.chassis.slots.all():
             slot_list.append(next(s2 for s2 in SlotChoice if s2.value == ss.type))
 
         # maybe change Pilot.path to use SlotChoice...
