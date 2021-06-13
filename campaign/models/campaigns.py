@@ -224,7 +224,7 @@ class FlightGroup(models.Model):
             if not s: s = default
             action = s[2]
             init = s[1]
-            chassis_id = s[0]
+            chassis = s[0]
             self.mission.fgsetup_set.create(flight_group=self, chassis_id=chassis, action=action, players=players, init=init)
 
 
