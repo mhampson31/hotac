@@ -131,7 +131,6 @@ class Campaign(models.Model):
     description = models.CharField(max_length=30)
 
     victory = models.PositiveSmallIntegerField()
-    ship_initiative = models.BooleanField(default=False)
     pool_xp = models.BooleanField(default=False)
 
     deck = models.ManyToManyField(Mission)
@@ -157,6 +156,10 @@ class Campaign(models.Model):
         for m in Missions.objects.filter(rulebook=self.rulebook, sequence=1):
             self.deck.add(m)
         self.save()
+
+    def draw_missions(self):
+        from random import sample
+        return sample(list(self.deck.all()), 2)
 
 
 class CampaignUpgrade(models.Model):
@@ -209,6 +212,20 @@ class FlightGroup(models.Model):
             else:
                 squad.append(s.generate(group_init))
         return squad
+
+    def batch_load(self, setup_list):
+        """setup_list should be a list of 6 tuples in (chassis_id, init, action)
+           any can be null, we just make some assumptions for those.
+           The index of each tuple corresponds to the player count.
+        """
+        players = 1
+        default = (self.mission.enemy_faction.default_ship.id, 1, 'A')
+        for s in setup_list:
+            if not s: s = default
+            action = s[2]
+            init = s[1]
+            chassis_id = s[0]
+            self.mission.fgsetup_set.create(flight_group=self, chassis_id=chassis, action=action, players=players, init=init)
 
 
 class FGSetup(models.Model):
