@@ -9,9 +9,6 @@ from .models import User, Rulebook, PlayableShip, Pilot, Mission, \
 #from xwtools.models import Slot
 
 
-
-
-
 class PilotInline(admin.StackedInline):
     model = Pilot
 
@@ -122,12 +119,19 @@ class AIManeuverInline(admin.TabularInline):
         ('Rolls', {'fields': ('roll_1', 'roll_2', 'roll_3', 'roll_4', 'roll_5', 'roll_6')})
     )
 
+    def formfield_for_foreignkey(self, db_field, request, **kwargs):
+        if 'object_id' in request.resolver_match.kwargs:
+            if db_field.name in ('roll_1', 'roll_2', 'roll_3', 'roll_4', 'roll_5', 'roll_6'):
+                kwargs['queryset'] = AI.objects.get(pk=request.resolver_match.kwargs['object_id']).dial.maneuvers.all()
+        return super().formfield_for_foreignkey(db_field, request, **kwargs)
+
 class AIPriorityInline(admin.TabularInline):
     model = AIPriority
     extra = 0
 
 class AIAdmin(admin.ModelAdmin):
     inlines = (AIPriorityInline, AIManeuverInline)
+    list_select_related = ('aimaneuver', 'aipriority')
 
 
 class EnemyAbilityInline(admin.TabularInline):

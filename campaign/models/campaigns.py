@@ -2,8 +2,6 @@ from django.db import models
 from django.urls import reverse
 from django.contrib.auth.models import AbstractUser
 
-from smart_selects.db_fields import ChainedForeignKey
-
 from math import floor
 
 from xwtools.models import Chassis, Faction, SlotChoice, Upgrade
@@ -221,11 +219,7 @@ class FGSetup(models.Model):
     action = models.CharField(max_length=1, choices=( ('A', 'Add'), ('R', 'Replace') ), default='A')
     mission = models.ForeignKey(Mission, on_delete=models.CASCADE)
     chassis = models.ForeignKey(Chassis, on_delete=models.CASCADE, null=True, blank=True)
-    flight_group = ChainedForeignKey(FlightGroup,
-                                            chained_field='mission',
-                                            chained_model_field='mission',
-                                            on_delete=models.CASCADE,
-                                            related_name='squad_members')
+    flight_group = models.ForeignKey(FlightGroup, on_delete=models.CASCADE, related_name='squad_members')
     players = models.SmallIntegerField(default=1)
     init = models.SmallIntegerField(default=1)
     elite = models.BooleanField(default=False)

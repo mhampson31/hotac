@@ -22,9 +22,6 @@ urlpatterns = [
     path('enemy/<int:pk>', campaign_views.EnemyView.as_view(), name='enemy'),
     path('enemy_list/', campaign_views.enemy_list, name='enemy_list'),
     #path('random-enemy', campaign)
-    path('chaining/', include('smart_selects.urls')),
-
-
 ]
 
 if settings.DEBUG:
