@@ -14,7 +14,7 @@ class Pilot(models.Model):
     This model represents a player's character pilot, not a pilot card.
     """
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    campaign = models.ForeignKey(Campaign, on_delete=models.SET_NULL, null=True)
+    campaign = models.ForeignKey(Campaign, on_delete=models.SET_NULL, null=True, related_name='pilots')
     ships = models.ManyToManyField(Chassis, through='PilotShip', related_name='pilot_character')
     callsign = models.CharField(max_length=30)
     initiative = models.PositiveSmallIntegerField(default=2)
@@ -65,7 +65,7 @@ class Pilot(models.Model):
 
     @property
     def active_ship(self):
-        return self.ships.last()
+        return self.pilotship_set.last()
 
     @property
     def starter_ship(self):
@@ -105,7 +105,6 @@ class Pilot(models.Model):
 class PilotShip(models.Model):
     pilot = models.ForeignKey(Pilot, on_delete=models.CASCADE)
     chassis = models.ForeignKey(Chassis, on_delete=models.CASCADE, null=True, related_name='pilot_ship')
-    initiative = models.PositiveSmallIntegerField(default=2)
 
     def __str__(self):
         return self.pilot.callsign + "\'s " + self.chassis.name

@@ -10,7 +10,7 @@
 </div>
 
 <h4>Your Games</h4>
-{% for game in games %}
+{% for game in campaigns %}
     <div class='card mb-3'>
         <div class='card-body'>
             <h5>{{game.description}}{% if game.gm == user %}<i> (Admin)</i>{% endif %}</h5>

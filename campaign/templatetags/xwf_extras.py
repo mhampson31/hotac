@@ -65,3 +65,15 @@ def threatbar(threat):
 @register.filter
 def get_item(dictionary, key):
     return dictionary.get(key)
+
+def hotac_crit():
+    from random import choice
+    return choice(
+        ('weapons disabled',
+         'ion',
+         'stress',
+         'stress',
+         'damage'
+         'damage'
+        )
+    )

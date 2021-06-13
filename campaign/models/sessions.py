@@ -16,7 +16,7 @@ class Session(models.Model):
     mission = models.ForeignKey(Mission, on_delete=models.CASCADE)
     pilots = models.ManyToManyField(Pilot, related_name='sessions', through='SessionPilot')
     enemies = models.ManyToManyField(EnemyPilot, through='SessionEnemy')
-    date = models.DateField()
+    date = models.DateField(null=True, blank=True)
     VICTORY = 'V'
     FAILURE = 'F'
     UNRESOLVED = 'U'
@@ -36,6 +36,12 @@ class Session(models.Model):
 
     def __str__(self):
         return '{} {}'.format(self.mission.name, self.date)
+
+    def add_pilots(self):
+        for pilot in self.campaign.pilots.all():
+            self.sessionpilot_set.create(pilot=pilot,
+                                         ship=pilot.active_ship,
+                                         initiative=pilot.initiative)
 
     def generate_enemies(self):
         from random import choice
@@ -71,6 +77,21 @@ class Session(models.Model):
             se.callsign = '%s %s' % (se.flight_group.name, p if p > 1 else 'Leader')
             se.save()
             p = p + 1
+
+    def debrief(self, outcome):
+        if outcome == self.VICTORY:
+            self.campaign.deck.remove(self.mission)
+            try:
+                next_mission = Mission.objects.get(rulebook=self.mission.rulebook,
+                                                   story=self.mission.story,
+                                                   sequence=self.mission.sequence+1)
+                self.campaign.deck.add(next_mission)
+            except DoesNotExist:
+                pass
+            self.outcome = outcome
+            self.save()
+
+
 
     @property
     def group_init(self):
