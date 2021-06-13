@@ -35,7 +35,6 @@ INSTALLED_APPS = [
     'campaign',
     'xwtools',
     'crispy_forms',
-    'mptt',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
