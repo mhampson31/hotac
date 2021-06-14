@@ -7,8 +7,9 @@ from crispy_forms.layout import Layout, Submit, Div, Field, MultiField
 from crispy_bootstrap5.bootstrap5 import FloatingField
 
 from .models import EnemyPilot, EnemyAbility, Session, SessionPilot, SessionEnemy, \
-                    Pilot, PilotUpgrade, CampaignUpgrade
+                    Pilot, PilotUpgrade, CampaignUpgrade, Campaign
 from .fields import GroupedModelChoiceField
+
 from xwtools.models import Upgrade, SlotChoice
 
 
@@ -32,6 +33,30 @@ class PUHelper(FormHelper):
             )
         )
         self.render_required_fields = True
+
+
+class CampaignForm(forms.ModelForm):
+    prefix = 'campaign'
+
+    class Meta:
+        model = Campaign
+        fields = ('victory', 'description', 'pool_xp')
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.helper = FormHelper()
+        self.helper.form_method = 'post'
+        self.helper.form_tag = False
+        self.helper.add_input(Submit('submit', 'Submit'))
+        self.helper.layout = Layout(
+            Div(
+                FloatingField('victory'),
+                FloatingField('description'),
+                Field('pool_xp')
+            )
+        )
+
+
 
 
 class SessionForm(forms.ModelForm):

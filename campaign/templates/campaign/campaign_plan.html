@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% load xwf_extras %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+
+<div class="row">
+
+    <div class="col">
+        <h4>Campaign Settings</h4>
+        {% crispy form %}
+    </div>
+
+    <div class="col">
+        <h4>Mission Deck</h4>
+        <ul class="list-group">
+            {% for mission in form.instance.deck.all %}
+            <li class="list-group-item">{{mission}}</li>
+            {% endfor %}
+        </ul>
+        <a href="#" class="btn btn-primary">Plan Next Mission</a>
+    </div>
+</div>
+{% endblock %}

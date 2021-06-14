@@ -12,7 +12,8 @@ from crispy_forms.layout import Submit
 
 from .models import Session, Pilot, PilotUpgrade, Rulebook, Campaign, AI, EnemyPilot
 from .forms import EnemyPilotForm, SessionForm, SessionPilotFormset, SessionEnemyFormset, \
-                   SPFormsetHelper, SEFormsetHelper, PilotUpgradeForm, PUHelper
+                   SPFormsetHelper, SEFormsetHelper, PilotUpgradeForm, PUHelper, \
+                   CampaignForm
 
 
 def index(request):
@@ -49,7 +50,7 @@ class SessionDebrief(UpdateView):
     template_name_suffix = '_debrief'
 
     def get_success_url(self):
-        return reverse_lazy('game:session-debrief', args=(self.object.pk,))
+        return reverse_lazy('game:campaign-plan', args=(self.object.campaign.pk,))
 
     def get_context_data(self, **kwargs):
         data = super().get_context_data(**kwargs)
@@ -124,6 +125,12 @@ class CampaignView(DetailView):
     model = Campaign
     context_object_name = 'campaign'
     template_name = 'campaign/campaign.html'
+
+
+class CampaignUpdate(UpdateView):
+    model = Campaign
+    form_class = CampaignForm
+    template_name_suffix = '_plan'
 
 
 class RulebookUpdate(UpdateView):
