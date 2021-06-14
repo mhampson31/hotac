@@ -4,6 +4,7 @@ from django.forms.models import inlineformset_factory
 
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Layout, Submit, Div, Field, MultiField
+from crispy_bootstrap5.bootstrap5 import FloatingField
 
 from .models import EnemyPilot, EnemyAbility, Session, SessionPilot, SessionEnemy, \
                     Pilot, PilotUpgrade, CampaignUpgrade
@@ -41,9 +42,15 @@ class SessionForm(forms.ModelForm):
         self.helper = FormHelper()
         self.helper.form_method = 'post'
         self.helper.form_tag = False
-        self.helper.form_class = 'form-inline'
-        self.helper.field_template = 'bootstrap4/layout/inline_field.html'
+        #self.helper.form_class = 'form-inline'
+        #self.helper.field_template = 'bootstrap4/layout/inline_field.html'
         self.helper.add_input(Submit('submit', 'Submit'))
+        self.helper.layout = Layout(
+            Div(
+                FloatingField('date', wrapper_class='col-6'),
+                FloatingField('outcome', wrapper_class='col-6')
+            )
+        )
 
     class Meta:
         model = Session
@@ -71,21 +78,30 @@ class SPFormsetHelper(FormHelper):
         self.helper.field_template = 'bootstrap3/layout/inline_field.html'
         self.layout = Layout(
             Div(
-                Div(
-                    Field('pilot', wrapper_class="col-2", readonly=True),
-                    Field('ship', wrapper_class="col-2", readonly=True),
-                    css_class="card-header row"),
+                FloatingField('status', wrapper_class="col-6 gx-2"),
+                FloatingField('bonus', wrapper_class='col-3 gx-2'),
+                FloatingField('penalty', wrapper_class='col-3 gx-2'),
+                css_class="row mb-1"
+            ),
+            Div(
+                FloatingField('hits', wrapper_class='col-3 gx-2'),
+                FloatingField('assists', wrapper_class='col-3 gx-2'),
+                FloatingField('guards', wrapper_class='col-3 gx-2'),
+                FloatingField('emplacements', wrapper_class='col-3 gx-2'),
+                css_class='form-group row mb-1'
+            )
+        )
 
-                Div(
-                    Field('status', wrapper_class="col-2"),
-                    Field('hits', wrapper_class='col'),
-                    Field('assists', wrapper_class='col'),
-                    Field('guards', wrapper_class='col'),
-                    Field('emplacements', wrapper_class='col'),
-                    Field('bonus', wrapper_class='col'),
-                    Field('penalty', wrapper_class='col'),
-                    css_class='form-group card-body row'),
-                css_class="card mb-3"
+
+class SEFormsetHelper(FormHelper):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.helper = FormHelper()
+        self.helper.form_method = 'post'
+        self.helper.form_tag = False
+        self.layout = Layout(
+            Div(
+                FloatingField('killed_by', wrapper_class="col")
             )
         )
 

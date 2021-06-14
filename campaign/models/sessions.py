@@ -78,17 +78,16 @@ class Session(models.Model):
             se.save()
             p = p + 1
 
-    def debrief(self, outcome):
-        if outcome == self.VICTORY:
+    def debrief(self):
+        if self.outcome == self.VICTORY and self.campaign.deck.filter(id=self.mission_id).exists():
             self.campaign.deck.remove(self.mission)
             try:
                 next_mission = Mission.objects.get(rulebook=self.mission.rulebook,
                                                    story=self.mission.story,
                                                    sequence=self.mission.sequence+1)
                 self.campaign.deck.add(next_mission)
-            except DoesNotExist:
+            except Mission.DoesNotExist:
                 pass
-            self.outcome = outcome
             self.save()
 
 

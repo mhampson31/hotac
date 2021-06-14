@@ -35,6 +35,7 @@ INSTALLED_APPS = [
     'campaign',
     'xwtools',
     'crispy_forms',
+    'crispy_bootstrap5',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -60,7 +61,8 @@ AUTH_USER_MODEL = 'campaign.User'
 
 ROOT_URLCONF = 'hotac.urls'
 
-CRISPY_TEMPLATE_PACK = 'bootstrap3'
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
+CRISPY_TEMPLATE_PACK = "bootstrap5"
 
 TEMPLATES = [
     {
@@ -118,6 +120,3 @@ DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
 
 STATIC_ROOT = '/home/public/static'
 STATIC_URL = '/static/'
-
-# for smart selects
-USE_DJANGO_JQUERY = True

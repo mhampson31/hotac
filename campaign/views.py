@@ -12,7 +12,7 @@ from crispy_forms.layout import Submit
 
 from .models import Session, Pilot, PilotUpgrade, Rulebook, Campaign, AI, EnemyPilot
 from .forms import EnemyPilotForm, SessionForm, SessionPilotFormset, SessionEnemyFormset, \
-                   SPFormsetHelper, PilotUpgradeForm, PUHelper
+                   SPFormsetHelper, SEFormsetHelper, PilotUpgradeForm, PUHelper
 
 
 def index(request):
@@ -63,6 +63,8 @@ class SessionDebrief(UpdateView):
             data['enemies'] = SessionEnemyFormset(instance=self.object, prefix='enemy')
             for e in data['enemies']:
                 e.fields['killed_by'].queryset = self.object.sessionpilot_set.all()
+        data["pilot-helper"] = SPFormsetHelper
+        data["enemy-helper"] = SEFormsetHelper
         return data
 
     def form_valid(self, form):
@@ -76,27 +78,8 @@ class SessionDebrief(UpdateView):
         if enemies.is_valid():
             enemies.instance = self.object
             enemies.save()
+        self.object.debrief()
         return super().form_valid(form)
-
-    """s = Session.objects.get(id=session_id)
-    if request.method == 'POST':
-        # create a form instance and populate it with data from the request:
-        form = SessionPilotFormset(request.POST, instance=s)
-        # check whether it's valid:
-        if form.is_valid():
-            # process the data in form.cleaned_data as required
-            # ...
-            # redirect to a new URL:
-            form.save()
-            return HttpResponseRedirect(reverse_lazy('game:session', args=(session_id,)))
-
-    # if a GET (or any other method) we'll create a blank form
-    else:
-        #form = SessionForm(instance=s)
-        form = SessionPilotFormset(instance=s)
-
-    return render(request, 'campaign/session_debrief.html', {'form': form})"""
-
 
 
 def session_plan(request, session_id):

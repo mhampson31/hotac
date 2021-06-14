@@ -11,41 +11,46 @@
     <div class="container">
         <div class="row mb-3">
             <h4>{{form.instance.mission}}</h4>
-            {{ form|crispy }}
+            {% crispy form %}
         </div>
         <div class="row">
+            <h4>Pilots</h4>
+            {{pilots.management_form}}
+            {% for pilot in pilots %}
             <div class="col">
-                <h4>Pilots</h4>
-                {{pilots.management_form}}
-                {% for pilot in pilots %}
                 <div class="card mb-3">
                     <div class="card-header">
-                        {{pilot.instance.pilot}}
+                        <h5><i class="xw-ship xw-ship-{{pilot.instance.ship.chassis.css_name}}"></i> {{pilot.instance.pilot}}</h5>
                     </div>
-                    <div class="card-body row row-cols">
-                        {{pilot|crispy}}
-                    </div>
-                </div>
-                {% endfor %}
-            </div>
-
-            <div class="col">
-                <h4>Enemies</h4>
-                {{enemies.management_form}}
-                {% for enemy in enemies %}
-                <div class="card mb-3">
-                    <div class="card-header">
-                        {{enemy.instance}}
-                    </div>
-                    <div class="card-body row row-cols">
-                        {{enemy|crispy}}
+                    <div class="card-body">
+                        {% crispy pilot pilot-helper %}
                     </div>
                 </div>
-                {% endfor %}
             </div>
-
+            {% endfor %}
         </div>
-    <input class="btn btn-primary" type="submit" value="Save">
+
+        <div class="row">
+            <h4>Enemies</h4>
+            {{enemies.management_form}}
+            {% for enemy in enemies %}
+            <div class="col">
+                <div class="card mb-3">
+                    <div class="card-header">
+                        <h5><i class="xw-ship xw-ship-{{enemy.instance.chassis.css_name}}"></i> {{enemy.instance}}</h5>
+                    </div>
+                    <div class="card-body">
+                        {% crispy enemy enemy-helper %}
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
 </form>
+
+<div>
+    <input class="btn btn-primary" type="submit" value="Save">
+</div>
 
 {% endblock %}
