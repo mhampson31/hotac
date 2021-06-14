@@ -55,16 +55,14 @@ class SessionDebrief(UpdateView):
         data = super().get_context_data(**kwargs)
         if self.request.POST:
             data["pilots"] = SessionPilotFormset(self.request.POST, instance=self.object, prefix='pilot')
-            enemies = SessionEnemyFormset(self.request.POST, instance=self.object, prefix='enemy')
-            for e in enemies:
+            data['enemies'] = SessionEnemyFormset(self.request.POST, instance=self.object, prefix='enemy')
+            for e in data['enemies']:
                 e.fields['killed_by'].queryset = self.object.sessionpilot_set.all()
-            data["enemies"] = enemies
         else:
             data["pilots"] = SessionPilotFormset(instance=self.object, prefix='pilot')
-            enemies = SessionEnemyFormset(instance=self.object, prefix='enemy')
-            for e in enemies:
+            data['enemies'] = SessionEnemyFormset(instance=self.object, prefix='enemy')
+            for e in data['enemies']:
                 e.fields['killed_by'].queryset = self.object.sessionpilot_set.all()
-            data["enemies"] = enemies
         return data
 
     def form_valid(self, form):
