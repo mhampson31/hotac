@@ -2,7 +2,8 @@ from django.shortcuts import render
 from django.db.models import Count, Sum
 from django.db.models.functions import Coalesce
 from django.views.generic import DetailView
-from django.urls import reverse_lazy
+
+from django.urls import reverse_lazy, reverse
 from django.http import HttpResponseRedirect
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from django.forms import modelformset_factory, inlineformset_factory, CheckboxSelectMultiple
@@ -10,7 +11,8 @@ from django.forms import modelformset_factory, inlineformset_factory, CheckboxSe
 from crispy_forms.layout import Submit
 
 from .models import Session, Pilot, PilotUpgrade, Rulebook, Campaign, AI, EnemyPilot
-from .forms import EnemyPilotForm, SessionForm, PilotUpgradeForm, PUHelper
+from .forms import EnemyPilotForm, SessionForm, SessionPilotFormset, SessionEnemyFormset, \
+                   SPFormsetHelper, PilotUpgradeForm, PUHelper
 
 
 def index(request):
@@ -39,6 +41,65 @@ def session_summary(request, session_id):
 
     context = {'session':s, 'init_list':init_list, 'enemy_count':enemy_count}
     return render(request, 'campaign/session.html', context)
+
+
+class SessionDebrief(UpdateView):
+    model = Session
+    form_class = SessionForm
+    template_name_suffix = '_debrief'
+
+    def get_success_url(self):
+        return reverse_lazy('game:session-debrief', args=(self.object.pk,))
+
+    def get_context_data(self, **kwargs):
+        data = super().get_context_data(**kwargs)
+        if self.request.POST:
+            data["pilots"] = SessionPilotFormset(self.request.POST, instance=self.object, prefix='pilot')
+            enemies = SessionEnemyFormset(self.request.POST, instance=self.object, prefix='enemy')
+            for e in enemies:
+                e.fields['killed_by'].queryset = self.object.sessionpilot_set.all()
+            data["enemies"] = enemies
+        else:
+            data["pilots"] = SessionPilotFormset(instance=self.object, prefix='pilot')
+            enemies = SessionEnemyFormset(instance=self.object, prefix='enemy')
+            for e in enemies:
+                e.fields['killed_by'].queryset = self.object.sessionpilot_set.all()
+            data["enemies"] = enemies
+        return data
+
+    def form_valid(self, form):
+        context = self.get_context_data()
+        pilots = context["pilots"]
+        enemies = context["enemies"]
+        self.object = form.save()
+        if pilots.is_valid():
+            pilots.instance = self.object
+            pilots.save()
+        if enemies.is_valid():
+            enemies.instance = self.object
+            enemies.save()
+        return super().form_valid(form)
+
+    """s = Session.objects.get(id=session_id)
+    if request.method == 'POST':
+        # create a form instance and populate it with data from the request:
+        form = SessionPilotFormset(request.POST, instance=s)
+        # check whether it's valid:
+        if form.is_valid():
+            # process the data in form.cleaned_data as required
+            # ...
+            # redirect to a new URL:
+            form.save()
+            return HttpResponseRedirect(reverse_lazy('game:session', args=(session_id,)))
+
+    # if a GET (or any other method) we'll create a blank form
+    else:
+        #form = SessionForm(instance=s)
+        form = SessionPilotFormset(instance=s)
+
+    return render(request, 'campaign/session_debrief.html', {'form': form})"""
+
+
 
 def session_plan(request, session_id):
     s = Session.objects.get(id=session_id)

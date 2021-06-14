@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% load xwf_extras %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+<form action='#' method="post">
+    {% csrf_token %}
+    <div class="container">
+        <div class="row mb-3">
+            <h4>{{form.instance.mission}}</h4>
+            {{ form|crispy }}
+        </div>
+        <div class="row">
+            <div class="col">
+                <h4>Pilots</h4>
+                {{pilots.management_form}}
+                {% for pilot in pilots %}
+                <div class="card mb-3">
+                    <div class="card-header">
+                        {{pilot.instance.pilot}}
+                    </div>
+                    <div class="card-body row row-cols">
+                        {{pilot|crispy}}
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+
+            <div class="col">
+                <h4>Enemies</h4>
+                {{enemies.management_form}}
+                {% for enemy in enemies %}
+                <div class="card mb-3">
+                    <div class="card-header">
+                        {{enemy.instance}}
+                    </div>
+                    <div class="card-body row row-cols">
+                        {{enemy|crispy}}
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+
+        </div>
+    <input class="btn btn-primary" type="submit" value="Save">
+</form>
+
+{% endblock %}

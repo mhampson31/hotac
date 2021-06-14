@@ -1,10 +1,12 @@
 from django import forms
 from django.forms.widgets import CheckboxSelectMultiple
+from django.forms.models import inlineformset_factory
 
 from crispy_forms.helper import FormHelper
-from crispy_forms.layout import Layout, Submit, Div, Field
+from crispy_forms.layout import Layout, Submit, Div, Field, MultiField
 
-from .models import EnemyPilot, EnemyAbility, Session, Pilot, PilotUpgrade, CampaignUpgrade
+from .models import EnemyPilot, EnemyAbility, Session, SessionPilot, SessionEnemy, \
+                    Pilot, PilotUpgrade, CampaignUpgrade
 from .fields import GroupedModelChoiceField
 from xwtools.models import Upgrade, SlotChoice
 
@@ -13,8 +15,6 @@ from xwtools.models import Upgrade, SlotChoice
 class EnemyPilotForm(forms.Form):
     pass
 #    level = forms.ChoiceField(EnemyAbility.Level.choices)
-
-
 
 class PUHelper(FormHelper):
     def __init__(self, *args, **kwargs):
@@ -34,22 +34,60 @@ class PUHelper(FormHelper):
 
 
 class SessionForm(forms.ModelForm):
+    prefix = 'session'
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.helper = FormHelper()
-        self.helper.form_id = 'id-exampleForm'
-        self.helper.form_class = 'blueForms'
         self.helper.form_method = 'post'
-        self.helper.form_action = 'submit_survey'
-        helper.form_class = 'form-inline'
-        helper.field_template = 'bootstrap4/layout/inline_field.html'
-
+        self.helper.form_tag = False
+        self.helper.form_class = 'form-inline'
+        self.helper.field_template = 'bootstrap4/layout/inline_field.html'
         self.helper.add_input(Submit('submit', 'Submit'))
 
     class Meta:
         model = Session
         fields = ['date', 'outcome']
+
+
+SessionPilotFormset = inlineformset_factory(Session,
+                                            SessionPilot,
+                                            exclude=('pilot', 'ship', 'initiative',),
+                                            extra=0)
+
+SessionEnemyFormset = inlineformset_factory(Session,
+                                            SessionEnemy,
+                                            fields=('killed_by',),
+                                            extra=0)
+
+
+class SPFormsetHelper(FormHelper):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.helper = FormHelper()
+        self.helper.form_method = 'post'
+        self.helper.form_tag = False
+        self.helper.form_class = 'form-inline'
+        self.helper.field_template = 'bootstrap3/layout/inline_field.html'
+        self.layout = Layout(
+            Div(
+                Div(
+                    Field('pilot', wrapper_class="col-2", readonly=True),
+                    Field('ship', wrapper_class="col-2", readonly=True),
+                    css_class="card-header row"),
+
+                Div(
+                    Field('status', wrapper_class="col-2"),
+                    Field('hits', wrapper_class='col'),
+                    Field('assists', wrapper_class='col'),
+                    Field('guards', wrapper_class='col'),
+                    Field('emplacements', wrapper_class='col'),
+                    Field('bonus', wrapper_class='col'),
+                    Field('penalty', wrapper_class='col'),
+                    css_class='form-group card-body row'),
+                css_class="card mb-3"
+            )
+        )
 
 
 class PilotUpgradeForm(forms.ModelForm):
