@@ -1,333 +1,53 @@
 [
+
 {
-    "model": "campaign.user",
+    "model": "campaign.playableship",
     "pk": 1,
     "fields": {
-        "password": "pbkdf2_sha256$180000$QU0BzHnz9YLW$fAGL7HSBZCFXrjtyfv6YteV6ZeV4kjHY9cPhHeAcCbE=",
-        "last_login": "2020-06-04T12:38:30.406Z",
-        "is_superuser": true,
-        "username": "Mike",
-        "first_name": "",
-        "last_name": "",
-        "email": "",
-        "is_staff": true,
-        "is_active": true,
-        "date_joined": "2019-05-12T16:18:53Z",
-        "groups": [],
-        "user_permissions": []
-    }
-},
-{
-    "model": "campaign.user",
-    "pk": 2,
-    "fields": {
-        "password": "pbkdf2_sha256$150000$jNID7i03RPce$PFx2o2ahQZa9sehBLeWsaxg2L7J8Kvja1fGqwWrT5nI=",
-        "last_login": null,
-        "is_superuser": false,
-        "username": "Kate",
-        "first_name": "",
-        "last_name": "",
-        "email": "",
-        "is_staff": false,
-        "is_active": true,
-        "date_joined": "2019-05-12T16:49:53Z",
-        "groups": [],
-        "user_permissions": []
-    }
-},
-{
-    "model": "campaign.user",
-    "pk": 3,
-    "fields": {
-        "password": "pbkdf2_sha256$150000$geHqBeuaVT1e$PK9CvjwrDNr2FmlfJZTof7hXiACIPDOe/UtobxnAr+I=",
-        "last_login": null,
-        "is_superuser": false,
-        "username": "Carolyn",
-        "first_name": "",
-        "last_name": "",
-        "email": "",
-        "is_staff": false,
-        "is_active": true,
-        "date_joined": "2019-05-12T16:50:43.164Z",
-        "groups": [],
-        "user_permissions": []
-    }
-},
-{
-    "model": "campaign.user",
-    "pk": 4,
-    "fields": {
-        "password": "pbkdf2_sha256$150000$cLM3oYUrPkMe$sg1vN5fuWqZANCH4RMGUuzrXFwIZl1tXUxDFFVAo2cU=",
-        "last_login": null,
-        "is_superuser": false,
-        "username": "Steve",
-        "first_name": "",
-        "last_name": "",
-        "email": "",
-        "is_staff": false,
-        "is_active": true,
-        "date_joined": "2019-05-12T16:51:33.044Z",
-        "groups": [],
-        "user_permissions": []
-    }
-},
-{
-    "model": "campaign.user",
-    "pk": 5,
-    "fields": {
-        "password": "pbkdf2_sha256$150000$HMp3SAHtoNtr$QCmFaA5ibvDT5yIf+73EeQSSf4YDtH6q60qbjbhwreg=",
-        "last_login": null,
-        "is_superuser": false,
-        "username": "Lis",
-        "first_name": "",
-        "last_name": "",
-        "email": "",
-        "is_staff": false,
-        "is_active": true,
-        "date_joined": "2019-05-12T17:09:36.324Z",
-        "groups": [],
-        "user_permissions": []
-    }
-},
-{
-    "model": "campaign.campaign",
-    "pk": 1,
-    "fields": {
-        "description": "Heroes of the Aturi Cluster",
-        "admin": [
-            "Mike"
-        ],
-        "start_init": 2,
-        "ship_cost": 5,
-        "upgrade_logic": 1,
-        "initiative_cost": 3,
-        "initiative_sq": false
-    }
-},
-{
-    "model": "campaign.playership",
-    "pk": 1,
-    "fields": {
-        "campaign": 1,
+        "rulebook": 1,
         "chassis": 1,
         "xp_value": 10,
         "progression": "d"
     }
 },
 {
-    "model": "campaign.playership",
+    "model": "campaign.playableship",
     "pk": 2,
     "fields": {
-        "campaign": 1,
+        "rulebook": 1,
         "chassis": 2,
         "xp_value": 16,
         "progression": "d"
     }
 },
 {
-    "model": "campaign.playership",
+    "model": "campaign.playableship",
     "pk": 3,
     "fields": {
-        "campaign": 1,
+        "rulebook": 1,
         "chassis": 3,
         "xp_value": 0,
         "progression": "d"
     }
 },
 {
-    "model": "campaign.playership",
+    "model": "campaign.playableship",
     "pk": 4,
     "fields": {
-        "campaign": 1,
+        "rulebook": 1,
         "chassis": 4,
         "xp_value": 0,
         "progression": "d"
     }
 },
 {
-    "model": "campaign.playership",
+    "model": "campaign.playableship",
     "pk": 5,
     "fields": {
-        "campaign": 1,
+        "rulebook": 1,
         "chassis": 5,
         "xp_value": 0,
         "progression": "h"
-    }
-},
-{
-    "model": "campaign.event",
-    "pk": 1,
-    "fields": {
-        "campaign": 1,
-        "short_desc": "Hit",
-        "long_desc": "Deal at least 1 damage to one or more enemies",
-        "xp": 1,
-        "team": true
-    }
-},
-{
-    "model": "campaign.event",
-    "pk": 2,
-    "fields": {
-        "campaign": 1,
-        "short_desc": "Kill",
-        "long_desc": "Destroyed an enemy fighter",
-        "xp": 1,
-        "team": false
-    }
-},
-{
-    "model": "campaign.event",
-    "pk": 3,
-    "fields": {
-        "campaign": 1,
-        "short_desc": "Kill: Emplacement",
-        "long_desc": "Destroyed an enemy emplacement",
-        "xp": 2,
-        "team": true
-    }
-},
-{
-    "model": "campaign.event",
-    "pk": 4,
-    "fields": {
-        "campaign": 1,
-        "short_desc": "Kill: TIE Bomber",
-        "long_desc": "Destroyed an enemy TIE Bomber",
-        "xp": 2,
-        "team": true
-    }
-},
-{
-    "model": "campaign.event",
-    "pk": 5,
-    "fields": {
-        "campaign": 1,
-        "short_desc": "Kill: TIE Interceptor",
-        "long_desc": "Destroyed an enemy TIE Interceptor",
-        "xp": 2,
-        "team": true
-    }
-},
-{
-    "model": "campaign.event",
-    "pk": 6,
-    "fields": {
-        "campaign": 1,
-        "short_desc": "Kill: TIE Advanced",
-        "long_desc": "Destroyed an enemy TIE Advanced",
-        "xp": 2,
-        "team": true
-    }
-},
-{
-    "model": "campaign.event",
-    "pk": 7,
-    "fields": {
-        "campaign": 1,
-        "short_desc": "Kill: Lambda Shuttle",
-        "long_desc": "Destroyed an enemy Lambda shuttle",
-        "xp": 2,
-        "team": true
-    }
-},
-{
-    "model": "campaign.event",
-    "pk": 8,
-    "fields": {
-        "campaign": 1,
-        "short_desc": "Kill: Elite Pilot",
-        "long_desc": "Any player destroyed an Elite enemy",
-        "xp": 1,
-        "team": true
-    }
-},
-{
-    "model": "campaign.event",
-    "pk": 12,
-    "fields": {
-        "campaign": 1,
-        "short_desc": "Assist: Guardian",
-        "long_desc": "Provide a bonus or action to an ally that prevents at least one damage",
-        "xp": 1,
-        "team": true
-    }
-},
-{
-    "model": "campaign.event",
-    "pk": 13,
-    "fields": {
-        "campaign": 1,
-        "short_desc": "Assist: Kill",
-        "long_desc": "Provide a bonus or action to an ally who uses it to destroy an enemy",
-        "xp": 1,
-        "team": true
-    }
-},
-{
-    "model": "campaign.event",
-    "pk": 19,
-    "fields": {
-        "campaign": 1,
-        "short_desc": "Bonus Objective (+1)",
-        "long_desc": "Met a bonus objective worth 1xp",
-        "xp": 1,
-        "team": true
-    }
-},
-{
-    "model": "campaign.event",
-    "pk": 20,
-    "fields": {
-        "campaign": 1,
-        "short_desc": "Bonus Objective (+2)",
-        "long_desc": "Met a bonus objective worth 2xp",
-        "xp": 2,
-        "team": true
-    }
-},
-{
-    "model": "campaign.event",
-    "pk": 21,
-    "fields": {
-        "campaign": 1,
-        "short_desc": "Bonus Objective (+3)",
-        "long_desc": "Met a bonus objective worth 3xp",
-        "xp": 3,
-        "team": true
-    }
-},
-{
-    "model": "campaign.event",
-    "pk": 22,
-    "fields": {
-        "campaign": 1,
-        "short_desc": "Kill: TIE Defender",
-        "long_desc": "Destroyed an enemy TIE Defender",
-        "xp": 2,
-        "team": true
-    }
-},
-{
-    "model": "campaign.event",
-    "pk": 23,
-    "fields": {
-        "campaign": 1,
-        "short_desc": "Jump",
-        "long_desc": "Jumped to Hyperspace",
-        "xp": 0,
-        "team": false
-    }
-},
-{
-    "model": "campaign.event",
-    "pk": 24,
-    "fields": {
-        "campaign": 1,
-        "short_desc": "Eject",
-        "long_desc": "Ejected safely",
-        "xp": 0,
-        "team": true
     }
 },
 {
@@ -338,7 +58,13 @@
         "story": "Welcome to the Aturi Cluster",
         "sequence": 1,
         "enemy_faction": 1,
-        "territory": "F"
+        "territory": "F",
+        "rulebook": 1,
+        "turns": 12,
+        "objective": "Engage Imperial Forces:\r\nAt least one Rebel ship must survive and remain in play at the end of Turn 10.",
+        "bonus_1": "If all Imperial ships are destroyed, all players gain 1XP.",
+        "bonus_2": "If no Rebel ships are destroyed, all players gain 1XP.",
+        "penalty": ""
     }
 },
 {
@@ -349,7 +75,13 @@
         "story": "Minefields",
         "sequence": 1,
         "enemy_faction": 1,
-        "territory": "F"
+        "territory": "F",
+        "rulebook": 1,
+        "turns": 12,
+        "objective": "Clear the Minefield:\r\nDestroy minefield tokens. The mission is a success if there are fewer minefields remaining than the total number of players.",
+        "bonus_1": "If all minefields are destroyed, all pilots gain 2XP.",
+        "bonus_2": "If no replacement minefields are deployed, all pilots gain 1XP.",
+        "penalty": ""
     }
 },
 {
@@ -360,365 +92,1297 @@
         "story": "Defection",
         "sequence": 1,
         "enemy_faction": 1,
-        "territory": "N"
+        "territory": "N",
+        "rulebook": 1,
+        "turns": 12,
+        "objective": "Configure a Secure Holo-Channel on the Receiver\r\n1. Disable Satellite Relays and Sensor Array emplacements to identify the holonet channel used by the rebel spy.\r\n2. The Slicer Techs must secure the identified channel.\r\n3. The Slicer Techs must escape by jumping to hyperspace.",
+        "bonus_1": "The pilot who performs the most Protect actions on the Slicer Tech's HWK-290 gains 2XP. If tied, all players gain 1XP.",
+        "bonus_2": "",
+        "penalty": "For each Satellite Relay that is destroyed, the players lose 1XP."
     }
 },
 {
-    "model": "campaign.enemypilot",
-    "pk": 1,
-    "fields": {
-        "chassis": 7,
-        "faction": 1
-    }
-},
-{
-    "model": "campaign.enemypilot",
-    "pk": 2,
-    "fields": {
-        "chassis": 7,
-        "faction": 1
-    }
-},
-{
-    "model": "campaign.enemypilot",
-    "pk": 3,
-    "fields": {
-        "chassis": 7,
-        "faction": 1
-    }
-},
-{
-    "model": "campaign.enemypilot",
+    "model": "campaign.mission",
     "pk": 4,
     "fields": {
-        "chassis": 7,
-        "faction": 1
+        "name": "Capture the Officer",
+        "story": "Capture the Officer",
+        "sequence": 1,
+        "enemy_faction": 1,
+        "territory": "F",
+        "rulebook": 1,
+        "turns": 12,
+        "objective": "Capture the Imperial Officer:\r\nDisable the shuttle and have no other enemy ships in play.",
+        "bonus_1": "When the primary objective is complete, all players gain 1XP for each squad of enemy ships that did not arrive.",
+        "bonus_2": "The player that disables the shuttle gains 3XP.",
+        "penalty": ""
     }
 },
 {
-    "model": "campaign.enemypilot",
+    "model": "campaign.mission",
     "pk": 5,
     "fields": {
-        "chassis": 8,
-        "faction": 1
+        "name": "Nobody Home",
+        "story": "Capture the Officer",
+        "sequence": 2,
+        "enemy_faction": 1,
+        "territory": "F",
+        "rulebook": 1,
+        "turns": 10,
+        "objective": "Destroy Imperial Search & Rescue Force:\r\nIf too many enemies escape, the mission is a faliure: \r\n1-2 players: 2 enemies\r\n3-4 players: 3 enemies\r\n5-6 players: 4 enemies",
+        "bonus_1": "If Alpha and Beta squads included any ships and they were all destroyed, all players gain 1XP.",
+        "bonus_2": "",
+        "penalty": "For each ship that escapes, all players lose 1XP."
     }
 },
 {
-    "model": "campaign.enemypilot",
+    "model": "campaign.mission",
     "pk": 6,
     "fields": {
-        "chassis": 9,
-        "faction": 1
+        "name": "Rescue Rebel Operatives",
+        "story": "The Refueling Station",
+        "sequence": 1,
+        "enemy_faction": 1,
+        "territory": "F",
+        "rulebook": 1,
+        "turns": 12,
+        "objective": "To add",
+        "bonus_1": "",
+        "bonus_2": "",
+        "penalty": ""
     }
 },
 {
-    "model": "campaign.enemypilot",
+    "model": "campaign.mission",
     "pk": 7,
     "fields": {
-        "chassis": 10,
-        "faction": 1
+        "name": "Needle in a Haystack",
+        "story": "Chasing Phantoms",
+        "sequence": 1,
+        "enemy_faction": 1,
+        "territory": "F",
+        "rulebook": 1,
+        "turns": 12,
+        "objective": "Add",
+        "bonus_1": "",
+        "bonus_2": "",
+        "penalty": ""
     }
 },
 {
-    "model": "campaign.enemypilot",
+    "model": "campaign.mission",
     "pk": 8,
     "fields": {
-        "chassis": 11,
-        "faction": 1
+        "name": "Defector",
+        "story": "Defection",
+        "sequence": 2,
+        "enemy_faction": 1,
+        "territory": "H",
+        "rulebook": 1,
+        "turns": 10,
+        "objective": "Add",
+        "bonus_1": "",
+        "bonus_2": "",
+        "penalty": ""
     }
 },
 {
-    "model": "campaign.enemypilot",
+    "model": "campaign.mission",
     "pk": 9,
     "fields": {
-        "chassis": 12,
-        "faction": 1
+        "name": "Imperial Entanglements",
+        "story": "Minefields",
+        "sequence": 2,
+        "enemy_faction": 1,
+        "territory": "N",
+        "rulebook": 1,
+        "turns": 10,
+        "objective": "Rescue the Transport\r\nThe transport must jump to hyperspace by the end of Turn 10, or all enemies must be destroyed.",
+        "bonus_1": "If the transport was not hit by Ion Pulse Missiles, all players gain 1XP.",
+        "bonus_2": "If the transport jumps to hyperspace AND the Decimator is destroyed, all players gain 3XP.",
+        "penalty": ""
     }
 },
 {
-    "model": "campaign.enemypilot",
-    "pk": 10,
-    "fields": {
-        "chassis": 13,
-        "faction": 1
-    }
-},
-{
-    "model": "campaign.enemypilot",
-    "pk": 11,
-    "fields": {
-        "chassis": 6,
-        "faction": 1
-    }
-},
-{
-    "model": "campaign.enemyability",
+    "model": "campaign.campaign",
     "pk": 1,
     "fields": {
-        "pilot": 1,
-        "upgrade": 27,
-        "level": 1
+        "rulebook": 1,
+        "gm": [
+            "Mike"
+        ],
+        "description": "HotAC: The Next Generation",
+        "victory": 12,
+        "pool_xp": true,
+        "deck_draw": null,
+        "players": [
+            [
+                "Mike"
+            ],
+            [
+                "Kate"
+            ],
+            [
+                "Carolyn"
+            ],
+            [
+                "Steve"
+            ],
+            [
+                "Lis"
+            ]
+        ],
+        "deck": []
     }
 },
 {
-    "model": "campaign.enemyability",
+    "model": "campaign.campaign",
     "pk": 2,
     "fields": {
-        "pilot": 1,
-        "upgrade": 21,
-        "level": 2
+        "rulebook": 1,
+        "gm": [
+            "Mike"
+        ],
+        "description": "Mike Solo",
+        "victory": 12,
+        "pool_xp": true,
+        "deck_draw": [
+            9,
+            6
+        ],
+        "players": [
+            [
+                "Mike"
+            ]
+        ],
+        "deck": [
+            3,
+            5,
+            6,
+            7,
+            8,
+            9
+        ]
     }
 },
 {
-    "model": "campaign.enemyability",
-    "pk": 3,
+    "model": "campaign.campaignupgrade",
+    "pk": "11U",
     "fields": {
-        "pilot": 1,
-        "upgrade": 1,
-        "level": 2
+        "base_id": 11,
+        "base": "U",
+        "name": "Concussion Missiles",
+        "cost": "6",
+        "description": null,
+        "ai_description": null,
+        "type": "MSL",
+        "type2": null,
+        "charges": 2,
+        "force": false
     }
 },
 {
-    "model": "campaign.enemyability",
-    "pk": 4,
+    "model": "campaign.campaignupgrade",
+    "pk": "12U",
     "fields": {
-        "pilot": 1,
-        "upgrade": 28,
-        "level": 3
+        "base_id": 12,
+        "base": "U",
+        "name": "Proximity Mines",
+        "cost": "6",
+        "description": null,
+        "ai_description": null,
+        "type": "DVC",
+        "type2": null,
+        "charges": 2,
+        "force": false
     }
 },
 {
-    "model": "campaign.enemyability",
-    "pk": 5,
+    "model": "campaign.campaignupgrade",
+    "pk": "13U",
     "fields": {
-        "pilot": 1,
-        "upgrade": 17,
-        "level": 4
+        "base_id": 13,
+        "base": "U",
+        "name": "Veteran Turret Gunner",
+        "cost": "6",
+        "description": null,
+        "ai_description": null,
+        "type": "GNR",
+        "type2": null,
+        "charges": null,
+        "force": false
     }
 },
 {
-    "model": "campaign.enemyability",
-    "pk": 6,
+    "model": "campaign.campaignupgrade",
+    "pk": "14U",
     "fields": {
-        "pilot": 1,
-        "upgrade": 29,
-        "level": 5
+        "base_id": 14,
+        "base": "U",
+        "name": "R2-D2",
+        "cost": "8",
+        "description": "After you reveal your dial, you may spend 1 Charge and gain 1 disarm token to recover 1 shield.",
+        "ai_description": null,
+        "type": "AST",
+        "type2": null,
+        "charges": 3,
+        "force": false
     }
 },
 {
-    "model": "campaign.enemyability",
-    "pk": 7,
+    "model": "campaign.campaignupgrade",
+    "pk": "15U",
     "fields": {
-        "pilot": 2,
-        "upgrade": 30,
-        "level": 1
+        "base_id": 15,
+        "base": "U",
+        "name": "Munitions Failsafe",
+        "cost": "1",
+        "description": null,
+        "ai_description": null,
+        "type": "MOD",
+        "type2": null,
+        "charges": null,
+        "force": false
     }
 },
 {
-    "model": "campaign.enemyability",
-    "pk": 8,
+    "model": "campaign.campaignupgrade",
+    "pk": "16U",
     "fields": {
-        "pilot": 2,
-        "upgrade": 25,
-        "level": 2
+        "base_id": 16,
+        "base": "U",
+        "name": "R3 Astromech",
+        "cost": "3",
+        "description": "You can maintain up to 2 Locks. Each must be on a different object. After you perform a Target Lock action, you may acquire a lock.",
+        "ai_description": null,
+        "type": "AST",
+        "type2": null,
+        "charges": null,
+        "force": false
     }
 },
 {
-    "model": "campaign.enemyability",
-    "pk": 9,
+    "model": "campaign.campaignupgrade",
+    "pk": "17U",
     "fields": {
-        "pilot": 2,
-        "upgrade": 32,
-        "level": 2
+        "base_id": 17,
+        "base": "U",
+        "name": "Elusive",
+        "cost": "3",
+        "description": "While you defend, you may spend 1 Charge to reroll 1 defense die. After you execute a red maneuver, recover 1 Charge.",
+        "ai_description": "When defending, the attacker must reroll one Critical Hit or Hit result. You cannot use this ability if you are stressed.",
+        "type": "TLN",
+        "type2": null,
+        "charges": 1,
+        "force": false
     }
 },
 {
-    "model": "campaign.enemyability",
-    "pk": 10,
+    "model": "campaign.campaignupgrade",
+    "pk": "18U",
     "fields": {
-        "pilot": 2,
-        "upgrade": 33,
-        "level": 3
+        "base_id": 18,
+        "base": "U",
+        "name": "Servomotor S-Foils",
+        "cost": "0",
+        "description": "Before you activate, you may flip this card. \r\nClosed: While you perform a primary attack, roll 1 fewer attack die. Add [Evade] and [Focus] [Linked] [Boost#hard] actions.",
+        "ai_description": "",
+        "type": "CNF",
+        "type2": null,
+        "charges": null,
+        "force": false
     }
 },
 {
-    "model": "campaign.enemyability",
-    "pk": 11,
+    "model": "campaign.campaignupgrade",
+    "pk": "1P",
     "fields": {
-        "pilot": 2,
-        "upgrade": 34,
-        "level": 4
+        "base_id": 1,
+        "base": "P",
+        "name": "Arvel Crynyd - RZ-1 A-Wing",
+        "cost": "3",
+        "description": "You can perform primary attacks at range 0.  If you would fail a Boost action by overlapping another ship, resolve it as though you were partially executing a maneuver instead.",
+        "ai_description": null,
+        "type": "PLT",
+        "type2": null,
+        "charges": null,
+        "force": false
     }
 },
 {
-    "model": "campaign.enemyability",
-    "pk": 12,
+    "model": "campaign.campaignupgrade",
+    "pk": "1U",
     "fields": {
-        "pilot": 2,
-        "upgrade": 35,
-        "level": 5
+        "base_id": 1,
+        "base": "U",
+        "name": "Expert Handling",
+        "cost": "2",
+        "description": null,
+        "ai_description": "When you perform a Barrel Roll action, remove 1 enemy Target Lock from your ship.",
+        "type": "TLN",
+        "type2": null,
+        "charges": null,
+        "force": false
     }
 },
 {
-    "model": "campaign.enemyability",
-    "pk": 13,
+    "model": "campaign.campaignupgrade",
+    "pk": "21U",
     "fields": {
-        "pilot": 3,
-        "upgrade": 27,
-        "level": 1
+        "base_id": 21,
+        "base": "U",
+        "name": "Stealth Device",
+        "cost": "4",
+        "description": null,
+        "ai_description": "Increase your agility value by 1. If you are hit by an attack, this ability ceases.",
+        "type": "MOD",
+        "type2": null,
+        "charges": 1,
+        "force": false
     }
 },
 {
-    "model": "campaign.enemyability",
-    "pk": 14,
+    "model": "campaign.campaignupgrade",
+    "pk": "22U",
     "fields": {
-        "pilot": 3,
-        "upgrade": 25,
-        "level": 2
+        "base_id": 22,
+        "base": "U",
+        "name": "Proton Bombs",
+        "cost": "5",
+        "description": null,
+        "ai_description": null,
+        "type": "DVC",
+        "type2": null,
+        "charges": null,
+        "force": false
     }
 },
 {
-    "model": "campaign.enemyability",
-    "pk": 15,
+    "model": "campaign.campaignupgrade",
+    "pk": "23U",
     "fields": {
-        "pilot": 3,
-        "upgrade": 36,
-        "level": 2
+        "base_id": 23,
+        "base": "U",
+        "name": "Plasma Torpedoes",
+        "cost": "9",
+        "description": "Attack [Lock]: Spend 1 Charge. During the Neutralize Results step, Crit results are cancelled before Hit results. After this attack hits, the defender loses 1 shield.",
+        "ai_description": null,
+        "type": "TRP",
+        "type2": null,
+        "charges": 2,
+        "force": false
     }
 },
 {
-    "model": "campaign.enemyability",
-    "pk": 16,
+    "model": "campaign.campaignupgrade",
+    "pk": "25U",
     "fields": {
-        "pilot": 3,
-        "upgrade": 37,
-        "level": 3
+        "base_id": 25,
+        "base": "U",
+        "name": "Shield Upgrade",
+        "cost": "4",
+        "description": "Increase your Shield value by 1",
+        "ai_description": "Increase your Shield value by 1",
+        "type": "MOD",
+        "type2": null,
+        "charges": null,
+        "force": false
     }
 },
 {
-    "model": "campaign.enemyability",
-    "pk": 17,
+    "model": "campaign.campaignupgrade",
+    "pk": "26U",
     "fields": {
-        "pilot": 3,
-        "upgrade": 1,
-        "level": 4
+        "base_id": 26,
+        "base": "U",
+        "name": "Stygium Array",
+        "cost": "0",
+        "description": "After you decloak, you may perform an Evade action. At the start of the End Phase, you may spend 1 evade token to gain 1 cloak token.",
+        "ai_description": null,
+        "type": "SHP",
+        "type2": null,
+        "charges": null,
+        "force": false
     }
 },
 {
-    "model": "campaign.enemyability",
-    "pk": 18,
+    "model": "campaign.campaignupgrade",
+    "pk": "27U",
     "fields": {
-        "pilot": 3,
-        "upgrade": 38,
-        "level": 5
+        "base_id": 27,
+        "base": "U",
+        "name": "Autothrusters",
+        "cost": "0",
+        "description": "After you perform an action, you may perform a red Barrel Roll or red Boost action.",
+        "ai_description": "When defending, if you are beyond range 2 or outside the attacker's primary arc, change 1 of your blank results to an Evade result.",
+        "type": "SHP",
+        "type2": null,
+        "charges": null,
+        "force": false
     }
 },
 {
-    "model": "campaign.enemyability",
-    "pk": 19,
+    "model": "campaign.campaignupgrade",
+    "pk": "2P",
     "fields": {
-        "pilot": 4,
-        "upgrade": 21,
-        "level": 1
+        "base_id": 2,
+        "base": "P",
+        "name": "Jake Farrell - RZ-1 A-Wing",
+        "cost": "4",
+        "description": "After you perform a Barrel Roll or Boost action, you may choose a friendly ship at range 0-1. That ship may perform a Focus action.",
+        "ai_description": null,
+        "type": "PLT",
+        "type2": null,
+        "charges": null,
+        "force": false
     }
 },
 {
-    "model": "campaign.enemyability",
-    "pk": 20,
+    "model": "campaign.campaignupgrade",
+    "pk": "2U",
     "fields": {
-        "pilot": 4,
-        "upgrade": 27,
-        "level": 2
+        "base_id": 2,
+        "base": "U",
+        "name": "Crack Shot",
+        "cost": "1",
+        "description": null,
+        "ai_description": null,
+        "type": "TLN",
+        "type2": null,
+        "charges": 1,
+        "force": false
     }
 },
 {
-    "model": "campaign.enemyability",
-    "pk": 21,
+    "model": "campaign.campaignupgrade",
+    "pk": "30U",
     "fields": {
-        "pilot": 4,
-        "upgrade": 39,
-        "level": 2
+        "base_id": 30,
+        "base": "U",
+        "name": "Hull Upgrade",
+        "cost": "5",
+        "description": "Increase your Hull value by 1.",
+        "ai_description": "Increase your Hull value by 1.",
+        "type": "MOD",
+        "type2": null,
+        "charges": null,
+        "force": false
     }
 },
 {
-    "model": "campaign.enemyability",
-    "pk": 22,
+    "model": "campaign.campaignupgrade",
+    "pk": "32U",
     "fields": {
-        "pilot": 4,
-        "upgrade": 40,
-        "level": 3
+        "base_id": 32,
+        "base": "U",
+        "name": "Expose",
+        "cost": "0",
+        "description": null,
+        "ai_description": "Action: Until the end of the round, increase your primary weapon value by 1 and decrease your Agility value by 1. (Replaces Focus action.)",
+        "type": "TLN",
+        "type2": null,
+        "charges": null,
+        "force": false
     }
 },
 {
-    "model": "campaign.enemyability",
-    "pk": 23,
+    "model": "campaign.campaignupgrade",
+    "pk": "33U",
     "fields": {
-        "pilot": 4,
-        "upgrade": 41,
-        "level": 4
+        "base_id": 33,
+        "base": "U",
+        "name": "Targeting Computer",
+        "cost": "0",
+        "description": null,
+        "ai_description": "After selecting a target, you may perform a free Target Lock action on it. Spend this Lock after attacking.",
+        "type": "MOD",
+        "type2": null,
+        "charges": null,
+        "force": false
     }
 },
 {
-    "model": "campaign.enemyability",
-    "pk": 24,
+    "model": "campaign.campaignupgrade",
+    "pk": "34U",
     "fields": {
-        "pilot": 4,
-        "upgrade": 42,
-        "level": 5
+        "base_id": 34,
+        "base": "U",
+        "name": "Opportunist",
+        "cost": "0",
+        "description": null,
+        "ai_description": "While attacking, if you are not stressed and the defender is not focusing or evading, roll 1 additional attack die. Prioritize targets that trigger this ability.",
+        "type": "TLN",
+        "type2": null,
+        "charges": null,
+        "force": false
     }
 },
 {
-    "model": "campaign.enemyability",
-    "pk": 25,
+    "model": "campaign.campaignupgrade",
+    "pk": "36U",
     "fields": {
-        "pilot": 9,
-        "upgrade": 43,
-        "level": 1
+        "base_id": 36,
+        "base": "U",
+        "name": "Push the Limit",
+        "cost": "0",
+        "description": null,
+        "ai_description": "Perform an additional action during Action Selection.",
+        "type": "TLN",
+        "type2": null,
+        "charges": null,
+        "force": false
     }
 },
 {
-    "model": "campaign.enemyability",
-    "pk": 26,
+    "model": "campaign.campaignupgrade",
+    "pk": "39U",
     "fields": {
-        "pilot": 9,
-        "upgrade": 44,
-        "level": 2
+        "base_id": 39,
+        "base": "U",
+        "name": "Predator",
+        "cost": "2",
+        "description": "While you perform a primary attack, if the defender is in your Bullseye Arc, you may reroll 1 attack die.",
+        "ai_description": "While you perform a primary attack, if the defender is in your Bullseye Arc, you may reroll 1 attack die.",
+        "type": "TLN",
+        "type2": null,
+        "charges": null,
+        "force": false
     }
 },
 {
-    "model": "campaign.enemyability",
-    "pk": 27,
+    "model": "campaign.campaignupgrade",
+    "pk": "3U",
     "fields": {
-        "pilot": 9,
-        "upgrade": 45,
-        "level": 2
+        "base_id": 3,
+        "base": "U",
+        "name": "Daredevil",
+        "cost": "3",
+        "description": null,
+        "ai_description": null,
+        "type": "TLN",
+        "type2": null,
+        "charges": null,
+        "force": false
     }
 },
 {
-    "model": "campaign.enemyability",
-    "pk": 28,
+    "model": "campaign.campaignupgrade",
+    "pk": "41U",
     "fields": {
-        "pilot": 9,
-        "upgrade": 46,
-        "level": 3
+        "base_id": 41,
+        "base": "U",
+        "name": "Lone Wolf",
+        "cost": "0",
+        "description": null,
+        "ai_description": "When attacking or defending, if there re no other friendly ships at range 0-2, you may reroll 1 of your blank results.",
+        "type": "TLN",
+        "type2": null,
+        "charges": null,
+        "force": false
     }
 },
 {
-    "model": "campaign.enemyability",
-    "pk": 29,
+    "model": "campaign.campaignupgrade",
+    "pk": "43U",
     "fields": {
-        "pilot": 9,
-        "upgrade": 17,
-        "level": 4
+        "base_id": 43,
+        "base": "U",
+        "name": "Homing Missiles",
+        "cost": "0",
+        "description": null,
+        "ai_description": "Attack [Lock]: Spend 1 Charge. After you declare the defender, the defender may choose to suffer 1 Hit. If it does, skip the attack and Defense Dice steps and the attack is treated as hitting.",
+        "type": "MSL",
+        "type2": null,
+        "charges": 1,
+        "force": false
     }
 },
 {
-    "model": "campaign.enemyability",
-    "pk": 30,
+    "model": "campaign.campaignupgrade",
+    "pk": "44U",
     "fields": {
-        "pilot": 9,
-        "upgrade": 40,
-        "level": 5
+        "base_id": 44,
+        "base": "U",
+        "name": "Extra Munitions",
+        "cost": "0",
+        "description": null,
+        "ai_description": "Add one Charge to any equipped ordnance.",
+        "type": "TRP",
+        "type2": null,
+        "charges": null,
+        "force": false
+    }
+},
+{
+    "model": "campaign.campaignupgrade",
+    "pk": "45U",
+    "fields": {
+        "base_id": 45,
+        "base": "U",
+        "name": "Calculation",
+        "cost": "0",
+        "description": null,
+        "ai_description": "Gain a Calculate token. You may spend the token to change 1 of your Focus results to a Hit or Evade result.",
+        "type": "TLN",
+        "type2": null,
+        "charges": null,
+        "force": false
+    }
+},
+{
+    "model": "campaign.campaignupgrade",
+    "pk": "47U",
+    "fields": {
+        "base_id": 47,
+        "base": "U",
+        "name": "Skilled Bombardier",
+        "cost": "2",
+        "description": "If you would drop or launch a device, you may use a template of the same bearing with a speed 1 higher or lower.",
+        "ai_description": null,
+        "type": "GNR",
+        "type2": null,
+        "charges": null,
+        "force": false
+    }
+},
+{
+    "model": "campaign.campaignupgrade",
+    "pk": "48U",
+    "fields": {
+        "base_id": 48,
+        "base": "U",
+        "name": "R4 Astromech",
+        "cost": "2",
+        "description": "Decrease the difficulty of your speed 1-2 basic maneuvers.",
+        "ai_description": null,
+        "type": "AST",
+        "type2": null,
+        "charges": null,
+        "force": false
+    }
+},
+{
+    "model": "campaign.campaignupgrade",
+    "pk": "49U",
+    "fields": {
+        "base_id": 49,
+        "base": "U",
+        "name": "Seismic Charges",
+        "cost": "3",
+        "description": "Bomb: During the system phase, you may spend 1 Charge to drop a Seismic Charge",
+        "ai_description": null,
+        "type": "DVC",
+        "type2": null,
+        "charges": 2,
+        "force": false
+    }
+},
+{
+    "model": "campaign.campaignupgrade",
+    "pk": "4U",
+    "fields": {
+        "base_id": 4,
+        "base": "U",
+        "name": "Adv. Proton Torpedoes",
+        "cost": "6",
+        "description": null,
+        "ai_description": "Attack 5, range 1, forward arc. Spend 1 charge. Change one Hit result to a Critical Hit result. [1 charge]",
+        "type": "TRP",
+        "type2": null,
+        "charges": 1,
+        "force": false
+    }
+},
+{
+    "model": "campaign.campaignupgrade",
+    "pk": "50U",
+    "fields": {
+        "base_id": 50,
+        "base": "U",
+        "name": "Agile Gunner",
+        "cost": "8",
+        "description": "During the End phase, you may rotate your Turret indicator",
+        "ai_description": null,
+        "type": "GNR",
+        "type2": null,
+        "charges": null,
+        "force": false
+    }
+},
+{
+    "model": "campaign.campaignupgrade",
+    "pk": "51U",
+    "fields": {
+        "base_id": 51,
+        "base": "U",
+        "name": "Advanced Targeting Computer",
+        "cost": "0",
+        "description": null,
+        "ai_description": "When attacking with your primary weapon, if you have a Target Lock on the defender, add 1 Critical Hit result to your roll. You cannot spend Target Locks during this attack.",
+        "type": "SNS",
+        "type2": null,
+        "charges": null,
+        "force": false
+    }
+},
+{
+    "model": "campaign.campaignupgrade",
+    "pk": "52U",
+    "fields": {
+        "base_id": 52,
+        "base": "U",
+        "name": "Experimental Interface",
+        "cost": "0",
+        "description": null,
+        "ai_description": "An ability that replaces a Focus action is performed as a free action in addition to the Focus action.",
+        "type": "MOD",
+        "type2": null,
+        "charges": null,
+        "force": false
+    }
+},
+{
+    "model": "campaign.campaignupgrade",
+    "pk": "53U",
+    "fields": {
+        "base_id": 53,
+        "base": "U",
+        "name": "Flight Instructor",
+        "cost": "0",
+        "description": null,
+        "ai_description": "When defending, you may reroll one of your Focus results.",
+        "type": "CRW",
+        "type2": null,
+        "charges": null,
+        "force": false
+    }
+},
+{
+    "model": "campaign.campaignupgrade",
+    "pk": "54U",
+    "fields": {
+        "base_id": 54,
+        "base": "U",
+        "name": "Sensor Jammer",
+        "cost": "0",
+        "description": null,
+        "ai_description": "When defending, you may change 1 of the attacker's Hit results to a Focus result. The attacker cannot reroll that die but can modify it.",
+        "type": "SNS",
+        "type2": null,
+        "charges": null,
+        "force": false
+    }
+},
+{
+    "model": "campaign.campaignupgrade",
+    "pk": "55U",
+    "fields": {
+        "base_id": 55,
+        "base": "U",
+        "name": "Anti-Pursuit Lasers",
+        "cost": "0",
+        "description": null,
+        "ai_description": "After an enemy ship performs a maneuver that causes it to overlap you, roll 1 attack die. On a Hit or Critical Hit, the enemy ship suffers one damage.",
+        "type": "MOD",
+        "type2": null,
+        "charges": null,
+        "force": false
+    }
+},
+{
+    "model": "campaign.campaignupgrade",
+    "pk": "56U",
+    "fields": {
+        "base_id": 56,
+        "base": "U",
+        "name": "VIP Shielding",
+        "cost": "0",
+        "description": null,
+        "ai_description": "You gain +2 shields for every player more than 2.",
+        "type": "MOD",
+        "type2": null,
+        "charges": null,
+        "force": false
+    }
+},
+{
+    "model": "campaign.campaignupgrade",
+    "pk": "57U",
+    "fields": {
+        "base_id": 57,
+        "base": "U",
+        "name": "Outmaneuver",
+        "cost": "6",
+        "description": "When you perform a front arc attack, if you are not in the defender's firing arc, the defender rolls 1 fewer defense dice.",
+        "ai_description": "When you perform a front arc attack, if you are not in the defender's firing arc, the defender rolls 1 fewer defense dice. You prioritizes targets that trigger this ability.",
+        "type": "TLN",
+        "type2": null,
+        "charges": null,
+        "force": false
+    }
+},
+{
+    "model": "campaign.campaignupgrade",
+    "pk": "5U",
+    "fields": {
+        "base_id": 5,
+        "base": "U",
+        "name": "Ion Torpedoes",
+        "cost": "6",
+        "description": null,
+        "ai_description": null,
+        "type": "TRP",
+        "type2": null,
+        "charges": 2,
+        "force": false
+    }
+},
+{
+    "model": "campaign.campaignupgrade",
+    "pk": "60U",
+    "fields": {
+        "base_id": 60,
+        "base": "U",
+        "name": "Squad Leader",
+        "cost": "0",
+        "description": null,
+        "ai_description": "Action: Select the friendly ship at range 1-2 with the highest initiative. That ship performs a free action chosen from your action bar.",
+        "type": "TLN",
+        "type2": null,
+        "charges": null,
+        "force": false
+    }
+},
+{
+    "model": "campaign.campaignupgrade",
+    "pk": "61U",
+    "fields": {
+        "base_id": 61,
+        "base": "U",
+        "name": "Swarm Tactics",
+        "cost": "0",
+        "description": null,
+        "ai_description": "After you activate, the friendly ship with the lowest pilot initiative at range 1 may activate.",
+        "type": "TLN",
+        "type2": null,
+        "charges": null,
+        "force": false
+    }
+},
+{
+    "model": "campaign.campaignupgrade",
+    "pk": "63U",
+    "fields": {
+        "base_id": 63,
+        "base": "U",
+        "name": "Enhanced Scopes",
+        "cost": "0",
+        "description": null,
+        "ai_description": "During the activation phase, treat your initiative as 0.",
+        "type": "SNS",
+        "type2": null,
+        "charges": null,
+        "force": false
+    }
+},
+{
+    "model": "campaign.campaignupgrade",
+    "pk": "64U",
+    "fields": {
+        "base_id": 64,
+        "base": "U",
+        "name": "Mara Jade",
+        "cost": "0",
+        "description": null,
+        "ai_description": "At the end of the Engagement phase, each enemy ship at range 1 that is not stressed gains 1 stress token.",
+        "type": "CRW",
+        "type2": null,
+        "charges": null,
+        "force": false
+    }
+},
+{
+    "model": "campaign.campaignupgrade",
+    "pk": "66U",
+    "fields": {
+        "base_id": 66,
+        "base": "U",
+        "name": "Tactician",
+        "cost": "0",
+        "description": null,
+        "ai_description": "After you perform an attack against a ship inside your firing arc at range 2, that ship gains 1 stress token. Prioritize targets that trigger this ability.",
+        "type": "CRW",
+        "type2": null,
+        "charges": null,
+        "force": false
+    }
+},
+{
+    "model": "campaign.campaignupgrade",
+    "pk": "68U",
+    "fields": {
+        "base_id": 68,
+        "base": "U",
+        "name": "Draw Their Fire",
+        "cost": "0",
+        "description": null,
+        "ai_description": "When a friendly ship at range 1 is hit by an attack, suffer 1 of the uncancelled Critical Hit results instead of the target ship.",
+        "type": "TLN",
+        "type2": null,
+        "charges": null,
+        "force": false
+    }
+},
+{
+    "model": "campaign.campaignupgrade",
+    "pk": "69U",
+    "fields": {
+        "base_id": 69,
+        "base": "U",
+        "name": "Rebel Captive",
+        "cost": "0",
+        "description": null,
+        "ai_description": "Once per round, the first ship that declares you as the target of an attack immediately gains 1 stress token.",
+        "type": "CRW",
+        "type2": null,
+        "charges": null,
+        "force": false
+    }
+},
+{
+    "model": "campaign.campaignupgrade",
+    "pk": "6U",
+    "fields": {
+        "base_id": 6,
+        "base": "U",
+        "name": "Proton Torpedoes",
+        "cost": "12",
+        "description": null,
+        "ai_description": "Attack 4, forward arc, range 2-3, TL, 1 Charge. Change one Hit result to a Critical Hit result. [1 charge]",
+        "type": "TRP",
+        "type2": null,
+        "charges": 2,
+        "force": false
+    }
+},
+{
+    "model": "campaign.campaignupgrade",
+    "pk": "70U",
+    "fields": {
+        "base_id": 70,
+        "base": "U",
+        "name": "Fleet Officer",
+        "cost": "0",
+        "description": null,
+        "ai_description": "Action: The 2 nearest friendly ships at range 1-2 each gain a focus token. If there are less than 2 friendly ships in range, this ship gains a focus token as well. Replace the Focus action.",
+        "type": "CRW",
+        "type2": null,
+        "charges": null,
+        "force": false
+    }
+},
+{
+    "model": "campaign.campaignupgrade",
+    "pk": "71U",
+    "fields": {
+        "base_id": 71,
+        "base": "U",
+        "name": "Advanced Sensors",
+        "cost": "0",
+        "description": null,
+        "ai_description": "Do not skip Action Selection after a collision with a ship or obstacle, or after executing a red maneuver.",
+        "type": "SNS",
+        "type2": null,
+        "charges": null,
+        "force": false
+    }
+},
+{
+    "model": "campaign.campaignupgrade",
+    "pk": "72U",
+    "fields": {
+        "base_id": 72,
+        "base": "U",
+        "name": "Tactical Jammer",
+        "cost": "0",
+        "description": null,
+        "ai_description": "Your ship obstructs enemy attacks.",
+        "type": "MOD",
+        "type2": null,
+        "charges": null,
+        "force": false
+    }
+},
+{
+    "model": "campaign.campaignupgrade",
+    "pk": "75U",
+    "fields": {
+        "base_id": 75,
+        "base": "U",
+        "name": "Weapons Engineer",
+        "cost": "0",
+        "description": null,
+        "ai_description": "You may maintain target locks on two separate ships. When you acquire a target lock, lock onto the two nearest enemy ships.",
+        "type": "CRW",
+        "type2": null,
+        "charges": null,
+        "force": false
+    }
+},
+{
+    "model": "campaign.campaignupgrade",
+    "pk": "77U",
+    "fields": {
+        "base_id": 77,
+        "base": "U",
+        "name": "Gunner",
+        "cost": "0",
+        "description": null,
+        "ai_description": "After you perform an attack that does not hit, immediately perform a bonus primary weapon attack.",
+        "type": "CRW",
+        "type2": null,
+        "charges": null,
+        "force": false
+    }
+},
+{
+    "model": "campaign.campaignupgrade",
+    "pk": "78U",
+    "fields": {
+        "base_id": 78,
+        "base": "U",
+        "name": "Vectored Cannons (RZ-1)",
+        "cost": "1",
+        "description": "Gain a Turret indicator. Treat the arc requirement of your front primary attack as a turret arc. Replace your Vectored Thrusters ability with the following: During the system phase, you may perform a red Boost or red Rotate action.",
+        "ai_description": null,
+        "type": "CNF",
+        "type2": null,
+        "charges": null,
+        "force": false
+    }
+},
+{
+    "model": "campaign.campaignupgrade",
+    "pk": "79U",
+    "fields": {
+        "base_id": 79,
+        "base": "U",
+        "name": "Starbird Slash",
+        "cost": "1",
+        "description": "After you fully execute a maneuver, you may choose 1 enemy ship you moved through. That ship gains 1 strain token. Then, if you are in that ship's firing arc, you gain 1 strain token.",
+        "ai_description": null,
+        "type": "TLN",
+        "type2": null,
+        "charges": null,
+        "force": false
+    }
+},
+{
+    "model": "campaign.campaignupgrade",
+    "pk": "7U",
+    "fields": {
+        "base_id": 7,
+        "base": "U",
+        "name": "Dorsal Turret",
+        "cost": "3",
+        "description": null,
+        "ai_description": null,
+        "type": "TRT",
+        "type2": null,
+        "charges": null,
+        "force": false
+    }
+},
+{
+    "model": "campaign.campaignupgrade",
+    "pk": "80U",
+    "fields": {
+        "base_id": 80,
+        "base": "U",
+        "name": "Stabilized S-foils",
+        "cost": "2",
+        "description": null,
+        "ai_description": null,
+        "type": "CNF",
+        "type2": null,
+        "charges": null,
+        "force": false
+    }
+},
+{
+    "model": "campaign.campaignupgrade",
+    "pk": "81U",
+    "fields": {
+        "base_id": 81,
+        "base": "U",
+        "name": "B6 Blade Wing Prototype",
+        "cost": "2",
+        "description": "Add a Gunner slot",
+        "ai_description": null,
+        "type": "TTL",
+        "type2": null,
+        "charges": null,
+        "force": false
+    }
+},
+{
+    "model": "campaign.campaignupgrade",
+    "pk": "82U",
+    "fields": {
+        "base_id": 82,
+        "base": "U",
+        "name": "Autoblasters",
+        "cost": "3",
+        "description": null,
+        "ai_description": null,
+        "type": "CNN",
+        "type2": null,
+        "charges": null,
+        "force": false
+    }
+},
+{
+    "model": "campaign.campaignupgrade",
+    "pk": "83U",
+    "fields": {
+        "base_id": 83,
+        "base": "U",
+        "name": "Fire-Control System",
+        "cost": "2",
+        "description": "When you perform an attack, if you have a lock on the defender, you may reroll 1 attack die. If you do, you may cannot spend your lock during this attack.",
+        "ai_description": null,
+        "type": "SNS",
+        "type2": null,
+        "charges": null,
+        "force": false
+    }
+},
+{
+    "model": "campaign.campaignupgrade",
+    "pk": "84U",
+    "fields": {
+        "base_id": 84,
+        "base": "U",
+        "name": "Brilliant Evasion",
+        "cost": "2",
+        "description": "When you defend, if you are not in the attacker's Bullseye arc, you may spend 1 Force charge to change 2 of your Focus results to Evade results.",
+        "ai_description": null,
+        "type": "FRC",
+        "type2": null,
+        "charges": null,
+        "force": true
+    }
+},
+{
+    "model": "campaign.campaignupgrade",
+    "pk": "85U",
+    "fields": {
+        "base_id": 85,
+        "base": "U",
+        "name": "Cluster Missiles",
+        "cost": "0",
+        "description": null,
+        "ai_description": "Attack: Spend 1 charge. After this attack, you may perform this attack as a bonus attack against a different target at range 0-1 of the defender, ignoring the lock requirement. [1 charge]",
+        "type": "MSL",
+        "type2": null,
+        "charges": null,
+        "force": false
+    }
+},
+{
+    "model": "campaign.campaignupgrade",
+    "pk": "86U",
+    "fields": {
+        "base_id": 86,
+        "base": "U",
+        "name": "Ion Pulse Missile",
+        "cost": "0",
+        "description": null,
+        "ai_description": "Attack: Spend 1 charge. If this attack hits, spend one Hit or Critical Hit result to cause the defender to suffer 1 damage. All remaining hit/crit results inflict ion tokens instead of damage. [1 charge]",
+        "type": "MOD",
+        "type2": null,
+        "charges": null,
+        "force": false
+    }
+},
+{
+    "model": "campaign.campaignupgrade",
+    "pk": "8U",
+    "fields": {
+        "base_id": 8,
+        "base": "U",
+        "name": "Ion Cannon Turret",
+        "cost": "4",
+        "description": null,
+        "ai_description": null,
+        "type": "TRT",
+        "type2": null,
+        "charges": null,
+        "force": false
+    }
+},
+{
+    "model": "campaign.campaignupgrade",
+    "pk": "91U",
+    "fields": {
+        "base_id": 91,
+        "base": "U",
+        "name": "Ruthless",
+        "cost": "0",
+        "description": null,
+        "ai_description": "When you perform an attack, the friendly ship at range 0-1 of the defender with the lowest hull value suffers one damage. You may change one of your die results to a Hit result.",
+        "type": "TLN",
+        "type2": null,
+        "charges": null,
+        "force": false
+    }
+},
+{
+    "model": "campaign.campaignupgrade",
+    "pk": "94U",
+    "fields": {
+        "base_id": 94,
+        "base": "U",
+        "name": "Marksmanship",
+        "cost": "0",
+        "description": null,
+        "ai_description": "When you perform an attack, if the defender is in your Bullseye arc, you may change one Hit result to a Critical Hit result.",
+        "type": "TLN",
+        "type2": null,
+        "charges": null,
+        "force": false
+    }
+},
+{
+    "model": "campaign.campaignupgrade",
+    "pk": "95U",
+    "fields": {
+        "base_id": 95,
+        "base": "U",
+        "name": "Nimble Bomber",
+        "cost": "0",
+        "description": "If you would drop a device using a straight template, you may use a bank template of the same speed instead.",
+        "ai_description": "If you would drop a device using a straight template, you may use a bank template of the same speed instead.",
+        "type": "SHP",
+        "type2": null,
+        "charges": null,
+        "force": false
+    }
+},
+{
+    "model": "campaign.campaignupgrade",
+    "pk": "9U",
+    "fields": {
+        "base_id": 9,
+        "base": "U",
+        "name": "R2 Astromech",
+        "cost": "5",
+        "description": null,
+        "ai_description": null,
+        "type": "AST",
+        "type2": null,
+        "charges": 2,
+        "force": false
     }
 },
 {
@@ -766,6 +1430,281 @@
     }
 },
 {
+    "model": "campaign.flightgroup",
+    "pk": 5,
+    "fields": {
+        "name": "Shuttle",
+        "mission": 4,
+        "arrival": 1,
+        "vector": "C",
+        "orders": "X"
+    }
+},
+{
+    "model": "campaign.flightgroup",
+    "pk": 6,
+    "fields": {
+        "name": "Alpha",
+        "mission": 4,
+        "arrival": 1,
+        "vector": "C",
+        "orders": "E"
+    }
+},
+{
+    "model": "campaign.flightgroup",
+    "pk": 7,
+    "fields": {
+        "name": "Elite",
+        "mission": 4,
+        "arrival": 2,
+        "vector": "1d6",
+        "orders": "A"
+    }
+},
+{
+    "model": "campaign.flightgroup",
+    "pk": 8,
+    "fields": {
+        "name": "Beta",
+        "mission": 4,
+        "arrival": 4,
+        "vector": "1d6",
+        "orders": "E"
+    }
+},
+{
+    "model": "campaign.flightgroup",
+    "pk": 9,
+    "fields": {
+        "name": "Gamma",
+        "mission": 4,
+        "arrival": 8,
+        "vector": "1d6",
+        "orders": "E"
+    }
+},
+{
+    "model": "campaign.flightgroup",
+    "pk": 10,
+    "fields": {
+        "name": "Delta",
+        "mission": 4,
+        "arrival": 11,
+        "vector": "1d6",
+        "orders": "E"
+    }
+},
+{
+    "model": "campaign.flightgroup",
+    "pk": 11,
+    "fields": {
+        "name": "Mine Layer",
+        "mission": 2,
+        "arrival": 1,
+        "vector": "3",
+        "orders": "A"
+    }
+},
+{
+    "model": "campaign.flightgroup",
+    "pk": 12,
+    "fields": {
+        "name": "Alpha",
+        "mission": 2,
+        "arrival": 1,
+        "vector": "5",
+        "orders": "A"
+    }
+},
+{
+    "model": "campaign.flightgroup",
+    "pk": 13,
+    "fields": {
+        "name": "Elite",
+        "mission": 2,
+        "arrival": 5,
+        "vector": "1d6",
+        "orders": "A"
+    }
+},
+{
+    "model": "campaign.flightgroup",
+    "pk": 14,
+    "fields": {
+        "name": "Beta",
+        "mission": 2,
+        "arrival": 5,
+        "vector": "1d6",
+        "orders": "A"
+    }
+},
+{
+    "model": "campaign.flightgroup",
+    "pk": 15,
+    "fields": {
+        "name": "Alpha",
+        "mission": 5,
+        "arrival": 1,
+        "vector": "1",
+        "orders": "A"
+    }
+},
+{
+    "model": "campaign.flightgroup",
+    "pk": 16,
+    "fields": {
+        "name": "Beta",
+        "mission": 5,
+        "arrival": 1,
+        "vector": "2",
+        "orders": "A"
+    }
+},
+{
+    "model": "campaign.flightgroup",
+    "pk": 17,
+    "fields": {
+        "name": "Delta",
+        "mission": 5,
+        "arrival": 1,
+        "vector": "3",
+        "orders": "X"
+    }
+},
+{
+    "model": "campaign.flightgroup",
+    "pk": 18,
+    "fields": {
+        "name": "Command",
+        "mission": 5,
+        "arrival": 1,
+        "vector": "4",
+        "orders": "X"
+    }
+},
+{
+    "model": "campaign.flightgroup",
+    "pk": 19,
+    "fields": {
+        "name": "Epsilon",
+        "mission": 5,
+        "arrival": 1,
+        "vector": "5",
+        "orders": "X"
+    }
+},
+{
+    "model": "campaign.flightgroup",
+    "pk": 20,
+    "fields": {
+        "name": "Alpha",
+        "mission": 3,
+        "arrival": 1,
+        "vector": "2",
+        "orders": "A"
+    }
+},
+{
+    "model": "campaign.flightgroup",
+    "pk": 21,
+    "fields": {
+        "name": "Beta",
+        "mission": 3,
+        "arrival": 1,
+        "vector": "5",
+        "orders": "A"
+    }
+},
+{
+    "model": "campaign.flightgroup",
+    "pk": 22,
+    "fields": {
+        "name": "Gamma",
+        "mission": 3,
+        "arrival": 4,
+        "vector": "1d6",
+        "orders": "A"
+    }
+},
+{
+    "model": "campaign.flightgroup",
+    "pk": 23,
+    "fields": {
+        "name": "Delta",
+        "mission": 3,
+        "arrival": 8,
+        "vector": "1d6",
+        "orders": "A"
+    }
+},
+{
+    "model": "campaign.flightgroup",
+    "pk": 24,
+    "fields": {
+        "name": "Inspection",
+        "mission": 3,
+        "arrival": 0,
+        "vector": "2/5",
+        "orders": "S"
+    }
+},
+{
+    "model": "campaign.flightgroup",
+    "pk": 25,
+    "fields": {
+        "name": "Alpha",
+        "mission": 9,
+        "arrival": 1,
+        "vector": "2",
+        "orders": "A"
+    }
+},
+{
+    "model": "campaign.flightgroup",
+    "pk": 26,
+    "fields": {
+        "name": "Beta",
+        "mission": 9,
+        "arrival": 1,
+        "vector": "4",
+        "orders": "A"
+    }
+},
+{
+    "model": "campaign.flightgroup",
+    "pk": 27,
+    "fields": {
+        "name": "Gamma",
+        "mission": 9,
+        "arrival": 3,
+        "vector": "1-3",
+        "orders": "S"
+    }
+},
+{
+    "model": "campaign.flightgroup",
+    "pk": 28,
+    "fields": {
+        "name": "Decimator",
+        "mission": 9,
+        "arrival": 6,
+        "vector": "C",
+        "orders": "X"
+    }
+},
+{
+    "model": "campaign.flightgroup",
+    "pk": 29,
+    "fields": {
+        "name": "Delta",
+        "mission": 9,
+        "arrival": 1,
+        "vector": "1d6",
+        "orders": "S"
+    }
+},
+{
     "model": "campaign.fgsetup",
     "pk": 1,
     "fields": {
@@ -935,10 +1874,1128 @@
     }
 },
 {
+    "model": "campaign.fgsetup",
+    "pk": 14,
+    "fields": {
+        "action": "A",
+        "mission": 4,
+        "chassis": 9,
+        "flight_group": 5,
+        "players": 1,
+        "init": 1,
+        "elite": false
+    }
+},
+{
+    "model": "campaign.fgsetup",
+    "pk": 15,
+    "fields": {
+        "action": "A",
+        "mission": 4,
+        "chassis": 6,
+        "flight_group": 6,
+        "players": 1,
+        "init": 1,
+        "elite": false
+    }
+},
+{
+    "model": "campaign.fgsetup",
+    "pk": 16,
+    "fields": {
+        "action": "A",
+        "mission": 4,
+        "chassis": 6,
+        "flight_group": 6,
+        "players": 2,
+        "init": 1,
+        "elite": false
+    }
+},
+{
+    "model": "campaign.fgsetup",
+    "pk": 17,
+    "fields": {
+        "action": "A",
+        "mission": 4,
+        "chassis": 6,
+        "flight_group": 6,
+        "players": 4,
+        "init": 1,
+        "elite": false
+    }
+},
+{
+    "model": "campaign.fgsetup",
+    "pk": 18,
+    "fields": {
+        "action": "A",
+        "mission": 4,
+        "chassis": 6,
+        "flight_group": 6,
+        "players": 6,
+        "init": 1,
+        "elite": false
+    }
+},
+{
+    "model": "campaign.fgsetup",
+    "pk": 19,
+    "fields": {
+        "action": "A",
+        "mission": 4,
+        "chassis": 10,
+        "flight_group": 7,
+        "players": 1,
+        "init": 1,
+        "elite": true
+    }
+},
+{
+    "model": "campaign.fgsetup",
+    "pk": 20,
+    "fields": {
+        "action": "A",
+        "mission": 4,
+        "chassis": 6,
+        "flight_group": 8,
+        "players": 1,
+        "init": 1,
+        "elite": false
+    }
+},
+{
+    "model": "campaign.fgsetup",
+    "pk": 21,
+    "fields": {
+        "action": "R",
+        "mission": 4,
+        "chassis": 6,
+        "flight_group": 8,
+        "players": 2,
+        "init": 4,
+        "elite": false
+    }
+},
+{
+    "model": "campaign.fgsetup",
+    "pk": 22,
+    "fields": {
+        "action": "A",
+        "mission": 4,
+        "chassis": 6,
+        "flight_group": 8,
+        "players": 3,
+        "init": 1,
+        "elite": false
+    }
+},
+{
+    "model": "campaign.fgsetup",
+    "pk": 23,
+    "fields": {
+        "action": "R",
+        "mission": 4,
+        "chassis": 6,
+        "flight_group": 8,
+        "players": 4,
+        "init": 5,
+        "elite": false
+    }
+},
+{
+    "model": "campaign.fgsetup",
+    "pk": 24,
+    "fields": {
+        "action": "A",
+        "mission": 4,
+        "chassis": 6,
+        "flight_group": 8,
+        "players": 5,
+        "init": 1,
+        "elite": false
+    }
+},
+{
+    "model": "campaign.fgsetup",
+    "pk": 25,
+    "fields": {
+        "action": "R",
+        "mission": 4,
+        "chassis": 6,
+        "flight_group": 8,
+        "players": 6,
+        "init": 3,
+        "elite": false
+    }
+},
+{
+    "model": "campaign.fgsetup",
+    "pk": 26,
+    "fields": {
+        "action": "A",
+        "mission": 4,
+        "chassis": 6,
+        "flight_group": 9,
+        "players": 1,
+        "init": 1,
+        "elite": false
+    }
+},
+{
+    "model": "campaign.fgsetup",
+    "pk": 27,
+    "fields": {
+        "action": "R",
+        "mission": 4,
+        "chassis": 6,
+        "flight_group": 9,
+        "players": 2,
+        "init": 3,
+        "elite": false
+    }
+},
+{
+    "model": "campaign.fgsetup",
+    "pk": 28,
+    "fields": {
+        "action": "A",
+        "mission": 4,
+        "chassis": 6,
+        "flight_group": 9,
+        "players": 3,
+        "init": 1,
+        "elite": false
+    }
+},
+{
+    "model": "campaign.fgsetup",
+    "pk": 29,
+    "fields": {
+        "action": "R",
+        "mission": 4,
+        "chassis": 6,
+        "flight_group": 9,
+        "players": 4,
+        "init": 4,
+        "elite": false
+    }
+},
+{
+    "model": "campaign.fgsetup",
+    "pk": 30,
+    "fields": {
+        "action": "A",
+        "mission": 4,
+        "chassis": 6,
+        "flight_group": 9,
+        "players": 5,
+        "init": 1,
+        "elite": false
+    }
+},
+{
+    "model": "campaign.fgsetup",
+    "pk": 31,
+    "fields": {
+        "action": "R",
+        "mission": 4,
+        "chassis": 6,
+        "flight_group": 9,
+        "players": 6,
+        "init": 5,
+        "elite": false
+    }
+},
+{
+    "model": "campaign.fgsetup",
+    "pk": 32,
+    "fields": {
+        "action": "A",
+        "mission": 4,
+        "chassis": 7,
+        "flight_group": 10,
+        "players": 1,
+        "init": 1,
+        "elite": false
+    }
+},
+{
+    "model": "campaign.fgsetup",
+    "pk": 33,
+    "fields": {
+        "action": "A",
+        "mission": 4,
+        "chassis": 7,
+        "flight_group": 10,
+        "players": 2,
+        "init": 1,
+        "elite": false
+    }
+},
+{
+    "model": "campaign.fgsetup",
+    "pk": 34,
+    "fields": {
+        "action": "A",
+        "mission": 4,
+        "chassis": 7,
+        "flight_group": 10,
+        "players": 4,
+        "init": 1,
+        "elite": false
+    }
+},
+{
+    "model": "campaign.fgsetup",
+    "pk": 35,
+    "fields": {
+        "action": "A",
+        "mission": 4,
+        "chassis": 7,
+        "flight_group": 10,
+        "players": 6,
+        "init": 1,
+        "elite": false
+    }
+},
+{
+    "model": "campaign.fgsetup",
+    "pk": 36,
+    "fields": {
+        "action": "A",
+        "mission": 2,
+        "chassis": 12,
+        "flight_group": 11,
+        "players": 1,
+        "init": 1,
+        "elite": false
+    }
+},
+{
+    "model": "campaign.fgsetup",
+    "pk": 37,
+    "fields": {
+        "action": "A",
+        "mission": 2,
+        "chassis": 12,
+        "flight_group": 11,
+        "players": 2,
+        "init": 5,
+        "elite": false
+    }
+},
+{
+    "model": "campaign.fgsetup",
+    "pk": 38,
+    "fields": {
+        "action": "A",
+        "mission": 2,
+        "chassis": 12,
+        "flight_group": 11,
+        "players": 3,
+        "init": 1,
+        "elite": false
+    }
+},
+{
+    "model": "campaign.fgsetup",
+    "pk": 39,
+    "fields": {
+        "action": "A",
+        "mission": 2,
+        "chassis": 12,
+        "flight_group": 11,
+        "players": 5,
+        "init": 1,
+        "elite": false
+    }
+},
+{
+    "model": "campaign.fgsetup",
+    "pk": 40,
+    "fields": {
+        "action": "A",
+        "mission": 2,
+        "chassis": 6,
+        "flight_group": 12,
+        "players": 1,
+        "init": 1,
+        "elite": false
+    }
+},
+{
+    "model": "campaign.fgsetup",
+    "pk": 41,
+    "fields": {
+        "action": "A",
+        "mission": 2,
+        "chassis": 6,
+        "flight_group": 12,
+        "players": 2,
+        "init": 1,
+        "elite": false
+    }
+},
+{
+    "model": "campaign.fgsetup",
+    "pk": 42,
+    "fields": {
+        "action": "R",
+        "mission": 2,
+        "chassis": 7,
+        "flight_group": 12,
+        "players": 3,
+        "init": 4,
+        "elite": false
+    }
+},
+{
+    "model": "campaign.fgsetup",
+    "pk": 43,
+    "fields": {
+        "action": "A",
+        "mission": 2,
+        "chassis": 6,
+        "flight_group": 12,
+        "players": 4,
+        "init": 1,
+        "elite": false
+    }
+},
+{
+    "model": "campaign.fgsetup",
+    "pk": 44,
+    "fields": {
+        "action": "R",
+        "mission": 2,
+        "chassis": 7,
+        "flight_group": 12,
+        "players": 5,
+        "init": 3,
+        "elite": false
+    }
+},
+{
+    "model": "campaign.fgsetup",
+    "pk": 45,
+    "fields": {
+        "action": "A",
+        "mission": 2,
+        "chassis": 6,
+        "flight_group": 12,
+        "players": 6,
+        "init": 1,
+        "elite": false
+    }
+},
+{
+    "model": "campaign.fgsetup",
+    "pk": 46,
+    "fields": {
+        "action": "A",
+        "mission": 2,
+        "chassis": 12,
+        "flight_group": 13,
+        "players": 1,
+        "init": 1,
+        "elite": true
+    }
+},
+{
+    "model": "campaign.fgsetup",
+    "pk": 47,
+    "fields": {
+        "action": "A",
+        "mission": 2,
+        "chassis": 6,
+        "flight_group": 14,
+        "players": 1,
+        "init": 1,
+        "elite": false
+    }
+},
+{
+    "model": "campaign.fgsetup",
+    "pk": 48,
+    "fields": {
+        "action": "A",
+        "mission": 2,
+        "chassis": 6,
+        "flight_group": 14,
+        "players": 2,
+        "init": 1,
+        "elite": false
+    }
+},
+{
+    "model": "campaign.fgsetup",
+    "pk": 49,
+    "fields": {
+        "action": "A",
+        "mission": 2,
+        "chassis": 6,
+        "flight_group": 14,
+        "players": 3,
+        "init": 5,
+        "elite": false
+    }
+},
+{
+    "model": "campaign.fgsetup",
+    "pk": 50,
+    "fields": {
+        "action": "A",
+        "mission": 2,
+        "chassis": 6,
+        "flight_group": 14,
+        "players": 4,
+        "init": 1,
+        "elite": false
+    }
+},
+{
+    "model": "campaign.fgsetup",
+    "pk": 51,
+    "fields": {
+        "action": "A",
+        "mission": 2,
+        "chassis": 6,
+        "flight_group": 14,
+        "players": 5,
+        "init": 4,
+        "elite": false
+    }
+},
+{
+    "model": "campaign.fgsetup",
+    "pk": 52,
+    "fields": {
+        "action": "A",
+        "mission": 2,
+        "chassis": 6,
+        "flight_group": 14,
+        "players": 5,
+        "init": 1,
+        "elite": false
+    }
+},
+{
+    "model": "campaign.fgsetup",
+    "pk": 53,
+    "fields": {
+        "action": "A",
+        "mission": 5,
+        "chassis": 7,
+        "flight_group": 15,
+        "players": 1,
+        "init": 1,
+        "elite": false
+    }
+},
+{
+    "model": "campaign.fgsetup",
+    "pk": 54,
+    "fields": {
+        "action": "A",
+        "mission": 5,
+        "chassis": 7,
+        "flight_group": 15,
+        "players": 4,
+        "init": 4,
+        "elite": false
+    }
+},
+{
+    "model": "campaign.fgsetup",
+    "pk": 55,
+    "fields": {
+        "action": "A",
+        "mission": 5,
+        "chassis": 7,
+        "flight_group": 15,
+        "players": 5,
+        "init": 1,
+        "elite": false
+    }
+},
+{
+    "model": "campaign.fgsetup",
+    "pk": 56,
+    "fields": {
+        "action": "A",
+        "mission": 5,
+        "chassis": 7,
+        "flight_group": 16,
+        "players": 2,
+        "init": 4,
+        "elite": false
+    }
+},
+{
+    "model": "campaign.fgsetup",
+    "pk": 57,
+    "fields": {
+        "action": "A",
+        "mission": 5,
+        "chassis": 7,
+        "flight_group": 16,
+        "players": 3,
+        "init": 1,
+        "elite": false
+    }
+},
+{
+    "model": "campaign.fgsetup",
+    "pk": 58,
+    "fields": {
+        "action": "A",
+        "mission": 5,
+        "chassis": 6,
+        "flight_group": 17,
+        "players": 1,
+        "init": 1,
+        "elite": false
+    }
+},
+{
+    "model": "campaign.fgsetup",
+    "pk": 59,
+    "fields": {
+        "action": "A",
+        "mission": 5,
+        "chassis": 6,
+        "flight_group": 17,
+        "players": 2,
+        "init": 1,
+        "elite": false
+    }
+},
+{
+    "model": "campaign.fgsetup",
+    "pk": 60,
+    "fields": {
+        "action": "R",
+        "mission": 5,
+        "chassis": null,
+        "flight_group": 17,
+        "players": 3,
+        "init": 3,
+        "elite": false
+    }
+},
+{
+    "model": "campaign.fgsetup",
+    "pk": 61,
+    "fields": {
+        "action": "A",
+        "mission": 5,
+        "chassis": 6,
+        "flight_group": 17,
+        "players": 4,
+        "init": 1,
+        "elite": false
+    }
+},
+{
+    "model": "campaign.fgsetup",
+    "pk": 62,
+    "fields": {
+        "action": "R",
+        "mission": 5,
+        "chassis": null,
+        "flight_group": 17,
+        "players": 5,
+        "init": 5,
+        "elite": false
+    }
+},
+{
+    "model": "campaign.fgsetup",
+    "pk": 63,
+    "fields": {
+        "action": "A",
+        "mission": 5,
+        "chassis": 6,
+        "flight_group": 17,
+        "players": 6,
+        "init": 1,
+        "elite": false
+    }
+},
+{
+    "model": "campaign.fgsetup",
+    "pk": 64,
+    "fields": {
+        "action": "A",
+        "mission": 5,
+        "chassis": 9,
+        "flight_group": 18,
+        "players": 1,
+        "init": 1,
+        "elite": true
+    }
+},
+{
+    "model": "campaign.fgsetup",
+    "pk": 65,
+    "fields": {
+        "action": "A",
+        "mission": 5,
+        "chassis": 6,
+        "flight_group": 19,
+        "players": 1,
+        "init": 1,
+        "elite": false
+    }
+},
+{
+    "model": "campaign.fgsetup",
+    "pk": 66,
+    "fields": {
+        "action": "A",
+        "mission": 5,
+        "chassis": 6,
+        "flight_group": 19,
+        "players": 2,
+        "init": 1,
+        "elite": false
+    }
+},
+{
+    "model": "campaign.fgsetup",
+    "pk": 67,
+    "fields": {
+        "action": "A",
+        "mission": 5,
+        "chassis": 6,
+        "flight_group": 19,
+        "players": 3,
+        "init": 1,
+        "elite": false
+    }
+},
+{
+    "model": "campaign.fgsetup",
+    "pk": 68,
+    "fields": {
+        "action": "R",
+        "mission": 5,
+        "chassis": null,
+        "flight_group": 19,
+        "players": 4,
+        "init": 4,
+        "elite": false
+    }
+},
+{
+    "model": "campaign.fgsetup",
+    "pk": 69,
+    "fields": {
+        "action": "A",
+        "mission": 5,
+        "chassis": 6,
+        "flight_group": 19,
+        "players": 5,
+        "init": 1,
+        "elite": false
+    }
+},
+{
+    "model": "campaign.fgsetup",
+    "pk": 70,
+    "fields": {
+        "action": "R",
+        "mission": 5,
+        "chassis": null,
+        "flight_group": 19,
+        "players": 6,
+        "init": 2,
+        "elite": false
+    }
+},
+{
+    "model": "campaign.fgsetup",
+    "pk": 72,
+    "fields": {
+        "action": "A",
+        "mission": 3,
+        "chassis": 6,
+        "flight_group": 20,
+        "players": 1,
+        "init": 1,
+        "elite": false
+    }
+},
+{
+    "model": "campaign.fgsetup",
+    "pk": 73,
+    "fields": {
+        "action": "A",
+        "mission": 3,
+        "chassis": 6,
+        "flight_group": 20,
+        "players": 2,
+        "init": 1,
+        "elite": false
+    }
+},
+{
+    "model": "campaign.fgsetup",
+    "pk": 74,
+    "fields": {
+        "action": "R",
+        "mission": 3,
+        "chassis": null,
+        "flight_group": 20,
+        "players": 3,
+        "init": 5,
+        "elite": false
+    }
+},
+{
+    "model": "campaign.fgsetup",
+    "pk": 75,
+    "fields": {
+        "action": "A",
+        "mission": 3,
+        "chassis": 6,
+        "flight_group": 20,
+        "players": 4,
+        "init": 1,
+        "elite": false
+    }
+},
+{
+    "model": "campaign.fgsetup",
+    "pk": 76,
+    "fields": {
+        "action": "R",
+        "mission": 3,
+        "chassis": null,
+        "flight_group": 20,
+        "players": 5,
+        "init": 4,
+        "elite": false
+    }
+},
+{
+    "model": "campaign.fgsetup",
+    "pk": 77,
+    "fields": {
+        "action": "A",
+        "mission": 3,
+        "chassis": 6,
+        "flight_group": 20,
+        "players": 6,
+        "init": 1,
+        "elite": false
+    }
+},
+{
+    "model": "campaign.fgsetup",
+    "pk": 86,
+    "fields": {
+        "action": "A",
+        "mission": 3,
+        "chassis": 6,
+        "flight_group": 21,
+        "players": 1,
+        "init": 1,
+        "elite": false
+    }
+},
+{
+    "model": "campaign.fgsetup",
+    "pk": 87,
+    "fields": {
+        "action": "A",
+        "mission": 3,
+        "chassis": 6,
+        "flight_group": 21,
+        "players": 2,
+        "init": 1,
+        "elite": false
+    }
+},
+{
+    "model": "campaign.fgsetup",
+    "pk": 88,
+    "fields": {
+        "action": "A",
+        "mission": 3,
+        "chassis": 6,
+        "flight_group": 21,
+        "players": 3,
+        "init": 1,
+        "elite": false
+    }
+},
+{
+    "model": "campaign.fgsetup",
+    "pk": 89,
+    "fields": {
+        "action": "R",
+        "mission": 3,
+        "chassis": null,
+        "flight_group": 21,
+        "players": 4,
+        "init": 4,
+        "elite": false
+    }
+},
+{
+    "model": "campaign.fgsetup",
+    "pk": 90,
+    "fields": {
+        "action": "A",
+        "mission": 3,
+        "chassis": 6,
+        "flight_group": 21,
+        "players": 5,
+        "init": 1,
+        "elite": false
+    }
+},
+{
+    "model": "campaign.fgsetup",
+    "pk": 91,
+    "fields": {
+        "action": "R",
+        "mission": 3,
+        "chassis": null,
+        "flight_group": 21,
+        "players": 6,
+        "init": 3,
+        "elite": false
+    }
+},
+{
+    "model": "campaign.fgsetup",
+    "pk": 92,
+    "fields": {
+        "action": "A",
+        "mission": 3,
+        "chassis": 7,
+        "flight_group": 22,
+        "players": 1,
+        "init": 5,
+        "elite": false
+    }
+},
+{
+    "model": "campaign.fgsetup",
+    "pk": 93,
+    "fields": {
+        "action": "A",
+        "mission": 3,
+        "chassis": 6,
+        "flight_group": 22,
+        "players": 2,
+        "init": 1,
+        "elite": false
+    }
+},
+{
+    "model": "campaign.fgsetup",
+    "pk": 94,
+    "fields": {
+        "action": "A",
+        "mission": 3,
+        "chassis": 7,
+        "flight_group": 22,
+        "players": 3,
+        "init": 3,
+        "elite": false
+    }
+},
+{
+    "model": "campaign.fgsetup",
+    "pk": 95,
+    "fields": {
+        "action": "A",
+        "mission": 3,
+        "chassis": 6,
+        "flight_group": 22,
+        "players": 4,
+        "init": 1,
+        "elite": false
+    }
+},
+{
+    "model": "campaign.fgsetup",
+    "pk": 96,
+    "fields": {
+        "action": "A",
+        "mission": 3,
+        "chassis": 7,
+        "flight_group": 22,
+        "players": 5,
+        "init": 4,
+        "elite": false
+    }
+},
+{
+    "model": "campaign.fgsetup",
+    "pk": 97,
+    "fields": {
+        "action": "A",
+        "mission": 3,
+        "chassis": 6,
+        "flight_group": 22,
+        "players": 6,
+        "init": 1,
+        "elite": false
+    }
+},
+{
+    "model": "campaign.fgsetup",
+    "pk": 98,
+    "fields": {
+        "action": "A",
+        "mission": 3,
+        "chassis": 6,
+        "flight_group": 23,
+        "players": 1,
+        "init": 1,
+        "elite": false
+    }
+},
+{
+    "model": "campaign.fgsetup",
+    "pk": 99,
+    "fields": {
+        "action": "A",
+        "mission": 3,
+        "chassis": 6,
+        "flight_group": 23,
+        "players": 2,
+        "init": 1,
+        "elite": false
+    }
+},
+{
+    "model": "campaign.fgsetup",
+    "pk": 100,
+    "fields": {
+        "action": "A",
+        "mission": 3,
+        "chassis": 6,
+        "flight_group": 23,
+        "players": 3,
+        "init": 1,
+        "elite": false
+    }
+},
+{
+    "model": "campaign.fgsetup",
+    "pk": 101,
+    "fields": {
+        "action": "R",
+        "mission": 3,
+        "chassis": null,
+        "flight_group": 23,
+        "players": 4,
+        "init": 4,
+        "elite": false
+    }
+},
+{
+    "model": "campaign.fgsetup",
+    "pk": 102,
+    "fields": {
+        "action": "A",
+        "mission": 3,
+        "chassis": 6,
+        "flight_group": 23,
+        "players": 5,
+        "init": 1,
+        "elite": false
+    }
+},
+{
+    "model": "campaign.fgsetup",
+    "pk": 103,
+    "fields": {
+        "action": "A",
+        "mission": 3,
+        "chassis": null,
+        "flight_group": 23,
+        "players": 6,
+        "init": 3,
+        "elite": false
+    }
+},
+{
+    "model": "campaign.fgsetup",
+    "pk": 104,
+    "fields": {
+        "action": "A",
+        "mission": 3,
+        "chassis": 9,
+        "flight_group": 24,
+        "players": 1,
+        "init": 1,
+        "elite": false
+    }
+},
+{
+    "model": "campaign.fgsetup",
+    "pk": 106,
+    "fields": {
+        "action": "A",
+        "mission": 3,
+        "chassis": 7,
+        "flight_group": 24,
+        "players": 3,
+        "init": 1,
+        "elite": false
+    }
+},
+{
+    "model": "campaign.fgsetup",
+    "pk": 107,
+    "fields": {
+        "action": "A",
+        "mission": 3,
+        "chassis": 7,
+        "flight_group": 24,
+        "players": 4,
+        "init": 4,
+        "elite": false
+    }
+},
+{
+    "model": "campaign.fgsetup",
+    "pk": 108,
+    "fields": {
+        "action": "A",
+        "mission": 3,
+        "chassis": 7,
+        "flight_group": 24,
+        "players": 5,
+        "init": 1,
+        "elite": false
+    }
+},
+{
+    "model": "campaign.fgsetup",
+    "pk": 109,
+    "fields": {
+        "action": "A",
+        "mission": 3,
+        "chassis": 7,
+        "flight_group": 24,
+        "players": 6,
+        "init": 4,
+        "elite": false
+    }
+},
+{
     "model": "campaign.ai",
     "pk": 1,
     "fields": {
-        "campaign": 1,
+        "rulebook": 1,
         "dial": 1,
         "flee": 0,
         "version": "f7"
@@ -948,7 +3005,7 @@
     "model": "campaign.ai",
     "pk": 2,
     "fields": {
-        "campaign": 1,
+        "rulebook": 1,
         "dial": 2,
         "flee": 0,
         "version": "f7"
@@ -958,7 +3015,7 @@
     "model": "campaign.ai",
     "pk": 3,
     "fields": {
-        "campaign": 1,
+        "rulebook": 1,
         "dial": 3,
         "flee": 0,
         "version": "f7"
@@ -968,7 +3025,7 @@
     "model": "campaign.ai",
     "pk": 4,
     "fields": {
-        "campaign": 1,
+        "rulebook": 1,
         "dial": 4,
         "flee": 0,
         "version": "f7"
@@ -978,9 +3035,9 @@
     "model": "campaign.ai",
     "pk": 6,
     "fields": {
-        "campaign": 1,
+        "rulebook": 1,
         "dial": 6,
-        "flee": 0,
+        "flee": 5,
         "version": "f7"
     }
 },
@@ -988,7 +3045,7 @@
     "model": "campaign.ai",
     "pk": 7,
     "fields": {
-        "campaign": 1,
+        "rulebook": 1,
         "dial": 7,
         "flee": 0,
         "version": "f7"
@@ -998,7 +3055,7 @@
     "model": "campaign.ai",
     "pk": 8,
     "fields": {
-        "campaign": 1,
+        "rulebook": 1,
         "dial": 8,
         "flee": 0,
         "version": "f7"
@@ -1008,7 +3065,7 @@
     "model": "campaign.ai",
     "pk": 9,
     "fields": {
-        "campaign": 1,
+        "rulebook": 1,
         "dial": 9,
         "flee": 0,
         "version": "f7"
@@ -1018,7 +3075,7 @@
     "model": "campaign.ai",
     "pk": 10,
     "fields": {
-        "campaign": 1,
+        "rulebook": 1,
         "dial": 10,
         "flee": 0,
         "version": "f7"
@@ -3020,53 +5077,2552 @@
     }
 },
 {
-    "model": "campaign.game",
-    "pk": 1,
+    "model": "campaign.aimaneuver",
+    "pk": 155,
     "fields": {
-        "campaign": 1,
-        "gm": [
-            "Mike"
-        ],
-        "description": "HotAC: The Next Generation",
-        "victory": 12,
-        "ship_initiative": false,
-        "pool_xp": true,
-        "players": [
-            [
-                "Mike"
-            ],
-            [
-                "Kate"
-            ],
-            [
-                "Carolyn"
-            ],
-            [
-                "Steve"
-            ],
-            [
-                "Lis"
-            ]
-        ]
+        "ai": 6,
+        "arc": "BE",
+        "range": "1",
+        "roll_1": 66,
+        "roll_2": 66,
+        "roll_3": 66,
+        "roll_4": 67,
+        "roll_5": 69,
+        "roll_6": 68
     }
 },
 {
-    "model": "campaign.game",
+    "model": "campaign.aimaneuver",
+    "pk": 156,
+    "fields": {
+        "ai": 6,
+        "arc": "BE",
+        "range": "2",
+        "roll_1": 68,
+        "roll_2": 72,
+        "roll_3": 72,
+        "roll_4": 72,
+        "roll_5": 76,
+        "roll_6": 76
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 157,
+    "fields": {
+        "ai": 6,
+        "arc": "BE",
+        "range": "3",
+        "roll_1": 72,
+        "roll_2": 76,
+        "roll_3": 76,
+        "roll_4": 76,
+        "roll_5": 76,
+        "roll_6": 76
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 158,
+    "fields": {
+        "ai": 6,
+        "arc": "FR",
+        "range": "1",
+        "roll_1": 66,
+        "roll_2": 66,
+        "roll_3": 69,
+        "roll_4": 69,
+        "roll_5": 68,
+        "roll_6": 74
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 159,
+    "fields": {
+        "ai": 6,
+        "arc": "FR",
+        "range": "2",
+        "roll_1": 73,
+        "roll_2": 73,
+        "roll_3": 73,
+        "roll_4": 77,
+        "roll_5": 77,
+        "roll_6": 76
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 160,
+    "fields": {
+        "ai": 6,
+        "arc": "FR",
+        "range": "3",
+        "roll_1": 77,
+        "roll_2": 77,
+        "roll_3": 77,
+        "roll_4": 77,
+        "roll_5": 76,
+        "roll_6": 76
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 161,
+    "fields": {
+        "ai": 6,
+        "arc": "RF",
+        "range": "1",
+        "roll_1": 66,
+        "roll_2": 69,
+        "roll_3": 69,
+        "roll_4": 74,
+        "roll_5": 74,
+        "roll_6": 74
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 162,
+    "fields": {
+        "ai": 6,
+        "arc": "RF",
+        "range": "2",
+        "roll_1": 69,
+        "roll_2": 69,
+        "roll_3": 74,
+        "roll_4": 73,
+        "roll_5": 73,
+        "roll_6": 73
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 163,
+    "fields": {
+        "ai": 6,
+        "arc": "RF",
+        "range": "3",
+        "roll_1": 74,
+        "roll_2": 73,
+        "roll_3": 73,
+        "roll_4": 73,
+        "roll_5": 73,
+        "roll_6": 73
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 164,
+    "fields": {
+        "ai": 6,
+        "arc": "RA",
+        "range": "1",
+        "roll_1": 66,
+        "roll_2": 69,
+        "roll_3": 69,
+        "roll_4": 74,
+        "roll_5": 74,
+        "roll_6": 74
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 165,
+    "fields": {
+        "ai": 6,
+        "arc": "AR",
+        "range": "2",
+        "roll_1": 69,
+        "roll_2": 69,
+        "roll_3": 74,
+        "roll_4": 74,
+        "roll_5": 74,
+        "roll_6": 74
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 166,
+    "fields": {
+        "ai": 6,
+        "arc": "AR",
+        "range": "3",
+        "roll_1": 69,
+        "roll_2": 69,
+        "roll_3": 74,
+        "roll_4": 74,
+        "roll_5": 74,
+        "roll_6": 74
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 167,
+    "fields": {
+        "ai": 6,
+        "arc": "AR",
+        "range": "1",
+        "roll_1": 66,
+        "roll_2": 66,
+        "roll_3": 69,
+        "roll_4": 74,
+        "roll_5": 73,
+        "roll_6": 73
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 169,
+    "fields": {
+        "ai": 6,
+        "arc": "RA",
+        "range": "3",
+        "roll_1": 69,
+        "roll_2": 69,
+        "roll_3": 74,
+        "roll_4": 74,
+        "roll_5": 74,
+        "roll_6": 74
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 170,
+    "fields": {
+        "ai": 6,
+        "arc": "FL",
+        "range": "1",
+        "roll_1": 66,
+        "roll_2": 66,
+        "roll_3": 67,
+        "roll_4": 67,
+        "roll_5": 68,
+        "roll_6": 70
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 171,
+    "fields": {
+        "ai": 6,
+        "arc": "FL",
+        "range": "2",
+        "roll_1": 71,
+        "roll_2": 71,
+        "roll_3": 71,
+        "roll_4": 75,
+        "roll_5": 75,
+        "roll_6": 76
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 172,
+    "fields": {
+        "ai": 6,
+        "arc": "FL",
+        "range": "3",
+        "roll_1": 75,
+        "roll_2": 75,
+        "roll_3": 75,
+        "roll_4": 75,
+        "roll_5": 76,
+        "roll_6": 76
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 173,
+    "fields": {
+        "ai": 6,
+        "arc": "LF",
+        "range": "1",
+        "roll_1": 66,
+        "roll_2": 67,
+        "roll_3": 67,
+        "roll_4": 70,
+        "roll_5": 70,
+        "roll_6": 70
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 174,
+    "fields": {
+        "ai": 6,
+        "arc": "LF",
+        "range": "2",
+        "roll_1": 67,
+        "roll_2": 67,
+        "roll_3": 70,
+        "roll_4": 71,
+        "roll_5": 71,
+        "roll_6": 71
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 175,
+    "fields": {
+        "ai": 6,
+        "arc": "LF",
+        "range": "3",
+        "roll_1": 70,
+        "roll_2": 71,
+        "roll_3": 71,
+        "roll_4": 71,
+        "roll_5": 71,
+        "roll_6": 71
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 176,
+    "fields": {
+        "ai": 6,
+        "arc": "LA",
+        "range": "1",
+        "roll_1": 66,
+        "roll_2": 67,
+        "roll_3": 67,
+        "roll_4": 70,
+        "roll_5": 70,
+        "roll_6": 70
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 177,
+    "fields": {
+        "ai": 6,
+        "arc": "AL",
+        "range": "2",
+        "roll_1": 67,
+        "roll_2": 67,
+        "roll_3": 70,
+        "roll_4": 70,
+        "roll_5": 70,
+        "roll_6": 70
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 178,
+    "fields": {
+        "ai": 6,
+        "arc": "AL",
+        "range": "3",
+        "roll_1": 67,
+        "roll_2": 67,
+        "roll_3": 70,
+        "roll_4": 70,
+        "roll_5": 70,
+        "roll_6": 70
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 179,
+    "fields": {
+        "ai": 6,
+        "arc": "AL",
+        "range": "1",
+        "roll_1": 66,
+        "roll_2": 66,
+        "roll_3": 67,
+        "roll_4": 70,
+        "roll_5": 71,
+        "roll_6": 71
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 180,
+    "fields": {
+        "ai": 6,
+        "arc": "LA",
+        "range": "3",
+        "roll_1": 67,
+        "roll_2": 67,
+        "roll_3": 70,
+        "roll_4": 70,
+        "roll_5": 70,
+        "roll_6": 70
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 181,
+    "fields": {
+        "ai": 6,
+        "arc": "RA",
+        "range": "2",
+        "roll_1": 69,
+        "roll_2": 69,
+        "roll_3": 74,
+        "roll_4": 74,
+        "roll_5": 74,
+        "roll_6": 74
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 182,
+    "fields": {
+        "ai": 6,
+        "arc": "LA",
+        "range": "2",
+        "roll_1": 67,
+        "roll_2": 67,
+        "roll_3": 70,
+        "roll_4": 70,
+        "roll_5": 70,
+        "roll_6": 70
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 183,
+    "fields": {
+        "ai": 6,
+        "arc": "SS",
+        "range": "5",
+        "roll_1": 67,
+        "roll_2": 69,
+        "roll_3": 68,
+        "roll_4": 68,
+        "roll_5": 72,
+        "roll_6": 72
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 184,
+    "fields": {
+        "ai": 7,
+        "arc": "AL",
+        "range": "1",
+        "roll_1": 95,
+        "roll_2": 95,
+        "roll_3": 87,
+        "roll_4": 87,
+        "roll_5": 82,
+        "roll_6": 82
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 185,
+    "fields": {
+        "ai": 7,
+        "arc": "AL",
+        "range": "2",
+        "roll_1": 93,
+        "roll_2": 93,
+        "roll_3": 87,
+        "roll_4": 87,
+        "roll_5": 87,
+        "roll_6": 87
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 186,
+    "fields": {
+        "ai": 7,
+        "arc": "AL",
+        "range": "3",
+        "roll_1": 87,
+        "roll_2": 87,
+        "roll_3": 87,
+        "roll_4": 82,
+        "roll_5": 82,
+        "roll_6": 82
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 187,
+    "fields": {
+        "ai": 7,
+        "arc": "AL",
+        "range": "4",
+        "roll_1": 79,
+        "roll_2": 79,
+        "roll_3": 79,
+        "roll_4": 83,
+        "roll_5": 83,
+        "roll_6": 88
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 188,
+    "fields": {
+        "ai": 7,
+        "arc": "FL",
+        "range": "1",
+        "roll_1": 95,
+        "roll_2": 95,
+        "roll_3": 79,
+        "roll_4": 79,
+        "roll_5": 79,
+        "roll_6": 83
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 189,
+    "fields": {
+        "ai": 7,
+        "arc": "FL",
+        "range": "2",
+        "roll_1": 79,
+        "roll_2": 79,
+        "roll_3": 83,
+        "roll_4": 83,
+        "roll_5": 83,
+        "roll_6": 89
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 190,
+    "fields": {
+        "ai": 7,
+        "arc": "FL",
+        "range": "3",
+        "roll_1": 89,
+        "roll_2": 89,
+        "roll_3": 89,
+        "roll_4": 89,
+        "roll_5": 94,
+        "roll_6": 94
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 191,
+    "fields": {
+        "ai": 7,
+        "arc": "FL",
+        "range": "4",
+        "roll_1": 79,
+        "roll_2": 79,
+        "roll_3": 83,
+        "roll_4": 84,
+        "roll_5": 84,
+        "roll_6": 84
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 192,
+    "fields": {
+        "ai": 7,
+        "arc": "LA",
+        "range": "1",
+        "roll_1": 87,
+        "roll_2": 87,
+        "roll_3": 87,
+        "roll_4": 79,
+        "roll_5": 82,
+        "roll_6": 82
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 193,
+    "fields": {
+        "ai": 7,
+        "arc": "LA",
+        "range": "2",
+        "roll_1": 95,
+        "roll_2": 87,
+        "roll_3": 87,
+        "roll_4": 87,
+        "roll_5": 82,
+        "roll_6": 82
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 194,
+    "fields": {
+        "ai": 7,
+        "arc": "LA",
+        "range": "3",
+        "roll_1": 87,
+        "roll_2": 87,
+        "roll_3": 87,
+        "roll_4": 88,
+        "roll_5": 88,
+        "roll_6": 88
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 195,
+    "fields": {
+        "ai": 7,
+        "arc": "LA",
+        "range": "4",
+        "roll_1": 79,
+        "roll_2": 82,
+        "roll_3": 82,
+        "roll_4": 83,
+        "roll_5": 83,
+        "roll_6": 83
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 196,
+    "fields": {
+        "ai": 7,
+        "arc": "LF",
+        "range": "1",
+        "roll_1": 95,
+        "roll_2": 87,
+        "roll_3": 87,
+        "roll_4": 82,
+        "roll_5": 82,
+        "roll_6": 82
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 197,
+    "fields": {
+        "ai": 7,
+        "arc": "LF",
+        "range": "2",
+        "roll_1": 79,
+        "roll_2": 82,
+        "roll_3": 83,
+        "roll_4": 83,
+        "roll_5": 88,
+        "roll_6": 88
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 198,
+    "fields": {
+        "ai": 7,
+        "arc": "LF",
+        "range": "3",
+        "roll_1": 82,
+        "roll_2": 82,
+        "roll_3": 82,
+        "roll_4": 88,
+        "roll_5": 88,
+        "roll_6": 88
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 199,
+    "fields": {
+        "ai": 7,
+        "arc": "LF",
+        "range": "4",
+        "roll_1": 79,
+        "roll_2": 79,
+        "roll_3": 82,
+        "roll_4": 83,
+        "roll_5": 83,
+        "roll_6": 83
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 200,
+    "fields": {
+        "ai": 6,
+        "arc": "BE",
+        "range": "4",
+        "roll_1": 68,
+        "roll_2": 68,
+        "roll_3": 68,
+        "roll_4": 72,
+        "roll_5": 72,
+        "roll_6": 72
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 201,
+    "fields": {
+        "ai": 6,
+        "arc": "FR",
+        "range": "4",
+        "roll_1": 69,
+        "roll_2": 69,
+        "roll_3": 69,
+        "roll_4": 69,
+        "roll_5": 68,
+        "roll_6": 72
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 202,
+    "fields": {
+        "ai": 6,
+        "arc": "RF",
+        "range": "4",
+        "roll_1": 69,
+        "roll_2": 69,
+        "roll_3": 69,
+        "roll_4": 69,
+        "roll_5": 68,
+        "roll_6": 68
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 203,
+    "fields": {
+        "ai": 6,
+        "arc": "RA",
+        "range": "4",
+        "roll_1": 69,
+        "roll_2": 69,
+        "roll_3": 69,
+        "roll_4": 69,
+        "roll_5": 69,
+        "roll_6": 68
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 204,
+    "fields": {
+        "ai": 6,
+        "arc": "AR",
+        "range": "4",
+        "roll_1": 69,
+        "roll_2": 69,
+        "roll_3": 69,
+        "roll_4": 69,
+        "roll_5": 69,
+        "roll_6": 68
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 205,
+    "fields": {
+        "ai": 6,
+        "arc": "AL",
+        "range": "4",
+        "roll_1": 67,
+        "roll_2": 67,
+        "roll_3": 67,
+        "roll_4": 67,
+        "roll_5": 67,
+        "roll_6": 68
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 206,
+    "fields": {
+        "ai": 6,
+        "arc": "FL",
+        "range": "4",
+        "roll_1": 67,
+        "roll_2": 67,
+        "roll_3": 67,
+        "roll_4": 67,
+        "roll_5": 68,
+        "roll_6": 72
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 207,
+    "fields": {
+        "ai": 6,
+        "arc": "LA",
+        "range": "4",
+        "roll_1": 67,
+        "roll_2": 67,
+        "roll_3": 67,
+        "roll_4": 67,
+        "roll_5": 67,
+        "roll_6": 68
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 208,
+    "fields": {
+        "ai": 6,
+        "arc": "LF",
+        "range": "4",
+        "roll_1": 67,
+        "roll_2": 67,
+        "roll_3": 67,
+        "roll_4": 67,
+        "roll_5": 68,
+        "roll_6": 68
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 209,
+    "fields": {
+        "ai": 9,
+        "arc": "AL",
+        "range": "1",
+        "roll_1": 131,
+        "roll_2": 131,
+        "roll_3": 129,
+        "roll_4": 129,
+        "roll_5": 124,
+        "roll_6": 124
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 210,
+    "fields": {
+        "ai": 9,
+        "arc": "AL",
+        "range": "2",
+        "roll_1": 129,
+        "roll_2": 129,
+        "roll_3": 129,
+        "roll_4": 124,
+        "roll_5": 124,
+        "roll_6": 124
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 211,
+    "fields": {
+        "ai": 9,
+        "arc": "AL",
+        "range": "3",
+        "roll_1": 129,
+        "roll_2": 129,
+        "roll_3": 129,
+        "roll_4": 119,
+        "roll_5": 119,
+        "roll_6": 119
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 212,
+    "fields": {
+        "ai": 9,
+        "arc": "AL",
+        "range": "4",
+        "roll_1": 116,
+        "roll_2": 116,
+        "roll_3": 116,
+        "roll_4": 120,
+        "roll_5": 120,
+        "roll_6": 124
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 213,
+    "fields": {
+        "ai": 9,
+        "arc": "FL",
+        "range": "1",
+        "roll_1": 131,
+        "roll_2": 131,
+        "roll_3": 116,
+        "roll_4": 116,
+        "roll_5": 116,
+        "roll_6": 120
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 214,
+    "fields": {
+        "ai": 9,
+        "arc": "FL",
+        "range": "2",
+        "roll_1": 120,
+        "roll_2": 120,
+        "roll_3": 120,
+        "roll_4": 125,
+        "roll_5": 125,
+        "roll_6": 126
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 215,
+    "fields": {
+        "ai": 9,
+        "arc": "FL",
+        "range": "3",
+        "roll_1": 125,
+        "roll_2": 125,
+        "roll_3": 125,
+        "roll_4": 125,
+        "roll_5": 130,
+        "roll_6": 130
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 216,
+    "fields": {
+        "ai": 9,
+        "arc": "FL",
+        "range": "4",
+        "roll_1": 116,
+        "roll_2": 116,
+        "roll_3": 120,
+        "roll_4": 121,
+        "roll_5": 121,
+        "roll_6": 121
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 217,
+    "fields": {
+        "ai": 9,
+        "arc": "LA",
+        "range": "1",
+        "roll_1": 129,
+        "roll_2": 129,
+        "roll_3": 129,
+        "roll_4": 116,
+        "roll_5": 119,
+        "roll_6": 119
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 218,
+    "fields": {
+        "ai": 9,
+        "arc": "LA",
+        "range": "2",
+        "roll_1": 131,
+        "roll_2": 129,
+        "roll_3": 129,
+        "roll_4": 129,
+        "roll_5": 119,
+        "roll_6": 119
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 219,
+    "fields": {
+        "ai": 9,
+        "arc": "LA",
+        "range": "3",
+        "roll_1": 129,
+        "roll_2": 129,
+        "roll_3": 129,
+        "roll_4": 119,
+        "roll_5": 119,
+        "roll_6": 119
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 220,
+    "fields": {
+        "ai": 9,
+        "arc": "LA",
+        "range": "4",
+        "roll_1": 116,
+        "roll_2": 119,
+        "roll_3": 119,
+        "roll_4": 120,
+        "roll_5": 120,
+        "roll_6": 120
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 221,
+    "fields": {
+        "ai": 9,
+        "arc": "LF",
+        "range": "1",
+        "roll_1": 131,
+        "roll_2": 129,
+        "roll_3": 129,
+        "roll_4": 119,
+        "roll_5": 119,
+        "roll_6": 119
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 222,
+    "fields": {
+        "ai": 9,
+        "arc": "LF",
+        "range": "2",
+        "roll_1": 116,
+        "roll_2": 119,
+        "roll_3": 120,
+        "roll_4": 120,
+        "roll_5": 124,
+        "roll_6": 124
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 223,
+    "fields": {
+        "ai": 9,
+        "arc": "LF",
+        "range": "3",
+        "roll_1": 119,
+        "roll_2": 119,
+        "roll_3": 119,
+        "roll_4": 124,
+        "roll_5": 124,
+        "roll_6": 124
+    }
+},
+{
+    "model": "campaign.aimaneuver",
+    "pk": 224,
+    "fields": {
+        "ai": 9,
+        "arc": "LF",
+        "range": "4",
+        "roll_1": 116,
+        "roll_2": 116,
+        "roll_3": 119,
+        "roll_4": 120,
+        "roll_5": 120,
+        "roll_6": 120
+    }
+},
+{
+    "model": "campaign.aipriority",
+    "pk": 1,
+    "fields": {
+        "ai": 1,
+        "type": "T",
+        "step": 1,
+        "desc": "Nearest enemy in front arc"
+    }
+},
+{
+    "model": "campaign.aipriority",
     "pk": 2,
     "fields": {
-        "campaign": 1,
-        "gm": [
-            "Mike"
-        ],
-        "description": "Mike Solo",
-        "victory": 12,
-        "ship_initiative": false,
-        "pool_xp": true,
-        "players": [
-            [
-                "Mike"
-            ]
-        ]
+        "ai": 1,
+        "type": "T",
+        "step": 2,
+        "desc": "Nearest enemy"
+    }
+},
+{
+    "model": "campaign.aipriority",
+    "pk": 3,
+    "fields": {
+        "ai": 1,
+        "type": "A",
+        "step": 1,
+        "desc": "Resolve crits"
+    }
+},
+{
+    "model": "campaign.aipriority",
+    "pk": 4,
+    "fields": {
+        "ai": 1,
+        "type": "A",
+        "step": 2,
+        "desc": "Barrel roll to avoid target's arc and still get a shot"
+    }
+},
+{
+    "model": "campaign.aipriority",
+    "pk": 5,
+    "fields": {
+        "ai": 1,
+        "type": "A",
+        "step": 3,
+        "desc": "Barrel roll to get a shot"
+    }
+},
+{
+    "model": "campaign.aipriority",
+    "pk": 6,
+    "fields": {
+        "ai": 1,
+        "type": "A",
+        "step": 4,
+        "desc": "Focus if you have a shot"
+    }
+},
+{
+    "model": "campaign.aipriority",
+    "pk": 7,
+    "fields": {
+        "ai": 1,
+        "type": "A",
+        "step": 5,
+        "desc": "Barrel roll to avoid target's arc"
+    }
+},
+{
+    "model": "campaign.aipriority",
+    "pk": 8,
+    "fields": {
+        "ai": 1,
+        "type": "A",
+        "step": 6,
+        "desc": "Evade"
+    }
+},
+{
+    "model": "campaign.aipriority",
+    "pk": 9,
+    "fields": {
+        "ai": 6,
+        "type": "T",
+        "step": 1,
+        "desc": "Nearest enemy in front arc"
+    }
+},
+{
+    "model": "campaign.aipriority",
+    "pk": 10,
+    "fields": {
+        "ai": 6,
+        "type": "T",
+        "step": 2,
+        "desc": "Nearest enemy"
+    }
+},
+{
+    "model": "campaign.aipriority",
+    "pk": 11,
+    "fields": {
+        "ai": 6,
+        "type": "A",
+        "step": 1,
+        "desc": "Resolve crits"
+    }
+},
+{
+    "model": "campaign.aipriority",
+    "pk": 12,
+    "fields": {
+        "ai": 6,
+        "type": "A",
+        "step": 2,
+        "desc": "Focus if you have a shot"
+    }
+},
+{
+    "model": "campaign.aipriority",
+    "pk": 13,
+    "fields": {
+        "ai": 6,
+        "type": "A",
+        "step": 3,
+        "desc": "Reinforce if within arc of 2+ enemies in that full arc"
+    }
+},
+{
+    "model": "campaign.aipriority",
+    "pk": 14,
+    "fields": {
+        "ai": 6,
+        "type": "A",
+        "step": 4,
+        "desc": "Coordinate nearest friendly ship"
+    }
+},
+{
+    "model": "campaign.aipriority",
+    "pk": 15,
+    "fields": {
+        "ai": 6,
+        "type": "A",
+        "step": 5,
+        "desc": "Jam target"
+    }
+},
+{
+    "model": "campaign.aipriority",
+    "pk": 16,
+    "fields": {
+        "ai": 6,
+        "type": "A",
+        "step": 6,
+        "desc": "Focus"
+    }
+},
+{
+    "model": "campaign.aipriority",
+    "pk": 17,
+    "fields": {
+        "ai": 2,
+        "type": "T",
+        "step": 1,
+        "desc": "Nearest enemy in front arc"
+    }
+},
+{
+    "model": "campaign.aipriority",
+    "pk": 18,
+    "fields": {
+        "ai": 2,
+        "type": "T",
+        "step": 2,
+        "desc": "Nearest enemy"
+    }
+},
+{
+    "model": "campaign.aipriority",
+    "pk": 19,
+    "fields": {
+        "ai": 2,
+        "type": "A",
+        "step": 1,
+        "desc": "Resolve crits"
+    }
+},
+{
+    "model": "campaign.aipriority",
+    "pk": 20,
+    "fields": {
+        "ai": 2,
+        "type": "A",
+        "step": 2,
+        "desc": "Focus > Boost/Barrel Roll to avoid target's arc and still get a shot"
+    }
+},
+{
+    "model": "campaign.aipriority",
+    "pk": 21,
+    "fields": {
+        "ai": 2,
+        "type": "A",
+        "step": 3,
+        "desc": "Focus > Boost/Barrel Roll to get a shot"
+    }
+},
+{
+    "model": "campaign.aipriority",
+    "pk": 22,
+    "fields": {
+        "ai": 2,
+        "type": "A",
+        "step": 4,
+        "desc": "Focus if you have a shot"
+    }
+},
+{
+    "model": "campaign.aipriority",
+    "pk": 23,
+    "fields": {
+        "ai": 2,
+        "type": "A",
+        "step": 5,
+        "desc": "Boost > Barrel Roll or Barrel Roll > Boost to avoid target's arc"
+    }
+},
+{
+    "model": "campaign.aipriority",
+    "pk": 24,
+    "fields": {
+        "ai": 2,
+        "type": "A",
+        "step": 6,
+        "desc": "Evade"
+    }
+},
+{
+    "model": "campaign.aipriority",
+    "pk": 25,
+    "fields": {
+        "ai": 9,
+        "type": "T",
+        "step": 1,
+        "desc": "Locked enemy within range 3"
+    }
+},
+{
+    "model": "campaign.aipriority",
+    "pk": 26,
+    "fields": {
+        "ai": 9,
+        "type": "T",
+        "step": 2,
+        "desc": "Nearest enemy in front arc"
+    }
+},
+{
+    "model": "campaign.aipriority",
+    "pk": 27,
+    "fields": {
+        "ai": 9,
+        "type": "T",
+        "step": 3,
+        "desc": "Nearest enemy"
+    }
+},
+{
+    "model": "campaign.aipriority",
+    "pk": 28,
+    "fields": {
+        "ai": 9,
+        "type": "A",
+        "step": 1,
+        "desc": "Resolve Crit"
+    }
+},
+{
+    "model": "campaign.aipriority",
+    "pk": 29,
+    "fields": {
+        "ai": 9,
+        "type": "A",
+        "step": 2,
+        "desc": "Reload if no charges on equipped missile/torpedo"
+    }
+},
+{
+    "model": "campaign.aipriority",
+    "pk": 30,
+    "fields": {
+        "ai": 9,
+        "type": "A",
+        "step": 3,
+        "desc": "Barrel Roll [> Target Lock] to avoid target's arc and still get a shot"
+    }
+},
+{
+    "model": "campaign.aipriority",
+    "pk": 31,
+    "fields": {
+        "ai": 9,
+        "type": "A",
+        "step": 4,
+        "desc": "Barrel Roll [> Target Lock] to get a shot"
+    }
+},
+{
+    "model": "campaign.aipriority",
+    "pk": 32,
+    "fields": {
+        "ai": 9,
+        "type": "A",
+        "step": 5,
+        "desc": "Target Lock"
+    }
+},
+{
+    "model": "campaign.aipriority",
+    "pk": 33,
+    "fields": {
+        "ai": 9,
+        "type": "A",
+        "step": 6,
+        "desc": "Barrel Roll to avoid target's arc"
+    }
+},
+{
+    "model": "campaign.aipriority",
+    "pk": 34,
+    "fields": {
+        "ai": 9,
+        "type": "A",
+        "step": 7,
+        "desc": "Focus"
+    }
+},
+{
+    "model": "campaign.enemypilot",
+    "pk": 1,
+    "fields": {
+        "chassis": 7,
+        "faction": 1,
+        "name_override": null,
+        "random": true
+    }
+},
+{
+    "model": "campaign.enemypilot",
+    "pk": 2,
+    "fields": {
+        "chassis": 7,
+        "faction": 1,
+        "name_override": null,
+        "random": true
+    }
+},
+{
+    "model": "campaign.enemypilot",
+    "pk": 3,
+    "fields": {
+        "chassis": 7,
+        "faction": 1,
+        "name_override": null,
+        "random": true
+    }
+},
+{
+    "model": "campaign.enemypilot",
+    "pk": 4,
+    "fields": {
+        "chassis": 7,
+        "faction": 1,
+        "name_override": null,
+        "random": true
+    }
+},
+{
+    "model": "campaign.enemypilot",
+    "pk": 5,
+    "fields": {
+        "chassis": 8,
+        "faction": 1,
+        "name_override": null,
+        "random": true
+    }
+},
+{
+    "model": "campaign.enemypilot",
+    "pk": 6,
+    "fields": {
+        "chassis": 9,
+        "faction": 1,
+        "name_override": "Capture The Officer",
+        "random": false
+    }
+},
+{
+    "model": "campaign.enemypilot",
+    "pk": 7,
+    "fields": {
+        "chassis": 10,
+        "faction": 1,
+        "name_override": null,
+        "random": true
+    }
+},
+{
+    "model": "campaign.enemypilot",
+    "pk": 8,
+    "fields": {
+        "chassis": 11,
+        "faction": 1,
+        "name_override": null,
+        "random": true
+    }
+},
+{
+    "model": "campaign.enemypilot",
+    "pk": 9,
+    "fields": {
+        "chassis": 12,
+        "faction": 1,
+        "name_override": null,
+        "random": true
+    }
+},
+{
+    "model": "campaign.enemypilot",
+    "pk": 10,
+    "fields": {
+        "chassis": 13,
+        "faction": 1,
+        "name_override": null,
+        "random": true
+    }
+},
+{
+    "model": "campaign.enemypilot",
+    "pk": 11,
+    "fields": {
+        "chassis": 6,
+        "faction": 1,
+        "name_override": null,
+        "random": true
+    }
+},
+{
+    "model": "campaign.enemypilot",
+    "pk": 12,
+    "fields": {
+        "chassis": 9,
+        "faction": 1,
+        "name_override": null,
+        "random": true
+    }
+},
+{
+    "model": "campaign.enemypilot",
+    "pk": 13,
+    "fields": {
+        "chassis": 7,
+        "faction": 1,
+        "name_override": null,
+        "random": true
+    }
+},
+{
+    "model": "campaign.enemypilot",
+    "pk": 14,
+    "fields": {
+        "chassis": 7,
+        "faction": 1,
+        "name_override": null,
+        "random": true
+    }
+},
+{
+    "model": "campaign.enemypilot",
+    "pk": 15,
+    "fields": {
+        "chassis": 9,
+        "faction": 1,
+        "name_override": null,
+        "random": true
+    }
+},
+{
+    "model": "campaign.enemypilot",
+    "pk": 16,
+    "fields": {
+        "chassis": 9,
+        "faction": 1,
+        "name_override": null,
+        "random": true
+    }
+},
+{
+    "model": "campaign.enemypilot",
+    "pk": 17,
+    "fields": {
+        "chassis": 9,
+        "faction": 1,
+        "name_override": null,
+        "random": true
+    }
+},
+{
+    "model": "campaign.enemypilot",
+    "pk": 18,
+    "fields": {
+        "chassis": 12,
+        "faction": 1,
+        "name_override": null,
+        "random": true
+    }
+},
+{
+    "model": "campaign.enemypilot",
+    "pk": 19,
+    "fields": {
+        "chassis": 12,
+        "faction": 1,
+        "name_override": null,
+        "random": true
+    }
+},
+{
+    "model": "campaign.enemypilot",
+    "pk": 20,
+    "fields": {
+        "chassis": 13,
+        "faction": 1,
+        "name_override": null,
+        "random": true
+    }
+},
+{
+    "model": "campaign.enemypilot",
+    "pk": 21,
+    "fields": {
+        "chassis": 12,
+        "faction": 1,
+        "name_override": null,
+        "random": true
+    }
+},
+{
+    "model": "campaign.enemypilot",
+    "pk": 22,
+    "fields": {
+        "chassis": 12,
+        "faction": 1,
+        "name_override": null,
+        "random": true
+    }
+},
+{
+    "model": "campaign.enemyability",
+    "pk": 1,
+    "fields": {
+        "pilot": 1,
+        "upgrade": 27,
+        "level": 1
+    }
+},
+{
+    "model": "campaign.enemyability",
+    "pk": 2,
+    "fields": {
+        "pilot": 1,
+        "upgrade": 21,
+        "level": 2
+    }
+},
+{
+    "model": "campaign.enemyability",
+    "pk": 3,
+    "fields": {
+        "pilot": 1,
+        "upgrade": 1,
+        "level": 2
+    }
+},
+{
+    "model": "campaign.enemyability",
+    "pk": 4,
+    "fields": {
+        "pilot": 1,
+        "upgrade": 28,
+        "level": 3
+    }
+},
+{
+    "model": "campaign.enemyability",
+    "pk": 5,
+    "fields": {
+        "pilot": 1,
+        "upgrade": 17,
+        "level": 4
+    }
+},
+{
+    "model": "campaign.enemyability",
+    "pk": 6,
+    "fields": {
+        "pilot": 1,
+        "upgrade": 29,
+        "level": 5
+    }
+},
+{
+    "model": "campaign.enemyability",
+    "pk": 7,
+    "fields": {
+        "pilot": 2,
+        "upgrade": 30,
+        "level": 1
+    }
+},
+{
+    "model": "campaign.enemyability",
+    "pk": 8,
+    "fields": {
+        "pilot": 2,
+        "upgrade": 25,
+        "level": 2
+    }
+},
+{
+    "model": "campaign.enemyability",
+    "pk": 9,
+    "fields": {
+        "pilot": 2,
+        "upgrade": 32,
+        "level": 2
+    }
+},
+{
+    "model": "campaign.enemyability",
+    "pk": 10,
+    "fields": {
+        "pilot": 2,
+        "upgrade": 33,
+        "level": 3
+    }
+},
+{
+    "model": "campaign.enemyability",
+    "pk": 11,
+    "fields": {
+        "pilot": 2,
+        "upgrade": 34,
+        "level": 4
+    }
+},
+{
+    "model": "campaign.enemyability",
+    "pk": 12,
+    "fields": {
+        "pilot": 2,
+        "upgrade": 35,
+        "level": 5
+    }
+},
+{
+    "model": "campaign.enemyability",
+    "pk": 13,
+    "fields": {
+        "pilot": 3,
+        "upgrade": 27,
+        "level": 1
+    }
+},
+{
+    "model": "campaign.enemyability",
+    "pk": 14,
+    "fields": {
+        "pilot": 3,
+        "upgrade": 25,
+        "level": 2
+    }
+},
+{
+    "model": "campaign.enemyability",
+    "pk": 15,
+    "fields": {
+        "pilot": 3,
+        "upgrade": 36,
+        "level": 2
+    }
+},
+{
+    "model": "campaign.enemyability",
+    "pk": 16,
+    "fields": {
+        "pilot": 3,
+        "upgrade": 37,
+        "level": 3
+    }
+},
+{
+    "model": "campaign.enemyability",
+    "pk": 17,
+    "fields": {
+        "pilot": 3,
+        "upgrade": 1,
+        "level": 4
+    }
+},
+{
+    "model": "campaign.enemyability",
+    "pk": 18,
+    "fields": {
+        "pilot": 3,
+        "upgrade": 38,
+        "level": 5
+    }
+},
+{
+    "model": "campaign.enemyability",
+    "pk": 19,
+    "fields": {
+        "pilot": 4,
+        "upgrade": 21,
+        "level": 1
+    }
+},
+{
+    "model": "campaign.enemyability",
+    "pk": 20,
+    "fields": {
+        "pilot": 4,
+        "upgrade": 27,
+        "level": 2
+    }
+},
+{
+    "model": "campaign.enemyability",
+    "pk": 21,
+    "fields": {
+        "pilot": 4,
+        "upgrade": 39,
+        "level": 2
+    }
+},
+{
+    "model": "campaign.enemyability",
+    "pk": 22,
+    "fields": {
+        "pilot": 4,
+        "upgrade": 40,
+        "level": 3
+    }
+},
+{
+    "model": "campaign.enemyability",
+    "pk": 23,
+    "fields": {
+        "pilot": 4,
+        "upgrade": 41,
+        "level": 4
+    }
+},
+{
+    "model": "campaign.enemyability",
+    "pk": 24,
+    "fields": {
+        "pilot": 4,
+        "upgrade": 42,
+        "level": 5
+    }
+},
+{
+    "model": "campaign.enemyability",
+    "pk": 25,
+    "fields": {
+        "pilot": 9,
+        "upgrade": 43,
+        "level": 1
+    }
+},
+{
+    "model": "campaign.enemyability",
+    "pk": 26,
+    "fields": {
+        "pilot": 9,
+        "upgrade": 44,
+        "level": 2
+    }
+},
+{
+    "model": "campaign.enemyability",
+    "pk": 27,
+    "fields": {
+        "pilot": 9,
+        "upgrade": 45,
+        "level": 2
+    }
+},
+{
+    "model": "campaign.enemyability",
+    "pk": 28,
+    "fields": {
+        "pilot": 9,
+        "upgrade": 46,
+        "level": 3
+    }
+},
+{
+    "model": "campaign.enemyability",
+    "pk": 29,
+    "fields": {
+        "pilot": 9,
+        "upgrade": 17,
+        "level": 4
+    }
+},
+{
+    "model": "campaign.enemyability",
+    "pk": 30,
+    "fields": {
+        "pilot": 9,
+        "upgrade": 40,
+        "level": 5
+    }
+},
+{
+    "model": "campaign.enemyability",
+    "pk": 31,
+    "fields": {
+        "pilot": 7,
+        "upgrade": 51,
+        "level": 1
+    }
+},
+{
+    "model": "campaign.enemyability",
+    "pk": 32,
+    "fields": {
+        "pilot": 7,
+        "upgrade": 21,
+        "level": 2
+    }
+},
+{
+    "model": "campaign.enemyability",
+    "pk": 33,
+    "fields": {
+        "pilot": 7,
+        "upgrade": 32,
+        "level": 2
+    }
+},
+{
+    "model": "campaign.enemyability",
+    "pk": 34,
+    "fields": {
+        "pilot": 7,
+        "upgrade": 52,
+        "level": 3
+    }
+},
+{
+    "model": "campaign.enemyability",
+    "pk": 35,
+    "fields": {
+        "pilot": 7,
+        "upgrade": 28,
+        "level": 4
+    }
+},
+{
+    "model": "campaign.enemyability",
+    "pk": 36,
+    "fields": {
+        "pilot": 7,
+        "upgrade": 34,
+        "level": 5
+    }
+},
+{
+    "model": "campaign.enemyability",
+    "pk": 37,
+    "fields": {
+        "pilot": 6,
+        "upgrade": 53,
+        "level": 1
+    }
+},
+{
+    "model": "campaign.enemyability",
+    "pk": 38,
+    "fields": {
+        "pilot": 6,
+        "upgrade": 54,
+        "level": 1
+    }
+},
+{
+    "model": "campaign.enemyability",
+    "pk": 39,
+    "fields": {
+        "pilot": 6,
+        "upgrade": 55,
+        "level": 1
+    }
+},
+{
+    "model": "campaign.enemyability",
+    "pk": 40,
+    "fields": {
+        "pilot": 6,
+        "upgrade": 56,
+        "level": 1
+    }
+},
+{
+    "model": "campaign.enemyability",
+    "pk": 41,
+    "fields": {
+        "pilot": 12,
+        "upgrade": 55,
+        "level": 1
+    }
+},
+{
+    "model": "campaign.enemyability",
+    "pk": 42,
+    "fields": {
+        "pilot": 13,
+        "upgrade": 30,
+        "level": 1
+    }
+},
+{
+    "model": "campaign.enemyability",
+    "pk": 43,
+    "fields": {
+        "pilot": 13,
+        "upgrade": 27,
+        "level": 2
+    }
+},
+{
+    "model": "campaign.enemyability",
+    "pk": 44,
+    "fields": {
+        "pilot": 13,
+        "upgrade": 57,
+        "level": 2
+    }
+},
+{
+    "model": "campaign.enemyability",
+    "pk": 45,
+    "fields": {
+        "pilot": 13,
+        "upgrade": 58,
+        "level": 3
+    }
+},
+{
+    "model": "campaign.enemyability",
+    "pk": 46,
+    "fields": {
+        "pilot": 13,
+        "upgrade": 45,
+        "level": 4
+    }
+},
+{
+    "model": "campaign.enemyability",
+    "pk": 47,
+    "fields": {
+        "pilot": 13,
+        "upgrade": 59,
+        "level": 5
+    }
+},
+{
+    "model": "campaign.enemyability",
+    "pk": 48,
+    "fields": {
+        "pilot": 14,
+        "upgrade": 21,
+        "level": 1
+    }
+},
+{
+    "model": "campaign.enemyability",
+    "pk": 49,
+    "fields": {
+        "pilot": 14,
+        "upgrade": 30,
+        "level": 2
+    }
+},
+{
+    "model": "campaign.enemyability",
+    "pk": 50,
+    "fields": {
+        "pilot": 14,
+        "upgrade": 60,
+        "level": 2
+    }
+},
+{
+    "model": "campaign.enemyability",
+    "pk": 51,
+    "fields": {
+        "pilot": 14,
+        "upgrade": 52,
+        "level": 3
+    }
+},
+{
+    "model": "campaign.enemyability",
+    "pk": 52,
+    "fields": {
+        "pilot": 14,
+        "upgrade": 61,
+        "level": 4
+    }
+},
+{
+    "model": "campaign.enemyability",
+    "pk": 53,
+    "fields": {
+        "pilot": 14,
+        "upgrade": 62,
+        "level": 5
+    }
+},
+{
+    "model": "campaign.enemyability",
+    "pk": 54,
+    "fields": {
+        "pilot": 12,
+        "upgrade": 63,
+        "level": 2
+    }
+},
+{
+    "model": "campaign.enemyability",
+    "pk": 55,
+    "fields": {
+        "pilot": 12,
+        "upgrade": 64,
+        "level": 2
+    }
+},
+{
+    "model": "campaign.enemyability",
+    "pk": 56,
+    "fields": {
+        "pilot": 12,
+        "upgrade": 65,
+        "level": 3
+    }
+},
+{
+    "model": "campaign.enemyability",
+    "pk": 57,
+    "fields": {
+        "pilot": 12,
+        "upgrade": 66,
+        "level": 4
+    }
+},
+{
+    "model": "campaign.enemyability",
+    "pk": 58,
+    "fields": {
+        "pilot": 12,
+        "upgrade": 67,
+        "level": 5
+    }
+},
+{
+    "model": "campaign.enemyability",
+    "pk": 59,
+    "fields": {
+        "pilot": 15,
+        "upgrade": 54,
+        "level": 1
+    }
+},
+{
+    "model": "campaign.enemyability",
+    "pk": 60,
+    "fields": {
+        "pilot": 15,
+        "upgrade": 53,
+        "level": 2
+    }
+},
+{
+    "model": "campaign.enemyability",
+    "pk": 61,
+    "fields": {
+        "pilot": 15,
+        "upgrade": 68,
+        "level": 2
+    }
+},
+{
+    "model": "campaign.enemyability",
+    "pk": 62,
+    "fields": {
+        "pilot": 15,
+        "upgrade": 37,
+        "level": 3
+    }
+},
+{
+    "model": "campaign.enemyability",
+    "pk": 63,
+    "fields": {
+        "pilot": 15,
+        "upgrade": 69,
+        "level": 4
+    }
+},
+{
+    "model": "campaign.enemyability",
+    "pk": 64,
+    "fields": {
+        "pilot": 15,
+        "upgrade": 17,
+        "level": 5
+    }
+},
+{
+    "model": "campaign.enemyability",
+    "pk": 65,
+    "fields": {
+        "pilot": 16,
+        "upgrade": 70,
+        "level": 1
+    }
+},
+{
+    "model": "campaign.enemyability",
+    "pk": 66,
+    "fields": {
+        "pilot": 16,
+        "upgrade": 71,
+        "level": 2
+    }
+},
+{
+    "model": "campaign.enemyability",
+    "pk": 67,
+    "fields": {
+        "pilot": 16,
+        "upgrade": 72,
+        "level": 2
+    }
+},
+{
+    "model": "campaign.enemyability",
+    "pk": 68,
+    "fields": {
+        "pilot": 16,
+        "upgrade": 73,
+        "level": 3
+    }
+},
+{
+    "model": "campaign.enemyability",
+    "pk": 69,
+    "fields": {
+        "pilot": 16,
+        "upgrade": 61,
+        "level": 4
+    }
+},
+{
+    "model": "campaign.enemyability",
+    "pk": 70,
+    "fields": {
+        "pilot": 16,
+        "upgrade": 74,
+        "level": 5
+    }
+},
+{
+    "model": "campaign.enemyability",
+    "pk": 71,
+    "fields": {
+        "pilot": 17,
+        "upgrade": 75,
+        "level": 1
+    }
+},
+{
+    "model": "campaign.enemyability",
+    "pk": 72,
+    "fields": {
+        "pilot": 17,
+        "upgrade": 71,
+        "level": 2
+    }
+},
+{
+    "model": "campaign.enemyability",
+    "pk": 73,
+    "fields": {
+        "pilot": 17,
+        "upgrade": 60,
+        "level": 2
+    }
+},
+{
+    "model": "campaign.enemyability",
+    "pk": 74,
+    "fields": {
+        "pilot": 17,
+        "upgrade": 76,
+        "level": 3
+    }
+},
+{
+    "model": "campaign.enemyability",
+    "pk": 75,
+    "fields": {
+        "pilot": 17,
+        "upgrade": 77,
+        "level": 4
+    }
+},
+{
+    "model": "campaign.enemyability",
+    "pk": 76,
+    "fields": {
+        "pilot": 17,
+        "upgrade": 40,
+        "level": 5
+    }
+},
+{
+    "model": "campaign.enemyability",
+    "pk": 77,
+    "fields": {
+        "pilot": 18,
+        "upgrade": 85,
+        "level": 1
+    }
+},
+{
+    "model": "campaign.enemyability",
+    "pk": 78,
+    "fields": {
+        "pilot": 18,
+        "upgrade": 44,
+        "level": 2
+    }
+},
+{
+    "model": "campaign.enemyability",
+    "pk": 79,
+    "fields": {
+        "pilot": 18,
+        "upgrade": 94,
+        "level": 2
+    }
+},
+{
+    "model": "campaign.enemyability",
+    "pk": 80,
+    "fields": {
+        "pilot": 18,
+        "upgrade": 93,
+        "level": 3
+    }
+},
+{
+    "model": "campaign.enemyability",
+    "pk": 81,
+    "fields": {
+        "pilot": 18,
+        "upgrade": 39,
+        "level": 4
+    }
+},
+{
+    "model": "campaign.enemyability",
+    "pk": 82,
+    "fields": {
+        "pilot": 18,
+        "upgrade": 89,
+        "level": 5
+    }
+},
+{
+    "model": "campaign.enemyability",
+    "pk": 83,
+    "fields": {
+        "pilot": 19,
+        "upgrade": 85,
+        "level": 1
+    }
+},
+{
+    "model": "campaign.enemyability",
+    "pk": 84,
+    "fields": {
+        "pilot": 19,
+        "upgrade": 44,
+        "level": 2
+    }
+},
+{
+    "model": "campaign.enemyability",
+    "pk": 85,
+    "fields": {
+        "pilot": 19,
+        "upgrade": 57,
+        "level": 2
+    }
+},
+{
+    "model": "campaign.enemyability",
+    "pk": 86,
+    "fields": {
+        "pilot": 19,
+        "upgrade": 92,
+        "level": 3
+    }
+},
+{
+    "model": "campaign.enemyability",
+    "pk": 87,
+    "fields": {
+        "pilot": 19,
+        "upgrade": 91,
+        "level": 4
+    }
+},
+{
+    "model": "campaign.enemyability",
+    "pk": 88,
+    "fields": {
+        "pilot": 19,
+        "upgrade": 90,
+        "level": 5
+    }
+},
+{
+    "model": "campaign.enemyability",
+    "pk": 89,
+    "fields": {
+        "pilot": 20,
+        "upgrade": 86,
+        "level": 1
+    }
+},
+{
+    "model": "campaign.enemyability",
+    "pk": 90,
+    "fields": {
+        "pilot": 20,
+        "upgrade": 44,
+        "level": 2
+    }
+},
+{
+    "model": "campaign.enemyability",
+    "pk": 91,
+    "fields": {
+        "pilot": 20,
+        "upgrade": 61,
+        "level": 2
+    }
+},
+{
+    "model": "campaign.enemyability",
+    "pk": 92,
+    "fields": {
+        "pilot": 20,
+        "upgrade": 74,
+        "level": 3
+    }
+},
+{
+    "model": "campaign.enemyability",
+    "pk": 93,
+    "fields": {
+        "pilot": 20,
+        "upgrade": 57,
+        "level": 4
+    }
+},
+{
+    "model": "campaign.enemyability",
+    "pk": 94,
+    "fields": {
+        "pilot": 20,
+        "upgrade": 29,
+        "level": 5
+    }
+},
+{
+    "model": "campaign.enemyability",
+    "pk": 95,
+    "fields": {
+        "pilot": 21,
+        "upgrade": 4,
+        "level": 1
+    }
+},
+{
+    "model": "campaign.enemyability",
+    "pk": 96,
+    "fields": {
+        "pilot": 21,
+        "upgrade": 44,
+        "level": 2
+    }
+},
+{
+    "model": "campaign.enemyability",
+    "pk": 97,
+    "fields": {
+        "pilot": 21,
+        "upgrade": 25,
+        "level": 2
+    }
+},
+{
+    "model": "campaign.enemyability",
+    "pk": 98,
+    "fields": {
+        "pilot": 21,
+        "upgrade": 89,
+        "level": 3
+    }
+},
+{
+    "model": "campaign.enemyability",
+    "pk": 99,
+    "fields": {
+        "pilot": 21,
+        "upgrade": 34,
+        "level": 4
+    }
+},
+{
+    "model": "campaign.enemyability",
+    "pk": 100,
+    "fields": {
+        "pilot": 21,
+        "upgrade": 62,
+        "level": 5
+    }
+},
+{
+    "model": "campaign.enemyability",
+    "pk": 101,
+    "fields": {
+        "pilot": 22,
+        "upgrade": 6,
+        "level": 1
+    }
+},
+{
+    "model": "campaign.enemyability",
+    "pk": 102,
+    "fields": {
+        "pilot": 22,
+        "upgrade": 44,
+        "level": 2
+    }
+},
+{
+    "model": "campaign.enemyability",
+    "pk": 103,
+    "fields": {
+        "pilot": 22,
+        "upgrade": 45,
+        "level": 2
+    }
+},
+{
+    "model": "campaign.enemyability",
+    "pk": 104,
+    "fields": {
+        "pilot": 22,
+        "upgrade": 87,
+        "level": 3
+    }
+},
+{
+    "model": "campaign.enemyability",
+    "pk": 105,
+    "fields": {
+        "pilot": 22,
+        "upgrade": 39,
+        "level": 4
+    }
+},
+{
+    "model": "campaign.enemyability",
+    "pk": 106,
+    "fields": {
+        "pilot": 22,
+        "upgrade": 88,
+        "level": 5
     }
 },
 {
@@ -3076,9 +7632,9 @@
         "user": [
             "Mike"
         ],
-        "game": 1,
+        "campaign": 1,
         "callsign": "Mike",
-        "initiative": 2,
+        "initiative": 3,
         "path": "A"
     }
 },
@@ -3089,9 +7645,9 @@
         "user": [
             "Kate"
         ],
-        "game": 1,
+        "campaign": 1,
         "callsign": "Kate",
-        "initiative": 2,
+        "initiative": 4,
         "path": "A"
     }
 },
@@ -3102,9 +7658,9 @@
         "user": [
             "Carolyn"
         ],
-        "game": 1,
+        "campaign": 1,
         "callsign": "Carolyn",
-        "initiative": 2,
+        "initiative": 3,
         "path": "A"
     }
 },
@@ -3115,7 +7671,7 @@
         "user": [
             "Steve"
         ],
-        "game": 1,
+        "campaign": 1,
         "callsign": "Steve",
         "initiative": 2,
         "path": "A"
@@ -3128,7 +7684,7 @@
         "user": [
             "Lis"
         ],
-        "game": 1,
+        "campaign": 1,
         "callsign": "Rum Bunny",
         "initiative": 2,
         "path": "A"
@@ -3141,22 +7697,9 @@
         "user": [
             "Mike"
         ],
-        "game": 2,
+        "campaign": 2,
         "callsign": "Red 1",
-        "initiative": 2,
-        "path": "A"
-    }
-},
-{
-    "model": "campaign.pilot",
-    "pk": 7,
-    "fields": {
-        "user": [
-            "Lis"
-        ],
-        "game": 2,
-        "callsign": "Banana 2",
-        "initiative": 2,
+        "initiative": 4,
         "path": "A"
     }
 },
@@ -3167,23 +7710,10 @@
         "user": [
             "Mike"
         ],
-        "game": 2,
+        "campaign": 2,
         "callsign": "Green 1",
-        "initiative": 3,
-        "path": "A"
-    }
-},
-{
-    "model": "campaign.pilot",
-    "pk": 9,
-    "fields": {
-        "user": [
-            "Lis"
-        ],
-        "game": 2,
-        "callsign": "Banana 1",
-        "initiative": 2,
-        "path": "A"
+        "initiative": 4,
+        "path": "F"
     }
 },
 {
@@ -3191,8 +7721,7 @@
     "pk": 1,
     "fields": {
         "pilot": 1,
-        "chassis": 3,
-        "initiative": 2
+        "chassis": 1
     }
 },
 {
@@ -3200,8 +7729,7 @@
     "pk": 2,
     "fields": {
         "pilot": 2,
-        "chassis": 1,
-        "initiative": 2
+        "chassis": 1
     }
 },
 {
@@ -3209,8 +7737,7 @@
     "pk": 3,
     "fields": {
         "pilot": 3,
-        "chassis": 2,
-        "initiative": 2
+        "chassis": 2
     }
 },
 {
@@ -3218,8 +7745,7 @@
     "pk": 4,
     "fields": {
         "pilot": 4,
-        "chassis": 2,
-        "initiative": 2
+        "chassis": 2
     }
 },
 {
@@ -3227,8 +7753,7 @@
     "pk": 5,
     "fields": {
         "pilot": 5,
-        "chassis": 1,
-        "initiative": 2
+        "chassis": 1
     }
 },
 {
@@ -3236,17 +7761,7 @@
     "pk": 6,
     "fields": {
         "pilot": 6,
-        "chassis": 1,
-        "initiative": 2
-    }
-},
-{
-    "model": "campaign.pilotship",
-    "pk": 7,
-    "fields": {
-        "pilot": 7,
-        "chassis": 2,
-        "initiative": 2
+        "chassis": 1
     }
 },
 {
@@ -3254,17 +7769,23 @@
     "pk": 8,
     "fields": {
         "pilot": 8,
-        "chassis": 1,
-        "initiative": 2
+        "chassis": 1
     }
 },
 {
     "model": "campaign.pilotship",
-    "pk": 9,
+    "pk": 10,
     "fields": {
-        "pilot": 9,
-        "chassis": 1,
-        "initiative": 2
+        "pilot": 1,
+        "chassis": 3
+    }
+},
+{
+    "model": "campaign.pilotship",
+    "pk": 11,
+    "fields": {
+        "pilot": 6,
+        "chassis": 4
     }
 },
 {
@@ -3272,7 +7793,7 @@
     "pk": 1,
     "fields": {
         "pilot": 1,
-        "upgrade": 11,
+        "upgrade": "11U",
         "copies": 1,
         "status": "E"
     }
@@ -3282,7 +7803,7 @@
     "pk": 2,
     "fields": {
         "pilot": 1,
-        "upgrade": 10,
+        "upgrade": "1P",
         "copies": 1,
         "status": "E"
     }
@@ -3292,7 +7813,7 @@
     "pk": 3,
     "fields": {
         "pilot": 1,
-        "upgrade": 19,
+        "upgrade": "2P",
         "copies": 1,
         "status": "E"
     }
@@ -3302,7 +7823,7 @@
     "pk": 4,
     "fields": {
         "pilot": 8,
-        "upgrade": 25,
+        "upgrade": "18U",
         "copies": 1,
         "status": "E"
     }
@@ -3312,9 +7833,9 @@
     "pk": 5,
     "fields": {
         "pilot": 6,
-        "upgrade": 18,
+        "upgrade": "18U",
         "copies": 1,
-        "status": "E"
+        "status": "U"
     }
 },
 {
@@ -3322,8 +7843,278 @@
     "pk": 6,
     "fields": {
         "pilot": 6,
-        "upgrade": 9,
+        "upgrade": "30U",
         "copies": 1,
+        "status": "E"
+    }
+},
+{
+    "model": "campaign.pilotupgrade",
+    "pk": 7,
+    "fields": {
+        "pilot": 2,
+        "upgrade": "23U",
+        "copies": 1,
+        "status": "E"
+    }
+},
+{
+    "model": "campaign.pilotupgrade",
+    "pk": 8,
+    "fields": {
+        "pilot": 2,
+        "upgrade": "17U",
+        "copies": 1,
+        "status": "E"
+    }
+},
+{
+    "model": "campaign.pilotupgrade",
+    "pk": 9,
+    "fields": {
+        "pilot": 2,
+        "upgrade": "16U",
+        "copies": 1,
+        "status": "E"
+    }
+},
+{
+    "model": "campaign.pilotupgrade",
+    "pk": 10,
+    "fields": {
+        "pilot": 2,
+        "upgrade": "18U",
+        "copies": 1,
+        "status": "E"
+    }
+},
+{
+    "model": "campaign.pilotupgrade",
+    "pk": 11,
+    "fields": {
+        "pilot": 3,
+        "upgrade": "6U",
+        "copies": 1,
+        "status": "E"
+    }
+},
+{
+    "model": "campaign.pilotupgrade",
+    "pk": 12,
+    "fields": {
+        "pilot": 3,
+        "upgrade": "8U",
+        "copies": 1,
+        "status": "E"
+    }
+},
+{
+    "model": "campaign.pilotupgrade",
+    "pk": 13,
+    "fields": {
+        "pilot": 3,
+        "upgrade": "13U",
+        "copies": 1,
+        "status": "E"
+    }
+},
+{
+    "model": "campaign.pilotupgrade",
+    "pk": 14,
+    "fields": {
+        "pilot": 3,
+        "upgrade": "15U",
+        "copies": 1,
+        "status": "U"
+    }
+},
+{
+    "model": "campaign.pilotupgrade",
+    "pk": 15,
+    "fields": {
+        "pilot": 3,
+        "upgrade": "22U",
+        "copies": 1,
+        "status": "E"
+    }
+},
+{
+    "model": "campaign.pilotupgrade",
+    "pk": 16,
+    "fields": {
+        "pilot": 3,
+        "upgrade": "14U",
+        "copies": 1,
+        "status": "E"
+    }
+},
+{
+    "model": "campaign.pilotupgrade",
+    "pk": 17,
+    "fields": {
+        "pilot": 3,
+        "upgrade": "21U",
+        "copies": 1,
+        "status": "E"
+    }
+},
+{
+    "model": "campaign.pilotupgrade",
+    "pk": 18,
+    "fields": {
+        "pilot": 4,
+        "upgrade": "12U",
+        "copies": 1,
+        "status": "E"
+    }
+},
+{
+    "model": "campaign.pilotupgrade",
+    "pk": 19,
+    "fields": {
+        "pilot": 4,
+        "upgrade": "13U",
+        "copies": 1,
+        "status": "E"
+    }
+},
+{
+    "model": "campaign.pilotupgrade",
+    "pk": 20,
+    "fields": {
+        "pilot": 4,
+        "upgrade": "7U",
+        "copies": 1,
+        "status": "E"
+    }
+},
+{
+    "model": "campaign.pilotupgrade",
+    "pk": 21,
+    "fields": {
+        "pilot": 4,
+        "upgrade": "5U",
+        "copies": 1,
+        "status": "E"
+    }
+},
+{
+    "model": "campaign.pilotupgrade",
+    "pk": 22,
+    "fields": {
+        "pilot": 4,
+        "upgrade": "9U",
+        "copies": 1,
+        "status": "E"
+    }
+},
+{
+    "model": "campaign.pilotupgrade",
+    "pk": 23,
+    "fields": {
+        "pilot": 4,
+        "upgrade": "21U",
+        "copies": 1,
+        "status": "E"
+    }
+},
+{
+    "model": "campaign.pilotupgrade",
+    "pk": 24,
+    "fields": {
+        "pilot": 4,
+        "upgrade": "24U",
+        "copies": 1,
+        "status": "E"
+    }
+},
+{
+    "model": "campaign.pilotupgrade",
+    "pk": 25,
+    "fields": {
+        "pilot": 2,
+        "upgrade": "25U",
+        "copies": 1,
+        "status": "E"
+    }
+},
+{
+    "model": "campaign.pilotupgrade",
+    "pk": 26,
+    "fields": {
+        "pilot": 8,
+        "upgrade": "9U",
+        "copies": 1,
+        "status": "E"
+    }
+},
+{
+    "model": "campaign.pilotupgrade",
+    "pk": 30,
+    "fields": {
+        "pilot": 6,
+        "upgrade": "80U",
+        "copies": 1,
+        "status": "E"
+    }
+},
+{
+    "model": "campaign.pilotupgrade",
+    "pk": 32,
+    "fields": {
+        "pilot": 6,
+        "upgrade": "82U",
+        "copies": 1,
+        "status": "E"
+    }
+},
+{
+    "model": "campaign.pilotupgrade",
+    "pk": 33,
+    "fields": {
+        "pilot": 6,
+        "upgrade": "83U",
+        "copies": 1,
+        "status": "E"
+    }
+},
+{
+    "model": "campaign.pilotupgrade",
+    "pk": 34,
+    "fields": {
+        "pilot": 8,
+        "upgrade": "4U",
+        "copies": 1,
+        "status": "E"
+    }
+},
+{
+    "model": "campaign.pilotupgrade",
+    "pk": 35,
+    "fields": {
+        "pilot": 8,
+        "upgrade": "84U",
+        "copies": 1,
+        "status": "E"
+    }
+},
+{
+    "model": "campaign.pilotupgrade",
+    "pk": 36,
+    "fields": {
+        "pilot": 6,
+        "upgrade": "57U",
+        "copies": 1,
+        "status": "E"
+    }
+},
+{
+    "model": "campaign.pilotupgrade",
+    "pk": 37,
+    "fields": {
+        "pilot": 8,
+        "upgrade": "25U",
+        "copies": 2,
         "status": "E"
     }
 },
@@ -3331,64 +8122,478 @@
     "model": "campaign.session",
     "pk": 1,
     "fields": {
-        "game": 1,
+        "campaign": 1,
         "mission": 1,
         "date": "2019-02-11",
         "outcome": "V",
-        "pilots": [
-            1,
-            2,
-            3,
-            5
-        ]
+        "bonus_1_achieved": false,
+        "bonus_2_achieved": false,
+        "penalty_received": false
     }
 },
 {
     "model": "campaign.session",
     "pk": 2,
     "fields": {
-        "game": 1,
+        "campaign": 1,
         "mission": 2,
         "date": "2019-05-11",
         "outcome": "V",
-        "pilots": [
-            1,
-            2,
-            3,
-            4
-        ]
+        "bonus_1_achieved": false,
+        "bonus_2_achieved": false,
+        "penalty_received": false
     }
 },
 {
     "model": "campaign.session",
     "pk": 3,
     "fields": {
-        "game": 1,
+        "campaign": 1,
         "mission": 3,
         "date": "2019-06-23",
         "outcome": "V",
-        "pilots": [
-            1,
-            2,
-            3,
-            4
-        ]
+        "bonus_1_achieved": false,
+        "bonus_2_achieved": false,
+        "penalty_received": false
     }
 },
 {
     "model": "campaign.session",
     "pk": 4,
     "fields": {
-        "game": 2,
+        "campaign": 2,
         "mission": 1,
-        "date": "2020-05-31",
+        "date": "2021-06-10",
         "outcome": "V",
-        "pilots": [
-            6,
-            7,
-            8,
-            9
-        ]
+        "bonus_1_achieved": false,
+        "bonus_2_achieved": false,
+        "penalty_received": false
+    }
+},
+{
+    "model": "campaign.session",
+    "pk": 5,
+    "fields": {
+        "campaign": 2,
+        "mission": 4,
+        "date": "2021-06-11",
+        "outcome": "V",
+        "bonus_1_achieved": true,
+        "bonus_2_achieved": false,
+        "penalty_received": false
+    }
+},
+{
+    "model": "campaign.session",
+    "pk": 7,
+    "fields": {
+        "campaign": 2,
+        "mission": 2,
+        "date": "2021-06-12",
+        "outcome": "V",
+        "bonus_1_achieved": true,
+        "bonus_2_achieved": false,
+        "penalty_received": false
+    }
+},
+{
+    "model": "campaign.session",
+    "pk": 8,
+    "fields": {
+        "campaign": 2,
+        "mission": 3,
+        "date": null,
+        "outcome": "U",
+        "bonus_1_achieved": false,
+        "bonus_2_achieved": false,
+        "penalty_received": false
+    }
+},
+{
+    "model": "campaign.session",
+    "pk": 9,
+    "fields": {
+        "campaign": 2,
+        "mission": 6,
+        "date": null,
+        "outcome": "U",
+        "bonus_1_achieved": false,
+        "bonus_2_achieved": false,
+        "penalty_received": false
+    }
+},
+{
+    "model": "campaign.sessionpilot",
+    "pk": 1,
+    "fields": {
+        "session": 4,
+        "pilot": 6,
+        "ship": 6,
+        "initiative": 2,
+        "hits": 5,
+        "assists": 0,
+        "guards": 0,
+        "emplacements": 0,
+        "bonus": 2,
+        "penalty": 0,
+        "status": "V"
+    }
+},
+{
+    "model": "campaign.sessionpilot",
+    "pk": 2,
+    "fields": {
+        "session": 4,
+        "pilot": 8,
+        "ship": 8,
+        "initiative": 2,
+        "hits": 2,
+        "assists": 0,
+        "guards": 0,
+        "emplacements": 0,
+        "bonus": 2,
+        "penalty": 0,
+        "status": "V"
+    }
+},
+{
+    "model": "campaign.sessionpilot",
+    "pk": 3,
+    "fields": {
+        "session": 5,
+        "pilot": 6,
+        "ship": 6,
+        "initiative": 3,
+        "hits": 5,
+        "assists": 0,
+        "guards": 0,
+        "emplacements": 0,
+        "bonus": 3,
+        "penalty": 0,
+        "status": "V"
+    }
+},
+{
+    "model": "campaign.sessionpilot",
+    "pk": 4,
+    "fields": {
+        "session": 5,
+        "pilot": 8,
+        "ship": 8,
+        "initiative": 3,
+        "hits": 5,
+        "assists": 0,
+        "guards": 0,
+        "emplacements": 0,
+        "bonus": 0,
+        "penalty": 0,
+        "status": "V"
+    }
+},
+{
+    "model": "campaign.sessionpilot",
+    "pk": 5,
+    "fields": {
+        "session": 1,
+        "pilot": 1,
+        "ship": 1,
+        "initiative": 2,
+        "hits": 4,
+        "assists": 0,
+        "guards": 0,
+        "emplacements": 0,
+        "bonus": 0,
+        "penalty": 0,
+        "status": "V"
+    }
+},
+{
+    "model": "campaign.sessionpilot",
+    "pk": 6,
+    "fields": {
+        "session": 1,
+        "pilot": 2,
+        "ship": 2,
+        "initiative": 2,
+        "hits": 5,
+        "assists": 0,
+        "guards": 0,
+        "emplacements": 0,
+        "bonus": 0,
+        "penalty": 0,
+        "status": "V"
+    }
+},
+{
+    "model": "campaign.sessionpilot",
+    "pk": 7,
+    "fields": {
+        "session": 1,
+        "pilot": 3,
+        "ship": 3,
+        "initiative": 2,
+        "hits": 6,
+        "assists": 0,
+        "guards": 0,
+        "emplacements": 0,
+        "bonus": 0,
+        "penalty": 0,
+        "status": "V"
+    }
+},
+{
+    "model": "campaign.sessionpilot",
+    "pk": 8,
+    "fields": {
+        "session": 1,
+        "pilot": 4,
+        "ship": 4,
+        "initiative": 2,
+        "hits": 2,
+        "assists": 0,
+        "guards": 0,
+        "emplacements": 0,
+        "bonus": 0,
+        "penalty": 0,
+        "status": "V"
+    }
+},
+{
+    "model": "campaign.sessionpilot",
+    "pk": 9,
+    "fields": {
+        "session": 2,
+        "pilot": 1,
+        "ship": 1,
+        "initiative": 2,
+        "hits": 6,
+        "assists": 0,
+        "guards": 0,
+        "emplacements": 2,
+        "bonus": 0,
+        "penalty": 0,
+        "status": "V"
+    }
+},
+{
+    "model": "campaign.sessionpilot",
+    "pk": 10,
+    "fields": {
+        "session": 2,
+        "pilot": 2,
+        "ship": 2,
+        "initiative": 2,
+        "hits": 9,
+        "assists": 0,
+        "guards": 0,
+        "emplacements": 4,
+        "bonus": 0,
+        "penalty": 0,
+        "status": "V"
+    }
+},
+{
+    "model": "campaign.sessionpilot",
+    "pk": 11,
+    "fields": {
+        "session": 2,
+        "pilot": 3,
+        "ship": 3,
+        "initiative": 2,
+        "hits": 8,
+        "assists": 0,
+        "guards": 0,
+        "emplacements": 2,
+        "bonus": 0,
+        "penalty": 0,
+        "status": "V"
+    }
+},
+{
+    "model": "campaign.sessionpilot",
+    "pk": 12,
+    "fields": {
+        "session": 2,
+        "pilot": 4,
+        "ship": 4,
+        "initiative": 2,
+        "hits": 9,
+        "assists": 0,
+        "guards": 0,
+        "emplacements": 3,
+        "bonus": 0,
+        "penalty": 0,
+        "status": "V"
+    }
+},
+{
+    "model": "campaign.sessionpilot",
+    "pk": 15,
+    "fields": {
+        "session": 7,
+        "pilot": 6,
+        "ship": 11,
+        "initiative": 3,
+        "hits": 11,
+        "assists": 0,
+        "guards": 0,
+        "emplacements": 2,
+        "bonus": 2,
+        "penalty": 0,
+        "status": "V"
+    }
+},
+{
+    "model": "campaign.sessionpilot",
+    "pk": 16,
+    "fields": {
+        "session": 7,
+        "pilot": 8,
+        "ship": 8,
+        "initiative": 3,
+        "hits": 9,
+        "assists": 0,
+        "guards": 0,
+        "emplacements": 6,
+        "bonus": 2,
+        "penalty": 0,
+        "status": "V"
+    }
+},
+{
+    "model": "campaign.sessionpilot",
+    "pk": 17,
+    "fields": {
+        "session": 3,
+        "pilot": 1,
+        "ship": 10,
+        "initiative": 3,
+        "hits": 5,
+        "assists": 2,
+        "guards": 0,
+        "emplacements": 0,
+        "bonus": 0,
+        "penalty": 0,
+        "status": "V"
+    }
+},
+{
+    "model": "campaign.sessionpilot",
+    "pk": 18,
+    "fields": {
+        "session": 3,
+        "pilot": 2,
+        "ship": 2,
+        "initiative": 3,
+        "hits": 6,
+        "assists": 0,
+        "guards": 0,
+        "emplacements": 0,
+        "bonus": 0,
+        "penalty": 0,
+        "status": "V"
+    }
+},
+{
+    "model": "campaign.sessionpilot",
+    "pk": 19,
+    "fields": {
+        "session": 3,
+        "pilot": 3,
+        "ship": 3,
+        "initiative": 3,
+        "hits": 5,
+        "assists": 1,
+        "guards": 0,
+        "emplacements": 0,
+        "bonus": 0,
+        "penalty": 0,
+        "status": "V"
+    }
+},
+{
+    "model": "campaign.sessionpilot",
+    "pk": 20,
+    "fields": {
+        "session": 3,
+        "pilot": 4,
+        "ship": 4,
+        "initiative": 3,
+        "hits": 8,
+        "assists": 0,
+        "guards": 0,
+        "emplacements": 0,
+        "bonus": 0,
+        "penalty": 0,
+        "status": "V"
+    }
+},
+{
+    "model": "campaign.sessionpilot",
+    "pk": 21,
+    "fields": {
+        "session": 8,
+        "pilot": 6,
+        "ship": 11,
+        "initiative": 4,
+        "hits": 0,
+        "assists": 0,
+        "guards": 0,
+        "emplacements": 0,
+        "bonus": 0,
+        "penalty": 0,
+        "status": "P"
+    }
+},
+{
+    "model": "campaign.sessionpilot",
+    "pk": 22,
+    "fields": {
+        "session": 8,
+        "pilot": 8,
+        "ship": 8,
+        "initiative": 4,
+        "hits": 0,
+        "assists": 0,
+        "guards": 0,
+        "emplacements": 0,
+        "bonus": 0,
+        "penalty": 0,
+        "status": "P"
+    }
+},
+{
+    "model": "campaign.sessionpilot",
+    "pk": 23,
+    "fields": {
+        "session": 9,
+        "pilot": 6,
+        "ship": 11,
+        "initiative": 4,
+        "hits": 0,
+        "assists": 0,
+        "guards": 0,
+        "emplacements": 0,
+        "bonus": 0,
+        "penalty": 0,
+        "status": "P"
+    }
+},
+{
+    "model": "campaign.sessionpilot",
+    "pk": 24,
+    "fields": {
+        "session": 9,
+        "pilot": 8,
+        "ship": 8,
+        "initiative": 4,
+        "hits": 0,
+        "assists": 0,
+        "guards": 0,
+        "emplacements": 0,
+        "bonus": 0,
+        "penalty": 0,
+        "status": "P"
     }
 },
 {
@@ -3398,7 +8603,9 @@
         "session": 1,
         "enemy": 11,
         "flight_group": 1,
-        "level": 1
+        "callsign": "Alpha Leader",
+        "level": 1,
+        "killed_by": 6
     }
 },
 {
@@ -3408,7 +8615,9 @@
         "session": 1,
         "enemy": 11,
         "flight_group": 1,
-        "level": 1
+        "callsign": "Alpha 2",
+        "level": 1,
+        "killed_by": 6
     }
 },
 {
@@ -3418,7 +8627,9 @@
         "session": 1,
         "enemy": 11,
         "flight_group": 1,
-        "level": 1
+        "callsign": "Alpha 3",
+        "level": 1,
+        "killed_by": 5
     }
 },
 {
@@ -3428,7 +8639,9 @@
         "session": 1,
         "enemy": 11,
         "flight_group": 2,
-        "level": 1
+        "callsign": "Beta Leader",
+        "level": 1,
+        "killed_by": 5
     }
 },
 {
@@ -3438,7 +8651,9 @@
         "session": 1,
         "enemy": 11,
         "flight_group": 2,
-        "level": 1
+        "callsign": "Beta 2",
+        "level": 1,
+        "killed_by": 7
     }
 },
 {
@@ -3448,7 +8663,9 @@
         "session": 1,
         "enemy": 4,
         "flight_group": 3,
-        "level": 1
+        "callsign": "Gamma Leader",
+        "level": 1,
+        "killed_by": 8
     }
 },
 {
@@ -3458,7 +8675,9 @@
         "session": 1,
         "enemy": 3,
         "flight_group": 3,
-        "level": 1
+        "callsign": "Gamma 2",
+        "level": 1,
+        "killed_by": 6
     }
 },
 {
@@ -3468,7 +8687,9 @@
         "session": 1,
         "enemy": 11,
         "flight_group": 4,
-        "level": 1
+        "callsign": "Delta Leader",
+        "level": 1,
+        "killed_by": 7
     }
 },
 {
@@ -3478,7 +8699,9 @@
         "session": 1,
         "enemy": 11,
         "flight_group": 4,
-        "level": 1
+        "callsign": "Delta 2",
+        "level": 1,
+        "killed_by": 7
     }
 },
 {
@@ -3488,7 +8711,9 @@
         "session": 4,
         "enemy": 11,
         "flight_group": 1,
-        "level": 1
+        "callsign": "Alpha 1",
+        "level": 1,
+        "killed_by": 1
     }
 },
 {
@@ -3498,7 +8723,9 @@
         "session": 4,
         "enemy": 11,
         "flight_group": 1,
-        "level": 1
+        "callsign": "Alpha 2",
+        "level": 1,
+        "killed_by": 2
     }
 },
 {
@@ -3508,17 +8735,9 @@
         "session": 4,
         "enemy": 11,
         "flight_group": 2,
-        "level": 1
-    }
-},
-{
-    "model": "campaign.sessionenemy",
-    "pk": 13,
-    "fields": {
-        "session": 4,
-        "enemy": 11,
-        "flight_group": 2,
-        "level": 1
+        "callsign": "Beta 1",
+        "level": 1,
+        "killed_by": 1
     }
 },
 {
@@ -3528,7 +8747,9 @@
         "session": 4,
         "enemy": 2,
         "flight_group": 3,
-        "level": 1
+        "callsign": "Gamma Leader",
+        "level": 1,
+        "killed_by": 1
     }
 },
 {
@@ -3538,1777 +8759,609 @@
         "session": 4,
         "enemy": 11,
         "flight_group": 4,
-        "level": 1
+        "callsign": "Delta 1",
+        "level": 1,
+        "killed_by": 1
     }
 },
 {
     "model": "campaign.sessionenemy",
-    "pk": 16,
-    "fields": {
-        "session": 4,
-        "enemy": 11,
-        "flight_group": 4,
-        "level": 1
-    }
-},
-{
-    "model": "campaign.sessionenemy",
-    "pk": 17,
-    "fields": {
-        "session": 4,
-        "enemy": 11,
-        "flight_group": 1,
-        "level": 1
-    }
-},
-{
-    "model": "campaign.sessionenemy",
-    "pk": 18,
-    "fields": {
-        "session": 4,
-        "enemy": 3,
-        "flight_group": 3,
-        "level": 1
-    }
-},
-{
-    "model": "campaign.achievement",
-    "pk": 1,
-    "fields": {
-        "pilot": 5,
-        "session": 1,
-        "event": 1,
-        "turn": 2,
-        "target": null,
-        "threat": null
-    }
-},
-{
-    "model": "campaign.achievement",
-    "pk": 2,
-    "fields": {
-        "pilot": 5,
-        "session": 1,
-        "event": 1,
-        "turn": 4,
-        "target": null,
-        "threat": null
-    }
-},
-{
-    "model": "campaign.achievement",
-    "pk": 3,
-    "fields": {
-        "pilot": 5,
-        "session": 1,
-        "event": 2,
-        "turn": 5,
-        "target": 6,
-        "threat": null
-    }
-},
-{
-    "model": "campaign.achievement",
-    "pk": 4,
-    "fields": {
-        "pilot": 2,
-        "session": 1,
-        "event": 1,
-        "turn": 2,
-        "target": null,
-        "threat": null
-    }
-},
-{
-    "model": "campaign.achievement",
-    "pk": 5,
-    "fields": {
-        "pilot": 2,
-        "session": 1,
-        "event": 1,
-        "turn": 3,
-        "target": null,
-        "threat": null
-    }
-},
-{
-    "model": "campaign.achievement",
-    "pk": 6,
-    "fields": {
-        "pilot": 2,
-        "session": 1,
-        "event": 1,
-        "turn": 4,
-        "target": null,
-        "threat": null
-    }
-},
-{
-    "model": "campaign.achievement",
-    "pk": 7,
-    "fields": {
-        "pilot": 2,
-        "session": 1,
-        "event": 1,
-        "turn": 5,
-        "target": null,
-        "threat": null
-    }
-},
-{
-    "model": "campaign.achievement",
-    "pk": 8,
-    "fields": {
-        "pilot": 2,
-        "session": 1,
-        "event": 1,
-        "turn": 6,
-        "target": null,
-        "threat": null
-    }
-},
-{
-    "model": "campaign.achievement",
-    "pk": 9,
-    "fields": {
-        "pilot": 3,
-        "session": 1,
-        "event": 1,
-        "turn": 1,
-        "target": null,
-        "threat": null
-    }
-},
-{
-    "model": "campaign.achievement",
-    "pk": 10,
-    "fields": {
-        "pilot": 3,
-        "session": 1,
-        "event": 1,
-        "turn": 2,
-        "target": null,
-        "threat": null
-    }
-},
-{
-    "model": "campaign.achievement",
-    "pk": 11,
-    "fields": {
-        "pilot": 3,
-        "session": 1,
-        "event": 1,
-        "turn": 3,
-        "target": null,
-        "threat": null
-    }
-},
-{
-    "model": "campaign.achievement",
-    "pk": 12,
-    "fields": {
-        "pilot": 3,
-        "session": 1,
-        "event": 1,
-        "turn": 4,
-        "target": null,
-        "threat": null
-    }
-},
-{
-    "model": "campaign.achievement",
-    "pk": 13,
-    "fields": {
-        "pilot": 3,
-        "session": 1,
-        "event": 1,
-        "turn": 5,
-        "target": null,
-        "threat": null
-    }
-},
-{
-    "model": "campaign.achievement",
-    "pk": 14,
-    "fields": {
-        "pilot": 3,
-        "session": 1,
-        "event": 1,
-        "turn": 6,
-        "target": null,
-        "threat": null
-    }
-},
-{
-    "model": "campaign.achievement",
-    "pk": 15,
-    "fields": {
-        "pilot": 1,
-        "session": 1,
-        "event": 1,
-        "turn": 2,
-        "target": null,
-        "threat": null
-    }
-},
-{
-    "model": "campaign.achievement",
-    "pk": 16,
-    "fields": {
-        "pilot": 1,
-        "session": 1,
-        "event": 1,
-        "turn": 3,
-        "target": null,
-        "threat": null
-    }
-},
-{
-    "model": "campaign.achievement",
-    "pk": 17,
-    "fields": {
-        "pilot": 1,
-        "session": 1,
-        "event": 1,
-        "turn": 4,
-        "target": null,
-        "threat": null
-    }
-},
-{
-    "model": "campaign.achievement",
-    "pk": 18,
-    "fields": {
-        "pilot": 1,
-        "session": 1,
-        "event": 1,
-        "turn": 5,
-        "target": null,
-        "threat": null
-    }
-},
-{
-    "model": "campaign.achievement",
-    "pk": 19,
-    "fields": {
-        "pilot": 2,
-        "session": 1,
-        "event": 2,
-        "turn": 3,
-        "target": 1,
-        "threat": null
-    }
-},
-{
-    "model": "campaign.achievement",
-    "pk": 20,
-    "fields": {
-        "pilot": 2,
-        "session": 1,
-        "event": 2,
-        "turn": 5,
-        "target": 2,
-        "threat": null
-    }
-},
-{
-    "model": "campaign.achievement",
-    "pk": 21,
-    "fields": {
-        "pilot": 1,
-        "session": 1,
-        "event": 2,
-        "turn": 2,
-        "target": 3,
-        "threat": null
-    }
-},
-{
-    "model": "campaign.achievement",
-    "pk": 22,
-    "fields": {
-        "pilot": 1,
-        "session": 1,
-        "event": 2,
-        "turn": 3,
-        "target": 4,
-        "threat": null
-    }
-},
-{
-    "model": "campaign.achievement",
-    "pk": 23,
-    "fields": {
-        "pilot": 3,
-        "session": 1,
-        "event": 2,
-        "turn": 4,
-        "target": 5,
-        "threat": null
-    }
-},
-{
-    "model": "campaign.achievement",
-    "pk": 24,
-    "fields": {
-        "pilot": 3,
-        "session": 1,
-        "event": 2,
-        "turn": 5,
-        "target": 8,
-        "threat": null
-    }
-},
-{
-    "model": "campaign.achievement",
-    "pk": 25,
-    "fields": {
-        "pilot": 3,
-        "session": 1,
-        "event": 2,
-        "turn": 6,
-        "target": 9,
-        "threat": null
-    }
-},
-{
-    "model": "campaign.achievement",
-    "pk": 32,
-    "fields": {
-        "pilot": 1,
-        "session": 2,
-        "event": 1,
-        "turn": 1,
-        "target": null,
-        "threat": null
-    }
-},
-{
-    "model": "campaign.achievement",
-    "pk": 33,
-    "fields": {
-        "pilot": 2,
-        "session": 2,
-        "event": 1,
-        "turn": 1,
-        "target": null,
-        "threat": null
-    }
-},
-{
-    "model": "campaign.achievement",
-    "pk": 34,
-    "fields": {
-        "pilot": 3,
-        "session": 2,
-        "event": 1,
-        "turn": 1,
-        "target": null,
-        "threat": null
-    }
-},
-{
-    "model": "campaign.achievement",
-    "pk": 35,
-    "fields": {
-        "pilot": 2,
-        "session": 2,
-        "event": 1,
-        "turn": 2,
-        "target": null,
-        "threat": null
-    }
-},
-{
-    "model": "campaign.achievement",
-    "pk": 36,
-    "fields": {
-        "pilot": 1,
-        "session": 2,
-        "event": 1,
-        "turn": 2,
-        "target": null,
-        "threat": null
-    }
-},
-{
-    "model": "campaign.achievement",
-    "pk": 37,
-    "fields": {
-        "pilot": 4,
-        "session": 2,
-        "event": 1,
-        "turn": 2,
-        "target": null,
-        "threat": null
-    }
-},
-{
-    "model": "campaign.achievement",
-    "pk": 39,
-    "fields": {
-        "pilot": 2,
-        "session": 2,
-        "event": 1,
-        "turn": 3,
-        "target": null,
-        "threat": null
-    }
-},
-{
-    "model": "campaign.achievement",
-    "pk": 40,
-    "fields": {
-        "pilot": 3,
-        "session": 2,
-        "event": 1,
-        "turn": 3,
-        "target": null,
-        "threat": null
-    }
-},
-{
-    "model": "campaign.achievement",
-    "pk": 41,
-    "fields": {
-        "pilot": 4,
-        "session": 2,
-        "event": 1,
-        "turn": 3,
-        "target": null,
-        "threat": null
-    }
-},
-{
-    "model": "campaign.achievement",
-    "pk": 42,
-    "fields": {
-        "pilot": 4,
-        "session": 2,
-        "event": 4,
-        "turn": 3,
-        "target": null,
-        "threat": 2
-    }
-},
-{
-    "model": "campaign.achievement",
-    "pk": 43,
-    "fields": {
-        "pilot": 3,
-        "session": 2,
-        "event": 1,
-        "turn": 4,
-        "target": null,
-        "threat": null
-    }
-},
-{
-    "model": "campaign.achievement",
-    "pk": 44,
-    "fields": {
-        "pilot": 4,
-        "session": 2,
-        "event": 1,
-        "turn": 4,
-        "target": null,
-        "threat": null
-    }
-},
-{
-    "model": "campaign.achievement",
-    "pk": 45,
-    "fields": {
-        "pilot": 4,
-        "session": 2,
-        "event": 2,
-        "turn": 4,
-        "target": null,
-        "threat": null
-    }
-},
-{
-    "model": "campaign.achievement",
-    "pk": 46,
-    "fields": {
-        "pilot": 3,
-        "session": 2,
-        "event": 1,
-        "turn": 5,
-        "target": null,
-        "threat": null
-    }
-},
-{
-    "model": "campaign.achievement",
-    "pk": 47,
-    "fields": {
-        "pilot": 1,
-        "session": 2,
-        "event": 1,
-        "turn": 6,
-        "target": null,
-        "threat": null
-    }
-},
-{
-    "model": "campaign.achievement",
-    "pk": 48,
-    "fields": {
-        "pilot": 2,
-        "session": 2,
-        "event": 1,
-        "turn": 6,
-        "target": null,
-        "threat": null
-    }
-},
-{
-    "model": "campaign.achievement",
-    "pk": 49,
-    "fields": {
-        "pilot": 2,
-        "session": 2,
-        "event": 4,
-        "turn": 6,
-        "target": null,
-        "threat": 2
-    }
-},
-{
-    "model": "campaign.achievement",
-    "pk": 50,
-    "fields": {
-        "pilot": 3,
-        "session": 2,
-        "event": 1,
-        "turn": 6,
-        "target": null,
-        "threat": null
-    }
-},
-{
-    "model": "campaign.achievement",
     "pk": 51,
     "fields": {
-        "pilot": 3,
-        "session": 2,
-        "event": 3,
-        "turn": 6,
-        "target": null,
-        "threat": null
+        "session": 5,
+        "enemy": 6,
+        "flight_group": 5,
+        "callsign": "Shuttle Omicron",
+        "level": 1,
+        "killed_by": null
     }
 },
 {
-    "model": "campaign.achievement",
+    "model": "campaign.sessionenemy",
     "pk": 52,
     "fields": {
-        "pilot": 4,
-        "session": 2,
-        "event": 1,
-        "turn": 6,
-        "target": null,
-        "threat": null
+        "session": 5,
+        "enemy": 11,
+        "flight_group": 6,
+        "callsign": "Alpha Leader",
+        "level": 1,
+        "killed_by": 1
     }
 },
 {
-    "model": "campaign.achievement",
+    "model": "campaign.sessionenemy",
     "pk": 53,
     "fields": {
-        "pilot": 4,
-        "session": 2,
-        "event": 3,
-        "turn": 6,
-        "target": null,
-        "threat": null
+        "session": 5,
+        "enemy": 11,
+        "flight_group": 6,
+        "callsign": "Alpha 2",
+        "level": 1,
+        "killed_by": null
     }
 },
 {
-    "model": "campaign.achievement",
+    "model": "campaign.sessionenemy",
     "pk": 54,
     "fields": {
-        "pilot": 1,
-        "session": 2,
-        "event": 1,
-        "turn": 7,
-        "target": null,
-        "threat": null
+        "session": 5,
+        "enemy": 7,
+        "flight_group": 7,
+        "callsign": "Elite Leader",
+        "level": 3,
+        "killed_by": 2
     }
 },
 {
-    "model": "campaign.achievement",
+    "model": "campaign.sessionenemy",
     "pk": 55,
     "fields": {
-        "pilot": 1,
-        "session": 2,
-        "event": 2,
-        "turn": 7,
-        "target": null,
-        "threat": null
+        "session": 5,
+        "enemy": 11,
+        "flight_group": 8,
+        "callsign": "Beta Leader",
+        "level": 1,
+        "killed_by": null
     }
 },
 {
-    "model": "campaign.achievement",
+    "model": "campaign.sessionenemy",
     "pk": 56,
     "fields": {
-        "pilot": 2,
-        "session": 2,
-        "event": 1,
-        "turn": 7,
-        "target": null,
-        "threat": null
+        "session": 5,
+        "enemy": 11,
+        "flight_group": 9,
+        "callsign": "Gamma Leader",
+        "level": 1,
+        "killed_by": null
     }
 },
 {
-    "model": "campaign.achievement",
+    "model": "campaign.sessionenemy",
     "pk": 57,
     "fields": {
-        "pilot": 2,
-        "session": 2,
-        "event": 3,
-        "turn": 7,
-        "target": null,
-        "threat": null
+        "session": 5,
+        "enemy": 1,
+        "flight_group": 10,
+        "callsign": "Delta Leader",
+        "level": 1,
+        "killed_by": null
     }
 },
 {
-    "model": "campaign.achievement",
+    "model": "campaign.sessionenemy",
     "pk": 58,
     "fields": {
-        "pilot": 4,
-        "session": 2,
-        "event": 1,
-        "turn": 7,
-        "target": null,
-        "threat": null
+        "session": 5,
+        "enemy": 2,
+        "flight_group": 10,
+        "callsign": "Delta 2",
+        "level": 1,
+        "killed_by": null
     }
 },
 {
-    "model": "campaign.achievement",
+    "model": "campaign.sessionenemy",
     "pk": 59,
     "fields": {
-        "pilot": 4,
         "session": 2,
-        "event": 2,
-        "turn": 7,
-        "target": null,
-        "threat": null
+        "enemy": 9,
+        "flight_group": 11,
+        "callsign": "Mine Layer Leader",
+        "level": 1,
+        "killed_by": 11
     }
 },
 {
-    "model": "campaign.achievement",
+    "model": "campaign.sessionenemy",
     "pk": 60,
     "fields": {
-        "pilot": 2,
         "session": 2,
-        "event": 1,
-        "turn": 8,
-        "target": null,
-        "threat": null
+        "enemy": 9,
+        "flight_group": 11,
+        "callsign": "Mine Layer 2",
+        "level": 1,
+        "killed_by": 12
     }
 },
 {
-    "model": "campaign.achievement",
+    "model": "campaign.sessionenemy",
     "pk": 61,
     "fields": {
-        "pilot": 3,
         "session": 2,
-        "event": 1,
-        "turn": 8,
-        "target": null,
-        "threat": null
+        "enemy": 11,
+        "flight_group": 12,
+        "callsign": "Alpha Leader",
+        "level": 1,
+        "killed_by": 9
     }
 },
 {
-    "model": "campaign.achievement",
+    "model": "campaign.sessionenemy",
     "pk": 62,
     "fields": {
-        "pilot": 3,
         "session": 2,
-        "event": 4,
-        "turn": 8,
-        "target": null,
-        "threat": 3
+        "enemy": 11,
+        "flight_group": 12,
+        "callsign": "Alpha 2",
+        "level": 1,
+        "killed_by": 11
     }
 },
 {
-    "model": "campaign.achievement",
+    "model": "campaign.sessionenemy",
     "pk": 63,
     "fields": {
-        "pilot": 4,
         "session": 2,
-        "event": 1,
-        "turn": 8,
-        "target": null,
-        "threat": null
+        "enemy": 11,
+        "flight_group": 12,
+        "callsign": "Alpha 3",
+        "level": 1,
+        "killed_by": 12
     }
 },
 {
-    "model": "campaign.achievement",
+    "model": "campaign.sessionenemy",
     "pk": 64,
     "fields": {
-        "pilot": 2,
         "session": 2,
-        "event": 1,
-        "turn": 9,
-        "target": null,
-        "threat": null
+        "enemy": 9,
+        "flight_group": 13,
+        "callsign": "Elite Leader",
+        "level": 2,
+        "killed_by": 10
     }
 },
 {
-    "model": "campaign.achievement",
+    "model": "campaign.sessionenemy",
     "pk": 65,
     "fields": {
-        "pilot": 2,
         "session": 2,
-        "event": 3,
-        "turn": 9,
-        "target": null,
-        "threat": null
+        "enemy": 11,
+        "flight_group": 14,
+        "callsign": "Beta Leader",
+        "level": 1,
+        "killed_by": 12
     }
 },
 {
-    "model": "campaign.achievement",
+    "model": "campaign.sessionenemy",
     "pk": 66,
     "fields": {
-        "pilot": 3,
         "session": 2,
-        "event": 1,
-        "turn": 9,
-        "target": null,
-        "threat": null
+        "enemy": 11,
+        "flight_group": 14,
+        "callsign": "Beta 2",
+        "level": 1,
+        "killed_by": 12
     }
 },
 {
-    "model": "campaign.achievement",
+    "model": "campaign.sessionenemy",
     "pk": 67,
     "fields": {
-        "pilot": 3,
         "session": 2,
-        "event": 3,
-        "turn": 9,
-        "target": null,
-        "threat": null
+        "enemy": 11,
+        "flight_group": 14,
+        "callsign": "Beta 3",
+        "level": 1,
+        "killed_by": null
     }
 },
 {
-    "model": "campaign.achievement",
-    "pk": 68,
-    "fields": {
-        "pilot": 4,
-        "session": 2,
-        "event": 1,
-        "turn": 9,
-        "target": null,
-        "threat": null
-    }
-},
-{
-    "model": "campaign.achievement",
-    "pk": 69,
-    "fields": {
-        "pilot": 4,
-        "session": 2,
-        "event": 2,
-        "turn": 9,
-        "target": null,
-        "threat": null
-    }
-},
-{
-    "model": "campaign.achievement",
-    "pk": 70,
-    "fields": {
-        "pilot": 1,
-        "session": 2,
-        "event": 1,
-        "turn": 10,
-        "target": null,
-        "threat": null
-    }
-},
-{
-    "model": "campaign.achievement",
-    "pk": 71,
-    "fields": {
-        "pilot": 1,
-        "session": 2,
-        "event": 3,
-        "turn": 10,
-        "target": null,
-        "threat": null
-    }
-},
-{
-    "model": "campaign.achievement",
-    "pk": 72,
-    "fields": {
-        "pilot": 2,
-        "session": 2,
-        "event": 1,
-        "turn": 10,
-        "target": null,
-        "threat": null
-    }
-},
-{
-    "model": "campaign.achievement",
-    "pk": 73,
-    "fields": {
-        "pilot": 2,
-        "session": 2,
-        "event": 3,
-        "turn": 10,
-        "target": null,
-        "threat": null
-    }
-},
-{
-    "model": "campaign.achievement",
-    "pk": 74,
-    "fields": {
-        "pilot": 3,
-        "session": 2,
-        "event": 1,
-        "turn": 11,
-        "target": null,
-        "threat": null
-    }
-},
-{
-    "model": "campaign.achievement",
-    "pk": 75,
-    "fields": {
-        "pilot": 3,
-        "session": 2,
-        "event": 2,
-        "turn": 11,
-        "target": null,
-        "threat": null
-    }
-},
-{
-    "model": "campaign.achievement",
-    "pk": 76,
-    "fields": {
-        "pilot": 4,
-        "session": 2,
-        "event": 1,
-        "turn": 11,
-        "target": null,
-        "threat": null
-    }
-},
-{
-    "model": "campaign.achievement",
-    "pk": 77,
-    "fields": {
-        "pilot": 4,
-        "session": 2,
-        "event": 3,
-        "turn": 11,
-        "target": null,
-        "threat": null
-    }
-},
-{
-    "model": "campaign.achievement",
-    "pk": 78,
-    "fields": {
-        "pilot": 1,
-        "session": 2,
-        "event": 1,
-        "turn": 12,
-        "target": null,
-        "threat": null
-    }
-},
-{
-    "model": "campaign.achievement",
-    "pk": 79,
-    "fields": {
-        "pilot": 1,
-        "session": 2,
-        "event": 3,
-        "turn": 12,
-        "target": null,
-        "threat": null
-    }
-},
-{
-    "model": "campaign.achievement",
-    "pk": 80,
-    "fields": {
-        "pilot": 2,
-        "session": 2,
-        "event": 1,
-        "turn": 12,
-        "target": null,
-        "threat": null
-    }
-},
-{
-    "model": "campaign.achievement",
-    "pk": 81,
-    "fields": {
-        "pilot": 2,
-        "session": 2,
-        "event": 3,
-        "turn": 12,
-        "target": null,
-        "threat": null
-    }
-},
-{
-    "model": "campaign.achievement",
-    "pk": 82,
-    "fields": {
-        "pilot": 4,
-        "session": 2,
-        "event": 1,
-        "turn": 12,
-        "target": null,
-        "threat": null
-    }
-},
-{
-    "model": "campaign.achievement",
-    "pk": 83,
-    "fields": {
-        "pilot": 4,
-        "session": 2,
-        "event": 3,
-        "turn": 12,
-        "target": null,
-        "threat": null
-    }
-},
-{
-    "model": "campaign.achievement",
-    "pk": 84,
-    "fields": {
-        "pilot": 1,
-        "session": 3,
-        "event": 1,
-        "turn": 2,
-        "target": null,
-        "threat": null
-    }
-},
-{
-    "model": "campaign.achievement",
-    "pk": 85,
-    "fields": {
-        "pilot": 1,
-        "session": 3,
-        "event": 1,
-        "turn": 4,
-        "target": null,
-        "threat": null
-    }
-},
-{
-    "model": "campaign.achievement",
-    "pk": 86,
-    "fields": {
-        "pilot": 1,
-        "session": 3,
-        "event": 1,
-        "turn": 6,
-        "target": null,
-        "threat": null
-    }
-},
-{
-    "model": "campaign.achievement",
-    "pk": 87,
-    "fields": {
-        "pilot": 1,
-        "session": 3,
-        "event": 1,
-        "turn": 8,
-        "target": null,
-        "threat": null
-    }
-},
-{
-    "model": "campaign.achievement",
-    "pk": 88,
-    "fields": {
-        "pilot": 1,
-        "session": 3,
-        "event": 1,
-        "turn": 10,
-        "target": null,
-        "threat": null
-    }
-},
-{
-    "model": "campaign.achievement",
-    "pk": 89,
-    "fields": {
-        "pilot": 1,
-        "session": 3,
-        "event": 2,
-        "turn": 4,
-        "target": null,
-        "threat": null
-    }
-},
-{
-    "model": "campaign.achievement",
-    "pk": 90,
-    "fields": {
-        "pilot": 1,
-        "session": 3,
-        "event": 2,
-        "turn": 8,
-        "target": null,
-        "threat": null
-    }
-},
-{
-    "model": "campaign.achievement",
-    "pk": 91,
-    "fields": {
-        "pilot": 1,
-        "session": 3,
-        "event": 2,
-        "turn": 12,
-        "target": null,
-        "threat": null
-    }
-},
-{
-    "model": "campaign.achievement",
-    "pk": 92,
-    "fields": {
-        "pilot": 1,
-        "session": 3,
-        "event": 6,
-        "turn": 6,
-        "target": null,
-        "threat": 3
-    }
-},
-{
-    "model": "campaign.achievement",
-    "pk": 93,
-    "fields": {
-        "pilot": 1,
-        "session": 3,
-        "event": 22,
-        "turn": 5,
-        "target": null,
-        "threat": 3
-    }
-},
-{
-    "model": "campaign.achievement",
-    "pk": 94,
-    "fields": {
-        "pilot": 1,
-        "session": 3,
-        "event": 7,
-        "turn": 7,
-        "target": null,
-        "threat": 2
-    }
-},
-{
-    "model": "campaign.achievement",
-    "pk": 95,
-    "fields": {
-        "pilot": 1,
-        "session": 3,
-        "event": 13,
-        "turn": 2,
-        "target": null,
-        "threat": null
-    }
-},
-{
-    "model": "campaign.achievement",
-    "pk": 96,
-    "fields": {
-        "pilot": 1,
-        "session": 3,
-        "event": 13,
-        "turn": 6,
-        "target": null,
-        "threat": null
-    }
-},
-{
-    "model": "campaign.achievement",
-    "pk": 97,
-    "fields": {
-        "pilot": 2,
-        "session": 3,
-        "event": 1,
-        "turn": 2,
-        "target": null,
-        "threat": null
-    }
-},
-{
-    "model": "campaign.achievement",
-    "pk": 98,
-    "fields": {
-        "pilot": 2,
-        "session": 3,
-        "event": 1,
-        "turn": 4,
-        "target": null,
-        "threat": null
-    }
-},
-{
-    "model": "campaign.achievement",
-    "pk": 99,
-    "fields": {
-        "pilot": 2,
-        "session": 3,
-        "event": 1,
-        "turn": 7,
-        "target": null,
-        "threat": null
-    }
-},
-{
-    "model": "campaign.achievement",
-    "pk": 100,
-    "fields": {
-        "pilot": 2,
-        "session": 3,
-        "event": 1,
-        "turn": 9,
-        "target": null,
-        "threat": null
-    }
-},
-{
-    "model": "campaign.achievement",
+    "model": "campaign.sessionenemy",
     "pk": 101,
     "fields": {
-        "pilot": 2,
-        "session": 3,
-        "event": 1,
-        "turn": 11,
-        "target": null,
-        "threat": null
+        "session": 7,
+        "enemy": 21,
+        "flight_group": 11,
+        "callsign": "Mine Layer Leader",
+        "level": 1,
+        "killed_by": 15
     }
 },
 {
-    "model": "campaign.achievement",
+    "model": "campaign.sessionenemy",
     "pk": 102,
     "fields": {
-        "pilot": 2,
-        "session": 3,
-        "event": 1,
-        "turn": 12,
-        "target": null,
-        "threat": null
+        "session": 7,
+        "enemy": 11,
+        "flight_group": 12,
+        "callsign": "Alpha Leader",
+        "level": 1,
+        "killed_by": 16
     }
 },
 {
-    "model": "campaign.achievement",
+    "model": "campaign.sessionenemy",
     "pk": 103,
     "fields": {
-        "pilot": 2,
-        "session": 3,
-        "event": 2,
-        "turn": 7,
-        "target": null,
-        "threat": null
+        "session": 7,
+        "enemy": 11,
+        "flight_group": 12,
+        "callsign": "Alpha 2",
+        "level": 1,
+        "killed_by": 15
     }
 },
 {
-    "model": "campaign.achievement",
+    "model": "campaign.sessionenemy",
     "pk": 104,
     "fields": {
-        "pilot": 2,
-        "session": 3,
-        "event": 2,
-        "turn": 12,
-        "target": null,
-        "threat": null
+        "session": 7,
+        "enemy": 18,
+        "flight_group": 13,
+        "callsign": "Elite Leader",
+        "level": 3,
+        "killed_by": 16
     }
 },
 {
-    "model": "campaign.achievement",
+    "model": "campaign.sessionenemy",
     "pk": 105,
     "fields": {
-        "pilot": 3,
-        "session": 3,
-        "event": 1,
-        "turn": 1,
-        "target": null,
-        "threat": null
+        "session": 7,
+        "enemy": 11,
+        "flight_group": 14,
+        "callsign": "Beta Leader",
+        "level": 1,
+        "killed_by": 15
     }
 },
 {
-    "model": "campaign.achievement",
+    "model": "campaign.sessionenemy",
     "pk": 106,
     "fields": {
-        "pilot": 3,
-        "session": 3,
-        "event": 1,
-        "turn": 3,
-        "target": null,
-        "threat": null
+        "session": 7,
+        "enemy": 11,
+        "flight_group": 14,
+        "callsign": "Beta 2",
+        "level": 1,
+        "killed_by": 16
     }
 },
 {
-    "model": "campaign.achievement",
+    "model": "campaign.sessionenemy",
     "pk": 107,
     "fields": {
-        "pilot": 3,
         "session": 3,
-        "event": 1,
-        "turn": 5,
-        "target": null,
-        "threat": null
+        "enemy": 11,
+        "flight_group": 20,
+        "callsign": "Alpha Leader",
+        "level": 1,
+        "killed_by": 17
     }
 },
 {
-    "model": "campaign.achievement",
+    "model": "campaign.sessionenemy",
     "pk": 108,
     "fields": {
-        "pilot": 3,
         "session": 3,
-        "event": 1,
-        "turn": 7,
-        "target": null,
-        "threat": null
+        "enemy": 11,
+        "flight_group": 20,
+        "callsign": "Alpha 2",
+        "level": 1,
+        "killed_by": 17
     }
 },
 {
-    "model": "campaign.achievement",
+    "model": "campaign.sessionenemy",
     "pk": 109,
     "fields": {
-        "pilot": 3,
         "session": 3,
-        "event": 1,
-        "turn": 9,
-        "target": null,
-        "threat": null
+        "enemy": 11,
+        "flight_group": 20,
+        "callsign": "Alpha 3",
+        "level": 1,
+        "killed_by": 17
     }
 },
 {
-    "model": "campaign.achievement",
+    "model": "campaign.sessionenemy",
     "pk": 110,
     "fields": {
-        "pilot": 3,
         "session": 3,
-        "event": 2,
-        "turn": 3,
-        "target": null,
-        "threat": null
+        "enemy": 11,
+        "flight_group": 21,
+        "callsign": "Beta Leader",
+        "level": 1,
+        "killed_by": 18
     }
 },
 {
-    "model": "campaign.achievement",
+    "model": "campaign.sessionenemy",
     "pk": 111,
     "fields": {
-        "pilot": 3,
         "session": 3,
-        "event": 2,
-        "turn": 7,
-        "target": null,
-        "threat": null
+        "enemy": 11,
+        "flight_group": 21,
+        "callsign": "Beta 2",
+        "level": 1,
+        "killed_by": 18
     }
 },
 {
-    "model": "campaign.achievement",
+    "model": "campaign.sessionenemy",
     "pk": 112,
     "fields": {
-        "pilot": 3,
         "session": 3,
-        "event": 2,
-        "turn": 9,
-        "target": null,
-        "threat": null
+        "enemy": 11,
+        "flight_group": 21,
+        "callsign": "Beta 3",
+        "level": 1,
+        "killed_by": 19
     }
 },
 {
-    "model": "campaign.achievement",
+    "model": "campaign.sessionenemy",
     "pk": 113,
     "fields": {
-        "pilot": 3,
         "session": 3,
-        "event": 5,
-        "turn": 7,
-        "target": null,
-        "threat": 3
+        "enemy": 2,
+        "flight_group": 21,
+        "callsign": "Beta 4",
+        "level": 1,
+        "killed_by": 19
     }
 },
 {
-    "model": "campaign.achievement",
+    "model": "campaign.sessionenemy",
     "pk": 114,
     "fields": {
-        "pilot": 3,
         "session": 3,
-        "event": 13,
-        "turn": 3,
-        "target": null,
-        "threat": null
+        "enemy": 11,
+        "flight_group": 22,
+        "callsign": "Gamma 4",
+        "level": 1,
+        "killed_by": 20
     }
 },
 {
-    "model": "campaign.achievement",
+    "model": "campaign.sessionenemy",
+    "pk": 115,
+    "fields": {
+        "session": 3,
+        "enemy": 2,
+        "flight_group": 22,
+        "callsign": "Gamma 3",
+        "level": 1,
+        "killed_by": 17
+    }
+},
+{
+    "model": "campaign.sessionenemy",
+    "pk": 116,
+    "fields": {
+        "session": 3,
+        "enemy": 11,
+        "flight_group": 22,
+        "callsign": "Gamma 2",
+        "level": 1,
+        "killed_by": 19
+    }
+},
+{
+    "model": "campaign.sessionenemy",
+    "pk": 117,
+    "fields": {
+        "session": 3,
+        "enemy": 11,
+        "flight_group": 22,
+        "callsign": "Gamma Leader",
+        "level": 1,
+        "killed_by": 19
+    }
+},
+{
+    "model": "campaign.sessionenemy",
     "pk": 118,
     "fields": {
-        "pilot": 4,
         "session": 3,
-        "event": 1,
-        "turn": 1,
-        "target": null,
-        "threat": null
+        "enemy": 11,
+        "flight_group": 23,
+        "callsign": "Delta 5",
+        "level": 1,
+        "killed_by": null
     }
 },
 {
-    "model": "campaign.achievement",
+    "model": "campaign.sessionenemy",
     "pk": 119,
     "fields": {
-        "pilot": 4,
         "session": 3,
-        "event": 1,
-        "turn": 2,
-        "target": null,
-        "threat": null
+        "enemy": 11,
+        "flight_group": 23,
+        "callsign": "Delta 4",
+        "level": 1,
+        "killed_by": null
     }
 },
 {
-    "model": "campaign.achievement",
+    "model": "campaign.sessionenemy",
     "pk": 120,
     "fields": {
-        "pilot": 4,
         "session": 3,
-        "event": 1,
-        "turn": 4,
-        "target": null,
-        "threat": null
+        "enemy": 11,
+        "flight_group": 23,
+        "callsign": "Delta 3",
+        "level": 1,
+        "killed_by": null
     }
 },
 {
-    "model": "campaign.achievement",
+    "model": "campaign.sessionenemy",
     "pk": 121,
     "fields": {
-        "pilot": 4,
         "session": 3,
-        "event": 1,
-        "turn": 5,
-        "target": null,
-        "threat": null
+        "enemy": 11,
+        "flight_group": 23,
+        "callsign": "Delta 2",
+        "level": 1,
+        "killed_by": null
     }
 },
 {
-    "model": "campaign.achievement",
+    "model": "campaign.sessionenemy",
     "pk": 122,
     "fields": {
-        "pilot": 4,
         "session": 3,
-        "event": 1,
-        "turn": 7,
-        "target": null,
-        "threat": null
+        "enemy": 3,
+        "flight_group": 23,
+        "callsign": "Delta Leader",
+        "level": 1,
+        "killed_by": 20
     }
 },
 {
-    "model": "campaign.achievement",
+    "model": "campaign.sessionenemy",
     "pk": 123,
     "fields": {
-        "pilot": 4,
         "session": 3,
-        "event": 1,
-        "turn": 8,
-        "target": null,
-        "threat": null
+        "enemy": 16,
+        "flight_group": 24,
+        "callsign": "Inspection Leader",
+        "level": 1,
+        "killed_by": 17
     }
 },
 {
-    "model": "campaign.achievement",
+    "model": "campaign.sessionenemy",
     "pk": 124,
     "fields": {
-        "pilot": 4,
         "session": 3,
-        "event": 1,
-        "turn": 10,
-        "target": null,
-        "threat": null
+        "enemy": 14,
+        "flight_group": 24,
+        "callsign": "Inspection 2",
+        "level": 1,
+        "killed_by": 17
     }
 },
 {
-    "model": "campaign.achievement",
+    "model": "campaign.sessionenemy",
     "pk": 125,
     "fields": {
-        "pilot": 4,
         "session": 3,
-        "event": 1,
-        "turn": 11,
-        "target": null,
-        "threat": null
+        "enemy": 1,
+        "flight_group": 24,
+        "callsign": "Inspection 3",
+        "level": 1,
+        "killed_by": null
     }
 },
 {
-    "model": "campaign.achievement",
-    "pk": 126,
+    "model": "campaign.sessionenemy",
+    "pk": 168,
     "fields": {
-        "pilot": 4,
-        "session": 3,
-        "event": 2,
-        "turn": 7,
-        "target": null,
-        "threat": null
+        "session": 8,
+        "enemy": 11,
+        "flight_group": 20,
+        "callsign": "Alpha Leader",
+        "level": 1,
+        "killed_by": null
     }
 },
 {
-    "model": "campaign.achievement",
-    "pk": 127,
+    "model": "campaign.sessionenemy",
+    "pk": 169,
     "fields": {
-        "pilot": 4,
-        "session": 3,
-        "event": 5,
-        "turn": 8,
-        "target": null,
-        "threat": 2
+        "session": 8,
+        "enemy": 11,
+        "flight_group": 20,
+        "callsign": "Alpha 2",
+        "level": 1,
+        "killed_by": null
     }
 },
 {
-    "model": "campaign.achievement",
-    "pk": 129,
+    "model": "campaign.sessionenemy",
+    "pk": 170,
     "fields": {
-        "pilot": 2,
-        "session": 1,
-        "event": 2,
-        "turn": 6,
-        "target": 7,
-        "threat": null
+        "session": 8,
+        "enemy": 11,
+        "flight_group": 21,
+        "callsign": "Beta Leader",
+        "level": 1,
+        "killed_by": null
     }
 },
 {
-    "model": "campaign.achievement",
-    "pk": 130,
+    "model": "campaign.sessionenemy",
+    "pk": 171,
     "fields": {
-        "pilot": 8,
-        "session": 4,
-        "event": 1,
-        "turn": 3,
-        "target": null,
-        "threat": null
+        "session": 8,
+        "enemy": 11,
+        "flight_group": 21,
+        "callsign": "Beta 2",
+        "level": 1,
+        "killed_by": null
     }
 },
 {
-    "model": "campaign.achievement",
-    "pk": 131,
+    "model": "campaign.sessionenemy",
+    "pk": 172,
     "fields": {
-        "pilot": 8,
-        "session": 4,
-        "event": 1,
-        "turn": 4,
-        "target": null,
-        "threat": null
+        "session": 8,
+        "enemy": 11,
+        "flight_group": 22,
+        "callsign": "Gamma Leader",
+        "level": 1,
+        "killed_by": null
     }
 },
 {
-    "model": "campaign.achievement",
-    "pk": 132,
+    "model": "campaign.sessionenemy",
+    "pk": 173,
     "fields": {
-        "pilot": 8,
-        "session": 4,
-        "event": 1,
-        "turn": 5,
-        "target": null,
-        "threat": null
+        "session": 8,
+        "enemy": 11,
+        "flight_group": 23,
+        "callsign": "Delta Leader",
+        "level": 1,
+        "killed_by": null
     }
 },
 {
-    "model": "campaign.achievement",
-    "pk": 133,
+    "model": "campaign.sessionenemy",
+    "pk": 174,
     "fields": {
-        "pilot": 8,
-        "session": 4,
-        "event": 2,
-        "turn": 5,
-        "target": 18,
-        "threat": null
+        "session": 8,
+        "enemy": 11,
+        "flight_group": 23,
+        "callsign": "Delta 2",
+        "level": 1,
+        "killed_by": null
     }
 },
 {
-    "model": "campaign.achievement",
-    "pk": 134,
+    "model": "campaign.sessionenemy",
+    "pk": 175,
     "fields": {
-        "pilot": 6,
-        "session": 4,
-        "event": 1,
-        "turn": 4,
-        "target": null,
-        "threat": null
-    }
-},
-{
-    "model": "campaign.achievement",
-    "pk": 135,
-    "fields": {
-        "pilot": 6,
-        "session": 4,
-        "event": 2,
-        "turn": 4,
-        "target": 11,
-        "threat": null
-    }
-},
-{
-    "model": "campaign.achievement",
-    "pk": 136,
-    "fields": {
-        "pilot": 6,
-        "session": 4,
-        "event": 1,
-        "turn": 6,
-        "target": null,
-        "threat": null
-    }
-},
-{
-    "model": "campaign.achievement",
-    "pk": 137,
-    "fields": {
-        "pilot": 6,
-        "session": 4,
-        "event": 2,
-        "turn": 6,
-        "target": 16,
-        "threat": null
-    }
-},
-{
-    "model": "campaign.achievement",
-    "pk": 138,
-    "fields": {
-        "pilot": 6,
-        "session": 4,
-        "event": 1,
-        "turn": 7,
-        "target": null,
-        "threat": null
-    }
-},
-{
-    "model": "campaign.achievement",
-    "pk": 139,
-    "fields": {
-        "pilot": 6,
-        "session": 4,
-        "event": 2,
-        "turn": 7,
-        "target": 13,
-        "threat": null
-    }
-},
-{
-    "model": "campaign.achievement",
-    "pk": 140,
-    "fields": {
-        "pilot": 6,
-        "session": 4,
-        "event": 1,
-        "turn": 8,
-        "target": null,
-        "threat": null
-    }
-},
-{
-    "model": "campaign.achievement",
-    "pk": 141,
-    "fields": {
-        "pilot": 6,
-        "session": 4,
-        "event": 2,
-        "turn": 9,
-        "target": 15,
-        "threat": null
-    }
-},
-{
-    "model": "campaign.achievement",
-    "pk": 142,
-    "fields": {
-        "pilot": 6,
-        "session": 4,
-        "event": 1,
-        "turn": 10,
-        "target": null,
-        "threat": null
-    }
-},
-{
-    "model": "campaign.achievement",
-    "pk": 143,
-    "fields": {
-        "pilot": 6,
-        "session": 4,
-        "event": 2,
-        "turn": 10,
-        "target": 12,
-        "threat": null
-    }
-},
-{
-    "model": "campaign.achievement",
-    "pk": 144,
-    "fields": {
-        "pilot": 9,
-        "session": 4,
-        "event": 1,
-        "turn": 3,
-        "target": null,
-        "threat": null
-    }
-},
-{
-    "model": "campaign.achievement",
-    "pk": 145,
-    "fields": {
-        "pilot": 9,
-        "session": 4,
-        "event": 1,
-        "turn": 4,
-        "target": null,
-        "threat": null
-    }
-},
-{
-    "model": "campaign.achievement",
-    "pk": 146,
-    "fields": {
-        "pilot": 9,
-        "session": 4,
-        "event": 2,
-        "turn": 4,
-        "target": 17,
-        "threat": null
-    }
-},
-{
-    "model": "campaign.achievement",
-    "pk": 147,
-    "fields": {
-        "pilot": 9,
-        "session": 4,
-        "event": 1,
-        "turn": 7,
-        "target": null,
-        "threat": null
-    }
-},
-{
-    "model": "campaign.achievement",
-    "pk": 148,
-    "fields": {
-        "pilot": 9,
-        "session": 4,
-        "event": 1,
-        "turn": 8,
-        "target": null,
-        "threat": null
-    }
-},
-{
-    "model": "campaign.achievement",
-    "pk": 149,
-    "fields": {
-        "pilot": 7,
-        "session": 4,
-        "event": 1,
-        "turn": 4,
-        "target": null,
-        "threat": null
-    }
-},
-{
-    "model": "campaign.achievement",
-    "pk": 150,
-    "fields": {
-        "pilot": 7,
-        "session": 4,
-        "event": 1,
-        "turn": 5,
-        "target": null,
-        "threat": null
-    }
-},
-{
-    "model": "campaign.achievement",
-    "pk": 151,
-    "fields": {
-        "pilot": 7,
-        "session": 4,
-        "event": 1,
-        "turn": 6,
-        "target": null,
-        "threat": null
-    }
-},
-{
-    "model": "campaign.achievement",
-    "pk": 152,
-    "fields": {
-        "pilot": 7,
-        "session": 4,
-        "event": 1,
-        "turn": 6,
-        "target": null,
-        "threat": null
-    }
-},
-{
-    "model": "campaign.achievement",
-    "pk": 153,
-    "fields": {
-        "pilot": 7,
-        "session": 4,
-        "event": 1,
-        "turn": 8,
-        "target": null,
-        "threat": null
-    }
-},
-{
-    "model": "campaign.achievement",
-    "pk": 154,
-    "fields": {
-        "pilot": 7,
-        "session": 4,
-        "event": 1,
-        "turn": 9,
-        "target": null,
-        "threat": null
-    }
-},
-{
-    "model": "campaign.achievement",
-    "pk": 155,
-    "fields": {
-        "pilot": 7,
-        "session": 4,
-        "event": 2,
-        "turn": 9,
-        "target": 14,
-        "threat": null
-    }
-},
-{
-    "model": "campaign.achievement",
-    "pk": 159,
-    "fields": {
-        "pilot": 8,
-        "session": 4,
-        "event": 23,
-        "turn": 7,
-        "target": null,
-        "threat": null
+        "session": 8,
+        "enemy": 12,
+        "flight_group": 24,
+        "callsign": "Inspection Leader",
+        "level": 1,
+        "killed_by": null
     }
 }
 ]

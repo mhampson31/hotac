@@ -37,7 +37,7 @@
     "pk": 3,
     "fields": {
         "name": "Scum and Villainy",
-        "default_ship": 2,
+        "default_ship": null,
         "ships": []
     }
 },
@@ -46,7 +46,7 @@
     "pk": 4,
     "fields": {
         "name": "Galactic Republic",
-        "default_ship": 3,
+        "default_ship": null,
         "ships": []
     }
 },
@@ -55,7 +55,7 @@
     "pk": 5,
     "fields": {
         "name": "Separatist",
-        "default_ship": 4,
+        "default_ship": null,
         "ships": []
     }
 },
@@ -64,7 +64,7 @@
     "pk": 6,
     "fields": {
         "name": "Resistance",
-        "default_ship": 5,
+        "default_ship": null,
         "ships": []
     }
 },
@@ -73,7 +73,7 @@
     "pk": 7,
     "fields": {
         "name": "First Order",
-        "default_ship": 7,
+        "default_ship": null,
         "ships": []
     }
 },
@@ -125,7 +125,7 @@
     "fields": {
         "name": "Adv. Proton Torpedoes",
         "description": null,
-        "ai_description": null,
+        "ai_description": "Attack 5, range 1, forward arc. Spend 1 charge. Change one Hit result to a Critical Hit result. [1 charge]",
         "type": "TRP",
         "type2": null,
         "charges": 1,
@@ -153,7 +153,7 @@
     "fields": {
         "name": "Proton Torpedoes",
         "description": null,
-        "ai_description": null,
+        "ai_description": "Attack 4, forward arc, range 2-3, TL, 1 Charge. Change one Hit result to a Critical Hit result. [1 charge]",
         "type": "TRP",
         "type2": null,
         "charges": 2,
@@ -200,21 +200,7 @@
         "type2": null,
         "charges": 2,
         "force": false,
-        "cost": 4
-    }
-},
-{
-    "model": "xwtools.upgrade",
-    "pk": 10,
-    "fields": {
-        "name": "Arvel Crynyd",
-        "description": null,
-        "ai_description": null,
-        "type": "PLT",
-        "type2": null,
-        "charges": null,
-        "force": false,
-        "cost": 6
+        "cost": 5
     }
 },
 {
@@ -264,13 +250,13 @@
     "pk": 14,
     "fields": {
         "name": "R2-D2",
-        "description": null,
+        "description": "After you reveal your dial, you may spend 1 Charge and gain 1 disarm token to recover 1 shield.",
         "ai_description": null,
         "type": "AST",
         "type2": null,
         "charges": 3,
         "force": false,
-        "cost": 6
+        "cost": 8
     }
 },
 {
@@ -292,7 +278,7 @@
     "pk": 16,
     "fields": {
         "name": "R3 Astromech",
-        "description": null,
+        "description": "You can maintain up to 2 Locks. Each must be on a different object. After you perform a Target Lock action, you may acquire a lock.",
         "ai_description": null,
         "type": "AST",
         "type2": null,
@@ -306,8 +292,8 @@
     "pk": 17,
     "fields": {
         "name": "Elusive",
-        "description": null,
-        "ai_description": "When defending, the attacker must reroll one Crit or Hit result. You cannot use this ability if you are stressed.",
+        "description": "While you defend, you may spend 1 Charge to reroll 1 defense die. After you execute a red maneuver, recover 1 Charge.",
+        "ai_description": "When defending, the attacker must reroll one Critical Hit or Hit result. You cannot use this ability if you are stressed.",
         "type": "TLN",
         "type2": null,
         "charges": 1,
@@ -320,27 +306,13 @@
     "pk": 18,
     "fields": {
         "name": "Servomotor S-Foils",
-        "description": null,
-        "ai_description": null,
+        "description": "Before you activate, you may flip this card. \r\nClosed: While you perform a primary attack, roll 1 fewer attack die. Add [Evade] and [Focus] [Linked] [Boost#hard] actions.",
+        "ai_description": "",
         "type": "CNF",
         "type2": null,
         "charges": null,
         "force": false,
         "cost": 0
-    }
-},
-{
-    "model": "xwtools.upgrade",
-    "pk": 19,
-    "fields": {
-        "name": "Jake Farrell",
-        "description": null,
-        "ai_description": null,
-        "type": "PLT",
-        "type2": null,
-        "charges": null,
-        "force": false,
-        "cost": 8
     }
 },
 {
@@ -376,27 +348,13 @@
     "pk": 23,
     "fields": {
         "name": "Plasma Torpedoes",
-        "description": null,
+        "description": "Attack [Lock]: Spend 1 Charge. During the Neutralize Results step, Crit results are cancelled before Hit results. After this attack hits, the defender loses 1 shield.",
         "ai_description": null,
         "type": "TRP",
         "type2": null,
         "charges": 2,
         "force": false,
-        "cost": 8
-    }
-},
-{
-    "model": "xwtools.upgrade",
-    "pk": 24,
-    "fields": {
-        "name": "Outmaneuver",
-        "description": null,
-        "ai_description": null,
-        "type": "TLN",
-        "type2": null,
-        "charges": null,
-        "force": false,
-        "cost": 6
+        "cost": 9
     }
 },
 {
@@ -480,7 +438,7 @@
         "type2": null,
         "charges": null,
         "force": false,
-        "cost": 0
+        "cost": 5
     }
 },
 {
@@ -747,6 +705,636 @@
         "charges": null,
         "force": false,
         "cost": 8
+    }
+},
+{
+    "model": "xwtools.upgrade",
+    "pk": 51,
+    "fields": {
+        "name": "Advanced Targeting Computer",
+        "description": null,
+        "ai_description": "When attacking with your primary weapon, if you have a Target Lock on the defender, add 1 Critical Hit result to your roll. You cannot spend Target Locks during this attack.",
+        "type": "SNS",
+        "type2": null,
+        "charges": null,
+        "force": false,
+        "cost": 0
+    }
+},
+{
+    "model": "xwtools.upgrade",
+    "pk": 52,
+    "fields": {
+        "name": "Experimental Interface",
+        "description": null,
+        "ai_description": "An ability that replaces a Focus action is performed as a free action in addition to the Focus action.",
+        "type": "MOD",
+        "type2": null,
+        "charges": null,
+        "force": false,
+        "cost": 0
+    }
+},
+{
+    "model": "xwtools.upgrade",
+    "pk": 53,
+    "fields": {
+        "name": "Flight Instructor",
+        "description": null,
+        "ai_description": "When defending, you may reroll one of your Focus results.",
+        "type": "CRW",
+        "type2": null,
+        "charges": null,
+        "force": false,
+        "cost": 0
+    }
+},
+{
+    "model": "xwtools.upgrade",
+    "pk": 54,
+    "fields": {
+        "name": "Sensor Jammer",
+        "description": null,
+        "ai_description": "When defending, you may change 1 of the attacker's Hit results to a Focus result. The attacker cannot reroll that die but can modify it.",
+        "type": "SNS",
+        "type2": null,
+        "charges": null,
+        "force": false,
+        "cost": 0
+    }
+},
+{
+    "model": "xwtools.upgrade",
+    "pk": 55,
+    "fields": {
+        "name": "Anti-Pursuit Lasers",
+        "description": null,
+        "ai_description": "After an enemy ship performs a maneuver that causes it to overlap you, roll 1 attack die. On a Hit or Critical Hit, the enemy ship suffers one damage.",
+        "type": "MOD",
+        "type2": null,
+        "charges": null,
+        "force": false,
+        "cost": 0
+    }
+},
+{
+    "model": "xwtools.upgrade",
+    "pk": 56,
+    "fields": {
+        "name": "VIP Shielding",
+        "description": null,
+        "ai_description": "You gain +2 shields for every player more than 2.",
+        "type": "MOD",
+        "type2": null,
+        "charges": null,
+        "force": false,
+        "cost": 0
+    }
+},
+{
+    "model": "xwtools.upgrade",
+    "pk": 57,
+    "fields": {
+        "name": "Outmaneuver",
+        "description": "When you perform a front arc attack, if you are not in the defender's firing arc, the defender rolls 1 fewer defense dice.",
+        "ai_description": "When you perform a front arc attack, if you are not in the defender's firing arc, the defender rolls 1 fewer defense dice. You prioritizes targets that trigger this ability.",
+        "type": "TLN",
+        "type2": null,
+        "charges": null,
+        "force": false,
+        "cost": 6
+    }
+},
+{
+    "model": "xwtools.upgrade",
+    "pk": 58,
+    "fields": {
+        "name": "Backstabber",
+        "description": null,
+        "ai_description": "When attacking from outside the defender's primary arc, roll 1 additional attack die. You prioritize targets that trigger this ability.",
+        "type": "PLT",
+        "type2": null,
+        "charges": null,
+        "force": false,
+        "cost": 0
+    }
+},
+{
+    "model": "xwtools.upgrade",
+    "pk": 59,
+    "fields": {
+        "name": "Rear Admiral Chiraneau",
+        "description": null,
+        "ai_description": "When attacking at range 1-2, change 1 of your Focus results to a Critical Hit result.",
+        "type": "PLT",
+        "type2": null,
+        "charges": null,
+        "force": false,
+        "cost": 0
+    }
+},
+{
+    "model": "xwtools.upgrade",
+    "pk": 60,
+    "fields": {
+        "name": "Squad Leader",
+        "description": null,
+        "ai_description": "Action: Select the friendly ship at range 1-2 with the highest initiative. That ship performs a free action chosen from your action bar.",
+        "type": "TLN",
+        "type2": null,
+        "charges": null,
+        "force": false,
+        "cost": 0
+    }
+},
+{
+    "model": "xwtools.upgrade",
+    "pk": 61,
+    "fields": {
+        "name": "Swarm Tactics",
+        "description": null,
+        "ai_description": "After you activate, the friendly ship with the lowest pilot initiative at range 1 may activate.",
+        "type": "TLN",
+        "type2": null,
+        "charges": null,
+        "force": false,
+        "cost": 0
+    }
+},
+{
+    "model": "xwtools.upgrade",
+    "pk": 62,
+    "fields": {
+        "name": "Commander Kenkirk",
+        "description": null,
+        "ai_description": "If you have no shields and at least 1 damage card, increase your agility value by 1.",
+        "type": "PLT",
+        "type2": null,
+        "charges": null,
+        "force": false,
+        "cost": 0
+    }
+},
+{
+    "model": "xwtools.upgrade",
+    "pk": 63,
+    "fields": {
+        "name": "Enhanced Scopes",
+        "description": null,
+        "ai_description": "During the activation phase, treat your initiative as 0.",
+        "type": "SNS",
+        "type2": null,
+        "charges": null,
+        "force": false,
+        "cost": 0
+    }
+},
+{
+    "model": "xwtools.upgrade",
+    "pk": 64,
+    "fields": {
+        "name": "Mara Jade",
+        "description": null,
+        "ai_description": "At the end of the Engagement phase, each enemy ship at range 1 that is not stressed gains 1 stress token.",
+        "type": "CRW",
+        "type2": null,
+        "charges": null,
+        "force": false,
+        "cost": 0
+    }
+},
+{
+    "model": "xwtools.upgrade",
+    "pk": 65,
+    "fields": {
+        "name": "Zertik Strom",
+        "description": null,
+        "ai_description": "Enemy ships at range 1 cannot add their range combat bonus when attacking.",
+        "type": "PLT",
+        "type2": null,
+        "charges": null,
+        "force": false,
+        "cost": 0
+    }
+},
+{
+    "model": "xwtools.upgrade",
+    "pk": 66,
+    "fields": {
+        "name": "Tactician",
+        "description": null,
+        "ai_description": "After you perform an attack against a ship inside your firing arc at range 2, that ship gains 1 stress token. Prioritize targets that trigger this ability.",
+        "type": "CRW",
+        "type2": null,
+        "charges": null,
+        "force": false,
+        "cost": 0
+    }
+},
+{
+    "model": "xwtools.upgrade",
+    "pk": 67,
+    "fields": {
+        "name": "Carnor Jax",
+        "description": null,
+        "ai_description": "Enemy ships at range 1 cannot perform Focus or Evade actions, and cannot spend Focus or Evade tokens.",
+        "type": "PLT",
+        "type2": null,
+        "charges": null,
+        "force": false,
+        "cost": 0
+    }
+},
+{
+    "model": "xwtools.upgrade",
+    "pk": 68,
+    "fields": {
+        "name": "Draw Their Fire",
+        "description": null,
+        "ai_description": "When a friendly ship at range 1 is hit by an attack, suffer 1 of the uncancelled Critical Hit results instead of the target ship.",
+        "type": "TLN",
+        "type2": null,
+        "charges": null,
+        "force": false,
+        "cost": 0
+    }
+},
+{
+    "model": "xwtools.upgrade",
+    "pk": 69,
+    "fields": {
+        "name": "Rebel Captive",
+        "description": null,
+        "ai_description": "Once per round, the first ship that declares you as the target of an attack immediately gains 1 stress token.",
+        "type": "CRW",
+        "type2": null,
+        "charges": null,
+        "force": false,
+        "cost": 0
+    }
+},
+{
+    "model": "xwtools.upgrade",
+    "pk": 70,
+    "fields": {
+        "name": "Fleet Officer",
+        "description": null,
+        "ai_description": "Action: The 2 nearest friendly ships at range 1-2 each gain a focus token. If there are less than 2 friendly ships in range, this ship gains a focus token as well. Replace the Focus action.",
+        "type": "CRW",
+        "type2": null,
+        "charges": null,
+        "force": false,
+        "cost": 0
+    }
+},
+{
+    "model": "xwtools.upgrade",
+    "pk": 71,
+    "fields": {
+        "name": "Advanced Sensors",
+        "description": null,
+        "ai_description": "Do not skip Action Selection after a collision with a ship or obstacle, or after executing a red maneuver.",
+        "type": "SNS",
+        "type2": null,
+        "charges": null,
+        "force": false,
+        "cost": 0
+    }
+},
+{
+    "model": "xwtools.upgrade",
+    "pk": 72,
+    "fields": {
+        "name": "Tactical Jammer",
+        "description": null,
+        "ai_description": "Your ship obstructs enemy attacks.",
+        "type": "MOD",
+        "type2": null,
+        "charges": null,
+        "force": false,
+        "cost": 0
+    }
+},
+{
+    "model": "xwtools.upgrade",
+    "pk": 73,
+    "fields": {
+        "name": "Captain Yorr",
+        "description": null,
+        "ai_description": "Friendly ships at range 1-2 cannot gain stress tokens.",
+        "type": "PLT",
+        "type2": null,
+        "charges": null,
+        "force": false,
+        "cost": 0
+    }
+},
+{
+    "model": "xwtools.upgrade",
+    "pk": 74,
+    "fields": {
+        "name": "Howlrunner",
+        "description": null,
+        "ai_description": "When another friendly ship at range 1 is attacking with its primary weapon, it may reroll 1 attack die.",
+        "type": "PLT",
+        "type2": null,
+        "charges": null,
+        "force": false,
+        "cost": 0
+    }
+},
+{
+    "model": "xwtools.upgrade",
+    "pk": 75,
+    "fields": {
+        "name": "Weapons Engineer",
+        "description": null,
+        "ai_description": "You may maintain target locks on two separate ships. When you acquire a target lock, lock onto the two nearest enemy ships.",
+        "type": "CRW",
+        "type2": null,
+        "charges": null,
+        "force": false,
+        "cost": 0
+    }
+},
+{
+    "model": "xwtools.upgrade",
+    "pk": 76,
+    "fields": {
+        "name": "Colonel Jendon",
+        "description": null,
+        "ai_description": "At the start of the Engagement phase, the friendly ship with the highest initiative that does not have a target lock acquires a target lock on its nearest target.",
+        "type": "PLT",
+        "type2": null,
+        "charges": null,
+        "force": false,
+        "cost": 0
+    }
+},
+{
+    "model": "xwtools.upgrade",
+    "pk": 77,
+    "fields": {
+        "name": "Gunner",
+        "description": null,
+        "ai_description": "After you perform an attack that does not hit, immediately perform a bonus primary weapon attack.",
+        "type": "CRW",
+        "type2": null,
+        "charges": null,
+        "force": false,
+        "cost": 0
+    }
+},
+{
+    "model": "xwtools.upgrade",
+    "pk": 78,
+    "fields": {
+        "name": "Vectored Cannons (RZ-1)",
+        "description": "Gain a Turret indicator. Treat the arc requirement of your front primary attack as a turret arc. Replace your Vectored Thrusters ability with the following: During the system phase, you may perform a red Boost or red Rotate action.",
+        "ai_description": null,
+        "type": "CNF",
+        "type2": null,
+        "charges": null,
+        "force": false,
+        "cost": 1
+    }
+},
+{
+    "model": "xwtools.upgrade",
+    "pk": 79,
+    "fields": {
+        "name": "Starbird Slash",
+        "description": "After you fully execute a maneuver, you may choose 1 enemy ship you moved through. That ship gains 1 strain token. Then, if you are in that ship's firing arc, you gain 1 strain token.",
+        "ai_description": null,
+        "type": "TLN",
+        "type2": null,
+        "charges": null,
+        "force": false,
+        "cost": 1
+    }
+},
+{
+    "model": "xwtools.upgrade",
+    "pk": 80,
+    "fields": {
+        "name": "Stabilized S-foils",
+        "description": null,
+        "ai_description": null,
+        "type": "CNF",
+        "type2": null,
+        "charges": null,
+        "force": false,
+        "cost": 2
+    }
+},
+{
+    "model": "xwtools.upgrade",
+    "pk": 81,
+    "fields": {
+        "name": "B6 Blade Wing Prototype",
+        "description": "Add a Gunner slot",
+        "ai_description": null,
+        "type": "TTL",
+        "type2": null,
+        "charges": null,
+        "force": false,
+        "cost": 2
+    }
+},
+{
+    "model": "xwtools.upgrade",
+    "pk": 82,
+    "fields": {
+        "name": "Autoblasters",
+        "description": null,
+        "ai_description": null,
+        "type": "CNN",
+        "type2": null,
+        "charges": null,
+        "force": false,
+        "cost": 3
+    }
+},
+{
+    "model": "xwtools.upgrade",
+    "pk": 83,
+    "fields": {
+        "name": "Fire-Control System",
+        "description": "When you perform an attack, if you have a lock on the defender, you may reroll 1 attack die. If you do, you may cannot spend your lock during this attack.",
+        "ai_description": null,
+        "type": "SNS",
+        "type2": null,
+        "charges": null,
+        "force": false,
+        "cost": 2
+    }
+},
+{
+    "model": "xwtools.upgrade",
+    "pk": 84,
+    "fields": {
+        "name": "Brilliant Evasion",
+        "description": "When you defend, if you are not in the attacker's Bullseye arc, you may spend 1 Force charge to change 2 of your Focus results to Evade results.",
+        "ai_description": null,
+        "type": "FRC",
+        "type2": null,
+        "charges": null,
+        "force": true,
+        "cost": 2
+    }
+},
+{
+    "model": "xwtools.upgrade",
+    "pk": 85,
+    "fields": {
+        "name": "Cluster Missiles",
+        "description": null,
+        "ai_description": "Attack: Spend 1 charge. After this attack, you may perform this attack as a bonus attack against a different target at range 0-1 of the defender, ignoring the lock requirement. [1 charge]",
+        "type": "MSL",
+        "type2": null,
+        "charges": null,
+        "force": false,
+        "cost": 0
+    }
+},
+{
+    "model": "xwtools.upgrade",
+    "pk": 86,
+    "fields": {
+        "name": "Ion Pulse Missile",
+        "description": null,
+        "ai_description": "Attack: Spend 1 charge. If this attack hits, spend one Hit or Critical Hit result to cause the defender to suffer 1 damage. All remaining hit/crit results inflict ion tokens instead of damage. [1 charge]",
+        "type": "MOD",
+        "type2": null,
+        "charges": null,
+        "force": false,
+        "cost": 0
+    }
+},
+{
+    "model": "xwtools.upgrade",
+    "pk": 87,
+    "fields": {
+        "name": "Night Beast",
+        "description": null,
+        "ai_description": "After executing a non-red maneuver, perform a free Focus action.",
+        "type": "PLT",
+        "type2": null,
+        "charges": null,
+        "force": false,
+        "cost": 0
+    }
+},
+{
+    "model": "xwtools.upgrade",
+    "pk": 88,
+    "fields": {
+        "name": "Kath Scarlett",
+        "description": null,
+        "ai_description": "When attacking, if the defender cancels at least one Critical Hit result, it gains one stress token.",
+        "type": "PLT",
+        "type2": null,
+        "charges": null,
+        "force": false,
+        "cost": 0
+    }
+},
+{
+    "model": "xwtools.upgrade",
+    "pk": 89,
+    "fields": {
+        "name": "Major Rhymer",
+        "description": null,
+        "ai_description": "When attacking with a secondary weapon, you may increase or decrease the weapon range by 1 to a limit of range 1-3.",
+        "type": "PLT",
+        "type2": null,
+        "charges": null,
+        "force": false,
+        "cost": 0
+    }
+},
+{
+    "model": "xwtools.upgrade",
+    "pk": 90,
+    "fields": {
+        "name": "Kir Kanos",
+        "description": null,
+        "ai_description": "When attacking at range 2-3, add 1 Hit result to your roll.",
+        "type": "PLT",
+        "type2": null,
+        "charges": null,
+        "force": false,
+        "cost": 0
+    }
+},
+{
+    "model": "xwtools.upgrade",
+    "pk": 91,
+    "fields": {
+        "name": "Ruthless",
+        "description": null,
+        "ai_description": "When you perform an attack, the friendly ship at range 0-1 of the defender with the lowest hull value suffers one damage. You may change one of your die results to a Hit result.",
+        "type": "TLN",
+        "type2": null,
+        "charges": null,
+        "force": false,
+        "cost": 0
+    }
+},
+{
+    "model": "xwtools.upgrade",
+    "pk": 92,
+    "fields": {
+        "name": "Redline",
+        "description": null,
+        "ai_description": "You may maintain target locks on two separate ships. When you acquire a target lock, acquire a second lock on a target within range 1 of the original target.",
+        "type": "PLT",
+        "type2": null,
+        "charges": null,
+        "force": false,
+        "cost": 0
+    }
+},
+{
+    "model": "xwtools.upgrade",
+    "pk": 93,
+    "fields": {
+        "name": "Commander Alozen",
+        "description": null,
+        "ai_description": "At the start of the Combat phase, if there is an enemy at range 1 that you do not have a lock on, acquire a lock on it. It is now the priority target.",
+        "type": "PLT",
+        "type2": null,
+        "charges": null,
+        "force": false,
+        "cost": 0
+    }
+},
+{
+    "model": "xwtools.upgrade",
+    "pk": 94,
+    "fields": {
+        "name": "Marksmanship",
+        "description": null,
+        "ai_description": "When you perform an attack, if the defender is in your Bullseye arc, you may change one Hit result to a Critical Hit result.",
+        "type": "TLN",
+        "type2": null,
+        "charges": null,
+        "force": false,
+        "cost": 0
+    }
+},
+{
+    "model": "xwtools.upgrade",
+    "pk": 95,
+    "fields": {
+        "name": "Nimble Bomber",
+        "description": "If you would drop a device using a straight template, you may use a bank template of the same speed instead.",
+        "ai_description": "If you would drop a device using a straight template, you may use a bank template of the same speed instead.",
+        "type": "SHP",
+        "type2": null,
+        "charges": null,
+        "force": false,
+        "cost": 0
     }
 },
 {
@@ -3329,16 +3917,16 @@
         "slug": "tie-fighter",
         "dial": 1,
         "size": "S",
-        "attack": 0,
+        "attack": 2,
         "attack_arc": "F",
         "attack2": 0,
         "attack2_arc": null,
-        "agility": 0,
-        "hull": 0,
+        "agility": 3,
+        "hull": 3,
         "shields": 0,
         "hyperdrive": true,
         "cloaking": false,
-        "css": null,
+        "css": "tielnfighter",
         "ability": null
     }
 },
@@ -3350,17 +3938,17 @@
         "slug": "tie-interceptor",
         "dial": 2,
         "size": "S",
-        "attack": 0,
+        "attack": 3,
         "attack_arc": "F",
         "attack2": 0,
         "attack2_arc": null,
-        "agility": 0,
-        "hull": 0,
+        "agility": 3,
+        "hull": 3,
         "shields": 0,
         "hyperdrive": true,
         "cloaking": false,
         "css": null,
-        "ability": null
+        "ability": 27
     }
 },
 {
@@ -3392,16 +3980,16 @@
         "slug": "lambda-t4a-shuttle",
         "dial": 6,
         "size": "S",
-        "attack": 0,
+        "attack": 3,
         "attack_arc": "F",
-        "attack2": 0,
-        "attack2_arc": null,
-        "agility": 0,
-        "hull": 0,
-        "shields": 0,
+        "attack2": 2,
+        "attack2_arc": "R",
+        "agility": 1,
+        "hull": 6,
+        "shields": 4,
         "hyperdrive": true,
         "cloaking": false,
-        "css": null,
+        "css": "lambdaclasst4ashuttle",
         "ability": null
     }
 },
@@ -3413,16 +4001,16 @@
         "slug": "tie-advanced",
         "dial": 7,
         "size": "S",
-        "attack": 0,
+        "attack": 2,
         "attack_arc": "F",
         "attack2": 0,
         "attack2_arc": null,
-        "agility": 0,
-        "hull": 0,
-        "shields": 0,
+        "agility": 3,
+        "hull": 3,
+        "shields": 2,
         "hyperdrive": true,
         "cloaking": false,
-        "css": null,
+        "css": "tieadvancedx1",
         "ability": null
     }
 },
@@ -3514,6 +4102,38 @@
         "chassis": 3,
         "type": "MOD",
         "initiative": 1
+    }
+},
+{
+    "model": "xwtools.pilot",
+    "pk": 1,
+    "fields": {
+        "name": "Arvel Crynyd",
+        "description": "You can perform primary attacks at range 0.  If you would fail a Boost action by overlapping another ship, resolve it as though you were partially executing a maneuver instead.",
+        "ai_description": null,
+        "type": "PLT",
+        "type2": null,
+        "charges": null,
+        "force": false,
+        "initiative": 3,
+        "chassis": 3,
+        "faction": 2
+    }
+},
+{
+    "model": "xwtools.pilot",
+    "pk": 2,
+    "fields": {
+        "name": "Jake Farrell",
+        "description": "After you perform a Barrel Roll or Boost action, you may choose a friendly ship at range 0-1. That ship may perform a Focus action.",
+        "ai_description": null,
+        "type": "PLT",
+        "type2": null,
+        "charges": null,
+        "force": false,
+        "initiative": 4,
+        "chassis": 3,
+        "faction": 2
     }
 }
 ]

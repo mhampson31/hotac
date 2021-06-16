@@ -25,6 +25,8 @@ class FGSetupInline(admin.TabularInline):
         if 'object_id' in request.resolver_match.kwargs:
             if db_field.name == 'chassis':
                 kwargs['queryset'] = Mission.objects.get(pk=request.resolver_match.kwargs['object_id']).enemy_faction.ships.all()
+            elif db_field.name == 'flight_group':
+                kwargs['queryset'] = FlightGroup.objects.filter(mission_id=request.resolver_match.kwargs['object_id'])
         return super().formfield_for_foreignkey(db_field, request, **kwargs)
 
 

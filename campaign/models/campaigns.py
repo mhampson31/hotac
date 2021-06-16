@@ -192,7 +192,7 @@ class FlightGroup(models.Model):
         ('E', 'Escort'),
         ('X', 'Special')
     )
-    orders = models.CharField(max_length=1, choices=ORDERS_CHOICES, default="S")
+    orders = models.CharField(max_length=1, choices=ORDERS_CHOICES, default="A")
 
     def __str__(self):
         return self.name
