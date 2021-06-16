@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.db.models import Count, Sum
 from django.db.models.functions import Coalesce
 from django.views.generic import DetailView
@@ -10,10 +10,10 @@ from django.forms import modelformset_factory, inlineformset_factory, CheckboxSe
 
 from crispy_forms.layout import Submit
 
-from .models import Session, Pilot, PilotUpgrade, Rulebook, Campaign, AI, EnemyPilot
+from .models import Session, Pilot, PilotShip, PilotUpgrade, Rulebook, Campaign, AI, EnemyPilot
 from .forms import EnemyPilotForm, SessionForm, SessionPilotFormset, SessionEnemyFormset, \
                    SPFormsetHelper, SEFormsetHelper, PilotUpgradeForm, PUHelper, \
-                   CampaignForm
+                   CampaignForm, SessionPlanForm, AddSessionPilotFormset, SessionPilotHelper
 
 
 def index(request):
@@ -42,6 +42,39 @@ def session_summary(request, session_id):
 
     context = {'session':s, 'init_list':init_list, 'enemy_count':enemy_count}
     return render(request, 'campaign/session.html', context)
+
+
+class SessionPlan(CreateView):
+    model = Session
+    form_class = SessionPlanForm
+    template_name_suffix = '_plan'
+
+    def get_initial(self):
+        initial = super().get_initial()
+        initial['campaign'] = get_object_or_404(Campaign, id=self.kwargs.get("pk"))
+        pilots = initial['campaign'].pilots.all()
+        return initial
+
+    def get_context_data(self, **kwargs):
+        data = super().get_context_data(**kwargs)
+        if self.request.POST:
+            data['pilots'] = AddSessionPilotFormset(self.request.POST, instance=self.object, prefix='pilot')
+        else:
+            data['pilots'] = AddSessionPilotFormset(instance=self.object, prefix='pilot')
+        #for p in data['pilots']:
+        #    p.fields['ship'].queryset = PilotShip.objects.filter(pilot_id=p.fields['id'])
+        data['pilot-helper'] = SessionPilotHelper
+        return data
+
+    def form_valid(self, form):
+        context = self.get_context_data()
+        self.object = form.save()
+        for p in self.object.campaign.pilots.all():
+            self.object.sessionpilot_set.create(session=self.object, pilot=p,
+                                                ship=p.active_ship,
+                                                initiative=p.initiative)
+        self.object.generate_enemies()
+        return super().form_valid(form)
 
 
 class SessionDebrief(UpdateView):

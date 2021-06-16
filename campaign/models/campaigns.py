@@ -34,6 +34,8 @@ class Rulebook(models.Model):
     initiative_cost = models.SmallIntegerField(default=3)
     initiative_sq = models.BooleanField(default=False)
 
+    starter_mission = models.ForeignKey('Mission', on_delete=models.SET_NULL, null=True, related_name='starts')
+
     def __str__(self):
         return self.description
 
@@ -121,6 +123,7 @@ class Campaign(models.Model):
     pool_xp = models.BooleanField(default=False)
 
     deck = models.ManyToManyField(Mission)
+    deck_draw = models.JSONField(null=True)
 
     def __str__(self):
         return self.description
@@ -146,7 +149,14 @@ class Campaign(models.Model):
 
     def draw_missions(self):
         from random import sample
-        return sample(list(self.deck.all()), 2)
+        deck = list(self.deck.all())
+        if self.rulebook.starter_mission in deck:
+            self.deck_draw = [self.starter_mission.id,]
+        elif len(deck) == 1:
+            self.deck_draw = [deck[0].id,]
+        else:
+            self.deck_draw = [i.id for i in sample(deck, 2)]
+        self.save()
 
 
 class CampaignUpgrade(models.Model):

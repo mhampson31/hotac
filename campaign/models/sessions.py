@@ -32,7 +32,7 @@ class Session(models.Model):
 
     def get_absolute_url(self):
         from django.urls import reverse
-        return reverse('session', args=[str(self.id)])
+        return reverse('game:session', args=[str(self.id)])
 
     def __str__(self):
         return '{} {}'.format(self.mission.name, self.date)
@@ -77,6 +77,7 @@ class Session(models.Model):
             se.callsign = '%s %s' % (se.flight_group.name, p if p > 1 else 'Leader')
             se.save()
             p = p + 1
+
 
     def debrief(self):
         if self.outcome == self.VICTORY and self.campaign.deck.filter(id=self.mission_id).exists():

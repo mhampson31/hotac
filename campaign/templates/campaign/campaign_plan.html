@@ -8,20 +8,33 @@
 
 
 <div class="row">
-
     <div class="col">
-        <h4>Campaign Settings</h4>
-        {% crispy form %}
+        <div class="card">
+            <h4 class="card-header">Mission Deck</h4>
+            <div class="card-body">
+                <h6 class="card-title">Plan your next mission</h6>
+                <div class="card-body">
+                    <form method='post' action="">
+                        {% csrf_token %}
+                        {% for mission in campaign.deck.all %}
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" value="{{mission.id}}"
+                                   name="mission_radio" id="mission_radio_{{forloop.counter}}"
+                                   {% if mission.id not in campaign.deck_draw %}
+                                   disabled
+                                   {% endif %}>
+                            <label class="form-check-label" for="mission_radio_{{forloop.counter}}">{{mission}}</label>
+                        </div>
+                        {% endfor %}
+                        <input class="btn btn-primary" type="submit" value="Launch">
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
+</div>
 
-    <div class="col">
-        <h4>Mission Deck</h4>
-        <ul class="list-group">
-            {% for mission in form.instance.deck.all %}
-            <li class="list-group-item">{{mission}}</li>
-            {% endfor %}
-        </ul>
-        <a href="#" class="btn btn-primary">Plan Next Mission</a>
-    </div>
+<div class="row">
+
 </div>
 {% endblock %}

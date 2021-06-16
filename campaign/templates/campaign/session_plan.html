@@ -1,41 +1,19 @@
 {% extends 'base.html' %}
 
 {% load xwf_extras %}
+{% load crispy_forms_tags %}
 
 {% block content %}
 
-<h5>{{s.mission.name}}</h5>
+<form action='#' method="post">
+    {% csrf_token %}
+    <div class="container">
+        <div class="row">
+            {% crispy form form.helper %}
+        </div>
 
-{% for fg, ships in enemies.items %}
-<div class='row'>
-    <div class='col col-1'><strong>{{fg}}</strong></div>
-    <div class='col col-3'><em>Arrives turn {{fg.arrival}}, vector {{fg.vector}}</em></div>
-</div>
-<ul class='mb-4 list-group'>
-    <li class='list-group-item d-inline-flex list-group-item-info'>
-        <span class='col-2 flex-fill'>
-            <span class='badge badge-secondary'>Init</span>
-            Callsign
-        </span>
-        <span class='col flex-fill'>Ship</span>
-    </li>
-    {% for ship in ships %}
-    <li class='list-group-item d-inline-flex'>
-        <span class='col-2 flex-fill'>
-            <span class='badge badge-secondary'>{{ship.initiative}}</span>
-            {{fg}} {{forloop.counter}}
-        </span>
+    </div>
+</form>
 
-        <ul class='col list-group text-left list-group-flush'>
-            <li class='list-group-item flex-fill'><a href="{% url 'ai' ship.ship.slug %}">{% if ship.elite %}{{'talent'|get_icon}}{% endif %}{{ship.ship.name}}</a></li>
-            {% for a in ship.abilities %}
-            <li class='list-group-item'><em>{{a.upgrade.name}}</em>: {{a.upgrade.ai_description}}</li>
-            {% endfor %}
-        </ul>
-
-    </li>
-    {% endfor %}
-</ul>
-{% endfor %}
 
 {% endblock %}

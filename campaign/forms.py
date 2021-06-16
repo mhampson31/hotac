@@ -57,8 +57,6 @@ class CampaignForm(forms.ModelForm):
         )
 
 
-
-
 class SessionForm(forms.ModelForm):
     prefix = 'session'
 
@@ -67,8 +65,6 @@ class SessionForm(forms.ModelForm):
         self.helper = FormHelper()
         self.helper.form_method = 'post'
         self.helper.form_tag = False
-        #self.helper.form_class = 'form-inline'
-        #self.helper.field_template = 'bootstrap4/layout/inline_field.html'
         self.helper.add_input(Submit('submit', 'Submit'))
         self.helper.layout = Layout(
             Div(
@@ -82,15 +78,55 @@ class SessionForm(forms.ModelForm):
         fields = ['date', 'outcome']
 
 
-SessionPilotFormset = inlineformset_factory(Session,
-                                            SessionPilot,
+AddSessionPilotFormset = inlineformset_factory(Session, SessionPilot,
+                                            fields=('pilot', 'ship', 'initiative',),
+                                            extra=1)
+
+
+SessionPilotFormset = inlineformset_factory(Session, SessionPilot,
                                             exclude=('pilot', 'ship', 'initiative',),
                                             extra=0)
 
-SessionEnemyFormset = inlineformset_factory(Session,
-                                            SessionEnemy,
+SessionEnemyFormset = inlineformset_factory(Session, SessionEnemy,
                                             fields=('killed_by',),
                                             extra=0)
+
+
+class SessionPlanForm(forms.ModelForm):
+    prefix = 'session'
+
+    class Meta:
+        model = Session
+        fields = ['mission', 'campaign']
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        print(kwargs)
+        self.fields['campaign'].widget = forms.HiddenInput()
+        self.fields['mission'].widget = forms.RadioSelect()
+        self.fields['mission'].empty_label = None
+        campaign = kwargs.get('initial')['campaign']
+        self.fields['mission'].queryset = campaign.deck.filter(id__in=campaign.deck_draw)
+        self.helper = FormHelper()
+        self.helper.form_method = 'post'
+        self.layout = Layout(
+            Div(
+                Field('mission', wrapper_class='card-body'),
+            )
+        )
+        self.helper.add_input(Submit('submit', 'Submit'))
+
+
+
+class SessionPilotHelper(FormHelper):
+    """
+    SessionPilot formset helper for SessionCreate
+    """
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.helper = FormHelper()
+        self.helper.form_method = 'post'
+        self.helper.form_tag = False
 
 
 class SPFormsetHelper(FormHelper):
