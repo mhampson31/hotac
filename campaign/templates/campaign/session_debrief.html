@@ -17,7 +17,7 @@
             <h4>Pilots</h4>
             {{pilots.management_form}}
             {% for pilot in pilots %}
-            <div class="col">
+            <div class="col-sm-6">
                 <div class="card mb-3">
                     <div class="card-header">
                         <h5><i class="xw-ship xw-ship-{{pilot.instance.ship.chassis.css_name}}"></i> {{pilot.instance.pilot}}</h5>
@@ -34,7 +34,7 @@
             <h4>Enemies</h4>
             {{enemies.management_form}}
             {% for enemy in enemies %}
-            <div class="col">
+            <div class="col-sm-2">
                 <div class="card mb-3">
                     <div class="card-header">
                         <h5><i class="xw-ship xw-ship-{{enemy.instance.chassis.css_name}}"></i> {{enemy.instance}}</h5>

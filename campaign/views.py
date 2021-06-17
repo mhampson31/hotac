@@ -83,7 +83,7 @@ class SessionDebrief(UpdateView):
     template_name_suffix = '_debrief'
 
     def get_success_url(self):
-        return reverse_lazy('game:campaign-plan', args=(self.object.campaign.pk,))
+        return reverse_lazy('game:campaign', args=(self.object.campaign.pk,))
 
     def get_context_data(self, **kwargs):
         data = super().get_context_data(**kwargs)
