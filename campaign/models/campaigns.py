@@ -100,14 +100,20 @@ class Mission(models.Model):
     story = models.CharField(max_length=30)
     sequence = models.PositiveSmallIntegerField()
     enemy_faction = models.ForeignKey(Faction, on_delete=models.CASCADE, default=1)
-    territory = models.CharField(max_length=1, choices=TERRITORY_CHOICES)
+    territory = models.CharField(max_length=1, choices=TERRITORY_CHOICES, default=NEUTRAL)
     rulebook = models.ForeignKey(Rulebook, on_delete=models.SET_NULL, null=True)
     turns = models.PositiveSmallIntegerField(default=12)
+
+    player_vp = models.BooleanField(default=False)
+    enemy_vp =  models.BooleanField(default=False)
 
     objective = models.TextField()
     bonus_1 = models.TextField(blank=True, null=True)
     bonus_2 = models.TextField(blank=True, null=True)
     penalty = models.TextField(blank=True, null=True)
+
+    class Meta:
+        ordering = ['story', 'sequence']
 
     def __str__(self):
         return '{} ({} {})'.format(self.name, self.story, self.sequence)
