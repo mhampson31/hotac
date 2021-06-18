@@ -8,11 +8,30 @@
     </div>
 </div>
 
+<div class="row">
+    <div class="col">
+        <a href="{% url 'game:next-mission' campaign.id %}">Next Mission</a>
+    </div>
+</div>
+
+<div class="row mb-3">
+    <div class="col">
+        <h3>Sessions</h3>
+        <div class="list-group">
+            {% for session in campaign.session_set.all %}
+            <a href="{% url 'game:session' session.id %}" class="list-group-item list-group-item-action">{{session.mission}}</a>
+            {% if session.outcome == 'U' %}<a href="{% url 'game:session-debrief' session.id %}">Debrief</a>{% endif %}
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+
 <div class="row mb-3">
     <div class="col">
         <h3>Pilots</h3>
         <div class="list-group">
-            {% for pilot in campaign.pilot_set.all %}
+            {% for pilot in campaign.pilots.all %}
             <a href="{% url 'game:pilot' pilot.id %}" class="list-group-item list-group-item-action">{{pilot.callsign}}</a>
             {% endfor %}
         </div>
@@ -28,17 +47,6 @@
     {% endfor %}
     </div>
   </div>
-</div>
-
-<div class="row mb-3">
-    <div class="col">
-        <h3>Sessions</h3>
-        <div class="list-group">
-            {% for session in campaign.session_set.all %}
-            <a href="{% url 'game:session' session.id %}" class="list-group-item list-group-item-action">{{session.mission}}</a>
-            {% endfor %}
-        </div>
-    </div>
 </div>
 
 {% endblock %}

@@ -4,24 +4,22 @@
 
 <h4>Tools</h4>
 <div class='list-group'>
-    {% for ai in ais %}
-    <a href="{% url 'ai' ai.id %}" class="list-group-item list-group-item-action">{{ai}}</a>
-    {% endfor %}
+    <a href='#'>AIs</a>
 </div>
 
 <h4>Your Games</h4>
 {% for game in campaigns %}
     <div class='card mb-3'>
         <div class='card-body'>
-            <h5>{{game.description}}{% if game.gm == user %}<i> (Admin)</i>{% endif %}</h5>
-            <h6>{{game.rulebook}}</h6>
+            <h5 class="card-title"><a href="{% url 'game:campaign' game.id %}">{{game.description}}</a></h5>
+            <h6 class="card-subtitle">{{game.rulebook}}</h6>
             <table class='table table-sm'>
                 <tr>
                     <th scope='col'>Pilot</th>
                     <th scope='col'>Ship</th>
                     <th scope='col'>Player</th>
                 </tr>
-                {% for p in game.pilot_set.all %}
+                {% for p in game.pilots.all %}
                 <tr>
                     <td scope='col'><a href='{% url 'game:pilot' p.id %}'>{{p.callsign}}</a></td>
                     <td scope='col'>{{p.active_ship}}</td>
