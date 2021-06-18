@@ -6,127 +6,96 @@
 {% block content %}
 
 {% with ai.dial.chassis as ship %}
+
 <div class="container">
     <div class="row text-center">
         <h5 class=""><i class="xw-ship xw-ship-{{ship.css_name}}"></i>{{ai.dial.chassis}} AI</h5>
     </div>
 
-    <div class="row text-left">
+    <div class="row text-left mb-3">
         <div class="col-sm-4">
-            <ul class="list-group">
-                <li class="list-group-item">
-                    <h5>Select Target</h5>
-                    <ol class="list-group list-group-numbered">
-                        {% for t in targets %}
-                        <li class="list-group-item">{{t.desc|iconize}}</li>
-                        {% endfor %}
-                    </ol>
-                </li>
-
-                <li class="list-group-item">
-                    <h5>Select Action</h5>
-                    <ol class="list-group list-group-numbered">
-                        {% for a in actions %}
-                        <li class="list-group-item">{{a.desc|iconize}}</li>
-                        {% endfor %}
-                    </ol>
-                </li>
-            </ul>
+            <h5>1. Select Target</h5>
+            <ol class="list-group list-group-numbered">
+                {% for t in targets %}
+                <li class="list-group-item">{{t.desc|iconize}}</li>
+                {% endfor %}
+            </ol>
         </div>
     </div>
 
-    <div class="row">
-        <div class="col-sm-8 text-center">
-            <ul class="nav nav-pills mb-4 justify-content-between" role="tablist">
-                    <li class="nav-item col-2" role="presentation">
-                        <a class="nav-link" id="mv-fl-tab"
-                           data-bs-toggle="tab" href="#mv-fl"
-                           role="tab" aria-controls="home" aria-selected="true">Front (Left)</a>
-                    </li>
-                    <li class="nav-item col-2" role="presentation">
-                        <a class="nav-link" id="mv-be-tab"
-                           data-bs-toggle="tab" href="#mv-be"
-                           role="tab" aria-controls="home" aria-selected="true">Bullseye</a>
-                    </li>
-                    <li class="nav-item col-2" role="presentation">
-                        <a class="nav-link" id="mv-fr-tab"
-                           data-bs-toggle="tab" href="#mv-fr"
-                           role="tab" aria-controls="home" aria-selected="true">Front (Right)</a>
-                    </li>
-                     <li class="w-100"></li>
+    <div class="row justify-content-between mb-3">
+        <h5>2. Select Maneuver</h5>
+        <div class="col-sm-4 mb-3">
+            <svg id="ai-chart" class="nav nav-tabs mx-auto" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 537.5 459.6" height="150">
+                <a id="mv-al-tab" class="nav-item" data-bs-toggle="tab" href="#mv-al" role="tab" aria-controls="home" aria-selected="true">
+                    <path class="arc" d="m172 259.6-172 200h172z"/>
+                </a>
+                <a id="mv-la-tab" class="nav-item" data-bs-toggle="tab" href="#mv-la" role="tab" aria-controls="home" aria-selected="true">
+                     <path class="arc" d="m0 439.6 172-200h-172z"/>
+                </a>
+                <a id="mv-fl-tab" class="nav-item" data-bs-toggle="tab" href="#mv-fl" role="tab" aria-controls="home" aria-selected="true">
+                     <path class="arc" d="M172 200 0 0h172z"/>
+                </a>
+                <a id="mv-lf-tab" class="nav-item" data-bs-toggle="tab" href="#mv-lf" role="tab" aria-controls="home" aria-selected="true">
+                     <path class="arc a" d="M0 20 172 220H0Z"/>
+                </a>
+                <a id="mv-be-tab" class="nav-item" data-bs-toggle="tab" href="#mv-be" role="tab" aria-controls="home" aria-selected="true">
+                    <path class="arc" d="m193.7 0h150v150l-75 50-75-50z"/>
+                </a>
+                <a id="mv-ar-tab" class="nav-item" data-bs-toggle="tab" href="#mv-ar" role="tab" aria-controls="home" aria-selected="true">
+                    <path class="arc" d="m365.5 259.6 172 200h-172z"/>
+                </a>
+                <a id="mv-ra-tab" class="nav-item" data-bs-toggle="tab" href="#mv-ra" role="tab" aria-controls="home" aria-selected="true">
+                    <path class="arc" d="m537.5 439.6-172-200h172z"/>
+                </a>
+                <a id="mv-fr-tab" class="nav-item" data-bs-toggle="tab" href="#mv-fr" role="tab" aria-controls="home" aria-selected="true">
+                    <path class="arc" d="M365.5 200 537.5 0H365.5Z"/>
+                </a>
+                <a id="mv-rf-tab" class="nav-item" data-bs-toggle="tab" href="#mv-rf" role="tab" aria-controls="home" aria-selected="true">
+                    <path class="arc" d="M537.5 20 365.5 220h172z"/>
+                </a>
+                <a id="mv-sp-tab" class="nav-item" data-bs-toggle="tab" href="#mv-sp" role="tab" aria-controls="home" aria-selected="true">
+                    <rect class="arc" width="140" height="50" x="200" y="410"/>
+                </a>
+            </svg>
+        </div>
 
-                    <li class="nav-item col-2" role="presentation">
-                        <a class="nav-link" id="mv-lf-tab"
-                           data-bs-toggle="tab" href="#mv-lf"
-                           role="tab" aria-controls="home" aria-selected="true">Left (Front)</a>
-                    </li>
-                    <li class="nav-item col-2" role="presentation"></li>
-                    <li class="nav-item col-2" role="presentation">
-                        <a class="nav-link" id="mv-rf-tab"
-                           data-bs-toggle="tab" href="#mv-rf"
-                           role="tab" aria-controls="home" aria-selected="true">Right (Front)</a>
-                    </li>
+        <div class="tab-content col-sm-6 text-center">
+        {% regroup mvs by arc as maneuvers %}
 
-                     <li class="w-100"></li>
-
-                    <li class="nav-item col-2" role="presentation">
-                        <a class="nav-link" id="mv-la-tab"
-                           data-bs-toggle="tab" href="#mv-la"
-                           role="tab" aria-controls="home" aria-selected="true">Left (Rear)</a>
-                    </li>
-
-                    <li class="nav-item col-2" role="presentation"></li>
-
-                    <li class="nav-item col-2" role="presentation">
-                        <a class="nav-link" id="mv-ra-tab"
-                           data-bs-toggle="tab" href="#mv-ra"
-                           role="tab" aria-controls="home" aria-selected="true">Right (Rear)</a>
-                    </li>
-
-                     <li class="w-100"></li>
-
-                    <li class="nav-item col-2" role="presentation">
-                        <a class="nav-link" id="mv-al-tab"
-                        data-bs-toggle="tab" href="#mv-al" role="tab" aria-controls="home" aria-selected="true">Rear (Left)</a>
-                    </li>
-
-                    <li class="nav-item col-2" role="presentation"></li>
-
-                    <li class="nav-item col-2" role="presentation">
-                        <a class="nav-link" id="mv-ar-tab"
-                        data-bs-toggle="tab" href="#mv-ar" role="tab" aria-controls="home" aria-selected="true">Rear (Right)</a>
-                    </li>
+            {% for dir in maneuvers %}
+            <div class="tab-pane fade {% if forloop.first %}show{% endif %}" id="mv-{{dir.grouper|lower}}" role="tabpanel" aria-labelledby="mv-{{dir.grouper|lower}}-tab">
+            {% for r in dir.list %}
+                <button type="button" class="btn btn-block btn-secondary">{{r.get_range_display}}</button>
+                <ul class="list-group mb-4 d-flex list-group-horizontal">
+                    {% for roll in r.rolls %}
+                    <li class="list-group-item flex-fill px-1">{{roll.speed}}<span class="{{roll.icon_color}}">{{roll.css_name|get_icon}}</span></li>
+                    {% endfor %}
                 </ul>
-
-            <div class="tab-content">
-            {% regroup mvs by arc as maneuvers %}
-
-                {% for dir in maneuvers %}
-
-                <div class="tab-pane fade {% if forloop.first %}show{% endif %}" id="mv-{{dir.grouper|lower}}" role="tabpanel" aria-labelledby="mv-{{dir.grouper|lower}}-tab">
-                {% for r in dir.list %}
-                    <button type="button" class="btn btn-block btn-secondary">{{r.get_range_display}}</button>
-                    <ul class="list-group mb-4 d-flex list-group-horizontal">
-                        {% for roll in r.rolls %}
-                        <li class="list-group-item flex-fill px-1">{{roll.speed}}<span class="{{roll.icon_color}}">{{roll.css_name|get_icon}}</span></li>
-                        {% endfor %}
-                    </ul>
-                {% endfor %}
-                </div>
-                {% endfor %}
-
-                <div>
-                    <div>Flee Threshold: {{ai.flee}}</div>
-                    <div>Hyperdrive: {{ai.dial.chassis.hyperdrive|yesno}}</div>
-
-                </div>
+            {% endfor %}
             </div>
-
+            {% endfor %}
         </div>
+
     </div>
 
+    <div class="row text-left">
+        <h5>Select Action</h5>
+        <ol class="list-group list-group-numbered">
+            {% for a in actions %}
+            <li class="list-group-item">{{a.desc|iconize}}</li>
+            {% endfor %}
+        </ol>
+    </div>
 
 </div>
+<div>
+    <div>Flee Threshold: {{ai.flee}}</div>
+    <div>Hyperdrive: {{ai.dial.chassis.hyperdrive|yesno}}</div>
+
+</div>
+
+
 {% endwith %}
 {% endblock content %}
 

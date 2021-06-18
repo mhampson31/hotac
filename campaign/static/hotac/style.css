@@ -1,6 +1,6 @@
 :root {
     --green: mediumseagreen;
-    --red: red;
+    --red: maroon;
     --blue: blue;
     --yellow: gold;
     --orange: darkorange;
@@ -82,4 +82,15 @@ section > .row {
 
 .upgrade-card {
     max-width: 25rem;
+}
+
+.arc {
+    fill: #00006c;
+    stroke-width: 0.3;
+}
+
+#ai-chart > a.active > .arc {
+    fill: var(--red);
+    stroke: var(#000000);
+    stroke-width: 1;
 }
