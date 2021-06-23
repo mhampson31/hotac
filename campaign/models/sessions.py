@@ -53,33 +53,37 @@ class Session(models.Model):
         chassis_list = self.mission.enemy_faction.ships.exclude(id=fac.default_ship.id)
         for fg in self.mission.flight_groups.all():
             squad = fg.squad_members.filter(players__lte=self.pilots.count(), init__lte=self.group_init)
+            p = 1 # just a counter to use in the callsigns
 
             # how many default enemies do we need to replace?
             r = squad.filter(action='R').count()
+
+            # we handle replacements by collecting all the enemies in the flight group,
+            # including the ones indicated as replacements. Then we go through the list
+            # and add each one to the session, unless it's a default ship and we still
+            # have replacements indicated
             for sq in squad:
                 if r and sq.is_default:
                     r = r-1
                     pass
                 else:
+                    # if the FGSetup doesn't have a chassis, we select a non-default at random
                     if not sq.chassis:
                         new_enemy = choice(enemy_list.exclude(chassis=fac.default_ship))
                     else:
                         new_enemy = choice(enemy_list.filter(chassis=sq.chassis))
                     self.sessionenemy_set.create(flight_group=fg,
                                                  enemy=new_enemy,
+                                                 callsign='%s %s' % (fg.name, p if p > 1 else 'Leader'),
                                                  level=self.group_init if sq.elite else EnemyAbility.Level.BASIC)
-        current_fg = ''
-        p = 1
-        for se in self.sessionenemy_set.all():
-            if current_fg != se.flight_group.name:
-                current_fg = se.flight_group.name
-                p = 1
-            se.callsign = '%s %s' % (se.flight_group.name, p if p > 1 else 'Leader')
-            se.save()
-            p = p + 1
+                    p = p + 1
 
 
     def debrief(self):
+        """
+        If the players have won the mission, update the mission deck.
+        Other wrap-up can be included here.
+        """
         if self.outcome == self.VICTORY and self.campaign.deck.filter(id=self.mission_id).exists():
             self.campaign.deck.remove(self.mission)
             try:
@@ -90,8 +94,6 @@ class Session(models.Model):
             except Mission.DoesNotExist:
                 pass
             self.save()
-
-
 
     @property
     def group_init(self):

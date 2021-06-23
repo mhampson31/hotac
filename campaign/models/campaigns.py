@@ -125,7 +125,7 @@ class Campaign(models.Model):
     players = models.ManyToManyField(User)
     description = models.CharField(max_length=30)
 
-    victory = models.PositiveSmallIntegerField()
+    victory = models.PositiveSmallIntegerField(default=12)
     pool_xp = models.BooleanField(default=False)
 
     deck = models.ManyToManyField(Mission)
@@ -133,6 +133,10 @@ class Campaign(models.Model):
 
     def __str__(self):
         return self.description
+
+    @property
+    def victory_points(self):
+        return self.session_set.filter(outcome='V', player_vp=True).Count()
 
     @property
     def xp_share(self):
