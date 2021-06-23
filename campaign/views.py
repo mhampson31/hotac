@@ -35,8 +35,7 @@ def ai_select(request, chassis_slug):
 
 def session_summary(request, session_id):
     s = Session.objects.get(id=session_id)
-    init_list = [e for e in s.sessionenemy_set.all()] + \
-                [p for p in s.sessionpilot_set.all()]
+    init_list = list(s.sessionenemy_set.all()) + list(s.sessionpilot_set.all()) + list(s.mission.allies.all())
     init_list.sort(key=lambda init: init.initiative)
     enemy_count = s.enemies.values('chassis__name').annotate(ship_count=Count('id'))
 

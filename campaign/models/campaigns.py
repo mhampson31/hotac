@@ -278,3 +278,18 @@ class FGSetup(models.Model):
                 'elite':self.elite,
                 'abilities': abilities,
                 'id':id}
+
+
+class Ally(models.Model):
+    mission = models.ForeignKey(Mission, on_delete=models.CASCADE, related_name='allies')
+    chassis = models.ForeignKey(Chassis, on_delete=models.CASCADE)
+    callsign = models.CharField(max_length=35)
+    initiative = models.PositiveSmallIntegerField(default=1)
+    abilities = models.ManyToManyField(Upgrade, limit_choices_to={'ai_description__isnull':False})
+
+    def __str__(self):
+        return self.callsign
+
+    @property
+    def pilot(self):
+        return '{} ({})'.format(self.callsign, self.chassis)

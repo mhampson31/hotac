@@ -181,6 +181,7 @@ class Chassis(models.Model):
     agility = models.PositiveSmallIntegerField(default=0)
     hull = models.PositiveSmallIntegerField(default=0)
     shields = models.PositiveSmallIntegerField(default=0)
+    #energy = models.PositiveSmallIntegerField(default=0)
     hyperdrive = models.BooleanField(default=True)
     cloaking = models.BooleanField(default=False)
 
