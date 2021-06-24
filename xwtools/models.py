@@ -68,16 +68,14 @@ class Upgrade(Ability):
 
 
 class Dial(models.Model):
-    #chassis = models.OneToOneField(Chassis, on_delete=models.CASCADE, null=True)
-    name = models.CharField(max_length=40, null=True, blank=True)
     chassis = models.OneToOneField('Chassis', on_delete=models.SET_NULL, null=True, related_name='dial')
 
     def __str__(self):
-        return self.name or '--'
+        return self.chassis.name or '--'
 
     @property
     def css_name(self):
-        return re.sub(r'[^\w\d]', '', self.name.lower())
+        return re.sub(r'[^\w\d]', '', self.chassis.name.lower())
 
     @property
     def max_speed(self):
