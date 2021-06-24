@@ -204,6 +204,10 @@ class FlightGroup(models.Model):
     )
     orders = models.CharField(max_length=1, choices=ORDERS_CHOICES, default="A")
 
+    class Meta:
+        verbose_name = 'Flight Group'
+        verbose_name_plural = 'Flight Groups'
+
     def __str__(self):
         return self.name
 
@@ -237,12 +241,15 @@ class FlightGroup(models.Model):
 
 class FGSetup(models.Model):
     action = models.CharField(max_length=1, choices=( ('A', 'Add'), ('R', 'Replace') ), default='A')
-    mission = models.ForeignKey(Mission, on_delete=models.CASCADE)
     chassis = models.ForeignKey(Chassis, on_delete=models.CASCADE, null=True, blank=True)
     flight_group = models.ForeignKey(FlightGroup, on_delete=models.CASCADE, related_name='squad_members')
     players = models.SmallIntegerField(default=1)
     init = models.SmallIntegerField(default=1)
     elite = models.BooleanField(default=False)
+
+    class Meta:
+        verbose_name = 'Squad Member'
+        verbose_name_plural = 'Squad Members'
 
     def __str__(self):
         return self.chassis.name if self.chassis else 'Random'
@@ -286,6 +293,9 @@ class Ally(models.Model):
     callsign = models.CharField(max_length=35)
     initiative = models.PositiveSmallIntegerField(default=1)
     abilities = models.ManyToManyField(Upgrade, limit_choices_to={'ai_description__isnull':False})
+
+    class Meta:
+        verbose_name_plural = 'Allies'
 
     def __str__(self):
         return self.callsign

@@ -1,6 +1,8 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 
+import nested_admin
+
 from .models import User, Rulebook, PlayableShip, Pilot, Mission, \
     Campaign, Session, SessionEnemy, SessionPilot, PilotShip, PilotUpgrade, FGSetup, FlightGroup, \
     AI, AIManeuver, AIPriority, \
@@ -17,7 +19,7 @@ class UserAdmin(BaseUserAdmin):
     inlines = (PilotInline, )
 
 
-class FGSetupInline(admin.TabularInline):
+class FGSetupInline(nested_admin.NestedTabularInline):
     model = FGSetup
     extra = 0
 
@@ -32,14 +34,22 @@ class FGSetupInline(admin.TabularInline):
 
 
 
-class FlightGroupInline(admin.TabularInline):
+class FlightGroupInline(nested_admin.NestedTabularInline):
     model = FlightGroup
+    inlines = (FGSetupInline,)
     extra = 0
 
 
-class MissionAdmin(admin.ModelAdmin):
+class AllyInline(nested_admin.NestedTabularInline):
+    model = Ally
+    extra = 0
+    fields = ('callsign', 'chassis', 'initiative', 'abilities')
+    filter_horizontal = ('abilities',)
+
+
+class MissionAdmin(nested_admin.NestedModelAdmin):
     model = Mission
-    inlines = (FlightGroupInline, FGSetupInline)
+    inlines = (AllyInline, FlightGroupInline)
     list_display = ['rulebook', 'name', 'story', 'sequence']
 
 
@@ -74,7 +84,6 @@ class SessionPilotInline(admin.TabularInline):
                 c = Session.objects.get(pk=request.resolver_match.kwargs['object_id']).campaign
                 kwargs['queryset'] = PilotShip.objects.filter(pilot__campaign=c)
         return super().formfield_for_foreignkey(db_field, request, **kwargs)
-
 
 
 class SessionAdmin(admin.ModelAdmin):
@@ -128,6 +137,7 @@ class AIManeuverInline(admin.TabularInline):
                 kwargs['queryset'] = AI.objects.get(pk=request.resolver_match.kwargs['object_id']).dial.maneuvers.all()
         return super().formfield_for_foreignkey(db_field, request, **kwargs)
 
+
 class AIPriorityInline(admin.TabularInline):
     model = AIPriority
     extra = 0
@@ -157,4 +167,3 @@ admin.site.register(Campaign, CampaignAdmin)
 admin.site.register(Session, SessionAdmin)
 admin.site.register(AI, AIAdmin)
 admin.site.register(EnemyPilot, EnemyPilotAdmin)
-admin.site.register(Ally)

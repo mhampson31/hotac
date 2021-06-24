@@ -10,6 +10,7 @@ from campaign import views as campaign_views
 urlpatterns = [
     path('login/',LoginView.as_view(template_name='registration/login.html'), name="login"),
 
+    path('_nested_admin/', include('nested_admin.urls')),
     path('admin/', admin.site.urls),
 
     path('', campaign_views.index, name='index'),

@@ -36,6 +36,7 @@ INSTALLED_APPS = [
     'xwtools',
     'crispy_forms',
     'crispy_bootstrap5',
+    'nested_admin',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
