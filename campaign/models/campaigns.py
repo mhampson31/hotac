@@ -194,7 +194,7 @@ class FlightGroup(models.Model):
     name = models.CharField(max_length=20)
     mission = models.ForeignKey(Mission, on_delete=models.CASCADE, related_name='flight_groups')
     arrival = models.SmallIntegerField(default=1)
-    vector = models.CharField(max_length=3)
+    vector = models.CharField(max_length=6)
 
     ORDERS_CHOICES = (
         ('A', 'Attack'),
@@ -292,7 +292,7 @@ class Ally(models.Model):
     chassis = models.ForeignKey(Chassis, on_delete=models.CASCADE)
     callsign = models.CharField(max_length=35)
     initiative = models.PositiveSmallIntegerField(default=1)
-    abilities = models.ManyToManyField(Upgrade, limit_choices_to={'ai_description__isnull':False})
+    abilities = models.ManyToManyField(Upgrade, limit_choices_to={'ai_description__isnull':False}, blank=True)
 
     class Meta:
         verbose_name_plural = 'Allies'

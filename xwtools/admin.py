@@ -1,17 +1,43 @@
 from django.contrib import admin
 
+import nested_admin
+
 from .models import Chassis, Slot, Upgrade, Dial, DialManeuver, Faction, Pilot
 
 
-class SlotInline(admin.TabularInline):
+class DialManeuverInline(nested_admin.NestedTabularInline):
+    model = DialManeuver
+    extra = 0
+
+
+class DialInline(nested_admin.NestedTabularInline):
+    model = Dial
+    inlines = (DialManeuverInline,)
+
+
+class SlotInline(nested_admin.NestedTabularInline):
     model = Slot
     extra = 1
 
 
-class ChassisAdmin(admin.ModelAdmin):
+class ChassisAdmin(nested_admin.NestedModelAdmin):
     verbose_name = 'Chassis'
     list_display = ('name', 'slug', 'dial', 'size')
-    inlines = (SlotInline, )
+    inlines = (SlotInline, DialInline)
+    fieldsets = (
+        (None, {
+            'fields': ('name', 'size', 'slug')
+        }),
+        ('Stats', {
+            'fields': (('attack', 'attack_arc'),
+                      ('attack2', 'attack2_arc'),
+                      ('agility', 'hull', 'shields', 'energy'),
+                      ('ability'))
+        }),
+        ('Miscellaneous', {
+            'fields': (('hyperdrive', 'cloaking', 'css'))
+        })
+    )
 
 
 class UpgradeAdmin(admin.ModelAdmin):
@@ -19,20 +45,11 @@ class UpgradeAdmin(admin.ModelAdmin):
     list_display = ('name', 'type', 'type2', 'cost', 'charges')
 
 
-class DialManeuverInline(admin.TabularInline):
-    model = DialManeuver
-    extra = 0
-
-
-class DialAdmin(admin.ModelAdmin):
-    inlines = (DialManeuverInline,)
-
-
 class FactionAdmin(admin.ModelAdmin):
     filter_horizontal = ('ships',)
 
+
 admin.site.register(Pilot)
 admin.site.register(Upgrade, UpgradeAdmin)
-admin.site.register(Dial, DialAdmin)
 admin.site.register(Chassis, ChassisAdmin)
 admin.site.register(Faction, FactionAdmin)

@@ -6,7 +6,7 @@ class EnemyPilot(models.Model):
     chassis = models.ForeignKey(Chassis, on_delete=models.CASCADE)
     faction = models.ForeignKey(Faction, on_delete=models.CASCADE)
     upgrades = models.ManyToManyField(Upgrade, through='EnemyAbility')
-    name_override = models.CharField(max_length=20, blank=True, null=True)
+    name_override = models.CharField(max_length=35, blank=True, null=True)
     random = models.BooleanField(default=True)
 
     def __str__(self):

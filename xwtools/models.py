@@ -14,7 +14,7 @@ class SlotChoice(models.TextChoices):
     FORCE = 'FRC', _('Force Power')
     PILOT = 'PLT', _('Pilot') # TAKES TALENTS, FORCE, AND PILOT UPGRADES
     GUNNER = 'GNR', _('Gunner')
-    ILLICIT = 'ILC', _('Illicit`')
+    ILLICIT = 'ILC', _('Illicit')
     MISSILE = 'MSL', _('Missile')
     MODIFICATION = 'MOD', _('Modification')
     SENSOR = 'SNS', _('Sensor')
@@ -24,6 +24,10 @@ class SlotChoice(models.TextChoices):
     TITLE = 'TTL', _('Title')
     TURRET = 'TRT', _('Turret')
     SHIP = 'SHP', _('Ship')
+    COMMAND = 'COM', _('Command')
+    HARDPOINT = 'HRD', _('Hardpoint')
+    CARGO = 'CRG', _('Cargo')
+    TEAM = 'TEM', _('Team')
 
 
 class Ability(models.Model):
@@ -66,6 +70,7 @@ class Upgrade(Ability):
 class Dial(models.Model):
     #chassis = models.OneToOneField(Chassis, on_delete=models.CASCADE, null=True)
     name = models.CharField(max_length=40, null=True, blank=True)
+    chassis = models.OneToOneField('Chassis', on_delete=models.SET_NULL, null=True, related_name='dial')
 
     def __str__(self):
         return self.name or '--'
@@ -153,9 +158,7 @@ class DialManeuver(models.Model):
 
 class Chassis(models.Model):
     name = models.CharField(max_length=40)
-    slug = models.SlugField(max_length=20, null=True)
-
-    dial = models.OneToOneField(Dial, on_delete=models.SET_NULL, null=True, related_name='chassis')
+    slug = models.SlugField(max_length=40, null=True, blank=True)
 
     ARC_CHOICES = (
         ('F', 'Front'),
@@ -181,7 +184,7 @@ class Chassis(models.Model):
     agility = models.PositiveSmallIntegerField(default=0)
     hull = models.PositiveSmallIntegerField(default=0)
     shields = models.PositiveSmallIntegerField(default=0)
-    #energy = models.PositiveSmallIntegerField(default=0)
+    energy = models.PositiveSmallIntegerField(default=0)
     hyperdrive = models.BooleanField(default=True)
     cloaking = models.BooleanField(default=False)
 
