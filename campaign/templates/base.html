@@ -15,11 +15,25 @@
     </head>
 
     <body>
+        <header class="d-flex flex-wrap align-items-center justify-content-center
+                       justify-content-md-between py-3 mb-4 border-bottom
+                       bg-dark text-white">
+          <ul class="nav col-12 col-md-auto justify-content-center">
+            <li><a class="nav-link text-white text-decoration-none px-2" href="{% url 'index' %}">HotAC Manager</a></li>
+            <li><a class="nav-link text-white text-decoration-none px-2" href='#'>AIs</a></li>
+          </ul>
+          <div class="col-md-3 text-end">
+            {% if user.is_authenticated %}
+            <button class="btn btn-outline-light" type="button">{{user.username}}</button>
+            <a href="{% url 'logout' %}" class="btn btn-outline-warning">Log Out</a>
+            {% else %}
+            <a href="{% url 'login' %}" class="btn btn-outline-light">Log In</a>
+            {% endif %}
+          </div>
+        </header>
         <div class="container">
-              <h1 class="mt-2">HotAC Manager</h1>
-              <hr class="mt-0 mb-4">
-              {% block content %}
-              {% endblock %}
+            {% block content %}
+            {% endblock %}
         </div>
 
         {% block js %}

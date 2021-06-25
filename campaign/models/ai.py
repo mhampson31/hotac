@@ -3,8 +3,6 @@ from django.db import models
 from .campaigns import Rulebook
 from xwtools.models import Dial, DialManeuver
 
-from smart_selects.db_fields import ChainedForeignKey
-
 
 class AI(models.Model):
     rulebook = models.ForeignKey(Rulebook, on_delete=models.CASCADE)

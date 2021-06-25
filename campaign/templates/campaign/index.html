@@ -2,11 +2,7 @@
 
 {% block content %}
 
-<h4>Tools</h4>
-<div class='list-group'>
-    <a href='#'>AIs</a>
-</div>
-
+{% if user.is_authenticated %}
 <h4>Your Games</h4>
 {% for game in campaigns %}
     <div class='card mb-3'>
@@ -30,5 +26,6 @@
         </div>
     </div>
 {% endfor %}
+{% endif %}
 
 {% endblock %}

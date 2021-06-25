@@ -6,7 +6,7 @@ from django.contrib.contenttypes.fields import GenericForeignKey
 from django.contrib.contenttypes.models import ContentType
 
 from xwtools.models import Chassis, Upgrade, SlotChoice
-from .campaigns import User, Campaign, CampaignUpgrade
+from .campaigns import User, Campaign, CampaignUpgrade, BaseChoice, UpgradeLogic
 
 
 class Pilot(models.Model):
@@ -29,7 +29,7 @@ class Pilot(models.Model):
         return '{} ({})'.format(self.callsign, self.user)
 
     def get_absolute_url(self):
-        return reverse('pilot', kwargs={'pk': self.pk})
+        return reverse('game:pilot', kwargs={'pk': self.pk})
 
     @property
     def total_xp(self):
@@ -51,9 +51,7 @@ class Pilot(models.Model):
 
     @property
     def spent_upgrades(self):
-        return sum([self.campaign.rulebook.upgrade_cost(u.upgrade) * u.copies
-                    for u in self.upgrades.filter(upgrade__cost__gt=0)
-                    ])
+        return sum([u.cost for u in self.upgrades.all()])
 
     @property
     def spent_initiative(self):
@@ -122,30 +120,32 @@ class PilotUpgrade(models.Model):
 
     pilot = models.ForeignKey(Pilot, on_delete=models.CASCADE, related_name='upgrades')
     upgrade = models.ForeignKey(CampaignUpgrade, on_delete=models.CASCADE)
-
-    copies = models.PositiveSmallIntegerField(default=1)
     status = models.CharField(max_length=1, choices=UStatusChoice.choices, default='E')
 
     @property
     def cost(self):
-        return self.pilot.campaign.rulebook.upgrade_cost(self.upgrade) * self.copies
+        #return self.pilot.campaign.rulebook.upgrade_cost(self.upgrade)
+        if self.pilot.campaign.rulebook.upgrade_logic == UpgradeLogic.HOTAC:
+            if self.upgrade.base == BaseChoice.PILOT:
+                if self.upgrade.force:
+                    m = self.upgrade.charges + 3
+                else:
+                    m = 2
+            elif self.upgrade.type in (SlotChoice.TALENT, SlotChoice.FORCE):
+                m = 2
+            else:
+                m = 1
+            return self.upgrade.cost * m
 
     @property
     def charges(self):
         if self.upgrade.charges:
-            return self.upgrade.charges + self.copies - 1
+            return self.upgrade.charges
         else:
             return None
 
     def __str__(self):
-        s = str(self.upgrade)
-        if self.copies > 1:
-            if self.upgrade.type == SlotChoice.MODIFICATION:
-                s = '{} x{}'.format(s, self.copies)
-            else:
-                # for ordinance things, copies are the extra charges granted
-                s = '{} +{}'.format(s, self.copies-1)
-        return s
+        return str(self.upgrade)
 
     class Meta:
         ordering = ['upgrade__type', 'status']

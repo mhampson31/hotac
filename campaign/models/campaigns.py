@@ -7,13 +7,17 @@ from math import floor
 from xwtools.models import Chassis, Faction, SlotChoice, Upgrade
 
 
+class User(AbstractUser):
+    pass
+
+
 class BaseChoice(models.TextChoices):
     PILOT = 'P', 'Pilot'
     UPGRADE = 'U', 'Upgrade'
 
 
-class User(AbstractUser):
-    pass
+class UpgradeLogic(models.IntegerChoices):
+    HOTAC = 1, 'HotAC'
 
 
 class Rulebook(models.Model):
@@ -27,8 +31,7 @@ class Rulebook(models.Model):
     # configure a campaign's XP costs
     ship_cost = models.SmallIntegerField(default=5)
 
-    class UpgradeLogic(models.IntegerChoices):
-        HOTAC = 1, 'HotAC'
+
 
     upgrade_logic = models.IntegerField(choices=UpgradeLogic.choices)
     initiative_cost = models.SmallIntegerField(default=3)
@@ -45,18 +48,10 @@ class Rulebook(models.Model):
     def upgrade_cost(self, upgrade):
         """
         takes a CampaignUpgrade object and calculates the cost, based on the upgrade logic rules
+        deprecated -- remove any calls to this
         """
-        if self.upgrade_logic == self.UpgradeLogic.HOTAC:
-            if upgrade.base == BaseChoice.PILOT:
-                if upgrade.force:
-                    m = upgrade.charges + 3
-                else:
-                    m = 2
-            elif upgrade.type in (SlotChoice.TALENT, SlotChoice.FORCE):
-                m = 2
-            else:
-                m = 1
-            return upgrade.cost * m
+        print("old cost logic")
+        return 1000
 
     @property
     def xp_share(self):

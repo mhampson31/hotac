@@ -51,9 +51,6 @@
                                     {% endif %}
                                     {{gu.upgrade.name}}
                                 </h5>
-                                {% if gu.copies > 1 %}
-                                <h6>{{gu.copies}} copies</h6>
-                                {% endif %}
                                 <p>{{gu.upgrade.description|iconize}}</p>
                                 <ul class='list-group list-group-horizontal'>
                                     <li class="list-group-item
@@ -92,8 +89,6 @@
         <form method='post' class='col'>{% csrf_token %}
             <div class='row mb-2'>
                 <div class='col-4'>Upgrade</div>
-                <div class='col-1'>Copies</div>
-                <div class='col-1'>Equipped</div>
             </div>
                 {{update.management_form}}
                 {% crispy update helper %}

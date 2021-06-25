@@ -27,7 +27,6 @@ class PUHelper(FormHelper):
         self.layout = Layout(
             Div(
                 Field('upgrade', wrapper_class='col-4'),
-                Field('copies', wrapper_class='col-1'),
                 Field('status', wrapper_class='col-2'),
                 css_class='form-group row'
             )
@@ -170,14 +169,13 @@ class SEFormsetHelper(FormHelper):
 class PilotUpgradeForm(forms.ModelForm):
     from operator import methodcaller
 
-    upgrade = GroupedModelChoiceField(queryset=CampaignUpgrade.objects.all(),
+    upgrade = GroupedModelChoiceField(queryset=CampaignUpgrade.objects.filter(description__isnull=False),
                                       choices_groupby=methodcaller('get_type_display'))
-    copies = forms.IntegerField(min_value=1)
     status = forms.ChoiceField(choices=PilotUpgrade.UStatusChoice.choices)
 
     class Meta:
         model = PilotUpgrade
-        fields = ('upgrade', 'copies', 'status')
+        fields = ('upgrade', 'status')
 
 
 def make_pilot_upgrade_form(pilot):

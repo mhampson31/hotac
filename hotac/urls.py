@@ -8,8 +8,8 @@ from campaign import views as campaign_views
 
 
 urlpatterns = [
-    path('login/',LoginView.as_view(template_name='registration/login.html'), name="login"),
-
+    #path('login/', LoginView.as_view(template_name='registration/login.html'), name="login"),
+    path('accounts/', include('django.contrib.auth.urls')),
     path('_nested_admin/', include('nested_admin.urls')),
     path('admin/', admin.site.urls),
 

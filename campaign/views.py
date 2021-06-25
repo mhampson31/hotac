@@ -139,7 +139,9 @@ def pilot_sheet(request, pk):
             return HttpResponseRedirect(pilot.get_absolute_url())
     else:
         update_form = UpgradeFormSet(instance=pilot)
-
+    slots = [s.value for s in pilot.slots]
+    update_form.extra_forms[0].fields['upgrade'].queryset = \
+        update_form.extra_forms[0].fields['upgrade'].queryset.filter(type__in=slots).order_by('type', 'name')
     context = {'pilot':pilot,
                'remaining':pilot.total_xp - pilot.spent_xp,
                'update': update_form,
