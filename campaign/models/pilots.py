@@ -82,7 +82,8 @@ class Pilot(models.Model):
             slot_list.append(next(s2 for s2 in SlotChoice if s2.value == ss.type))
 
         # maybe change Pilot.path to use SlotChoice...
-        path_slot = {'A':SlotChoice.PILOT, 'F':SlotChoice.FORCE}[self.path]
+        #path_slot = {'A':SlotChoice.PILOT, 'F':SlotChoice.FORCE}[self.path]
+        path_slot = SlotChoice.PILOT
 
         if self.initiative >= 3:
             slot_list.append(path_slot)

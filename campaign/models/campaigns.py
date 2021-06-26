@@ -22,8 +22,10 @@ class UpgradeLogic(models.IntegerChoices):
 
 class Rulebook(models.Model):
     description = models.CharField(max_length=30)
-    admin = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
+    admin = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
+    faction = models.ForeignKey(Faction, on_delete=models.SET_NULL, null=True)
     ships = models.ManyToManyField(Chassis, through='PlayableShip')
+
 
     # player defaults
     start_init = models.SmallIntegerField(default=2)

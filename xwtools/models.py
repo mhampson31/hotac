@@ -228,7 +228,7 @@ class Slot(models.Model):
         return self.get_type_display()
 
 
-class Pilot(Ability):
+class PilotCard(Ability):
     initiative = models.PositiveSmallIntegerField(default=1)
     chassis = models.ForeignKey(Chassis, on_delete=models.CASCADE, related_name = 'pilot_card')
     faction = models.ForeignKey(Faction, on_delete=models.CASCADE)

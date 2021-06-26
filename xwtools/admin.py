@@ -2,7 +2,7 @@ from django.contrib import admin
 
 import nested_admin
 
-from .models import Chassis, Slot, Upgrade, Dial, DialManeuver, Faction, Pilot
+from .models import Chassis, Slot, Upgrade, Dial, DialManeuver, Faction, PilotCard
 
 
 class DialManeuverInline(nested_admin.NestedTabularInline):
@@ -51,13 +51,13 @@ class FactionAdmin(admin.ModelAdmin):
 
 
 class PilotCardAdmin(admin.ModelAdmin):
-    model = Pilot
+    model = PilotCard
     list_display = ('name', 'faction', 'chassis', 'initiative')
     list_filter = ('faction', 'chassis', 'initiative')
     exclude = ('type', 'type2')
 
 
-admin.site.register(Pilot, PilotCardAdmin)
+admin.site.register(PilotCard, PilotCardAdmin)
 admin.site.register(Upgrade, UpgradeAdmin)
 admin.site.register(Chassis, ChassisAdmin)
 admin.site.register(Faction, FactionAdmin)

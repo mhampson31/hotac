@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404
-from django.db.models import Count, Sum
+from django.db.models import Count, Sum, Q
 from django.db.models.functions import Coalesce
 from django.views.generic import DetailView
 
@@ -14,6 +14,8 @@ from .models import Session, Pilot, PilotShip, PilotUpgrade, Rulebook, Campaign,
 from .forms import EnemyPilotForm, SessionForm, SessionPilotFormset, SessionEnemyFormset, \
                    SPFormsetHelper, SEFormsetHelper, PUHelper, AddUpgrade, \
                    CampaignForm, SessionPlanForm, AddSessionPilotFormset, SessionPilotHelper
+
+from xwtools.models import SlotChoice, PilotCard
 
 
 def index(request):
@@ -136,10 +138,26 @@ def pilot_sheet(request, pk):
     else:
         update_form = AddUpgrade(initial={'pilot':pilot, 'status':'E'})
     slots = [s.value for s in pilot.slots]
-    update_form.fields['upgrade'].queryset = CampaignUpgrade.objects \
-                                              .filter(type__in=slots, description__isnull=False) \
-                                              .exclude(id__in=pilot.upgrades.filter(upgrade__repeat=False).values_list('upgrade__id', flat=True)) \
-                                              .order_by('type', 'name')
+    if SlotChoice.PILOT in slots:
+        slots.append(SlotChoice.FORCE.value)
+        slots.append(SlotChoice.TALENT.value)
+
+    # The upgrade list queryset takes some assembly. F
+    # First, grab all the CampaignUpgrades that the players has slots for
+    # (Those missing descriptions are assumed to be AI-only abilities)
+    new_query = CampaignUpgrade.objects.filter(type__in=slots, description__isnull=False)
+
+    # Next, exclude any the player already has, unless they're marked as repeatable
+    new_query = new_query.exclude(id__in=pilot.upgrades.filter(upgrade__repeat=False).values_list('upgrade__id', flat=True))
+
+    # Then exclude any Pilot upgrades belonging to a different faction
+    new_query = new_query.exclude(Q(base='P'), \
+                                 ~Q(base_id__in=PilotCard.objects.filter(faction=pilot.campaign.rulebook.faction).values_list('id', flat=True)))
+
+    # Finally, put everything in order
+    new_query = new_query.order_by('type', 'name')
+
+    update_form.fields['upgrade'].queryset = new_query
     context = {'pilot':pilot,
                'remaining':pilot.total_xp - pilot.spent_xp,
                'update': update_form,
