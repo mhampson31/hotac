@@ -34,7 +34,8 @@ icon_text = {
     'Sloop Left': 'sloopleft',
     'Sloop Right': 'sloopright',
     'Straight':'straight',
-    'K-Turn':'kturn'
+    'K-Turn':'kturn',
+    'Ordnance':'rangebonusindicator'
 }
 
 

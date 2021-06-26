@@ -12,7 +12,7 @@ from crispy_forms.layout import Submit
 
 from .models import Session, Pilot, PilotShip, PilotUpgrade, Rulebook, Campaign, AI, EnemyPilot, CampaignUpgrade
 from .forms import EnemyPilotForm, SessionForm, SessionPilotFormset, SessionEnemyFormset, \
-                   SPFormsetHelper, SEFormsetHelper, PilotUpgradeForm, PUHelper, AddUpgrade, \
+                   SPFormsetHelper, SEFormsetHelper, PUHelper, AddUpgrade, \
                    CampaignForm, SessionPlanForm, AddSessionPilotFormset, SessionPilotHelper
 
 

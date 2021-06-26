@@ -136,3 +136,5 @@ dm\.json
 
 xwtools/migrations/0010_auto_20200522_0108.py
 asgi.py
+
+*.swp

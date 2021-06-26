@@ -1,3 +1,5 @@
+from operator import methodcaller
+
 from django import forms
 from django.forms.widgets import CheckboxSelectMultiple
 from django.forms.models import inlineformset_factory
@@ -168,6 +170,8 @@ class SEFormsetHelper(FormHelper):
 
 class AddUpgrade(forms.ModelForm):
     prefix = 'add_upgrade'
+    upgrade = GroupedModelChoiceField(queryset=CampaignUpgrade.objects.filter(description__isnull=False),
+                                      choices_groupby=methodcaller('get_type_display'))
 
     class Meta:
         model = PilotUpgrade
@@ -187,47 +191,3 @@ class AddUpgrade(forms.ModelForm):
             )
         )
         self.helper.add_input(Submit('submit', 'Submit'))
-
-
-class PilotUpgradeForm(forms.ModelForm):
-    from operator import methodcaller
-
-    upgrade = GroupedModelChoiceField(queryset=CampaignUpgrade.objects.filter(description__isnull=False),
-                                      choices_groupby=methodcaller('get_type_display'))
-    status = forms.ChoiceField(choices=PilotUpgrade.UStatusChoice.choices)
-
-    class Meta:
-        model = PilotUpgrade
-        fields = ('upgrade', 'status')
-        initial = {'status':'E'}
-
-
-def make_pilot_upgrade_form(pilot):
-
-    class PilotUpdateForm(forms.ModelForm):
-        already_has = pilot.upgrades.values_list('id', flat=True)
-        upgrades = forms.ModelMultipleChoiceField(queryset=Upgrade.objects.exclude(id__in=already_has),
-                                                  widget=CheckboxSelectMultiple(),
-                                                  required=False)
-        callsign = forms.CharField(required=False)
-
-        class Meta:
-            model = Pilot
-            fields = ('callsign', 'upgrades')
-
-    return PilotUpdateForm
-
-
-class UpgradePurchaseForm(forms.ModelForm):
-
-    class Meta:
-        model = Upgrade
-        fields = ('id',)
-
-
-
-#    def __init__(self, *args, **kwargs):
-#        super(BuyUpgradeForm, self).__init__(*args, **kwargs)
-
-#        self.fields["fields"].widget = CheckboxSelectMultiple()
-#        self.fields["fields"].queryset = Upgrade.objects.all()
