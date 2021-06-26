@@ -5,8 +5,7 @@ import nested_admin
 
 from .models import User, Rulebook, PlayableShip, Pilot, Mission, \
     Campaign, Session, SessionEnemy, SessionPilot, PilotShip, PilotUpgrade, FGSetup, FlightGroup, \
-    AI, AIManeuver, AIPriority, \
-    EnemyPilot, EnemyAbility, Ally
+    AI, AIManeuver, AIPriority, EnemyPilot, EnemyAbility, Ally
 
 #from xwtools.models import Slot
 

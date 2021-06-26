@@ -43,13 +43,21 @@ class ChassisAdmin(nested_admin.NestedModelAdmin):
 class UpgradeAdmin(admin.ModelAdmin):
     model = Upgrade
     list_display = ('name', 'type', 'type2', 'cost', 'charges')
+    list_filter = ('type',)
 
 
 class FactionAdmin(admin.ModelAdmin):
     filter_horizontal = ('ships',)
 
 
-admin.site.register(Pilot)
+class PilotCardAdmin(admin.ModelAdmin):
+    model = Pilot
+    list_display = ('name', 'faction', 'chassis', 'initiative')
+    list_filter = ('faction', 'chassis', 'initiative')
+    exclude = ('type', 'type2')
+
+
+admin.site.register(Pilot, PilotCardAdmin)
 admin.site.register(Upgrade, UpgradeAdmin)
 admin.site.register(Chassis, ChassisAdmin)
 admin.site.register(Faction, FactionAdmin)

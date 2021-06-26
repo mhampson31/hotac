@@ -66,6 +66,10 @@ class Faction(models.Model):
 class Upgrade(Ability):
     cost = models.SmallIntegerField(default=0)
     repeat = models.BooleanField(default=False)
+    type = models.CharField(max_length=3, choices=[c for c in SlotChoice.choices if c[0] != SlotChoice.PILOT.value])
+
+    class Meta:
+        verbose_name = 'Upgrade Card'
 
 
 class Dial(models.Model):
@@ -228,3 +232,7 @@ class Pilot(Ability):
     initiative = models.PositiveSmallIntegerField(default=1)
     chassis = models.ForeignKey(Chassis, on_delete=models.CASCADE, related_name = 'pilot_card')
     faction = models.ForeignKey(Faction, on_delete=models.CASCADE)
+    type = models.CharField(max_length=3, choices=SlotChoice.choices, default=SlotChoice.PILOT)
+
+    class Meta:
+        verbose_name = 'Pilot Card'
