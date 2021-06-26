@@ -27,7 +27,7 @@ class PUHelper(FormHelper):
         self.layout = Layout(
             Div(
                 Field('upgrade', wrapper_class='col-4'),
-                Field('status', wrapper_class='col-2'),
+
                 css_class='form-group row'
             )
         )
@@ -166,6 +166,29 @@ class SEFormsetHelper(FormHelper):
         )
 
 
+class AddUpgrade(forms.ModelForm):
+    prefix = 'add_upgrade'
+
+    class Meta:
+        model = PilotUpgrade
+        fields = ['upgrade', 'status', 'pilot']
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        print(kwargs)
+        self.fields['status'].widget = forms.HiddenInput()
+        self.fields['pilot'].widget = forms.HiddenInput()
+        #self.fields['upgrade'].queryset = campaign.deck.filter(id__in=campaign.deck_draw)
+        self.helper = FormHelper()
+        self.helper.form_method = 'post'
+        self.layout = Layout(
+            Div(
+                Field('upgrade', wrapper_class='card-body'),
+            )
+        )
+        self.helper.add_input(Submit('submit', 'Submit'))
+
+
 class PilotUpgradeForm(forms.ModelForm):
     from operator import methodcaller
 
@@ -176,6 +199,7 @@ class PilotUpgradeForm(forms.ModelForm):
     class Meta:
         model = PilotUpgrade
         fields = ('upgrade', 'status')
+        initial = {'status':'E'}
 
 
 def make_pilot_upgrade_form(pilot):

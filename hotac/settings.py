@@ -119,3 +119,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
 
 STATIC_ROOT = '/home/public/static'
 STATIC_URL = '/static/'
+
+CRISPY_FAIL_SILENTLY = not DEBUG

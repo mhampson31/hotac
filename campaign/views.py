@@ -10,9 +10,9 @@ from django.forms import modelformset_factory, inlineformset_factory, CheckboxSe
 
 from crispy_forms.layout import Submit
 
-from .models import Session, Pilot, PilotShip, PilotUpgrade, Rulebook, Campaign, AI, EnemyPilot
+from .models import Session, Pilot, PilotShip, PilotUpgrade, Rulebook, Campaign, AI, EnemyPilot, CampaignUpgrade
 from .forms import EnemyPilotForm, SessionForm, SessionPilotFormset, SessionEnemyFormset, \
-                   SPFormsetHelper, SEFormsetHelper, PilotUpgradeForm, PUHelper, \
+                   SPFormsetHelper, SEFormsetHelper, PilotUpgradeForm, PUHelper, AddUpgrade, \
                    CampaignForm, SessionPlanForm, AddSessionPilotFormset, SessionPilotHelper
 
 
@@ -121,7 +121,33 @@ def session_plan(request, session_id):
 
     return render(request, 'campaign/session_plan.html', {'session':s, 'enemies':enemies})
 
+
 def pilot_sheet(request, pk):
+    pilot = Pilot.objects.get(id=pk)
+
+    if request.method == 'POST':
+        update_form = AddUpgrade(request.POST, initial={'pilot':pilot.id, 'status':'E'})
+
+        if update_form.is_valid():
+            update_form.save()
+            return HttpResponseRedirect(pilot.get_absolute_url())
+        else:
+            print(update_form.errors)
+    else:
+        update_form = AddUpgrade(initial={'pilot':pilot, 'status':'E'})
+    slots = [s.value for s in pilot.slots]
+    update_form.fields['upgrade'].queryset = CampaignUpgrade.objects \
+                                              .filter(type__in=slots, description__isnull=False) \
+                                              .exclude(id__in=pilot.upgrades.filter(upgrade__repeat=False).values_list('upgrade__id', flat=True)) \
+                                              .order_by('type', 'name')
+    context = {'pilot':pilot,
+               'remaining':pilot.total_xp - pilot.spent_xp,
+               'update': update_form,
+               'helper': update_form.helper}
+    return render(request, 'campaign/pilot.html', context)
+
+
+def old_pilot_sheet(request, pk):
     pilot = Pilot.objects.get(id=pk)
 
     UpgradeFormSet = inlineformset_factory(Pilot, PilotUpgrade,

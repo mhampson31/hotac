@@ -176,6 +176,7 @@ class CampaignUpgrade(models.Model):
     type2 = models.CharField(max_length=3, choices=SlotChoice.choices, null=True, blank=True, default=None)
     charges = models.PositiveSmallIntegerField(null=True, blank=True)
     force = models.BooleanField(default=False)
+    repeat = models.BooleanField(default=False)
 
     def __str__(self):
         return self.name

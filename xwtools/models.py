@@ -65,6 +65,7 @@ class Faction(models.Model):
 
 class Upgrade(Ability):
     cost = models.SmallIntegerField(default=0)
+    repeat = models.BooleanField(default=False)
 
 
 class Dial(models.Model):

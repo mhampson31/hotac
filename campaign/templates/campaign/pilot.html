@@ -77,6 +77,10 @@
                 </div>
             </div>
         </div>
+
+        <div class="row">
+          {% crispy update helper %}
+        </div>
     </div>
 
     <div class='tab-pane' role='tabpanel' id='upgrade'>
@@ -89,9 +93,8 @@
         <form method='post' class='col'>{% csrf_token %}
             <div class='row mb-2'>
                 <div class='col-4'>Upgrade</div>
-            </div>
-                {{update.management_form}}
-                {% crispy update helper %}
+
+                </div>
         </form>
     </div>
 

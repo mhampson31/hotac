@@ -13,7 +13,8 @@ select
     `p`.`type` AS `type`,
     `p`.`type2` AS `type2`,
     `p`.`charges` AS `charges`,
-    `p`.`force` AS `force`
+    `p`.`force` AS `force`,
+    FALSE as `repeat`
 from
     (`xwtools_pilot` `p`
 join `xwtools_chassis` `c` on
@@ -30,6 +31,7 @@ select
     `u`.`type` AS `type`,
     `u`.`type2` AS `type2`,
     `u`.`charges` AS `charges`,
-    `u`.`force` AS `force`
+    `u`.`force` AS `force`,
+    `u`.`repeat` as `repeat`
 from
     `xwtools_upgrade` `u`;
