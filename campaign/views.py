@@ -138,6 +138,8 @@ def pilot_sheet(request, pk):
     else:
         update_form = AddUpgrade(initial={'pilot':pilot, 'status':'E'})
     slots = [s.value for s in pilot.slots]
+
+    # Pilot slots are placeholders. The player can use pilots, talents, or force powers in them.
     if SlotChoice.PILOT in slots:
         slots.append(SlotChoice.FORCE.value)
         slots.append(SlotChoice.TALENT.value)
@@ -162,34 +164,6 @@ def pilot_sheet(request, pk):
                'remaining':pilot.total_xp - pilot.spent_xp,
                'update': update_form,
                'helper': update_form.helper}
-    return render(request, 'campaign/pilot.html', context)
-
-
-def old_pilot_sheet(request, pk):
-    pilot = Pilot.objects.get(id=pk)
-
-    UpgradeFormSet = inlineformset_factory(Pilot, PilotUpgrade,
-                                           form=PilotUpgradeForm,
-                                           exclude=('lost',),
-                                           extra=1)
-    helper = PUHelper()
-    helper.add_input(Submit("submit", "Save"))
-
-    if request.method == 'POST':
-        update_form = UpgradeFormSet(request.POST, instance=pilot)
-
-        if update_form.is_valid():
-            update_form.save()
-            return HttpResponseRedirect(pilot.get_absolute_url())
-    else:
-        update_form = UpgradeFormSet(instance=pilot)
-    slots = [s.value for s in pilot.slots]
-    update_form.extra_forms[0].fields['upgrade'].queryset = \
-        update_form.extra_forms[0].fields['upgrade'].queryset.filter(type__in=slots).order_by('type', 'name')
-    context = {'pilot':pilot,
-               'remaining':pilot.total_xp - pilot.spent_xp,
-               'update': update_form,
-               'helper': helper}
     return render(request, 'campaign/pilot.html', context)
 
 

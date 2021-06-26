@@ -28,7 +28,7 @@ class PUHelper(FormHelper):
         self.form_show_labels = False
         self.layout = Layout(
             Div(
-                Field('upgrade', wrapper_class='col-4'),
+                FloatingField('upgrade', wrapper_class='col-4'),
 
                 css_class='form-group row'
             )
@@ -179,15 +179,13 @@ class AddUpgrade(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        print(kwargs)
         self.fields['status'].widget = forms.HiddenInput()
         self.fields['pilot'].widget = forms.HiddenInput()
-        #self.fields['upgrade'].queryset = campaign.deck.filter(id__in=campaign.deck_draw)
         self.helper = FormHelper()
         self.helper.form_method = 'post'
         self.layout = Layout(
             Div(
-                Field('upgrade', wrapper_class='card-body'),
+                FloatingField('upgrade', wrapper_class="col"),
             )
         )
         self.helper.add_input(Submit('submit', 'Submit'))
