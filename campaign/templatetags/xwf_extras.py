@@ -90,3 +90,7 @@ def hotac_crit():
          'damage'
         )
     )
+
+@register.filter
+def get_cost(upgrade, logic):
+    return upgrade.campaign_cost(logic)

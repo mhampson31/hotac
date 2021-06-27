@@ -81,6 +81,41 @@
       </div>
 
       <div class="row">
+        {% for au in pilot.available_upgrades.all %} <!-- border rounded-lg p-2
+            -->
+        {% ifchanged au.type %}
+        </div>
+        <div class="row mb-3 d-flex flex-wrap">
+        {% endifchanged %}
+                <div class='upgrade-card card mr-2'>
+                    <div class='card-body'>
+                        <h5 class='card-title'>
+                            {{au.get_type_display|get_icon}}
+                            {% if au.type2 %}
+                            {{au.get_type2_display|get_icon}}
+                            {% endif %}
+                            {{au.name}}
+                        </h5>
+                        <p>{{au.description|iconize}}</p>
+                        <ul class='list-group list-group-horizontal'>
+                            <li class='list-group-item'>
+                                <i class="xwing-miniatures-font xwing-miniatures-font-squad-point-cost"></i>{{au|get_cost:pilot.campaign.rulebook.upgrade_logic}}
+                            </li>
+                            {% if au.charges %}
+                            <li class='list-group-item'>
+                                <i class="xwing-miniatures-font
+                                    {% if au.upgrade.force %} xwing-miniatures-font-forcecharge
+                                    {% else %} xwing-miniatures-font-charge
+                                    {% endif %}"></i>{{au.charges}}
+                            </li>
+                            {% endif %}
+                        </ul>
+                        </div>
+                </div>
+        {% endfor %}
+        </div>
+
+      <div class="row">
         {% crispy update helper %}
       </div>
   </div>
