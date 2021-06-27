@@ -1,0 +1,48 @@
+{% load xwf_extras %}
+
+{% block card %}
+
+<div class='upgrade-card card mr-2 g-0'>
+    <div class="card-header"
+        <h5 class='card-title'>
+            {{upgrade.get_type_display|get_icon}}
+            {% if upgrade.type2 %}
+            {{upgrade.get_type2_display|get_icon}}
+            {% endif %}
+            {{upgrade.name}}
+        </h5>
+    </div>
+
+  <div class='card-body'>
+      <p>{{upgrade.description|iconize}}</p>
+  </div>
+
+  <div class="card-footer">
+      <ul class='list-group list-group-horizontal'>
+          {% if status %}
+          <li class="list-group-item
+                  {% if status == 'X' %} bg-danger text-light
+                  {% elif status == 'E' %} bg-info text-light
+                  {% endif %}">
+                  {{status}}
+          </li>
+          {% endif %}
+          <li class='list-group-item'>
+              <i class="xwing-miniatures-font xwing-miniatures-font-squad-point-cost"></i>
+              {% if upgrade_logic %}{{upgrade|get_cost:upgrade_logic}}
+              {% else %}{{upgrade.cost}}
+              {% endif %}
+          </li>
+          {% if upgrade.charges %}
+          <li class='list-group-item'>
+              <i class="xwing-miniatures-font
+                  {% if upgrade.force %} xwing-miniatures-font-forcecharge
+                  {% else %} xwing-miniatures-font-charge
+                  {% endif %}"></i>{{upgrade.charges}}
+          </li>
+          {% endif %}
+      </ul>
+      </div>
+</div>
+
+{% endblock card %}

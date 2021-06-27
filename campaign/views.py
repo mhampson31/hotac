@@ -141,8 +141,7 @@ def pilot_sheet(request, pk):
     update_form.fields['upgrade'].queryset = pilot.available_upgrades
     context = {'pilot':pilot,
                'remaining':pilot.total_xp - pilot.spent_xp,
-               'update': update_form,
-               'helper': update_form.helper}
+               'update': update_form}
     return render(request, 'campaign/pilot.html', context)
 
 

@@ -7,117 +7,79 @@
 
 <h3>{{pilot.callsign}}</h3>
 
-  <div class='row' id='pilot-stats'>
-      <p>Player: {{pilot.user}}</p>
-      <p>Campaign: <a href="{% url 'game:campaign' pilot.campaign.id %}">{{pilot.campaign}}</a></p>
-      <p>Missions Flown: {{pilot.sessions.count}}</p>
-      <p>Initiative {{pilot.initiative}}</p>
-      <p>XP Earned: <i class="xwing-miniatures-font xwing-miniatures-font-squad-point-cost"></i>{{pilot.total_xp}}</p>
-      <p>XP Spent: <i class="xwing-miniatures-font xwing-miniatures-font-squad-point-cost"></i>{{pilot.spent_ships}} Ships,
-                   <i class="xwing-miniatures-font xwing-miniatures-font-squad-point-cost"></i>{{pilot.spent_initiative}} Initiative,
-                   <i class="xwing-miniatures-font xwing-miniatures-font-squad-point-cost"></i>{{pilot.spent_upgrades}} Upgrades
-               </p>
-      <p>XP Available: <i class="xwing-miniatures-font xwing-miniatures-font-squad-point-cost"></i>{{remaining}}</p>
+<div class='row' id='pilot-stats'>
+    <p>Player: {{pilot.user}}</p>
+    <p>Campaign: <a href="{% url 'game:campaign' pilot.campaign.id %}">{{pilot.campaign}}</a></p>
+    <p>Missions Flown: {{pilot.sessions.count}}</p>
+    <p>Initiative {{pilot.initiative}}</p>
+    <p>XP Earned: <i class="xwing-miniatures-font xwing-miniatures-font-squad-point-cost"></i>{{pilot.total_xp}}</p>
+    <p>XP Spent: <i class="xwing-miniatures-font xwing-miniatures-font-squad-point-cost"></i>{{pilot.spent_ships}} Ships,
+               <i class="xwing-miniatures-font xwing-miniatures-font-squad-point-cost"></i>{{pilot.spent_initiative}} Initiative,
+               <i class="xwing-miniatures-font xwing-miniatures-font-squad-point-cost"></i>{{pilot.spent_upgrades}} Upgrades
+           </p>
+    <p>XP Available: <i class="xwing-miniatures-font xwing-miniatures-font-squad-point-cost"></i>{{remaining}}</p>
+</div>
+
+<div class="row mb-1">
+    <h6 class='col'>
+        <a href="{% url 'chassis' chassis_slug=pilot.active_ship.chassis.slug %}">{{pilot.active_ship.name}} <i class="xw-ship xw-ship-{{pilot.active_ship.css_name}}"></i></a>
+    </h6>
+</div>
+
+<div class="row mb-3">
+    <ul class="col list-group list-group-horizontal">
+        {% for slot in pilot.slots %}
+        <li class="list-group-item">{{slot.label|get_icon}}<li>
+        {% endfor %}
+    </ul>
+</div>
+
+<div class="row mb-3">
+    <ul class="nav nav-tabs" id="sheet-nav" role="tablist">
+        <li class="nav-item" role="presentation">
+            <button class="nav-link active" id="upgrade-tab" data-bs-toggle="tab"
+                  data-bs-target="#upgrades" type="button" role="tab"
+                  aria-controls="upgrades" aria-selected="true">Upgrades</button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="available-tab" data-bs-toggle="tab"
+                  data-bs-target="#available" type="button" role="tab"
+                  aria-controls="available" aria-selected="false">Available</button>
+        </li>
+    </ul>
+</div>
+
+<div class="row mb-3 tab-content d-flex flex-wrap">
+    <div class="tab-pane active" role="tabpanel" aria-labelledby="upgrade-tab" id="upgrades">
+        <div class="container">
+            <div class="row mb-3 d-flex flex-wrap">
+            {% for gu in pilot.upgrades.all %}
+            {% ifchanged gu.upgrade.type %}
+            </div>
+            <div class="row mb-3 d-flex flex-wrap">
+            {% endifchanged %}
+            {% include './includes/upgrade_card.html' with upgrade=gu.upgrade upgrade_logic=pilot.campaign.rulebook.upgrade_logic status=gu.status %}
+            {% endfor %}
+            </div>
+        </div>
     </div>
 
-      <div class="row mb-1">
-          <h6 class='col'>
-              <a href="{% url 'chassis' chassis_slug=pilot.active_ship.chassis.slug %}">{{pilot.active_ship.name}} <i class="xw-ship xw-ship-{{pilot.active_ship.css_name}}"></i></a>
-          </h6>
-      </div>
-
-      <div class="row mb-3">
-          <ul class="col list-group list-group-horizontal">
-          {% for slot in pilot.slots %}
-            <li class="list-group-item">{{slot.label|get_icon}}<li>
-          {% endfor %}
-          </ul>
-      </div>
-
-      <div class="row mb-3">
-          <div class="col">
-              <h4>Purchased Upgrades</h4>
-              <div class="row mb-3 d-flex flex-wrap">
-              {% for gu in pilot.upgrades.all %} <!-- border rounded-lg p-2
-                  -->
-              {% ifchanged gu.upgrade.type %}
-              </div>
-              <div class="row mb-3 d-flex flex-wrap">
-              {% endifchanged %}
-                      <div class='upgrade-card card mr-2'>
-                          <div class='card-body'>
-                              <h5 class='card-title'>
-                                  {{gu.upgrade.get_type_display|get_icon}}
-                                  {% if gu.upgrade.type2 %}
-                                  {{gu.upgrade.get_type2_display|get_icon}}
-                                  {% endif %}
-                                  {{gu.upgrade.name}}
-                              </h5>
-                              <p>{{gu.upgrade.description|iconize}}</p>
-                              <ul class='list-group list-group-horizontal'>
-                                  <li class="list-group-item
-                                          {% if gu.status == 'X' %} bg-danger text-light
-                                          {% elif gu.status == 'E' %} bg-info text-light
-                                          {% endif %}">
-                                          {{gu.get_status_display}}
-                                  </li>
-                                  <li class='list-group-item'>
-                                      <i class="xwing-miniatures-font xwing-miniatures-font-squad-point-cost"></i>{{gu.cost}}
-                                  </li>
-                                  {% if gu.charges %}
-                                  <li class='list-group-item'>
-                                      <i class="xwing-miniatures-font
-                                          {% if gu.upgrade.force %} xwing-miniatures-font-forcecharge
-                                          {% else %} xwing-miniatures-font-charge
-                                          {% endif %}"></i>{{gu.charges}}
-                                  </li>
-                                  {% endif %}
-                              </ul>
-                              </div>
-                      </div>
-              {% endfor %}
-              </div>
-          </div>
-      </div>
-
-      <div class="row">
-        {% for au in pilot.available_upgrades.all %} <!-- border rounded-lg p-2
-            -->
-        {% ifchanged au.type %}
+    <div class="tab-pane" role="tabpanel" aria-labelledby="available-tab" id="available">
+        <div class="container">
+            <div class="row mb-3 d-flex flex-wrap">
+            {% for au in pilot.available_upgrades.all %}
+            {% ifchanged au.type %}
+            </div>
+            <div class="row mb-3 d-flex flex-wrap">
+            {% endifchanged %}
+            {% include './includes/upgrade_card.html' with upgrade=au upgrade_logic=pilot.campaign.rulebook.upgrade_logic %}
+            {% endfor %}
+            </div>
+            <div class="row mb-3">
+                {% crispy update update.helper %}
+            </div>
         </div>
-        <div class="row mb-3 d-flex flex-wrap">
-        {% endifchanged %}
-                <div class='upgrade-card card mr-2'>
-                    <div class='card-body'>
-                        <h5 class='card-title'>
-                            {{au.get_type_display|get_icon}}
-                            {% if au.type2 %}
-                            {{au.get_type2_display|get_icon}}
-                            {% endif %}
-                            {{au.name}}
-                        </h5>
-                        <p>{{au.description|iconize}}</p>
-                        <ul class='list-group list-group-horizontal'>
-                            <li class='list-group-item'>
-                                <i class="xwing-miniatures-font xwing-miniatures-font-squad-point-cost"></i>{{au|get_cost:pilot.campaign.rulebook.upgrade_logic}}
-                            </li>
-                            {% if au.charges %}
-                            <li class='list-group-item'>
-                                <i class="xwing-miniatures-font
-                                    {% if au.upgrade.force %} xwing-miniatures-font-forcecharge
-                                    {% else %} xwing-miniatures-font-charge
-                                    {% endif %}"></i>{{au.charges}}
-                            </li>
-                            {% endif %}
-                        </ul>
-                        </div>
-                </div>
-        {% endfor %}
-        </div>
+    </div>
 
-      <div class="row">
-        {% crispy update helper %}
-      </div>
-  </div>
 
 {% endblock %}
