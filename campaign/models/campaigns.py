@@ -33,8 +33,6 @@ class Rulebook(models.Model):
     # configure a campaign's XP costs
     ship_cost = models.SmallIntegerField(default=5)
 
-
-
     upgrade_logic = models.IntegerField(choices=UpgradeLogic.choices)
     initiative_cost = models.SmallIntegerField(default=3)
     initiative_sq = models.BooleanField(default=False)
