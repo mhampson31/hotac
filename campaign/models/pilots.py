@@ -125,18 +125,7 @@ class PilotUpgrade(models.Model):
 
     @property
     def cost(self):
-        #return self.pilot.campaign.rulebook.upgrade_cost(self.upgrade)
-        if self.pilot.campaign.rulebook.upgrade_logic == UpgradeLogic.HOTAC:
-            if self.upgrade.base == BaseChoice.PILOT:
-                if self.upgrade.force:
-                    m = self.upgrade.charges + 3
-                else:
-                    m = 2
-            elif self.upgrade.type in (SlotChoice.TALENT, SlotChoice.FORCE):
-                m = 2
-            else:
-                m = 1
-            return self.upgrade.cost * m
+        return self.upgrade.campaign_cost(self.pilot.campaign.rulebook.upgrade_logic)
 
     @property
     def charges(self):

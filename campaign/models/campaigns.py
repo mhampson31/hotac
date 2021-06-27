@@ -185,6 +185,19 @@ class CampaignUpgrade(models.Model):
         db_table = 'campaign_gameupgrades_v'
         managed = False
 
+    def campaign_cost(self, upgrade_logic):
+        if upgrade_logic == UpgradeLogic.HOTAC:
+            if self.base == BaseChoice.PILOT:
+                if self.force:
+                    m = self.charges + 3
+                else:
+                    m = 2
+            elif self.type in (SlotChoice.TALENT, SlotChoice.FORCE):
+                m = 2
+            else:
+                m = 1
+            return self.cost * m
+
 
 class FlightGroup(models.Model):
     name = models.CharField(max_length=20)
