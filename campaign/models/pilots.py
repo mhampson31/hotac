@@ -1,11 +1,11 @@
 from django.db import models
 from django.urls import reverse
-from django.db.models import Sum
+from django.db.models import Sum, Q
 
 from django.contrib.contenttypes.fields import GenericForeignKey
 from django.contrib.contenttypes.models import ContentType
 
-from xwtools.models import Chassis, Upgrade, SlotChoice
+from xwtools.models import Chassis, Upgrade, SlotChoice, PilotCard
 from .campaigns import User, Campaign, CampaignUpgrade, BaseChoice, UpgradeLogic
 
 
@@ -99,6 +99,34 @@ class Pilot(models.Model):
             slot_list.append(SlotChoice.MODIFICATION)
         slot_list.sort()
         return slot_list
+
+    @property
+    def available_upgrades(self):
+        slots = [s.value for s in self.slots]
+
+        # Pilot slots are placeholders. The player can use pilots, talents, or force powers in them.
+        if SlotChoice.PILOT in slots:
+            slots.append(SlotChoice.FORCE.value)
+            slots.append(SlotChoice.TALENT.value)
+
+        # The upgrade list queryset takes some assembly. F
+        # First, grab all the CampaignUpgrades that the players has slots for
+        # (Those missing descriptions are assumed to be AI-only abilities)
+
+        # Next, exclude any the player already has, unless they're marked as repeatable
+
+        # Then exclude any Pilot upgrades belonging to a different faction
+
+        # Finally, put everything in order
+
+        upgrade_query = CampaignUpgrade.objects \
+            .filter(type__in=slots, description__isnull=False) \
+            .exclude(id__in=self.upgrades.filter(upgrade__repeat=False).values_list('upgrade__id', flat=True)) \
+            .exclude(Q(base='P'), \
+                    ~Q(base_id__in=PilotCard.objects.filter(faction=self.campaign.rulebook.faction).values_list('id', flat=True))) \
+            .order_by('type', 'name')
+
+        return upgrade_query
 
 
 class PilotShip(models.Model):
