@@ -52,7 +52,7 @@
 <div class="row mb-3 tab-content d-flex flex-wrap">
     <div class="tab-pane active" role="tabpanel" aria-labelledby="upgrade-tab" id="upgrades">
         <div class="container">
-            <div class="row mb-3 d-flex flex-wrap">
+            <div class="row mb-3 d-flex flex-wrap ">
             {% for gu in pilot.upgrades.all %}
             {% ifchanged gu.upgrade.type %}
             </div>
@@ -66,6 +66,7 @@
 
     <div class="tab-pane" role="tabpanel" aria-labelledby="available-tab" id="available">
         <div class="container">
+
             <div class="row mb-3 d-flex flex-wrap">
             {% for au in pilot.available_upgrades.all %}
             {% ifchanged au.type %}

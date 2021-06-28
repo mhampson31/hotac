@@ -2,7 +2,7 @@
 
 {% block card %}
 
-<div class='upgrade-card card mr-2 g-0'>
+<div class='upgrade-card card g-0'>
     <div class="card-header"
         <h5 class='card-title'>
             {{upgrade.get_type_display|get_icon}}
@@ -11,10 +11,16 @@
             {% endif %}
             {{upgrade.name}}
         </h5>
+        <span class="float-end">
+            <i class="xwing-miniatures-font xwing-miniatures-font-squad-point-cost"></i>
+            {% if upgrade_logic %}{{upgrade|get_cost:upgrade_logic}}
+            {% else %}{{upgrade.cost}}
+            {% endif %}
+        </span>
     </div>
 
   <div class='card-body'>
-      <p>{{upgrade.description|iconize}}</p>
+      <span>{{upgrade.description|iconize}}</span>
   </div>
 
   <div class="card-footer">
@@ -27,12 +33,6 @@
                   {{status}}
           </li>
           {% endif %}
-          <li class='list-group-item'>
-              <i class="xwing-miniatures-font xwing-miniatures-font-squad-point-cost"></i>
-              {% if upgrade_logic %}{{upgrade|get_cost:upgrade_logic}}
-              {% else %}{{upgrade.cost}}
-              {% endif %}
-          </li>
           {% if upgrade.charges %}
           <li class='list-group-item'>
               <i class="xwing-miniatures-font

@@ -80,6 +80,9 @@ def get_item(dictionary, key):
     return dictionary.get(key)
 
 def hotac_crit():
+    """
+    Not a real function. I just needed to write this down somewhere.
+    """
     from random import choice
     return choice(
         ('weapons disabled',

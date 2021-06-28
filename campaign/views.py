@@ -125,7 +125,7 @@ def session_plan(request, session_id):
 
 
 def pilot_sheet(request, pk):
-    pilot = Pilot.objects.get(id=pk)
+    pilot = Pilot.objects.select_related('user', 'campaign').get(id=pk)
 
     if request.method == 'POST':
         update_form = AddUpgrade(request.POST, initial={'pilot':pilot.id, 'status':'E'})

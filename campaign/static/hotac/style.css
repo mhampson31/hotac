@@ -6,6 +6,11 @@
     --orange: darkorange;
     --purple: mediumpurple;
     --grey: dimgrey;
+    --line-height-base: 1.5rem;
+}
+
+body {
+
 }
 
 section > .row {
