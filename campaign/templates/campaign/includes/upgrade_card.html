@@ -21,6 +21,7 @@
 
   <div class='card-body'>
       <span>{{upgrade.description|iconize}}</span>
+      {% if upgrade.attack_arc %} {{upgrade.attack_arc}} {% endif %}
   </div>
 
   <div class="card-footer">

@@ -1,6 +1,6 @@
 from django.db import models
 
-from xwtools.models import Chassis, Faction, Upgrade
+from xwtools.models import Chassis, Faction, Upgrade, SizeChoice
 
 class EnemyPilot(models.Model):
     chassis = models.ForeignKey(Chassis, on_delete=models.CASCADE)
@@ -45,7 +45,7 @@ class EnemyPilot(models.Model):
 
     @property
     def large_ship(self):
-        return self.chassis.size in (Chassis.SizeChoices.LARGE, Chassis.SizeChoices.HUGE)
+        return self.chassis.size in (SizeChoice.LARGE, SizeChoice.HUGE)
 
 
 class EnemyAbility(models.Model):
