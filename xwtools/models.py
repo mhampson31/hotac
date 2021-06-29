@@ -1,5 +1,6 @@
 from django.db import models
 from django.db.models import Case, When, Value
+from django.contrib import admin
 from django.utils.translation import gettext_lazy as _
 
 import re
@@ -30,29 +31,32 @@ class SlotChoice(models.TextChoices):
     TEAM = 'TEM', _('Team')
 
 
-class Ability(models.Model):
-    name = models.CharField(max_length=30)
-    description = models.TextField(null=True, blank=True)
-    ai_description = models.TextField(null=True, blank=True)
-    type = models.CharField(max_length=3, choices=SlotChoice.choices)
-    type2 = models.CharField(max_length=3, choices=SlotChoice.choices, null=True, blank=True, default=None)
-    charges = models.PositiveSmallIntegerField(null=True, blank=True)
-    force = models.BooleanField(default=False)
-
-    def __str__(self):
-        return self.name
-
-    class Meta:
-        abstract = True
-        ordering = ['type', '-type2', 'name']
-
-
 DIFFICULTY_CHOICES = (
         ('B', 'Blue'),
         ('W', 'White'),
         ('R', 'Red'),
         ('P', 'Purple')
 )
+
+
+class SizeChoice(models.TextChoices):
+    SMALL = 'S', _('Small')
+    MEDIUM = 'M', _('Medium')
+    LARGE = 'L', _('Large')
+    HUGE = 'H', _('Huge')
+
+
+class ArcChoice(models.TextChoices):
+    FRONT = 'F', _('Front')
+    REAR = 'R', _('Rear')
+    TURRET = 'T', _('Turret')
+    DOUBLE_TURRET = 'TT', _('Double Turret')
+    FULL_FRONT = 'FF', _('Full Front')
+    FULL_REAR = 'RR', _('Full Rear')
+    BULLSEYE = 'B', _('Bullseye')
+    LEFT = 'SL', _('Left')
+    RIGHT = 'SR', _('Right')
+
 
 class Faction(models.Model):
     name = models.CharField(max_length=20)
@@ -63,13 +67,71 @@ class Faction(models.Model):
         return self.name
 
 
+class Ability(models.Model):
+    name = models.CharField(max_length=30)
+    description = models.TextField(null=True, blank=True)
+    ai_description = models.TextField(null=True, blank=True)
+    type = models.CharField(max_length=3, choices=SlotChoice.choices)
+    type2 = models.CharField(max_length=3, choices=SlotChoice.choices, null=True, blank=True, default=None)
+    charges = models.PositiveSmallIntegerField(null=True, blank=True)
+    #recurring = models.BooleanField(default=False)
+    force = models.BooleanField(default=False)
+
+    class Meta:
+        abstract = True
+        ordering = ['type', '-type2', 'name']
+
+    def __str__(self):
+        return self.name
+
+    @property
+    def for_players(self):
+        return not self.description is None
+
+    @property
+    def for_ai(self):
+        return not self.ai_description is None
+
+
 class Upgrade(Ability):
     cost = models.SmallIntegerField(default=0)
     repeat = models.BooleanField(default=False)
     type = models.CharField(max_length=3, choices=[c for c in SlotChoice.choices if c[0] != SlotChoice.PILOT.value])
 
+
+    ATTACK_REQS = (
+        ('L', 'Lock'),
+        ('F', 'Focus'),
+        ('C', 'Calculate'),
+        ('J', 'Force')
+    )
+    attack_requires = models.CharField(max_length=1, choices=ATTACK_REQS, blank=True, null=True)
+    attack_arc = models.CharField(max_length=2, choices=ArcChoice.choices, blank=True, null=True)
+    attack_dice = models.PositiveSmallIntegerField(null=True, blank=True)
+    attack_range = models.CharField(max_length=3, blank=True, null=True)
+    attack_ordnance = models.BooleanField(default=False)
+
+    # there might be a better way to handle these.
+    # for now, store the full list of icons a card adds with + as a seperator
+    # eg "[Focus] + [Focus] [Link] [Evade]"
+    adds = models.CharField(max_length=120, blank=True, null=True)
+
     class Meta:
         verbose_name = 'Upgrade Card'
+
+    @property
+    def add_list(self):
+        return self.adds.split('+')
+
+
+class PilotCard(Ability):
+    initiative = models.PositiveSmallIntegerField(default=1)
+    chassis = models.ForeignKey('Chassis', on_delete=models.CASCADE, related_name = 'pilot_card')
+    faction = models.ForeignKey(Faction, on_delete=models.CASCADE)
+    type = models.CharField(max_length=3, choices=SlotChoice.choices, default=SlotChoice.PILOT)
+
+    class Meta:
+        verbose_name = 'Pilot Card'
 
 
 class Dial(models.Model):
@@ -163,27 +225,11 @@ class Chassis(models.Model):
     name = models.CharField(max_length=40)
     slug = models.SlugField(max_length=40, null=True, blank=True)
 
-    ARC_CHOICES = (
-        ('F', 'Front'),
-        ('R', 'Rear'),
-        ('T', 'Turret'),
-        ('TT', 'Double Turret'),
-        ('FF', 'Full Front'),
-        ('RR', 'Full Rear'),
-        ('B', 'Bullseye')
-    )
-
-    class SizeChoices(models.TextChoices):
-        SMALL = 'S', _('Small')
-        MEDIUM = 'M', _('Medium')
-        LARGE = 'L', _('Large')
-        HUGE = 'H', _('Huge')
-
-    size = models.CharField(max_length=1, choices=SizeChoices.choices, default=SizeChoices.SMALL)
+    size = models.CharField(max_length=1, choices=SizeChoice.choices, default=SizeChoice.SMALL)
     attack = models.PositiveSmallIntegerField(default=0)
-    attack_arc = models.CharField(max_length=2, choices=ARC_CHOICES, default='F')
+    attack_arc = models.CharField(max_length=2, choices=ArcChoice.choices, default=ArcChoice.FRONT.value)
     attack2 = models.PositiveSmallIntegerField(default=0)
-    attack2_arc = models.CharField(max_length=2, choices=ARC_CHOICES, null=True, blank=True)
+    attack2_arc = models.CharField(max_length=2, choices=ArcChoice.choices, null=True, blank=True)
     agility = models.PositiveSmallIntegerField(default=0)
     hull = models.PositiveSmallIntegerField(default=0)
     shields = models.PositiveSmallIntegerField(default=0)
@@ -195,9 +241,7 @@ class Chassis(models.Model):
 
     ability = models.OneToOneField(Upgrade,
                                    limit_choices_to={'type':SlotChoice.SHIP.value},
-                                   null=True,
-                                   blank=True,
-                                   on_delete=models.SET_NULL)
+                                   null=True, blank=True, on_delete=models.SET_NULL)
 
     def __str__(self):
         return self.name
@@ -226,13 +270,3 @@ class Slot(models.Model):
     @property
     def css_name(self):
         return self.get_type_display()
-
-
-class PilotCard(Ability):
-    initiative = models.PositiveSmallIntegerField(default=1)
-    chassis = models.ForeignKey(Chassis, on_delete=models.CASCADE, related_name = 'pilot_card')
-    faction = models.ForeignKey(Faction, on_delete=models.CASCADE)
-    type = models.CharField(max_length=3, choices=SlotChoice.choices, default=SlotChoice.PILOT)
-
-    class Meta:
-        verbose_name = 'Pilot Card'

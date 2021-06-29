@@ -23,6 +23,7 @@ class SlotInline(nested_admin.NestedTabularInline):
 class ChassisAdmin(nested_admin.NestedModelAdmin):
     verbose_name = 'Chassis'
     list_display = ('name', 'slug', 'dial', 'size')
+    list_select_related = ('dial',)
     inlines = (SlotInline, DialInline)
     fieldsets = (
         (None, {
@@ -42,8 +43,23 @@ class ChassisAdmin(nested_admin.NestedModelAdmin):
 
 class UpgradeAdmin(admin.ModelAdmin):
     model = Upgrade
-    list_display = ('name', 'type', 'type2', 'cost', 'charges')
+    list_display = ('name', 'type', 'type2', 'cost', 'charges', 'for_players', 'for_ai')
     list_filter = ('type',)
+    fieldsets = (
+        (None, {
+            'fields': ('name', 'description', 'ai_description',
+                       ('type', 'type2', 'repeat'),
+                       ('charges', 'force'),
+            )
+        }),
+        ('Adds', {
+            'fields': ('attack_requires',
+                        ('attack_arc', 'attack_dice'),
+                        ('attack_range', 'attack_ordnance'),
+                        'adds'
+                    )
+        })
+    )
 
 
 class FactionAdmin(admin.ModelAdmin):
