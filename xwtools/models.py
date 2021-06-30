@@ -5,6 +5,7 @@ from django.utils.translation import gettext_lazy as _
 
 import re
 
+
 class SlotChoice(models.TextChoices):
     TALENT = 'TLN', _('Talent')
     ASTROMECH = 'AST', _('Astromech')
@@ -110,7 +111,24 @@ class Card(models.Model):
     faction = models.ForeignKey(Faction, on_delete=models.CASCADE, null=True, blank=True)
 
     def __str__(self):
-        return self.name
+        if self.type == SlotChoice.PILOT.value:
+            return '{} - {}'.format(self.name, self.chassis)
+        else:
+            return self.name
+
+    def campaign_cost(self, upgrade_logic):
+        # todo: this needs to point to UpgradeLogic
+        if upgrade_logic == 1:
+            if self.type == SlotChoice.PILOT:
+                if self.force:
+                    m = self.charges + 3
+                else:
+                    m = 2
+            elif self.type in (SlotChoice.TALENT, SlotChoice.FORCE):
+                m = 2
+            else:
+                m = 1
+            return self.cost * m
 
 
 
@@ -126,6 +144,7 @@ class PilotCardManager(models.Manager):
 
 class UpgradeCard(Card):
     objects = UpgradeCardManager()
+
     class Meta:
         proxy = True
 
@@ -135,6 +154,9 @@ class PilotCard2(Card):
 
     class Meta:
         proxy = True
+
+    def __str__(self):
+        return '{} - {}'.format(self.name, self.chassis)
 
 
 class Upgrade(Ability):
@@ -316,3 +338,16 @@ class Slot(models.Model):
     @property
     def css_name(self):
         return self.get_type_display()
+
+
+def upgrade_migration():
+    for u in Upgrade.objects.all():
+        UpgradeCard.objects.create(
+           name=u.name,
+           description=u.description,
+           ai_description=u.ai_description,
+           type=u.type,
+           type2=u.type2,
+           charges=u.charges,
+           force=u.force,
+           cost=u.cost)

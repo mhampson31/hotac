@@ -54,11 +54,11 @@
         <div class="container">
             <div class="row mb-3 d-flex flex-wrap ">
             {% for gu in pilot.upgrades.all %}
-            {% ifchanged gu.upgrade.type %}
+            {% ifchanged gu.card.type %}
             </div>
             <div class="row mb-3 d-flex flex-wrap">
             {% endifchanged %}
-            {% include './includes/upgrade_card.html' with upgrade=gu.upgrade upgrade_logic=pilot.campaign.rulebook.upgrade_logic status=gu.status %}
+            {% include './includes/upgrade_card.html' with upgrade=gu.card upgrade_logic=pilot.campaign.rulebook.upgrade_logic status=gu.status %}
             {% endfor %}
             </div>
         </div>

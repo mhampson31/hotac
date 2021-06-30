@@ -5,7 +5,7 @@ from django.db.models import Sum, Q
 from django.contrib.contenttypes.fields import GenericForeignKey
 from django.contrib.contenttypes.models import ContentType
 
-from xwtools.models import Chassis, Upgrade, SlotChoice, PilotCard, Card
+from xwtools.models import Chassis, Upgrade, SlotChoice, PilotCard, Card, PilotCard2
 from .campaigns import User, Campaign, CampaignUpgrade, BaseChoice, UpgradeLogic
 
 
@@ -119,11 +119,11 @@ class Pilot(models.Model):
 
         # Finally, put everything in order
 
-        upgrade_query = CampaignUpgrade.objects \
+        upgrade_query = Card.objects \
             .filter(type__in=slots, description__isnull=False) \
-            .exclude(id__in=self.upgrades.filter(upgrade__repeat=False).values_list('upgrade__id', flat=True)) \
-            .exclude(Q(base='P'), \
-                    ~Q(base_id__in=PilotCard.objects.filter(faction=self.campaign.rulebook.faction).values_list('id', flat=True))) \
+            .exclude(id__in=self.upgrades.filter(card__repeat=False).values_list('card__id', flat=True)) \
+            .exclude(Q(type=SlotChoice.PILOT), \
+                    ~Q(id__in=PilotCard2.objects.filter(faction=self.campaign.rulebook.faction).values_list('id', flat=True))) \
             .order_by('type', 'name')
 
         return upgrade_query
@@ -154,7 +154,7 @@ class PilotUpgrade(models.Model):
 
     @property
     def cost(self):
-        return self.upgrade.campaign_cost(self.pilot.campaign.rulebook.upgrade_logic)
+        return self.card.campaign_cost(self.pilot.campaign.rulebook.upgrade_logic)
 
     @property
     def charges(self):

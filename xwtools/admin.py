@@ -98,7 +98,7 @@ class UpgradeCardAdmin(admin.ModelAdmin):
     #fields = ('name', 'description', 'ai_description', 'type', 'faction', 'initiative', 'chassis', 'charges', 'force')
 
     def formfield_for_choice_field(self, db_field, request, **kwargs):
-        if db_field.name in ("type", "type2"):
+        if db_field.name == "type":
             slots = SlotChoice.choices
             slots.remove((SlotChoice.PILOT.value, SlotChoice.PILOT.label))
             slots.remove((SlotChoice.SHIP.value, SlotChoice.SHIP.label))
