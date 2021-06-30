@@ -93,23 +93,51 @@ class Ability(models.Model):
         return not self.ai_description is None
 
 
+class Card(models.Model):
+    name = models.CharField(max_length=30)
+    description = models.TextField(null=True, blank=True)
+    ai_description = models.TextField(null=True, blank=True)
+    type = models.CharField(max_length=3, choices=SlotChoice.choices)
+    type2 = models.CharField(max_length=3, choices=SlotChoice.choices, null=True, blank=True, default=None)
+    charges = models.PositiveSmallIntegerField(null=True, blank=True)
+    recurring = models.BooleanField(default=False)
+    force = models.BooleanField(default=False)
+    cost = models.SmallIntegerField(default=0)
+    repeat = models.BooleanField(default=False)
+    adds = models.CharField(max_length=120, blank=True, null=True)
+    initiative = models.PositiveSmallIntegerField(default=1)
+    chassis = models.ForeignKey('Chassis', on_delete=models.CASCADE)
+    faction = models.ForeignKey(Faction, on_delete=models.CASCADE)
+
+
+class UpgradeCardManager(models.Manager):
+    def get_queryset(self):
+        return super(UpgradeCardManager, self).get_queryset().exclude(type=SlotChoice.PILOT.value)
+
+
+class PilotCardManager(models.Manager):
+    def get_queryset(self):
+        return super(PilotCardManager, self).get_queryset().filter(type=SlotChoice.PILOT.value)
+
+
+class UpgradeCard(Card):
+    objects = UpgradeCardManager()
+    class Meta:
+        proxy = True
+
+
+class PilotCard2(Card):
+    objects = PilotCardManager()
+
+    class Meta:
+        proxy = True
+
+
 class Upgrade(Ability):
     cost = models.SmallIntegerField(default=0)
     repeat = models.BooleanField(default=False)
     type = models.CharField(max_length=3, choices=[c for c in SlotChoice.choices if c[0] != SlotChoice.PILOT.value])
 
-
-    ATTACK_REQS = (
-        ('L', 'Lock'),
-        ('F', 'Focus'),
-        ('C', 'Calculate'),
-        ('J', 'Force')
-    )
-    attack_requires = models.CharField(max_length=1, choices=ATTACK_REQS, blank=True, null=True)
-    attack_arc = models.CharField(max_length=2, choices=ArcChoice.choices, blank=True, null=True)
-    attack_dice = models.PositiveSmallIntegerField(null=True, blank=True)
-    attack_range = models.CharField(max_length=3, blank=True, null=True)
-    attack_ordnance = models.BooleanField(default=False)
 
     # there might be a better way to handle these.
     # for now, store the full list of icons a card adds with + as a seperator
@@ -132,6 +160,20 @@ class PilotCard(Ability):
 
     class Meta:
         verbose_name = 'Pilot Card'
+
+
+class Attack(models.Model):
+    ATTACK_REQS = (
+        ('L', 'Lock'),
+        ('F', 'Focus'),
+        ('C', 'Calculate'),
+        ('J', 'Force')
+    )
+    requires = models.CharField(max_length=1, choices=ATTACK_REQS, blank=True, null=True)
+    arc = models.CharField(max_length=2, choices=ArcChoice.choices, default=ArcChoice.FRONT.value)
+    dice = models.PositiveSmallIntegerField(default=3)
+    range = models.CharField(max_length=3)
+    ordnance = models.BooleanField(default=False)
 
 
 class Dial(models.Model):
