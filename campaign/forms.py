@@ -12,7 +12,7 @@ from .models import EnemyPilot, EnemyAbility, Session, SessionPilot, SessionEnem
                     Pilot, PilotUpgrade, CampaignUpgrade, Campaign
 from .fields import GroupedModelChoiceField
 
-from xwtools.models import Upgrade, SlotChoice
+from xwtools.models import Upgrade, SlotChoice, Card
 
 
 
@@ -170,12 +170,12 @@ class SEFormsetHelper(FormHelper):
 
 class AddUpgrade(forms.ModelForm):
     prefix = 'add_upgrade'
-    upgrade = GroupedModelChoiceField(queryset=CampaignUpgrade.objects.filter(description__isnull=False),
+    upgrade = GroupedModelChoiceField(queryset=Card.objects.filter(description__isnull=False),
                                       choices_groupby=methodcaller('get_type_display'))
 
     class Meta:
         model = PilotUpgrade
-        fields = ['upgrade', 'status', 'pilot']
+        fields = ['card', 'status', 'pilot']
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -185,7 +185,7 @@ class AddUpgrade(forms.ModelForm):
         self.helper.form_method = 'post'
         self.layout = Layout(
             Div(
-                FloatingField('upgrade', wrapper_class="col"),
+                FloatingField('card', wrapper_class="col"),
             )
         )
         self.helper.add_input(Submit('submit', 'Submit'))

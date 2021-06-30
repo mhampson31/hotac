@@ -15,7 +15,7 @@ from .forms import EnemyPilotForm, SessionForm, SessionPilotFormset, SessionEnem
                    SPFormsetHelper, SEFormsetHelper, PUHelper, AddUpgrade, \
                    CampaignForm, SessionPlanForm, AddSessionPilotFormset, SessionPilotHelper
 
-from xwtools.models import SlotChoice, PilotCard
+from xwtools.models import SlotChoice, PilotCard, Card
 
 
 def index(request):
@@ -138,7 +138,7 @@ def pilot_sheet(request, pk):
     else:
         update_form = AddUpgrade(initial={'pilot':pilot, 'status':'E'})
 
-    update_form.fields['upgrade'].queryset = pilot.available_upgrades
+    update_form.fields['card'].queryset = pilot.available_upgrades
     context = {'pilot':pilot,
                'remaining':pilot.total_xp - pilot.spent_xp,
                'update': update_form}
