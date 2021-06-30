@@ -3,7 +3,10 @@
 {% block card %}
 
 <div class='upgrade-card card g-0'>
-    <div class="card-header"
+    <div class="card-header
+        {% if status == 'X' %} bg-danger text-light
+        {% elif status == 'E' %} bg-info text-light
+        {% endif %}"
         <h5 class='card-title'>
             {{upgrade.get_type_display|get_icon}}
             {% if upgrade.type2 %}
@@ -20,22 +23,22 @@
     </div>
 
   <div class='card-body'>
-      <span>{{upgrade.description|iconize}}</span>
-      {% if upgrade.attack_arc %} {{upgrade.attack_arc}} {% endif %}
+      <p>{{upgrade.description|iconize}}</p>
   </div>
 
   <div class="card-footer">
       <ul class='list-group list-group-horizontal'>
-          {% if status %}
-          <li class="list-group-item
-                  {% if status == 'X' %} bg-danger text-light
-                  {% elif status == 'E' %} bg-info text-light
-                  {% endif %}">
-                  {{status}}
+          {% if upgrade.attack %}
+          <li class="list-group-item attack">
+              <span>{{upgrade.attack.get_arc_display|get_icon}}{{upgrade.attack.dice}}
+                  {% if upgrade.attack.ordnance %}{{"Ordnance"|get_icon}}{% endif %}
+                  {{upgrade.attack.range}}
+              </span>
           </li>
           {% endif %}
+
           {% if upgrade.charges %}
-          <li class='list-group-item'>
+          <li class='list-group-item charge'>
               <i class="xwing-miniatures-font
                   {% if upgrade.force %} xwing-miniatures-font-forcecharge
                   {% else %} xwing-miniatures-font-charge

@@ -3,7 +3,7 @@ from django.contrib import admin
 import nested_admin
 
 from .models import Chassis, Slot, Upgrade, Dial, DialManeuver, Faction, Card, UpgradeCard, PilotCard2
-from .models import SlotChoice
+from .models import SlotChoice, Attack
 
 class DialManeuverInline(nested_admin.NestedTabularInline):
     model = DialManeuver
@@ -80,17 +80,25 @@ class PilotCardAdmin(admin.ModelAdmin):
         return super().formfield_for_choice_field(db_field, request, **kwargs)
 
 
+class AttackInline(admin.TabularInline):
+    model = Attack
+    extra = 0
+
+
 class UpgradeCardAdmin(admin.ModelAdmin):
     model = UpgradeCard
     list_display = ('name', 'type', 'cost', 'charges', 'repeat')
     list_filter = ('type',)
     list_editable = ('cost', 'repeat')
+    inlines = (AttackInline, )
     fieldsets = (
         (None, {
             'fields': ('name', 'description', 'ai_description',
-                       ('type', 'type2', 'repeat'),
-                       ('charges', 'force')
+                       ('type', 'type2', 'cost', 'repeat'),
+                       ('charges', 'force'),
+                       ('adds',)
                       )
+
         }),
     )
     #fields = ('name', 'description', 'ai_description', 'type', 'faction', 'initiative', 'chassis', 'charges', 'force')

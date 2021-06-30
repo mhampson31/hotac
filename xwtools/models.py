@@ -48,15 +48,15 @@ class SizeChoice(models.TextChoices):
 
 
 class ArcChoice(models.TextChoices):
-    FRONT = 'F', _('Front')
-    REAR = 'R', _('Rear')
-    TURRET = 'T', _('Turret')
-    DOUBLE_TURRET = 'TT', _('Double Turret')
-    FULL_FRONT = 'FF', _('Full Front')
-    FULL_REAR = 'RR', _('Full Rear')
-    BULLSEYE = 'B', _('Bullseye')
-    LEFT = 'SL', _('Left')
-    RIGHT = 'SR', _('Right')
+    FRONT = 'F', _('Front Arc')
+    REAR = 'R', _('Rear Arc')
+    TURRET = 'T', _('Single Turret Arc')
+    DOUBLE_TURRET = 'TT', _('Double Turret Arc')
+    FULL_FRONT = 'FF', _('Full Front Arc')
+    FULL_REAR = 'RR', _('Full Rear Arc')
+    BULLSEYE = 'B', _('Bullseye Arc')
+    LEFT = 'SL', _('Left Arc')
+    RIGHT = 'SR', _('Right Arc')
 
 
 class Faction(models.Model):
@@ -131,6 +131,20 @@ class Card(models.Model):
             return self.cost * m
 
 
+class Attack(models.Model):
+    ATTACK_REQS = (
+        ('L', 'Lock'),
+        ('F', 'Focus'),
+        ('C', 'Calculate'),
+        ('J', 'Force')
+    )
+    card = models.OneToOneField(Card, on_delete=models.CASCADE)
+    requires = models.CharField(max_length=1, choices=ATTACK_REQS, blank=True, null=True)
+    arc = models.CharField(max_length=2, choices=ArcChoice.choices, default=ArcChoice.FRONT.value)
+    dice = models.PositiveSmallIntegerField(default=3)
+    range = models.CharField(max_length=3)
+    ordnance = models.BooleanField(default=False)
+
 
 class UpgradeCardManager(models.Manager):
     def get_queryset(self):
@@ -186,21 +200,6 @@ class OldPilotCard(Ability):
 
     class Meta:
         verbose_name = 'Pilot Card'
-
-
-
-class Attack(models.Model):
-    ATTACK_REQS = (
-        ('L', 'Lock'),
-        ('F', 'Focus'),
-        ('C', 'Calculate'),
-        ('J', 'Force')
-    )
-    requires = models.CharField(max_length=1, choices=ATTACK_REQS, blank=True, null=True)
-    arc = models.CharField(max_length=2, choices=ArcChoice.choices, default=ArcChoice.FRONT.value)
-    dice = models.PositiveSmallIntegerField(default=3)
-    range = models.CharField(max_length=3)
-    ordnance = models.BooleanField(default=False)
 
 
 class Dial(models.Model):
