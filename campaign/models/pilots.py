@@ -5,7 +5,7 @@ from django.db.models import Sum, Q
 from django.contrib.contenttypes.fields import GenericForeignKey
 from django.contrib.contenttypes.models import ContentType
 
-from xwtools.models import Chassis, Upgrade, SlotChoice, PilotCard, Card, PilotCard2
+from xwtools.models import Chassis, Upgrade, SlotChoice, OldPilotCard, Card, PilotCard2
 from .campaigns import User, Campaign, CampaignUpgrade, BaseChoice, UpgradeLogic
 
 

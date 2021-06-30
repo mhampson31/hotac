@@ -178,7 +178,7 @@ class Upgrade(Ability):
         return self.adds.split('+')
 
 
-class PilotCard(Ability):
+class OldPilotCard(Ability):
     initiative = models.PositiveSmallIntegerField(default=1)
     chassis = models.ForeignKey('Chassis', on_delete=models.CASCADE, related_name = 'pilot_card')
     faction = models.ForeignKey(Faction, on_delete=models.CASCADE)
@@ -186,6 +186,7 @@ class PilotCard(Ability):
 
     class Meta:
         verbose_name = 'Pilot Card'
+
 
 
 class Attack(models.Model):
