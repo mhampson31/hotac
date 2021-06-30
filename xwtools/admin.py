@@ -2,8 +2,8 @@ from django.contrib import admin
 
 import nested_admin
 
-from .models import Chassis, Slot, Upgrade, Dial, DialManeuver, Faction, PilotCard
-
+from .models import Chassis, Slot, Upgrade, Dial, DialManeuver, Faction, PilotCard, Card, UpgradeCard, PilotCard2
+from .models import SlotChoice
 
 class DialManeuverInline(nested_admin.NestedTabularInline):
     model = DialManeuver
@@ -72,6 +72,42 @@ class PilotCardAdmin(admin.ModelAdmin):
     list_filter = ('faction', 'chassis', 'initiative')
     exclude = ('type', 'type2')
 
+
+class PilotCard2Admin(admin.ModelAdmin):
+    model = PilotCard2
+    fields = ('name', 'description', 'ai_description', 'type', 'faction', 'initiative', 'chassis', 'charges', 'force')
+
+    def formfield_for_choice_field(self, db_field, request, **kwargs):
+        if db_field.name == "type":
+            kwargs['choices'] = ( (SlotChoice.PILOT.value, SlotChoice.PILOT.label), )
+        return super().formfield_for_choice_field(db_field, request, **kwargs)
+
+
+class UpgradeCardAdmin(admin.ModelAdmin):
+    model = UpgradeCard
+    list_display = ('name', 'type', 'cost', 'charges')
+    list_filter = ('type',)
+    fieldsets = (
+        (None, {
+            'fields': ('name', 'description', 'ai_description',
+                       ('type', 'type2', 'repeat'),
+                       ('charges', 'force')
+                      )
+        }),
+    )
+    #fields = ('name', 'description', 'ai_description', 'type', 'faction', 'initiative', 'chassis', 'charges', 'force')
+
+    def formfield_for_choice_field(self, db_field, request, **kwargs):
+        if db_field.name in ("type", "type2"):
+            slots = SlotChoice.choices
+            slots.remove((SlotChoice.PILOT.value, SlotChoice.PILOT.label))
+            slots.remove((SlotChoice.SHIP.value, SlotChoice.SHIP.label))
+            kwargs['choices'] = (slots)
+        return super().formfield_for_choice_field(db_field, request, **kwargs)
+
+
+admin.site.register(UpgradeCard, UpgradeCardAdmin)
+admin.site.register(PilotCard2, PilotCard2Admin)
 
 admin.site.register(PilotCard, PilotCardAdmin)
 admin.site.register(Upgrade, UpgradeAdmin)

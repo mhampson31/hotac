@@ -5,7 +5,7 @@ from django.db.models import Sum, Q
 from django.contrib.contenttypes.fields import GenericForeignKey
 from django.contrib.contenttypes.models import ContentType
 
-from xwtools.models import Chassis, Upgrade, SlotChoice, PilotCard
+from xwtools.models import Chassis, Upgrade, SlotChoice, PilotCard, Card
 from .campaigns import User, Campaign, CampaignUpgrade, BaseChoice, UpgradeLogic
 
 
@@ -148,7 +148,8 @@ class PilotUpgrade(models.Model):
         LOST = 'X', 'Lost'
 
     pilot = models.ForeignKey(Pilot, on_delete=models.CASCADE, related_name='upgrades')
-    upgrade = models.ForeignKey(CampaignUpgrade, on_delete=models.CASCADE)
+    upgrade = models.ForeignKey(CampaignUpgrade, on_delete=models.SET_NULL, null=True, blank=True)
+    card = models.ForeignKey(Card, on_delete=models.CASCADE, null=True)
     status = models.CharField(max_length=1, choices=UStatusChoice.choices, default='E')
 
     @property

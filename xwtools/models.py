@@ -105,9 +105,13 @@ class Card(models.Model):
     cost = models.SmallIntegerField(default=0)
     repeat = models.BooleanField(default=False)
     adds = models.CharField(max_length=120, blank=True, null=True)
-    initiative = models.PositiveSmallIntegerField(default=1)
-    chassis = models.ForeignKey('Chassis', on_delete=models.CASCADE)
-    faction = models.ForeignKey(Faction, on_delete=models.CASCADE)
+    initiative = models.PositiveSmallIntegerField(default=1, null=True)
+    chassis = models.ForeignKey('Chassis', on_delete=models.CASCADE, null=True, blank=True)
+    faction = models.ForeignKey(Faction, on_delete=models.CASCADE, null=True, blank=True)
+
+    def __str__(self):
+        return self.name
+
 
 
 class UpgradeCardManager(models.Manager):
