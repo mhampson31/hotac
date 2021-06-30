@@ -7,7 +7,7 @@
 
     <ul class='list-group'>
         {% for ability in enemy.abilities.all %}
-        <li class='list-group-item'>{{ability.get_level_display}} - {{ability.upgrade.name}}: {{ability.upgrade.ability}} </li>
+        <li class='list-group-item'>{{ability.get_level_display}} - {{ability.card.name}}: {{ability.card.ability}} </li>
         {% endfor %}
     </ul>
 

@@ -105,7 +105,10 @@ class Session(models.Model):
 
     @property
     def xp_share(self):
-        return floor(self.xp_pool/self.pilots.count())
+        try:
+            return floor(self.xp_pool/self.pilots.count())
+        except ZeroDivisionError:
+            return 0
 
     @property
     def xp_remainder(self):

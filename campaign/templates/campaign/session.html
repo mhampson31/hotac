@@ -135,7 +135,7 @@
                {% if ship.abilities %}
                <ul class="list-group">
                  {% for a in ship.abilities.all %}
-                 <li class="list-group-item"><strong>{{a}}</strong>: {% if ship.enemy %}{{a.upgrade.ai_description|iconize}}{% else %}{{a.description|iconize}}{% endif %}</li>
+                 <li class="list-group-item"><strong>{{a}}</strong>: {% if ship.enemy %}{{a.card.ai_description|iconize}}{% else %}{{a.description|iconize}}{% endif %}</li>
                  {% endfor %}
                </ul>
                {% endif %}
