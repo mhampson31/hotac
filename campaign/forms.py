@@ -9,7 +9,7 @@ from crispy_forms.layout import Layout, Submit, Div, Field, MultiField
 from crispy_bootstrap5.bootstrap5 import FloatingField
 
 from .models import EnemyPilot, EnemyAbility, Session, SessionPilot, SessionEnemy, \
-                    Pilot, PilotUpgrade, CampaignUpgrade, Campaign
+                    Pilot, PilotUpgrade, Campaign
 from .fields import GroupedModelChoiceField
 
 from xwtools.models import Upgrade, SlotChoice, Card

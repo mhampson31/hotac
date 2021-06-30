@@ -5,7 +5,7 @@ from xwtools.models import Chassis, Faction, Upgrade, SizeChoice, Card
 class EnemyPilot(models.Model):
     chassis = models.ForeignKey(Chassis, on_delete=models.CASCADE)
     faction = models.ForeignKey(Faction, on_delete=models.CASCADE)
-    upgrades = models.ManyToManyField(Upgrade, through='EnemyAbility')
+    upgrades = models.ManyToManyField(Card, through='EnemyAbility')
     name_override = models.CharField(max_length=35, blank=True, null=True)
     random = models.BooleanField(default=True)
 
@@ -50,7 +50,6 @@ class EnemyPilot(models.Model):
 
 class EnemyAbility(models.Model):
     pilot = models.ForeignKey(EnemyPilot, on_delete=models.CASCADE, related_name='abilities')
-    upgrade = models.ForeignKey(Upgrade, on_delete=models.CASCADE, limit_choices_to={'ai_description__isnull':False})
     card = models.ForeignKey(Card, on_delete=models.CASCADE, limit_choices_to={'ai_description__isnull':False})
 
     class Level(models.IntegerChoices):

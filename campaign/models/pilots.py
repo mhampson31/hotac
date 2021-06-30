@@ -5,8 +5,8 @@ from django.db.models import Sum, Q
 from django.contrib.contenttypes.fields import GenericForeignKey
 from django.contrib.contenttypes.models import ContentType
 
-from xwtools.models import Chassis, Upgrade, SlotChoice, OldPilotCard, Card, PilotCard2
-from .campaigns import User, Campaign, CampaignUpgrade, BaseChoice, UpgradeLogic
+from xwtools.models import Chassis, Upgrade, SlotChoice, Card, PilotCard2
+from .campaigns import User, Campaign, BaseChoice, UpgradeLogic
 
 
 class Pilot(models.Model):
@@ -123,7 +123,7 @@ class Pilot(models.Model):
             .filter(type__in=slots, description__isnull=False) \
             .exclude(id__in=self.upgrades.filter(card__repeat=False).values_list('card__id', flat=True)) \
             .exclude(Q(type=SlotChoice.PILOT), \
-                    ~Q(id__in=PilotCard2.objects.filter(faction=self.campaign.rulebook.faction).values_list('id', flat=True))) \
+                    ~Q(id__in=Card.objects.filter(faction=self.campaign.rulebook.faction).values_list('id', flat=True))) \
             .order_by('type', 'name')
 
         return upgrade_query
@@ -148,7 +148,6 @@ class PilotUpgrade(models.Model):
         LOST = 'X', 'Lost'
 
     pilot = models.ForeignKey(Pilot, on_delete=models.CASCADE, related_name='upgrades')
-    upgrade = models.ForeignKey(CampaignUpgrade, on_delete=models.SET_NULL, null=True, blank=True)
     card = models.ForeignKey(Card, on_delete=models.CASCADE, null=True)
     status = models.CharField(max_length=1, choices=UStatusChoice.choices, default='E')
 
@@ -158,13 +157,13 @@ class PilotUpgrade(models.Model):
 
     @property
     def charges(self):
-        if self.upgrade.charges:
-            return self.upgrade.charges
+        if self.card.charges:
+            return self.card.charges
         else:
             return None
 
     def __str__(self):
-        return str(self.upgrade)
+        return str(self.card)
 
     class Meta:
-        ordering = ['upgrade__type', 'status']
+        ordering = ['card__type', 'status']

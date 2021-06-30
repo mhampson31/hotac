@@ -4,7 +4,7 @@ from django.contrib.auth.models import AbstractUser
 
 from math import floor
 
-from xwtools.models import Chassis, Faction, SlotChoice, Upgrade
+from xwtools.models import Chassis, Faction, SlotChoice, Upgrade, Card
 
 
 class User(AbstractUser):
@@ -164,41 +164,6 @@ class Campaign(models.Model):
         self.save()
 
 
-class CampaignUpgrade(models.Model):
-    id = models.CharField(max_length=6, primary_key=True, db_index=False)
-    base_id = models.IntegerField()
-    base = models.CharField(max_length=1, choices=BaseChoice.choices)
-    name = models.CharField(max_length=30)
-    cost = models.IntegerField()
-    description = models.CharField(max_length=255)
-    ai_description = models.CharField(max_length=255)
-    type = models.CharField(max_length=3, choices=SlotChoice.choices)
-    type2 = models.CharField(max_length=3, choices=SlotChoice.choices, null=True, blank=True, default=None)
-    charges = models.PositiveSmallIntegerField(null=True, blank=True)
-    force = models.BooleanField(default=False)
-    repeat = models.BooleanField(default=False)
-
-    def __str__(self):
-        return self.name
-
-    class Meta:
-        db_table = 'campaign_gameupgrades_v'
-        managed = False
-
-    def campaign_cost(self, upgrade_logic):
-        if upgrade_logic == UpgradeLogic.HOTAC:
-            if self.base == BaseChoice.PILOT:
-                if self.force:
-                    m = self.charges + 3
-                else:
-                    m = 2
-            elif self.type in (SlotChoice.TALENT, SlotChoice.FORCE):
-                m = 2
-            else:
-                m = 1
-            return self.cost * m
-
-
 class FlightGroup(models.Model):
     name = models.CharField(max_length=20)
     mission = models.ForeignKey(Mission, on_delete=models.CASCADE, related_name='flight_groups')
@@ -301,7 +266,7 @@ class Ally(models.Model):
     chassis = models.ForeignKey(Chassis, on_delete=models.CASCADE)
     callsign = models.CharField(max_length=35)
     initiative = models.PositiveSmallIntegerField(default=1)
-    abilities = models.ManyToManyField(Upgrade, limit_choices_to={'ai_description__isnull':False}, blank=True)
+    abilities = models.ManyToManyField(Card, limit_choices_to={'ai_description__isnull':False}, blank=True)
 
     class Meta:
         verbose_name_plural = 'Allies'
