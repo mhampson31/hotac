@@ -15,7 +15,7 @@ from .forms import EnemyPilotForm, SessionForm, SessionPilotFormset, SessionEnem
                    SPFormsetHelper, SEFormsetHelper, PUHelper, AddUpgrade, \
                    CampaignForm, SessionPlanForm, AddSessionPilotFormset, SessionPilotHelper
 
-from xwtools.models import SlotChoice, OldPilotCard, Card
+from xwtools.models import SlotChoice, Card
 
 
 def index(request):

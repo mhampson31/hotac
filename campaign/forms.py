@@ -15,7 +15,6 @@ from .fields import GroupedModelChoiceField
 from xwtools.models import SlotChoice, Card
 
 
-
 class EnemyPilotForm(forms.Form):
     pass
 #    level = forms.ChoiceField(EnemyAbility.Level.choices)

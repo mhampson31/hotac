@@ -5,7 +5,7 @@ from django.urls import reverse
 
 from .enemies import EnemyPilot, EnemyAbility
 from .pilots import Pilot, PilotShip
-from xwtools.models import Chassis, Upgrade
+from xwtools.models import Chassis
 from math import floor
 
 from .campaigns import User, Mission, Campaign, FlightGroup
