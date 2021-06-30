@@ -75,7 +75,11 @@ class PilotCardAdmin(admin.ModelAdmin):
 
 class PilotCard2Admin(admin.ModelAdmin):
     model = PilotCard2
+    list_display = ('name', 'faction', 'chassis', 'initiative')
+    list_editable = ('chassis', 'initiative')
+
     fields = ('name', 'description', 'ai_description', 'type', 'faction', 'initiative', 'chassis', 'charges', 'force')
+
 
     def formfield_for_choice_field(self, db_field, request, **kwargs):
         if db_field.name == "type":
@@ -85,8 +89,9 @@ class PilotCard2Admin(admin.ModelAdmin):
 
 class UpgradeCardAdmin(admin.ModelAdmin):
     model = UpgradeCard
-    list_display = ('name', 'type', 'cost', 'charges')
+    list_display = ('name', 'type', 'cost', 'charges', 'repeat')
     list_filter = ('type',)
+    list_editable = ('cost', 'repeat')
     fieldsets = (
         (None, {
             'fields': ('name', 'description', 'ai_description',
@@ -109,7 +114,5 @@ class UpgradeCardAdmin(admin.ModelAdmin):
 admin.site.register(UpgradeCard, UpgradeCardAdmin)
 admin.site.register(PilotCard2, PilotCard2Admin)
 
-admin.site.register(PilotCard, PilotCardAdmin)
-admin.site.register(Upgrade, UpgradeAdmin)
 admin.site.register(Chassis, ChassisAdmin)
 admin.site.register(Faction, FactionAdmin)

@@ -338,16 +338,3 @@ class Slot(models.Model):
     @property
     def css_name(self):
         return self.get_type_display()
-
-
-def upgrade_migration():
-    for u in Upgrade.objects.all():
-        UpgradeCard.objects.create(
-           name=u.name,
-           description=u.description,
-           ai_description=u.ai_description,
-           type=u.type,
-           type2=u.type2,
-           charges=u.charges,
-           force=u.force,
-           cost=u.cost)
