@@ -3,7 +3,8 @@
 {% block card %}
 
 <div class='upgrade-card card g-0'>
-    <div class="card-header
+    <a card_id={{upgrade.id}} href='#'
+        class="card-header text-decoration-none
         {% if status == 'X' %} bg-danger text-light
         {% elif status == 'E' %} bg-info text-light
         {% endif %}"
@@ -20,7 +21,7 @@
             {% else %}{{upgrade.cost}}
             {% endif %}
         </span>
-    </div>
+    </a>
 
   <div class='card-body'>
       <p>{{upgrade.description|iconize}}</p>
@@ -38,11 +39,12 @@
           {% endif %}
 
           {% if upgrade.charges %}
-          <li class='list-group-item charge'>
-              <i class="xwing-miniatures-font
-                  {% if upgrade.force %} xwing-miniatures-font-forcecharge
-                  {% else %} xwing-miniatures-font-charge
-                  {% endif %}"></i>{{upgrade.charges}}
+          <li class='list-group-item'>
+              <span>
+                  {% if upgrade.force %}{{"Force#force"|get_icon|repeat:upgrade.charges}}
+                  {% else %}{{"Charge#charge"|get_icon|repeat:upgrade.charges}}
+                  {% endif %}
+              </span>
           </li>
           {% endif %}
       </ul>

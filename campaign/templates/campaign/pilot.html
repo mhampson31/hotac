@@ -2,6 +2,7 @@
 
 {% load crispy_forms_tags %}
 {% load xwf_extras %}
+{% load static %}
 
 {% block content %}
 
@@ -66,6 +67,9 @@
 
     <div class="tab-pane" role="tabpanel" aria-labelledby="available-tab" id="available">
         <div class="container">
+            <div class="row mb-3">
+                {% crispy update update.helper %}
+            </div>
 
             <div class="row mb-3 d-flex flex-wrap">
             {% for au in pilot.available_upgrades.all %}
@@ -76,11 +80,11 @@
             {% include './includes/upgrade_card.html' with upgrade=au upgrade_logic=pilot.campaign.rulebook.upgrade_logic %}
             {% endfor %}
             </div>
-            <div class="row mb-3">
-                {% crispy update update.helper %}
-            </div>
         </div>
     </div>
 
+{% endblock content %}
 
-{% endblock %}
+{% block extrajs %}
+    <script src="{% static 'js/pilot_upgrade.js' %}"></script>
+{% endblock extrajs %}

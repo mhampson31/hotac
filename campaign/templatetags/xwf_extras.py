@@ -97,3 +97,7 @@ def hotac_crit():
 @register.filter
 def get_cost(upgrade, logic):
     return upgrade.campaign_cost(logic)
+
+@register.filter(is_safe=True)
+def repeat(icon, charges):
+    return icon * charges

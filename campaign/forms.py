@@ -183,8 +183,6 @@ class AddUpgrade(forms.ModelForm):
         self.helper = FormHelper()
         self.helper.form_method = 'post'
         self.layout = Layout(
-            Div(
-                FloatingField('card', wrapper_class="col"),
-            )
+            FloatingField('card', wrapper_class="col-2"),
         )
-        self.helper.add_input(Submit('submit', 'Submit'))
+        self.helper.add_input(Submit('submit', 'Purchase'))
