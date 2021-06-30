@@ -4,16 +4,11 @@ from django.contrib.auth.models import AbstractUser
 
 from math import floor
 
-from xwtools.models import Chassis, Faction, SlotChoice, Upgrade, Card
+from xwtools.models import Chassis, Faction, SlotChoice, Card
 
 
 class User(AbstractUser):
     pass
-
-
-class BaseChoice(models.TextChoices):
-    PILOT = 'P', 'Pilot'
-    UPGRADE = 'U', 'Upgrade'
 
 
 class UpgradeLogic(models.IntegerChoices):
@@ -25,7 +20,6 @@ class Rulebook(models.Model):
     admin = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
     faction = models.ForeignKey(Faction, on_delete=models.SET_NULL, null=True)
     ships = models.ManyToManyField(Chassis, through='PlayableShip')
-
 
     # player defaults
     start_init = models.SmallIntegerField(default=2)
@@ -44,14 +38,6 @@ class Rulebook(models.Model):
 
     def get_absolute_url(self):
         return reverse('ruleset', kwargs={'pk': self.pk})
-
-    def upgrade_cost(self, upgrade):
-        """
-        takes a CampaignUpgrade object and calculates the cost, based on the upgrade logic rules
-        deprecated -- remove any calls to this
-        """
-        print("old cost logic")
-        return 1000
 
     @property
     def xp_share(self):

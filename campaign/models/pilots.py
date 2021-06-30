@@ -5,8 +5,8 @@ from django.db.models import Sum, Q
 from django.contrib.contenttypes.fields import GenericForeignKey
 from django.contrib.contenttypes.models import ContentType
 
-from xwtools.models import Chassis, Upgrade, SlotChoice, Card, PilotCard2
-from .campaigns import User, Campaign, BaseChoice, UpgradeLogic
+from xwtools.models import Chassis, SlotChoice, Card, PilotCard2
+from .campaigns import User, Campaign, UpgradeLogic
 
 
 class Pilot(models.Model):
@@ -156,7 +156,7 @@ class PilotUpgrade(models.Model):
         return self.card.campaign_cost(self.pilot.campaign.rulebook.upgrade_logic)
 
     @property
-    def charges(self):
+    def old_charges(self):
         if self.card.charges:
             return self.card.charges
         else:

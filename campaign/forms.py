@@ -12,7 +12,7 @@ from .models import EnemyPilot, EnemyAbility, Session, SessionPilot, SessionEnem
                     Pilot, PilotUpgrade, Campaign
 from .fields import GroupedModelChoiceField
 
-from xwtools.models import Upgrade, SlotChoice, Card
+from xwtools.models import SlotChoice, Card
 
 
 
@@ -28,7 +28,7 @@ class PUHelper(FormHelper):
         self.form_show_labels = False
         self.layout = Layout(
             Div(
-                FloatingField('upgrade', wrapper_class='col-4'),
+                FloatingField('card', wrapper_class='col-4'),
 
                 css_class='form-group row'
             )
@@ -170,7 +170,7 @@ class SEFormsetHelper(FormHelper):
 
 class AddUpgrade(forms.ModelForm):
     prefix = 'add_upgrade'
-    upgrade = GroupedModelChoiceField(queryset=Card.objects.filter(description__isnull=False),
+    card = GroupedModelChoiceField(queryset=Card.objects.filter(description__isnull=False),
                                       choices_groupby=methodcaller('get_type_display'))
 
     class Meta:
