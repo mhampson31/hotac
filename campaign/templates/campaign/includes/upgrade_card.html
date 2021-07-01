@@ -6,7 +6,7 @@
     <a card_id={{upgrade.id}} href='#'
         class="card-header text-decoration-none
         {% if status == 'X' %} bg-danger text-light
-        {% elif status == 'E' %} bg-info text-light
+        {% elif status == 'E' %} bg-success text-light
         {% endif %}"
         <h5 class='card-title'>
             {{upgrade.get_type_display|get_icon}}

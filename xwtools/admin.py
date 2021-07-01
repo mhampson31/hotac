@@ -84,7 +84,7 @@ class UpgradeCardAdmin(admin.ModelAdmin):
             'fields': ('name', 'description', 'ai_description',
                        ('type', 'type2', 'cost', 'repeat'),
                        ('charges', 'force'),
-                       ('adds',)
+                       ('requires', 'adds',)
                       )
 
         }),

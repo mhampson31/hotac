@@ -105,10 +105,12 @@ class Card(models.Model):
     force = models.BooleanField(default=False)
     cost = models.SmallIntegerField(default=0)
     repeat = models.BooleanField(default=False)
-    adds = models.CharField(max_length=120, blank=True, null=True)
     initiative = models.PositiveSmallIntegerField(default=1, null=True)
     chassis = models.ForeignKey('Chassis', on_delete=models.CASCADE, null=True, blank=True)
     faction = models.ForeignKey(Faction, on_delete=models.CASCADE, null=True, blank=True)
+    adds = models.CharField(max_length=120, blank=True, null=True)
+    requires = models.CharField(max_length=120, blank=True, null=True)
+
 
     def __str__(self):
         if self.type == SlotChoice.PILOT.value:
@@ -119,7 +121,9 @@ class Card(models.Model):
     def campaign_cost(self, upgrade_logic):
         # todo: this needs to point to UpgradeLogic
         if upgrade_logic == 1:
+            cost = self.cost
             if self.type == SlotChoice.PILOT:
+                cost = self.initiative
                 if self.force:
                     m = self.charges + 3
                 else:
@@ -128,7 +132,7 @@ class Card(models.Model):
                 m = 2
             else:
                 m = 1
-            return self.cost * m
+            return cost * m
 
 
 class Attack(models.Model):

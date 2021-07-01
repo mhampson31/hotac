@@ -132,6 +132,7 @@ class Pilot(models.Model):
 class PilotShip(models.Model):
     pilot = models.ForeignKey(Pilot, on_delete=models.CASCADE)
     chassis = models.ForeignKey(Chassis, on_delete=models.CASCADE, null=True, related_name='pilot_ship')
+    active = models.BooleanField(default = True)
 
     def __str__(self):
         return self.pilot.callsign + "\'s " + self.chassis.name
@@ -154,13 +155,6 @@ class PilotUpgrade(models.Model):
     @property
     def cost(self):
         return self.card.campaign_cost(self.pilot.campaign.rulebook.upgrade_logic)
-
-    @property
-    def old_charges(self):
-        if self.card.charges:
-            return self.card.charges
-        else:
-            return None
 
     def __str__(self):
         return str(self.card)
