@@ -132,28 +132,27 @@ class Card(models.Model):
 
 
 class Attack(models.Model):
-    ATTACK_REQS = (
-        ('L', 'Lock'),
-        ('F', 'Focus'),
-        ('C', 'Calculate'),
-        ('J', 'Force')
-    )
     card = models.OneToOneField(Card, on_delete=models.CASCADE)
-    requires = models.CharField(max_length=1, choices=ATTACK_REQS, blank=True, null=True)
     arc = models.CharField(max_length=2, choices=ArcChoice.choices, default=ArcChoice.FRONT.value)
     dice = models.PositiveSmallIntegerField(default=3)
     range = models.CharField(max_length=3)
     ordnance = models.BooleanField(default=False)
 
+# ### proxy managers ### #
 
 class UpgradeCardManager(models.Manager):
     def get_queryset(self):
-        return super(UpgradeCardManager, self).get_queryset().exclude(type=SlotChoice.PILOT.value)
+        return super(UpgradeCardManager, self).get_queryset().exclude(type__in=[SlotChoice.PILOT.value, SlotChoice.SHIP.value])
 
 
 class PilotCardManager(models.Manager):
     def get_queryset(self):
         return super(PilotCardManager, self).get_queryset().filter(type=SlotChoice.PILOT.value)
+
+
+class ShipAbilityManager(models.Manager):
+    def get_queryset(self):
+        return super(ShipAbilityManager, self).get_queryset().exclude(type=SlotChoice.SHIP.value)
 
 
 class UpgradeCard(Card):
@@ -163,7 +162,7 @@ class UpgradeCard(Card):
         proxy = True
 
 
-class PilotCard2(Card):
+class PilotCard(Card):
     objects = PilotCardManager()
 
     class Meta:
@@ -171,6 +170,13 @@ class PilotCard2(Card):
 
     def __str__(self):
         return '{} - {}'.format(self.name, self.chassis)
+
+
+class ShipAbility(Card):
+    objects = ShipAbilityManager()
+
+    class Meta:
+        proxy = True
 
 
 class Upgrade(Ability):
@@ -184,9 +190,6 @@ class Upgrade(Ability):
     # eg "[Focus] + [Focus] [Link] [Evade]"
     adds = models.CharField(max_length=120, blank=True, null=True)
 
-    class Meta:
-        verbose_name = 'Upgrade Card'
-
     @property
     def add_list(self):
         return self.adds.split('+')
@@ -197,9 +200,6 @@ class OldPilotCard(Ability):
     chassis = models.ForeignKey('Chassis', on_delete=models.CASCADE, related_name = 'pilot_card')
     faction = models.ForeignKey(Faction, on_delete=models.CASCADE)
     type = models.CharField(max_length=3, choices=SlotChoice.choices, default=SlotChoice.PILOT)
-
-    class Meta:
-        verbose_name = 'Pilot Card'
 
 
 class Dial(models.Model):
@@ -307,9 +307,11 @@ class Chassis(models.Model):
 
     css = models.CharField(max_length=80, null=True, blank=True)
 
-    ability = models.OneToOneField(Upgrade,
-                                   limit_choices_to={'type':SlotChoice.SHIP.value},
-                                   null=True, blank=True, on_delete=models.SET_NULL)
+    ability = models.OneToOneField(Upgrade, limit_choices_to={'type':SlotChoice.SHIP.value},
+                                          null=True, blank=True, on_delete=models.SET_NULL,
+                                          related_name='ship')
+    new_ability = models.OneToOneField(Upgrade, limit_choices_to={'type':SlotChoice.SHIP.value},
+                                          null=True, blank=True, on_delete=models.SET_NULL,)
 
     def __str__(self):
         return self.name

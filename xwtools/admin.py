@@ -2,7 +2,7 @@ from django.contrib import admin
 
 import nested_admin
 
-from .models import Chassis, Slot, Upgrade, Dial, DialManeuver, Faction, Card, UpgradeCard, PilotCard2
+from .models import Chassis, Slot, Dial, DialManeuver, Faction, Card, UpgradeCard, PilotCard
 from .models import SlotChoice, Attack
 
 class DialManeuverInline(nested_admin.NestedTabularInline):
@@ -41,33 +41,12 @@ class ChassisAdmin(nested_admin.NestedModelAdmin):
     )
 
 
-class UpgradeAdmin(admin.ModelAdmin):
-    model = Upgrade
-    list_display = ('name', 'type', 'type2', 'cost', 'charges', 'for_players', 'for_ai')
-    list_filter = ('type',)
-    fieldsets = (
-        (None, {
-            'fields': ('name', 'description', 'ai_description',
-                       ('type', 'type2', 'repeat'),
-                       ('charges', 'force'),
-            )
-        }),
-        ('Adds', {
-            'fields': ('attack_requires',
-                        ('attack_arc', 'attack_dice'),
-                        ('attack_range', 'attack_ordnance'),
-                        'adds'
-                    )
-        })
-    )
-
-
 class FactionAdmin(admin.ModelAdmin):
     filter_horizontal = ('ships',)
 
 
 class PilotCardAdmin(admin.ModelAdmin):
-    model = PilotCard2
+    model = PilotCard
     list_display = ('name', 'faction', 'chassis', 'initiative')
     list_editable = ('chassis', 'initiative')
 
@@ -101,7 +80,6 @@ class UpgradeCardAdmin(admin.ModelAdmin):
 
         }),
     )
-    #fields = ('name', 'description', 'ai_description', 'type', 'faction', 'initiative', 'chassis', 'charges', 'force')
 
     def formfield_for_choice_field(self, db_field, request, **kwargs):
         if db_field.name == "type":
@@ -112,8 +90,9 @@ class UpgradeCardAdmin(admin.ModelAdmin):
         return super().formfield_for_choice_field(db_field, request, **kwargs)
 
 
+
 admin.site.register(UpgradeCard, UpgradeCardAdmin)
-admin.site.register(PilotCard2, PilotCardAdmin)
+admin.site.register(PilotCard, PilotCardAdmin)
 
 admin.site.register(Chassis, ChassisAdmin)
 admin.site.register(Faction, FactionAdmin)
