@@ -307,12 +307,9 @@ class Chassis(models.Model):
 
     css = models.CharField(max_length=80, null=True, blank=True)
 
-    ability = models.OneToOneField(Upgrade, limit_choices_to={'type':SlotChoice.SHIP.value},
+    ability = models.OneToOneField(Card, limit_choices_to={'type':SlotChoice.SHIP.value},
                                           null=True, blank=True, on_delete=models.SET_NULL,
                                           related_name='ship')
-    new_ability = models.OneToOneField(Card, limit_choices_to={'type':SlotChoice.SHIP.value},
-                                          null=True, blank=True, on_delete=models.SET_NULL,
-                                          related_name='new_ship')
 
     def __str__(self):
         return self.name
