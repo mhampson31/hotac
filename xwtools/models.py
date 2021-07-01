@@ -152,7 +152,7 @@ class PilotCardManager(models.Manager):
 
 class ShipAbilityManager(models.Manager):
     def get_queryset(self):
-        return super(ShipAbilityManager, self).get_queryset().exclude(type=SlotChoice.SHIP.value)
+        return super(ShipAbilityManager, self).get_queryset().filter(type=SlotChoice.SHIP.value)
 
 
 class UpgradeCard(Card):
@@ -177,6 +177,7 @@ class ShipAbility(Card):
 
     class Meta:
         proxy = True
+        verbose_name_plural = 'Ship Abilities'
 
 
 class Upgrade(Ability):
