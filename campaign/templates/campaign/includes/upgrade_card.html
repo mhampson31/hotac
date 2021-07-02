@@ -13,7 +13,7 @@
             {% if upgrade.type2 %}
             {{upgrade.get_type2_display|get_icon}}
             {% endif %}
-            {{upgrade.name}}
+            {{upgrade}}
         </h5>
         <span class="float-end">
             <i class="xwing-miniatures-font xwing-miniatures-font-squad-point-cost"></i>
@@ -25,6 +25,9 @@
 
   <div class='card-body'>
       <p>{{upgrade.description|iconize}}</p>
+      {% if upgrade.requires %}
+      <span>Requires: {{upgrade.requires}}</span>
+      {% endif %}
   </div>
 
   <div class="card-footer">

@@ -63,7 +63,8 @@ class Pilot(models.Model):
 
     @property
     def active_ship(self):
-        return self.pilotship_set.last()
+        # grab the active ship. If there's somehow multiple, grab the newest
+        return self.pilotship_set.filter(active=True).last()
 
     @property
     def starter_ship(self):
@@ -108,7 +109,7 @@ class Pilot(models.Model):
             slots.append(SlotChoice.FORCE.value)
             slots.append(SlotChoice.TALENT.value)
 
-        # The upgrade list queryset takes some assembly. F
+        # The upgrade list queryset takes some assembly.
         # First, grab all the CampaignUpgrades that the players has slots for
         # (Those missing descriptions are assumed to be AI-only abilities)
 

@@ -6,10 +6,9 @@
 
 {% block content %}
 
-<h3>{{pilot.callsign}}</h3>
+<h3>{{pilot.callsign}}{% if pilot.user.username != pilot.callsign %} ({{pilot.user}}){% endif %}</h3>
 
 <div class='row' id='pilot-stats'>
-    <p>Player: {{pilot.user}}</p>
     <p>Campaign: <a href="{% url 'game:campaign' pilot.campaign.id %}">{{pilot.campaign}}</a></p>
     <p>Missions Flown: {{pilot.sessions.count}}</p>
     <p>Initiative {{pilot.initiative}}</p>
