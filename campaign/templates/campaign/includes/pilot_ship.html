@@ -1,0 +1,44 @@
+{% load xwf_extras %}
+
+{% block card %}
+
+<div class="card">
+    <div class="card-header">
+        <h6 class="card-title"><i class="xw-ship xw-ship-{{ship.css_name}}"> {{ship}}</h6>
+    </div>
+
+    <div class="card-body">
+        <ul class="list-group list-group-horizontal mb-3">
+            <li class="list-group-item attack">{{ship.chassis.attack}}{{ship.chassis.get_attack_arc_display|get_icon}}</li>
+
+            {% if ship.chassis.attack2 %}
+            <li class="list-group-item attack">{{ship.chassis.attack2}}{{ship.chassis.arc2_css|get_icon}}</li>
+            {% endif %}
+
+            <li class="list-group-item agility">{{ship.chassis.agility}}{{'agility'|get_icon}}</li>
+
+            <li class="list-group-item hull">{{'hull'|get_icon|repeat:ship.chassis.hull}}</li>
+
+            {% if ship.chassis.shields %}
+            <li class="list-group-item shields">{{"shield"|get_icon|repeat:ship.chassis.shields}}</li>
+            {% endif %}
+        </ul>
+
+
+        {% if ship.chassis.ability %}
+        <span><strong>{{ship.chassis.ability}}</strong>: {{ship.chassis.ability.description|iconize}}</span>
+        {% endif %}
+    </div>
+
+    <div class="card-footer">
+        {% if slots %}
+        <ul class="col list-group list-group-horizontal">
+            {% for slot in slots %}
+            <li class="list-group-item">{{slot.label|get_icon}}<li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+    </div>
+</div>
+
+{% endblock card %}

@@ -8,30 +8,27 @@
 
 <h3>{{pilot.callsign}}{% if pilot.user.username != pilot.callsign %} ({{pilot.user}}){% endif %}</h3>
 
-<div class='row' id='pilot-stats'>
-    <p>Campaign: <a href="{% url 'game:campaign' pilot.campaign.id %}">{{pilot.campaign}}</a></p>
-    <p>Missions Flown: {{pilot.sessions.count}}</p>
-    <p>Initiative {{pilot.initiative}}</p>
-    <p>XP Earned: <i class="xwing-miniatures-font xwing-miniatures-font-squad-point-cost"></i>{{pilot.total_xp}}</p>
-    <p>XP Spent: <i class="xwing-miniatures-font xwing-miniatures-font-squad-point-cost"></i>{{pilot.spent_ships}} Ships,
-               <i class="xwing-miniatures-font xwing-miniatures-font-squad-point-cost"></i>{{pilot.spent_initiative}} Initiative,
-               <i class="xwing-miniatures-font xwing-miniatures-font-squad-point-cost"></i>{{pilot.spent_upgrades}} Upgrades
-           </p>
-    <p>XP Available: <i class="xwing-miniatures-font xwing-miniatures-font-squad-point-cost"></i>{{remaining}}</p>
-</div>
+<div class='row mb-3' id='pilot-stats'>
+    <div class="col">
+        <p>Campaign: <a href="{% url 'game:campaign' pilot.campaign.id %}">{{pilot.campaign}}</a></p>
+        <p>Missions Flown: {{pilot.sessions.count}}</p>
+        <p>Initiative {{pilot.initiative}}</p>
+    </div>
+    <div class="col">
+        <p>XP Earned: <i class="xwing-miniatures-font xwing-miniatures-font-squad-point-cost"></i>{{pilot.total_xp}}</p>
 
-<div class="row mb-1">
-    <h6 class='col'>
-        <a href="{% url 'chassis' chassis_slug=pilot.active_ship.chassis.slug %}">{{pilot.active_ship.name}} <i class="xw-ship xw-ship-{{pilot.active_ship.css_name}}"></i></a>
-    </h6>
+        <p>XP Spent: <i class="xwing-miniatures-font xwing-miniatures-font-squad-point-cost"></i>{{pilot.spent_ships}} Ships,
+                   <i class="xwing-miniatures-font xwing-miniatures-font-squad-point-cost"></i>{{pilot.spent_initiative}} Initiative,
+                   <i class="xwing-miniatures-font xwing-miniatures-font-squad-point-cost"></i>{{pilot.spent_upgrades}} Upgrades
+               </p>
+        <p>XP Available: <i class="xwing-miniatures-font xwing-miniatures-font-squad-point-cost"></i>{{remaining}}</p>
+    </div>
 </div>
 
 <div class="row mb-3">
-    <ul class="col list-group list-group-horizontal">
-        {% for slot in pilot.slots %}
-        <li class="list-group-item">{{slot.label|get_icon}}<li>
-        {% endfor %}
-    </ul>
+    <h6 class='col'>
+        {% include './includes/pilot_ship.html' with ship=pilot.active_ship slots=pilot.slots %}
+    </h6>
 </div>
 
 <div class="row mb-3">

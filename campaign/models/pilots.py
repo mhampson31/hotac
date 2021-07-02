@@ -133,9 +133,13 @@ class PilotShip(models.Model):
     pilot = models.ForeignKey(Pilot, on_delete=models.CASCADE)
     chassis = models.ForeignKey(Chassis, on_delete=models.CASCADE, null=True, related_name='pilot_ship')
     active = models.BooleanField(default = True)
+    name = models.CharField(max_length=50, blank=True, null=True)
 
     def __str__(self):
-        return self.pilot.callsign + "\'s " + self.chassis.name
+        if self.name:
+            return "{}'s {} {}".format(self.pilot.callsign, self.chassis.name, self.name)
+        else:
+            return "{}'s {}".format(self.pilot.callsign, self.chassis.name)
 
     @property
     def game_info(self):
