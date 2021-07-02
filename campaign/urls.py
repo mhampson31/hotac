@@ -5,7 +5,7 @@ from . import views
 app_name = 'game'
 
 urlpatterns = [
-    path('pilot/<int:pk>', views.pilot_sheet, name='pilot'),
+    path('pilot/<int:pk>', views.PilotUpdate.as_view(), name='pilot'),
     path('rulebook/<int:pk>', views.RulebookView.as_view(), name='rulebook'),
 
     path('campaign/<int:pk>', views.CampaignView.as_view(), name='campaign'),

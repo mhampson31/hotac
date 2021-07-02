@@ -7,6 +7,8 @@ from django.urls import reverse_lazy, reverse
 from django.http import HttpResponseRedirect
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from django.forms import modelformset_factory, inlineformset_factory, CheckboxSelectMultiple
+from django.contrib.auth.decorators import login_required
+from django.utils.decorators import method_decorator
 
 from crispy_forms.layout import Submit
 
@@ -50,6 +52,10 @@ class SessionPlan(CreateView):
     form_class = SessionPlanForm
     template_name_suffix = '_plan'
 
+    @method_decorator(login_required)
+    def dispatch(self, *args, **kwargs):
+        return super().dispatch(*args, **kwargs)
+
     def get_initial(self):
         initial = super().get_initial()
         initial['campaign'] = get_object_or_404(Campaign, id=self.kwargs.get("pk"))
@@ -82,6 +88,10 @@ class SessionDebrief(UpdateView):
     model = Session
     form_class = SessionForm
     template_name_suffix = '_debrief'
+
+    @method_decorator(login_required)
+    def dispatch(self, *args, **kwargs):
+        return super().dispatch(*args, **kwargs)
 
     def get_success_url(self):
         return reverse_lazy('game:campaign', args=(self.object.campaign.pk,))
@@ -124,25 +134,33 @@ def session_plan(request, session_id):
     return render(request, 'campaign/session_plan.html', {'session':s, 'enemies':enemies})
 
 
-def pilot_sheet(request, pk):
-    pilot = Pilot.objects.select_related('user', 'campaign').get(id=pk)
+class PilotUpdate(UpdateView):
+    model = Pilot
+    context_object_name = 'pilot'
+    template_name = 'campaign/pilot.html'
+    fields = ('callsign', 'initiative')
 
-    if request.method == 'POST':
-        update_form = AddUpgrade(request.POST, initial={'pilot':pilot.id, 'status':'E'})
+    @method_decorator(login_required)
+    def dispatch(self, *args, **kwargs):
+        return super().dispatch(*args, **kwargs)
 
-        if update_form.is_valid():
-            update_form.save()
-            return HttpResponseRedirect(pilot.get_absolute_url())
+    def get_context_data(self, **kwargs):
+        data = super().get_context_data(**kwargs)
+        pilot = self.object
+        if self.request.method == 'POST':
+            update_form = AddUpgrade(self.request.POST, initial={'pilot':pilot.id, 'status':'E'})
+
+            if update_form.is_valid():
+                update_form.save()
+                #return HttpResponseRedirect(pilot.get_absolute_url())
+            else:
+                print(update_form.errors)
         else:
-            print(update_form.errors)
-    else:
-        update_form = AddUpgrade(initial={'pilot':pilot, 'status':'E'})
-
-    update_form.fields['card'].queryset = pilot.available_upgrades
-    context = {'pilot':pilot,
-               'remaining':pilot.total_xp - pilot.spent_xp,
-               'update': update_form}
-    return render(request, 'campaign/pilot.html', context)
+            update_form = AddUpgrade(initial={'pilot':pilot, 'status':'E'})
+        update_form.fields['card'].queryset = pilot.available_upgrades
+        data['update'] = update_form
+        data['remaining'] = pilot.total_xp - pilot.spent_xp
+        return data
 
 
 class RulebookView(DetailView):
@@ -156,16 +174,28 @@ class CampaignView(DetailView):
     context_object_name = 'campaign'
     template_name = 'campaign/campaign.html'
 
+    @method_decorator(login_required)
+    def dispatch(self, *args, **kwargs):
+        return super().dispatch(*args, **kwargs)
+
 
 class CampaignUpdate(UpdateView):
     model = Campaign
     form_class = CampaignForm
     template_name_suffix = '_plan'
 
+    @method_decorator(login_required)
+    def dispatch(self, *args, **kwargs):
+        return super().dispatch(*args, **kwargs)
+
 
 class RulebookUpdate(UpdateView):
     model = Rulebook
     fields = ['description', 'victory']
+
+    @method_decorator(login_required)
+    def dispatch(self, *args, **kwargs):
+        return super().dispatch(*args, **kwargs)
 
 
 class EnemyView(DetailView):
@@ -173,12 +203,6 @@ class EnemyView(DetailView):
     context_object_name = 'enemy'
     template_name = 'campaign/enemy_pilot.html'
 
-
-class PilotUpdate(DetailView):
-    model = Pilot
-    context_object_name = 'pilot'
-    template_name = 'campaign/pilot_update.html'
-    fields = ('callsign', 'upgrades')
 
 
 def enemy_list(request):

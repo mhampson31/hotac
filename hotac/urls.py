@@ -16,8 +16,7 @@ urlpatterns = [
     path('', campaign_views.index, name='index'),
     path('game/', include('campaign.urls', namespace='game')),
     #path('pilot/<int:pk>/', campaign_views.)
-    path('pilot/<int:pk>/', campaign_views.PilotUpdate.as_view(), name='pilot-update'),
-
+    
     path('chassis/<slug:chassis_slug>/', xwt_views.ship_sheet, name='chassis'),
     path('chassis/<slug:chassis_slug>/ai/', campaign_views.ai_select, name='ai'),
     path('enemy/<int:pk>', campaign_views.EnemyView.as_view(), name='enemy'),
