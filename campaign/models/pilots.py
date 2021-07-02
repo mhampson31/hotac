@@ -104,7 +104,6 @@ class Pilot(models.Model):
     def available_upgrades(self):
         slots = [s.value for s in self.slots]
 
-        # Pilot slots are placeholders. The player can use pilots, talents, or force powers in them.
         if SlotChoice.PILOT in slots:
             slots.append(SlotChoice.FORCE.value)
             slots.append(SlotChoice.TALENT.value)
@@ -120,7 +119,7 @@ class Pilot(models.Model):
         # Finally, put everything in order
 
         upgrade_query = Card.objects \
-            .filter(type__in=slots, description__isnull=False) \
+            .filter(type__in=slots, description__isnull=False, initiative__lte=self.initiative) \
             .exclude(id__in=self.upgrades.filter(card__repeat=False).values_list('card__id', flat=True)) \
             .exclude(Q(type=SlotChoice.PILOT), \
                     ~Q(id__in=Card.objects.filter(faction=self.campaign.rulebook.faction).values_list('id', flat=True))) \
