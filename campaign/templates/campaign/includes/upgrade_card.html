@@ -2,7 +2,7 @@
 
 {% block card %}
 
-<div class='upgrade-card card g-0'>
+<div class='upgrade-card card g-0 me-2 mb-2'>
     <a card_id={{upgrade.id}} href='#'
         class="card-header text-decoration-none
         {% if status == 'X' %} bg-danger text-light
@@ -37,6 +37,14 @@
               <span>{{upgrade.attack.get_arc_display|get_icon}}{{upgrade.attack.dice}}
                   {% if upgrade.attack.ordnance %}{{"Ordnance"|get_icon}}{% endif %}
                   {{upgrade.attack.range}}
+              </span>
+          </li>
+          {% endif %}
+
+          {% if upgrade.adds %}
+          <li class='list-group-item'>
+              <span>
+                  {{upgrade.adds|iconize}}
               </span>
           </li>
           {% endif %}

@@ -7,28 +7,12 @@
 {% block content %}
 
 <h3>{{pilot.callsign}}{% if pilot.user.username != pilot.callsign %} ({{pilot.user}}){% endif %}</h3>
+<h5>Campaign: <a href="{% url 'game:campaign' pilot.campaign.id %}">{{pilot.campaign}}</a></h5>
 
 <div class='row mb-3' id='pilot-stats'>
-    <div class="col">
-        <p>Campaign: <a href="{% url 'game:campaign' pilot.campaign.id %}">{{pilot.campaign}}</a></p>
-        <p>Missions Flown: {{pilot.sessions.count}}</p>
-        <p>Initiative {{pilot.initiative}}</p>
-    </div>
-    <div class="col">
-        <p>XP Earned: <i class="xwing-miniatures-font xwing-miniatures-font-squad-point-cost"></i>{{pilot.total_xp}}</p>
-
-        <p>XP Spent: <i class="xwing-miniatures-font xwing-miniatures-font-squad-point-cost"></i>{{pilot.spent_ships}} Ships,
-                   <i class="xwing-miniatures-font xwing-miniatures-font-squad-point-cost"></i>{{pilot.spent_initiative}} Initiative,
-                   <i class="xwing-miniatures-font xwing-miniatures-font-squad-point-cost"></i>{{pilot.spent_upgrades}} Upgrades
-               </p>
-        <p>XP Available: <i class="xwing-miniatures-font xwing-miniatures-font-squad-point-cost"></i>{{remaining}}</p>
-    </div>
-</div>
-
-<div class="row mb-3">
-    <h6 class='col'>
+    <div class='col-sm-4'>
         {% include './includes/pilot_ship.html' with ship=pilot.active_ship slots=pilot.slots %}
-    </h6>
+    </div>
 </div>
 
 <div class="row mb-3">
@@ -43,17 +27,22 @@
                   data-bs-target="#available" type="button" role="tab"
                   aria-controls="available" aria-selected="false">Available</button>
         </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="stats-tab" data-bs-toggle="tab"
+                  data-bs-target="#stats" type="button" role="tab"
+                  aria-controls="stats" aria-selected="false">Statistics</button>
+        </li>
     </ul>
 </div>
 
 <div class="row mb-3 tab-content d-flex flex-wrap">
     <div class="tab-pane active" role="tabpanel" aria-labelledby="upgrade-tab" id="upgrades">
         <div class="container">
-            <div class="row mb-3 d-flex flex-wrap ">
+            <div class="row mb-5 d-flex flex-wrap ">
             {% for gu in pilot.upgrades.all %}
             {% ifchanged gu.card.type %}
             </div>
-            <div class="row mb-3 d-flex flex-wrap">
+            <div class="row mb-5 d-flex flex-wrap">
             {% endifchanged %}
             {% include './includes/upgrade_card.html' with upgrade=gu.card upgrade_logic=pilot.campaign.rulebook.upgrade_logic status=gu.status %}
             {% endfor %}
@@ -63,21 +52,40 @@
 
     <div class="tab-pane" role="tabpanel" aria-labelledby="available-tab" id="available">
         <div class="container">
+            <div class="row">
+            </div>
+
             <div class="row mb-3">
                 {% crispy update update.helper %}
             </div>
 
-            <div class="row mb-3 d-flex flex-wrap">
+            <div class="row mb-5 d-flex flex-wrap">
             {% for au in pilot.available_upgrades.all %}
             {% ifchanged au.type %}
             </div>
-            <div class="row mb-3 d-flex flex-wrap">
+            <div class="row mb-5 d-flex flex-wrap">
             {% endifchanged %}
             {% include './includes/upgrade_card.html' with upgrade=au upgrade_logic=pilot.campaign.rulebook.upgrade_logic %}
             {% endfor %}
             </div>
         </div>
     </div>
+
+    <div class="tab-pane active" role="tabpanel" aria-labelledby="stats-tab" id="stats">
+        <div class="container">
+            <div class="row mb-3 d-flex flex-wrap ">
+                <p>Missions Flown: {{pilot.sessions.count}}</p>
+                <p>XP Earned: <i class="xwing-miniatures-font xwing-miniatures-font-squad-point-cost"></i>{{pilot.total_xp}}</p>
+
+                <p>XP Spent: <i class="xwing-miniatures-font xwing-miniatures-font-squad-point-cost"></i>{{pilot.spent_ships}} Ships,
+                           <i class="xwing-miniatures-font xwing-miniatures-font-squad-point-cost"></i>{{pilot.spent_initiative}} Initiative,
+                           <i class="xwing-miniatures-font xwing-miniatures-font-squad-point-cost"></i>{{pilot.spent_upgrades}} Upgrades
+                       </p>
+                <p>XP Available: <i class="xwing-miniatures-font xwing-miniatures-font-squad-point-cost"></i>{{remaining}}</p>
+            </div>
+        </div>
+    </div>
+
 
 {% endblock content %}
 

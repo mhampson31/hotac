@@ -1,12 +1,19 @@
 from django.db import models
 from django.urls import reverse
 from django.db.models import Sum, Q
+from django.db.models.functions import Coalesce, Least
 
 from django.contrib.contenttypes.fields import GenericForeignKey
 from django.contrib.contenttypes.models import ContentType
 
 from xwtools.models import Chassis, SlotChoice, Card, PilotCard
 from .campaigns import User, Campaign, UpgradeLogic
+
+
+class UStatusChoice(models.TextChoices):
+    EQUIPPED = 'E', 'Equipped'
+    UNEQUIPPED = 'U', 'Unequipped'
+    LOST = 'X', 'Lost'
 
 
 class Pilot(models.Model):
@@ -128,6 +135,18 @@ class Pilot(models.Model):
 
         return upgrade_query
 
+    @property
+    def force_charges(self):
+        """
+        A pilot's Force charges equals the count of Force upgrades plus the Force charges
+        on other cards, to a max of 3.
+        HotAC rules as written don't seem to account for cards like Ezra (gunner)
+        but we're counting them here.
+        """
+        return self.upgrades.filter(Q(status=UStatusChoice.EQUIPPED), Q(card__type='FRC')|Q(card__force=True)) \
+                         .aggregate(fc=Least(Sum(Coalesce('card__charges', 1)), 3))['fc']
+
+
 
 class PilotShip(models.Model):
     pilot = models.ForeignKey(Pilot, on_delete=models.CASCADE)
@@ -147,11 +166,6 @@ class PilotShip(models.Model):
 
 
 class PilotUpgrade(models.Model):
-    class UStatusChoice(models.TextChoices):
-        EQUIPPED = 'E', 'Equipped'
-        UNEQUIPPED = 'U', 'Unequipped'
-        LOST = 'X', 'Lost'
-
     pilot = models.ForeignKey(Pilot, on_delete=models.CASCADE, related_name='upgrades')
     card = models.ForeignKey(Card, on_delete=models.CASCADE, null=True)
     status = models.CharField(max_length=1, choices=UStatusChoice.choices, default='E')
