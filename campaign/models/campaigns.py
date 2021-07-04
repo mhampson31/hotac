@@ -95,6 +95,11 @@ class Mission(models.Model):
 
     class Meta:
         ordering = ['story', 'sequence']
+        indexes = [
+            models.Index(fields=['story', 'sequence']),
+            models.Index(fields=['rulebook']),
+            models.Index(fields=['player_vp'])
+        ]
 
     def __str__(self):
         return '{} ({} {})'.format(self.name, self.story, self.sequence)
@@ -210,6 +215,10 @@ class FGSetup(models.Model):
     class Meta:
         verbose_name = 'Squad Member'
         verbose_name_plural = 'Squad Members'
+        indexes = [
+            models.Index(fields=['players']),
+            models.Index(fields=['init'])
+        ]
 
     def __str__(self):
         return self.chassis.name if self.chassis else 'Random'

@@ -1,6 +1,6 @@
 from django.db import models
 from django.urls import reverse
-from django.db.models import Sum, Q
+from django.db.models import Sum, Q, F
 from django.db.models.functions import Coalesce, Least
 
 from django.contrib.contenttypes.fields import GenericForeignKey
@@ -54,7 +54,7 @@ class Pilot(models.Model):
 
     @property
     def spent_ships(self):
-        return (self.ships.count() - 1) * self.campaign.rulebook.ship_cost
+        return (self.ships.count() - 1) * F('campaign__rulebook__ship_cost')
 
     @property
     def spent_upgrades(self):
@@ -127,7 +127,7 @@ class Pilot(models.Model):
         # Finally, put everything in order
 
         upgrade_query = Card.objects \
-            .filter(type__in=slots, description__isnull=False, initiative__lte=self.initiative) \
+            .filter(type__in=slots, player_use=True, initiative__lte=self.initiative) \
             .exclude(id__in=self.upgrades.filter(card__repeat=False).values_list('card__id', flat=True)) \
             .exclude(Q(type=SlotChoice.PILOT), \
                     ~Q(id__in=Card.objects.filter(faction=self.campaign.rulebook.faction).values_list('id', flat=True))) \

@@ -147,6 +147,7 @@ class SessionPilot(models.Model):
 
     @property
     def chassis(self):
+        print('SessionPilot old chassis')
         return self.ship.chassis
 
     @property

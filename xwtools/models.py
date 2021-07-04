@@ -82,17 +82,6 @@ class Ability(models.Model):
         abstract = True
         ordering = ['type', '-type2', 'name']
 
-    def __str__(self):
-        return self.name
-
-    @property
-    def for_players(self):
-        return not self.description is None
-
-    @property
-    def for_ai(self):
-        return not self.ai_description is None
-
 
 class Card(models.Model):
     name = models.CharField(max_length=30)
@@ -110,6 +99,18 @@ class Card(models.Model):
     faction = models.ForeignKey(Faction, on_delete=models.CASCADE, null=True, blank=True)
     adds = models.CharField(max_length=120, blank=True, null=True)
     requires = models.CharField(max_length=120, blank=True, null=True)
+    player_use = models.BooleanField(default=True)
+    ai_use = models.BooleanField(default=False)
+
+    class Meta:
+        indexes = [
+            models.Index(fields=['type']),
+            models.Index(fields=['force']),
+            models.Index(fields=['initiative']),
+            models.Index(fields=['chassis']),
+            models.Index(fields=['faction']),
+            models.Index(fields=['player_use'])
+        ]
 
 
     def __str__(self):
@@ -189,10 +190,6 @@ class Upgrade(Ability):
     repeat = models.BooleanField(default=False)
     type = models.CharField(max_length=3, choices=[c for c in SlotChoice.choices if c[0] != SlotChoice.PILOT.value])
 
-
-    # there might be a better way to handle these.
-    # for now, store the full list of icons a card adds with + as a seperator
-    # eg "[Focus] + [Focus] [Link] [Evade]"
     adds = models.CharField(max_length=120, blank=True, null=True)
 
     @property
@@ -316,6 +313,9 @@ class Chassis(models.Model):
                                           null=True, blank=True, on_delete=models.SET_NULL,
                                           related_name='ship')
 
+    class Meta:
+        verbose_name_plural = 'Chassis'
+
     def __str__(self):
         return self.name
 
@@ -330,9 +330,6 @@ class Chassis(models.Model):
     @property
     def arc2_css(self):
         return '{0}arc'.format(self.get_attack2_arc_display().lower().replace(' ', ''))
-
-    class Meta:
-        verbose_name_plural = 'Chassis'
 
 
 class Slot(models.Model):
