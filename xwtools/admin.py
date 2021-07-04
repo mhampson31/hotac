@@ -3,7 +3,7 @@ from django.contrib import admin
 import nested_admin
 
 from .models import Chassis, Slot, Dial, DialManeuver, Faction, Card, UpgradeCard, PilotCard, ShipAbility
-from .models import SlotChoice, Attack
+from .models import SlotChoice, Attack, Action
 
 class DialManeuverInline(nested_admin.NestedTabularInline):
     model = DialManeuver
@@ -20,11 +20,16 @@ class SlotInline(nested_admin.NestedTabularInline):
     extra = 1
 
 
+class ActionInline(nested_admin.NestedTabularInline):
+    model = Action
+    extra = 0
+
+
 class ChassisAdmin(nested_admin.NestedModelAdmin):
     verbose_name = 'Chassis'
     list_display = ('name', 'slug', 'dial', 'size')
     list_select_related = ('dial',)
-    inlines = (SlotInline, DialInline)
+    inlines = (ActionInline, SlotInline, DialInline)
     fieldsets = (
         (None, {
             'fields': ('name', 'size', 'slug')
@@ -79,7 +84,7 @@ class UpgradeCardAdmin(admin.ModelAdmin):
     list_display = ('name', 'type', 'cost', 'charges', 'repeat')
     list_filter = ('type',)
     list_editable = ('cost', 'repeat')
-    inlines = (AttackInline, )
+    inlines = (AttackInline,)
     fieldsets = (
         (None, {
             'fields': ('name', 'description', 'ai_description',

@@ -32,11 +32,18 @@ class SlotChoice(models.TextChoices):
     TEAM = 'TEM', _('Team')
 
 
+class DifficultyChoice(models.TextChoices):
+        BLUE = 'B', _('Blue')
+        WHITE = 'W', _('White')
+        RED = 'R', _('Red')
+        PURPLE = 'P', _('Purple')
+
 DIFFICULTY_CHOICES = (
-        ('B', 'Blue'),
-        ('W', 'White'),
-        ('R', 'Red'),
-        ('P', 'Purple')
+    ('B', 'Blue'),
+    ('W', 'White'),
+    ('R', 'Red'),
+    ('P', 'Purple')
+
 )
 
 
@@ -57,6 +64,22 @@ class ArcChoice(models.TextChoices):
     BULLSEYE = 'B', _('Bullseye Arc')
     LEFT = 'SL', _('Left Arc')
     RIGHT = 'SR', _('Right Arc')
+
+
+class ActionChoice(models.TextChoices):
+    BARREL_ROLL = 'BRO', _('Barrel Roll')
+    BOOST = 'BST', _('Boost')
+    CALCULATE = 'CLT', _('Calculate')
+    CLOAK = 'CLK', _('Cloak')
+    COORDINATE = 'CRD', _('Coordinate')
+    EVADE = 'EVD', _('Evade')
+    FOCUS = 'FCS', _('Focus')
+    LOCK = 'LCK', _('Lock')
+    JAM = 'JAM', _('Jam')
+    RELOAD = 'RLD', _('Reload')
+    REINFORCE = 'RNF', _('Reinforce')
+    ROTATE = 'RTT', _('Rotate Arc')
+    SLAM = 'SLM', _('SLAM')
 
 
 class Faction(models.Model):
@@ -289,14 +312,6 @@ class Chassis(models.Model):
     def css_name(self):
         return self.css if self.css else self.slug.replace('-', '')
 
-    @property
-    def arc1_css(self):
-        return '{0}arc'.format(self.get_attack_arc_display().lower().replace(' ', ''))
-
-    @property
-    def arc2_css(self):
-        return '{0}arc'.format(self.get_attack2_arc_display().lower().replace(' ', ''))
-
 
 class Slot(models.Model):
     chassis = models.ForeignKey(Chassis, related_name='slots', on_delete=models.CASCADE)
@@ -306,3 +321,25 @@ class Slot(models.Model):
     @property
     def css_name(self):
         return self.get_type_display()
+
+
+class Action(models.Model):
+    chassis = models.ForeignKey(Chassis, on_delete=models.CASCADE, related_name='actions')
+    action = models.CharField(max_length=3, choices=ActionChoice.choices)
+    difficulty = models.CharField(max_length=1, choices=DifficultyChoice.choices, default=DifficultyChoice.WHITE)
+    linked_action = models.CharField(max_length=3, choices=ActionChoice.choices, blank=True)
+    linked_difficulty = models.CharField(max_length=1, choices=DifficultyChoice.choices, blank=True)
+
+    def __str__(self):
+        if self.linked_action:
+            return '[{}#{}] [Linked] [{}#{}]'.format(self.get_action_display(), self.get_difficulty_display(), self.get_linked_action_display(), self.get_linked_difficulty_display())
+        else:
+            return '[{}#{}]'.format(self.get_action_display(), self.get_difficulty_display())
+
+    @property
+    def difficulty_css(self):
+        return {'B':'easy', 'R':'hard', 'W':'', 'P':'force'}[self.difficulty]
+
+    @property
+    def linked_difficulty_css(self):
+        return {'B':'easy', 'R':'hard', 'W':'', 'P':'force'}[self.linked_difficulty]

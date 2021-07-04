@@ -1,8 +1,8 @@
 :root {
     --green: mediumseagreen;
-    --red: maroon;
+    --red: red;
     --blue: blue;
-    --yellow: gold;
+    --yellow: goldenrod;
     --orange: darkorange;
     --purple: mediumpurple;
     --grey: dimgrey;
@@ -11,6 +11,11 @@
 
 body {
 
+}
+
+
+i.xwing-miniatures-font {
+    font-size: inherit;
 }
 
 section > .row {
@@ -30,7 +35,7 @@ section > .row {
     color: var(--green);
 }
 
-.easy,
+.easy, .blue,
 .shields, .xwf-shields,
 .shields > i.before,
 .shields:before {

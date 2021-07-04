@@ -55,6 +55,7 @@ def get_icon(istring, css=''):
     iname = istring[0].strip()
     if len(istring) > 1:
         css = '{} {}'.format(css, istring[1])
+    print(iname)
     iname = icon_text.get(iname, iname.lower())
     if iname == 'pilot':
         iname = 'helmet-rebel'
