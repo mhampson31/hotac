@@ -131,6 +131,7 @@ class Pilot(models.Model):
             .exclude(id__in=self.upgrades.filter(card__repeat=False).values_list('card__id', flat=True)) \
             .exclude(Q(type=SlotChoice.PILOT), \
                     ~Q(id__in=Card.objects.filter(faction=self.campaign.rulebook.faction).values_list('id', flat=True))) \
+            .select_related('chassis', 'faction') \
             .order_by('type', 'name')
 
         return upgrade_query
@@ -143,8 +144,9 @@ class Pilot(models.Model):
         HotAC rules as written don't seem to account for cards like Ezra (gunner)
         but we're counting them here.
         """
-        return self.upgrades.filter(Q(status=UStatusChoice.EQUIPPED), Q(card__type='FRC')|Q(card__force=True)) \
-                         .aggregate(fc=Least(Sum(Coalesce('card__charges', 1)), 3))['fc']
+        return self.upgrades.filter(Q(status=UStatusChoice.EQUIPPED), \
+                                    Q(card__type='FRC')|Q(card__force=True)) \
+                            .aggregate(fc=Least(Sum(Coalesce('card__charges', 1)), 3))['fc']
 
 
 
@@ -153,6 +155,11 @@ class PilotShip(models.Model):
     chassis = models.ForeignKey(Chassis, on_delete=models.CASCADE, null=True, related_name='pilot_ship')
     active = models.BooleanField(default = True)
     name = models.CharField(max_length=50, blank=True, null=True)
+
+    class Meta:
+        indexes = [
+        models.Index(fields=['active',])
+        ]
 
     def __str__(self):
         if self.name:
