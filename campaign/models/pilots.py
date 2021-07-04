@@ -54,7 +54,7 @@ class Pilot(models.Model):
 
     @property
     def spent_ships(self):
-        return (self.ships.count() - 1) * F('campaign__rulebook__ship_cost')
+        return (self.ships.count() - 1) * self.campaign.rulebook.ship_cost
 
     @property
     def spent_upgrades(self):
