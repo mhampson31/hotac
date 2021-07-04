@@ -48,9 +48,10 @@ class FactionAdmin(admin.ModelAdmin):
 class PilotCardAdmin(admin.ModelAdmin):
     model = PilotCard
     list_display = ('name', 'faction', 'chassis', 'initiative')
+    listFilter = ('faction', 'chassis', 'initiative')
     list_editable = ('chassis', 'initiative')
 
-    fields = ('name', 'description', 'ai_description', 'type', 'faction', 'initiative', 'chassis', 'charges', 'force')
+    fields = ('name', 'description', 'ai_description', 'type', 'faction', 'initiative', 'chassis', 'charges', 'force', 'ai_use')
 
     def formfield_for_choice_field(self, db_field, request, **kwargs):
         if db_field.name == "type":
@@ -60,7 +61,7 @@ class PilotCardAdmin(admin.ModelAdmin):
 
 class ShipAbilityAdmin(admin.ModelAdmin):
     model = ShipAbility
-    fields = ('name', 'description', 'ai_description', 'type')
+    fields = ('name', 'description', 'ai_description', 'type', 'player_use', 'ai_use')
 
     def formfield_for_choice_field(self, db_field, request, **kwargs):
         if db_field.name == "type":
@@ -84,7 +85,8 @@ class UpgradeCardAdmin(admin.ModelAdmin):
             'fields': ('name', 'description', 'ai_description',
                        ('type', 'type2', 'cost', 'repeat'),
                        ('charges', 'force'),
-                       ('requires', 'adds',)
+                       ('requires', 'adds',),
+                       ('player_use', 'ai_use')
                       )
 
         }),
