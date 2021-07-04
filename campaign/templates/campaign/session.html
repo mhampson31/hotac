@@ -118,18 +118,19 @@
                  </div>
              </div>
           </div>
+
           <div id="collapse-{{forloop.counter}}" class="collapse show" aria-labelledby="heading-{{forloop.counter}}">
              <div class="card-body">
                 <h6 class="card-title">{{ship.pilot}} {% if ship.elite %}{{'talent'|get_icon}}{% endif %}</h6>
                 <ul class="list-group list-group-horizontal mb-3">
-                    <li class="list-group-item attack">{{ship.chassis.attack}}{{ship.chassis.arc1_css|get_icon}}</li>
+                    <li class="list-group-item attack">{{ship.chassis.get_attack_arc_display|get_icon}}{{ship.chassis.attack}}</li>
                     {% if ship.chassis.attack2 %}
-                    <li class="list-group-item attack">{{ship.chassis.attack2}}{{ship.chassis.arc2_css|get_icon}}</li>
+                    <li class="list-group-item attack">{{ship.chassis.get_attack2_arc_display|get_icon}}{{ship.chassis.attack2}}</li>
                     {% endif %}
-                    <li class="list-group-item agility">{{ship.chassis.agility}}{{'agility'|get_icon}}</li>
-                    <li class="list-group-item hull">{{ship.chassis.hull}}{{'hull'|get_icon}}</li>
-                    {% if ship.chassis.shields %}<li class="list-group-item shields">{{ship.chassis.shields}}{{'shield'|get_icon}}</li>{% endif %}
-
+                    <li class="list-group-item agility">{{'agility'|get_icon}}{{ship.chassis.agility}}</li>
+                    <li class="list-group-item hull">{{'hull'|get_icon|repeat:ship.chassis.hull}}</li>
+                    {% if ship.chassis.shields %}<li class="list-group-item shields">{{'shield'|get_icon|repeat:ship.chassis.shields}}</li>{% endif %}
+                    {% if ship.chassis.energy %}<li class="list-group-item energy">{{'energy'|get_icon|repeat:ship.chassis.energy}}</li>{% endif %}
                 </ul>
 
                {% if ship.abilities %}

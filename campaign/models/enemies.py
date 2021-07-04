@@ -1,6 +1,6 @@
 from django.db import models
 
-from xwtools.models import Chassis, Faction, Upgrade, SizeChoice, Card
+from xwtools.models import Chassis, Faction, SizeChoice, Card
 
 class EnemyPilot(models.Model):
     chassis = models.ForeignKey(Chassis, on_delete=models.CASCADE)

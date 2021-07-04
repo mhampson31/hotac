@@ -68,21 +68,6 @@ class Faction(models.Model):
         return self.name
 
 
-class Ability(models.Model):
-    name = models.CharField(max_length=30)
-    description = models.TextField(null=True, blank=True)
-    ai_description = models.TextField(null=True, blank=True)
-    type = models.CharField(max_length=3, choices=SlotChoice.choices)
-    type2 = models.CharField(max_length=3, choices=SlotChoice.choices, null=True, blank=True, default=None)
-    charges = models.PositiveSmallIntegerField(null=True, blank=True)
-    #recurring = models.BooleanField(default=False)
-    force = models.BooleanField(default=False)
-
-    class Meta:
-        abstract = True
-        ordering = ['type', '-type2', 'name']
-
-
 class Card(models.Model):
     name = models.CharField(max_length=30)
     description = models.TextField(null=True, blank=True)
@@ -183,25 +168,6 @@ class ShipAbility(Card):
     class Meta:
         proxy = True
         verbose_name_plural = 'Ship Abilities'
-
-
-class Upgrade(Ability):
-    cost = models.SmallIntegerField(default=0)
-    repeat = models.BooleanField(default=False)
-    type = models.CharField(max_length=3, choices=[c for c in SlotChoice.choices if c[0] != SlotChoice.PILOT.value])
-
-    adds = models.CharField(max_length=120, blank=True, null=True)
-
-    @property
-    def add_list(self):
-        return self.adds.split('+')
-
-
-class OldPilotCard(Ability):
-    initiative = models.PositiveSmallIntegerField(default=1)
-    chassis = models.ForeignKey('Chassis', on_delete=models.CASCADE, related_name = 'pilot_card')
-    faction = models.ForeignKey(Faction, on_delete=models.CASCADE)
-    type = models.CharField(max_length=3, choices=SlotChoice.choices, default=SlotChoice.PILOT)
 
 
 class Dial(models.Model):
