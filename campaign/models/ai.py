@@ -9,11 +9,6 @@ class AI(models.Model):
     dial = models.ForeignKey(Dial, on_delete=models.CASCADE)
     flee = models.PositiveSmallIntegerField(default=0)
 
-    VERSION_CHOICES = (
-        ('f7', 'FGA 0.7'),
-    )
-    version = models.CharField(max_length=3, choices=VERSION_CHOICES, default='f7')
-
     def __str__(self):
         return '{} AI'.format(self.dial.chassis.name)
 
@@ -92,6 +87,7 @@ class AIManeuver(models.Model):
 
 class AIPriority(models.Model):
     TYPE_CHOICES = (
+        ('U', 'System Phase'),
         ('T', 'Target'),
         ('A', 'Action')
     )

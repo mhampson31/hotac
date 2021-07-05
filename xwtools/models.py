@@ -119,6 +119,7 @@ class Card(models.Model):
             models.Index(fields=['faction']),
             models.Index(fields=['player_use'])
         ]
+        ordering = ['type', 'name']
 
 
     def __str__(self):

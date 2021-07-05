@@ -9,7 +9,7 @@
     </div>
 
     <div class="card-body">
-        <ul class="list-group mb-3 col-8 float-start">
+        <ul class="list-group mb-3 col-7 float-start">
             <li class="list-group-item attack">{{ship.chassis.get_attack_arc_display|get_icon}}{{ship.chassis.attack}}</li>
 
             {% if ship.chassis.attack2 %}
@@ -29,7 +29,7 @@
             {% endif %}
         </ul>
 
-        <ul class="list-group mb-3 col-3 float-end">
+        <ul class="list-group mb-3 col-4 float-end">
             {% for action in ship.chassis.actions.all %}
             <li class="list-group-item">
                 <span class="{{action.difficulty_css}}">{{action.get_action_display|get_icon}}</span>
@@ -39,8 +39,9 @@
             </li>
             {% endfor %}
         </ul>
+    </div>
 
-
+    <div class="row mb-3">
         {% if ship.chassis.ability %}
         <span><strong>{{ship.chassis.ability}}</strong>: {{ship.chassis.ability.description|iconize}}</span>
         {% endif %}
