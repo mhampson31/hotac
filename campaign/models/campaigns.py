@@ -117,6 +117,8 @@ class Campaign(models.Model):
     deck = models.ManyToManyField(Mission)
     deck_draw = models.JSONField(null=True)
 
+    exclude_random = models.ManyToManyField(Chassis)
+
     def __str__(self):
         return self.description
 
@@ -225,7 +227,7 @@ class FGSetup(models.Model):
 
     @property
     def is_default(self):
-        return self.chassis == self.mission.enemy_faction.default_ship
+        return self.chassis == self.flight_group.mission.enemy_faction.default_ship
 
     def generate(self, group_init):
         from random import choice

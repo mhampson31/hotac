@@ -1,5 +1,5 @@
 from django.db import models
-from django.db.models import Avg, Sum
+from django.db.models import Avg, Sum, Q
 from django.utils.translation import gettext_lazy as _
 from django.urls import reverse
 
@@ -49,28 +49,30 @@ class Session(models.Model):
             return
         self.enemies.clear()
         fac = self.mission.enemy_faction
-        enemy_list = EnemyPilot.objects.filter(faction=fac, random=True)
-        chassis_list = self.mission.enemy_faction.ships.exclude(id=fac.default_ship.id)
+        enemy_list = EnemyPilot.objects.filter(faction=fac, random=True) \
+                                       .exclude(Q(chassis_id=fac.default_ship.id)|Q(chassis_id__in=self.campaign.exclude_random.all()))
+        #chassis_list = self.mission.enemy_faction.ships.exclude(Q(id=fac.default_ship.id)|Q(id__in=self.campaign.exclude_random.all()))
         for fg in self.mission.flight_groups.all():
             squad = fg.squad_members.filter(players__lte=self.pilots.count(), init__lte=self.group_init)
             p = 1 # just a counter to use in the callsigns
 
             # how many default enemies do we need to replace?
-            r = squad.filter(action='R').count()
+            replacements = squad.filter(action='R').count()
 
             # we handle replacements by collecting all the enemies in the flight group,
             # including the ones indicated as replacements. Then we go through the list
             # and add each one to the session, unless it's a default ship and we still
             # have replacements indicated
             for sq in squad:
-                if r and sq.is_default:
-                    r = r-1
+                if replacements and sq.is_default:
+                    replacements = replacements-1
                     pass
                 else:
                     # if the FGSetup doesn't have a chassis, we select a non-default at random
                     if not sq.chassis:
                         new_enemy = choice(enemy_list.exclude(chassis=fac.default_ship))
                     else:
+                        print(sq)
                         new_enemy = choice(enemy_list.filter(chassis=sq.chassis))
                     self.sessionenemy_set.create(flight_group=fg,
                                                  enemy=new_enemy,

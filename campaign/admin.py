@@ -56,7 +56,7 @@ class MissionAdmin(nested_admin.NestedModelAdmin):
 class CampaignAdmin(admin.ModelAdmin):
     model = Campaign
     list_display = ['description', 'rulebook', 'gm']
-    filter_horizontal = ['deck',]
+    filter_horizontal = ['deck', 'exclude_random']
 
 
 class SessionEnemyInline(admin.TabularInline):
