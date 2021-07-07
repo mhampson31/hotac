@@ -54,6 +54,7 @@
               <span>
                   {% if upgrade.force %}{{"Force#force"|get_icon|repeat:upgrade.charges}}
                   {% else %}{{"Charge#charge"|get_icon|repeat:upgrade.charges}}
+                            {% if upgrade.recurring %}{{'recurring'|get_icon}}{% endif %}
                   {% endif %}
               </span>
           </li>

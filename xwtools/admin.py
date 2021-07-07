@@ -59,7 +59,7 @@ class PilotCardAdmin(admin.ModelAdmin):
     list_filter = ('faction', 'chassis', 'initiative', 'player_use', 'ai_use')
     list_editable = ('chassis', 'initiative', 'player_use', 'ai_use')
 
-    fields = ('name', 'description', 'ai_description', 'type', 'faction', 'initiative', 'chassis', 'charges', 'force', 'ai_use')
+    fields = ('name', 'description', 'ai_description', 'type', 'faction', 'chassis', 'initiative', 'charges', 'recurring', 'force', 'ai_use')
 
     def formfield_for_choice_field(self, db_field, request, **kwargs):
         if db_field.name == "type":
@@ -84,15 +84,15 @@ class AttackInline(admin.TabularInline):
 
 class UpgradeCardAdmin(admin.ModelAdmin):
     model = UpgradeCard
-    list_display = ('name', 'type', 'cost', 'charges', 'repeat', 'player_use', 'ai_use')
+    list_display = ('name', 'type', 'cost', 'charges', 'recurring', 'repeat', 'player_use', 'ai_use')
     list_filter = ('type', 'player_use', 'ai_use')
-    list_editable = ('cost', 'repeat', 'player_use', 'ai_use')
+    list_editable = ('cost', 'repeat', 'recurring', 'player_use', 'ai_use')
     inlines = (AttackInline,)
     fieldsets = (
         (None, {
             'fields': ('name', 'description', 'ai_description',
                        ('type', 'type2', 'cost', 'repeat'),
-                       ('charges', 'force'),
+                       ('charges', 'recurring', 'force'),
                        ('requires', 'adds',),
                        ('player_use', 'ai_use')
                       )
