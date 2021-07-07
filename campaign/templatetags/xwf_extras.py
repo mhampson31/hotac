@@ -29,6 +29,7 @@ icon_text = {
     'Tallon Roll Right':'trollright',
     'Turn Left':'turnleft',
     'Turn Right':'turnright',
+    'Reverse Straight': 'reversestraight',
     'Reverse Bank Left': 'reversebankleft',
     'Reverse Bank Right': 'reversebankright',
     'Sloop Left': 'sloopleft',

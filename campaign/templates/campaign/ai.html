@@ -66,10 +66,10 @@
             {% for dir in maneuvers %}
             <div class="tab-pane fade {% if forloop.first %}show{% endif %}" id="mv-{{dir.grouper|lower}}" role="tabpanel" aria-labelledby="mv-{{dir.grouper|lower}}-tab">
             {% for r in dir.list %}
-                <button type="button" class="btn btn-block btn-secondary">{{r.get_range_display}}</button>
+                <button type="button" class="btn btn-block btn-secondary float-sm-start">{{r.get_range_display}}</button>
                 <ul class="list-group mb-4 d-flex list-group-horizontal">
                     {% for roll in r.rolls %}
-                    <li class="list-group-item flex-fill px-1">{{roll.speed}}<span class="{{roll.icon_color}}">{{roll.css_name|get_icon}}</span></li>
+                    <li class="list-group-item flex-fill px-1">{{roll.speed|cut:"-"}}<span class="{{roll.icon_color}}">{{roll.css_name|get_icon}}</span></li>
                     {% endfor %}
                 </ul>
             {% endfor %}

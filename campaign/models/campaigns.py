@@ -93,6 +93,8 @@ class Mission(models.Model):
     bonus_2 = models.TextField(blank=True, null=True)
     penalty = models.TextField(blank=True, null=True)
 
+    ground_assault = models.BooleanField(default=False)
+
     class Meta:
         ordering = ['story', 'sequence']
         indexes = [

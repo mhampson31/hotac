@@ -5,6 +5,7 @@ import nested_admin
 from .models import Chassis, Slot, Dial, DialManeuver, Faction, Card, UpgradeCard, PilotCard, ShipAbility
 from .models import SlotChoice, Attack, Action
 
+
 class DialManeuverInline(nested_admin.NestedTabularInline):
     model = DialManeuver
     extra = 0
@@ -37,11 +38,13 @@ class ChassisAdmin(nested_admin.NestedModelAdmin):
         ('Stats', {
             'fields': (('attack', 'attack_arc'),
                       ('attack2', 'attack2_arc'),
-                      ('agility', 'hull', 'shields', 'energy'),
+                      ('agility', 'hull', 'shields'),
+                      ('energy', ),
+                      ('walker', 'armor'),
                       ('ability'))
         }),
         ('Miscellaneous', {
-            'fields': (('hyperdrive', 'cloaking', 'css'))
+            'fields': (('hyperdrive', 'css'))
         })
     )
 
@@ -93,7 +96,6 @@ class UpgradeCardAdmin(admin.ModelAdmin):
                        ('requires', 'adds',),
                        ('player_use', 'ai_use')
                       )
-
         }),
     )
 
@@ -104,7 +106,6 @@ class UpgradeCardAdmin(admin.ModelAdmin):
             slots.remove((SlotChoice.SHIP.value, SlotChoice.SHIP.label))
             kwargs['choices'] = (slots)
         return super().formfield_for_choice_field(db_field, request, **kwargs)
-
 
 
 admin.site.register(ShipAbility, ShipAbilityAdmin)

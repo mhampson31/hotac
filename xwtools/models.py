@@ -43,7 +43,6 @@ DIFFICULTY_CHOICES = (
     ('W', 'White'),
     ('R', 'Red'),
     ('P', 'Purple')
-
 )
 
 
@@ -218,7 +217,7 @@ class Dial(models.Model):
 
 class DialManeuver(models.Model):
     dial = models.ForeignKey(Dial, on_delete=models.CASCADE, related_name='maneuvers')
-    speed = models.PositiveSmallIntegerField()
+    speed = models.SmallIntegerField() # negative values for reverse maneuvers
 
     BEARING_TYPES = {
         'Straight': 'S',
@@ -229,6 +228,7 @@ class DialManeuver(models.Model):
         'Sloop': 'SL',
         'Reverse Bank': 'RB',
         'Stationary': 'SS',
+        'Reverse Straight': 'RS',
         '--':'XX' # for use as a spacer
     }
     BEARING_CHOICES = [(v, k) for k, v in BEARING_TYPES.items()]
@@ -267,10 +267,20 @@ class DialManeuver(models.Model):
                                    '' if self.difficulty == 'W' else ' ' + self.get_difficulty_display())
 
     class Meta:
+        """
+        The second order item is a case statement that attemps to create a left-center-right
+        row of maneuvers. It starts with a positive value based on the bearing, with
+        1 and 2 being the "center" values, and higher values being closer to the edge.
+        Then, if the direction of the maneuver is Left, it flips the Case value to negative.
+        The end result is a list of ordering values like LT=-4, LB=-3, straight=2, RB=3, RT=4
+        """
         ordering = ['-speed', Case(
                 When(bearing='XX', then=Value(1)),
-                When(bearing='S', then=Value(2)),
+                When(bearing='S', then=Value(2)),  # No speed can have more than one of
+                When(bearing='RS', then=Value(2)), # these three bearings, so they can
+                When(bearing='SS', then=Value(2)), # have the same value
                 When(bearing='B', then=Value(3)),
+                When(bearing='RB', then=Value(3)),
                 When(bearing='T', then=Value(4)),
                 When(bearing='TR', then=Value(5)),
                 When(bearing='SL', then=Value(6)),
@@ -295,11 +305,13 @@ class Chassis(models.Model):
     shields = models.PositiveSmallIntegerField(default=0)
     energy = models.PositiveSmallIntegerField(default=0)
     hyperdrive = models.BooleanField(default=True)
-    cloaking = models.BooleanField(default=False)
+
+    walker = models.BooleanField(default=False)
+    armor = models.PositiveSmallIntegerField(default=0)
 
     css = models.CharField(max_length=80, null=True, blank=True)
 
-    ability = models.OneToOneField(Card, limit_choices_to={'type':SlotChoice.SHIP.value},
+    ability = models.ForeignKey(Card, limit_choices_to={'type':SlotChoice.SHIP.value},
                                           null=True, blank=True, on_delete=models.SET_NULL,
                                           related_name='ship')
 
