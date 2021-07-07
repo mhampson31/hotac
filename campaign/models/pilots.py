@@ -26,6 +26,8 @@ class Pilot(models.Model):
     callsign = models.CharField(max_length=30)
     initiative = models.PositiveSmallIntegerField(default=2)
 
+    bonus_xp = models.PositiveSmallIntegerField(default=0)
+
     PATH_CHOICES = (
         ('F', 'Force User'),
         ('A', 'Ace')
@@ -46,7 +48,7 @@ class Pilot(models.Model):
                          [s.bonus for s in self.sessionpilot_set.all()])
         else:
             earned = sum([s.xp_earned for s in self.sessionpilot_set.all()])
-        return base + earned
+        return base + earned + self.bonus_xp
 
     @property
     def spent_xp(self):
