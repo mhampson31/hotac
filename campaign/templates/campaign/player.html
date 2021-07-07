@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% load xwf_extras %}
+
+{% block content %}
+
+<h3>{{player.username}}</h3>
+<h6>{{player.first_name}} {{player.last_name}}</h6>
+
+{% for campaign in player.campaign_set.all %}
+{{campaign}}
+{% endfor %}
+
+<ul class="list-group">
+    {% for pilot in player.pilot_set.all %}
+    <li class="list-group-item"><a href="{% url 'game:pilot' pilot.id %}">{{pilot.callsign}}</a></li>
+    {% endfor %}
+</ul>
+
+{% endblock content %}

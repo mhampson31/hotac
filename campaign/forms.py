@@ -19,6 +19,7 @@ class EnemyPilotForm(forms.Form):
     pass
 #    level = forms.ChoiceField(EnemyAbility.Level.choices)
 
+
 class PUHelper(FormHelper):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)

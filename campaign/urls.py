@@ -16,4 +16,7 @@ urlpatterns = [
     path('session/<int:session_id>', views.session_summary, name='session'),
     path('session/<int:pk>/debrief', views.SessionDebrief.as_view(), name='session-debrief'),
 
+    path('profile/', views.player_page, name='player_profile'),
+    path('player/<int:player_id>', views.player_page, name="player_update"),
+
 ]

@@ -62,6 +62,8 @@ AUTH_USER_MODEL = 'campaign.User'
 
 ROOT_URLCONF = 'hotac.urls'
 
+LOGIN_REDIRECT_URL = 'game:player_profile'
+
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 CRISPY_TEMPLATE_PACK = "bootstrap5"
 

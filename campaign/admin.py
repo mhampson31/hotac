@@ -13,6 +13,7 @@ from xwtools.models import Card
 
 class PilotInline(admin.StackedInline):
     model = Pilot
+    extra = 0
 
 
 class UserAdmin(BaseUserAdmin):

@@ -12,12 +12,23 @@ from django.utils.decorators import method_decorator
 
 from crispy_forms.layout import Submit
 
-from .models import Session, Pilot, PilotShip, PilotUpgrade, Rulebook, Campaign, AI, EnemyPilot
+from .models import Session, Pilot, PilotShip, PilotUpgrade, Rulebook, Campaign, AI, EnemyPilot, User
 from .forms import EnemyPilotForm, SessionForm, SessionPilotFormset, SessionEnemyFormset, \
                    SPFormsetHelper, SEFormsetHelper, PUHelper, AddUpgrade, \
                    CampaignForm, SessionPlanForm, AddSessionPilotFormset, SessionPilotHelper
 
 from xwtools.models import SlotChoice, Card
+
+
+@login_required
+def player_page(request, player_id=None):
+    if player_id:
+        player = get_object_or_404(User, pk=player_id)
+    else:
+        player = request.user
+
+    context = {'player':player}
+    return render(request, 'campaign/player.html', context)
 
 
 def index(request):
