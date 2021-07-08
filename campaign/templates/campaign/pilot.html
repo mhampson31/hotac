@@ -44,7 +44,7 @@
             </div>
             <div class="row mb-5 d-flex flex-wrap">
             {% endifchanged %}
-            {% include './includes/upgrade_card.html' with upgrade=gu.card upgrade_logic=pilot.campaign.rulebook.upgrade_logic status=gu.status %}
+            {% include './includes/upgrade_card.html' with upgrade=gu.card cost=gu.cost status=gu.status %}
             {% endfor %}
             </div>
         </div>
@@ -62,7 +62,7 @@
             </div>
             <div class="row mb-5 d-flex flex-wrap">
             {% endifchanged %}
-            {% include './includes/upgrade_card.html' with upgrade=au upgrade_logic=pilot.campaign.rulebook.upgrade_logic %}
+            {% include './includes/upgrade_card.html' with upgrade=au cost=au|get_cost:pilot.campaign.rulebook.upgrade_logic %}
             {% endfor %}
             </div>
         </div>
