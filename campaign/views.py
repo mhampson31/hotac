@@ -162,15 +162,16 @@ class PilotUpdate(UpdateView):
         data = super().get_context_data(**kwargs)
         pilot = self.object
         if self.request.method == 'POST':
-            update_form = AddUpgrade(self.request.POST, initial={'pilot':pilot.id, 'status':'E'})
+            update_form = AddUpgrade(self.request.POST, initial={'pilot':pilot.id, 'status':'E', 'cost':0})
 
             if update_form.is_valid():
+                print(update_form.cleaned_data)
                 update_form.save()
                 #return HttpResponseRedirect(pilot.get_absolute_url())
             else:
                 print(update_form.errors)
         else:
-            update_form = AddUpgrade(initial={'pilot':pilot, 'status':'E'})
+            update_form = AddUpgrade(initial={'pilot':pilot, 'status':'E', 'cost':0})
         update_form.fields['card'].queryset = pilot.available_upgrades
         data['update'] = update_form
         data['remaining'] = pilot.total_xp - pilot.spent_xp

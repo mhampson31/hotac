@@ -175,15 +175,22 @@ class AddUpgrade(forms.ModelForm):
 
     class Meta:
         model = PilotUpgrade
-        fields = ['card', 'status', 'pilot']
+        fields = ['card', 'status', 'pilot', 'cost']
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.fields['status'].widget = forms.HiddenInput()
         self.fields['pilot'].widget = forms.HiddenInput()
+        self.fields['cost'].widget = forms.HiddenInput()
         self.helper = FormHelper()
         self.helper.form_method = 'post'
         self.layout = Layout(
             FloatingField('card', wrapper_class="col-2"),
         )
         self.helper.add_input(Submit('submit', 'Purchase'))
+
+    def clean(self):
+        cleaned_data = super().clean()
+        pilot = cleaned_data['pilot']
+        cleaned_data['cost'] = cleaned_data['card'].campaign_cost(pilot.campaign.rulebook.upgrade_logic)
+        return cleaned_data

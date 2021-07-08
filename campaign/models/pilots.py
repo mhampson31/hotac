@@ -178,10 +178,11 @@ class PilotUpgrade(models.Model):
     pilot = models.ForeignKey(Pilot, on_delete=models.CASCADE, related_name='upgrades')
     card = models.ForeignKey(Card, on_delete=models.CASCADE, null=True)
     status = models.CharField(max_length=1, choices=UStatusChoice.choices, default='E')
+    cost = models.PositiveSmallIntegerField()
 
-    @property
-    def cost(self):
-        return self.card.campaign_cost(self.pilot.campaign.rulebook.upgrade_logic)
+    #@property
+    #def cost(self):
+    #    return self.card.campaign_cost(self.pilot.campaign.rulebook.upgrade_logic)
 
     def __str__(self):
         return str(self.card)
