@@ -24,7 +24,7 @@
           </ul>
           <div class="col-md-3 text-end">
             {% if user.is_authenticated %}
-            <button class="btn btn-outline-light" type="button">{{user.username}}</button>
+            <a href="{% url 'game:player_profile' %}" class="btn btn-outline-light" type="button">{{user.username}}</button>
             <a href="{% url 'logout' %}" class="btn btn-outline-warning">Log Out</a>
             {% else %}
             <a href="{% url 'login' %}" class="btn btn-outline-light">Log In</a>

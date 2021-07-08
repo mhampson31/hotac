@@ -6,15 +6,20 @@
 
 <h3>{{player.username}}</h3>
 <h6>{{player.first_name}} {{player.last_name}}</h6>
+<p><a href="{% url 'admin:password_change' %}">Change Password</a/</p>
 
-{% for campaign in player.campaign_set.all %}
-{{campaign}}
-{% endfor %}
-
-<ul class="list-group">
-    {% for pilot in player.pilot_set.all %}
-    <li class="list-group-item"><a href="{% url 'game:pilot' pilot.id %}">{{pilot.callsign}}</a></li>
+{% regroup player.pilot_set.all by campaign as campaign_list %}
+    {% for campaign in campaign_list %}
+    <div class="card mb-3">
+        <div class="card-header">
+            <a href="{% url 'game:campaign' campaign.grouper.id %}">{{campaign.grouper}}</a>
+        </div>
+        <div class="list-group list-group-flush">
+            {% for pilot in campaign.list %}
+            <a href="{% url 'game:pilot' pilot.id %}" class="list-group-item list-group-item-action">{{pilot.callsign}}</a>
+            {% endfor %}
+        </div>
+    </div>
     {% endfor %}
-</ul>
 
 {% endblock content %}
