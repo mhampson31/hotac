@@ -18,5 +18,4 @@ urlpatterns = [
 
     path('profile/', views.player_page, name='player_profile'),
     path('player/<int:player_id>', views.player_page, name="player_update"),
-
 ]
