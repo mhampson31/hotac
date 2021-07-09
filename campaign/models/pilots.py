@@ -2,7 +2,7 @@ from django.db import models
 from django.urls import reverse
 from django.db.models import Sum, Q, F
 from django.db.models.functions import Coalesce, Least
-
+from django.utils.functional import cached_property
 from django.contrib.contenttypes.fields import GenericForeignKey
 from django.contrib.contenttypes.models import ContentType
 
@@ -40,7 +40,7 @@ class Pilot(models.Model):
     def get_absolute_url(self):
         return reverse('game:pilot', kwargs={'pk': self.pk})
 
-    @property
+    @cached_property
     def total_xp(self):
         base = self.pilotship_set.first().game_info.xp_value
         if self.campaign.pool_xp:
@@ -50,19 +50,19 @@ class Pilot(models.Model):
             earned = sum([s.xp_earned for s in self.sessionpilot_set.all()])
         return base + earned + self.bonus_xp
 
-    @property
+    @cached_property
     def spent_xp(self):
         return self.spent_ships + self.spent_upgrades + self.spent_initiative
 
-    @property
+    @cached_property
     def spent_ships(self):
         return (self.ships.count() - 1) * self.campaign.rulebook.ship_cost
 
-    @property
+    @cached_property
     def spent_upgrades(self):
         return sum([u.cost for u in self.upgrades.all()])
 
-    @property
+    @cached_property
     def spent_initiative(self):
         levels = range(self.campaign.rulebook.start_init, self.initiative)
         if self.campaign.rulebook.initiative_sq:
@@ -70,7 +70,7 @@ class Pilot(models.Model):
         else:
             return sum([(l+1)*self.campaign.rulebook.initiative_cost for l in levels])
 
-    @property
+    @cached_property
     def active_ship(self):
         # grab the active ship. If there's somehow multiple, grab the newest
         return self.pilotship_set.filter(active=True).last()
@@ -79,7 +79,7 @@ class Pilot(models.Model):
     def starter_ship(self):
         return self.ships.first()
 
-    @property
+    @cached_property
     def slots(self):
         """
         Compile the list of slots available to a player, according to their
@@ -110,7 +110,7 @@ class Pilot(models.Model):
         slot_list.sort()
         return slot_list
 
-    @property
+    @cached_property
     def available_upgrades(self):
         slots = [s.value for s in self.slots]
 
@@ -138,7 +138,7 @@ class Pilot(models.Model):
 
         return upgrade_query
 
-    @property
+    @cached_property
     def force_charges(self):
         """
         A pilot's Force charges equals the count of Force upgrades plus the Force charges
@@ -179,10 +179,6 @@ class PilotUpgrade(models.Model):
     card = models.ForeignKey(Card, on_delete=models.CASCADE, null=True)
     status = models.CharField(max_length=1, choices=UStatusChoice.choices, default='E')
     cost = models.PositiveSmallIntegerField()
-
-    #@property
-    #def cost(self):
-    #    return self.card.campaign_cost(self.pilot.campaign.rulebook.upgrade_logic)
 
     def __str__(self):
         return str(self.card)

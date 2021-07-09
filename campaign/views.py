@@ -156,7 +156,7 @@ class PilotUpdate(UpdateView):
         return super().dispatch(*args, **kwargs)
 
     def get_queryset(self, **kwargs):
-        return Pilot.objects.select_related('campaign').prefetch_related('upgrades', 'ships')
+        return Pilot.objects.select_related('campaign',)
 
     def get_context_data(self, **kwargs):
         data = super().get_context_data(**kwargs)
