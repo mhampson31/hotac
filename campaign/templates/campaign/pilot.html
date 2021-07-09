@@ -53,7 +53,11 @@
     <div class="tab-pane" role="tabpanel" aria-labelledby="available-tab" id="available">
         <div class="container">
             <div class="row mb-3">
-                {% crispy update update.helper %}
+                <form method="POST">
+                {% crispy form  %}
+                 {{ update.management_form }}
+                {% crispy update  %}
+                </form>
             </div>
 
             <div class="row mb-5 d-flex flex-wrap">

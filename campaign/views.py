@@ -15,7 +15,7 @@ from crispy_forms.layout import Submit
 from .models import Session, Pilot, PilotShip, PilotUpgrade, Rulebook, Campaign, AI, EnemyPilot, User
 from .forms import EnemyPilotForm, SessionForm, SessionPilotFormset, SessionEnemyFormset, \
                    SPFormsetHelper, SEFormsetHelper, PUHelper, AddUpgrade, \
-                   CampaignForm, SessionPlanForm, AddSessionPilotFormset, SessionPilotHelper
+                   CampaignForm, SessionPlanForm, AddSessionPilotFormset, SessionPilotHelper, PilotUpdateForm
 
 from xwtools.models import SlotChoice, Card
 
@@ -149,7 +149,7 @@ class PilotUpdate(UpdateView):
     model = Pilot
     context_object_name = 'pilot'
     template_name = 'campaign/pilot.html'
-    fields = ('callsign', 'initiative')
+    form_class = PilotUpdateForm
 
     @method_decorator(login_required)
     def dispatch(self, *args, **kwargs):
@@ -162,20 +162,40 @@ class PilotUpdate(UpdateView):
         data = super().get_context_data(**kwargs)
         pilot = self.object
         if self.request.method == 'POST':
-            update_form = AddUpgrade(self.request.POST, initial={'pilot':pilot.id, 'status':'E', 'cost':0})
-
-            if update_form.is_valid():
-                print(update_form.cleaned_data)
-                update_form.save()
-                #return HttpResponseRedirect(pilot.get_absolute_url())
-            else:
-                print(update_form.errors)
+            update_form = AddUpgrade(self.request.POST, initial={'pilot':pilot, 'status':'E', 'cost':0})
         else:
             update_form = AddUpgrade(initial={'pilot':pilot, 'status':'E', 'cost':0})
         update_form.fields['card'].queryset = pilot.available_upgrades
         data['update'] = update_form
         data['remaining'] = pilot.total_xp - pilot.spent_xp
         return data
+
+    def form_invalid(self, form):
+        print(form.errors)
+        return super().form_invalid(form)
+
+    def form_valid(self, form):
+        context = self.get_context_data(form=form)
+        upgrade_form = context['update']
+        if upgrade_form.is_valid() and upgrade_form.cleaned_data['card']:
+            new_upgrade = upgrade_form.save(commit=False)
+            new_upgrade.pilot = self.object
+            new_upgrade.cost = new_upgrade.card.campaign_cost(self.object.campaign.rulebook.upgrade_logic)
+            new_upgrade.status = 'E'
+            new_upgrade.save()
+        else:
+            print(upgrade_form.errors)
+        return super().form_valid(form)
+
+
+
+        #if update_form.is_valid():
+    #        update_form.save()
+    #        update_form = AddUpgrade(initial={'pilot':pilot, 'status':'E', 'cost':0})
+            #return HttpResponseRedirect(pilot.get_absolute_url())
+    #    else:
+    #        print(update_form.errors)
+
 
 
 class RulebookView(DetailView):
