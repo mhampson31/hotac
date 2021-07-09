@@ -172,14 +172,14 @@ class PilotShip(models.Model):
     @cached_property
     def shields(self):
         return self.chassis.shields + \
-               self.pilot.upgrades.filter(card__adds__contains='+[Shield]', status='E').count() - \
-               self.pilot.upgrades.filter(card__adds__contains='-[Shield]', status='E').count()
+               self.pilot.upgrades.filter(card__adds__contains='+[Shield', status='E').count() - \
+               self.pilot.upgrades.filter(card__adds__contains='-[Shield', status='E').count()
 
     @cached_property
     def hull(self):
         return self.chassis.hull + \
-               self.pilot.upgrades.filter(card__adds__contains='+[Hull]', status='E').count() - \
-               self.pilot.upgrades.filter(card__adds__contains='-[Hull]', status='E').count()
+               self.pilot.upgrades.filter(card__adds__contains='+[Hull', status='E').count() - \
+               self.pilot.upgrades.filter(card__adds__contains='-[Hull', status='E').count()
 
 
 
