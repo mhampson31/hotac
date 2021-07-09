@@ -185,15 +185,14 @@ class AddUpgrade(forms.ModelForm):
         self.helper.form_tag = False
         self.helper.layout = Layout(
             Div(
-                FloatingField('card', wrapper_class="col-sm-4"),
+                FloatingField('card', wrapper_class="col-sm-4 gx-2"),
                 css_class="row mb-1"
             )
         )
-        self.helper.add_input(Submit('submit', 'Purchase'))
+        self.helper.add_input(Submit('submit', 'Update'))
 
     def is_valid(self):
         return super().is_valid()
-
 
 
 class PilotUpdateForm(forms.ModelForm):
