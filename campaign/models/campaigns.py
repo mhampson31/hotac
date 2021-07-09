@@ -14,6 +14,7 @@ class User(AbstractUser):
 
 class UpgradeLogic(models.IntegerChoices):
     HOTAC = 1, 'HotAC'
+    TEST = 2, 'Test'
 
 
 class Rulebook(models.Model):
@@ -23,14 +24,14 @@ class Rulebook(models.Model):
     ships = models.ManyToManyField(Chassis, through='PlayableShip')
 
     # player defaults
-    start_init = models.SmallIntegerField(default=2)
+    start_init = models.PositiveSmallIntegerField(default=2)
 
     # configure a campaign's XP costs
-    ship_cost = models.SmallIntegerField(default=5)
+    ship_cost = models.PositiveSmallIntegerField(default=5)
 
-    upgrade_logic = models.IntegerField(choices=UpgradeLogic.choices)
-    initiative_cost = models.SmallIntegerField(default=3)
-    initiative_sq = models.BooleanField(default=False)
+    upgrade_logic = models.PositiveSmallIntegerField(choices=UpgradeLogic.choices)
+    initiative_progression = models.PositiveSmallIntegerField(choices=UpgradeLogic.choices)
+    initiative_cost = models.PositiveSmallIntegerField(default=3)
 
     starter_mission = models.ForeignKey('Mission', on_delete=models.SET_NULL, null=True, related_name='starts')
 
@@ -48,6 +49,17 @@ class Rulebook(models.Model):
             pilots = pilots + s.pilots.count()
             xp = xp + s.xp_total
         return floor(xp/pilots)
+
+    def get_initiative_cost(self, initiative):
+        """
+        Returns the XP cost of advancing to from 'iniative'-1 to 'initiative'.
+        """
+        if self.initiative_progression == UpgradeLogic.TEST:
+            return (initiative*self.initiative_cost)^2
+        elif self.initiative_progression == UpgradeLogic.HOTAC:
+            return initiative * self.initiative_cost
+        else:
+            return 0
 
 
 class PlayableShip(models.Model):

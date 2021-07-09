@@ -64,11 +64,8 @@ class Pilot(models.Model):
 
     @cached_property
     def spent_initiative(self):
-        levels = range(self.campaign.rulebook.start_init, self.initiative)
-        if self.campaign.rulebook.initiative_sq:
-            return sum([(l+1)^2 for l in levels])
-        else:
-            return sum([(l+1)*self.campaign.rulebook.initiative_cost for l in levels])
+        init_cost = self.campaign.rulebook.get_initiative_cost
+        return sum([init_cost(init) for init in range(self.campaign.rulebook.start_init+1, self.initiative+1)])
 
     @cached_property
     def active_ship(self):

@@ -10,7 +10,7 @@
 <h5>Campaign: <a href="{% url 'game:campaign' pilot.campaign.id %}">{{pilot.campaign}}</a></h5>
 
 <div class='row mb-3' id='pilot-stats'>
-    <div class='col-sm-4'>
+    <div class='col-sm-5'>
         {% include './includes/pilot_ship.html' with ship=pilot.active_ship slots=pilot.slots %}
     </div>
 </div>
@@ -23,9 +23,9 @@
                   aria-controls="upgrades" aria-selected="true">Upgrades</button>
         </li>
         <li class="nav-item" role="presentation">
-            <button class="nav-link" id="available-tab" data-bs-toggle="tab"
-                  data-bs-target="#available" type="button" role="tab"
-                  aria-controls="available" aria-selected="false">Available</button>
+            <button class="nav-link" id="purchase-tab" data-bs-toggle="tab"
+                  data-bs-target="#purchase" type="button" role="tab"
+                  aria-controls="purchase" aria-selected="false">Purchase</button>
         </li>
         <li class="nav-item" role="presentation">
             <button class="nav-link" id="stats-tab" data-bs-toggle="tab"
@@ -50,7 +50,7 @@
         </div>
     </div>
 
-    <div class="tab-pane" role="tabpanel" aria-labelledby="available-tab" id="available">
+    <div class="tab-pane" role="tabpanel" aria-labelledby="purchase-tab" id="purchase">
         <div class="container">
             <div class="row mb-3">
                 <form method="POST">
@@ -58,6 +58,10 @@
                  {{ update.management_form }}
                 {% crispy update  %}
                 <p><i class="xwing-miniatures-font xwing-miniatures-font-squad-point-cost"></i>{{remaining}} available</p>
+                <p>Next Initiative:
+                    {% if init_upgrade_cost %}<i class="xwing-miniatures-font xwing-miniatures-font-squad-point-cost"></i>{{init_upgrade_cost}}
+                    {% else %}Maxed Out
+                    {% endif %}<p>
                 </form>
             </div>
 
@@ -83,7 +87,7 @@
                            <i class="xwing-miniatures-font xwing-miniatures-font-squad-point-cost"></i>{{pilot.spent_initiative}} Initiative,
                            <i class="xwing-miniatures-font xwing-miniatures-font-squad-point-cost"></i>{{pilot.spent_upgrades}} Upgrades
                        </p>
-                <p>XP Available: <i class="xwing-miniatures-font xwing-miniatures-font-squad-point-cost"></i>{{remaining}}</p>
+                <p>XP purchase: <i class="xwing-miniatures-font xwing-miniatures-font-squad-point-cost"></i>{{remaining}}</p>
             </div>
         </div>
     </div>

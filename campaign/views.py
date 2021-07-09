@@ -168,6 +168,8 @@ class PilotUpdate(UpdateView):
         update_form.fields['card'].queryset = pilot.available_upgrades
         data['update'] = update_form
         data['remaining'] = pilot.total_xp - pilot.spent_xp
+        if pilot.initiative < 6:
+            data['init_upgrade_cost'] = pilot.campaign.rulebook.get_initiative_cost(pilot.initiative+1)
         return data
 
     def form_invalid(self, form):
