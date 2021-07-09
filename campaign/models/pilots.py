@@ -148,7 +148,6 @@ class Pilot(models.Model):
                             .aggregate(fc=Least(Sum(Coalesce('card__charges', 1)), 3))['fc']
 
 
-
 class PilotShip(models.Model):
     pilot = models.ForeignKey(Pilot, on_delete=models.CASCADE)
     chassis = models.ForeignKey(Chassis, on_delete=models.CASCADE, null=True, related_name='pilot_ship')
@@ -169,6 +168,19 @@ class PilotShip(models.Model):
     @property
     def game_info(self):
         return self.pilot.campaign.rulebook.playableship_set.get(chassis=self.chassis)
+
+    @cached_property
+    def shields(self):
+        return self.chassis.shields + \
+               self.pilot.upgrades.filter(card__adds__contains='+[Shield]', status='E').count() - \
+               self.pilot.upgrades.filter(card__adds__contains='-[Shield]', status='E').count()
+
+    @cached_property
+    def hull(self):
+        return self.chassis.hull + \
+               self.pilot.upgrades.filter(card__adds__contains='+[Hull]', status='E').count() - \
+               self.pilot.upgrades.filter(card__adds__contains='-[Hull]', status='E').count()
+
 
 
 class PilotUpgrade(models.Model):
