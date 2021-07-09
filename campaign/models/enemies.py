@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils.functional import cached_property
 
 from xwtools.models import Chassis, Faction, SizeChoice, Card
 
@@ -19,23 +20,23 @@ class EnemyPilot(models.Model):
     def ability_list(self, lvl=1):
         return '/'.join(self.abilities.filter(level__lte=lvl).values_list('card__name', flat=True))
 
-    @property
+    @cached_property
     def basic(self):
         return '/'.join(self.abilities.filter(level=1).values_list('card__name', flat=True))
 
-    @property
+    @cached_property
     def elite(self):
         return '/'.join(self.abilities.filter(level=2).values_list('card__name', flat=True))
 
-    @property
+    @cached_property
     def in3(self):
         return '/'.join(self.abilities.filter(level=3).values_list('card__name', flat=True))
 
-    @property
+    @cached_property
     def in4(self):
         return '/'.join(self.abilities.filter(level=4).values_list('card__name', flat=True))
 
-    @property
+    @cached_property
     def in5(self):
         return '/'.join(self.abilities.filter(level=5).values_list('card__name', flat=True))
 
@@ -43,7 +44,7 @@ class EnemyPilot(models.Model):
     def non_default_ship(self):
         return self.chassis != self.faction.default_ship
 
-    @property
+    @cached_property
     def large_ship(self):
         return self.chassis.size in (SizeChoice.LARGE, SizeChoice.HUGE)
 

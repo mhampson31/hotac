@@ -2,6 +2,7 @@ from django.db import models
 from django.db.models import Avg, Sum, Q
 from django.utils.translation import gettext_lazy as _
 from django.urls import reverse
+from django.utils.functional import cached_property
 
 from .enemies import EnemyPilot, EnemyAbility
 from .pilots import Pilot, PilotShip
@@ -97,26 +98,26 @@ class Session(models.Model):
                 pass
             self.save()
 
-    @property
+    @cached_property
     def group_init(self):
         return min(6, floor(self.sessionpilot_set.aggregate(i=Avg('initiative'))['i']))
 
-    @property
+    @cached_property
     def xp_pool(self):
         return sum([p.xp_pool for p in self.sessionpilot_set.all()])
 
-    @property
+    @cached_property
     def xp_share(self):
         try:
             return floor(self.xp_pool/self.pilots.count())
         except ZeroDivisionError:
             return 0
 
-    @property
+    @cached_property
     def xp_remainder(self):
         return self.xp_pool - (self.pilots.count() * self.xp_share)
 
-    @property
+    @cached_property
     def team_xp(self):
         return 0
 
@@ -147,19 +148,19 @@ class SessionPilot(models.Model):
     def __str__(self):
         return self.pilot.callsign
 
-    @property
+    @cached_property
     def chassis(self):
         print('SessionPilot old chassis')
         return self.ship.chassis
 
-    @property
+    @cached_property
     def xp_pool(self):
         return self.hits + self.assists + self.guards + self.emplacements + \
              sum([k.xp for k in self.kills.all()]) + \
              self.session.sessionenemy_set.filter(level__gte=2, killed_by__isnull=False).count() \
               - self.penalty
 
-    @property
+    @cached_property
     def xp_earned(self):
         xp = self.session.xp_share if self.session.campaign.pool_xp else self.xp_pool
         xp = xp + self.bonus
@@ -191,29 +192,29 @@ class SessionEnemy(models.Model):
     class Meta:
         ordering = ['flight_group', '-level']
 
-    @property
+    @cached_property
     def pilot(self):
         return self.enemy
 
-    @property
+    @cached_property
     def chassis(self):
         return self.enemy.chassis
 
-    @property
+    @cached_property
     def elite(self):
         return self.level > 1
 
-    @property
+    @cached_property
     def initiative(self):
         if self.elite:
             return self.level + 1
         else:
             return 1
 
-    @property
+    @cached_property
     def abilities(self):
         return self.enemy.abilities.filter(level__lte=self.level)
 
-    @property
+    @cached_property
     def xp(self):
         return 1 + self.enemy.non_default_ship + self.enemy.large_ship

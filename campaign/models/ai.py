@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils.functional import cached_property
 
 from .campaigns import Rulebook
 from xwtools.models import Dial, DialManeuver
@@ -76,11 +77,11 @@ class AIManeuver(models.Model):
 
     def get_maneuvers(self): return True
 
-    @property
+    @cached_property
     def rolls(self):
         return [self.roll_1, self.roll_2, self.roll_3, self.roll_4, self.roll_5, self.roll_6]
 
-    @property
+    @cached_property
     def arc_order(self):
         return ['FL', 'BE', 'FR', 'LF', 'RF', 'LA', 'RA', 'AL', 'AR'].index(self.arc)
 

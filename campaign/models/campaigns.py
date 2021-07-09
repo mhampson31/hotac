@@ -1,6 +1,7 @@
 from django.db import models
 from django.urls import reverse
 from django.contrib.auth.models import AbstractUser
+from django.utils.functional import cached_property
 
 from math import floor
 
@@ -39,7 +40,7 @@ class Rulebook(models.Model):
     def get_absolute_url(self):
         return reverse('ruleset', kwargs={'pk': self.pk})
 
-    @property
+    @cached_property
     def xp_share(self):
         pilots = 0
         xp = 0
@@ -60,7 +61,7 @@ class PlayableShip(models.Model):
     )
     progression = models.CharField(max_length=1, choices=PROGRESSION_TYPES, default='d')
 
-    @property
+    @cached_property
     def name(self):
         return self.chassis.name
 
@@ -128,7 +129,7 @@ class Campaign(models.Model):
     def victory_points(self):
         return self.session_set.filter(outcome='V', player_vp=True).Count()
 
-    @property
+    @cached_property
     def xp_share(self):
         """
         Used when XP pooling is chosen for the game.
@@ -227,7 +228,7 @@ class FGSetup(models.Model):
     def __str__(self):
         return self.chassis.name if self.chassis else 'Random'
 
-    @property
+    @cached_property
     def is_default(self):
         return self.chassis == self.flight_group.mission.enemy_faction.default_ship
 
@@ -273,6 +274,6 @@ class Ally(models.Model):
     def __str__(self):
         return self.callsign
 
-    @property
+    @cached_property
     def pilot(self):
         return '{} ({})'.format(self.callsign, self.chassis)
