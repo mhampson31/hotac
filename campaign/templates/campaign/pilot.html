@@ -65,14 +65,28 @@
                 </form>
             </div>
 
-            <div class="row mb-5 d-flex flex-wrap">
-            {% for au in pilot.available_upgrades.all %}
-            {% ifchanged au.type %}
-            </div>
-            <div class="row mb-5 d-flex flex-wrap">
-            {% endifchanged %}
-            {% include './includes/upgrade_card.html' with upgrade=au cost=au|get_cost:pilot.campaign.rulebook.upgrade_logic %}
+            {% regroup pilot.available_upgrades.all by get_type_display as upgrades %}
+            <nav id="available-nav" class="row navbar navbar-light">
+                <ul class="nav nav-pills">
+                     {% for type in upgrades %}
+                     <li class="nav-item">
+                         <a href="#available-list-{{type.grouper}}" class="nav-link">{{type.grouper|get_icon}}</a>
+                     </li>
+                     {% endfor %}
+                 </nav>
+            </nav>
+
+            <div id="available-list" data-bs-spy="scroll" data-bs-target="#available-nav" data-bs-offset="0" class="row scrollspy">
+            {% for type in upgrades %}
+                <div id="available-list-{{type.grouper}}" class="row mb-5 d-flex flex-wrap">
+                    {% for upgrade in type.list %}
+                    {% include './includes/upgrade_card.html' with upgrade=upgrade cost=upgrade|get_cost:pilot.campaign.rulebook.upgrade_logic %}
+                    {% endfor %}
+                </div>
             {% endfor %}
+            </div>
+
+            <div class="row mb-5 d-flex flex-wrap">
             </div>
         </div>
     </div>

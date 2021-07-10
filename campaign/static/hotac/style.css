@@ -13,6 +13,16 @@ body {
 
 }
 
+.scrollspy {
+    position: relative;
+    overflow-y: scroll;
+}
+
+#available-list {
+    height: 400px;
+    max-width: 77rem;
+    padding-left: 1rem;
+}
 
 i.xwing-miniatures-font {
     font-size: inherit;
