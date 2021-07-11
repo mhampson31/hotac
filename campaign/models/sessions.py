@@ -51,7 +51,7 @@ class Session(models.Model):
         self.enemies.clear()
         fac = self.mission.enemy_faction
         enemy_list = EnemyPilot.objects.filter(faction=fac, random=True) \
-                                       .exclude(Q(chassis_id=fac.default_ship.id)|Q(chassis_id__in=self.campaign.exclude_random.all()))
+                                       .exclude(Q(chassis_id__in=self.campaign.exclude_random.all()))
         #chassis_list = self.mission.enemy_faction.ships.exclude(Q(id=fac.default_ship.id)|Q(id__in=self.campaign.exclude_random.all()))
         for fg in self.mission.flight_groups.all():
             squad = fg.squad_members.filter(players__lte=self.pilots.count(), init__lte=self.group_init)
@@ -73,7 +73,6 @@ class Session(models.Model):
                     if not sq.chassis:
                         new_enemy = choice(enemy_list.exclude(chassis=fac.default_ship))
                     else:
-                        print(sq)
                         new_enemy = choice(enemy_list.filter(chassis=sq.chassis))
                     self.sessionenemy_set.create(flight_group=fg,
                                                  enemy=new_enemy,
