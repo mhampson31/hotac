@@ -2,6 +2,7 @@ from django import template
 from django.utils.safestring import mark_safe
 from django.template.defaultfilters import stringfilter
 
+from math import floor
 import re
 
 register = template.Library()
@@ -104,3 +105,7 @@ def get_cost(upgrade, logic):
 @stringfilter
 def repeat(icon, charges):
     return icon * charges
+
+@register.filter(is_safe=True)
+def dial_pad(mvs, width):
+    return [cell for cell in range(floor((width-len(mvs))/2))]

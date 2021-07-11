@@ -132,7 +132,7 @@ class Campaign(models.Model):
     deck = models.ManyToManyField(Mission)
     deck_draw = models.JSONField(null=True)
 
-    exclude_random = models.ManyToManyField(Chassis)
+    exclude_random = models.ManyToManyField(Chassis, blank=True)
 
     def __str__(self):
         return self.description

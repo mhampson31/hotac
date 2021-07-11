@@ -3,6 +3,8 @@
 {% load xwf_extras %}
 {% load static %}
 
+{% block title %}{{ai}}{% endblock %}
+
 {% block content %}
 
 {% with ai.dial.chassis as ship %}
@@ -10,6 +12,22 @@
 <div class="container">
     <div class="row text-center">
         <h5 class=""><i class="xw-ship xw-ship-{{ship.css_name}}"></i>{{ai.dial.chassis}} AI</h5>
+    </div>
+
+    <div class="row">
+        {% regroup ai.dial.maneuvers.all by speed as speed_rows %}
+        <div class="row">
+        {% for spd, mvs in speed_rows %}
+            <div class="col-1"><em>{{spd}}</em></div>
+            {% for cell in mvs|dial_pad:ship.dial.dial_width %}
+            <div class="col-1"></div>
+            {% endfor %}
+            {% for mv in mvs %}
+            <div class="col-1 {{mv.icon_color}}">{{mv.css_name|get_icon}}</div>
+            {% endfor %}
+            <div class="w-100"></div>
+        {% endfor %}
+        </div>
     </div>
 
     <div class="row text-left mb-3">
@@ -24,8 +42,8 @@
     </div>
 
     <div class="row justify-content-between mb-3">
-        <h5>2. Select Maneuver</h5>
         <div class="col-sm-4 mb-3">
+            <h5>2. Select Maneuver</h5>
             <svg id="ai-chart" class="nav nav-tabs mx-auto" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 537.5 459.6" height="150">
                 <a id="mv-al-tab" class="nav-item" data-bs-toggle="tab" href="#mv-al" role="tab" aria-controls="home" aria-selected="true">
                     <path class="arc" d="m172 259.6-172 200h172z"/>
@@ -80,12 +98,14 @@
     </div>
 
     <div class="row text-left">
-        <h5>Select Action</h5>
-        <ol class="list-group list-group-numbered">
-            {% for a in actions %}
-            <li class="list-group-item">{{a.desc|iconize}}</li>
-            {% endfor %}
-        </ol>
+        <div class="col-sm-4 mb-3">
+            <h5>Select Action</h5>
+            <ol class="list-group list-group-numbered">
+                {% for a in actions %}
+                <li class="list-group-item">{{a.desc|iconize}}</li>
+                {% endfor %}
+            </ol>
+        </div>
     </div>
 
 </div>
