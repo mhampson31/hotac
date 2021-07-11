@@ -190,16 +190,6 @@ class PilotUpdate(UpdateView):
         return super().form_valid(form)
 
 
-
-        #if update_form.is_valid():
-    #        update_form.save()
-    #        update_form = AddUpgrade(initial={'pilot':pilot, 'status':'E', 'cost':0})
-            #return HttpResponseRedirect(pilot.get_absolute_url())
-    #    else:
-    #        print(update_form.errors)
-
-
-
 class RulebookView(DetailView):
     model = Rulebook
     context_object_name = 'Rulebook'
