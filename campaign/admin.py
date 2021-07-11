@@ -5,7 +5,7 @@ import nested_admin
 
 from .models import User, Rulebook, PlayableShip, Pilot, Mission, \
     Campaign, Session, SessionEnemy, SessionPilot, PilotShip, PilotUpgrade, FGSetup, FlightGroup, \
-    AI, AIManeuver, AIPriority, EnemyPilot, EnemyAbility, Ally
+    AI, AIManeuver, AIPriority, EnemyPilot, EnemyAbility, Ally, MissionFeature
 from xwtools.models import Card
 
 #from xwtools.models import Slot
@@ -32,7 +32,6 @@ class FGSetupInline(nested_admin.NestedTabularInline):
             elif db_field.name == 'flight_group':
                 kwargs['queryset'] = FlightGroup.objects.filter(mission_id=request.resolver_match.kwargs['object_id'])
         return super().formfield_for_foreignkey(db_field, request, **kwargs)
-
 
 
 class FlightGroupInline(nested_admin.NestedTabularInline):
@@ -165,6 +164,7 @@ class EnemyPilotAdmin(admin.ModelAdmin):
 
 
 #admin.site.unregister(User)
+admin.site.register(MissionFeature)
 admin.site.register(User, UserAdmin)
 admin.site.register(Pilot, PilotAdmin)
 admin.site.register(Rulebook, RulebookAdmin)

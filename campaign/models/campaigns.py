@@ -17,6 +17,12 @@ class UpgradeLogic(models.IntegerChoices):
     TEST = 2, 'Test'
 
 
+class FeatureChoice(models.TextChoices):
+    EMPLACEMENT = 'E', 'Emplacement'
+    OBSTACLE = 'O', 'Obstacle'
+    TERRAIN = 'T', 'Terrain'
+
+
 class Rulebook(models.Model):
     description = models.CharField(max_length=30)
     admin = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
@@ -81,6 +87,24 @@ class PlayableShip(models.Model):
         return self.name
 
 
+class MissionFeature(models.Model):
+    name = models.CharField(max_length=30)
+    type = models.CharField(max_length=1, choices=FeatureChoice.choices)
+    setup_code = models.CharField(max_length=1, blank=True)
+    attack = models.PositiveSmallIntegerField(null=True, blank=True)
+    attack_range = models.CharField(max_length=3, blank=True)
+    hull = models.PositiveSmallIntegerField(null=True, blank=True)
+    shields = models.PositiveSmallIntegerField(null=True, blank=True)
+    agility = models.PositiveSmallIntegerField(null=True, blank=True)
+    description = models.TextField(blank=True)
+
+    def __str__(self):
+        return self.name
+
+    @cached_property
+    def is_emplacement(self):
+        return self.type == FeatureChoice.EMPLACEMENT
+
 class Mission(models.Model):
     FRIENDLY = 'F'
     NEUTRAL = 'N'
@@ -107,6 +131,8 @@ class Mission(models.Model):
     penalty = models.TextField(blank=True, null=True)
 
     ground_assault = models.BooleanField(default=False)
+
+    features = models.ManyToManyField(MissionFeature, blank=True)
 
     class Meta:
         ordering = ['story', 'sequence']

@@ -38,13 +38,6 @@ class DifficultyChoice(models.TextChoices):
         RED = 'R', _('Red')
         PURPLE = 'P', _('Purple')
 
-DIFFICULTY_CHOICES = (
-    ('B', 'Blue'),
-    ('W', 'White'),
-    ('R', 'Red'),
-    ('P', 'Purple')
-)
-
 
 class SizeChoice(models.TextChoices):
     SMALL = 'S', _('Small')
@@ -240,7 +233,7 @@ class DialManeuver(models.Model):
     )
     direction = models.CharField(max_length=1, choices=DIRECTION_CHOICES, null=True, blank=True )
 
-    difficulty = models.CharField(max_length=1, choices=DIFFICULTY_CHOICES, default='W')
+    difficulty = models.CharField(max_length=1, choices=DifficultyChoice.choices, default='W')
 
     def find_mirror(self):
         if not self.direction:

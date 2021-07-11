@@ -16,9 +16,9 @@
         <ul class="list-group">
             <li class="list-group-item"><strong>Objectives</strong></li>
             <li class="list-group-item"><strong>Primary:</strong> {{mission.objective}}</li>
-            {% if session.mission.bonus_1 %}<li class="list-group-item"><strong>Bonus:</strong> {{mission.bonus_1}}</li>{% endif %}
-            {% if session.mission.bonus_2 %}<li class="list-group-item"><strong>Bonus:</strong> {{mission.bonus_2}}</li>{% endif %}
-            {% if session.mission.penalty %}<li class="list-group-item"><strong>Penalty:</strong> {{mission.penalty}}</li>{% endif %}
+            {% if mission.bonus_1 %}<li class="list-group-item"><strong>Bonus:</strong> {{mission.bonus_1}}</li>{% endif %}
+            {% if mission.bonus_2 %}<li class="list-group-item"><strong>Bonus:</strong> {{mission.bonus_2}}</li>{% endif %}
+            {% if mission.penalty %}<li class="list-group-item"><strong>Penalty:</strong> {{mission.penalty}}</li>{% endif %}
         </ul>
     </div>
 </div>
@@ -38,6 +38,10 @@
   <li class="nav-item" role="presentation">
     <button class="nav-link" id="init-tab" data-bs-toggle="tab" data-bs-target="#init" type="button" role="tab" aria-controls="init" aria-selected="false">Initiative</button>
   </li>
+  <li class="nav-item" role="presentation">
+    <button class="nav-link" id="features-tab" data-bs-toggle="tab" data-bs-target="#features" type="button" role="tab" aria-controls="init" aria-selected="false">Features</button>
+  </li>
+
  </ul>
 
 <!-- Tab panes -->
@@ -154,6 +158,27 @@
       </div>
     {% endfor %}
   </div>
+
+  <div class="tab-pane" id="features" role="tabpanel" aria-labelledby="features-tab">
+      {% for feature in mission.features.all %}
+      <div class="card col-sm-6 mb-3">
+          <div class="card-header"><h6>{{feature}}</h6></div>
+          <div class="card-body">
+              {% if feature.hull %}
+              <ul class="list-group float-start me-2">
+                  {% if feature.attack %}<li class="list-group-item attack">{{'Front Arc'|get_icon}}3, Range {{feature.attack_range}}</li>{% endif %}
+                  <li class="list-group-item hull">{{'hull'|get_icon|repeat:feature.hull}}</li>
+                   {% if feature.shields %}<li class="list-group-item shields">{{'shield'|get_icon|repeat:feature.shields}}</li>{% endif %}
+              </ul>
+              <span class="">
+                  {{feature.description}}
+              </span>
+              {% endif %}
+          </div>
+      </div>
+      {% endfor %}
+  </div>
+
 </div>
 
     {% endwith %}
