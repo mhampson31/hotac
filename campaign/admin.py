@@ -26,11 +26,14 @@ class FGSetupInline(nested_admin.NestedTabularInline):
 
     def formfield_for_foreignkey(self, db_field, request, **kwargs):
         if 'object_id' in request.resolver_match.kwargs:
+            mission = Mission.objects.get(pk=request.resolver_match.kwargs['object_id'])
             if db_field.name == 'chassis':
-                kwargs['queryset'] = Mission.objects.get(pk=request.resolver_match.kwargs['object_id']).enemy_faction.ships.all()
-                kwargs['initial'] = Mission.objects.get(pk=request.resolver_match.kwargs['object_id']).enemy_faction.default_ship
+                kwargs['queryset'] = mission.enemy_faction.ships.all()
+                kwargs['initial'] = mission.enemy_faction.default_ship
             elif db_field.name == 'flight_group':
-                kwargs['queryset'] = FlightGroup.objects.filter(mission_id=request.resolver_match.kwargs['object_id'])
+                kwargs['queryset'] = FlightGroup.objects.filter(mission=mission)
+            elif db_field.name == 'enemy':
+                kwargs['queryset'] = EnemyPilot.objects.filter(faction=mission.enemy_faction, random=False)
         return super().formfield_for_foreignkey(db_field, request, **kwargs)
 
 

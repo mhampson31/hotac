@@ -73,7 +73,7 @@ class Session(models.Model):
                     if not sq.chassis:
                         new_enemy = choice(enemy_list.exclude(chassis=fac.default_ship))
                     else:
-                        new_enemy = choice(enemy_list.filter(chassis=sq.chassis))
+                        new_enemy = sq.enemy or choice(enemy_list.filter(chassis=sq.chassis))
                     self.sessionenemy_set.create(flight_group=fg,
                                                  enemy=new_enemy,
                                                  callsign='%s %s' % (fg.name, p if p > 1 else 'Leader'),

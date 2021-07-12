@@ -6,6 +6,7 @@ from django.utils.functional import cached_property
 from math import floor
 
 from xwtools.models import Chassis, Faction, SlotChoice, Card
+from .enemies import EnemyPilot
 
 
 class User(AbstractUser):
@@ -254,6 +255,7 @@ class FGSetup(models.Model):
     players = models.SmallIntegerField(default=1)
     init = models.SmallIntegerField(default=1)
     elite = models.BooleanField(default=False)
+    enemy = models.ForeignKey(EnemyPilot, blank=True, null=True, on_delete=models.SET_NULL)
 
     class Meta:
         verbose_name = 'Squad Member'
