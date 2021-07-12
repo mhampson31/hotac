@@ -2,7 +2,7 @@ from django.db import models
 from django.utils.functional import cached_property
 
 from .campaigns import Rulebook
-from xwtools.models import Dial, DialManeuver
+from xwtools.models import Dial, DialManeuver, ArcDirectionChoice, RangeChoice
 
 
 class AI(models.Model):
@@ -19,8 +19,9 @@ class AI(models.Model):
         A helper function that makes left-sided copies of all the right-side maneuver tables
         :return: Nothing, saves new objects directly
         """
+        right_arcs = (ArcDirectionChoice.FR, ArcDirectionChoice.RF, ArcDirectionChoice.RA, ArcDirectionChoice.AR)
 
-        for mv in self.aimaneuver_set.filter(arc__in=('FR', 'RF', 'RA', 'AR')):
+        for mv in self.aimaneuver_set.filter(arc__in=right_arcs):
             new_arc = mv.arc.replace('R', 'L')
             if not self.aimaneuver_set.filter(arc=new_arc, range=mv.range).exists():
                 mv.pk = None
@@ -36,32 +37,15 @@ class AI(models.Model):
     class Meta:
         verbose_name_plural = 'AI'
 
+    @cached_property
+    def has_special(self):
+        return self.aimaneuver_set.filter(arc=ArcDirectionChoice.SP).exists()
+
 
 class AIManeuver(models.Model):
-    RANGE_CHOICES = (
-        ('1', 'R1/R2 Closing'),
-        ('2', 'R3/R2 Fleeing'),
-        ('3', 'R4+'),
-        ('4', 'Stressed'),
-        ('5', 'Hyperspace')
-    )
-
-    AI_ARC_CHOICES = (
-        ('BE', 'Bullseye'),
-        ('FR', 'Front (Right)'),
-        ('RF', 'Right (Front)'),
-        ('RA', 'Right (Rear)'),
-        ('AR', 'Rear (Right)'),
-        ('FL', 'Front (Left)'),
-        ('LF', 'Left (Front)'),
-        ('LA', 'Left (Rear)'),
-        ('AL', 'Rear (Left)'),
-        ('SS', 'Special')
-    )
-
     ai = models.ForeignKey(AI, on_delete=models.CASCADE)
-    arc = models.CharField(max_length=2, choices=AI_ARC_CHOICES)
-    range = models.CharField(max_length=1, choices=RANGE_CHOICES)
+    arc = models.CharField(max_length=2, choices=ArcDirectionChoice.choices)
+    range = models.CharField(max_length=1, choices=RangeChoice.choices)
 
     # these are denormalized mainly to make data entry easier, so we don't need
     # to have an AI, AIManeuver, and a theoretical AIManeuverRoll model all on one admin page

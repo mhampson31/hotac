@@ -170,10 +170,10 @@
                   <li class="list-group-item hull">{{'hull'|get_icon|repeat:feature.hull}}</li>
                    {% if feature.shields %}<li class="list-group-item shields">{{'shield'|get_icon|repeat:feature.shields}}</li>{% endif %}
               </ul>
-              <span class="">
-                  {{feature.description}}
-              </span>
               {% endif %}
+              <p class="">
+                  {{feature.description|iconize}}
+              </p>
           </div>
       </div>
       {% endfor %}
