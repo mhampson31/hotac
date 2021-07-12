@@ -74,6 +74,29 @@ class ActionChoice(models.TextChoices):
     SLAM = 'SLM', _('SLAM')
 
 
+class RangeChoice(models.TextChoices):
+    RANGE_12 = '1', 'R1/R2 Closing'
+    RANGE_23 = '2', 'R3/R2 Fleeing'
+    RANGE_4 = '3', 'R4+'
+    STRESSED = '4', 'Stressed'
+    HYPERSPACE = '5', 'Hyperspace'
+    DECLOAK = '6', 'Decloak'
+
+
+class ArcDirectionChoice(models.TextChoices):
+    BE = 'BE', 'Bullseye'
+    FR = 'FR', 'Front (Right)'
+    RF = 'RF', 'Right (Front)'
+    RA = 'RA', 'Right (Rear)'
+    AR = 'AR', 'Rear (Right)'
+    FL = 'FL', 'Front (Left)'
+    LF = 'LF', 'Left (Front)'
+    LA = 'LA', 'Left (Rear)'
+    AL = 'AL', 'Rear (Left)'
+    SP = 'SP', 'Special'
+
+
+
 class Faction(models.Model):
     name = models.CharField(max_length=20)
     ships = models.ManyToManyField('Chassis')

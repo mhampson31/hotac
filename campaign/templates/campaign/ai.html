@@ -14,20 +14,38 @@
         <h5 class=""><i class="xw-ship xw-ship-{{ship.css_name}}"></i>{{ai.dial.chassis}} AI</h5>
     </div>
 
-    <div class="row">
-        {% regroup ai.dial.maneuvers.all by speed as speed_rows %}
-        <div class="row">
-        {% for spd, mvs in speed_rows %}
-            <div class="col-1"><em>{{spd}}</em></div>
-            {% for cell in mvs|dial_pad:ship.dial.dial_width %}
-            <div class="col-1"></div>
-            {% endfor %}
-            {% for mv in mvs %}
-            <div class="col-1 {{mv.icon_color}}">{{mv.css_name|get_icon}}</div>
-            {% endfor %}
-            <div class="w-100"></div>
-        {% endfor %}
+
+    <button type="button" class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#ai-modal">
+      Show Dial
+    </button>
+
+    <div class="modal fade" id="ai-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Dial</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+              {% regroup ai.dial.maneuvers.all by speed as speed_rows %}
+              <div class="row">
+              {% for spd, mvs in speed_rows %}
+                  <div class="col-1"><em>{{spd}}</em></div>
+                  {% for cell in mvs|dial_pad:ship.dial.dial_width %}
+                  <div class="col-1"></div>
+                  {% endfor %}
+                  {% for mv in mvs %}
+                  <div class="col-1 {{mv.icon_color}}">{{mv.css_name|get_icon}}</div>
+                  {% endfor %}
+                  <div class="w-100"></div>
+              {% endfor %}
+              </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          </div>
         </div>
+      </div>
     </div>
 
     <div class="row text-left mb-3">
@@ -72,9 +90,11 @@
                 <a id="mv-rf-tab" class="nav-item" data-bs-toggle="tab" href="#mv-rf" role="tab" aria-controls="home" aria-selected="true">
                     <path class="arc" d="M537.5 20 365.5 220h172z"/>
                 </a>
+                {% if ai.has_special %}
                 <a id="mv-sp-tab" class="nav-item" data-bs-toggle="tab" href="#mv-sp" role="tab" aria-controls="home" aria-selected="true">
                     <rect class="arc" width="140" height="50" x="200" y="410"/>
                 </a>
+                {% endif %}
             </svg>
         </div>
 
