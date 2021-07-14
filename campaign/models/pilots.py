@@ -1,6 +1,6 @@
 from django.db import models
 from django.urls import reverse
-from django.db.models import Sum, Q, F
+from django.db.models import Sum, Q, F, Count
 from django.db.models.functions import Coalesce, Least
 from django.utils.functional import cached_property
 from django.contrib.contenttypes.fields import GenericForeignKey
@@ -146,6 +146,11 @@ class Pilot(models.Model):
         return self.upgrades.filter(Q(status=UStatusChoice.EQUIPPED), \
                                     Q(card__type='FRC')|Q(card__force=True)) \
                             .aggregate(fc=Least(Sum(Coalesce('card__charges', 1)), 3))['fc']
+
+
+    @cached_property
+    def kills(self):
+        return Chassis.objects.filter(enemypilot__sessionenemy__killed_by__pilot=self).annotate(Count('id'))
 
 
 class PilotShip(models.Model):

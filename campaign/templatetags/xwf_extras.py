@@ -69,6 +69,13 @@ def get_icon(istring, css=''):
 
 @register.filter(is_safe=True)
 @stringfilter
+def ship_icon(istring):
+    istring = istring.strip().lower()
+    return mark_safe('<i class="xwing-miniatures-ship xwing-miniatures-ship-{}"></i>'.format(istring))
+
+
+@register.filter(is_safe=True)
+@stringfilter
 def iconize(text):
     return mark_safe(re.sub(rgx, regex_icon, text))
 

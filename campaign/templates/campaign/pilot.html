@@ -73,7 +73,7 @@
                          <a href="#available-list-{{type.grouper}}" class="nav-link">{{type.grouper|get_icon}}</a>
                      </li>
                      {% endfor %}
-                 </nav>
+                 </ul>
             </nav>
 
             <div id="available-list" data-bs-spy="scroll" data-bs-target="#available-nav" data-bs-offset="0" class="row scrollspy">
@@ -94,14 +94,22 @@
     <div class="tab-pane" role="tabpanel" aria-labelledby="stats-tab" id="stats">
         <div class="container">
             <div class="row mb-3 d-flex flex-wrap">
-                <p>Missions Flown: {{pilot.sessions.count}}</p>
-                <p>XP Earned: <i class="xwing-miniatures-font xwing-miniatures-font-squad-point-cost"></i>{{pilot.total_xp}}</p>
+                <div class="col">
+                    <p>Missions Flown: {{pilot.sessions.count}}</p>
+                    <p>XP Earned: <i class="xwing-miniatures-font xwing-miniatures-font-squad-point-cost"></i>{{pilot.total_xp}}</p>
 
-                <p>XP Spent: <i class="xwing-miniatures-font xwing-miniatures-font-squad-point-cost"></i>{{pilot.spent_ships}} Ships,
-                           <i class="xwing-miniatures-font xwing-miniatures-font-squad-point-cost"></i>{{pilot.spent_initiative}} Initiative,
-                           <i class="xwing-miniatures-font xwing-miniatures-font-squad-point-cost"></i>{{pilot.spent_upgrades}} Upgrades
-                       </p>
-                <p>XP purchase: <i class="xwing-miniatures-font xwing-miniatures-font-squad-point-cost"></i>{{remaining}}</p>
+                    <p>XP Spent: <i class="xwing-miniatures-font xwing-miniatures-font-squad-point-cost"></i>{{pilot.spent_ships}} Ships,
+                               <i class="xwing-miniatures-font xwing-miniatures-font-squad-point-cost"></i>{{pilot.spent_initiative}} Initiative,
+                               <i class="xwing-miniatures-font xwing-miniatures-font-squad-point-cost"></i>{{pilot.spent_upgrades}} Upgrades
+                           </p>
+                    <p>XP purchase: <i class="xwing-miniatures-font xwing-miniatures-font-squad-point-cost"></i>{{remaining}}</p>
+                </div>
+                <ul class="list-group list-group-flush col-sm-3">
+                    <li class="list-group-item">Kills</li>
+                    {% for kill in pilot.kills %}
+                    <li class="list-group-item">{{kill.css_name|ship_icon|repeat:kill.id__count}}</li>
+                    {% endfor %}
+                </ul>
             </div>
         </div>
     </div>
