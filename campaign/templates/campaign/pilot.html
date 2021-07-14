@@ -4,6 +4,8 @@
 {% load xwf_extras %}
 {% load static %}
 
+{% block title %}{{pilot}}{% endblock %}
+
 {% block content %}
 
 <h3>{{pilot.callsign}}{% if pilot.user.username != pilot.callsign %} ({{pilot.user}}){% endif %}</h3>
