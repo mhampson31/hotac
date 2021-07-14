@@ -4,13 +4,15 @@
 
 {% load crispy_forms_tags %}
 
+{% block title %}{{form.instance.mission}}{% endblock %}
+
 {% block content %}
 
-<form action='#' method="post">
+<form id='debrief-form' action='' method="post">
     {% csrf_token %}
     <div class="container">
         <div class="row mb-3">
-            <h4>{{form.instance.mission}}</h4>
+            <h4>{{form.instance.mission}} Debrief</h4>
             {% crispy form %}
         </div>
         <div class="row">
@@ -23,6 +25,7 @@
                         <h5><i class="xw-ship xw-ship-{{pilot.instance.ship.chassis.css_name}}"></i> {{pilot.instance.pilot}}</h5>
                     </div>
                     <div class="card-body">
+                        {{pilot.id}}
                         {% crispy pilot pilot-helper %}
                     </div>
                 </div>
@@ -40,6 +43,7 @@
                         <h5><i class="xw-ship xw-ship-{{enemy.instance.chassis.css_name}}"></i> {{enemy.instance}}</h5>
                     </div>
                     <div class="card-body">
+                        {{enemy.id}}
                         {% crispy enemy enemy-helper %}
                     </div>
                 </div>
@@ -47,10 +51,11 @@
             {% endfor %}
         </div>
     </div>
+
+    <input class="btn btn-primary" form='debrief-form' type="submit" value="Save" />
+
+
 </form>
 
-<div>
-    <input class="btn btn-primary" type="submit" value="Save">
-</div>
 
 {% endblock %}

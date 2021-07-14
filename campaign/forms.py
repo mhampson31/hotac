@@ -66,7 +66,7 @@ class SessionForm(forms.ModelForm):
         self.helper = FormHelper()
         self.helper.form_method = 'post'
         self.helper.form_tag = False
-        self.helper.add_input(Submit('submit', 'Submit'))
+        #self.helper.add_input(Submit('submit', 'Submit'))
         self.helper.layout = Layout(
             Div(
                 FloatingField('date', wrapper_class='col-6'),
@@ -125,19 +125,17 @@ class SessionPilotHelper(FormHelper):
     """
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.helper = FormHelper()
-        self.helper.form_method = 'post'
-        self.helper.form_tag = False
+        self.form_method = 'post'
+        self.form_tag = False
 
 
 class SPFormsetHelper(FormHelper):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.helper = FormHelper()
-        self.helper.form_method = 'post'
-        self.helper.form_tag = False
-        self.helper.form_class = 'form-inline'
-        self.helper.field_template = 'bootstrap3/layout/inline_field.html'
+        self.form_method = 'post'
+        self.form_tag = False
+        self.form_class = 'form-inline'
+        self.field_template = 'bootstrap3/layout/inline_field.html'
         self.layout = Layout(
             Div(
                 FloatingField('status', wrapper_class="col-6 gx-2"),
@@ -158,9 +156,8 @@ class SPFormsetHelper(FormHelper):
 class SEFormsetHelper(FormHelper):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.helper = FormHelper()
-        self.helper.form_method = 'post'
-        self.helper.form_tag = False
+        self.form_method = 'post'
+        self.form_tag = False
         self.layout = Layout(
             Div(
                 FloatingField('killed_by', wrapper_class="col")

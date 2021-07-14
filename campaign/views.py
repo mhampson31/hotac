@@ -18,6 +18,7 @@ from .forms import EnemyPilotForm, SessionForm, SessionPilotFormset, SessionEnem
                    CampaignForm, SessionPlanForm, AddSessionPilotFormset, SessionPilotHelper, PilotUpdateForm
 
 from xwtools.models import SlotChoice, Card
+import datetime
 
 
 @login_required
@@ -99,6 +100,7 @@ class SessionDebrief(UpdateView):
     model = Session
     form_class = SessionForm
     template_name_suffix = '_debrief'
+    initial = {'date':datetime.date.today}
 
     @method_decorator(login_required)
     def dispatch(self, *args, **kwargs):
@@ -127,14 +129,17 @@ class SessionDebrief(UpdateView):
         context = self.get_context_data()
         pilots = context["pilots"]
         enemies = context["enemies"]
-        self.object = form.save()
-        if pilots.is_valid():
+        if pilots.is_valid() and enemies.is_valid():
+            self.object = form.save(commit=False)
             pilots.instance = self.object
             pilots.save()
-        if enemies.is_valid():
             enemies.instance = self.object
             enemies.save()
-        self.object.debrief()
+            self.object.debrief()
+            self.object.save()
+
+        else:
+            return self.form_invalid(form)
         return super().form_valid(form)
 
 

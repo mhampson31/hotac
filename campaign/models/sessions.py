@@ -86,8 +86,9 @@ class Session(models.Model):
         If the players have won the mission, update the mission deck.
         Other wrap-up can be included here.
         """
-        if self.outcome == self.VICTORY and self.campaign.deck.filter(id=self.mission_id).exists():
-            self.campaign.deck.remove(self.mission)
+        if self.outcome == self.VICTORY:
+            if self.campaign.deck.filter(id=self.mission_id).exists():
+                self.campaign.deck.remove(self.mission)
             try:
                 next_mission = Mission.objects.get(rulebook=self.mission.rulebook,
                                                    story=self.mission.story,
@@ -96,6 +97,8 @@ class Session(models.Model):
             except Mission.DoesNotExist:
                 pass
             self.save()
+        elif self.outcome == self.FAILURE:
+            return
 
     @cached_property
     def group_init(self):
@@ -126,12 +129,12 @@ class SessionPilot(models.Model):
     pilot = models.ForeignKey(Pilot, on_delete=models.CASCADE)
     ship = models.ForeignKey(PilotShip, on_delete=models.CASCADE)
     initiative = models.PositiveSmallIntegerField(default=2) #capturing init at game time
-    hits = models.SmallIntegerField(default=0)
-    assists = models.SmallIntegerField(default=0)
-    guards = models.SmallIntegerField(default=0)
-    emplacements = models.SmallIntegerField(default=0)
-    bonus = models.SmallIntegerField(default=0)
-    penalty = models.SmallIntegerField(default=0)
+    hits = models.SmallIntegerField(default=0, blank=True)
+    assists = models.SmallIntegerField(default=0, blank=True)
+    guards = models.SmallIntegerField(default=0, blank=True)
+    emplacements = models.SmallIntegerField(default=0, blank=True)
+    bonus = models.SmallIntegerField(default=0, blank=True)
+    penalty = models.SmallIntegerField(default=0, blank=True)
 
     class StatusChoice(models.TextChoices):
         NOT_FLOWN = 'P', _('Not Flown')
