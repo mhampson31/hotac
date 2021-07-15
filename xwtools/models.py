@@ -33,10 +33,10 @@ class SlotChoice(models.TextChoices):
 
 
 class DifficultyChoice(models.TextChoices):
-        BLUE = 'B', _('Blue')
-        WHITE = 'W', _('White')
-        RED = 'R', _('Red')
-        PURPLE = 'P', _('Purple')
+    BLUE = 'B', _('Blue')
+    WHITE = 'W', _('White')
+    RED = 'R', _('Red')
+    PURPLE = 'P', _('Purple')
 
 
 class SizeChoice(models.TextChoices):
@@ -96,6 +96,12 @@ class ArcDirectionChoice(models.TextChoices):
     SP = 'SP', 'Special'
 
 
+class LimitedChoice(models.IntegerChoices):
+    GENERIC = 0, _('')
+    UNIQUE = 1, _('•')
+    UNIQUE2 = 2, _('••')
+    UNIQUE3 = 3, _('•••')
+
 
 class Faction(models.Model):
     name = models.CharField(max_length=20)
@@ -122,6 +128,7 @@ class Card(models.Model):
     faction = models.ForeignKey(Faction, on_delete=models.CASCADE, null=True, blank=True)
     adds = models.CharField(max_length=120, blank=True, null=True)
     requires = models.CharField(max_length=120, blank=True, null=True)
+    limited = models.SmallIntegerField(default=LimitedChoice.GENERIC, choices=LimitedChoice.choices)
     player_use = models.BooleanField(default=True)
     ai_use = models.BooleanField(default=False)
 
@@ -138,10 +145,11 @@ class Card(models.Model):
 
 
     def __str__(self):
+        name = '{}{}'.format(self.get_limited_display(), self.name)
         if self.type == SlotChoice.PILOT.value:
-            return '{} - {}'.format(self.name, self.chassis)
+            return '{} - {}'.format(name, self.chassis)
         else:
-            return self.name
+            return name
 
     def campaign_cost(self, upgrade_logic):
         # todo: this needs to point to UpgradeLogic
@@ -196,9 +204,6 @@ class PilotCard(Card):
 
     class Meta:
         proxy = True
-
-    def __str__(self):
-        return '{} - {}'.format(self.name, self.chassis)
 
 
 class ShipAbility(Card):
