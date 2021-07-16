@@ -78,11 +78,12 @@
                  </ul>
             </nav>
 
-            <div id="available-list" data-bs-spy="scroll" data-bs-target="#available-nav" data-bs-offset="0" class="row scrollspy">
+            <div id="available-list" class="row scrollspy border pt-2 rounded"
+                 data-bs-spy="scroll" data-bs-target="#available-nav" data-bs-offset="0">
             {% for type in upgrades %}
                 <div id="available-list-{{type.grouper}}" class="row mb-5 d-flex flex-wrap">
                     {% for upgrade in type.list %}
-                    {% include './includes/upgrade_card.html' with upgrade=upgrade cost=upgrade|get_cost:pilot.campaign.rulebook.upgrade_logic %}
+                    {% include './includes/upgrade_card.html' with cost=upgrade|get_cost:pilot.campaign.rulebook.upgrade_logic %}
                     {% endfor %}
                 </div>
             {% endfor %}
@@ -96,7 +97,7 @@
     <div class="tab-pane" role="tabpanel" aria-labelledby="stats-tab" id="stats">
         <div class="container">
             <div class="row mb-3 d-flex flex-wrap">
-                <div class="col">
+                <div class="col-sm-4">
                     <p>Missions Flown: {{pilot.sessions.count}}</p>
                     <p>XP Earned: <i class="xwing-miniatures-font xwing-miniatures-font-squad-point-cost"></i>{{pilot.total_xp}}</p>
 
@@ -104,7 +105,7 @@
                                <i class="xwing-miniatures-font xwing-miniatures-font-squad-point-cost"></i>{{pilot.spent_initiative}} Initiative,
                                <i class="xwing-miniatures-font xwing-miniatures-font-squad-point-cost"></i>{{pilot.spent_upgrades}} Upgrades
                            </p>
-                    <p>XP purchase: <i class="xwing-miniatures-font xwing-miniatures-font-squad-point-cost"></i>{{remaining}}</p>
+                    <p>XP Available: <i class="xwing-miniatures-font xwing-miniatures-font-squad-point-cost"></i>{{remaining}}</p>
                 </div>
                 <ul class="list-group list-group-flush col-sm-3">
                     <li class="list-group-item">Kills</li>

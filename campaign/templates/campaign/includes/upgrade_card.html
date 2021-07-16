@@ -17,8 +17,9 @@
         </h5>
         <span class="float-end">
             <i class="xwing-miniatures-font xwing-miniatures-font-squad-point-cost"></i>
-            {% if upgrade_logic %}{{upgrade|get_cost:upgrade_logic}}
-            {% else %}{{cost}}
+            {{cost}}
+            {% if upgrade.name in pilot.campaign.limited_upgrades %}
+            {{'token-stress-outline'|get_icon}}
             {% endif %}
         </span>
     </a>

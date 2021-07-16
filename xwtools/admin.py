@@ -55,9 +55,9 @@ class FactionAdmin(admin.ModelAdmin):
 
 class PilotCardAdmin(admin.ModelAdmin):
     model = PilotCard
-    list_display = ('name', 'faction', 'chassis', 'initiative', 'player_use', 'ai_use')
+    list_display = ('name', 'faction', 'chassis', 'initiative', 'player_use', 'ai_use', 'limited')
     list_filter = ('faction', 'chassis', 'initiative', 'player_use', 'ai_use')
-    list_editable = ('chassis', 'initiative', 'player_use', 'ai_use')
+    list_editable = ('chassis', 'initiative', 'player_use', 'ai_use', 'limited')
 
     fields = ('name', 'limited', 'description', 'ai_description', 'type', 'faction', 'chassis', 'initiative', 'charges', 'recurring', 'force', 'ai_use')
 
@@ -84,9 +84,9 @@ class AttackInline(admin.TabularInline):
 
 class UpgradeCardAdmin(admin.ModelAdmin):
     model = UpgradeCard
-    list_display = ('name', 'type', 'cost', 'charges', 'recurring', 'repeat', 'player_use', 'ai_use')
+    list_display = ('name', 'type', 'cost', 'charges', 'recurring', 'repeat', 'player_use', 'ai_use', 'limited')
     list_filter = ('type', 'player_use', 'ai_use')
-    list_editable = ('cost', 'repeat', 'recurring', 'player_use', 'ai_use')
+    list_editable = ('cost', 'repeat', 'recurring', 'player_use', 'ai_use', 'limited')
     inlines = (AttackInline,)
     fieldsets = (
         (None, {

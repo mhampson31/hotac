@@ -182,6 +182,11 @@ class Campaign(models.Model):
             xp = xp + s.xp_total
         return floor(xp/pilots)
 
+    @cached_property
+    def limited_upgrades(self):
+        from .pilots import PilotUpgrade
+        return PilotUpgrade.objects.filter(pilot__campaign=self, card__limited=True).values_list('card__name', flat=True)
+
     def starting_deck(self):
         for m in Missions.objects.filter(rulebook=self.rulebook, sequence=1):
             self.deck.add(m)
