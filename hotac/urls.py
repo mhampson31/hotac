@@ -8,8 +8,9 @@ from xwtools import views as xwt_views
 from campaign import views as campaign_views
 
 
-router = DefaultRouter()
-router.register(r'factions', xwt_views.FactionViewSet, basename="factions")
+xwt_router = DefaultRouter()
+xwt_router.register(r'factions', xwt_views.FactionViewSet, basename="factions")
+xwt_router.register(r'chassis', xwt_views.ChassisViewSet, basename="chassis")
 
 urlpatterns = [
     #path('login/', LoginView.as_view(template_name='registration/login.html'), name="login"),
@@ -28,7 +29,7 @@ urlpatterns = [
     path('enemy_list/', campaign_views.enemy_list, name='enemy_list'),
     #path('random-enemy', campaign)
 
-    path('api/', include(router.urls))
+    path('api/xwtools/', include(xwt_router.urls))
 ]
 
 if settings.DEBUG:
