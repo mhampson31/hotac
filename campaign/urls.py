@@ -6,7 +6,8 @@ from . import views
 app_name = 'game'
 
 router = DefaultRouter()
-router.register(r'users', views.UserViewSet)
+router.register(r'user', views.UserViewSet)
+router.register(r'pilot', views.PilotViewSet)
 
 urlpatterns = [
     path('pilot/<int:pk>', views.PilotUpdate.as_view(), name='pilot'),

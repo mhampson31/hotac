@@ -14,7 +14,7 @@ from crispy_forms.layout import Submit
 
 from rest_framework import viewsets
 from rest_framework import permissions
-from .serializers import UserSerializer
+from .serializers import PilotSerializer, UserSerializer
 
 
 from .models import Session, Pilot, PilotShip, PilotUpgrade, Rulebook, Campaign, AI, EnemyPilot, User
@@ -34,6 +34,10 @@ class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all().order_by('-date_joined')
     serializer_class = UserSerializer
 
+
+class PilotViewSet(viewsets.ModelViewSet):
+    queryset = Pilot.objects.all()
+    serializer_class = PilotSerializer
 
 # ### Frontend views ### #
 
