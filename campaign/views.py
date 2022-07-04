@@ -12,6 +12,11 @@ from django.utils.decorators import method_decorator
 
 from crispy_forms.layout import Submit
 
+from rest_framework import viewsets
+from rest_framework import permissions
+from .serializers import UserSerializer
+
+
 from .models import Session, Pilot, PilotShip, PilotUpgrade, Rulebook, Campaign, AI, EnemyPilot, User
 from .forms import EnemyPilotForm, SessionForm, SessionPilotFormset, SessionEnemyFormset, \
                    SPFormsetHelper, SEFormsetHelper, PUHelper, AddUpgrade, \
@@ -20,6 +25,18 @@ from .forms import EnemyPilotForm, SessionForm, SessionPilotFormset, SessionEnem
 from xwtools.models import SlotChoice, Card
 import datetime
 
+# ### API views ### #
+
+class UserViewSet(viewsets.ModelViewSet):
+    """
+    API endpoint that allows users to be viewed or edited.
+    """
+    queryset = User.objects.all().order_by('-date_joined')
+    serializer_class = UserSerializer
+    permission_classes = [permissions.IsAuthenticated]
+
+
+# ### Frontend views ### #
 
 @login_required
 def player_page(request, player_id=None):

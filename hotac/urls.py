@@ -2,10 +2,14 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.contrib.auth.views import LoginView
+from rest_framework.routers import DefaultRouter
 
 from xwtools import views as xwt_views
 from campaign import views as campaign_views
 
+
+router = DefaultRouter()
+router.register(r'factions', xwt_views.FactionViewSet, basename="factions")
 
 urlpatterns = [
     #path('login/', LoginView.as_view(template_name='registration/login.html'), name="login"),
@@ -23,6 +27,8 @@ urlpatterns = [
     path('enemy/<int:pk>', campaign_views.EnemyView.as_view(), name='enemy'),
     path('enemy_list/', campaign_views.enemy_list, name='enemy_list'),
     #path('random-enemy', campaign)
+
+    path('api/', include(router.urls))
 ]
 
 if settings.DEBUG:
