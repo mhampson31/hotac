@@ -1,11 +1,11 @@
 from django.urls import include, path
-from rest_framework import routers
+from rest_framework.routers import DefaultRouter
 
 from . import views
 
 app_name = 'game'
 
-router = routers.DefaultRouter()
+router = DefaultRouter()
 router.register(r'users', views.UserViewSet)
 
 urlpatterns = [
@@ -23,7 +23,6 @@ urlpatterns = [
     path('profile/', views.player_page, name='player_profile'),
     path('player/<int:player_id>', views.player_page, name="player_update"),
 
-    path('', include(router.urls)),
+    path('api/', include(router.urls)),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework'))
-
 ]
