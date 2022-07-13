@@ -379,4 +379,4 @@ class Action(models.Model):
 
     @property
     def linked_difficulty_css(self):
-        return {'B':'easy', 'R':'hard', 'W':'', 'P':'force'}[self.linked_difficulty]
+        return {'B':'easy', 'R':'hard', 'W':'', 'P':'force'}.get(self.linked_difficulty, '')
