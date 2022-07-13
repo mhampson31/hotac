@@ -218,7 +218,10 @@ class Dial(models.Model):
     chassis = models.OneToOneField('Chassis', on_delete=models.SET_NULL, null=True, related_name='dial')
 
     def __str__(self):
-        return self.chassis.name or '--'
+        if self.chassis:
+            return self.chassis.name
+        else:
+            return '--'
 
     @property
     def css_name(self):
@@ -237,9 +240,6 @@ class Dial(models.Model):
 
 
 class DialManeuver(models.Model):
-    dial = models.ForeignKey(Dial, on_delete=models.CASCADE, related_name='maneuvers')
-    speed = models.SmallIntegerField() # negative values for reverse maneuvers
-
     BEARING_TYPES = {
         'Straight': 'S',
         'Bank': 'B',
@@ -252,15 +252,18 @@ class DialManeuver(models.Model):
         'Reverse Straight': 'RS',
         '--':'XX' # for use as a spacer
     }
+
     BEARING_CHOICES = [(v, k) for k, v in BEARING_TYPES.items()]
-    bearing = models.CharField(max_length=3, choices=BEARING_CHOICES)
 
     DIRECTION_CHOICES = (
         ('L', 'Left'),
         ('R', 'Right')
     )
-    direction = models.CharField(max_length=1, choices=DIRECTION_CHOICES, null=True, blank=True )
 
+    bearing = models.CharField(max_length=3, choices=BEARING_CHOICES)
+    dial = models.ForeignKey(Dial, on_delete=models.CASCADE, related_name='maneuvers')
+    speed = models.SmallIntegerField() # negative values for reverse maneuvers
+    direction = models.CharField(max_length=1, choices=DIRECTION_CHOICES, null=True, blank=True)
     difficulty = models.CharField(max_length=1, choices=DifficultyChoice.choices, default='W')
 
     def find_mirror(self):
