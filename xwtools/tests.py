@@ -1,6 +1,6 @@
 from django.test import TestCase
 
-from .models import Chassis, Faction, Card, SlotChoice, Dial, DialManeuver, DifficultyChoice
+from .models import Chassis, Faction, Card, SlotChoice, Dial, DialManeuver, DifficultyChoice, Slot, Action
 
 
 class FactionTestCase(TestCase):
@@ -112,3 +112,42 @@ class DialManeuverTestCase(TestCase):
         self.assertEqual(self.dm2.icon_color, 'easy')
         self.assertEqual(self.dm4.icon_color, 'hard')
         self.assertEqual(self.dm5.icon_color, 'force')
+
+
+class SlotTest(TestCase):
+    def setUp(self):
+        from xwtools.models import SlotChoice
+        chassis = Chassis.objects.create(name="Slot Fighter")
+        self.slot = Slot.objects.create(chassis=chassis, type=SlotChoice.SENSOR)
+
+    def test_css_name(self):
+        self.assertEqual(self.slot.css_name, 'Sensor')
+
+class ActionTest(TestCase):
+    def setUp(self):
+        from xwtools.models import ActionChoice
+        chassis = Chassis.objects.create(name="Action Ship")
+        self.action1 = Action(chassis=chassis, action=ActionChoice.FOCUS)
+        self.action2 = Action(chassis=chassis, action=ActionChoice.BOOST, difficulty=DifficultyChoice.RED)
+        self.action3 = Action(chassis=chassis, action=ActionChoice.BARREL_ROLL,
+                              linked_action=ActionChoice.EVADE, linked_difficulty=DifficultyChoice.RED)
+        self.action4 = Action(chassis=chassis, action=ActionChoice.COORDINATE, difficulty=DifficultyChoice.PURPLE)
+
+    def test_str(self):
+        self.assertEqual(self.action1.__str__(), "[Focus#White]")
+        self.assertEqual(self.action2.__str__(), "[Boost#Red]")
+        self.assertEqual(self.action3.__str__(), "[Barrel Roll#White] [Linked] [Evade#Red]")
+
+    def test_difficulty_css(self):
+        self.assertEqual(self.action1.difficulty_css, '')
+        self.assertEqual(self.action2.difficulty_css, 'hard')
+        self.assertEqual(self.action3.difficulty_css, '')
+        self.assertEqual(self.action4.difficulty_css, 'force')
+
+
+    def test_linked_difficulty_css(self):
+        self.assertEqual(self.action1.linked_difficulty_css, '')
+        self.assertEqual(self.action2.linked_difficulty_css, '')
+        self.assertEqual(self.action3.linked_difficulty_css, 'hard')
+        self.assertEqual(self.action4.linked_difficulty_css, '')
+
