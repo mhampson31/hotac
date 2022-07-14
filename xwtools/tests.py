@@ -46,8 +46,7 @@ class DialTestCase(TestCase):
         Chassis.objects.create(name="Dial Shuttle")
         shuttle = Chassis.objects.get(name="Dial Shuttle")
 
-        Dial.objects.create(chassis=shuttle)
-        self.dial = Dial.objects.first()
+        self.dial = Dial.objects.create(chassis=shuttle)
 
         # dial with 4 straight, 3 straight, 2 l/s/r
         # Max speed of 4, width of 3
@@ -95,6 +94,11 @@ class DialManeuverTestCase(TestCase):
         self.assertEqual(self.dm4.__str__(), "3 Straight Red")
         self.assertEqual(self.dm5.__str__(), "4 Straight Purple")
 
+    def test_order(self):
+        # Test that we're ordering by speed descending and then Left/Straight/Right.
+        # The ordering field uses a case statement and maybe we should add more maneuvers to test
+        maneuvers = list(DialManeuver.objects.all())
+        self.assertEqual(maneuvers, [self.dm5, self.dm4, self.dm1, self.dm2, self.dm3])
 
     def test_find_mirror(self):
         # dm1 and dm3 are mirrors of each other, but is it bad practice to use them this way?
@@ -105,7 +109,6 @@ class DialManeuverTestCase(TestCase):
     def test_css_name(self):
         self.assertEqual(self.dm1.css_name, 'Turn Left')
         self.assertEqual(self.dm5.css_name, 'Straight')
-
 
     def test_icon_color(self):
         self.assertEqual(self.dm1.icon_color, '')
@@ -122,6 +125,7 @@ class SlotTest(TestCase):
 
     def test_css_name(self):
         self.assertEqual(self.slot.css_name, 'Sensor')
+
 
 class ActionTest(TestCase):
     def setUp(self):
