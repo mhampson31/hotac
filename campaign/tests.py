@@ -89,13 +89,6 @@ class RulebookTest(TestCase):
     def test_str(self):
         self.assertEqual(self.rulebook.__str__(), "Rulebook")
 
-    def test_xp_share(self):
-        # this is obvious insufficient.
-        # need to check that each pilot gets an equal share of the total earned XP
-        #self.assertEqual(self.rulebook.xp_share, 0)
-        # Why does Rulebook have this method? Doesn't make a lot of sense...
-        self.assertRaises(self.rulebook.xp_share, AttributeError)
-
     def test_hotac_initiative_cost(self):
         # only testing HotAC logic here. Add separate tests if we ever add more rulesets.
         self.assertEqual(self.rulebook.get_initiative_cost(2), 6)

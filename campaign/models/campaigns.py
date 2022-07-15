@@ -48,15 +48,6 @@ class Rulebook(models.Model):
     def get_absolute_url(self):
         return reverse('ruleset', kwargs={'pk': self.pk})
 
-    @cached_property
-    def xp_share(self):
-        pilots = 0
-        xp = 0
-        for s in self.session_set.all():
-            pilots = pilots + s.pilots.count()
-            xp = xp + s.xp_total
-        return floor(xp/pilots)
-
     def get_initiative_cost(self, initiative):
         """
         Returns the XP cost of advancing to from 'iniative'-1 to 'initiative'.
