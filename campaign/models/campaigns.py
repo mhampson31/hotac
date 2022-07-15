@@ -188,7 +188,7 @@ class Campaign(models.Model):
         return PilotUpgrade.objects.filter(pilot__campaign=self, card__limited=True).values_list('card__name', flat=True)
 
     def starting_deck(self):
-        for m in Missions.objects.filter(rulebook=self.rulebook, sequence=1):
+        for m in Mission.objects.filter(rulebook=self.rulebook, sequence=1):
             self.deck.add(m)
         self.save()
 

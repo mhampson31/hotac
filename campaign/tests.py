@@ -117,12 +117,13 @@ class MissionFeatureTest(TestCase):
 
     @classmethod
     def setUpTestData(cls):
-        from .models import FeatureChoice
-        cls.feature_1 = MissionFeature.objects.create(name="rock", type=FeatureChoice.OBSTACLE)
-        cls.feature_2 = MissionFeature.objects.create(name="turret", type=FeatureChoice.EMPLACEMENT)
+        # FeatureChoices isn't exposed for import, so hard-coding the FeatureChoice types here.
+        # These are unlikely to change.
+        cls.feature_1 = MissionFeature.objects.create(name="rock", type='O')
+        cls.feature_2 = MissionFeature.objects.create(name="turret", type='E')
 
     def test_str(self):
-        self.assertEqual(self.feature_1, "rock")
+        self.assertEqual(self.feature_1.__str__(), "rock")
 
     def test_is_emplacement(self):
         self.assertFalse(self.feature_1.is_emplacement)
