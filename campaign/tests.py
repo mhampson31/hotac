@@ -1,8 +1,8 @@
 from django.test import TestCase
 from campaign.models.campaigns import PlayableShip
 
-from xwtools.models import Dial, DialManeuver, Chassis, ArcDirectionChoice, RangeChoice
-from .models import AI, AIManeuver, Rulebook, UpgradeLogic, PlayableShip, MissionFeature
+from xwtools.models import Dial, DialManeuver, Chassis, ArcDirectionChoice, RangeChoice, Faction
+from .models import AI, AIManeuver, Rulebook, UpgradeLogic, PlayableShip, MissionFeature, Mission
 
 # Create your tests here.
 
@@ -112,7 +112,6 @@ class PlayableShipTest(TestCase):
         self.assertEqual(self.ship.__str__(), "Playable Ship")
 
 
-
 class MissionFeatureTest(TestCase):
 
     @classmethod
@@ -129,3 +128,11 @@ class MissionFeatureTest(TestCase):
         self.assertFalse(self.feature_1.is_emplacement)
         self.assertTrue(self.feature_2.is_emplacement)
 
+
+class MissionTest(TestCase):
+    def test_str(self):
+        chassis = Chassis.objects.create(name="T-Wing")
+        enemy = Faction.objects.create(name="Test Navy", default_ship=chassis)
+        mission = Mission.objects.create(name="Test Mission", story="Test of the Aturi Cluster", sequence=1,
+                                         rulebook=create_rulebook_data("Missions"), enemy_faction=enemy)
+        self.assertEqual(mission.__str__(), "Test Mission (Test of the Aturi Cluster 1)")
