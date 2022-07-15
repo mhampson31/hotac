@@ -2,12 +2,19 @@ from django.test import TestCase
 from campaign.models.campaigns import PlayableShip
 
 from xwtools.models import Dial, DialManeuver, Chassis, ArcDirectionChoice, RangeChoice, Faction
-from .models import AI, AIManeuver, Rulebook, UpgradeLogic, PlayableShip, MissionFeature, Mission
+from .models import AI, AIManeuver, Rulebook, UpgradeLogic, PlayableShip, MissionFeature, Mission, Campaign
 
 # Create your tests here.
 
 def create_rulebook_data(desc):
     return Rulebook.objects.create(description=desc, upgrade_logic=UpgradeLogic.HOTAC, initiative_progression=UpgradeLogic.HOTAC)
+
+def create_mission_data(rulebook):
+    chassis = Chassis.objects.create(name="T-Wing")
+    enemy = Faction.objects.create(name="Test Navy", default_ship=chassis)
+    return Mission.objects.create(name="Test Mission", story="Test of the Aturi Cluster", sequence=1,
+                                  rulebook=rulebook, enemy_faction=enemy)
+
 
 def create_ai_test_data(flee=1):
     rulebook = create_rulebook_data("AI Rules")
@@ -85,7 +92,9 @@ class RulebookTest(TestCase):
     def test_xp_share(self):
         # this is obvious insufficient.
         # need to check that each pilot gets an equal share of the total earned XP
-        self.assertEqual(self.rulebook.xp_share, 0)
+        #self.assertEqual(self.rulebook.xp_share, 0)
+        # Why does Rulebook have this method? Doesn't make a lot of sense...
+        self.assertRaises(self.rulebook.xp_share, AttributeError)
 
     def test_hotac_initiative_cost(self):
         # only testing HotAC logic here. Add separate tests if we ever add more rulesets.
@@ -94,7 +103,6 @@ class RulebookTest(TestCase):
         self.assertEqual(self.rulebook.get_initiative_cost(4), 12)
         self.assertEqual(self.rulebook.get_initiative_cost(5), 15)
         self.assertEqual(self.rulebook.get_initiative_cost(6), 18)
-
 
 
 class PlayableShipTest(TestCase):
@@ -131,8 +139,42 @@ class MissionFeatureTest(TestCase):
 
 class MissionTest(TestCase):
     def test_str(self):
-        chassis = Chassis.objects.create(name="T-Wing")
-        enemy = Faction.objects.create(name="Test Navy", default_ship=chassis)
-        mission = Mission.objects.create(name="Test Mission", story="Test of the Aturi Cluster", sequence=1,
-                                         rulebook=create_rulebook_data("Missions"), enemy_faction=enemy)
+        mission = create_mission_data(rulebook=create_rulebook_data("Test Rules"))
         self.assertEqual(mission.__str__(), "Test Mission (Test of the Aturi Cluster 1)")
+
+
+class CampaignTest(TestCase):
+
+    @classmethod
+    def setUpTestData(cls):
+        rulebook = create_rulebook_data("Campaign Rules")
+        cls.mission = create_mission_data(rulebook)
+        cls.campaign = Campaign.objects.create(rulebook=rulebook, description="Testers of the Aturi Cluster")
+        cls.campaign.starting_deck()
+        # add sessions
+
+    def test__str(self):
+        self.assertEqual(self.campaign.__str__(), "Testers of the Aturi Cluster")
+
+    def test_victory_points(self):
+        pass
+
+    def test_xp_share(self):
+        pass
+
+    def test_limited_upgrades(self):
+        from .models import PilotUpgrade
+        upgrades = PilotUpgrade.objects.filter(pilot__campaign=self.campaign, card__limited=True).values_list('card__name', flat=True)
+        pass
+
+    def test_starting_deck(self):
+        self.assertQuerysetEqual(self.campaign.deck.all(), [self.mission,])
+
+
+    def test_draw_missions(self):
+        # if the starter mission is in the deck, return it
+        # if only one thing is in the deck, return it
+        # else, return two options
+        # set deck_draw to that
+        pass
+
