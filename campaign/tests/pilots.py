@@ -1,6 +1,7 @@
 from django.test import TestCase
 
 from campaign.models import User, Campaign, Pilot, PilotShip, PilotUpgrade
+from xwtools.models import Chassis
 
 from .utilities import create_rulebook_data, create_pilot_data
 
@@ -9,7 +10,7 @@ class PilotTest(TestCase):
 
     @classmethod
     def setUpTestData(cls):
-        pilot = create_pilot_data(callsign='Tester')
+        cls.pilot = create_pilot_data(callsign='Tester')
         # Path A and path F
 
     def test_str(self):
@@ -85,13 +86,15 @@ class PilotShipTest(TestCase):
 
     @classmethod
     def setUpTestData(cls):
-        # pilot, chassis, name
-        return
+        chassis = Chassis.objects.create(name="Ship Ship")
+        pilot_1 = create_pilot_data("Shipper 1")
+        pilot_2 = create_pilot_data("Shipper 2")
+        cls.ship_1 = PilotShip.objects.create(pilot=pilot_1, chassis=chassis)
+        cls.ship_2 = PilotShip.objects.create(pilot=pilot_2, chassis=chassis, name="Ship Name")
 
-    def test_name(self):
-        # with name
-        # without name
-        pass
+    def test_str(self):
+        self.assertEqual(self.ship_1.__str__(), "Shipper 1's Ship Ship")
+        self.assertEqual(self.ship_2.__str__(), "Shipper 2's Ship Ship Ship Name")
 
     def game_info(self):
         # self.pilot.campaign.rulebook.playableship_set.get(chassis=self.chassis)
@@ -113,5 +116,6 @@ class PilotUpgradeTest(TestCase):
     @classmethod
     def setUpTestData(cls):
         # pilot, card, status, cost
-        return
+        cls.pilot = create_pilot_data(callsign="Upgrader 1")
+
 

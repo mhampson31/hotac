@@ -35,7 +35,7 @@ def create_ai_test_data(flee=1):
 
 
 def create_pilot_data(callsign, path='A'):
-    user = User.objects.create(username="Player")
+    user = User.objects.get_or_create(username="Player")[0]
     rulebook = create_rulebook_data("Pilot Rules")
     campaign = Campaign.objects.create(rulebook=rulebook, description="Testers of the Aturi Cluster")
     return Pilot.objects.create(user=user, campaign=campaign, path=path, callsign=callsign)
