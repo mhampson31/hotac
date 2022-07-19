@@ -1,9 +1,10 @@
 from xwtools.models import Dial, DialManeuver, Chassis, ArcDirectionChoice, RangeChoice, Faction
-from campaign.models import AI, AIManeuver, Rulebook, UpgradeLogic, Mission
+from campaign.models import AI, AIManeuver, Rulebook, UpgradeLogic, Mission, User, Campaign, Pilot
 
 
 def create_rulebook_data(desc):
     return Rulebook.objects.create(description=desc, upgrade_logic=UpgradeLogic.HOTAC, initiative_progression=UpgradeLogic.HOTAC)
+
 
 def create_mission_data(rulebook):
     chassis = Chassis.objects.create(name="T-Wing")
@@ -32,3 +33,9 @@ def create_ai_test_data(flee=1):
 
     return {'ai':ai, 'dial_maneuvers':dial_maneuvers, 'ai_maneuver':ai_maneuver}
 
+
+def create_pilot_data(callsign, path='A'):
+    user = User.objects.create(username="Player")
+    rulebook = create_rulebook_data("Pilot Rules")
+    campaign = Campaign.objects.create(rulebook=rulebook, description="Testers of the Aturi Cluster")
+    return Pilot.objects.create(user=user, campaign=campaign, path=path, callsign=callsign)
