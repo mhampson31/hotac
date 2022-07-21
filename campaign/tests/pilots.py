@@ -1,7 +1,7 @@
 from django.test import TestCase
 
-from campaign.models import User, Campaign, Pilot, PilotShip, PilotUpgrade
-from xwtools.models import Chassis
+from campaign.models import User, Campaign, Pilot, PilotShip, PilotUpgrade, PlayableShip
+from xwtools.models import Chassis, Card, SlotChoice
 
 from .utilities import create_rulebook_data, create_pilot_data
 
@@ -86,29 +86,103 @@ class PilotShipTest(TestCase):
 
     @classmethod
     def setUpTestData(cls):
-        chassis = Chassis.objects.create(name="Ship Ship")
+        chassis = Chassis.objects.create(name="Ship Ship", hull=3, shields=0)
         pilot_1 = create_pilot_data("Shipper 1")
         pilot_2 = create_pilot_data("Shipper 2")
+
+        cls.playable_ship = PlayableShip.objects.create(rulebook=pilot_1.campaign.rulebook, chassis=chassis)
         cls.ship_1 = PilotShip.objects.create(pilot=pilot_1, chassis=chassis)
         cls.ship_2 = PilotShip.objects.create(pilot=pilot_2, chassis=chassis, name="Ship Name")
 
+        great_card = Card.objects.create(name="Plot Armor", type=SlotChoice.MODIFICATION, adds="+[Shield] +[Hull]")
+        hull_card = Card.objects.create(name="Not Bad", type=SlotChoice.MODIFICATION, adds="+[Hull]")
+        shield_card = Card.objects.create(name="Mega Shield", type=SlotChoice.MODIFICATION, adds="+[Shield]")
+        bad_card = Card.objects.create(name="Red Shirt", type=SlotChoice.MODIFICATION, adds="-[Shield] -[Hull]")
+
+        PilotUpgrade.objects.create(pilot=pilot_1, card=great_card, status='U', cost=1)
+        PilotUpgrade.objects.create(pilot=pilot_1, card=hull_card, status='U', cost=1)
+        PilotUpgrade.objects.create(pilot=pilot_1, card=shield_card, status='U', cost=1)
+        PilotUpgrade.objects.create(pilot=pilot_1, card=bad_card, status='U', cost=1)
+
+        PilotUpgrade.objects.create(pilot=pilot_2, card=bad_card, status='U', cost=1)
+
+
     def test_str(self):
         self.assertEqual(self.ship_1.__str__(), "Shipper 1's Ship Ship")
+        # I didn't think this through when coming up with test names but we'll go with it
         self.assertEqual(self.ship_2.__str__(), "Shipper 2's Ship Ship Ship Name")
 
-    def game_info(self):
-        # self.pilot.campaign.rulebook.playableship_set.get(chassis=self.chassis)
-        pass
+    def test_game_info(self):
+        self.assertEqual(self.ship_1.game_info, self.playable_ship)
+        self.assertEqual(self.ship_2.game_info, self.playable_ship)
 
-    def shields(self):
-        # with shield upgrade equipped
-        # with -shield upgrade equipped
-        pass
 
-    def hull(self):
-        # with hull upgrade
-        # with - hull upgrade
-        pass
+    def test_shields(self):
+        """ Test adding and removing shield upgrades to ensure the ship's game values
+            are being calculated correctly.
+            PilotShip.shields is a cached property so we need to clear it with each check.
+        """
+        # Pilot 2 has no shields and no upgrades
+        self.assertEqual(self.ship_2.shields, 0)
+        del self.ship_2.shields
+
+        # Shields can't go below 0
+        self.ship_2.pilot.upgrades.filter(card__name="Red Shirt").update(status='E')
+        self.assertEqual(self.ship_2.shields, 0)
+
+
+        # Pilot 1 equips some upgrades one by one
+        # Shield +1, Hull +1
+        self.ship_1.pilot.upgrades.filter(card__name="Plot Armor").update(status='E')
+        self.assertEqual(self.ship_1.shields, 1)
+        del self.ship_1.shields
+
+        # Hull-only, no effect on shields
+        self.ship_1.pilot.upgrades.filter(card__name="Not Bad").update(status='E')
+        self.assertEqual(self.ship_1.shields, 1)
+        del self.ship_1.shields
+
+        # Shield +1
+        self.ship_1.pilot.upgrades.filter(card__name="Mega Shield").update(status='E')
+        self.assertEqual(self.ship_1.shields, 2)
+        del self.ship_1.shields
+
+        # Shield -1
+        self.ship_1.pilot.upgrades.filter(card__name="Red Shirt").update(status='E')
+        self.assertEqual(self.ship_1.shields, 1)
+
+
+    def test_hull(self):
+        """ Test adding and removing hull upgrades to ensure the ship's game values
+            are being calculated correctly.
+            PilotShip.hull is a cached property so we need to clear it with each check.
+        """
+        # Pilot 2 has no shields and no upgrades
+        self.assertEqual(self.ship_2.hull, 3)
+        del self.ship_2.hull
+
+        self.ship_2.pilot.upgrades.filter(card__name="Red Shirt").update(status='E')
+        self.assertEqual(self.ship_2.hull, 2)
+
+        # Pilot 1 equips some upgrades one by one
+        # Shield +1, Hull +1
+        self.ship_1.pilot.upgrades.filter(card__name="Plot Armor").update(status='E')
+        self.assertEqual(self.ship_1.hull, 4)
+        del self.ship_1.hull
+
+        # Hull +1
+        self.ship_1.pilot.upgrades.filter(card__name="Not Bad").update(status='E')
+        self.assertEqual(self.ship_1.hull, 5)
+        del self.ship_1.hull
+
+        # Shield +1, no effect on hull
+        self.ship_1.pilot.upgrades.filter(card__name="Mega Shield").update(status='E')
+        self.assertEqual(self.ship_1.hull, 5)
+        del self.ship_1.hull
+
+        # Hull -1
+        self.ship_1.pilot.upgrades.filter(card__name="Red Shirt").update(status='E')
+        self.assertEqual(self.ship_1.hull, 4)
 
 
 class PilotUpgradeTest(TestCase):

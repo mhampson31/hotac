@@ -3,7 +3,7 @@ from campaign.models import AI, AIManeuver, Rulebook, UpgradeLogic, Mission, Use
 
 
 def create_rulebook_data(desc):
-    return Rulebook.objects.create(description=desc, upgrade_logic=UpgradeLogic.HOTAC, initiative_progression=UpgradeLogic.HOTAC)
+    return Rulebook.objects.get_or_create(description=desc, upgrade_logic=UpgradeLogic.HOTAC, initiative_progression=UpgradeLogic.HOTAC)[0]
 
 
 def create_mission_data(rulebook):
@@ -37,5 +37,5 @@ def create_ai_test_data(flee=1):
 def create_pilot_data(callsign, path='A'):
     user = User.objects.get_or_create(username="Player")[0]
     rulebook = create_rulebook_data("Pilot Rules")
-    campaign = Campaign.objects.create(rulebook=rulebook, description="Testers of the Aturi Cluster")
+    campaign = Campaign.objects.get_or_create(rulebook=rulebook, description="Testers of the Aturi Cluster")[0]
     return Pilot.objects.create(user=user, campaign=campaign, path=path, callsign=callsign)
